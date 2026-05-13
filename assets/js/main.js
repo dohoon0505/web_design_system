@@ -8,6 +8,9 @@
     return div.innerHTML;
   }
 
+  var blockIdCounter = 0;
+  function uid() { return 'blk-' + (++blockIdCounter); }
+
   /* ============ THEME ============ */
   function toggleTheme() {
     var body = document.body;
@@ -147,8 +150,214 @@
     if (reportView) {
       reportView.innerHTML = html;
       reportView.style.display = '';
+      activateComponents();
     }
     window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  /* ============ BLOCK RENDERERS ============ */
+
+  function renderBlock(block) {
+    switch (block.type) {
+      case 'heading':  return renderHeading(block);
+      case 'text':     return renderText(block);
+      case 'note':     return renderNote(block);
+      case 'kv':       return renderKV(block);
+      case 'stats':    return renderStats(block);
+      case 'sitemap':  return renderSitemap(block);
+      case 'structure': return renderStructure(block);
+      case 'palette':  return renderPalette(block);
+      case 'typo':     return renderTypo(block);
+      case 'component': return renderComponent(block);
+      case 'spacingScale': return renderSpacingScale(block);
+      case 'radiusScale':  return renderRadiusScale(block);
+      default: return '';
+    }
+  }
+
+  function renderHeading(block) {
+    return '<h2 class="blk-heading">' + escapeHtml(block.value) + '</h2>';
+  }
+
+  function renderText(block) {
+    return '<p class="blk-text">' + escapeHtml(block.value) + '</p>';
+  }
+
+  function renderNote(block) {
+    return '<div class="blk-note"><div class="blk-note-icon">i</div><p>' + escapeHtml(block.value) + '</p></div>';
+  }
+
+  function renderKV(block) {
+    var cols = block.columns || 1;
+    var h = '';
+    if (block.title) {
+      h += '<div class="blk-kv-title">' + escapeHtml(block.title) + '</div>';
+    }
+    h += '<div class="blk-kv blk-kv--col' + cols + '">';
+    (block.items || []).forEach(function (item) {
+      h += '<div class="blk-kv-item">';
+      h += '<dt>' + escapeHtml(item.label) + '</dt>';
+      h += '<dd>' + escapeHtml(item.value) + '</dd>';
+      h += '</div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderStats(block) {
+    var h = '<div class="blk-stats">';
+    (block.items || []).forEach(function (item) {
+      h += '<div class="blk-stat">';
+      h += '<div class="blk-stat-number">' + escapeHtml(String(item.number)) + '</div>';
+      if (item.suffix) h += '<div class="blk-stat-suffix">' + escapeHtml(item.suffix) + '</div>';
+      h += '<div class="blk-stat-label">' + escapeHtml(item.label) + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderSitemap(block) {
+    var h = '<div class="blk-sitemap">';
+    (block.items || []).forEach(function (item) {
+      h += '<div class="blk-sitemap-group">';
+      h += '<div class="blk-sitemap-parent">' + escapeHtml(item.label) + '</div>';
+      h += '<div class="blk-sitemap-children">';
+      (item.children || []).forEach(function (child) {
+        h += '<span class="blk-sitemap-child">' + escapeHtml(child) + '</span>';
+      });
+      h += '</div></div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderStructure(block) {
+    var h = '<div class="blk-structure">';
+    (block.items || []).forEach(function (item, i) {
+      h += '<div class="blk-structure-row">';
+      h += '<div class="blk-structure-index">' + (i + 1) + '</div>';
+      h += '<div class="blk-structure-body">';
+      h += '<div class="blk-structure-label">' + escapeHtml(item.label);
+      if (item.tag) h += '<span class="blk-structure-tag">' + escapeHtml(item.tag) + '</span>';
+      h += '</div>';
+      h += '<div class="blk-structure-desc">' + escapeHtml(item.desc) + '</div>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderPalette(block) {
+    var h = '';
+    if (block.title) {
+      h += '<div class="blk-palette-title">' + escapeHtml(block.title) + '</div>';
+    }
+    h += '<div class="blk-palette">';
+    (block.colors || []).forEach(function (c) {
+      var light = isLightColor(c.hex);
+      h += '<div class="blk-swatch">';
+      h += '<div class="blk-swatch-color' + (light ? ' blk-swatch--light' : '') + '" style="background:' + escapeHtml(c.hex) + '">';
+      h += '<span>' + escapeHtml(c.hex) + '</span>';
+      h += '</div>';
+      h += '<div class="blk-swatch-info">';
+      h += '<div class="blk-swatch-name">' + escapeHtml(c.name) + '</div>';
+      h += '<div class="blk-swatch-usage">' + escapeHtml(c.usage) + '</div>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function isLightColor(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    var r = parseInt(hex.substring(0,2), 16);
+    var g = parseInt(hex.substring(2,4), 16);
+    var b = parseInt(hex.substring(4,6), 16);
+    return (r * 299 + g * 587 + b * 114) / 1000 > 180;
+  }
+
+  function renderTypo(block) {
+    var h = '<div class="blk-typo">';
+    (block.items || []).forEach(function (item) {
+      var style = 'font-size:' + escapeHtml(item.size) + ';font-weight:' + item.weight;
+      if (item.tracking) style += ';letter-spacing:' + escapeHtml(item.tracking);
+      h += '<div class="blk-typo-row">';
+      h += '<div class="blk-typo-meta">';
+      h += '<span class="blk-typo-label">' + escapeHtml(item.label) + '</span>';
+      h += '<span class="blk-typo-spec">' + escapeHtml(item.size) + ' · ' + item.weight;
+      if (item.tracking) h += ' · ' + escapeHtml(item.tracking);
+      h += '</span>';
+      h += '</div>';
+      h += '<div class="blk-typo-sample" style="' + style + '">' + escapeHtml(item.sample) + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderComponent(block) {
+    var id = uid();
+    var h = '<div class="blk-component">';
+    if (block.title) {
+      h += '<div class="blk-component-title">' + escapeHtml(block.title) + '</div>';
+    }
+    h += '<div class="blk-component-preview" id="' + id + '"';
+    h += ' data-html="' + escapeHtml(block.html || '') + '"';
+    h += ' data-css="' + escapeHtml(block.css || '') + '"';
+    if (block.js) h += ' data-js="' + escapeHtml(block.js) + '"';
+    h += '></div></div>';
+    return h;
+  }
+
+  function renderSpacingScale(block) {
+    var h = '<div class="blk-spacing-scale">';
+    (block.items || []).forEach(function (item) {
+      h += '<div class="blk-spacing-row">';
+      h += '<div class="blk-spacing-label">' + escapeHtml(item.label) + '</div>';
+      h += '<div class="blk-spacing-bar-wrap">';
+      h += '<div class="blk-spacing-bar" style="width:' + Math.min(item.px, 200) + 'px"></div>';
+      h += '</div>';
+      h += '<div class="blk-spacing-px">' + item.px + 'px</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderRadiusScale(block) {
+    var h = '<div class="blk-radius-scale">';
+    (block.items || []).forEach(function (item) {
+      var r = item.px >= 99 ? '50%' : item.px + 'px';
+      h += '<div class="blk-radius-item">';
+      h += '<div class="blk-radius-box" style="border-radius:' + r + '"></div>';
+      h += '<div class="blk-radius-info">';
+      h += '<div class="blk-radius-name">' + escapeHtml(item.label) + '</div>';
+      h += '<div class="blk-radius-val">' + (item.px >= 99 ? '50% (full)' : item.px + 'px') + '</div>';
+      if (item.usage) h += '<div class="blk-radius-usage">' + escapeHtml(item.usage) + '</div>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  /* ============ COMPONENT ACTIVATION ============ */
+  function activateComponents() {
+    var previews = document.querySelectorAll('.blk-component-preview');
+    previews.forEach(function (el) {
+      var rawHtml = el.getAttribute('data-html');
+      var rawCss = el.getAttribute('data-css');
+      var rawJs = el.getAttribute('data-js');
+      if (!rawHtml) return;
+
+      var styleTag = rawCss ? '<style>' + rawCss + '</style>' : '';
+      el.innerHTML = styleTag + rawHtml;
+
+      if (rawJs) {
+        try { new Function(rawJs)(); } catch (e) { /* silent */ }
+      }
+    });
   }
 
   /* ============ REPORT RENDERING ============ */
@@ -165,6 +374,9 @@
     h += '<a class="report-url" href="' + escapeHtml(analysis.url) + '" target="_blank" rel="noopener noreferrer">';
     h += '<svg class="ico"><use href="#i-link"/></svg>' + escapeHtml(analysis.url);
     h += '</a>';
+    if (analysis.crawledPages) {
+      h += '<span class="report-crawled">' + analysis.crawledPages + '개 페이지 크롤링</span>';
+    }
     h += '</div>';
 
     h += '<div class="report-sections-grid">';
@@ -172,11 +384,12 @@
       var sec = analysis.sections[def.id];
       if (!sec) return;
       var sectionPath = 'ref/' + analysis.id + '/' + def.id;
+      var blockCount = sec.blocks ? sec.blocks.length : (sec.items ? sec.items.length : 0);
       h += '<a class="report-section-card" href="#' + sectionPath + '">';
       h += '<div class="report-section-num">' + escapeHtml(def.num) + '</div>';
       h += '<h3>' + escapeHtml(sec.title) + '</h3>';
       h += '<p>' + escapeHtml(def.desc) + '</p>';
-      h += '<span class="report-section-count">' + (sec.items ? sec.items.length : 0) + '개 항목</span>';
+      h += '<span class="report-section-count">' + blockCount + '개 블록</span>';
       h += '</a>';
     });
     h += '</div>';
@@ -204,7 +417,12 @@
     h += '</div>';
     h += '</div>';
 
-    if (sec.items && sec.items.length > 0) {
+    h += '<div class="report-blocks">';
+    if (sec.blocks && sec.blocks.length > 0) {
+      sec.blocks.forEach(function (block) {
+        h += renderBlock(block);
+      });
+    } else if (sec.items && sec.items.length > 0) {
       h += '<div class="report-findings">';
       sec.items.forEach(function (item) {
         h += '<div class="finding-row">';
@@ -214,15 +432,12 @@
       });
       h += '</div>';
     }
+    h += '</div>';
 
     if (sec.note) {
-      h += '<div class="report-note">';
-      h += '<div class="report-note-title">분석 노트</div>';
-      h += '<p>' + escapeHtml(sec.note) + '</p>';
-      h += '</div>';
+      h += '<div class="blk-note"><div class="blk-note-icon">i</div><p>' + escapeHtml(sec.note) + '</p></div>';
     }
 
-    // Section navigation
     var prevDef = null;
     var nextDef = null;
     for (var i = 0; i < sectionDefs.length; i++) {

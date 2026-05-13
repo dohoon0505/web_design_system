@@ -10,14 +10,14 @@
   },
   "analysisSections": [
     { "id": "overview",      "num": "01", "title": "개요",            "desc": "URL, 기술 스택, 전반적인 디자인 방향성과 인상 평가" },
-    { "id": "layout",        "num": "02", "title": "레이아웃 & 그리드", "desc": "max-width, 컬럼 구조, 브레이크포인트, 섹션 간격" },
-    { "id": "typography",    "num": "03", "title": "타이포그래피",      "desc": "폰트 패밀리, 사이즈 스케일, 행간, 자간, 웨이트 시스템" },
-    { "id": "color",         "num": "04", "title": "컬러 시스템",       "desc": "프라이머리·세컨더리·배경·텍스트·액센트 컬러, 전체 팔레트" },
-    { "id": "components",    "num": "05", "title": "컴포넌트",          "desc": "버튼, 카드, 네비게이션, 폼, 모달 등 UI 요소의 구조와 변형" },
-    { "id": "interaction",   "num": "06", "title": "인터랙션",          "desc": "hover 효과, 전환 애니메이션, 마이크로 인터랙션" },
-    { "id": "scroll",        "num": "07", "title": "스크롤 행동",       "desc": "패럴랙스, sticky 요소, 스크롤 기반 애니메이션" },
-    { "id": "radius",        "num": "08", "title": "둥글기 패턴",       "desc": "border-radius 사용 체계, 요소별 곡률, 일관성 분석" },
-    { "id": "spacing",       "num": "09", "title": "여백 시스템",       "desc": "margin·padding 패턴, 간격 스케일, 섹션 간 리듬" },
+    { "id": "main-page",     "num": "02", "title": "메인 페이지",      "desc": "메인 페이지 전체 구조, 섹션별 분석, 인터랙티브 프리뷰" },
+    { "id": "subpages",      "num": "03", "title": "서브페이지",        "desc": "서브페이지 공통 레이아웃, 카테고리별 상세 분석" },
+    { "id": "layout",        "num": "04", "title": "레이아웃 & 그리드", "desc": "max-width, 컬럼 구조, 브레이크포인트, 섹션 간격" },
+    { "id": "typography",    "num": "05", "title": "타이포그래피",      "desc": "폰트 패밀리, 사이즈 스케일, 행간, 자간, 웨이트 시스템" },
+    { "id": "color",         "num": "06", "title": "컬러 시스템",       "desc": "프라이머리·세컨더리·배경·텍스트·액센트 컬러, 전체 팔레트" },
+    { "id": "components",    "num": "07", "title": "컴포넌트",          "desc": "버튼, 카드, 네비게이션, 폼, 모달 등 UI 요소의 구조와 변형" },
+    { "id": "interaction",   "num": "08", "title": "인터랙션",          "desc": "hover 효과, 전환 애니메이션, 마이크로 인터랙션" },
+    { "id": "spacing",       "num": "09", "title": "여백 & 둥글기",     "desc": "margin·padding 패턴, 간격 스케일, border-radius 체계" },
     { "id": "accessibility", "num": "10", "title": "접근성",            "desc": "명도 대비, 키보드 내비게이션, ARIA, 포커스 관리" }
   ],
   "references": [
