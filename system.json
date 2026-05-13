@@ -20,9 +20,17 @@
     { "id": "spacing",       "num": "09", "title": "여백 시스템",       "desc": "margin·padding 패턴, 간격 스케일, 섹션 간 리듬" },
     { "id": "accessibility", "num": "10", "title": "접근성",            "desc": "명도 대비, 키보드 내비게이션, ARIA, 포커스 관리" }
   ],
-  "references": [],
+  "references": [
+    {
+      "id": "miracell",
+      "title": "미라셀",
+      "url": "https://miracell.co.kr/kr",
+      "date": "2026-05-13",
+      "analysis": "analyses/miracell/analysis.json"
+    }
+  ],
   "counts": {
-    "references": 0,
+    "references": 1,
     "analysisSections": 10
   }
 }
