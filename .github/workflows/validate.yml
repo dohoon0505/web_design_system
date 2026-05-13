@@ -1,0 +1,27 @@
+name: Validate Design System
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: JSON · Token · Demo 무결성 검증
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run validator (no external deps)
+        run: node scripts/validate.mjs
+
+      - name: Confirm 0 error
+        run: echo "✓ 모든 JSON 유효 · 토큰 ref 해석 · system.json ↔ schema 일치 · usedInDemos ↔ data-uses 교차 확인"

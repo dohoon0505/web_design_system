@@ -1,16 +1,25 @@
 {
-  "name": "web-design-system",
-  "version": "0.1.0",
-  "description": "Web design system as a website analysis catalog. Mirrors the system architecture of dohoon0505/desgin_system (APP) with a web-oriented purpose: each entry is a structured analysis of a web page.",
+  "name": "uiux-dh-design-system",
+  "version": "0.5.3",
+  "description": "UIUX-DH · Unified Design System. 모바일 중심의 통합 디자인시스템. 사람과 AI 모두에게 1급 시민.",
+  "main": "index.html",
   "type": "module",
-  "private": true,
   "scripts": {
     "validate": "node scripts/validate.mjs",
-    "start": "node scripts/serve.mjs"
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "build:docs": "node scripts/gen-docs.mjs",
+    "build": "npm run build:tokens && npm run build:docs",
+    "test": "npm run validate"
   },
-  "engines": {
-    "node": ">=18"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dohoon0505/desgin_system.git"
   },
-  "author": "dohoon0505",
-  "license": "UNLICENSED"
+  "keywords": ["design-system", "tokens", "components", "ai-friendly", "mobile-first"],
+  "author": "/DH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dohoon0505/desgin_system/issues"
+  },
+  "homepage": "https://github.com/dohoon0505/desgin_system#readme"
 }
