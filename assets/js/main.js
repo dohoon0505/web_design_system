@@ -299,11 +299,13 @@
 
   function renderComponent(block) {
     var id = uid();
-    var h = '<div class="blk-component">';
+    var full = block.fullWidth ? ' blk-component--full' : '';
+    var h = '<div class="blk-component' + full + '">';
     if (block.title) {
       h += '<div class="blk-component-title">' + escapeHtml(block.title) + '</div>';
     }
-    h += '<div class="blk-component-preview" id="' + id + '"';
+    var previewCls = 'blk-component-preview' + (block.fullWidth ? ' blk-component-preview--full' : '');
+    h += '<div class="' + previewCls + '" id="' + id + '"';
     h += ' data-html="' + escapeHtml(block.html || '') + '"';
     h += ' data-css="' + escapeHtml(block.css || '') + '"';
     if (block.js) h += ' data-js="' + escapeHtml(block.js) + '"';
@@ -355,7 +357,16 @@
       el.innerHTML = styleTag + rawHtml;
 
       if (rawJs) {
-        try { new Function(rawJs)(); } catch (e) { /* silent */ }
+        var ioObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !el.dataset.animated) {
+              el.dataset.animated = '1';
+              try { new Function(rawJs)(); } catch (e) { /* silent */ }
+              ioObserver.unobserve(el);
+            }
+          });
+        }, { threshold: 0.15 });
+        ioObserver.observe(el);
       }
     });
   }

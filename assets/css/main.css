@@ -1046,6 +1046,15 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
   letter-spacing: 0.1em;
 }
 
+/* Full-width clone component */
+.blk-component--full { margin-left: calc(var(--size-700) * -1); margin-right: calc(var(--size-700) * -1); }
+.blk-component-preview--full {
+  padding: 0;
+  border-radius: 0;
+  border-left: 0; border-right: 0;
+}
+.blk-component-preview--full::after { display: none; }
+
 /* — Spacing scale block — */
 .blk-spacing-scale {
   display: flex; flex-direction: column;
