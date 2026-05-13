@@ -1,81 +1,28 @@
 {
-  "$schema": "./schemas/component.schema.json",
-  "name": "UIUX-DH",
-  "fullName": "UIUX-DH · Unified Design System",
+  "name": "web-reference-lab",
+  "fullName": "Web Reference Lab · 웹 디자인 레퍼런스 연구소",
   "version": "0.0.0",
-  "description": "모바일 중심 디자인시스템. AI 에이전트가 1-2 파일 read로 쿼리 가능하도록 JSON canonical 구조.",
+  "description": "실제 운영 중인 웹사이트의 디자인 시스템을 연구원 수준으로 분석하는 레퍼런스 카탈로그.",
   "entry": {
     "ai": "AGENTS.md",
     "human": "CLAUDE.md",
     "readme": "README.md"
   },
-  "canonical": {
-    "tokens": "tokens/",
-    "themeMap": "tokens/theme-map.json",
-    "components": "components/*.schema.json",
-    "snippets": "snippets/patterns.json",
-    "schemas": "schemas/"
-  },
-  "philosophy": {
-    "overview": "docs/00-overview.md",
-    "principles": "docs/01-principles.md",
-    "tokenArchitecture": "docs/02-token-architecture.md",
-    "namingConventions": "docs/03-naming-conventions.md",
-    "gradientPolicy": "docs/04-gradient-policy.md",
-    "uxWriting": "docs/05-ux-writing.md"
-  },
-  "foundations": {
-    "color":      "foundations/color.md",
-    "typography": "foundations/typography.md",
-    "spacing":    "foundations/spacing.md",
-    "radius":     "foundations/radius.md",
-    "elevation":  "foundations/elevation.md",
-    "motion":     "foundations/motion.md"
-  },
-  "tokens": {
-    "primitives":      "tokens/primitives.json",
-    "semanticLight":   "tokens/semantic.light.json",
-    "semanticDark":    "tokens/semantic.dark.json",
-    "themeMap":        "tokens/theme-map.json",
-    "typography":      "tokens/typography.json",
-    "sizing":          "tokens/sizing.json",
-    "radius":          "tokens/radius.json",
-    "elevation":       "tokens/elevation.json",
-    "motion":          "tokens/motion.json",
-    "zIndex":          "tokens/z-index.json"
-  },
-  "components": [
-    { "id": "asset",      "name": "Asset · Icon",              "category": "data",        "schema": "components/asset-icon.schema.json",          "md": "components/asset-icon.md" },
-    { "id": "badge",      "name": "Badge",                     "category": "feedback",    "schema": "components/badge.schema.json",               "md": "components/badge.md" },
-    { "id": "chart",      "name": "Bar Chart",                 "category": "data",        "schema": "components/bar-chart.schema.json",           "md": "components/bar-chart.md" },
-    { "id": "border",     "name": "Border · Divider",          "category": "container",   "schema": "components/border-divider.schema.json",      "md": "components/border-divider.md" },
-    { "id": "button",     "name": "Button",                    "category": "interactive", "schema": "components/button.schema.json",              "md": "components/button.md" },
-    { "id": "chip",       "name": "Chip",                      "category": "interactive", "schema": "components/chip.schema.json",                "md": "components/chip.md" },
-    { "id": "textfield",  "name": "Text Field",                "category": "interactive", "schema": "components/text-field.schema.json",          "md": "components/text-field.md" },
-    { "id": "avatar",     "name": "Avatar",                    "category": "data",        "schema": "components/avatar.schema.json",              "md": "components/avatar.md" },
-    { "id": "control",    "name": "Checkbox · Radio · Toggle", "category": "interactive", "schema": "components/checkbox-radio-toggle.schema.json", "md": "components/checkbox-radio-toggle.md" },
-    { "id": "list",       "name": "List Item",                 "category": "container",   "schema": "components/list-item.schema.json",           "md": "components/list-item.md" },
-    { "id": "alert",      "name": "Alert · Toast",             "category": "feedback",    "schema": "components/alert-toast.schema.json",         "md": "components/alert-toast.md" },
-    { "id": "progress",   "name": "Progress · Slider",         "category": "data",        "schema": "components/progress-slider.schema.json",     "md": "components/progress-slider.md" },
-    { "id": "tabs",       "name": "Tabs · Segment",            "category": "navigation",  "schema": "components/tabs-segment.schema.json",        "md": "components/tabs-segment.md" },
-    { "id": "others",     "name": "Card",                      "category": "container",   "schema": "components/card.schema.json",                "md": "components/card.md" },
-    { "id": "banner",     "name": "Banner",                    "category": "container",   "schema": "components/banner.schema.json",              "md": "components/banner.md" },
-    { "id": "dialog",     "name": "Dialog",                    "category": "overlay",     "schema": "components/dialog.schema.json",              "md": "components/dialog.md" },
-    { "id": "sheet",      "name": "Bottom Sheet",              "category": "overlay",     "schema": "components/bottom-sheet.schema.json",        "md": "components/bottom-sheet.md" },
-    { "id": "popover",    "name": "Popover · Tooltip",         "category": "overlay",     "schema": "components/popover-tooltip.schema.json",     "md": "components/popover-tooltip.md" },
-    { "id": "appbar",     "name": "Top App Bar",               "category": "navigation",  "schema": "components/top-app-bar.schema.json",         "md": "components/top-app-bar.md" },
-    { "id": "tabbar",     "name": "Tab Bar",                   "category": "navigation",  "schema": "components/tab-bar.schema.json",             "md": "components/tab-bar.md" },
-    { "id": "drawer",     "name": "Drawer · Breadcrumb",       "category": "navigation",  "schema": "components/drawer-breadcrumb.schema.json",   "md": "components/drawer-breadcrumb.md" },
-    { "id": "skeleton",   "name": "Skeleton Loader",           "category": "state",       "schema": "components/skeleton-loader.schema.json",     "md": "components/skeleton-loader.md" },
-    { "id": "empty",      "name": "Empty State",               "category": "state",       "schema": "components/empty-state.schema.json",         "md": "components/empty-state.md" },
-    { "id": "table",      "name": "Data Table",                "category": "density",     "schema": "components/data-table.schema.json",          "md": "components/data-table.md" },
-    { "id": "accordion",  "name": "Accordion · Tree",          "category": "density",     "schema": "components/accordion-tree.schema.json",      "md": "components/accordion-tree.md" }
+  "analysisSections": [
+    { "id": "overview",      "num": "01", "title": "개요",            "desc": "URL, 기술 스택, 전반적인 디자인 방향성과 인상 평가" },
+    { "id": "layout",        "num": "02", "title": "레이아웃 & 그리드", "desc": "max-width, 컬럼 구조, 브레이크포인트, 섹션 간격" },
+    { "id": "typography",    "num": "03", "title": "타이포그래피",      "desc": "폰트 패밀리, 사이즈 스케일, 행간, 자간, 웨이트 시스템" },
+    { "id": "color",         "num": "04", "title": "컬러 시스템",       "desc": "프라이머리·세컨더리·배경·텍스트·액센트 컬러, 전체 팔레트" },
+    { "id": "components",    "num": "05", "title": "컴포넌트",          "desc": "버튼, 카드, 네비게이션, 폼, 모달 등 UI 요소의 구조와 변형" },
+    { "id": "interaction",   "num": "06", "title": "인터랙션",          "desc": "hover 효과, 전환 애니메이션, 마이크로 인터랙션" },
+    { "id": "scroll",        "num": "07", "title": "스크롤 행동",       "desc": "패럴랙스, sticky 요소, 스크롤 기반 애니메이션" },
+    { "id": "radius",        "num": "08", "title": "둥글기 패턴",       "desc": "border-radius 사용 체계, 요소별 곡률, 일관성 분석" },
+    { "id": "spacing",       "num": "09", "title": "여백 시스템",       "desc": "margin·padding 패턴, 간격 스케일, 섹션 간 리듬" },
+    { "id": "accessibility", "num": "10", "title": "접근성",            "desc": "명도 대비, 키보드 내비게이션, ARIA, 포커스 관리" }
   ],
+  "references": [],
   "counts": {
-    "components": 25,
-    "demos": 0,
-    "tokenTiers": 3,
-    "docsPrinciples": 6,
-    "foundations": 6
+    "references": 0,
+    "analysisSections": 10
   }
 }
