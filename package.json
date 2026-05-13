@@ -1,6 +1,6 @@
 {
   "name": "uiux-dh-design-system",
-  "version": "0.5.3",
+  "version": "0.0.0",
   "description": "UIUX-DH · Unified Design System. 모바일 중심의 통합 디자인시스템. 사람과 AI 모두에게 1급 시민.",
   "main": "index.html",
   "type": "module",

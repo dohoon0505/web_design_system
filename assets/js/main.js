@@ -128,30 +128,6 @@ const CATEGORIES = {
       { id:'accordion', ico:'⌄', title:'Accordion · Tree',  desc:'FAQ · 폼 섹션 · 폴더 구조' },
     ]
   },
-  'demo': {
-    title: 'Part 07 · 실제 사용 데모',
-    desc: '디자인시스템만으로 만들 수 있는 실제 서비스 화면들. 스플래시부터 결제 완료까지, 같은 토큰·같은 컴포넌트로 어떻게 다른 맥락을 빚어내는지.',
-    items: [
-      { id:'demo-splash',    ico:'🚀', title:'Splash',       desc:'앱이 켜지는 1.5초 · 브랜드 인각' },
-      { id:'demo-login',     ico:'🔑', title:'로그인',        desc:'소셜 로그인 · 이메일/패스워드' },
-      { id:'demo-signup',    ico:'✍', title:'회원가입',      desc:'단계 표시 · 약관 동의 · 필수 검증' },
-      { id:'demo-community', ico:'💬', title:'커뮤니티',      desc:'피드 · 카드 · 아바타 · FAB' },
-      { id:'demo-store',     ico:'🛍', title:'스토어',        desc:'상품 그리드 · 할인 뱃지 · 장바구니' },
-      { id:'demo-pricing',   ico:'💎', title:'요금제',        desc:'Segment · 플랜 카드 · Sticky CTA' },
-      { id:'demo-calendar',  ico:'📅', title:'달력',          desc:'월 그리드 · 이벤트 도트 · 일정 상세' },
-      { id:'demo-todo',      ico:'✓',  title:'To-do List',    desc:'진행률 · 우선순위 · 체크박스' },
-      { id:'demo-booking',   ico:'🍽', title:'맛집 예약',      desc:'위치 필터 · 섹션별 BEST · 가격대 탭' },
-      { id:'demo-foodorder', ico:'🛵', title:'배달',          desc:'쿠폰 배너 · 5-way 탭 · 카테고리 그리드 · 무료배달 파트너' },
-      { id:'demo-shopping',  ico:'🛒', title:'쇼핑몰 홈',      desc:'브랜드 헤더 · 캐러셀 · 쿠폰 뱃지 상품' },
-      { id:'demo-social',    ico:'👥', title:'소셜 모임',      desc:'히어로 배너 · 이중 CTA · 모임 카드' },
-      { id:'demo-banking',   ico:'💳', title:'뱅킹 홈',        desc:'계좌 카드 · 퀵 액션 · 거래 내역' },
-      { id:'demo-map',       ico:'📍', title:'지도 탐색',      desc:'검색 오버레이 · POI 핀 · 바텀 시트' },
-      { id:'demo-mypage',    ico:'👤', title:'마이페이지',     desc:'아바타 · 통계 · 메뉴 리스트' },
-      { id:'demo-chat',      ico:'💭', title:'채팅 리스트',    desc:'대화방 · 안 읽음 뱃지 · 검색' },
-      { id:'demo-checkout',  ico:'✅', title:'결제 완료',      desc:'성공 피드백 · 주문 요약 · 영수증' },
-      { id:'demo-notify',    ico:'🔔', title:'알림 센터',      desc:'그룹 리스트 · 타입 아이콘 · 읽음 표시' },
-    ]
-  },
 };
 
 // Home page content (shown when no hash)
@@ -165,13 +141,12 @@ const HOME = {
     { id:'overlays',        ico:'◫', title:'Overlays · Navigation', desc:'Dialog · Sheet · Popover · App Bar · Tab Bar · Drawer' },
     { id:'states',          ico:'▨', title:'States',                desc:'Skeleton · Empty State' },
     { id:'density',         ico:'⊞', title:'Density',               desc:'Data Table · Accordion · Tree' },
-    { id:'demo',            ico:'◉', title:'실제 사용 데모',         desc:'18개 모바일 화면 데모' },
     { id:'changelog',       ico:'⎌', title:'Release & Governance',  desc:'버전 기록 · 거버넌스' },
   ]
 };
 
 // Section ids that represent categories (part-headers)
-const CATEGORY_IDS = ['getting-started', 'foundations', 'components', 'overlays', 'states', 'density', 'demo'];
+const CATEGORY_IDS = ['getting-started', 'foundations', 'components', 'overlays', 'states', 'density'];
 
 // Container for dynamic category view
 let categoryView;
@@ -310,102 +285,6 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeSidebar();
 });
 
-/* ============ DEMO DEPENDENCY MATRIX ============
-   Each demo section declares its design-system dependencies via `data-uses`.
-   On load, we:
-   1. Build a matrix: which component/token → which demos use it.
-   2. Validate referenced CSS variables (--sm-*, --p-*, --cm-*) exist at runtime.
-   3. Expose `window.demoMatrix` for introspection / future governance.
-
-   ⚠ When a component or token is modified, `demoMatrix.byComponent[<name>]`
-   tells you exactly which demos must be re-verified.
-*/
-function buildDemoMatrix() {
-  const sections = document.querySelectorAll('.demo-section[data-uses]');
-  const byDemo = {};
-  const byComponent = {};
-  const byToken = {};
-  const missingTokens = [];
-  const rootStyles = getComputedStyle(document.documentElement);
-
-  sections.forEach(sec => {
-    const id = sec.id;
-    const raw = (sec.getAttribute('data-uses') || '').trim();
-    if (!raw) return;
-    const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
-    const comps = [];
-    const toks = [];
-    parts.forEach(part => {
-      if (part.startsWith('--')) {
-        toks.push(part);
-        if (!rootStyles.getPropertyValue(part).trim()) {
-          missingTokens.push({ demo: id, token: part });
-        }
-        (byToken[part] = byToken[part] || []).push(id);
-      } else {
-        comps.push(part);
-        (byComponent[part] = byComponent[part] || []).push(id);
-      }
-    });
-    byDemo[id] = { components: comps, tokens: toks };
-  });
-
-  const matrix = { byDemo, byComponent, byToken, missingTokens };
-  window.demoMatrix = matrix;
-  if (missingTokens.length) {
-    console.warn('[demoMatrix] Referenced CSS tokens not found at runtime:', missingTokens);
-  }
-  return matrix;
-}
-window.addEventListener('DOMContentLoaded', buildDemoMatrix);
-
-/* ============ DEMO: Calendar grid generation ============ */
-function renderCalendarGrid() {
-  const grid = document.getElementById('calendar-grid');
-  if (!grid) return;
-  grid.innerHTML = '';
-  // April 2026: starts on Wednesday (day 3), has 30 days
-  const firstDay = 3; // 0 = Sun
-  const daysInMonth = 30;
-  const today = 22;
-  const eventDays = new Set([3, 8, 15, 22, 25, 28]);
-
-  // Leading blanks
-  for (let i = 0; i < firstDay; i++) {
-    const blank = document.createElement('div');
-    blank.style.aspectRatio = '1';
-    grid.appendChild(blank);
-  }
-  for (let d = 1; d <= daysInMonth; d++) {
-    const cell = document.createElement('div');
-    const dayOfWeek = (firstDay + d - 1) % 7;
-    const isToday = d === today;
-    const isSunday = dayOfWeek === 0;
-    const hasEvent = eventDays.has(d);
-    cell.style.cssText = `
-      aspect-ratio:1; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:3px;
-      border-radius:10px; cursor:pointer;
-      font:${isToday ? '700' : '500'} 14px/1 var(--font-sans);
-      color:${isToday ? '#fff' : (isSunday ? 'var(--sm-status-error)' : 'var(--sm-content-primary)')};
-      background:${isToday ? 'var(--sm-interactive-brand-default)' : 'transparent'};
-    `;
-    cell.innerHTML = `
-      <span>${d}</span>
-      ${hasEvent ? `<span style="width:4px;height:4px;border-radius:50%;background:${isToday ? '#fff' : 'var(--sm-interactive-brand-default)'};"></span>` : '<span style="width:4px;height:4px;"></span>'}
-    `;
-    grid.appendChild(cell);
-  }
-}
-// Render calendar grid whenever user navigates to demo-calendar
-function maybeRenderCalendar() {
-  if (location.hash.replace(/^#\/?/, '') === 'demo-calendar') {
-    setTimeout(renderCalendarGrid, 10);
-  }
-}
-window.addEventListener('hashchange', maybeRenderCalendar);
-maybeRenderCalendar();
-
 function toggleAccordion(trigger) {
   const item = trigger.parentElement;
   item.classList.toggle('open');
@@ -442,9 +321,8 @@ const chartObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('#chart, #progress').forEach(s => chartObserver.observe(s));
 
 /* ============ MARKDOWN DOWNLOAD ============
-   Each design system page (foundations / components / demos) gets a download
+   Each design system page (foundations / components) gets a download
    button. The generated Markdown reflects ONLY what is rendered on that page.
-   - .demo-section     → data-uses 기반 (사용 컴포넌트 + 토큰)
    - .component-section → DOM의 variant-block + 스키마 enrichment
    - .section          → DOM의 헤딩/단락/리스트/원칙/티어/색상스케일
 */
@@ -713,72 +591,6 @@ async function _docHeader(title, kind, sectionId, sysVersion) {
   ];
 }
 
-async function generateDemoMarkdown(sec) {
-  const label = _txt(sec.querySelector('.demo-label'));
-  const title = _txt(sec.querySelector('.demo-header h2')) || sec.id;
-  const desc  = _txt(sec.querySelector('.demo-header p'));
-
-  const raw   = (sec.getAttribute('data-uses') || '').trim();
-  const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
-  const compIds = parts.filter(p => !p.startsWith('--'));
-  const tokens  = parts.filter(p => p.startsWith('--'));
-
-  const sys = await _fetchSystemJson();
-  const compMap = {};
-  if (sys && sys.components) sys.components.forEach(c => { compMap[c.id] = c; });
-
-  const schemas = {};
-  await Promise.all(compIds.map(async cid => {
-    const entry = compMap[cid];
-    if (entry && entry.schema) {
-      const s = await _fetchSchema(entry.schema);
-      if (s) schemas[cid] = { meta: entry, schema: s };
-    }
-  }));
-
-  const lines = await _docHeader(`${title} 디자인 가이드`, label || 'DEMO', sec.id, sys && sys.version);
-
-  if (desc) {
-    lines.push('## 개요'); lines.push(''); lines.push(desc); lines.push(''); lines.push('---'); lines.push('');
-  }
-
-  if (compIds.length > 0) {
-    lines.push('## 사용 컴포넌트');
-    lines.push('');
-    for (const cid of compIds) {
-      const entry = schemas[cid];
-      const metaName = compMap[cid] ? compMap[cid].name : cid;
-      lines.push(`### ${entry ? (entry.schema.name || metaName) : metaName}`);
-      lines.push('');
-      if (!entry) { lines.push('_(스키마 정보 없음)_'); lines.push(''); continue; }
-      if (entry.schema.description) { lines.push(entry.schema.description); lines.push(''); }
-      _appendSchemaDetails(lines, entry.schema);
-    }
-    lines.push('---'); lines.push('');
-  }
-
-  if (tokens.length > 0) {
-    lines.push('## 디자인 토큰'); lines.push('');
-    _appendTokenTable(lines, tokens);
-    lines.push('**토큰 사용 원칙**');
-    lines.push('');
-    lines.push('- `--sm-*` Semantic 토큰: UI에 직접 사용. Light/Dark 자동 대응');
-    lines.push('- `--p-*` Primitive 토큰: Semantic의 원천. UI에 직접 사용 금지');
-    lines.push('- `--cm-*` Component 토큰: 특정 컴포넌트 전용');
-    lines.push('');
-    lines.push('---'); lines.push('');
-  }
-
-  lines.push('## 참조');
-  lines.push('');
-  lines.push(`- 라이브 데모: https://dohoon0505.github.io/desgin_system/#${sec.id}`);
-  lines.push('- 컴포넌트 스키마: `components/<id>.schema.json`');
-  lines.push('- 토큰 정의: `tokens/theme-map.json`');
-  lines.push('');
-
-  return _stripTrailingBlanks(lines).join('\n');
-}
-
 async function generateComponentMarkdown(sec) {
   const head    = sec.querySelector('.section-head');
   const meta    = _txt(sec.querySelector('.section-meta'));
@@ -883,7 +695,6 @@ async function generateSectionMarkdown(sec) {
 
 async function generatePageMarkdown(sec) {
   if (!sec) return '';
-  if (sec.classList.contains('demo-section'))      return generateDemoMarkdown(sec);
   if (sec.classList.contains('component-section')) return generateComponentMarkdown(sec);
   if (sec.classList.contains('section'))           return generateSectionMarkdown(sec);
   return '';
@@ -915,13 +726,6 @@ function _makeDownloadButton(sec) {
 }
 
 function injectDownloadButtons() {
-  // .demo-section → into .demo-header
-  document.querySelectorAll('.demo-section').forEach(sec => {
-    if (!sec.id) return;
-    const header = sec.querySelector('.demo-header');
-    if (!header || header.querySelector('.btn-md-dl')) return;
-    header.appendChild(_makeDownloadButton(sec));
-  });
   // .component-section → into .section-head
   document.querySelectorAll('.component-section').forEach(sec => {
     if (!sec.id) return;
