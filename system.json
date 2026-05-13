@@ -1,0 +1,32 @@
+{
+  "name": "Web Design System",
+  "version": "0.1.0",
+  "description": "Website analysis catalog. Each analysis becomes a category in the left navigator.",
+  "schemaVersion": "1.0",
+  "groups": [
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "items": [
+        { "id": "about", "title": "About", "type": "static" },
+        { "id": "how-to-use", "title": "How to Use", "type": "static" }
+      ]
+    },
+    {
+      "id": "analyses",
+      "title": "Analyses",
+      "items": []
+    }
+  ],
+  "analysisSections": [
+    { "id": "overview", "title": "Overview" },
+    { "id": "tech-stack", "title": "Tech Stack" },
+    { "id": "colors", "title": "Color Palette" },
+    { "id": "typography", "title": "Typography" },
+    { "id": "layout", "title": "Layout & Grid" },
+    { "id": "components", "title": "Components" },
+    { "id": "iconography", "title": "Iconography" },
+    { "id": "interactions", "title": "Interactions" },
+    { "id": "accessibility", "title": "Accessibility" }
+  ]
+}

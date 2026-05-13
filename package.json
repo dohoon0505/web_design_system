@@ -1,0 +1,16 @@
+{
+  "name": "web-design-system",
+  "version": "0.1.0",
+  "description": "Web design system as a website analysis catalog. Mirrors the system architecture of dohoon0505/desgin_system (APP) with a web-oriented purpose: each entry is a structured analysis of a web page.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "start": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "dohoon0505",
+  "license": "UNLICENSED"
+}

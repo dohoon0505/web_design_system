@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Web Design System — website analysis catalog." />
+  <title>Web Design System</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-theme="light">
+
+  <!-- SVG icon sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;" aria-hidden="true">
+    <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="12" y1="2" x2="12" y2="4"></line>
+      <line x1="12" y1="20" x2="12" y2="22"></line>
+      <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+      <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+      <line x1="2" y1="12" x2="4" y2="12"></line>
+      <line x1="20" y1="12" x2="22" y2="12"></line>
+      <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+      <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="2" y1="12" x2="22" y2="12"></line>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </symbol>
+  </svg>
+
+  <!-- Topbar -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <button
+        type="button"
+        class="icon-button topbar-hamburger"
+        id="hamburger"
+        aria-label="Toggle navigation"
+        aria-controls="sidebar"
+        aria-expanded="false"
+      >
+        <svg class="icon"><use href="#i-menu"></use></svg>
+      </button>
+
+      <a class="brand" href="#" data-route="home">
+        <span class="brand-mark" aria-hidden="true">WDS</span>
+        <span class="brand-text">Web Design System</span>
+      </a>
+
+      <nav class="topbar-nav" aria-label="Primary">
+        <a href="#getting-started/about" class="topbar-link" data-section="about">About</a>
+        <a href="#getting-started/how-to-use" class="topbar-link" data-section="how-to-use">How to Use</a>
+        <a href="#analyses" class="topbar-link" data-section="analyses">Analyses</a>
+      </nav>
+
+      <button
+        type="button"
+        class="icon-button theme-toggle"
+        id="theme-toggle-topbar"
+        aria-label="Toggle theme"
+      >
+        <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+        <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Navigation">
+    <div class="sidebar-header">
+      <a class="brand brand-sidebar" href="#" data-route="home">
+        <span class="brand-mark" aria-hidden="true">WDS</span>
+        <span class="brand-text">Web Design System</span>
+      </a>
+      <button
+        type="button"
+        class="icon-button sidebar-close"
+        id="sidebar-close"
+        aria-label="Close navigation"
+      >
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-scroll" id="sidebar-nav" aria-label="Sections">
+      <!-- Populated dynamically by main.js from system.json -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <button
+        type="button"
+        class="icon-button theme-toggle theme-toggle-sidebar"
+        id="theme-toggle-sidebar"
+        aria-label="Toggle theme"
+      >
+        <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+        <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+        <span class="theme-toggle-label">Toggle theme</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile overlay scrim -->
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- Main content -->
+  <main class="main" id="main">
+    <div class="container" id="top">
+      <!-- Populated dynamically by main.js based on route -->
+      <div class="loading" id="loading">Loading…</div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
