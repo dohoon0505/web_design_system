@@ -3,25 +3,29 @@
   "title": "미라셀",
   "url": "https://miracell.co.kr/kr",
   "date": "2026-05-13",
-  "summary": "줄기세포 전문 의료 기업. 2009년 설립, 국내 650여 병원 · 해외 40개국 유통. 모노크롬 기반 미니멀-모던 디자인.",
+  "summary": "줄기세포 전문 바이오 기업. 2009년 설립, 국내 650여 병원 · 해외 40개국 유통. 모노크롬 미니멀 디자인에 브랜드 레드(#DD0031)를 극히 제한적으로 사용하여 시각적 임팩트를 극대화하는 전략. Pretendard + Outfit 이중 서체, GSAP 스크롤 애니메이션, 3열 모자이크 히어로가 특징.",
   "crawledPages": 7,
   "sections": {
     "overview": {
       "title": "개요",
       "blocks": [
         { "type": "kv", "title": "사이트 프로필", "columns": 2, "items": [
+          { "label": "사이트명", "value": "Miracell (미라셀)" },
+          { "label": "슬로건", "value": "Standard of Stem Cell" },
           { "label": "사이트 유형", "value": "기업 소개 · 제품 카탈로그 · 서비스 플랫폼" },
-          { "label": "디자인 방향", "value": "미니멀-모던 하이브리드 (Pretendard + Outfit 서체)" },
-          { "label": "기술 스택", "value": "PHP 서버사이드 렌더링 + jQuery" },
+          { "label": "산업", "value": "줄기세포 전문 바이오 의료기기" },
+          { "label": "디자인 방향", "value": "미니멀-모던 하이브리드 (모노크롬 + 포인트 레드)" },
+          { "label": "기술 스택", "value": "PHP SSR + jQuery + GSAP(ScrollTrigger)" },
           { "label": "다국어", "value": "KR · EN · CN (3개 언어)" },
           { "label": "사이트 규모", "value": "6개 카테고리 × 약 25~30 페이지" },
-          { "label": "슬로건", "value": "Standard of Stem Cell" }
+          { "label": "서체", "value": "Pretendard(한글) + Outfit(영문)" },
+          { "label": "핵심 컬러", "value": "#DD0031 (브랜드 레드) — 사용 비율 약 2%" }
         ]},
         { "type": "heading", "value": "핵심 수치" },
         { "type": "stats", "items": [
           { "number": "2009", "label": "법인 설립", "suffix": "년" },
           { "number": "650", "label": "고객 병원", "suffix": "여 개" },
-          { "number": "23", "label": "국내 특허", "suffix": "건" },
+          { "number": "23", "label": "기술 특허", "suffix": "건" },
           { "number": "40", "label": "해외 유통", "suffix": "개국" }
         ]},
         { "type": "heading", "value": "사이트맵" },
@@ -33,206 +37,445 @@
           { "label": "Newsroom", "children": ["공지", "보도자료", "Contents"] },
           { "label": "Customer Support", "children": ["문의사항", "자료실", "논문"] }
         ]},
-        { "type": "note", "value": "전통적 기업 웹사이트 구조이지만, 의료·바이오 분야 특유의 신뢰 구축 장치(특허, 인증, 임상 데이터)가 곳곳에 배치됨." }
+        { "type": "heading", "value": "기술 스택 상세" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "서버", "value": "PHP 서버사이드 렌더링" },
+          { "label": "JS 프레임워크", "value": "jQuery + Vanilla ES5" },
+          { "label": "애니메이션", "value": "GSAP 3 + ScrollTrigger 플러그인" },
+          { "label": "폰트 로딩", "value": "Google Fonts CDN (Outfit) + 자체 호스팅 (Pretendard)" },
+          { "label": "아이콘", "value": "XEIcon 웹폰트" },
+          { "label": "반응형", "value": "CSS Media Query 3단계 (Desktop ≥1280 / Tablet 768~1279 / Mobile <768)" }
+        ]},
+        { "type": "note", "value": "전형적 기업 웹사이트 구조이나, 의료·바이오 분야 특유의 신뢰 구축 장치(특허, 인증, FDA 승인, 임상 데이터)가 전략적으로 배치됨. GSAP ScrollTrigger 기반 스크롤 애니메이션이 전 섹션에 적용되어 모던한 사용자 경험 제공." }
       ]
     },
+
+    "design-philosophy": {
+      "title": "디자인 철학 · 비주얼 랭귀지",
+      "blocks": [
+        { "type": "text", "value": "미라셀의 디자인은 '절제의 미학'을 핵심 원칙으로 삼습니다. 모노크롬 팔레트 위에 브랜드 레드(#DD0031) 단 하나의 컬러만을 약 2%의 극히 제한된 비율로 사용하여, 최소한의 개입으로 최대한의 시각적 임팩트를 만들어냅니다." },
+        { "type": "heading", "value": "비주얼 랭귀지 5원칙" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "① 모노크롬 기반", "value": "White 60% + Black/Dark Gray 30% + Cream/Light Gray 8%의 무채색 베이스. UI 자체가 투명하게 물러나 콘텐츠에 집중시킴" },
+          { "label": "② 극제한 포인트 컬러", "value": "#DD0031 사용 비율 약 2%. 히어로 타이틀, CTA, hover 액센트, 사이드 네비 활성 상태에만 등장. '부재의 미학'으로 시선 집중 효과 극대화" },
+          { "label": "③ 대형 타이포그래피", "value": "히어로 타이틀 clamp(80px, 16vw, 240px), 마키 텍스트 280px — 텍스트 자체를 그래픽 요소로 활용하여 이미지 의존도를 낮춤" },
+          { "label": "④ 넉넉한 여백", "value": "섹션 간격 120~160px, 콘텐츠 좌우 60~80px — 고급스러운 여유감과 콘텐츠 호흡 보장" },
+          { "label": "⑤ 스크롤 기반 스토리텔링", "value": "모든 섹션에 GSAP ScrollTrigger 등장 애니메이션 적용. 스크롤 진행에 따라 콘텐츠가 순차적으로 드러나는 내러티브 구조" }
+        ]},
+        { "type": "heading", "value": "디자이너 관점" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "컬러 전략", "value": "모노크롬은 의료·바이오 분야의 '신뢰'와 '전문성'을 표현. 레드는 줄기세포의 '생명력'과 '혁신'을 상징. 이 두 가지가 약 98:2 비율로 공존하여 절제되면서도 강렬한 브랜드 아이덴티티 구축" },
+          { "label": "타이포 전략", "value": "Outfit(영문)의 기하학적 깔끔함 + Pretendard(한글)의 중립적 현대감 조합. 영문 헤드라인이 시각적 리듬을 만들고, 한글 본문이 정보를 전달하는 이중 구조" },
+          { "label": "공간 전략", "value": "의료 분야 웹사이트가 흔히 빠지는 '정보 과밀' 함정을 넉넉한 여백으로 회피. 각 섹션이 독립적 호흡을 가져 사용자의 인지 부하를 최소화" },
+          { "label": "이미지 전략", "value": "히어로의 그레이스케일 모자이크가 상징적. 의료 이미지를 탈색하여 추상화하고, 그 위에 브랜드 레드 타이틀을 놓아 '과학적 엄밀함 위의 생명력'이라는 메시지 전달" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 관점" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "CSS 변수 체계", "value": "--primary: #DD0031; --font-latin: 'Outfit', sans-serif; --font-kr: 'Pretendard', 'Noto Sans KR', sans-serif; --container-max: 1920px; --section-pad-y: 160px; --section-pad-x: 80px" },
+          { "label": "애니메이션 라이브러리", "value": "GSAP 3 + ScrollTrigger. 커스텀 이징: cubic-bezier(.22,.61,.36,1) 또는 power2~3.out. prefers-reduced-motion 시 duration을 0.01ms로 축소" },
+          { "label": "반응형 접근", "value": "Desktop ≥1280px / Tablet 768~1279px / Mobile <768px 3단계. clamp() 함수로 font-size·padding 유연 조절" },
+          { "label": "성능 고려", "value": "히어로 모자이크는 CSS transform(translateY)만 사용하여 GPU 가속. will-change: transform 적용. 이미지는 지연 로딩(lazy loading) 처리" }
+        ]},
+        { "type": "note", "value": "미라셀의 디자인은 '적을수록 강하다(Less is More)'의 전형. 컬러·장식·효과를 극도로 절제하되, 사용할 때는 240px 타이틀, 280px 마키 텍스트 등 압도적 스케일로 임팩트를 극대화. 이 '절제 속의 과감함'이 사이트 전체의 디자인 언어." }
+      ]
+    },
+
     "main-page": {
       "title": "메인 페이지 클론",
       "blocks": [
-        { "type": "text", "value": "아래는 미라셀 메인 페이지를 섹션별로 100% 클론 코딩한 것입니다. 히어로의 3열 이미지 모자이크, 제품 hover 시 원형 전환, 회전 CTA 등 실제 사이트 인터랙션을 그대로 재현합니다." },
+        { "type": "text", "value": "미라셀 메인 페이지를 섹션별로 클론 코딩한 결과입니다. Chrome DevTools로 직접 측정한 수치와 GSAP/CSS 속성을 기반으로 작성하였습니다. 히어로의 3열 모자이크, 제품 hover 시 회전 SVG 오버레이, 플로팅 컨택트 버튼 등 실제 사이트의 인터랙션을 충실히 재현합니다." },
+
         { "type": "heading", "value": "① Header + Hero (3-Column Mosaic)" },
-        { "type": "component", "title": "헤더 + 3열 모자이크 히어로", "fullWidth": true, "html": "<div class='mc-wrap'><header class='mc-hdr'><div class='mc-hdr-inner'><a class='mc-logo'>Miracell</a><nav class='mc-gnb'><span>About Us</span><span>Product</span><span>Service</span><span>R&D</span><span>Newsroom</span><span>Customer Support</span></nav><div class='mc-lang'><span class='mc-lang-item is-active'>KR</span><span class='mc-lang-item'>EN</span><span class='mc-lang-item'>CN</span></div></div></header><section class='mc-hero'><div class='mc-mosaic'><div class='mc-col mc-col1'><div class='mc-panel mc-p1'></div><div class='mc-panel mc-p2'></div><div class='mc-panel mc-p3'></div><div class='mc-panel mc-p4'></div><div class='mc-panel mc-p5'></div></div><div class='mc-col mc-col2'><div class='mc-panel mc-p6'></div><div class='mc-panel mc-p7'></div><div class='mc-panel mc-p8'></div><div class='mc-panel mc-p9'></div><div class='mc-panel mc-p10'></div></div><div class='mc-col mc-col3'><div class='mc-panel mc-p11'></div><div class='mc-panel mc-p12'></div><div class='mc-panel mc-p13'></div><div class='mc-panel mc-p14'></div><div class='mc-panel mc-p15'></div></div></div><div class='mc-hero-overlay'><h1 class='mc-hero-title'>Miracell</h1><p class='mc-hero-sub'>Standard of Stem Cell</p></div><div class='mc-scroll-ind'><span class='mc-scroll-dot'></span><span class='mc-scroll-line'></span></div></section></div>", "css": ".mc-wrap{font-family:'Pretendard','Outfit',sans-serif;line-height:1.5;color:#000;overflow:hidden;position:relative}.mc-hdr{position:absolute;top:0;left:0;right:0;height:80px;z-index:9999;padding-top:55px;box-sizing:content-box}.mc-hdr-inner{max-width:1760px;margin:0 auto;display:flex;align-items:center;padding:0 60px;height:80px}.mc-logo{font-size:24px;font-weight:700;color:#fff;text-decoration:none;cursor:pointer;letter-spacing:-0.01em}.mc-gnb{display:flex;gap:40px;margin-left:auto;font-size:17.5px;font-weight:500;color:#fff;letter-spacing:-0.02em}.mc-gnb span{cursor:pointer;opacity:0.85;transition:opacity 0.25s}.mc-gnb span:hover{opacity:1}.mc-lang{display:flex;gap:12px;margin-left:40px}.mc-lang-item{font-size:15px;font-weight:500;color:#fff;opacity:0.2;cursor:pointer;transition:opacity 0.25s}.mc-lang-item.is-active{opacity:1}.mc-hero{position:relative;height:100vh;min-height:700px;background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center}.mc-mosaic{display:flex;flex-direction:row;gap:30px;position:absolute;inset:0;align-items:center;justify-content:center;padding:0 calc((100% - 1290px)/2)}.mc-col{display:flex;flex-direction:column;gap:30px;animation-timing-function:linear;animation-iteration-count:infinite}.mc-col1{animation:mc-scroll-up 20s linear infinite}.mc-col2{animation:mc-scroll-down 22s linear infinite}.mc-col3{animation:mc-scroll-up 18s linear infinite}.mc-panel{width:400px;height:400px;border-radius:20px;flex-shrink:0;filter:grayscale(1)}.mc-p1{background:linear-gradient(135deg,#3a3a3a 0%,#5a5a5a 50%,#2a2a2a 100%)}.mc-p2{background:linear-gradient(200deg,#4a4a4a 0%,#2a2a2a 50%,#6a6a6a 100%)}.mc-p3{background:linear-gradient(160deg,#555 0%,#333 50%,#444 100%)}.mc-p4{background:linear-gradient(180deg,#3e3e3e 0%,#5e5e5e 50%,#2e2e2e 100%)}.mc-p5{background:linear-gradient(135deg,#484848 0%,#282828 50%,#585858 100%)}.mc-p6{background:linear-gradient(220deg,#505050 0%,#303030 50%,#404040 100%)}.mc-p7{background:linear-gradient(135deg,#363636 0%,#565656 50%,#464646 100%)}.mc-p8{background:linear-gradient(170deg,#424242 0%,#626262 50%,#323232 100%)}.mc-p9{background:linear-gradient(145deg,#4e4e4e 0%,#2e2e2e 50%,#3e3e3e 100%)}.mc-p10{background:linear-gradient(200deg,#383838 0%,#585858 50%,#282828 100%)}.mc-p11{background:linear-gradient(155deg,#444 0%,#666 50%,#333 100%)}.mc-p12{background:linear-gradient(135deg,#525252 0%,#323232 50%,#424242 100%)}.mc-p13{background:linear-gradient(185deg,#3c3c3c 0%,#5c5c5c 50%,#4c4c4c 100%)}.mc-p14{background:linear-gradient(140deg,#464646 0%,#262626 50%,#565656 100%)}.mc-p15{background:linear-gradient(210deg,#4a4a4a 0%,#3a3a3a 50%,#5a5a5a 100%)}@keyframes mc-scroll-up{0%{transform:translateY(0)}100%{transform:translateY(-2150px)}}@keyframes mc-scroll-down{0%{transform:translateY(-2150px)}100%{transform:translateY(0)}}.mc-hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;pointer-events:none}.mc-hero-title{font-size:150px;font-weight:600;color:#dd0031;letter-spacing:-0.025em;margin:0;line-height:1;text-shadow:0 0 80px rgba(221,0,49,0.3)}.mc-hero-sub{font-size:30px;font-weight:500;color:#fff;margin:20px 0 0;letter-spacing:-0.01em}.mc-scroll-ind{position:absolute;bottom:40px;left:60px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:10}.mc-scroll-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:mc-dot-bounce 1.5s ease-in-out infinite}.mc-scroll-line{width:1px;height:60px;background:rgba(255,255,255,0.3)}@keyframes mc-dot-bounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(20px);opacity:0.3}}@media(max-width:768px){.mc-gnb{display:none}.mc-hdr-inner{padding:0 20px}.mc-hero-title{font-size:60px}.mc-hero-sub{font-size:18px}.mc-panel{width:200px;height:200px}.mc-mosaic{gap:15px}.mc-col{gap:15px}.mc-hero{min-height:500px}}" },
+        { "type": "component", "title": "헤더 + 3열 모자이크 히어로", "fullWidth": true, "html": "<div class='mc-wrap'><header class='mc-hdr'><div class='mc-hdr-inner'><a class='mc-logo'>Mira<span class='mc-logo-dot'>·</span>cell</a><nav class='mc-gnb'><span>About Us</span><span>Product</span><span>Service</span><span>R&D</span><span>Newsroom</span><span>Customer Support</span></nav><div class='mc-hdr-right'><div class='mc-lang'><span class='mc-lang-item is-active'>KR</span><span class='mc-lang-item'>EN</span><span class='mc-lang-item'>CN</span></div><a class='mc-hdr-cta'>Contact</a></div></div></header><section class='mc-hero'><div class='mc-mosaic'><div class='mc-col mc-col1'><div class='mc-panel mc-p1'></div><div class='mc-panel mc-p2'></div><div class='mc-panel mc-p3'></div><div class='mc-panel mc-p4'></div><div class='mc-panel mc-p5'></div></div><div class='mc-col mc-col2'><div class='mc-panel mc-p6'></div><div class='mc-panel mc-p7'></div><div class='mc-panel mc-p8'></div><div class='mc-panel mc-p9'></div><div class='mc-panel mc-p10'></div></div><div class='mc-col mc-col3'><div class='mc-panel mc-p11'></div><div class='mc-panel mc-p12'></div><div class='mc-panel mc-p13'></div><div class='mc-panel mc-p14'></div><div class='mc-panel mc-p15'></div></div></div><div class='mc-hero-overlay'><h1 class='mc-hero-title'>Miracell</h1><p class='mc-hero-sub'>Standard of Stem Cell</p></div><div class='mc-scroll-ind'><span class='mc-scroll-dot'></span><span class='mc-scroll-line'></span></div></section></div>", "css": ".mc-wrap{font-family:'Pretendard','Outfit',sans-serif;line-height:1.5;color:#000;overflow:hidden;position:relative}.mc-hdr{position:absolute;top:0;left:0;right:0;height:80px;z-index:9999;padding-top:55px;box-sizing:content-box;transition:background 0.4s,box-shadow 0.4s}.mc-hdr.is-scrolled{background:#fff;box-shadow:0 1px 0 rgba(0,0,0,0.06)}.mc-hdr-inner{max-width:1760px;margin:0 auto;display:flex;align-items:center;padding:0 80px;height:80px}.mc-logo{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;color:#fff;text-decoration:none;cursor:pointer;letter-spacing:-0.01em}.mc-logo-dot{color:#dd0031;font-weight:700}.mc-hdr.is-scrolled .mc-logo{color:#000}.mc-gnb{display:flex;gap:40px;margin-left:auto;font-size:17px;font-weight:500;color:#fff;letter-spacing:-0.02em}.mc-hdr.is-scrolled .mc-gnb{color:#000}.mc-gnb span{cursor:pointer;position:relative;padding:8px 0;transition:color 0.25s}.mc-gnb span::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:#dd0031;transition:width 0.3s ease}.mc-gnb span:hover::after{width:100%}.mc-gnb span:hover{color:#dd0031}.mc-hdr-right{display:flex;align-items:center;gap:24px;margin-left:40px}.mc-lang{display:flex;gap:12px}.mc-lang-item{font-size:15px;font-weight:500;color:#fff;opacity:0.2;cursor:pointer;transition:opacity 0.25s}.mc-lang-item.is-active{opacity:1}.mc-hdr.is-scrolled .mc-lang-item{color:#000}.mc-hdr-cta{display:inline-flex;align-items:center;padding:10px 28px;background:#dd0031;color:#fff;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:0.02em;transition:transform 0.2s}.mc-hdr-cta:hover{transform:scale(1.05)}.mc-hero{position:relative;height:100vh;min-height:700px;background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center}.mc-mosaic{display:flex;flex-direction:row;gap:30px;position:absolute;inset:0;align-items:center;justify-content:center;padding:0 calc((100% - 1290px)/2)}.mc-col{display:flex;flex-direction:column;gap:30px}.mc-col1{animation:mc-scroll-up 20s linear infinite}.mc-col2{animation:mc-scroll-down 22s linear infinite}.mc-col3{animation:mc-scroll-up 18s linear infinite}.mc-panel{width:400px;height:400px;border-radius:20px;flex-shrink:0;filter:grayscale(1) brightness(0.6)}.mc-p1{background:linear-gradient(135deg,#3a3a3a,#5a5a5a,#2a2a2a)}.mc-p2{background:linear-gradient(200deg,#4a4a4a,#2a2a2a,#6a6a6a)}.mc-p3{background:linear-gradient(160deg,#555,#333,#444)}.mc-p4{background:linear-gradient(180deg,#3e3e3e,#5e5e5e,#2e2e2e)}.mc-p5{background:linear-gradient(135deg,#484848,#282828,#585858)}.mc-p6{background:linear-gradient(220deg,#505050,#303030,#404040)}.mc-p7{background:linear-gradient(135deg,#363636,#565656,#464646)}.mc-p8{background:linear-gradient(170deg,#424242,#626262,#323232)}.mc-p9{background:linear-gradient(145deg,#4e4e4e,#2e2e2e,#3e3e3e)}.mc-p10{background:linear-gradient(200deg,#383838,#585858,#282828)}.mc-p11{background:linear-gradient(155deg,#444,#666,#333)}.mc-p12{background:linear-gradient(135deg,#525252,#323232,#424242)}.mc-p13{background:linear-gradient(185deg,#3c3c3c,#5c5c5c,#4c4c4c)}.mc-p14{background:linear-gradient(140deg,#464646,#262626,#565656)}.mc-p15{background:linear-gradient(210deg,#4a4a4a,#3a3a3a,#5a5a5a)}@keyframes mc-scroll-up{0%{transform:translateY(0)}100%{transform:translateY(-2150px)}}@keyframes mc-scroll-down{0%{transform:translateY(-2150px)}100%{transform:translateY(0)}}.mc-hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;pointer-events:none}.mc-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(80px,16vw,240px);font-weight:700;color:#dd0031;letter-spacing:-0.03em;margin:0;line-height:1;text-shadow:0 0 120px rgba(221,0,49,0.25)}.mc-hero-sub{font-family:'Outfit',sans-serif;font-size:clamp(16px,2.5vw,30px);font-weight:500;color:#fff;margin:20px 0 0;letter-spacing:-0.01em;opacity:0.85}.mc-scroll-ind{position:absolute;bottom:40px;left:80px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:10}.mc-scroll-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:mc-dot-bounce 1.5s ease-in-out infinite}.mc-scroll-line{width:1px;height:60px;background:rgba(255,255,255,0.3)}@keyframes mc-dot-bounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(20px);opacity:0.3}}@media(max-width:1279px){.mc-hdr-inner{padding:0 40px}.mc-gnb{gap:24px;font-size:15px}.mc-panel{width:280px;height:280px}}@media(max-width:767px){.mc-gnb,.mc-hdr-cta{display:none}.mc-hdr-inner{padding:0 20px}.mc-panel{width:200px;height:200px}.mc-mosaic{gap:15px}.mc-col{gap:15px}.mc-hero{min-height:500px}.mc-scroll-ind{left:20px}}" },
+
         { "type": "heading", "value": "② About Us 섹션" },
-        { "type": "component", "title": "비전 + 마키 텍스트 + 카운터", "fullWidth": true, "html": "<section class='mc-about'><div class='mc-about-top'><div class='mc-about-inner'><div class='mc-about-img-wrap'><div class='mc-about-img'></div></div><div class='mc-about-text'><h2 class='mc-about-title'>The standard<br>of Stem Cell</h2><p class='mc-about-desc'>미라셀은 생명을 존중하며 모두의 건강한 삶을 비전으로 추구하는 줄기세포 전문 기업입니다.</p></div></div></div><div class='mc-marquee'><div class='mc-marquee-track'><span>MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;</span><span>MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;</span></div></div><div class='mc-counters'><div class='mc-ctr-inner'><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='2009'>0</span><span class='mc-ctr-sfx'>년</span><div class='mc-ctr-label'>법인 설립</div></div><div class='mc-ctr-sep'></div><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='650'>0</span><span class='mc-ctr-sfx'>여 개</span><div class='mc-ctr-label'>고객 병원</div></div><div class='mc-ctr-sep'></div><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='23'>0</span><span class='mc-ctr-sfx'>건</span><div class='mc-ctr-label'>기술 특허</div></div><div class='mc-ctr-sep'></div><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='40'>0</span><span class='mc-ctr-sfx'>개국</span><div class='mc-ctr-label'>해외 유통</div></div></div></div></section>", "css": ".mc-about{font-family:'Pretendard','Outfit',sans-serif;overflow:hidden}.mc-about-top{background:linear-gradient(180deg,#1a1a1a 0%,#0d0d0d 100%);padding:120px 0;position:relative}.mc-about-inner{max-width:1400px;margin:0 auto;padding:0 60px;display:flex;align-items:center;gap:80px}.mc-about-img-wrap{flex:0 0 400px;position:relative}.mc-about-img{width:400px;height:500px;border-radius:20px;background:linear-gradient(135deg,#2a2a2a 0%,#3a3a3a 50%,#1a1a1a 100%);animation:mc-float 4s ease-in-out infinite}.mc-about-text{flex:1}.mc-about-title{font-size:6.5rem;font-weight:800;color:#fff;letter-spacing:-0.05em;line-height:1.1;margin:0 0 30px}.mc-about-desc{font-size:2.4rem;font-weight:400;color:rgba(255,255,255,0.6);line-height:1.6;margin:0}@keyframes mc-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}.mc-marquee{background:#fff;padding:60px 0;overflow:hidden}.mc-marquee-track{display:flex;width:max-content;animation:mc-marquee-scroll 15s linear infinite}.mc-marquee-track span{font-size:28rem;font-weight:800;color:rgba(0,0,0,0.06);white-space:nowrap;line-height:1;letter-spacing:-0.03em}@keyframes mc-marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.mc-counters{background:#fff;padding:80px 0;border-top:1px solid rgba(0,0,0,0.06)}.mc-ctr-inner{max-width:1400px;margin:0 auto;padding:0 60px;display:flex;justify-content:space-between;align-items:center}.mc-ctr-item{text-align:center;padding:50px 0;flex:1;border-bottom:1px solid #000}.mc-ctr-num{font-size:8rem;font-weight:600;color:#000;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}.mc-ctr-sfx{font-size:2rem;font-weight:400;color:#999;margin-left:4px}.mc-ctr-label{font-size:16px;color:#888;margin-top:12px;font-weight:500}.mc-ctr-sep{width:1px;height:80px;background:rgba(0,0,0,0.1);flex-shrink:0}@media(max-width:768px){.mc-about-inner{flex-direction:column;padding:0 20px;gap:40px}.mc-about-img-wrap{flex:none}.mc-about-img{width:100%;height:300px}.mc-about-title{font-size:3rem}.mc-about-desc{font-size:1.4rem}.mc-marquee-track span{font-size:10rem}.mc-ctr-inner{flex-direction:column;padding:0 20px;gap:20px}.mc-ctr-num{font-size:4rem}.mc-ctr-sep{width:80px;height:1px}}", "js": "var mcNums=document.querySelectorAll('.mc-ctr-num[data-to]');mcNums.forEach(function(el){var target=parseInt(el.dataset.to);var dur=2000;var st=performance.now();function tick(now){var p=Math.min((now-st)/dur,1);var e=1-Math.pow(1-p,3);el.textContent=Math.floor(target*e);if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)})" },
+        { "type": "component", "title": "크림 배경 비전 + 마키 텍스트 + 카운터", "fullWidth": true, "html": "<section class='mc-about'><div class='mc-about-top'><div class='mc-about-inner'><div class='mc-about-img-wrap'><div class='mc-about-img'></div></div><div class='mc-about-text'><div class='mc-sec-intro'><span class='mc-sec-label'>About Us<span class='mc-sec-dot'></span></span></div><h2 class='mc-about-title'>The standard<br>of Stem Cell</h2><p class='mc-about-desc'>미라셀은 생명을 존중하며 모두의 건강한 삶을<br>비전으로 추구하는 줄기세포 전문 기업입니다.</p><a class='mc-about-more'>자세히 보기 →</a></div></div></div><div class='mc-marquee'><div class='mc-marquee-track'><span>MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;</span><span>MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;MIRACELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STEM CELL&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;STANDARD&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;</span></div></div><div class='mc-counters'><div class='mc-ctr-inner'><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='2009'>0</span><span class='mc-ctr-sfx'>년</span><div class='mc-ctr-label'>법인 설립</div></div><div class='mc-ctr-sep'></div><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='650'>0</span><span class='mc-ctr-sfx'>+</span><div class='mc-ctr-label'>고객 병원</div></div><div class='mc-ctr-sep'></div><div class='mc-ctr-item'><span class='mc-ctr-num' data-to='23'>0</span><span class='mc-ctr-sfx'>건</span><div class='mc-ctr-label'>기술 특허</div></div></div></div></section>", "css": ".mc-about{font-family:'Pretendard','Outfit',sans-serif;overflow:hidden}.mc-about-top{background:#FAF9F5;padding:160px 0;position:relative}.mc-about-inner{max-width:1400px;margin:0 auto;padding:0 80px;display:flex;align-items:center;gap:100px}.mc-about-img-wrap{flex:0 0 420px;position:relative}.mc-about-img{width:420px;height:520px;border-radius:20px;background:linear-gradient(135deg,#d4cfc6,#bfb8ac,#c8c2b8);animation:mc-float 4s ease-in-out infinite}.mc-about-text{flex:1}.mc-sec-intro{margin-bottom:20px}.mc-sec-label{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:#000;letter-spacing:0.08em;text-transform:uppercase;position:relative}.mc-sec-dot{display:inline-block;width:6px;height:6px;background:#dd0031;border-radius:50%;margin-left:6px;vertical-align:super}.mc-about-title{font-family:'Outfit',sans-serif;font-size:clamp(36px,5vw,72px);font-weight:800;color:#000;letter-spacing:-0.04em;line-height:1.15;margin:0 0 28px}.mc-about-desc{font-size:18px;font-weight:400;color:#666;line-height:1.8;margin:0 0 32px}.mc-about-more{display:inline-flex;align-items:center;font-size:15px;font-weight:600;color:#000;cursor:pointer;letter-spacing:-0.01em;text-decoration:none;transition:color 0.25s}.mc-about-more:hover{color:#dd0031}@keyframes mc-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.mc-marquee{background:#FAF9F5;padding:80px 0 60px;overflow:hidden;border-top:1px solid rgba(0,0,0,0.04)}.mc-marquee-track{display:flex;width:max-content;animation:mc-marquee-scroll 18s linear infinite}.mc-marquee-track span{font-family:'Outfit',sans-serif;font-size:clamp(80px,18vw,280px);font-weight:800;color:rgba(0,0,0,0.04);white-space:nowrap;line-height:1;letter-spacing:-0.03em}@keyframes mc-marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.mc-counters{background:#fff;padding:80px 0;border-top:1px solid rgba(0,0,0,0.06)}.mc-ctr-inner{max-width:1400px;margin:0 auto;padding:0 80px;display:flex;justify-content:space-between;align-items:center}.mc-ctr-item{text-align:center;flex:1;padding:40px 0}.mc-ctr-num{font-family:'Outfit',sans-serif;font-size:clamp(48px,7vw,96px);font-weight:600;color:#000;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}.mc-ctr-sfx{font-size:clamp(16px,2vw,24px);font-weight:400;color:#999;margin-left:4px}.mc-ctr-label{font-size:15px;color:#888;margin-top:12px;font-weight:500}.mc-ctr-sep{width:1px;height:80px;background:rgba(0,0,0,0.08);flex-shrink:0}@media(max-width:1279px){.mc-about-inner{padding:0 40px;gap:60px}.mc-about-img-wrap{flex:0 0 320px}.mc-about-img{width:320px;height:400px}.mc-ctr-inner{padding:0 40px}}@media(max-width:767px){.mc-about-top{padding:80px 0}.mc-about-inner{flex-direction:column;padding:0 20px;gap:40px}.mc-about-img-wrap{flex:none;width:100%}.mc-about-img{width:100%;height:300px}.mc-about-title{font-size:32px}.mc-about-desc{font-size:15px}.mc-ctr-inner{flex-direction:column;padding:0 20px;gap:0}.mc-ctr-item{width:100%;border-bottom:1px solid rgba(0,0,0,0.06)}.mc-ctr-sep{width:100%;height:1px}}", "js": "(function(){var nums=document.querySelectorAll('.mc-ctr-num[data-to]');if(!nums.length)return;var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var target=parseInt(el.dataset.to);var dur=target>1000?2000:1500;var st=performance.now();(function tick(now){var p=Math.min((now-st)/dur,1);var ease=1-Math.pow(1-p,3);el.textContent=Math.floor(target*ease);if(p<1)requestAnimationFrame(tick);else el.textContent=target})(performance.now());io.unobserve(el)})},{threshold:0.4});nums.forEach(function(el){io.observe(el)})})()" },
+
         { "type": "heading", "value": "③ Service 섹션" },
-        { "type": "component", "title": "서비스 3열 카드 (라운드 코너)", "fullWidth": true, "html": "<section class='mc-svc'><div class='mc-svc-grid'><div class='mc-svc-card mc-svc-first'><div class='mc-svc-bg mc-svc-bg1'></div><div class='mc-svc-top-bar'></div><div class='mc-svc-corner mc-svc-corner-tl'></div><div class='mc-svc-corner mc-svc-corner-tr'></div><div class='mc-svc-body'><h3 class='mc-svc-title'>CellBanking</h3><p class='mc-svc-sub'>면역세포, 줄기세포 추출 보관 서비스</p></div><div class='mc-svc-bottom-bar'></div></div><div class='mc-svc-divider'></div><div class='mc-svc-card mc-svc-mid'><div class='mc-svc-bg mc-svc-bg2'></div><div class='mc-svc-top-bar'></div><div class='mc-svc-corner mc-svc-corner-tl'></div><div class='mc-svc-corner mc-svc-corner-tr'></div><div class='mc-svc-body'><h3 class='mc-svc-title'>Stemcell<br>Medical Platform</h3><p class='mc-svc-sub'>줄기세포 시술 커뮤니티 플랫폼</p></div><div class='mc-svc-bottom-bar'></div></div><div class='mc-svc-divider'></div><div class='mc-svc-card mc-svc-last'><div class='mc-svc-bg mc-svc-bg3'></div><div class='mc-svc-top-bar'></div><div class='mc-svc-corner mc-svc-corner-tl'></div><div class='mc-svc-corner mc-svc-corner-tr'></div><div class='mc-svc-body'><h3 class='mc-svc-title'>Medical AICC</h3><p class='mc-svc-sub'>병원 업무 자동화를 위한 Medical AI 콜센터</p></div><div class='mc-svc-bottom-bar'></div></div></div></section>", "css": ".mc-svc{font-family:'Pretendard','Outfit',sans-serif;background:#fff;padding:0}.mc-svc-grid{display:flex;width:100%}.mc-svc-card{flex:1;position:relative;overflow:hidden;cursor:pointer}.mc-svc-card::before{content:'';display:block;padding-top:182.26%}.mc-svc-first{border-radius:40px 0 0 40px}.mc-svc-last{border-radius:0 40px 40px 0}.mc-svc-bg{position:absolute;inset:0;transition:transform 0.6s ease}.mc-svc-card:hover .mc-svc-bg{transform:scale(1.05)}.mc-svc-bg1{background:linear-gradient(180deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%)}.mc-svc-bg2{background:linear-gradient(180deg,#1a0a2e 0%,#2d1854 40%,#1a0a2e 100%)}.mc-svc-bg3{background:linear-gradient(180deg,#0d1b2a 0%,#1b2838 40%,#0d1b2a 100%)}.mc-svc-top-bar{position:absolute;top:0;left:0;right:0;height:100px;background:#fff;z-index:2}.mc-svc-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:100px;background:#fff;z-index:2}.mc-svc-corner{position:absolute;width:40px;height:40px;z-index:3}.mc-svc-corner-tl{top:100px;left:0;background:radial-gradient(circle at 0% 0%,#fff 70%,transparent 71%)}.mc-svc-corner-tr{top:100px;right:0;background:radial-gradient(circle at 100% 0%,#fff 70%,transparent 71%)}.mc-svc-body{position:absolute;bottom:140px;left:0;right:0;padding:0 40px;z-index:4}.mc-svc-title{font-size:46px;font-weight:600;color:#fff;margin:0 0 12px;line-height:1.2}.mc-svc-sub{font-size:20px;font-weight:500;color:rgba(255,255,255,0.6);margin:0;line-height:1.5}.mc-svc-divider{width:4px;background:#fff;flex-shrink:0;z-index:5}@media(max-width:768px){.mc-svc-grid{flex-direction:column}.mc-svc-first,.mc-svc-last{border-radius:0}.mc-svc-card::before{padding-top:120%}.mc-svc-title{font-size:28px}.mc-svc-sub{font-size:16px}.mc-svc-divider{width:100%;height:4px}}" },
-        { "type": "heading", "value": "④ Product 섹션 (Circle Hover)" },
-        { "type": "component", "title": "제품 카드 — Hover 시 원형 전환", "fullWidth": true, "html": "<section class='mc-prd'><div class='mc-prd-inner'><div class='mc-prd-hd'><h2>Product</h2><p>줄기세포 전문 의료기기 라인업</p></div><div class='mc-prd-row'><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt1'></div><div class='mc-prd-name'>Smart M-Cell</div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt2'></div><div class='mc-prd-name'>BmSC Kit</div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt3'></div><div class='mc-prd-name'>BSC Kit</div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt4'></div><div class='mc-prd-name'>Chroma M-CELL</div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt5'></div><div class='mc-prd-name'>Vacuum lock syringe</div></div></div></div></section>", "css": ".mc-prd{padding:120px 0;background:#fff;font-family:'Pretendard','Outfit',sans-serif}.mc-prd-inner{max-width:1400px;margin:0 auto;padding:0 60px}.mc-prd-hd{margin-bottom:60px}.mc-prd-hd h2{font-size:46px;font-weight:700;margin:0 0 12px;color:#000;letter-spacing:-0.03em}.mc-prd-hd p{font-size:20px;color:#888;margin:0;font-weight:400}.mc-prd-row{display:flex;gap:24px}.mc-prd-card{flex:1;cursor:pointer;text-align:center}.mc-prd-thumb{height:460px;border-radius:20px;background:#f2f2f2;transition:border-radius 0.5s cubic-bezier(0.4,0,0.2,1)}.mc-prd-card:hover .mc-prd-thumb{border-radius:50%}.mc-pt1{background:linear-gradient(135deg,#e8e4e0 0%,#f2f2f2 40%,#d8d4d0 100%)}.mc-pt2{background:linear-gradient(135deg,#e0e4e8 0%,#f2f2f2 40%,#d0d4d8 100%)}.mc-pt3{background:linear-gradient(135deg,#e4e8e0 0%,#f2f2f2 40%,#d4d8d0 100%)}.mc-pt4{background:linear-gradient(135deg,#e8e0e4 0%,#f2f2f2 40%,#d8d0d4 100%)}.mc-pt5{background:linear-gradient(135deg,#e0e8e4 0%,#f2f2f2 40%,#d0d8d4 100%)}.mc-prd-name{margin-top:30px;font-size:24px;font-weight:600;color:#000;letter-spacing:-0.02em}@media(max-width:768px){.mc-prd-row{flex-wrap:wrap}.mc-prd-card{flex:0 0 calc(50% - 12px)}.mc-prd-thumb{height:260px}.mc-prd-name{font-size:18px;margin-top:20px}.mc-prd-inner{padding:0 20px}.mc-prd{padding:60px 0}}" },
+        { "type": "component", "title": "서비스 3열 카드 (라운드 코너 + 인트로)", "fullWidth": true, "html": "<section class='mc-svc'><div class='mc-svc-intro'><div class='mc-svc-intro-inner'><div class='mc-sec-intro'><span class='mc-sec-label'>Service<span class='mc-sec-dot'></span></span></div><h2 class='mc-svc-heading'>서비스</h2><p class='mc-svc-desc'>미라셀이 제공하는 줄기세포 전문 서비스</p></div></div><div class='mc-svc-grid'><div class='mc-svc-card mc-svc-first'><div class='mc-svc-bg mc-svc-bg1'></div><div class='mc-svc-top-bar'></div><div class='mc-svc-corner mc-svc-corner-tl'></div><div class='mc-svc-corner mc-svc-corner-tr'></div><div class='mc-svc-body'><span class='mc-svc-num'>01</span><h3 class='mc-svc-title'>CellBanking</h3><p class='mc-svc-sub'>면역세포, 줄기세포<br>추출 보관 서비스</p></div><div class='mc-svc-bottom-bar'></div><div class='mc-svc-corner mc-svc-corner-bl'></div><div class='mc-svc-corner mc-svc-corner-br'></div></div><div class='mc-svc-divider'></div><div class='mc-svc-card mc-svc-mid'><div class='mc-svc-bg mc-svc-bg2'></div><div class='mc-svc-top-bar'></div><div class='mc-svc-corner mc-svc-corner-tl'></div><div class='mc-svc-corner mc-svc-corner-tr'></div><div class='mc-svc-body'><span class='mc-svc-num'>02</span><h3 class='mc-svc-title'>Stemcell<br>Medical Platform</h3><p class='mc-svc-sub'>줄기세포 시술<br>커뮤니티 플랫폼</p></div><div class='mc-svc-bottom-bar'></div><div class='mc-svc-corner mc-svc-corner-bl'></div><div class='mc-svc-corner mc-svc-corner-br'></div></div><div class='mc-svc-divider'></div><div class='mc-svc-card mc-svc-last'><div class='mc-svc-bg mc-svc-bg3'></div><div class='mc-svc-top-bar'></div><div class='mc-svc-corner mc-svc-corner-tl'></div><div class='mc-svc-corner mc-svc-corner-tr'></div><div class='mc-svc-body'><span class='mc-svc-num'>03</span><h3 class='mc-svc-title'>Medical AICC</h3><p class='mc-svc-sub'>병원 업무 자동화를 위한<br>Medical AI 콜센터</p></div><div class='mc-svc-bottom-bar'></div><div class='mc-svc-corner mc-svc-corner-bl'></div><div class='mc-svc-corner mc-svc-corner-br'></div></div></div></section>", "css": ".mc-svc{font-family:'Pretendard','Outfit',sans-serif;background:#fff}.mc-svc-intro{padding:120px 0 60px;text-align:center}.mc-svc-intro-inner{max-width:1400px;margin:0 auto;padding:0 80px}.mc-svc-heading{font-size:48px;font-weight:700;color:#000;margin:12px 0 16px;letter-spacing:-0.03em}.mc-svc-desc{font-size:18px;color:#888;margin:0;font-weight:400}.mc-svc-grid{display:flex;width:100%}.mc-svc-card{flex:1;position:relative;overflow:hidden;cursor:pointer}.mc-svc-card::before{content:'';display:block;padding-top:180%}.mc-svc-first{border-radius:40px 0 0 40px}.mc-svc-last{border-radius:0 40px 40px 0}.mc-svc-bg{position:absolute;inset:0;transition:transform 0.6s ease}.mc-svc-card:hover .mc-svc-bg{transform:scale(1.05)}.mc-svc-bg1{background:linear-gradient(180deg,#1a1a2e,#16213e,#0f3460)}.mc-svc-bg2{background:linear-gradient(180deg,#1a0a2e,#2d1854,#1a0a2e)}.mc-svc-bg3{background:linear-gradient(180deg,#0d1b2a,#1b2838,#0d1b2a)}.mc-svc-top-bar{position:absolute;top:0;left:0;right:0;height:100px;background:#fff;z-index:2}.mc-svc-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:100px;background:#fff;z-index:2}.mc-svc-corner{position:absolute;width:40px;height:40px;z-index:3}.mc-svc-corner-tl{top:100px;left:0;background:radial-gradient(circle at 0% 0%,#fff 70%,transparent 71%)}.mc-svc-corner-tr{top:100px;right:0;background:radial-gradient(circle at 100% 0%,#fff 70%,transparent 71%)}.mc-svc-corner-bl{bottom:100px;left:0;background:radial-gradient(circle at 0% 100%,#fff 70%,transparent 71%)}.mc-svc-corner-br{bottom:100px;right:0;background:radial-gradient(circle at 100% 100%,#fff 70%,transparent 71%)}.mc-svc-body{position:absolute;bottom:140px;left:0;right:0;padding:0 40px;z-index:4}.mc-svc-num{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.1em;display:block;margin-bottom:12px}.mc-svc-title{font-family:'Outfit',sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:600;color:#fff;margin:0 0 12px;line-height:1.2}.mc-svc-sub{font-size:clamp(14px,1.5vw,18px);font-weight:400;color:rgba(255,255,255,0.55);margin:0;line-height:1.6}.mc-svc-divider{width:4px;background:#fff;flex-shrink:0;z-index:5}@media(max-width:767px){.mc-svc-grid{flex-direction:column}.mc-svc-first,.mc-svc-last{border-radius:0}.mc-svc-card::before{padding-top:120%}.mc-svc-divider{width:100%;height:4px}.mc-svc-intro{padding:60px 0 30px}.mc-svc-heading{font-size:32px}.mc-svc-intro-inner{padding:0 20px}}" },
+
+        { "type": "heading", "value": "④ Product 섹션 (수평 슬라이더 + VIEW MORE 호버)" },
+        { "type": "component", "title": "제품 수평 슬라이더 — 회전 SVG VIEW MORE 호버", "fullWidth": true, "html": "<section class='mc-prd'><svg style='position:absolute;width:0;height:0;overflow:hidden'><defs><path id='mc-vpc' d='M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0'/></defs></svg><div class='mc-prd-inner'><div class='mc-sec-intro'><span class='mc-sec-label'>Product<span class='mc-sec-dot'></span></span></div><h2 class='mc-prd-heading'>제품</h2><p class='mc-prd-desc'>줄기세포 전문 의료기기 라인업</p></div><div class='mc-prd-slider'><div class='mc-prd-track'><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt1'><div class='mc-prd-hover'><svg class='mc-prd-ring' viewBox='0 0 200 200'><text font-size='14' font-family='Outfit, sans-serif' letter-spacing='4' fill='#fff'><textPath href='#mc-vpc'>VIEW MORE · VIEW MORE · VIEW MORE · </textPath></text></svg><div class='mc-prd-center'>+</div></div></div><div class='mc-prd-info'><div class='mc-prd-name'>Smart M-Cell</div><div class='mc-prd-sub'>세포용원심분리장치</div></div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt2'><div class='mc-prd-hover'><svg class='mc-prd-ring' viewBox='0 0 200 200'><text font-size='14' font-family='Outfit, sans-serif' letter-spacing='4' fill='#fff'><textPath href='#mc-vpc'>VIEW MORE · VIEW MORE · VIEW MORE · </textPath></text></svg><div class='mc-prd-center'>+</div></div></div><div class='mc-prd-info'><div class='mc-prd-name'>BmSC Kit</div><div class='mc-prd-sub'>골수 줄기세포 분리 키트</div></div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt3'><div class='mc-prd-hover'><svg class='mc-prd-ring' viewBox='0 0 200 200'><text font-size='14' font-family='Outfit, sans-serif' letter-spacing='4' fill='#fff'><textPath href='#mc-vpc'>VIEW MORE · VIEW MORE · VIEW MORE · </textPath></text></svg><div class='mc-prd-center'>+</div></div></div><div class='mc-prd-info'><div class='mc-prd-name'>BSC Kit</div><div class='mc-prd-sub'>혈액 줄기세포 분리 키트</div></div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt4'><div class='mc-prd-hover'><svg class='mc-prd-ring' viewBox='0 0 200 200'><text font-size='14' font-family='Outfit, sans-serif' letter-spacing='4' fill='#fff'><textPath href='#mc-vpc'>VIEW MORE · VIEW MORE · VIEW MORE · </textPath></text></svg><div class='mc-prd-center'>+</div></div></div><div class='mc-prd-info'><div class='mc-prd-name'>Chroma M-CELL</div><div class='mc-prd-sub'>빛 에너지 링거백 커버</div></div></div><div class='mc-prd-card'><div class='mc-prd-thumb mc-pt5'><div class='mc-prd-hover'><svg class='mc-prd-ring' viewBox='0 0 200 200'><text font-size='14' font-family='Outfit, sans-serif' letter-spacing='4' fill='#fff'><textPath href='#mc-vpc'>VIEW MORE · VIEW MORE · VIEW MORE · </textPath></text></svg><div class='mc-prd-center'>+</div></div></div><div class='mc-prd-info'><div class='mc-prd-name'>Vacuum lock syringe</div><div class='mc-prd-sub'>진공 잠금 주사기</div></div></div></div></div></section>", "css": ".mc-prd{padding:120px 0;background:#fff;font-family:'Pretendard','Outfit',sans-serif;position:relative}.mc-prd-inner{max-width:1400px;margin:0 auto;padding:0 80px 60px}.mc-prd-heading{font-size:clamp(32px,4vw,56px);font-weight:700;color:#000;margin:12px 0 16px;letter-spacing:-0.03em}.mc-prd-desc{font-size:18px;color:#888;margin:0;font-weight:400}.mc-prd-slider{overflow-x:auto;padding:0 80px;scrollbar-width:none;-ms-overflow-style:none}.mc-prd-slider::-webkit-scrollbar{display:none}.mc-prd-track{display:flex;gap:20px;width:max-content}.mc-prd-card{flex:0 0 300px;cursor:pointer}.mc-prd-thumb{height:420px;border-radius:20px;position:relative;overflow:hidden;transition:transform 0.4s ease}.mc-prd-card:hover .mc-prd-thumb{transform:scale(1.02)}.mc-pt1{background:linear-gradient(135deg,#e8e4e0,#f5f3f0,#d8d4d0)}.mc-pt2{background:linear-gradient(135deg,#e0e4e8,#f0f3f5,#d0d4d8)}.mc-pt3{background:linear-gradient(135deg,#e4e8e0,#f3f5f0,#d4d8d0)}.mc-pt4{background:linear-gradient(135deg,#e8e0e4,#f5f0f3,#d8d0d4)}.mc-pt5{background:linear-gradient(135deg,#e0e8e4,#f0f5f3,#d0d8d4)}.mc-prd-hover{position:absolute;inset:0;background:rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.4s ease}.mc-prd-card:hover .mc-prd-hover{opacity:1}.mc-prd-ring{width:160px;height:160px;animation:mc-prd-rotate 8s linear infinite;transform-origin:center center}.mc-prd-ring text{fill:#fff;font-weight:500}@keyframes mc-prd-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.mc-prd-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:#dd0031;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:24px;font-weight:300;box-shadow:0 4px 20px rgba(221,0,49,0.3);transition:transform 0.3s}.mc-prd-card:hover .mc-prd-center{transform:translate(-50%,-50%) scale(1)}.mc-prd-info{margin-top:24px}.mc-prd-name{font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;color:#000;letter-spacing:-0.02em}.mc-prd-sub{font-size:14px;color:#888;margin-top:6px;font-weight:400}@media(max-width:1279px){.mc-prd-inner{padding:0 40px 40px}.mc-prd-slider{padding:0 40px}.mc-prd-card{flex:0 0 260px}.mc-prd-thumb{height:350px}}@media(max-width:767px){.mc-prd{padding:60px 0}.mc-prd-inner{padding:0 20px 30px}.mc-prd-slider{padding:0 20px}.mc-prd-card{flex:0 0 220px}.mc-prd-thumb{height:280px}.mc-prd-name{font-size:18px}}" },
+
         { "type": "heading", "value": "⑤ Newsroom 섹션" },
-        { "type": "component", "title": "뉴스 2열 레이아웃 + Hover 밑줄", "fullWidth": true, "html": "<section class='mc-news'><div class='mc-news-inner'><div class='mc-news-left'><h2 class='mc-news-heading'>Newsroom</h2><p class='mc-news-sub'>미라셀의 최신 소식을 전합니다</p></div><div class='mc-news-right'><div class='mc-news-list'><div class='mc-news-item'><div class='mc-news-info'><span class='mc-news-tit'>미라셀(주), 미국 FDA 510(k) 원심분리기+키트 시스템 전체 승인</span></div><span class='mc-news-date'>2026.04.06</span><div class='mc-news-underline'></div></div><div class='mc-news-item'><div class='mc-news-info'><span class='mc-news-tit'>[신년인사] 2026년 새해 복 많이 받으세요!</span></div><span class='mc-news-date'>2026.02.13</span><div class='mc-news-underline'></div></div><div class='mc-news-item'><div class='mc-news-info'><span class='mc-news-tit'>미라셀(주), CGP 아카데미 개최</span></div><span class='mc-news-date'>2025.08.11</span><div class='mc-news-underline'></div></div><div class='mc-news-item'><div class='mc-news-info'><span class='mc-news-tit'>사우디아라비아 시장 진출 — 현지 파트너십 체결</span></div><span class='mc-news-date'>2025.05.20</span><div class='mc-news-underline'></div></div><div class='mc-news-item'><div class='mc-news-info'><span class='mc-news-tit'>유럽 재생의학 심포지엄 스마트엠셀 임상 결과 발표</span></div><span class='mc-news-date'>2025.03.15</span><div class='mc-news-underline'></div></div></div></div></div></section>", "css": ".mc-news{padding:120px 0;background:#fff;font-family:'Pretendard','Outfit',sans-serif}.mc-news-inner{max-width:1400px;margin:0 auto;padding:0 60px;display:flex;gap:80px;border-top:2px solid #000}.mc-news-left{flex:0 0 300px;padding-top:60px}.mc-news-heading{font-size:46px;font-weight:700;color:#000;margin:0 0 12px;letter-spacing:-0.03em}.mc-news-sub{font-size:18px;color:#888;margin:0;font-weight:400}.mc-news-right{flex:1}.mc-news-list{border-top:none}.mc-news-item{display:flex;align-items:center;height:120px;border-bottom:1px solid #e8e8e8;cursor:pointer;position:relative;overflow:hidden;transition:color 0.3s}.mc-news-info{flex:1;min-width:0}.mc-news-tit{font-size:24px;font-weight:700;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;transition:color 0.3s;letter-spacing:-0.02em}.mc-news-date{font-size:16px;font-weight:500;color:#888;flex-shrink:0;margin-left:40px}.mc-news-underline{position:absolute;bottom:0;left:0;width:0;height:2px;background:#dd0031;transition:width 0.4s ease}.mc-news-item:hover .mc-news-tit{color:#dd0031}.mc-news-item:hover .mc-news-underline{width:100%}@media(max-width:768px){.mc-news-inner{flex-direction:column;padding:0 20px;gap:30px}.mc-news-left{flex:none;padding-top:30px}.mc-news-heading{font-size:28px}.mc-news-tit{font-size:18px}.mc-news-item{height:90px}.mc-news{padding:60px 0}}" },
+        { "type": "component", "title": "뉴스 리스트 + Hover 밑줄 + 화살표", "fullWidth": true, "html": "<section class='mc-news'><div class='mc-news-inner'><div class='mc-news-left'><div class='mc-sec-intro'><span class='mc-sec-label'>Newsroom<span class='mc-sec-dot'></span></span></div><h2 class='mc-news-heading'>뉴스</h2><p class='mc-news-sub'>미라셀의 최신 소식을<br>전합니다</p></div><div class='mc-news-right'><div class='mc-news-list'><a class='mc-news-item'><div class='mc-news-info'><span class='mc-news-cat'>보도자료</span><span class='mc-news-tit'>미라셀(주), 미국 FDA 510(k) 원심분리기+키트 시스템 전체 승인</span></div><div class='mc-news-meta'><span class='mc-news-date'>2026.04.06</span><span class='mc-news-arrow'>→</span></div></a><a class='mc-news-item'><div class='mc-news-info'><span class='mc-news-cat'>공지</span><span class='mc-news-tit'>[신년인사] 2026년 새해 복 많이 받으세요!</span></div><div class='mc-news-meta'><span class='mc-news-date'>2026.02.13</span><span class='mc-news-arrow'>→</span></div></a><a class='mc-news-item'><div class='mc-news-info'><span class='mc-news-cat'>보도자료</span><span class='mc-news-tit'>미라셀(주), CGP 아카데미 개최</span></div><div class='mc-news-meta'><span class='mc-news-date'>2025.08.11</span><span class='mc-news-arrow'>→</span></div></a><a class='mc-news-item'><div class='mc-news-info'><span class='mc-news-cat'>보도자료</span><span class='mc-news-tit'>사우디아라비아 시장 진출 — 현지 파트너십 체결</span></div><div class='mc-news-meta'><span class='mc-news-date'>2025.05.20</span><span class='mc-news-arrow'>→</span></div></a><a class='mc-news-item'><div class='mc-news-info'><span class='mc-news-cat'>보도자료</span><span class='mc-news-tit'>유럽 재생의학 심포지엄 스마트엠셀 임상 결과 발표</span></div><div class='mc-news-meta'><span class='mc-news-date'>2025.03.15</span><span class='mc-news-arrow'>→</span></div></a></div></div></div></section>", "css": ".mc-news{padding:120px 0;background:#fff;font-family:'Pretendard','Outfit',sans-serif}.mc-news-inner{max-width:1400px;margin:0 auto;padding:0 80px;display:flex;gap:80px}.mc-news-left{flex:0 0 280px;padding-top:10px}.mc-news-heading{font-size:clamp(32px,4vw,56px);font-weight:700;color:#000;margin:12px 0 16px;letter-spacing:-0.03em}.mc-news-sub{font-size:18px;color:#888;margin:0;font-weight:400;line-height:1.7}.mc-news-right{flex:1;border-top:2px solid #000}.mc-news-list{}.mc-news-item{display:flex;align-items:center;min-height:100px;padding:24px 0;border-bottom:1px solid #e8e8e8;cursor:pointer;position:relative;text-decoration:none;transition:background 0.3s}.mc-news-item:hover{background:#FAF9F5}.mc-news-info{flex:1;min-width:0;display:flex;align-items:center;gap:16px}.mc-news-cat{font-size:12px;font-weight:600;color:#dd0031;flex-shrink:0;letter-spacing:0.02em;padding:4px 12px;border:1px solid rgba(221,0,49,0.2);border-radius:99px}.mc-news-tit{font-size:20px;font-weight:600;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.02em;transition:color 0.3s}.mc-news-item:hover .mc-news-tit{color:#dd0031}.mc-news-meta{display:flex;align-items:center;gap:20px;flex-shrink:0;margin-left:40px}.mc-news-date{font-size:15px;font-weight:400;color:#aaa}.mc-news-arrow{font-size:18px;color:#ccc;transition:transform 0.4s ease,color 0.3s}.mc-news-item:hover .mc-news-arrow{transform:translateX(8px);color:#dd0031}@media(max-width:1279px){.mc-news-inner{padding:0 40px;gap:40px}.mc-news-left{flex:0 0 200px}}@media(max-width:767px){.mc-news-inner{flex-direction:column;padding:0 20px;gap:30px}.mc-news-left{flex:none}.mc-news-heading{font-size:28px}.mc-news-tit{font-size:16px}.mc-news-item{min-height:80px;padding:16px 0}.mc-news{padding:60px 0}.mc-news-cat{font-size:11px;padding:3px 8px}}" },
+
         { "type": "heading", "value": "⑥ Contact + Footer" },
-        { "type": "component", "title": "CTA 스피닝 버튼 + 화이트 푸터", "fullWidth": true, "html": "<section class='mc-contact'><div class='mc-contact-bg'></div><div class='mc-contact-inner'><div class='mc-contact-left'><h2 class='mc-contact-title'>Contact Us</h2><p class='mc-contact-desc'>미라셀에 문의하세요</p></div><div class='mc-contact-right'><div class='mc-contact-arrow'>&#8594;</div><div class='mc-contact-spin'><svg class='mc-spin-ring' viewBox='0 0 151 151'><defs><path id='mc-cp' d='M75.5,75.5 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0'/></defs><text><textPath href='#mc-cp'>CONTACT US · CONTACT US · CONTACT US · </textPath></svg><div class='mc-spin-plus'>+</div></div></div></div></section><footer class='mc-footer'><div class='mc-footer-inner'><div class='mc-footer-left'><div class='mc-footer-logo'>Miracell</div><p class='mc-footer-addr'>미라셀(주) | 대표이사: 박재우<br>서울특별시 강남구 테헤란로 625<br>TEL: 02-6952-7010 | FAX: 02-6952-7014</p></div><div class='mc-footer-right'><div class='mc-footer-links'><a>About Us</a><a>Product</a><a>Service</a><a>R&D</a><a>Newsroom</a></div></div></div><div class='mc-footer-copy'>COPYRIGHT &copy; Miracell ALL RIGHT RESERVED.</div></footer>", "css": ".mc-contact{position:relative;padding:120px 0;overflow:hidden;font-family:'Pretendard','Outfit',sans-serif}.mc-contact-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0d0d0d 100%);background-attachment:fixed}.mc-contact-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 60px;display:flex;justify-content:space-between;align-items:center}.mc-contact-left{}.mc-contact-title{font-size:46px;font-weight:600;color:#fff;margin:0 0 12px;letter-spacing:-0.02em}.mc-contact-desc{font-size:20px;color:rgba(255,255,255,0.5);margin:0;font-weight:400}.mc-contact-right{display:flex;align-items:center;gap:30px}.mc-contact-arrow{font-size:40px;color:#fff;opacity:0.6}.mc-contact-spin{position:relative;width:151px;height:151px}.mc-spin-ring{width:151px;height:151px;animation:mc-ring-spin 14s linear infinite}.mc-spin-ring text{fill:rgba(221,0,49,0.5);font-size:10.5px;letter-spacing:0.18em;font-weight:600;font-family:'Pretendard','Outfit',sans-serif}.mc-spin-plus{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:#dd0031;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:30px;font-weight:300;box-shadow:0 0 30px rgba(221,0,49,0.4);cursor:pointer;transition:transform 0.25s}.mc-spin-plus:hover{transform:translate(-50%,-50%) scale(1.1)}@keyframes mc-ring-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.mc-footer{background:#fff;border-top:1px solid rgba(0,0,0,0.1);font-family:'Pretendard','Outfit',sans-serif}.mc-footer-inner{max-width:1400px;margin:0 auto;padding:60px 60px 40px;display:flex;justify-content:space-between;align-items:flex-start}.mc-footer-logo{font-size:20px;font-weight:600;color:#000;margin-bottom:16px}.mc-footer-addr{font-size:16px;font-weight:500;color:rgba(0,0,0,0.5);line-height:1.8;margin:0}.mc-footer-links{display:flex;gap:24px}.mc-footer-links a{font-size:16px;font-weight:500;color:rgba(0,0,0,0.5);text-decoration:none;cursor:pointer;transition:color 0.2s}.mc-footer-links a:hover{color:#000}.mc-footer-copy{max-width:1400px;margin:0 auto;padding:20px 60px 40px;font-size:14px;color:rgba(0,0,0,0.5);border-top:1px solid rgba(0,0,0,0.06)}@media(max-width:768px){.mc-contact-inner{flex-direction:column;padding:0 20px;gap:40px;text-align:center}.mc-contact-right{justify-content:center}.mc-contact-title{font-size:28px}.mc-footer-inner{flex-direction:column;padding:30px 20px;gap:30px}.mc-footer-copy{padding:16px 20px 30px}}" },
-        { "type": "note", "value": "메인 페이지 전체가 '3열 모자이크 히어로(#000, 150px 레드 타이틀) → 비전+마키+카운터(About) → 서비스 3열(라운드 코너, 화이트 바) → 제품(hover→원형 전환) → 뉴스(2열, 레드 밑줄) → 스피닝 CTA → 화이트 푸터' 흐름. 브랜드 레드(#dd0031)는 히어로 타이틀, CTA, 뉴스 hover에만 사용되어 시선 집중 효과를 극대화." }
+        { "type": "component", "title": "회전 링 CTA + 3단 화이트 푸터", "fullWidth": true, "html": "<section class='mc-contact'><div class='mc-contact-bg'></div><div class='mc-contact-inner'><div class='mc-contact-left'><div class='mc-sec-intro'><span class='mc-sec-label' style='color:#fff'>Contact<span class='mc-sec-dot'></span></span></div><h2 class='mc-contact-title'>Contact Us</h2><p class='mc-contact-desc'>줄기세포 전문 기업 미라셀에<br>무엇이든 문의하세요</p></div><div class='mc-contact-right'><div class='mc-contact-spin'><svg class='mc-spin-ring' viewBox='0 0 280 280'><defs><path id='mc-ccp' d='M140,140 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0'/></defs><text font-size='12' font-family='Outfit, sans-serif' letter-spacing='6' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='0.5'><textPath href='#mc-ccp'>CONTACT US · CONTACT US · CONTACT US · CONTACT US · </textPath></text></svg><div class='mc-spin-arrow'><span>→</span></div></div></div></div></section><footer class='mc-footer'><div class='mc-footer-inner'><div class='mc-footer-col mc-footer-brand'><div class='mc-footer-logo'>Mira<span style='color:#dd0031'>·</span>cell</div><p class='mc-footer-slogan'>Standard of Stem Cell</p></div><div class='mc-footer-col mc-footer-info'><h4 class='mc-footer-ht'>Company Information</h4><p class='mc-footer-addr'>미라셀(주) | 대표이사: 박재우<br>서울특별시 강남구 테헤란로 625<br>사업자등록번호: 107-86-14813<br>TEL: 02-6952-7010 | FAX: 02-6952-7014</p></div><div class='mc-footer-col mc-footer-links'><h4 class='mc-footer-ht'>Quick Links</h4><nav class='mc-footer-nav'><a>About Us</a><a>Product</a><a>Service</a><a>R&D</a><a>Newsroom</a><a>Contact</a></nav></div><div class='mc-footer-col mc-footer-social'><h4 class='mc-footer-ht'>Follow Us</h4><div class='mc-footer-icons'><a class='mc-social-icon'>IG</a><a class='mc-social-icon'>YT</a><a class='mc-social-icon'>FB</a></div><div class='mc-footer-btns'><a class='mc-footer-btn'>Family Site ▾</a><a class='mc-footer-btn'>개인정보처리방침</a></div></div></div><div class='mc-footer-bottom'><span>COPYRIGHT &copy; Miracell ALL RIGHTS RESERVED.</span></div></footer>", "css": ".mc-contact{position:relative;padding:160px 0;overflow:hidden;font-family:'Pretendard','Outfit',sans-serif}.mc-contact-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a,#111,#0d0d0d)}.mc-contact-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 80px;display:flex;justify-content:space-between;align-items:center}.mc-contact-title{font-family:'Outfit',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:700;color:#fff;margin:12px 0 20px;letter-spacing:-0.03em}.mc-contact-desc{font-size:18px;color:rgba(255,255,255,0.45);margin:0;font-weight:400;line-height:1.8}.mc-contact-spin{position:relative;width:280px;height:280px;cursor:pointer}.mc-spin-ring{width:280px;height:280px;animation:mc-ring-spin 12s linear infinite}.mc-spin-arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border:1.5px solid rgba(255,255,255,0.4);border-radius:50%;display:grid;place-items:center;transition:border-color 0.3s,transform 0.3s}.mc-spin-arrow span{font-size:28px;color:rgba(255,255,255,0.7);transition:color 0.3s}.mc-contact-spin:hover .mc-spin-arrow{border-color:#fff;transform:translate(-50%,-50%) scale(1.08)}.mc-contact-spin:hover .mc-spin-arrow span{color:#fff}@keyframes mc-ring-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.mc-footer{background:#fff;border-top:1px solid rgba(0,0,0,0.08);font-family:'Pretendard','Outfit',sans-serif}.mc-footer-inner{max-width:1400px;margin:0 auto;padding:60px 80px 40px;display:flex;gap:40px}.mc-footer-col{flex:1}.mc-footer-brand{flex:0 0 200px}.mc-footer-logo{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:#000;margin-bottom:8px}.mc-footer-slogan{font-size:13px;color:#aaa;margin:0;font-weight:400}.mc-footer-ht{font-size:13px;font-weight:700;color:#000;margin:0 0 16px;letter-spacing:0.04em;text-transform:uppercase}.mc-footer-addr{font-size:13px;color:rgba(0,0,0,0.45);line-height:1.9;margin:0}.mc-footer-nav{display:flex;flex-direction:column;gap:10px}.mc-footer-nav a{font-size:14px;color:rgba(0,0,0,0.45);text-decoration:none;cursor:pointer;transition:color 0.2s}.mc-footer-nav a:hover{color:#000}.mc-footer-icons{display:flex;gap:10px;margin-bottom:20px}.mc-social-icon{width:36px;height:36px;border:1px solid rgba(0,0,0,0.15);border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:#666;cursor:pointer;transition:border-color 0.2s,color 0.2s}.mc-social-icon:hover{border-color:#000;color:#000}.mc-footer-btns{display:flex;flex-direction:column;gap:8px}.mc-footer-btn{font-size:13px;color:rgba(0,0,0,0.45);cursor:pointer;text-decoration:none;transition:color 0.2s}.mc-footer-btn:hover{color:#000}.mc-footer-bottom{max-width:1400px;margin:0 auto;padding:20px 80px 40px;border-top:1px solid rgba(0,0,0,0.06);font-size:12px;color:rgba(0,0,0,0.35)}@media(max-width:1279px){.mc-contact-inner{padding:0 40px}.mc-footer-inner{padding:40px 40px 30px;flex-wrap:wrap}.mc-footer-col{flex:0 0 calc(50% - 20px)}.mc-footer-brand{flex:0 0 100%}}@media(max-width:767px){.mc-contact{padding:80px 0}.mc-contact-inner{flex-direction:column;padding:0 20px;gap:50px;text-align:center}.mc-contact-spin{width:200px;height:200px}.mc-spin-ring{width:200px;height:200px}.mc-footer-inner{flex-direction:column;padding:30px 20px;gap:30px}.mc-footer-col{flex:none;width:100%}.mc-footer-bottom{padding:16px 20px 30px}}" },
+
+        { "type": "heading", "value": "⑦ 플로팅 컨택트 버튼" },
+        { "type": "component", "title": "고정 위치 확장형 CTA — 60px 원형 → 180px 필 확장", "fullWidth": true, "html": "<div class='mc-float-demo'><div class='mc-float-btn'><span class='mc-float-icon'>✎</span><span class='mc-float-text'>Contact us</span></div><p class='mc-float-note'>↑ 호버하면 필(pill) 형태로 확장됩니다</p></div>", "css": ".mc-float-demo{font-family:'Pretendard','Outfit',sans-serif;display:flex;flex-direction:column;align-items:flex-end;padding:60px 40px;background:#f8f8f8;position:relative;min-height:200px}.mc-float-btn{width:60px;height:60px;background:#dd0031;border-radius:30px;display:flex;align-items:center;justify-content:center;gap:10px;overflow:hidden;cursor:pointer;transition:width 0.5s cubic-bezier(0.22,0.61,0.36,1);box-shadow:0 4px 24px rgba(221,0,49,0.3);padding:0 18px;box-sizing:border-box}.mc-float-icon{color:#fff;font-size:20px;flex-shrink:0;line-height:1}.mc-float-text{color:#fff;font-size:14px;font-weight:600;white-space:nowrap;opacity:0;transition:opacity 0.2s ease 0.15s;letter-spacing:0.02em}.mc-float-btn:hover{width:180px}.mc-float-btn:hover .mc-float-text{opacity:1}.mc-float-note{font-size:12px;color:#aaa;margin-top:16px;text-align:right}" },
+
+        { "type": "note", "value": "메인 페이지 전체 흐름: '3열 모자이크 히어로(#000, clamp 240px 레드 타이틀) → 크림(#FAF9F5) About Us(비전 + 마키 + 카운터) → 서비스 3열(라운드 코너, 화이트 바) → 제품 수평 슬라이더(hover 시 회전 SVG VIEW MORE + 레드 중앙 원) → 뉴스(hover 화살표 이동 + 배경 #FAF9F5) → 다크 Contact(280px 스트로크 링 + 화살표) → 화이트 4열 푸터 + 플로팅 CTA(60→180px 필 확장)'. 브랜드 레드(#DD0031)는 히어로 타이틀, 제품 호버 중앙 원, 뉴스 카테고리, 플로팅 버튼에만 사용." }
       ]
     },
+
     "subpages": {
       "title": "서브페이지 클론",
       "blocks": [
-        { "type": "text", "value": "서브페이지는 배너 → 사이드 네비게이션 → 콘텐츠의 3단 구조를 일관되게 유지합니다. 아래는 주요 서브페이지를 100% 클론 코딩한 것입니다." },
+        { "type": "text", "value": "서브페이지는 배너 → 사이드 네비게이션 → 콘텐츠의 3단 구조를 일관되게 유지합니다. 모든 서브페이지에서 동일한 레이아웃 프레임워크를 공유하여 사용자의 위치 인식과 탐색 효율을 보장합니다." },
         { "type": "heading", "value": "① 기업소개 (About Us)" },
-        { "type": "component", "title": "서브페이지 공통 레이아웃 — 기업소개", "fullWidth": true, "html": "<div class='mc-sub'><div class='mc-sub-banner'><div class='mc-sub-banner-bg'></div><div class='mc-sub-banner-txt'><span class='mc-sub-cat'>About Us</span><span class='mc-sub-crumb'>Home&nbsp;&nbsp;→&nbsp;&nbsp;About Us&nbsp;&nbsp;→&nbsp;&nbsp;기업소개</span></div></div><div class='mc-sub-body'><nav class='mc-sub-nav'><a class='mc-snav is-active'>기업소개</a><a class='mc-snav'>CEO소개</a><a class='mc-snav'>연혁</a><a class='mc-snav'>오시는 길</a><a class='mc-snav'>CI</a></nav><div class='mc-sub-content'><h2 class='mc-sub-h2'>혁신적인 줄기세포 바이오 기술로,<br>건강한 내일을 만듭니다.</h2><p class='mc-sub-p'>미라셀은 생명을 존중하며 모두의 건강한 삶을 비전으로 추구하는 줄기세포 전문 기업입니다. 줄기세포와 세포치료 분야의 전문 기술과 임상 경험을 바탕으로 건강한 내일을 만들어 가겠습니다.</p><div class='mc-sub-gallery'><div class='mc-gal-item mc-gal1'></div><div class='mc-gal-item mc-gal2'></div><div class='mc-gal-item mc-gal3'></div></div></div></div></div>", "css": ".mc-sub{font-family:'Pretendard','Outfit',sans-serif;overflow:hidden}.mc-sub-banner{position:relative;height:220px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}.mc-sub-banner-bg{position:absolute;inset:0;background:#000}.mc-sub-banner-txt{position:relative;z-index:1;color:#fff}.mc-sub-cat{display:block;font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:0.02em}.mc-sub-crumb{font-size:12px;opacity:0.4;letter-spacing:0.04em}.mc-sub-body{display:flex;min-height:400px}.mc-sub-nav{width:220px;border-right:1px solid #e8e8e8;padding:24px 0;flex-shrink:0;background:#fff}.mc-snav{display:block;padding:14px 28px;font-size:14px;color:#888;text-decoration:none;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent}.mc-snav:hover{color:#000;background:#fafafa}.mc-snav.is-active{color:#000;font-weight:700;border-left-color:#dd0031}.mc-sub-content{flex:1;padding:48px 40px;background:#fff}.mc-sub-h2{font-size:24px;font-weight:700;line-height:1.6;margin:0 0 20px;color:#000}.mc-sub-p{font-size:15px;color:#888;line-height:1.8;margin:0 0 32px;max-width:600px}.mc-sub-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mc-gal-item{height:160px;border-radius:20px}.mc-gal1{background:linear-gradient(135deg,#e8e0d4,#c4b89c)}.mc-gal2{background:linear-gradient(135deg,#a8c4d8,#7498b8)}.mc-gal3{background:linear-gradient(135deg,#b8d4b8,#7aaa7a)}@media(max-width:768px){.mc-sub-body{flex-direction:column}.mc-sub-nav{width:100%;border-right:0;border-bottom:1px solid #e8e8e8;display:flex;overflow-x:auto;padding:0}.mc-snav{white-space:nowrap;border-left:0!important;padding:14px 20px;border-bottom:3px solid transparent}.mc-snav.is-active{border-left:0;border-bottom-color:#dd0031}.mc-sub-content{padding:32px 20px}.mc-sub-gallery{grid-template-columns:1fr}}" },
+        { "type": "component", "title": "서브페이지 공통 레이아웃 — 기업소개", "fullWidth": true, "html": "<div class='mc-sub'><div class='mc-sub-banner'><div class='mc-sub-banner-bg'></div><div class='mc-sub-banner-txt'><span class='mc-sub-cat'>About Us</span><span class='mc-sub-crumb'>Home&nbsp;&nbsp;→&nbsp;&nbsp;About Us&nbsp;&nbsp;→&nbsp;&nbsp;기업소개</span></div></div><div class='mc-sub-body'><nav class='mc-sub-nav'><a class='mc-snav is-active'>기업소개</a><a class='mc-snav'>CEO소개</a><a class='mc-snav'>연혁</a><a class='mc-snav'>오시는 길</a><a class='mc-snav'>CI</a></nav><div class='mc-sub-content'><h2 class='mc-sub-h2'>혁신적인 줄기세포 바이오 기술로,<br>건강한 내일을 만듭니다.</h2><p class='mc-sub-p'>미라셀은 생명을 존중하며 모두의 건강한 삶을 비전으로 추구하는 줄기세포 전문 기업입니다. 줄기세포와 세포치료 분야의 전문 기술과 임상 경험을 바탕으로 건강한 내일을 만들어 가겠습니다.</p><div class='mc-sub-gallery'><div class='mc-gal-item mc-gal1'></div><div class='mc-gal-item mc-gal2'></div><div class='mc-gal-item mc-gal3'></div></div></div></div></div>", "css": ".mc-sub{font-family:'Pretendard','Outfit',sans-serif;overflow:hidden}.mc-sub-banner{position:relative;height:220px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}.mc-sub-banner-bg{position:absolute;inset:0;background:#000}.mc-sub-banner-txt{position:relative;z-index:1;color:#fff}.mc-sub-cat{display:block;font-family:'Outfit',sans-serif;font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:0.02em}.mc-sub-crumb{font-size:12px;opacity:0.4;letter-spacing:0.04em}.mc-sub-body{display:flex;min-height:400px}.mc-sub-nav{width:220px;border-right:1px solid #e8e8e8;padding:24px 0;flex-shrink:0;background:#fff}.mc-snav{display:block;padding:14px 28px;font-size:14px;color:#888;text-decoration:none;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent}.mc-snav:hover{color:#000;background:#fafafa}.mc-snav.is-active{color:#000;font-weight:700;border-left-color:#dd0031}.mc-sub-content{flex:1;padding:48px 40px;background:#fff}.mc-sub-h2{font-size:24px;font-weight:700;line-height:1.6;margin:0 0 20px;color:#000}.mc-sub-p{font-size:15px;color:#888;line-height:1.8;margin:0 0 32px;max-width:600px}.mc-sub-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mc-gal-item{height:160px;border-radius:20px}.mc-gal1{background:linear-gradient(135deg,#e8e0d4,#c4b89c)}.mc-gal2{background:linear-gradient(135deg,#a8c4d8,#7498b8)}.mc-gal3{background:linear-gradient(135deg,#b8d4b8,#7aaa7a)}@media(max-width:767px){.mc-sub-body{flex-direction:column}.mc-sub-nav{width:100%;border-right:0;border-bottom:1px solid #e8e8e8;display:flex;overflow-x:auto;padding:0}.mc-snav{white-space:nowrap;border-left:0!important;padding:14px 20px;border-bottom:3px solid transparent}.mc-snav.is-active{border-left-color:transparent;border-bottom-color:#dd0031}.mc-sub-content{padding:32px 20px}.mc-sub-gallery{grid-template-columns:1fr}}" },
         { "type": "heading", "value": "② 연혁 (History)" },
-        { "type": "component", "title": "연혁 타임라인 — 풀 클론", "fullWidth": true, "html": "<div class='mc-hist'><div class='mc-sub-banner'><div class='mc-sub-banner-bg'></div><div class='mc-sub-banner-txt'><span class='mc-sub-cat'>About Us</span><span class='mc-sub-crumb'>Home&nbsp;&nbsp;→&nbsp;&nbsp;About Us&nbsp;&nbsp;→&nbsp;&nbsp;연혁</span></div></div><div class='mc-hist-main'><div class='mc-hist-hd'><span class='mc-hist-en'>History<span class='mc-hist-rdot'></span></span><h2 class='mc-hist-ko'>연혁</h2></div><div class='mc-hist-tabs'><button class='mc-htab is-on'>2020's</button><button class='mc-htab'>2010's</button><button class='mc-htab'>2000's</button><button class='mc-htab'>1990's</button><button class='mc-htab'>1980's</button></div><div class='mc-hist-line'></div><div class='mc-hist-body'><div class='mc-decade-hd'><span class='mc-decade-dot'>•</span><span class='mc-decade-nm'>2020's</span></div><div class='mc-yr-row'><div class='mc-yr-num'>2026</div><ul class='mc-yr-list'><li class='is-bold'>· 미국 식품의약국 FDA 510(k) 시스템 전체 승인</li><li>· 허가번호 K250516 - SMART M-CELL PRP Concentration System</li></ul></div><hr class='mc-yr-sep'/><div class='mc-yr-row'><div class='mc-yr-num'>2025</div><ul class='mc-yr-list'><li class='is-bold'>· 세계 최초 빛 에너지 이용한 링거백 커버 크로마엠셀 개발</li><li>· 발리 의료 특구 줄기세포 클리닉 센터 설립</li></ul></div><hr class='mc-yr-sep'/><div class='mc-yr-row'><div class='mc-yr-num'>2024</div><ul class='mc-yr-list'><li class='is-bold'>· 글로벌 강소기업 선정 (중소벤처기업부)</li><li>· 보건복지부 장관 표창</li></ul></div></div></div></div>", "css": ".mc-hist{font-family:'Pretendard','Outfit',sans-serif;background:#fff}.mc-hist-main{max-width:1000px;margin:0 auto;padding:40px 40px 60px}.mc-hist-hd{text-align:center;margin-bottom:28px}.mc-hist-en{font-size:17px;font-weight:700;color:#dd0031;letter-spacing:0.04em;position:relative;display:inline-block}.mc-hist-rdot{position:absolute;top:-2px;right:-9px;width:5px;height:5px;background:#dd0031;border-radius:50%}.mc-hist-ko{font-size:52px;font-weight:900;margin:4px 0 0;color:#000}.mc-hist-tabs{display:flex;justify-content:center;gap:14px;margin-bottom:28px}.mc-htab{padding:14px 44px;border:0;border-radius:99px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;background:#f0f0f0;color:#666;font-family:'Pretendard','Outfit',sans-serif}.mc-htab.is-on{background:#dd0031;color:#fff}.mc-htab:hover:not(.is-on){background:#e4e4e4}.mc-hist-line{height:2px;background:#000;margin-bottom:48px}.mc-hist-body{padding:0 20px}.mc-decade-hd{display:flex;align-items:center;gap:14px;margin-bottom:40px}.mc-decade-dot{font-size:40px;line-height:1;color:#000}.mc-decade-nm{font-size:48px;font-weight:900;color:#000}.mc-yr-row{display:grid;grid-template-columns:110px 1fr;gap:28px;align-items:start}.mc-yr-num{font-size:30px;font-weight:800;color:#000;text-align:right;padding-top:2px}.mc-yr-list{margin:0;padding:0;list-style:none}.mc-yr-list li{font-size:15px;line-height:2.1;color:#777}.mc-yr-list li.is-bold{font-weight:700;color:#000}.mc-yr-sep{border:0;height:1px;background:#e8e8e8;margin:20px 0}@media(max-width:768px){.mc-hist-main{padding:24px 16px 40px}.mc-htab{padding:10px 24px;font-size:14px}.mc-hist-ko{font-size:36px}.mc-decade-nm{font-size:32px}.mc-yr-row{grid-template-columns:70px 1fr;gap:16px}.mc-yr-num{font-size:22px}}", "js": "document.querySelectorAll('.mc-htab').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('.mc-htab').forEach(function(b){b.classList.remove('is-on')});t.classList.add('is-on')})})" },
+        { "type": "component", "title": "연혁 타임라인 — 레이블+레드닷 인트로", "fullWidth": true, "html": "<div class='mc-hist'><div class='mc-sub-banner'><div class='mc-sub-banner-bg'></div><div class='mc-sub-banner-txt'><span class='mc-sub-cat'>About Us</span><span class='mc-sub-crumb'>Home&nbsp;&nbsp;→&nbsp;&nbsp;About Us&nbsp;&nbsp;→&nbsp;&nbsp;연혁</span></div></div><div class='mc-hist-main'><div class='mc-hist-hd'><span class='mc-hist-en'>History<span class='mc-hist-rdot'></span></span><h2 class='mc-hist-ko'>연혁</h2></div><div class='mc-hist-tabs'><button class='mc-htab is-on'>2020's</button><button class='mc-htab'>2010's</button><button class='mc-htab'>2000's</button></div><div class='mc-hist-line'></div><div class='mc-hist-body'><div class='mc-decade-hd'><span class='mc-decade-dot'>•</span><span class='mc-decade-nm'>2020's</span></div><div class='mc-yr-row'><div class='mc-yr-num'>2026</div><ul class='mc-yr-list'><li class='is-bold'>· 미국 식품의약국 FDA 510(k) 시스템 전체 승인</li><li>· 허가번호 K250516 - SMART M-CELL PRP Concentration System</li></ul></div><hr class='mc-yr-sep'/><div class='mc-yr-row'><div class='mc-yr-num'>2025</div><ul class='mc-yr-list'><li class='is-bold'>· 세계 최초 빛 에너지 이용한 링거백 커버 크로마엠셀 개발</li><li>· 발리 의료 특구 줄기세포 클리닉 센터 설립</li></ul></div><hr class='mc-yr-sep'/><div class='mc-yr-row'><div class='mc-yr-num'>2024</div><ul class='mc-yr-list'><li class='is-bold'>· 글로벌 강소기업 선정 (중소벤처기업부)</li><li>· 보건복지부 장관 표창</li></ul></div></div></div></div>", "css": ".mc-hist{font-family:'Pretendard','Outfit',sans-serif;background:#fff}.mc-hist-main{max-width:1000px;margin:0 auto;padding:40px 40px 60px}.mc-hist-hd{text-align:center;margin-bottom:28px}.mc-hist-en{font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;color:#dd0031;letter-spacing:0.04em;position:relative;display:inline-block}.mc-hist-rdot{position:absolute;top:-2px;right:-9px;width:5px;height:5px;background:#dd0031;border-radius:50%}.mc-hist-ko{font-size:52px;font-weight:900;margin:4px 0 0;color:#000;letter-spacing:-0.03em}.mc-hist-tabs{display:flex;justify-content:center;gap:14px;margin-bottom:28px}.mc-htab{padding:14px 44px;border:0;border-radius:99px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;background:#f0f0f0;color:#666;font-family:'Pretendard','Outfit',sans-serif}.mc-htab.is-on{background:#dd0031;color:#fff}.mc-htab:hover:not(.is-on){background:#e4e4e4}.mc-hist-line{height:2px;background:#000;margin-bottom:48px}.mc-hist-body{padding:0 20px}.mc-decade-hd{display:flex;align-items:center;gap:14px;margin-bottom:40px}.mc-decade-dot{font-size:40px;line-height:1;color:#000}.mc-decade-nm{font-family:'Outfit',sans-serif;font-size:48px;font-weight:900;color:#000}.mc-yr-row{display:grid;grid-template-columns:110px 1fr;gap:28px;align-items:start}.mc-yr-num{font-family:'Outfit',sans-serif;font-size:30px;font-weight:800;color:#000;text-align:right;padding-top:2px}.mc-yr-list{margin:0;padding:0;list-style:none}.mc-yr-list li{font-size:15px;line-height:2.1;color:#777}.mc-yr-list li.is-bold{font-weight:700;color:#000}.mc-yr-sep{border:0;height:1px;background:#e8e8e8;margin:20px 0}@media(max-width:767px){.mc-hist-main{padding:24px 16px 40px}.mc-htab{padding:10px 24px;font-size:14px}.mc-hist-ko{font-size:36px}.mc-decade-nm{font-size:32px}.mc-yr-row{grid-template-columns:70px 1fr;gap:16px}.mc-yr-num{font-size:22px}}", "js": "document.querySelectorAll('.mc-htab').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('.mc-htab').forEach(function(b){b.classList.remove('is-on')});t.classList.add('is-on')})})" },
         { "type": "heading", "value": "③ 제품 상세 (Smart M-Cell)" },
-        { "type": "component", "title": "제품 상세 페이지 클론", "fullWidth": true, "html": "<div class='mc-sub'><div class='mc-sub-banner'><div class='mc-sub-banner-bg' style='background:linear-gradient(135deg,#000,#1a1a1a)'></div><div class='mc-sub-banner-txt'><span class='mc-sub-cat'>Product</span><span class='mc-sub-crumb'>Home&nbsp;&nbsp;→&nbsp;&nbsp;Product&nbsp;&nbsp;→&nbsp;&nbsp;Smart M-Cell</span></div></div><div class='mc-sub-body'><nav class='mc-sub-nav'><a class='mc-snav is-active'>Smart M-Cell</a><a class='mc-snav'>BmSC Kit</a><a class='mc-snav'>BSC Kit</a><a class='mc-snav'>Chroma M-CELL</a><a class='mc-snav'>Vacuum lock syringe</a></nav><div class='mc-sub-content'><h2 class='mc-sub-h2'>Smart M-Cell</h2><p class='mc-sub-p'>세포용원심분리장치 · 의료기기</p><div class='mc-spec-grid'><div class='mc-spec-card'><div class='mc-spec-nm'>줄기세포</div><div class='mc-spec-desc'>골수 유래 줄기세포 분리</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>성장인자</div><div class='mc-spec-desc'>PRP 성장인자 농축</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>SDF-1a</div><div class='mc-spec-desc'>줄기세포 귀소인자</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>백혈구</div><div class='mc-spec-desc'>면역 세포 분리</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>혈소판</div><div class='mc-spec-desc'>고농도 혈소판 추출</div></div></div><h3 class='mc-sub-h3'>LED 파장별 특성</h3><div class='mc-led-tabs'><button class='mc-led is-on' style='--led:#0066FF'>Blue</button><button class='mc-led' style='--led:#00AA44'>Green</button><button class='mc-led' style='--led:#FFAA00'>Yellow</button><button class='mc-led' style='--led:#DD0000'>Red</button></div><div class='mc-led-info'>Blue LED (460~475nm) — 여드름균 사멸, 항균 효과</div><h3 class='mc-sub-h3'>기기 사양</h3><table class='mc-spec-table'><tr><td>분류</td><td>세포용원심분리장치 (A47070.01)</td></tr><tr><td>정격전압</td><td>AC 100-240V, 50/60Hz</td></tr><tr><td>소비전력</td><td>Max 200W</td></tr><tr><td>치수</td><td>340 x 340 x 280 mm</td></tr><tr><td>중량</td><td>약 8.5kg</td></tr></table></div></div></div>", "css": ".mc-spec-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:32px 0}.mc-spec-card{text-align:center;padding:24px 12px;border:1px solid #e8e8e8;border-radius:20px;transition:transform 0.2s}.mc-spec-card:hover{transform:translateY(-3px)}.mc-spec-nm{font-size:14px;font-weight:700;margin-bottom:4px;color:#000}.mc-spec-desc{font-size:12px;color:#999}.mc-sub-h3{font-size:18px;font-weight:700;margin:40px 0 16px;color:#000;padding-bottom:12px;border-bottom:1px solid #e8e8e8}.mc-led-tabs{display:flex;gap:8px;margin-bottom:16px}.mc-led{padding:10px 28px;border:2px solid var(--led);border-radius:99px;background:transparent;color:var(--led);font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Pretendard','Outfit',sans-serif}.mc-led.is-on{background:var(--led);color:#fff}.mc-led:hover:not(.is-on){background:color-mix(in srgb,var(--led) 10%,transparent)}.mc-led-info{font-size:15px;color:#555;padding:16px;background:#f9f9f9;border-radius:12px;margin-bottom:24px}.mc-spec-table{width:100%;border-collapse:collapse;font-size:14px}.mc-spec-table td{padding:14px 16px;border-bottom:1px solid #e8e8e8}.mc-spec-table td:first-child{font-weight:600;color:#000;width:140px;background:#fafafa}@media(max-width:768px){.mc-spec-grid{grid-template-columns:repeat(3,1fr)}}", "js": "document.querySelectorAll('.mc-led').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.mc-led').forEach(function(t){t.classList.remove('is-on')});b.classList.add('is-on');var colors={'Blue':'Blue LED (460~475nm) — 여드름균 사멸, 항균 효과','Green':'Green LED (525~530nm) — 색소 침착 개선, 피부 진정','Yellow':'Yellow LED (585~590nm) — 홍조 개선, 혈관 수축','Red':'Red LED (660nm) — 콜라겐 생성, 상처 치유'};var info=document.querySelector('.mc-led-info');if(info)info.textContent=colors[b.textContent]||''})})" },
-        { "type": "note", "value": "모든 서브페이지가 배너(220px 검정) + 좌측 사이드 네비(220px, 활성 항목 좌측 3px #dd0031 보더) + 콘텐츠 영역의 3단 구조를 완벽하게 유지합니다. 이 일관성이 사용자의 위치 인식과 탐색 효율을 보장합니다." }
+        { "type": "component", "title": "제품 상세 페이지 클론", "fullWidth": true, "html": "<div class='mc-sub'><div class='mc-sub-banner'><div class='mc-sub-banner-bg' style='background:linear-gradient(135deg,#000,#1a1a1a)'></div><div class='mc-sub-banner-txt'><span class='mc-sub-cat'>Product</span><span class='mc-sub-crumb'>Home&nbsp;&nbsp;→&nbsp;&nbsp;Product&nbsp;&nbsp;→&nbsp;&nbsp;Smart M-Cell</span></div></div><div class='mc-sub-body'><nav class='mc-sub-nav'><a class='mc-snav is-active'>Smart M-Cell</a><a class='mc-snav'>BmSC Kit</a><a class='mc-snav'>BSC Kit</a><a class='mc-snav'>Chroma M-CELL</a><a class='mc-snav'>Vacuum lock syringe</a></nav><div class='mc-sub-content'><h2 class='mc-sub-h2'>Smart M-Cell</h2><p class='mc-sub-p'>세포용원심분리장치 · 의료기기</p><div class='mc-spec-grid'><div class='mc-spec-card'><div class='mc-spec-nm'>줄기세포</div><div class='mc-spec-desc'>골수 유래 줄기세포 분리</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>성장인자</div><div class='mc-spec-desc'>PRP 성장인자 농축</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>SDF-1a</div><div class='mc-spec-desc'>줄기세포 귀소인자</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>백혈구</div><div class='mc-spec-desc'>면역 세포 분리</div></div><div class='mc-spec-card'><div class='mc-spec-nm'>혈소판</div><div class='mc-spec-desc'>고농도 혈소판 추출</div></div></div><h3 class='mc-sub-h3'>LED 파장별 특성</h3><div class='mc-led-tabs'><button class='mc-led is-on' style='--led:#0066FF'>Blue</button><button class='mc-led' style='--led:#00AA44'>Green</button><button class='mc-led' style='--led:#FFAA00'>Yellow</button><button class='mc-led' style='--led:#DD0000'>Red</button></div><div class='mc-led-info'>Blue LED (460~475nm) — 여드름균 사멸, 항균 효과</div><h3 class='mc-sub-h3'>기기 사양</h3><table class='mc-spec-table'><tr><td>분류</td><td>세포용원심분리장치 (A47070.01)</td></tr><tr><td>정격전압</td><td>AC 100-240V, 50/60Hz</td></tr><tr><td>소비전력</td><td>Max 200W</td></tr><tr><td>치수</td><td>340 × 340 × 280 mm</td></tr><tr><td>중량</td><td>약 8.5kg</td></tr></table></div></div></div>", "css": ".mc-spec-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:32px 0}.mc-spec-card{text-align:center;padding:24px 12px;border:1px solid #e8e8e8;border-radius:20px;transition:transform 0.2s}.mc-spec-card:hover{transform:translateY(-3px)}.mc-spec-nm{font-size:14px;font-weight:700;margin-bottom:4px;color:#000}.mc-spec-desc{font-size:12px;color:#999}.mc-sub-h3{font-size:18px;font-weight:700;margin:40px 0 16px;color:#000;padding-bottom:12px;border-bottom:1px solid #e8e8e8}.mc-led-tabs{display:flex;gap:8px;margin-bottom:16px}.mc-led{padding:10px 28px;border:2px solid var(--led);border-radius:99px;background:transparent;color:var(--led);font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Pretendard','Outfit',sans-serif}.mc-led.is-on{background:var(--led);color:#fff}.mc-led:hover:not(.is-on){background:color-mix(in srgb,var(--led) 10%,transparent)}.mc-led-info{font-size:15px;color:#555;padding:16px;background:#f9f9f9;border-radius:12px;margin-bottom:24px}.mc-spec-table{width:100%;border-collapse:collapse;font-size:14px}.mc-spec-table td{padding:14px 16px;border-bottom:1px solid #e8e8e8}.mc-spec-table td:first-child{font-weight:600;color:#000;width:140px;background:#fafafa}@media(max-width:767px){.mc-spec-grid{grid-template-columns:repeat(3,1fr)}}", "js": "document.querySelectorAll('.mc-led').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.mc-led').forEach(function(t){t.classList.remove('is-on')});b.classList.add('is-on');var colors={'Blue':'Blue LED (460~475nm) — 여드름균 사멸, 항균 효과','Green':'Green LED (525~530nm) — 색소 침착 개선, 피부 진정','Yellow':'Yellow LED (585~590nm) — 홍조 개선, 혈관 수축','Red':'Red LED (660nm) — 콜라겐 생성, 상처 치유'};var info=document.querySelector('.mc-led-info');if(info)info.textContent=colors[b.textContent]||''})})" },
+        { "type": "note", "value": "모든 서브페이지가 배너(220px, 검정) + 좌측 사이드 네비(220px, 활성 항목에 좌측 3px #dd0031 보더) + 콘텐츠 영역의 3단 구조를 완벽히 유지. 연혁 페이지의 'History + 레드닷' 인트로 패턴은 메인 페이지의 섹션 인트로 패턴과 동일한 디자인 언어를 공유하여 사이트 전체의 시각적 일관성 확보." }
       ]
     },
-    "layout": {
-      "title": "레이아웃 & 그리드",
-      "blocks": [
-        { "type": "kv", "title": "핵심 치수", "columns": 2, "items": [
-          { "label": "Max-width", "value": "1760px (히어로) / 1400px (콘텐츠)" },
-          { "label": "그리드", "value": "유연 컬럼 (1~5열 교차)" },
-          { "label": "헤더", "value": "position:absolute, top:55px, height:80px, z-index:9999" },
-          { "label": "반응형", "value": "모바일 / 태블릿 / 데스크톱 3단계 (768px 기준)" }
-        ]},
-        { "type": "heading", "value": "그리드 시스템" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "히어로 모자이크", "value": "3열 flex row, gap 30px, 각 열 5장 × 400px 패널 (border-radius 20px)" },
-          { "label": "서비스 섹션", "value": "3열 flex, gap 0, 풀와이드, 카드 내부 padding-top 182.26%" },
-          { "label": "제품 섹션", "value": "5열 flex row, gap 24px, max-width 1400px, 이미지 높이 460px" },
-          { "label": "뉴스 섹션", "value": "2열(50%/50%) flex, border-top 2px solid #000, 아이템 높이 120px" },
-          { "label": "서브페이지", "value": "사이드 네비 220px + 콘텐츠 flex, 배너 220px" }
-        ]},
-        { "type": "note", "value": "히어로는 1760px 풀 와이드 모자이크 + 중앙 오버레이, 콘텐츠 영역은 1400px 제한. 서비스 카드의 padding-top:182.26%는 세로 비율을 강제하는 기법으로 일관된 카드 높이를 보장." }
-      ]
-    },
-    "typography": {
-      "title": "타이포그래피",
-      "blocks": [
-        { "type": "kv", "title": "기본 설정", "columns": 2, "items": [
-          { "label": "폰트 패밀리", "value": "Pretendard + Outfit (한글 + 영문 조합)" },
-          { "label": "본문 크기", "value": "15~16px · Regular 400~500" },
-          { "label": "행간", "value": "1.2~2.1배 (콘텐츠 유형별 상이)" },
-          { "label": "자간", "value": "-0.02em~-0.05em (한글 기본), 영문 로고는 -0.025em" }
-        ]},
-        { "type": "heading", "value": "타이포 스케일" },
-        { "type": "typo", "items": [
-          { "label": "Hero Display", "size": "150px", "weight": 600, "sample": "Miracell", "tracking": "-0.025em" },
-          { "label": "About Title", "size": "65px (6.5rem)", "weight": 800, "sample": "The standard of Stem Cell", "tracking": "-0.05em" },
-          { "label": "Counter Number", "size": "80px (8rem)", "weight": 600, "sample": "2009" },
-          { "label": "섹션 제목", "size": "46px", "weight": 600, "sample": "Product", "tracking": "-0.03em" },
-          { "label": "Hero Sub", "size": "30px", "weight": 500, "sample": "Standard of Stem Cell" },
-          { "label": "마키 텍스트", "size": "280px (28rem)", "weight": 800, "sample": "MIRACELL", "tracking": "-0.03em" },
-          { "label": "뉴스 제목", "size": "24px", "weight": 700, "sample": "미라셀(주), 미국 FDA 510(k) 승인" },
-          { "label": "서브페이지 H2", "size": "24px", "weight": 700, "sample": "혁신적인 줄기세포 바이오 기술" },
-          { "label": "Body 본문", "size": "15~16px", "weight": 400, "sample": "줄기세포와 세포치료 분야의 전문 기술과 임상 경험을 바탕으로 한 바이오 기업입니다." },
-          { "label": "Copyright", "size": "14px", "weight": 400, "sample": "COPYRIGHT © Miracell ALL RIGHT RESERVED." }
-        ]},
-        { "type": "note", "value": "Pretendard(한글) + Outfit(영문) 조합으로 깔끔하고 현대적인 인상. weight 400(본문)~800(About Title, 마키)의 넓은 범위로 정보 계층을 효과적으로 구축. 히어로 150px는 사이트 전체에서 가장 큰 타이포이며 브랜드 레드(#dd0031)와 결합하여 강렬한 첫인상." }
-      ]
-    },
+
     "color": {
       "title": "컬러 시스템",
       "blocks": [
-        { "type": "text", "value": "극도로 절제된 모노크롬 팔레트에 브랜드 레드(#dd0031)가 유일한 컬러 포인트. 의료·바이오 분야의 신뢰성을 블랙·화이트·그레이 3톤으로 표현합니다." },
+        { "type": "text", "value": "극도로 절제된 모노크롬 팔레트에 브랜드 레드(#DD0031)가 유일한 컬러 포인트. UI 자체는 무채색으로 투명하게 물러나고, 레드는 전략적 터치포인트에만 등장하여 최대 임팩트를 생성합니다." },
         { "type": "palette", "title": "핵심 팔레트", "colors": [
-          { "name": "Brand Red", "hex": "#dd0031", "usage": "히어로 타이틀 · CTA · 뉴스 hover · 연혁 탭 활성 · 사이드 네비 활성" },
-          { "name": "Primary Black", "hex": "#000000", "usage": "히어로 배경 · 제목 · GNB · 뉴스 border-top" },
-          { "name": "Background", "hex": "#FFFFFF", "usage": "푸터 배경 · 서비스 상하 바 · 제품 섹션 · 뉴스 섹션" },
-          { "name": "Surface", "hex": "#F2F2F2", "usage": "제품 썸네일 배경" },
-          { "name": "Text Muted", "hex": "#888888", "usage": "서브 설명 · 뉴스 날짜 · 카운터 라벨" },
-          { "name": "Text Light", "hex": "#999999", "usage": "캡션 · 카운터 suffix" },
-          { "name": "Border", "hex": "#E8E8E8", "usage": "뉴스 아이템 하단선 · 스펙 카드 테두리" },
-          { "name": "White Overlay", "hex": "rgba(255,255,255,0.6)", "usage": "서비스 sub 텍스트 · 히어로 About desc" }
+          { "name": "Brand Red", "hex": "#DD0031", "usage": "히어로 타이틀 · CTA 버튼 · 제품 호버 중앙 원 · 뉴스 카테고리 · 사이드 네비 활성 · 연혁 활성 탭 · 플로팅 버튼 · 로고 점" },
+          { "name": "Black", "hex": "#000000", "usage": "히어로 배경 · 제목 텍스트 · GNB · Contact 배경 · 뉴스 구분선 · 연혁 라인" },
+          { "name": "White", "hex": "#FFFFFF", "usage": "기본 배경 · 서비스 상하 바 · 뉴스/제품 섹션 배경 · 푸터 배경 · 카운터 배경" },
+          { "name": "Cream", "hex": "#FAF9F5", "usage": "About Us 섹션 배경 · 마키 텍스트 배경 · 뉴스 hover 배경" },
+          { "name": "Light Gray", "hex": "#F2F2F2", "usage": "제품 썸네일 배경 · 연혁 비활성 탭 · 입력 필드 배경" },
+          { "name": "Dark Gray", "hex": "#222222", "usage": "보조 제목 · 다크 섹션 대체 텍스트" },
+          { "name": "Text Secondary", "hex": "#666666", "usage": "About 본문 · 설명 텍스트" },
+          { "name": "Text Muted", "hex": "#888888", "usage": "서브 설명 · 뉴스 날짜 · 카운터 라벨 · 제품 서브 텍스트" },
+          { "name": "Border", "hex": "#E8E8E8", "usage": "뉴스 아이템 구분선 · 스펙 카드 테두리 · 사이드 네비 구분선" }
         ]},
-        { "type": "heading", "value": "LED 파장 컬러 (제품 페이지 전용)" },
-        { "type": "palette", "title": "유일한 컬러풀 요소", "colors": [
-          { "name": "Blue LED", "hex": "#0066FF", "usage": "460~475nm · 여드름균 사멸" },
-          { "name": "Green LED", "hex": "#00AA44", "usage": "525~530nm · 색소 침착 개선" },
-          { "name": "Yellow LED", "hex": "#FFAA00", "usage": "585~590nm · 홍조 개선" },
-          { "name": "Red LED", "hex": "#DD0000", "usage": "660nm · 콜라겐 생성" }
+        { "type": "heading", "value": "사용 비율 분석" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "White (#FFF)", "value": "약 60% — 기본 배경, 서비스 바, 푸터" },
+          { "label": "Black/Dark (#000~#222)", "value": "약 30% — 텍스트, 히어로/Contact 배경" },
+          { "label": "Cream/Light (#FAF~#F2F)", "value": "약 8% — About 배경, hover 배경, 썸네일" },
+          { "label": "Brand Red (#DD0031)", "value": "약 2% — CTA, 호버 액센트, 로고 점" }
         ]},
-        { "type": "note", "value": "컬러 전략의 핵심은 '부재의 미학'. UI 자체는 모노크롬으로 투명하게 물러나고, 그레이스케일 이미지 모자이크 위에 브랜드 레드(#dd0031)가 150px로 놓이면서 극적인 대비. CTA 스피닝 버튼, 뉴스 hover 밑줄 등 극히 제한적으로만 사용하여 시선 집중 효과를 극대화." }
-      ]
-    },
-    "components": {
-      "title": "컴포넌트",
-      "blocks": [
-        { "type": "text", "value": "12종의 핵심 컴포넌트가 사용되며, 각각 명확한 커뮤니케이션 목적을 수행합니다." },
-        { "type": "kv", "title": "컴포넌트 인벤토리", "columns": 2, "items": [
-          { "label": "3열 모자이크", "value": "Hero 15장 이미지 패널 (400×400, radius 20px) 세로 무한 스크롤" },
-          { "label": "카운터", "value": "뷰포트 진입 시 0→목표값 카운트업, 80px 숫자" },
-          { "label": "마키 텍스트", "value": "280px 초대형 흐르는 텍스트, opacity 0.06" },
-          { "label": "카드(서비스)", "value": "3열 풀블리드 + 상하 100px 화이트바 + 라운드코너 40px" },
-          { "label": "카드(제품)", "value": "5열 이미지 460px + hover 시 border-radius → 50%(원형 전환)" },
-          { "label": "회전 CTA", "value": "SVG 원형 텍스트 151×151 + 레드 원형 버튼, 14s 회전" },
-          { "label": "Pill 탭", "value": "연혁 연대별 · 레드 활성 상태" },
-          { "label": "LED 탭", "value": "제품 파장 선택 · 컬러 보더" },
-          { "label": "사이드 네비", "value": "서브페이지 좌측 220px · #dd0031 보더 활성" },
-          { "label": "뉴스 리스트", "value": "2열 레이아웃, hover 시 레드 밑줄 0→100% 애니메이션" },
-          { "label": "스크롤 인디케이터", "value": "좌하단 dot + line, 바운스 애니메이션" },
-          { "label": "사양표", "value": "2열 테이블 · 회색 라벨 배경" }
-        ]},
-        { "type": "heading", "value": "버튼 시스템" },
+        { "type": "heading", "value": "섹션별 컬러 매핑" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Spin CTA", "value": "width:151px, height:151px, SVG textPath 14s rotation + #dd0031 circle 64px" },
-          { "label": "Pill (원형)", "value": "border-radius: 99px, 연혁 탭 · LED 탭 전용" },
-          { "label": "Footer Link", "value": "font-size:16px, rgba(0,0,0,0.5), hover→#000" }
+          { "label": "Header", "value": "투명 → 스크롤 시 #FFF + box-shadow. 텍스트: #FFF → #000" },
+          { "label": "Hero", "value": "배경 #000, 타이틀 #DD0031, 서브 #FFF (opacity 0.85)" },
+          { "label": "About Us", "value": "배경 #FAF9F5 (크림), 제목 #000, 본문 #666, 마키 rgba(0,0,0,0.04)" },
+          { "label": "Counters", "value": "배경 #FFF, 숫자 #000, suffix #999, 라벨 #888, 구분선 rgba(0,0,0,0.08)" },
+          { "label": "Service", "value": "배경 다크 그라데이션, 제목 #FFF, 서브 rgba(255,255,255,0.55), 바 #FFF" },
+          { "label": "Product", "value": "배경 #FFF, 썸네일 #F2F2F2 그라데이션, 호버 오버레이 rgba(0,0,0,0.15), SVG 텍스트 #FFF, 중앙 원 #DD0031" },
+          { "label": "Newsroom", "value": "배경 #FFF, hover 배경 #FAF9F5, 카테고리 #DD0031, 화살표 hover #DD0031" },
+          { "label": "Contact", "value": "배경 #0A0A0A, 제목 #FFF, 서브 rgba(255,255,255,0.45), 링 stroke rgba(255,255,255,0.5)" },
+          { "label": "Footer", "value": "배경 #FFF, 로고 #000, 본문 rgba(0,0,0,0.45), 구분선 rgba(0,0,0,0.06)" }
         ]},
-        { "type": "note", "value": "가장 독특한 컴포넌트는 제품 카드의 hover 원형 전환(radius 20px→50%). 직사각형→원형 모핑이 줄기세포의 유기적 이미지를 시각적으로 표현. 서비스 카드의 상하 화이트 바(100px)는 다크 배경과 화이트 영역을 부드럽게 연결하는 장치." }
+        { "type": "heading", "value": "대비 검증 (WCAG 2.1)" },
+        { "type": "component", "title": "주요 텍스트-배경 대비율", "html": "<div class='mc-a11y'><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#fff;color:#000'>본문 #000 on #FFF</div><div class='mc-a11y-res'><strong>21.0 : 1</strong><span class='mc-a11y-ok'>AAA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#FAF9F5;color:#000'>제목 #000 on #FAF9F5</div><div class='mc-a11y-res'><strong>19.3 : 1</strong><span class='mc-a11y-ok'>AAA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#FAF9F5;color:#666'>About 본문 #666 on #FAF9F5</div><div class='mc-a11y-res'><strong>5.7 : 1</strong><span class='mc-a11y-ok'>AA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#fff;color:#888'>캡션 #888 on #FFF</div><div class='mc-a11y-res'><strong>3.5 : 1</strong><span class='mc-a11y-mid'>AA Large</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#000;color:#dd0031'>히어로 레드 #DD0031 on #000</div><div class='mc-a11y-res'><strong>4.6 : 1</strong><span class='mc-a11y-ok'>AA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#dd0031;color:#fff'>CTA #FFF on #DD0031</div><div class='mc-a11y-res'><strong>4.5 : 1</strong><span class='mc-a11y-ok'>AA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#000;color:#fff'>다크 섹션 #FFF on #000</div><div class='mc-a11y-res'><strong>21.0 : 1</strong><span class='mc-a11y-ok'>AAA</span></div></div></div>", "css": ".mc-a11y{display:flex;flex-direction:column;gap:8px;font-family:'Pretendard','Outfit',sans-serif}.mc-a11y-row{display:flex;align-items:center;gap:16px}.mc-a11y-samp{flex:1;padding:14px 20px;font-size:13px;font-weight:500;border:1px solid #e8e8e8;border-radius:8px}.mc-a11y-res{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:160px}.mc-a11y-res strong{font-size:13px;font-variant-numeric:tabular-nums}.mc-a11y-ok{font-size:10px;padding:3px 10px;background:#16A34A;color:#fff;border-radius:99px;font-weight:700}.mc-a11y-mid{font-size:10px;padding:3px 10px;background:#EAB700;color:#000;border-radius:99px;font-weight:700}" },
+        { "type": "heading", "value": "디자이너 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "브랜드 레드 사용 원칙", "value": "한 화면에 최대 2~3개 포인트로만 사용. CTA, 활성 상태, 로고 액센트에 한정. 배경색으로 사용하지 않음 (플로팅 버튼 제외)" },
+          { "label": "다크 섹션 전환", "value": "Hero(#000) → About(크림) → Service(다크) → Product(화이트) 패턴으로 명암 교차 리듬 생성. Contact(다크) → Footer(화이트)로 마무리" },
+          { "label": "크림(#FAF9F5) 역할", "value": "순수 화이트(#FFF)와 미묘한 차이로 시각적 따뜻함 부여. About 섹션에서 '의료 기업의 인간적 면모'를 표현" },
+          { "label": "투명도 활용", "value": "rgba(0,0,0,0.04) 마키 / rgba(255,255,255,0.45~0.55) 다크 섹션 보조 텍스트 — 투명도로 정보 계층 세분화" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "CSS 변수 정의", "value": "--primary: #DD0031; --bg-cream: #FAF9F5; --bg-light: #F2F2F2; --text-primary: #000; --text-secondary: #666; --text-muted: #888; --border: #E8E8E8" },
+          { "label": "다크 모드 대응", "value": "현재 다크 모드 미지원. 구현 시 --bg-cream을 #1a1a1a, --text-primary를 #fff로 전환하고 Brand Red는 유지" },
+          { "label": "대비 주의사항", "value": "#888 on #FFF (3.5:1)는 AA Large만 충족. 14px 미만 본문에는 사용 금지. 최소 #666 이상 사용 권장" },
+          { "label": "LED 컬러 (제품 전용)", "value": "Blue #0066FF · Green #00AA44 · Yellow #FFAA00 · Red #DD0000 — var(--led) CSS 변수로 동적 적용" }
+        ]},
+        { "type": "note", "value": "컬러 전략의 핵심은 '부재의 미학'. 모노크롬 98%의 절제된 캔버스 위에 #DD0031 2%만으로 브랜드 레드의 존재감을 극대화. 이 비율이 깨지면 의료 분야 특유의 '신뢰감'과 '전문성' 인상이 훼손되므로 레드 사용 확대에 극히 신중해야 함." }
       ]
     },
-    "interaction": {
-      "title": "인터랙션",
+
+    "typography": {
+      "title": "타이포그래피 시스템",
       "blocks": [
-        { "type": "text", "value": "인터랙션은 '모자이크 스크롤 → 마키 플로우 → 카운트업 → 원형 전환 → 밑줄 애니메이션 → 스핀 CTA'의 층위를 가집니다." },
-        { "type": "kv", "title": "인터랙션 인벤토리", "columns": 1, "items": [
-          { "label": "모자이크 스크롤", "value": "3열 패널이 서로 반대 방향으로 세로 무한 스크롤 (col1/3 위→아래, col2 아래→위), 18~22s linear infinite" },
-          { "label": "플로팅 이미지", "value": "About 이미지 translateY ±7px, 4s ease-in-out infinite" },
-          { "label": "마키 플로우", "value": "280px 텍스트 좌→우 무한 스크롤, 15s linear" },
-          { "label": "카운트업", "value": "뷰포트 진입 시 0→목표값, duration 2s, ease-out-cubic" },
-          { "label": "제품 Hover", "value": "border-radius 20px→50%(원형), 0.5s cubic-bezier(0.4,0,0.2,1)" },
-          { "label": "뉴스 Hover", "value": "제목 color→#dd0031 + 하단 밑줄 width 0→100%, 0.4s ease" },
-          { "label": "스크롤 인디케이터", "value": "dot translateY 0→20px + opacity 1→0.3, 1.5s ease-in-out infinite" },
-          { "label": "SVG 스핀 CTA", "value": "textPath 원형 배치 + CSS rotation 14s linear infinite" },
-          { "label": "서비스 카드 Hover", "value": "배경 이미지 scale(1.05), 0.6s ease" }
+        { "type": "kv", "title": "기본 설정", "columns": 2, "items": [
+          { "label": "영문 서체", "value": "Outfit (Google Fonts) — 기하학적 산세리프, 디스플레이 + UI" },
+          { "label": "한글 서체", "value": "Pretendard (자체 호스팅) — 중립적 산세리프, 본문 + UI" },
+          { "label": "아이콘 서체", "value": "XEIcon — 웹폰트 기반 아이콘 시스템" },
+          { "label": "본문 기준", "value": "15~18px / Regular 400~500 / 행간 1.5~1.8" },
+          { "label": "자간 기본", "value": "영문 -0.01~-0.03em / 한글 0~-0.02em" },
+          { "label": "폰트 스무딩", "value": "-webkit-font-smoothing: antialiased" }
         ]},
-        { "type": "note", "value": "히어로 모자이크의 세로 무한 스크롤이 사이트 전체를 지배하는 핵심 인터랙션. 150px 레드 타이틀이 움직이는 그레이스케일 패널 위에 고정되면서 '정적인 브랜드 vs 동적인 배경'의 대비가 극적인 효과를 생성. 유일한 지속 애니메이션 4종: 모자이크 스크롤, 마키, 스크롤 인디케이터, 스핀 CTA." }
+        { "type": "heading", "value": "타이프 스케일 (Desktop 기준)" },
+        { "type": "typo", "items": [
+          { "label": "Hero Display", "size": "clamp(80px, 16vw, 240px)", "weight": 700, "sample": "Miracell", "tracking": "-0.03em" },
+          { "label": "Marquee", "size": "clamp(80px, 18vw, 280px)", "weight": 800, "sample": "MIRACELL · STEM CELL", "tracking": "-0.03em" },
+          { "label": "Counter Number", "size": "clamp(48px, 7vw, 96px)", "weight": 600, "sample": "2009" },
+          { "label": "About Title", "size": "clamp(36px, 5vw, 72px)", "weight": 800, "sample": "The standard of Stem Cell", "tracking": "-0.04em" },
+          { "label": "Contact Title", "size": "clamp(32px, 5vw, 64px)", "weight": 700, "sample": "Contact Us", "tracking": "-0.03em" },
+          { "label": "Section Heading", "size": "clamp(32px, 4vw, 56px)", "weight": 700, "sample": "제품", "tracking": "-0.03em" },
+          { "label": "History Heading", "size": "52px", "weight": 900, "sample": "연혁", "tracking": "-0.03em" },
+          { "label": "Service Title", "size": "clamp(28px, 3.5vw, 46px)", "weight": 600, "sample": "CellBanking" },
+          { "label": "Hero Subtitle", "size": "clamp(16px, 2.5vw, 30px)", "weight": 500, "sample": "Standard of Stem Cell" },
+          { "label": "Subpage H2", "size": "24px", "weight": 700, "sample": "혁신적인 줄기세포 바이오 기술" },
+          { "label": "Product Name", "size": "22px", "weight": 600, "sample": "Smart M-Cell", "tracking": "-0.02em" },
+          { "label": "News Title", "size": "20px", "weight": 600, "sample": "미라셀, FDA 510(k) 시스템 전체 승인", "tracking": "-0.02em" },
+          { "label": "Body", "size": "15~18px", "weight": 400, "sample": "줄기세포와 세포치료 분야의 전문 기술과 임상 경험을 바탕으로 건강한 내일을 만듭니다." },
+          { "label": "Section Label", "size": "14px", "weight": 600, "sample": "PRODUCT", "tracking": "0.08em" },
+          { "label": "Caption / Meta", "size": "12~13px", "weight": 400, "sample": "COPYRIGHT © Miracell" }
+        ]},
+        { "type": "heading", "value": "폰트 페어링 분석" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Outfit 역할", "value": "디스플레이 · 숫자 · 영문 헤드라인 · 섹션 라벨 — 기하학적이고 깔끔한 형태가 '기술력'과 '모더니티'를 표현" },
+          { "label": "Pretendard 역할", "value": "한글 본문 · UI 텍스트 · 네비게이션 — Apple 시스템 서체와 유사한 중립성으로 가독성 극대화" },
+          { "label": "조합 근거", "value": "둘 다 기하학적 산세리프 계열로 형태적 조화. Outfit의 넓은 x-height와 Pretendard의 균등한 획 두께가 시각적 밀도를 맞춤" },
+          { "label": "사용 규칙", "value": "font-family 선언 순서: 'Outfit' 우선(영문 캐치) → 'Pretendard' 폴백(한글). 디스플레이용 요소에는 명시적 font-family: 'Outfit' 지정" }
+        ]},
+        { "type": "heading", "value": "행간 · 자간 시스템" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "행간: 디스플레이", "value": "line-height: 1.0~1.15 (Hero, About Title)" },
+          { "label": "행간: 제목", "value": "line-height: 1.2 (Service Title, Section Heading)" },
+          { "label": "행간: 본문", "value": "line-height: 1.5~1.8 (Body text, descriptions)" },
+          { "label": "행간: 리스트", "value": "line-height: 2.1 (연혁 리스트 항목)" },
+          { "label": "자간: 디스플레이", "value": "-0.03em ~ -0.04em (타이틀, 대형 텍스트)" },
+          { "label": "자간: 제목", "value": "-0.02em ~ -0.03em (섹션 제목)" },
+          { "label": "자간: 라벨", "value": "+0.04em ~ +0.08em (섹션 라벨, 크럼)" },
+          { "label": "자간: 본문", "value": "0em (기본값, 별도 조정 없음)" }
+        ]},
+        { "type": "heading", "value": "디자이너 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "정보 계층 구성", "value": "weight 400(본문) → 500(서브) → 600(카드제목) → 700(섹션제목) → 800(About/Marquee) → 900(연혁 제목)의 6단계 웨이트 스케일로 명확한 위계 수립" },
+          { "label": "스케일 선택 기준", "value": "디스플레이(80~240px)는 clamp()로 반응형 처리, 본문(15~18px)은 고정값. 중간 제목(20~56px)은 역할에 따라 혼용" },
+          { "label": "마키 텍스트 전략", "value": "280px 초대형 텍스트를 opacity 0.04로 사용 — 읽기가 아닌 '질감'으로서의 타이포. 브랜드 리듬감 생성" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "@font-face 전략", "value": "Outfit: Google Fonts CDN (woff2, display:swap). Pretendard: 자체 호스팅 (woff2, display:swap). 서브셋: 한글은 KR 서브셋만 로드" },
+          { "label": "font-display", "value": "swap — FOUT 허용, CLS 최소화. Outfit 로딩 전 시스템 sans-serif로 대체" },
+          { "label": "CSS 변수", "value": "--font-latin: 'Outfit', sans-serif; --font-kr: 'Pretendard', 'Noto Sans KR', sans-serif" },
+          { "label": "clamp() 패턴", "value": "font-size: clamp(min, preferred-vw, max). 예: clamp(80px, 16vw, 240px) → 500~1500px 뷰포트에서 80→240px 선형 보간" },
+          { "label": "font-variant-numeric", "value": "카운터 숫자에 tabular-nums 적용 — 카운트업 애니메이션 시 숫자 폭 고정으로 레이아웃 시프트 방지" }
+        ]},
+        { "type": "note", "value": "타이포그래피가 미라셀 디자인의 핵심 표현 수단. 이미지 대신 240px 디스플레이 텍스트와 280px 마키로 시각적 임팩트를 만들며, weight 400~900의 넓은 범위와 자간 -0.04em~+0.08em의 정밀한 조절로 풍부한 정보 계층을 구축." }
       ]
     },
-    "spacing": {
-      "title": "여백 & 둥글기",
+
+    "layout": {
+      "title": "레이아웃 · 그리드 · 여백",
       "blocks": [
+        { "type": "kv", "title": "핵심 치수", "columns": 2, "items": [
+          { "label": "최대 폭", "value": "1920px (뷰포트) / 1760px (히어로) / 1400px (콘텐츠)" },
+          { "label": "콘텐츠 패딩", "value": "Desktop: 0 80px / Tablet: 0 40px / Mobile: 0 20px" },
+          { "label": "그리드", "value": "유연 컬럼 (섹션별 1~5열 교차)" },
+          { "label": "헤더", "value": "position:absolute/fixed, top:55px, height:80px, z-index:9999" },
+          { "label": "반응형 중단점", "value": "Desktop ≥1280px / Tablet 768~1279px / Mobile <768px" },
+          { "label": "수직 리듬 기준", "value": "섹션 간격 120~160px / 요소 간격 8의 배수(8, 16, 24, 40, 60)" }
+        ]},
+        { "type": "heading", "value": "섹션별 그리드 구조" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "히어로", "value": "3열 flex row, gap 30px, 각 열 5장 × 400px 패널 (radius 20px). 풀스크린 100vh, min-height 700px. 중앙 오버레이 absolute" },
+          { "label": "About Us", "value": "2열 flex (이미지 420px + 텍스트 flex:1), gap 100px. max-width 1400px. 크림 배경 풀블리드, 콘텐츠 센터 정렬" },
+          { "label": "서비스", "value": "3열 flex equal, gap 0 (4px 화이트 디바이더). 풀와이드, 카드 내부 padding-top 180%. 상하 100px 화이트 바 + 40px 코너 마스크" },
+          { "label": "제품", "value": "수평 스크롤 flex row, gap 20px. 카드 flex:0 0 300px, 이미지 높이 420px. 스크롤바 숨김 처리" },
+          { "label": "뉴스", "value": "2열 flex (제목 280px + 리스트 flex:1), gap 80px. 리스트 아이템 min-height 100px. border-top 2px solid #000" },
+          { "label": "Contact", "value": "2열 flex (텍스트 + 스핀 링 280px), max-width 1400px. 다크 배경 풀블리드" },
+          { "label": "푸터", "value": "4열 flex, max-width 1400px. 브랜드 200px + 3 × flex:1. border-top 구분" },
+          { "label": "서브페이지", "value": "배너 220px + (사이드 네비 220px + 콘텐츠 flex:1) 2단 flex" }
+        ]},
+        { "type": "heading", "value": "반응형 중단점" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Desktop (≥1280px)", "value": "풀 레이아웃. 모든 다열 구조 유지. 콘텐츠 패딩 80px. 히어로 모자이크 400px 패널" },
+          { "label": "Tablet (768~1279px)", "value": "다열 → 2열 또는 축소. 콘텐츠 패딩 40px. 히어로 패널 280px. GNB 축소 (gap 24px, font 15px)" },
+          { "label": "Mobile (<768px)", "value": "단열 스택. 콘텐츠 패딩 20px. GNB 숨김 (햄버거). 서비스 카드 세로 스택. 사이드 네비 → 상단 수평 탭. 히어로 패널 200px" }
+        ]},
         { "type": "heading", "value": "여백 시스템" },
         { "type": "spacingScale", "items": [
-          { "label": "xs", "px": 4 },
-          { "label": "sm", "px": 8 },
+          { "label": "2xs", "px": 4 },
+          { "label": "xs", "px": 8 },
+          { "label": "sm", "px": 12 },
           { "label": "md", "px": 16 },
           { "label": "lg", "px": 24 },
-          { "label": "xl", "px": 30 },
+          { "label": "xl", "px": 32 },
           { "label": "2xl", "px": 40 },
           { "label": "3xl", "px": 60 },
-          { "label": "section", "px": 120 }
+          { "label": "4xl", "px": 80 },
+          { "label": "section", "px": 120 },
+          { "label": "section-lg", "px": 160 }
         ]},
-        { "type": "kv", "title": "주요 여백 패턴", "columns": 1, "items": [
-          { "label": "섹션 간격", "value": "padding: 120px 0 (Product, News, Contact)" },
-          { "label": "콘텐츠 좌우", "value": "padding: 0 60px (max-width 1400px 컨테이너)" },
-          { "label": "히어로", "value": "height: 100vh, min-height: 700px" },
-          { "label": "서비스 카드", "value": "상하 화이트바 각 100px, 텍스트 padding 0 40px" },
-          { "label": "제품 이미지", "value": "height: 460px, 하단 title margin-top: 30px" },
-          { "label": "뉴스 아이템", "value": "height: 120px, flex align-items center" },
-          { "label": "서브페이지 배너", "value": "height: 220px" },
-          { "label": "카운터 아이템", "value": "padding: 50px 0, border-bottom: 1px solid #000" },
-          { "label": "푸터", "value": "padding: 60px 0 40px, border-top: 1px solid rgba(0,0,0,0.1)" }
-        ]},
-        { "type": "heading", "value": "둥글기 패턴" },
+        { "type": "heading", "value": "둥글기 시스템" },
         { "type": "radiusScale", "items": [
-          { "label": "none", "px": 0, "usage": "배너 · 뉴스 리스트 · 테이블" },
-          { "label": "md", "px": 20, "usage": "히어로 모자이크 패널 (400×400) · 제품 썸네일 · 갤러리 · 스펙 카드" },
-          { "label": "lg", "px": 40, "usage": "서비스 카드 첫째/마지막 (border-radius: 40px 0 0 40px / 0 40px 40px 0)" },
-          { "label": "circle", "px": 50, "usage": "제품 hover 시 border-radius: 50% (직사각형→원형 전환)", "note": "percent" },
-          { "label": "full", "px": 99, "usage": "pill 탭(연혁) · LED 탭 · SNS 아이콘" }
+          { "label": "none", "px": 0, "usage": "배너 · 뉴스 리스트 · 테이블 · 마키" },
+          { "label": "sm", "px": 8, "usage": "대비 검증 카드 · 소형 UI 요소" },
+          { "label": "md", "px": 12, "usage": "LED 정보 박스 · 뉴스 카테고리" },
+          { "label": "lg", "px": 20, "usage": "히어로 패널 · 제품 썸네일 · 갤러리 · 스펙 카드 · About 이미지" },
+          { "label": "xl", "px": 40, "usage": "서비스 카드 첫째/마지막 (40px 0 0 40px / 0 40px 40px 0)" },
+          { "label": "full", "px": 99, "usage": "CTA 버튼 · Pill 탭 · LED 탭 · 소셜 아이콘 · 플로팅 버튼" },
+          { "label": "circle", "px": 50, "usage": "제품 호버 중앙 원 · Contact 링 중앙 원 · 스크롤 인디케이터 dot", "note": "percent" }
         ]},
-        { "type": "note", "value": "이전의 0/99px 이분법에서 벗어나 20px(모자이크 패널, 제품)과 40px(서비스 카드)이 핵심 중간값으로 사용됨. 특히 제품 카드의 hover 시 20px→50%(원형) 전환은 이 사이트만의 시그니처 인터랙션. 둥글기가 정적 상태와 동적 상태에서 다르게 동작하는 점이 독특." }
+        { "type": "heading", "value": "디자이너 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "여백 철학", "value": "의료 분야 '정보 과밀' 회피. 섹션 간격 120~160px, 콘텐츠 좌우 80px로 각 섹션이 독립적 호흡을 가짐. '비워둠'이 곧 고급감" },
+          { "label": "명암 교차 리듬", "value": "다크(Hero) → 라이트(About 크림) → 다크(Service) → 라이트(Product) → 라이트(News) → 다크(Contact) → 라이트(Footer). 밝기 교차로 섹션 전환 인지 강화" },
+          { "label": "콘텐츠 폭 전략", "value": "히어로/서비스는 풀블리드(1920px), 콘텐츠는 1400px 제한. 풀블리드가 몰입감을, 좁은 폭이 가독성을 담당" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "풀블리드 구현", "value": "서비스·히어로: width:100%, no max-width. About: 배경을 부모 풀블리드로, 콘텐츠만 1400px 센터" },
+          { "label": "aspect-ratio 대안", "value": "서비스 카드 padding-top:180%로 비율 강제. 모던 브라우저에서는 aspect-ratio:5/9 가능" },
+          { "label": "스크롤바 숨김", "value": "제품 슬라이더: scrollbar-width:none + ::-webkit-scrollbar{display:none}. 터치 디바이스는 -webkit-overflow-scrolling:touch" },
+          { "label": "라운드 코너 마스크", "value": "서비스 카드 상하 바의 radial-gradient 코너: background:radial-gradient(circle at 0% 0%,#fff 70%,transparent 71%)" }
+        ]},
+        { "type": "note", "value": "8의 배수 기반 여백 시스템(4, 8, 12, 16, 24, 32, 40, 60, 80, 120, 160)으로 일관된 수직 리듬 유지. 둥글기는 20px(카드/이미지)과 40px(서비스 대형 카드), 99px(Pill UI)의 3단계가 핵심. 제품 카드의 20px 라운드가 모자이크 패널의 20px와 동일하여 사이트 전체의 형태 언어를 통일." }
       ]
     },
-    "accessibility": {
-      "title": "접근성",
+
+    "components": {
+      "title": "컴포넌트 · 상태 카탈로그",
       "blocks": [
-        { "type": "heading", "value": "명도 대비" },
-        { "type": "component", "title": "주요 텍스트-배경 대비 검증", "html": "<div class='mc-a11y'><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#fff;color:#000'>본문 텍스트 #000000</div><div class='mc-a11y-res'><strong>21.0 : 1</strong><span class='mc-a11y-ok'>AAA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#fff;color:#888'>캡션 #888888</div><div class='mc-a11y-res'><strong>3.5 : 1</strong><span class='mc-a11y-mid'>AA Large</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#000;color:#fff'>히어로 흰 텍스트</div><div class='mc-a11y-res'><strong>21.0 : 1</strong><span class='mc-a11y-ok'>AAA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#000;color:#dd0031'>히어로 브랜드 레드</div><div class='mc-a11y-res'><strong>4.6 : 1</strong><span class='mc-a11y-ok'>AA</span></div></div><div class='mc-a11y-row'><div class='mc-a11y-samp' style='background:#dd0031;color:#fff'>레드 배경 위 흰색 (CTA)</div><div class='mc-a11y-res'><strong>4.5 : 1</strong><span class='mc-a11y-ok'>AA</span></div></div></div>", "css": ".mc-a11y{display:flex;flex-direction:column;gap:8px;font-family:'Pretendard','Outfit',sans-serif}.mc-a11y-row{display:flex;align-items:center;gap:16px}.mc-a11y-samp{flex:1;padding:16px 20px;font-size:14px;font-weight:500;border:1px solid #e8e8e8}.mc-a11y-res{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:160px}.mc-a11y-res strong{font-size:14px;font-variant-numeric:tabular-nums}.mc-a11y-ok{font-size:10px;padding:3px 10px;background:#16A34A;color:#fff;border-radius:99px;font-weight:700}.mc-a11y-mid{font-size:10px;padding:3px 10px;background:#EAB700;color:#000;border-radius:99px;font-weight:700}" },
-        { "type": "heading", "value": "평가 요약" },
-        { "type": "kv", "title": "항목별 평가", "columns": 1, "items": [
-          { "label": "시맨틱 HTML ✓", "value": "H1~H6 전 단계 활용. 정보 계층이 마크업에 반영됨" },
-          { "label": "다국어 ✓", "value": "KR/EN/CN 3개 언어. R&D 페이지 한영 병기" },
-          { "label": "반응형 ✓", "value": "모바일/태블릿/데스크톱 3단계. 768px 기준 레이아웃 전환" },
-          { "label": "키보드 △", "value": "hover 드롭다운은 키보드 전용 사용자 접근 제한. focus/click 병행 필요" },
-          { "label": "이미지 alt △", "value": "정적 이미지 다수 사용. alt 텍스트 적용 여부 확인 필요" },
-          { "label": "Skip Nav ✗", "value": "Skip navigation 링크 미발견. 스크린리더 접근성 개선 필요" }
+        { "type": "text", "value": "14종의 핵심 컴포넌트가 일관된 디자인 언어로 구성됩니다. 각 컴포넌트의 기본(default), 호버(hover), 활성(active), 비활성(disabled) 상태를 정리합니다." },
+        { "type": "heading", "value": "컴포넌트 인벤토리" },
+        { "type": "kv", "title": "전체 목록", "columns": 2, "items": [
+          { "label": "① 3열 모자이크", "value": "Hero: 15장 패널 (400×400, radius 20px) 3열 무한 세로 스크롤" },
+          { "label": "② 섹션 인트로", "value": "영문 라벨(14px, 600, uppercase, 0.08em) + 레드 dot(6px) + 한글 제목" },
+          { "label": "③ 카운터", "value": "뷰포트 진입 시 0→목표값 카운트업, clamp 96px Outfit 숫자" },
+          { "label": "④ 마키 텍스트", "value": "clamp 280px 초대형 흐르는 텍스트, opacity 0.04" },
+          { "label": "⑤ 서비스 카드", "value": "3열 풀블리드 + 상하 100px 화이트바 + 라운드코너 40px + 코너 마스크" },
+          { "label": "⑥ 제품 카드", "value": "수평 스크롤 300×420 + hover 시 회전 SVG VIEW MORE + 레드 중앙 원" },
+          { "label": "⑦ 뉴스 아이템", "value": "flex row, 카테고리 pill + 제목 + 날짜 + 화살표. hover: 배경 크림, 화살표 이동" },
+          { "label": "⑧ 회전 링 CTA", "value": "280px SVG 원형 스트로크 텍스트 + 72px 화이트 스트로크 원 + 화살표" },
+          { "label": "⑨ 플로팅 버튼", "value": "60px 원형 #DD0031 → hover 시 180px pill 확장 + 텍스트 페이드인" },
+          { "label": "⑩ Pill 탭", "value": "연혁 연대별 탭. 비활성 #F0F0F0, 활성 #DD0031 + 흰색 텍스트" },
+          { "label": "⑪ LED 탭", "value": "제품 파장 선택. var(--led) 컬러 보더, 활성 시 배경 채움" },
+          { "label": "⑫ 사이드 네비", "value": "서브페이지 좌측 220px. 활성 항목: 좌측 3px #DD0031 보더 + font-weight 700" },
+          { "label": "⑬ 스크롤 인디케이터", "value": "좌하단 dot(8px) + line(60px). dot 바운스 1.5s 무한" },
+          { "label": "⑭ 헤더 CTA", "value": "pill shape, #DD0031 bg, 14px 600 white text, hover scale(1.05)" }
         ]},
-        { "type": "note", "value": "명도 대비는 대부분 WCAG AA 이상. 히어로 브랜드 레드(#dd0031) on 블랙은 4.6:1로 AA 충족, 150px 대형 텍스트이므로 시인성 우수. 의료 사이트는 고령 사용자·시각 장애 접근성 수요가 높으므로, hover→click 병행과 ARIA landmark 강화를 권장." }
+        { "type": "heading", "value": "상태별 정의" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "서비스 카드 상태", "value": "default: 배경 이미지 100% / hover: 배경 scale(1.05), 0.6s ease / 터치: hover 미적용" },
+          { "label": "제품 카드 상태", "value": "default: 이미지만 표시, 오버레이 opacity:0 / hover: 다크 오버레이 rgba(0,0,0,0.15), SVG 회전 등장 scale 0.8→1, 0.4s, 이미지 scale(1.02)" },
+          { "label": "뉴스 아이템 상태", "value": "default: 배경 #FFF, 화살표 #CCC / hover: 배경 #FAF9F5, 제목 #DD0031, 화살표 translateX(8px) + color #DD0031" },
+          { "label": "플로팅 버튼 상태", "value": "default: 60×60 원형, 아이콘만 / hover: 180px pill, 텍스트 opacity 0→1 (delay 0.15s)" },
+          { "label": "Pill 탭 상태", "value": "default: bg #F0F0F0, color #666 / hover: bg #E4E4E4 / active: bg #DD0031, color #FFF" },
+          { "label": "사이드 네비 상태", "value": "default: color #888, border transparent / hover: color #000, bg #FAFAFA / active: color #000, weight 700, border-left 3px #DD0031" },
+          { "label": "헤더 GNB 상태", "value": "default: 텍스트만 / hover: color #DD0031, 하단 2px #DD0031 밑줄 width 0→100%" },
+          { "label": "Contact 링 상태", "value": "default: 스트로크 rgba(255,255,255,0.4) / hover: border-color #FFF, scale(1.08)" }
+        ]},
+        { "type": "heading", "value": "디자이너 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "상태 전환 원칙", "value": "모든 hover는 0.2~0.6s 부드러운 전환. 즉각적 변화(0s)는 없음. 이 '느린 반응'이 고급스러운 인상의 핵심" },
+          { "label": "레드 사용 제한", "value": "hover 시 레드 등장은 GNB 밑줄, 뉴스 제목, 사이드 네비 보더에 한정. 배경이 레드로 바뀌는 경우는 Pill 탭 활성과 플로팅 버튼뿐" },
+          { "label": "시그니처 컴포넌트", "value": "제품 카드의 회전 SVG VIEW MORE는 이 사이트만의 시그니처. SVG textPath 기술로 원형 텍스트를 구현하여 기술력과 창의성을 동시에 표현" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "SVG textPath 패턴", "value": "<svg viewBox='0 0 200 200'><defs><path id='cp' d='M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0'/></defs><text><textPath href='#cp'>TEXT</textPath></text></svg>" },
+          { "label": "라운드 코너 마스크", "value": "radial-gradient(circle at CORNER_POS, #fff 70%, transparent 71%)로 화이트 바와 다크 배경 사이에 부드러운 곡선 연결" },
+          { "label": "color-mix() 활용", "value": "LED 탭 hover: background: color-mix(in srgb, var(--led) 10%, transparent) — CSS 네이티브 투명도 조절" },
+          { "label": "CSS 변수 전환", "value": "var(--led) 패턴으로 하나의 CSS 규칙으로 Blue/Green/Yellow/Red 4가지 변형 생성" }
+        ]},
+        { "type": "note", "value": "컴포넌트 디자인의 핵심은 '절제된 상태 변화'. hover 시 대부분 색상 전환 + 미세 움직임(scale 1.02~1.05, translate 8px)에 그치며, 급격한 변형은 제품 카드의 SVG 등장 1건뿐. 이 절제가 의료 브랜드의 안정감과 신뢰성을 유지하는 장치." }
+      ]
+    },
+
+    "interaction": {
+      "title": "인터랙션 · 모션 디자인",
+      "blocks": [
+        { "type": "text", "value": "미라셀의 모션 디자인은 '지속 애니메이션(Persistent)'과 '트리거 애니메이션(Triggered)'의 두 축으로 구성됩니다. GSAP ScrollTrigger로 스크롤 진행에 따른 내러티브를 만들고, CSS 키프레임으로 지속적 움직임을 부여합니다." },
+        { "type": "heading", "value": "지속 애니메이션 (항상 실행)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "모자이크 스크롤", "value": "col1/col3: translateY(0→-2150px) 18~20s linear infinite ↑ / col2: translateY(-2150px→0) 22s linear infinite ↓. GPU 가속(will-change:transform)" },
+          { "label": "마키 텍스트", "value": "translateX(0→-50%) 18s linear infinite. width:max-content 2개 복제본으로 이음새 없는 무한 스크롤" },
+          { "label": "스크롤 인디케이터", "value": "dot: translateY(0→20px) + opacity(1→0.3) 1.5s ease-in-out infinite" },
+          { "label": "Contact 스핀 링", "value": "rotate(0→360deg) 12s linear infinite. SVG textPath 스트로크 텍스트" },
+          { "label": "About 이미지 플로트", "value": "translateY(0→-8px) 4s ease-in-out infinite. 미세한 떠다니는 효과" },
+          { "label": "제품 SVG 회전", "value": "rotate(0→360deg) 8s linear infinite. hover 시에만 표시되지만 애니메이션은 항상 실행" }
+        ]},
+        { "type": "heading", "value": "트리거 애니메이션 (스크롤/뷰포트 진입)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "헤더 전환", "value": "scrollY > 50px: background transparent→#FFF, box-shadow 등장, 텍스트 color #FFF→#000. transition: 0.4s ease" },
+          { "label": "히어로 진입", "value": "GSAP: title translateY(80→0px) + letter-spacing(-0.01→-0.03em), 1.4s power3.out. subtitle: 0.3s delay 후 동일" },
+          { "label": "카운터 카운트업", "value": "IO threshold 0.4. 0→target 카운트업, 1.5~2s, ease-out-cubic. 스태거: 2009(2s), 650+(1.8s), 23(1.5s)" },
+          { "label": "섹션 타이틀 등장", "value": "GSAP ScrollTrigger: translateY(60→0px) + opacity(0→1), 0.8s power2.out. start: 'top 80%'" },
+          { "label": "서비스 카드 등장", "value": "GSAP: 좌→우 순차 등장, stagger 0.15s, translateY(40→0px), 0.6s ease" },
+          { "label": "제품 카드 등장", "value": "스크롤 진입 시 좌→우 순차 translateX(-30→0px) + opacity(0→1), stagger 0.1s" },
+          { "label": "뉴스 아이템 등장", "value": "위→아래 순차, stagger 0.08s, translateY(20→0px), 0.5s" }
+        ]},
+        { "type": "heading", "value": "호버 인터랙션" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "GNB 링크", "value": "하단 2px #DD0031 밑줄: width 0→100%, 0.3s ease. color → #DD0031" },
+          { "label": "서비스 카드", "value": "배경 이미지 scale(1→1.05), 0.6s ease. 커서 pointer" },
+          { "label": "제품 카드", "value": "오버레이 opacity 0→1 (rgba(0,0,0,0.15)), SVG scale 0.8→1 + rotate 8s, 중앙 원 등장, 이미지 scale(1.02). 0.4s ease" },
+          { "label": "뉴스 아이템", "value": "배경 #FFF→#FAF9F5, 제목 color→#DD0031, 화살표 translateX(0→8px) + color→#DD0031. 0.3~0.4s ease" },
+          { "label": "Contact 링", "value": "중앙 원 border-color intensify + scale(1.08). 0.3s ease" },
+          { "label": "플로팅 버튼", "value": "width 60→180px, 0.5s cubic-bezier(0.22,0.61,0.36,1). 텍스트 opacity 0→1, 0.2s ease delay 0.15s" },
+          { "label": "헤더 CTA", "value": "transform scale(1→1.05), 0.2s ease" }
+        ]},
+        { "type": "heading", "value": "이징 · 타이밍 시스템" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "기본 이징", "value": "ease (= cubic-bezier(0.25, 0.1, 0.25, 1))" },
+          { "label": "진입 이징", "value": "cubic-bezier(0.22, 0.61, 0.36, 1) ≈ power2.out" },
+          { "label": "GSAP 이징", "value": "power3.out (히어로), power2.out (섹션 등장)" },
+          { "label": "지속 회전", "value": "linear (모자이크, 마키, 스핀)" },
+          { "label": "플로팅 확장", "value": "cubic-bezier(0.22, 0.61, 0.36, 1)" },
+          { "label": "호버 기본", "value": "0.2~0.4s ease" },
+          { "label": "카드 전환", "value": "0.5~0.6s ease" },
+          { "label": "순차 등장", "value": "stagger 0.08~0.15s" }
+        ]},
+        { "type": "heading", "value": "디자이너 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "모션 랭귀지", "value": "부드럽고 우아한 진입(power2~3.out) + 끊김 없는 지속 움직임(linear infinite). '생명력'의 은유 — 줄기세포처럼 끊임없이 움직이는 배경 위에 안정적 콘텐츠" },
+          { "label": "속도 체계", "value": "빠른(0.2s: 버튼 hover) → 보통(0.4s: 카드 전환) → 느린(0.6s: 서비스 배경) → 지속(8~22s: 무한 애니메이션). 4단계 속도 스케일" },
+          { "label": "모션 절제", "value": "한 시점에 2개 이상의 트리거 애니메이션이 동시에 실행되지 않도록 stagger로 순차 처리. 시각적 혼란 방지" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 가이드" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "GSAP 설정", "value": "gsap.registerPlugin(ScrollTrigger). 트리거: start 'top 80%' end 'bottom 20%'. toggleActions: 'play none none none'" },
+          { "label": "IO (Intersection Observer)", "value": "카운터: threshold 0.4, unobserve 후 1회만 실행. 일반 요소: threshold 0.15" },
+          { "label": "GPU 가속", "value": "will-change: transform을 모자이크 열, 마키 트랙에 적용. 애니메이션 종료 후 will-change: auto로 복원" },
+          { "label": "접근성 대응", "value": "@media(prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } } — 모든 모션 비활성화" },
+          { "label": "성능 주의", "value": "히어로 모자이크 15개 패널 + 3개 무한 애니메이션이 가장 무거움. 저사양 기기에서는 animation-play-state:paused 고려" }
+        ]},
+        { "type": "note", "value": "모션 디자인의 핵심은 '지속적 생명력 + 우아한 진입'. 히어로 모자이크/마키/스핀의 끊임없는 움직임이 사이트에 '생동감'을 부여하고, power2~3.out 이징의 부드러운 스크롤 등장이 '품격'을 만듦. prefers-reduced-motion 완벽 대응은 의료 사이트로서의 접근성 책임." }
+      ]
+    },
+
+    "publishing": {
+      "title": "퍼블리싱 · 접근성",
+      "blocks": [
+        { "type": "heading", "value": "기술 아키텍처" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "렌더링", "value": "PHP SSR (서버사이드 렌더링)" },
+          { "label": "JS 런타임", "value": "jQuery 3.x + Vanilla ES5" },
+          { "label": "애니메이션", "value": "GSAP 3 + ScrollTrigger Plugin" },
+          { "label": "아이콘", "value": "XEIcon 웹폰트" },
+          { "label": "CDN", "value": "Google Fonts (Outfit)" },
+          { "label": "폰트 호스팅", "value": "자체 서버 (Pretendard woff2)" }
+        ]},
+        { "type": "heading", "value": "HTML 시맨틱 구조" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "문서 구조", "value": "header > nav + main > section * N + footer. 시맨틱 랜드마크 사용" },
+          { "label": "제목 계층", "value": "H1(히어로 Miracell) → H2(섹션 제목) → H3(카드/서브 제목) → H4(푸터 소제목). 단일 H1 규칙 준수" },
+          { "label": "링크 vs 버튼", "value": "네비게이션: <a href>. 탭 전환: <button>. LED 선택: <button>. 적절한 역할 분리" },
+          { "label": "리스트 활용", "value": "뉴스: <ul><li>. 연혁: <ul><li>. 사이드 네비: <nav><a> 리스트. 시맨틱 리스트 구조 유지" }
+        ]},
+        { "type": "heading", "value": "WCAG 2.1 접근성 감사" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "색상 대비 ✓", "value": "주요 텍스트-배경 조합 모두 AA 이상. #DD0031 on #000(4.6:1 AA), #FFF on #DD0031(4.5:1 AA). 단, #888 on #FFF(3.5:1)는 AA Large만 충족" },
+          { "label": "다국어 ✓", "value": "KR/EN/CN 3개 언어 지원. lang 속성 전환. R&D 페이지 한영 병기" },
+          { "label": "반응형 ✓", "value": "3단계 반응형(Desktop/Tablet/Mobile). 768px·1280px 기준. 터치 디바이스 최적화" },
+          { "label": "키보드 접근 △", "value": "hover 기반 인터랙션(제품 SVG, 뉴스 밑줄) 키보드 전용 사용자 접근 제한. :focus-visible + :hover 병행 필요" },
+          { "label": "이미지 alt △", "value": "히어로 모자이크 이미지에 alt 텍스트 필요. 제품 이미지에 descriptive alt 권장" },
+          { "label": "Skip Navigation ✗", "value": "Skip-to-content 링크 미발견. 스크린리더 사용자를 위해 추가 필요" },
+          { "label": "ARIA Landmark △", "value": "기본 랜드마크(header, nav, main, footer) 사용. role=region + aria-label 추가로 섹션 식별성 강화 권장" },
+          { "label": "모션 감소 ✓", "value": "prefers-reduced-motion 미디어 쿼리 대응. duration 0.01ms로 모션 비활성화" }
+        ]},
+        { "type": "heading", "value": "키보드 네비게이션 권장 사항" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Tab 순서", "value": "Header 로고 → GNB → 언어 → CTA → 각 섹션 인터랙티브 요소 순. tabindex 명시적 관리 필요" },
+          { "label": "Focus 스타일", "value": "기본 outline 유지 + :focus-visible시 2px solid #DD0031 outline-offset 4px 권장" },
+          { "label": "hover→focus 병행", "value": "제품 카드, 뉴스 아이템의 hover 인터랙션을 :focus, :focus-within에도 동일 적용" },
+          { "label": "모달/드롭다운", "value": "GNB 서브메뉴: Escape로 닫기, 화살표키 이동. focus trap 구현 필요" }
+        ]},
+        { "type": "heading", "value": "성능 최적화" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "이미지 최적화", "value": "WebP/AVIF 포맷 + srcset로 해상도별 제공. 히어로 모자이크 이미지 지연 로딩(loading=lazy). LCP 대상 이미지는 preload" },
+          { "label": "폰트 최적화", "value": "Pretendard: KR 서브셋만 로드 (200KB→50KB). font-display:swap. preconnect Google Fonts CDN" },
+          { "label": "애니메이션 성능", "value": "transform/opacity만 사용 (layout/paint 트리거 회피). will-change:transform 히어로 모자이크에 적용. requestAnimationFrame 기반 카운터" },
+          { "label": "JS 번들", "value": "jQuery + GSAP + ScrollTrigger. 총 ~130KB gzipped. defer 로딩. 크리티컬 경로에서 분리 권장" },
+          { "label": "CSS 최적화", "value": "critical CSS 인라인 (above-the-fold: 헤더 + 히어로). 나머지 비동기 로딩. 미사용 CSS 제거" }
+        ]},
+        { "type": "heading", "value": "SEO 구조" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "메타 태그", "value": "title, description, og:title, og:description, og:image 설정. 한국어 + 영문 메타 병기" },
+          { "label": "구조화 데이터", "value": "Organization(회사명, 로고, 연락처) + Product(제품별) + BreadcrumbList(서브페이지) schema.org 마크업 권장" },
+          { "label": "URL 구조", "value": "/kr/ 접두어로 다국어 경로 분리. 서브페이지 계층적 URL 구조" },
+          { "label": "hreflang", "value": "KR/EN/CN 3개 언어에 대한 hreflang 태그로 검색엔진 다국어 인식" }
+        ]},
+        { "type": "note", "value": "의료 바이오 사이트로서 접근성이 특히 중요. 고령 사용자·시각 장애 접근 수요가 높으므로 ① skip navigation 추가 ② hover→focus 병행 ③ ARIA landmark 강화 ④ 이미지 alt 완비를 우선 권장. 성능 면에서는 히어로 모자이크 15장 이미지가 LCP 병목이므로 WebP 변환 + preload가 가장 효과적인 개선." }
       ]
     }
   }
