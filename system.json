@@ -42,6 +42,37 @@
   ],
   "references": [
     {
+      "id": "asinsam",
+      "title": "안성인삼농협 명삼원",
+      "url": "https://asinsam.com",
+      "date": "2026-05-14",
+      "analysis": "analyses/asinsam/analysis.json",
+      "pagesAnalyzed": 21,
+      "subpages": [
+        { "title": "메인 (Home)", "url": "https://asinsam.com/" },
+        { "title": "인사말", "url": "https://asinsam.com/nh/greet" },
+        { "title": "연혁", "url": "https://asinsam.com/nh/history" },
+        { "title": "조직도", "url": "https://asinsam.com/nh/org" },
+        { "title": "오시는 길", "url": "https://asinsam.com/nh/location" },
+        { "title": "운영의 공개", "url": "https://asinsam.com/nh/disclosure" },
+        { "title": "경영공시", "url": "https://asinsam.com/nh/report" },
+        { "title": "조합원안내", "url": "https://asinsam.com/nh/member" },
+        { "title": "브랜드 스토리", "url": "https://asinsam.com/myeongsamwon/brand" },
+        { "title": "제품", "url": "https://asinsam.com/myeongsamwon/products" },
+        { "title": "명삼원 홍삼", "url": "https://asinsam.com/myeongsamwon/products/red-ginseng" },
+        { "title": "명삼원 수삼", "url": "https://asinsam.com/myeongsamwon/products/fresh-ginseng" },
+        { "title": "매장안내", "url": "https://asinsam.com/myeongsamwon/store" },
+        { "title": "안성마춤", "url": "https://asinsam.com/myeongsamwon/matchum" },
+        { "title": "신용사업", "url": "https://asinsam.com/biz/credit" },
+        { "title": "지도사업", "url": "https://asinsam.com/biz/guidance" },
+        { "title": "가공사업", "url": "https://asinsam.com/biz/processing" },
+        { "title": "하나로마트", "url": "https://asinsam.com/biz/mart" },
+        { "title": "금리안내", "url": "https://asinsam.com/finance/rates" },
+        { "title": "농업자금", "url": "https://asinsam.com/finance/funding" },
+        { "title": "안내드립니다", "url": "https://asinsam.com/community/information" }
+      ]
+    },
+    {
       "id": "miracell",
       "title": "미라셀",
       "url": "https://miracell.co.kr/kr",
@@ -81,8 +112,8 @@
     }
   ],
   "counts": {
-    "references": 1,
+    "references": 2,
     "analysisSections": 30,
-    "components": 65
+    "components": 115
   }
 }
