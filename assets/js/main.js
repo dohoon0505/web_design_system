@@ -73,6 +73,21 @@
   var analysisCache = {};
   var sectionDefs = [];
 
+  /* Get section definitions for a specific reference.
+     Each reference can define its own `sections` array (custom per site);
+     otherwise we fall back to the global analysisSections. */
+  function getSectionDefs(refId) {
+    if (systemData && systemData.references) {
+      for (var i = 0; i < systemData.references.length; i++) {
+        var r = systemData.references[i];
+        if (r.id === refId && Array.isArray(r.sections) && r.sections.length > 0) {
+          return r.sections;
+        }
+      }
+    }
+    return sectionDefs;
+  }
+
   var homeHero = document.getElementById('home-hero');
   var homeSections = document.querySelectorAll('.home-section, .home-empty');
   var reportView = document.getElementById('report-view');
@@ -112,6 +127,7 @@
     }
     var html = '';
     refs.forEach(function (ref) {
+      var defs = getSectionDefs(ref.id);
       html += '<li class="sidebar-expandable">';
       html += '<a class="sidebar-link" href="#ref/' + escapeHtml(ref.id) + '" data-section="ref/' + escapeHtml(ref.id) + '">';
       html += '<svg class="ico"><use href="#i-link"/></svg>';
@@ -119,11 +135,13 @@
       html += '<svg class="chevron" width="14" height="14"><use href="#i-chevron-down"/></svg>';
       html += '</a>';
       html += '<ul class="sidebar-sub">';
-      sectionDefs.forEach(function (sec) {
+      defs.forEach(function (sec) {
         var sectionPath = 'ref/' + ref.id + '/' + sec.id;
+        // Strip "(N종)" quantity suffix from sidebar display only
+        var sidebarTitle = (sec.title || '').replace(/\s*\([0-9]+종\)\s*$/, '');
         html += '<li><a class="sidebar-link" href="#' + sectionPath + '" data-section="' + sectionPath + '">';
         html += '<span class="sidebar-sec-num">' + escapeHtml(sec.num) + '</span>';
-        html += escapeHtml(sec.title);
+        html += escapeHtml(sidebarTitle);
         html += '</a></li>';
       });
       html += '</ul></li>';
@@ -390,8 +408,9 @@
     }
     h += '</div>';
 
+    var defs = getSectionDefs(analysis.id);
     h += '<div class="report-sections-grid">';
-    sectionDefs.forEach(function (def) {
+    defs.forEach(function (def) {
       var sec = analysis.sections[def.id];
       if (!sec) return;
       var sectionPath = 'ref/' + analysis.id + '/' + def.id;
@@ -411,8 +430,9 @@
   function renderSection(analysis, sectionId) {
     var sec = analysis.sections[sectionId];
     if (!sec) return '<p>섹션을 찾을 수 없습니다.</p>';
+    var defs = getSectionDefs(analysis.id);
     var def = null;
-    sectionDefs.forEach(function (d) { if (d.id === sectionId) def = d; });
+    defs.forEach(function (d) { if (d.id === sectionId) def = d; });
     var num = def ? def.num : '';
 
     var h = '';
@@ -451,10 +471,10 @@
 
     var prevDef = null;
     var nextDef = null;
-    for (var i = 0; i < sectionDefs.length; i++) {
-      if (sectionDefs[i].id === sectionId) {
-        if (i > 0) prevDef = sectionDefs[i - 1];
-        if (i < sectionDefs.length - 1) nextDef = sectionDefs[i + 1];
+    for (var i = 0; i < defs.length; i++) {
+      if (defs[i].id === sectionId) {
+        if (i > 0) prevDef = defs[i - 1];
+        if (i < defs.length - 1) nextDef = defs[i + 1];
         break;
       }
     }
