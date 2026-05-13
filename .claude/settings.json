@@ -1,5 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "permissions": {
+  "allow": [
+    "Bash(git push*)",
+    "Bash(git push -u*)",
+    "Bash(git commit*)",
+    "Bash(git add*)"
+  ]
+},
+  
   "hooks": {
     "Stop": [
       {
