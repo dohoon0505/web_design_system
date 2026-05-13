@@ -156,186 +156,344 @@
     },
 
     "about-pages": {
-      "title": "05. About Us 카테고리 (5 서브페이지)",
+      "title": "05. About Us 카테고리 (5페이지 정밀 분석)",
       "blocks": [
-        { "type": "text", "value": "About Us 5개 서브페이지는 동일한 Hero 배너(현미경 이미지 + 흰 큰 제목 + 브레드크럼)를 공유하며 콘텐츠 영역만 달라집니다." },
+        { "type": "text", "value": "Chrome DevTools로 직접 인스펙션한 About Us 카테고리 5개 페이지의 정확한 섹션 구성, 디자인 요소, 인터랙션. 모든 서브페이지는 공통적으로 'Sub Banner(현미경 다크 이미지 + 흰 큰 제목 + 브레드크럼 + Scroll down) + Sub Top Menu(5개 페이지 가로 네비) + 페이지별 콘텐츠 + Contact 다크 섹션 + Footer' 구조를 가짐." },
+
         { "type": "heading", "value": "공통 레이아웃 패턴" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Hero 배너", "value": "height:898px (calc(100vh - var(--header-height))), 배경 이미지: 현미경 (어두운 청록색 톤), 중앙에 흰색 큰 카테고리 제목, 그 아래 'Home • About Us • 서브페이지명' 브레드크럼, 'Scroll down' 인디케이터" },
-          { "label": "Sub Top Menu", "value": ".cm-top-menu (height:36px), 카테고리 안 5개 서브페이지 가로 네비, 활성 항목 색상 강조" },
-          { "label": "콘텐츠 영역", "value": "max-width 1500px, padding-y 섹션마다 다름 (140-200px)" }
+          { "label": "Sub Banner Hero", "value": "height: calc(100vh - 80px), 약 898px. 배경 이미지: 현미경 사진 (다크 청록 톤 + 우측 하단 빨간 레이저 포인트). 중앙 흰색 큰 H1 (clamp 64-108px, weight 700) + 그 아래 'Home • 카테고리 • 페이지명' 브레드크럼 (Pretendard 13px, opacity 0.5, • 빨간 dot). 하단 'Scroll down' 텍스트 + ⌄ 화살표" },
+          { "label": "Sub Top Menu", "value": ".cm-top-menu (height 36px, 본문 진입 직후). 카테고리 안 5개 서브페이지 가로 네비, 활성 항목: 검정 텍스트 weight 700 + 하단 빨간 라인. 비활성: 회색 #888" },
+          { "label": "콘텐츠 영역", "value": "max-width 1500px, padding-y 섹션마다 다름 (140-200px). 한영 이중 헤딩 패턴 적용 (작은 영문 라벨 + 빨간 dot + 큰 한글 헤딩)" }
         ]},
-        { "type": "heading", "value": "5개 페이지 상세" },
+
+        { "type": "heading", "value": "5-1. /about/intro.php 기업소개 (sH 4480px)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "기업소개 /about/intro.php", "value": "h3 '혁신적인 줄기세포 바이오 기술로, 건강한 내일을 만듭니다.' + h4 '줄기세포 전문기업 미라셀' 소개 본문 + h4 '조직도' 다이어그램 이미지" },
-          { "label": "CEO소개 /about/ceo.php", "value": "h4 '미라셀㈜은 1986년 설립 이래' CEO 메시지 본문 + 빨간 보더 라인 + 우측 정렬 서명 '미라셀 주식회사 대표이사 신현순, 신누리'" },
-          { "label": "연혁 /about/history.php", "value": "Pill 탭 5개 (2020's/2010's/2000's/1990's/1980's), 활성탭 빨강 / 비활성 회색 / 모바일 드롭다운 .cur-location.cm-drop-open-btn-JS. 콘텐츠: grid 110px+1fr (연도 + 텍스트 리스트), 가로선 구분" },
-          { "label": "오시는 길 /about/location01.php", "value": "카카오 지도 임베드 (풀와이드) + 그 아래 주소/TEL/교통편 정보" },
-          { "label": "CI /about/ci.php", "value": "큰 로고 (옅은 핑크 원형), 색상 가이드, 다운로드 버튼 (AI/JPG/PNG)" }
+          { "label": "Sub Banner", "value": "H1 'About Us' + 브레드크럼 'Home • About Us • 기업소개'" },
+          { "label": "섹션 ① H3 메인 헤딩", "value": "센터 정렬 '혁신적인 줄기세포 바이오 기술로, / 건강한 내일을 만듭니다.' (clamp 32-48px, weight 700). 마지막 줄 빨간색 강조 또는 페이드인" },
+          { "label": "섹션 ② 본문 (h4 + 텍스트)", "value": "H4 '줄기세포 전문기업 미라셀' + 회사 소개 본문 (max-width 800px). 미라셀의 정체성, 비전, 핵심 가치 설명" },
+          { "label": "섹션 ③ 🟢 조직도 다이어그램 (h4 '조직도')", "value": "큰 다이어그램 이미지 (PNG 또는 SVG). 미라셀의 조직 계층 시각화 (대표 → 본부 → 부서)" },
+          { "label": "섹션 ④ 공통 하단", "value": "Contact 다크 섹션 (회전 SVG + 긴 화살표) → Footer (4단 정보)" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "5-2. /about/ceo.php CEO소개 (sH 3014px)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "SubHero (Banner)", "value": "→ 컴포넌트 라이브러리 20-1 참조" },
-          { "label": "Breadcrumb", "value": "→ 컴포넌트 라이브러리 21-5 참조" },
-          { "label": "SubTopMenu (서브 카테고리 네비)", "value": "→ 컴포넌트 라이브러리 21-3 참조" },
-          { "label": "Pill Tabs (5개 시대)", "value": "→ 컴포넌트 라이브러리 21-7 참조" },
-          { "label": "Dropdown Menu (모바일)", "value": "→ 컴포넌트 라이브러리 25-4 참조" },
-          { "label": "Timeline (연도 grid)", "value": "→ 컴포넌트 라이브러리 23-3 참조" },
-          { "label": "Map Embed", "value": "→ 컴포넌트 라이브러리 25-1 참조" }
+          { "label": "Sub Banner", "value": "H1 'About Us' + 'Home • About Us • CEO소개'" },
+          { "label": "섹션 ① 🟢 CEO 메시지 (h4 + 본문)", "value": "H4 '미라셀㈜은 1986년 설립 이래' (큰 헤딩, 26-32px weight 700) + 긴 본문 텍스트 2단락 (line-height 1.9): '2009년 줄기세포 전문기업으로 새로운 도약을 한 이후, 인류의 건강에 혁신적인 해답을 제시하는 것을 사명으로 삼고 있습니다. 저희는 국내외 의료 협력과 R&D를 통해…' / '앞으로도 미라셀㈜은 과학적 전문성과 끊임없는 혁신을 바탕으로 치료의 한계를 넘어서는 도전을 이어가며, 인류의 건강과 삶의 질 향상에 기여하는 글로벌 …'" },
+          { "label": "섹션 ② 🟢 서명 라인", "value": "우측 정렬. 상단 빨간 보더 라인 200px width + 14px 회색 라벨 '미라셀 주식회사 대표이사' + 24px weight 700 검정 '신현순, 신누리' (이름)" }
+        ]},
+
+        { "type": "heading", "value": "5-3. /about/history.php 연혁 (sH 8808px - 가장 김)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "H1 'About Us' + 'Home • About Us • 연혁'" },
+          { "label": "섹션 ① 🟢 Pill 탭 (5개 시대)", "value": "센터 정렬 5개 탭: 2020's (활성, 빨간 #DD0031 배경 + 흰 텍스트, padding 14×44px, border-radius 99px) / 2010's / 2000's / 1990's / 1980's (회색 #F0F0F0 + #666 텍스트). 모바일에서는 .cur-location.cm-drop-open-btn-JS 드롭다운으로 전환" },
+          { "label": "섹션 ② 검정 가로선", "value": "탭 아래 2px solid #000 가로선 + 시대명 '2020's' (한 번 더 표시, 50px weight 900)" },
+          { "label": "섹션 ③ 🟢 연도별 grid 타임라인", "value": "각 연도마다 grid 110px+1fr (좌 연도 + 우 항목 리스트). 좌측: 30px weight 800 검정 연도 '2026' / 우측: ul (각 li '· 미국 식품의약국 FDA 510(k) 시스템 전체 승인', 15px line-height 2.1, 굵은 항목 weight 700 #000 / 일반 항목 weight 400 #777). 각 연도 사이 hr (1px solid #E8E8E8, margin 20px 0)" },
+          { "label": "콘텐츠 예시 (실측)", "value": "2026: · 미국 식품의약국 FDA 510(k) 시스템 전체 승인 / · 허가번호 K250516 - SMART M-CELL PRP Concentration System. 2025: · 세계 최초 빛 에너지 이용한 링거백 커버 크로마엠셀 개발 / · 발리 의료 특구 줄기세포 클리닉 센터 설립. 2024: · 글로벌 강소기업 선정 (중소벤처기업부) / · 보건복지부 장관 표창" }
+        ]},
+
+        { "type": "heading", "value": "5-4. /about/location01.php 오시는 길" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "H1 'About Us' + 'Home • About Us • 오시는길'" },
+          { "label": "섹션 ① 🟢 카카오 지도 임베드 (풀와이드)", "value": "max-width 1500px, height 500px, border-radius 16px. 카카오 마커 + 지도/스카이뷰 토글 + 줌 컨트롤" },
+          { "label": "섹션 ② 주소 + 교통편 정보", "value": "grid 또는 단일 컬럼. 큰 H4 주소 '서울특별시 강남구 테헤란로 625' (검정 24-28px) + TEL/FAX/E-mail / 교통편 (지하철, 버스, 자가용 주차)" }
+        ]},
+
+        { "type": "heading", "value": "5-5. /about/ci.php CI (sH 3512px)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "H1 'About Us' + 'Home • About Us • CI'" },
+          { "label": "섹션 ① 🟢 큰 미라셀 로고", "value": "센터 정렬 큰 원형 로고 (빨간 #DD0031 점들로 구성된 세포 모티프, diameter ~300-400px). 상단 본문: 'MiraCell은 라틴어로 '기적'을 뜻하는 Mira와 / 생명의 근원인 Cell(세포)의 의미가 결합되어 탄생한 이름입니다.' / 'MiraCell은 이러한 의미처럼 작은 변화가 모여 큰 회복을 만들어내는 생명과학의 가치를 추구합니다.'" },
+          { "label": "섹션 ② 🟢 의미 카드 2열", "value": "grid 1fr 1fr. 좌측 카드 (회색 #FAFAFA 배경, border-radius 16px, padding 40px): H4 '생명력과 재생의 가능성을 상징' + 본문 '각 원은 개별 세포를, 그 조화로운 배열은 세포가 함께 이루는 생명력과 재생의 가능성을 상징합니다.' / 우측 카드: H4 'MiraCell 의미' + 본문 '세포 하나하나가 모여 더 큰 기적을 만든다는 브랜드 철학을 시각적으로 표현합니다.'" },
+          { "label": "섹션 ③ 워드마크", "value": "H2 '워드마크' (좌측 정렬, 28-32px weight 700) + 큰 흰색 박스 (그리드 가이드라인 배경 + 중앙 빨간 로고 + Miracell 워드마크)" },
+          { "label": "섹션 ④ 🟢 컬러 가이드", "value": "2-3개 컬러 박스. 각 박스: 큰 색상 사각형 + HEX 코드 + RGB/CMYK 값. 실측 값: #790E17 (다크 레드, RGB 121/14/23, CMYK 51/100/100/31) / #000000 (블랙, RGB 0/0/0)" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner (현미경 이미지)", "value": "→ 20-1 / 5페이지 공유" },
+          { "label": "Sub Top Menu", "value": "→ 21-3 / 5개 가로 네비" },
+          { "label": "🟢 CEO Signature Line", "value": "신규 / 빨간 가로 라인 + 우측 정렬 '대표이사 + 이름'" },
+          { "label": "🟢 Pill Tab 5시대", "value": "→ 16-4 / 빨강 활성, 회색 비활성, 모바일 드롭다운 변환" },
+          { "label": "🟢 Year Grid Timeline", "value": "→ 23-3 / 연도+항목 ul, 가로선 구분" },
+          { "label": "🟢 Org Diagram", "value": "→ 24-4 / 다이어그램 이미지" },
+          { "label": "Map Embed (Kakao)", "value": "→ 25-1 / 오시는 길" },
+          { "label": "🟢 CI Meaning Card 2열", "value": "신규 / 회색 박스 + H4 + 본문" },
+          { "label": "🟢 Color Guide Box", "value": "신규 / 큰 색상 사각형 + HEX/RGB/CMYK" }
         ]}
       ]
     },
 
     "product-pages": {
-      "title": "06. Product 카테고리 (5 서브페이지)",
+      "title": "06. Product 카테고리 (5페이지 정밀 분석)",
       "blocks": [
-        { "type": "text", "value": "Product 5개 서브페이지는 제품 상세 페이지 패턴을 공유. Smart M-Cell이 가장 풍부한 콘텐츠 (sH 6574px, 16 이미지, 47 리스트, 1 탭)." },
+        { "type": "text", "value": "Chrome DevTools로 직접 인스펙션한 Product 카테고리 5개 페이지. Smart M-Cell이 가장 풍부 (sH 6574px, 이미지 16장, 리스트 47개, 탭 1개)." },
+
         { "type": "heading", "value": "공통 페이지 구조" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Hero 배너", "value": "About Us와 동일한 'Product' 카테고리 배너" },
-          { "label": "Sub Top Menu", "value": "5개 제품 가로 네비" },
-          { "label": "제품 메인 이미지", "value": "큰 제품 사진 (left) + 제품명/카테고리/특징 텍스트 (right)" },
-          { "label": "Spec Grid", "value": "5개 사양 카드 그리드 (border-radius:20px, 1px 보더, 중앙 정렬)" },
-          { "label": "LED 탭 (Smart M-Cell 전용)", "value": "Blue/Green/Yellow/Red 4개 컬러 탭, var(--led) CSS 변수 동적 적용" },
-          { "label": "기기 사양 테이블", "value": "2열 테이블 (속성 / 값), 회색 라벨 배경" },
-          { "label": "특허/인증 영역", "value": "FDA 510(k) 인증 배지, 보건복지부 표창 등 신뢰 마크" }
+          { "label": "Sub Banner", "value": "About Us와 동일 패턴 - 현미경 다크 이미지 + 'Product' 흰 H1 + 'Home • Product • [제품명]' 브레드크럼" },
+          { "label": "Sub Top Menu", "value": "5개 제품 가로 네비 (Smart M-Cell / BmSC Kit / BSC Kit / Chroma M-CELL / Vacuum lock syringe). 활성 항목 빨간 강조" },
+          { "label": "제품 메인 영역", "value": "grid 1fr 1fr 또는 1fr 1.2fr. 좌측 큰 제품 사진 (흰 배경 + 제품 그림자) / 우측 H3 제품명 (40-56px weight 700) + 카테고리 라벨 + 본문 설명" },
+          { "label": "Spec Card Grid", "value": "5개 사양 카드 그리드 (각 카드: border-radius 20px, 1px solid #E8E8E8, padding 24-32px, 중앙 정렬)" },
+          { "label": "기기 사양 테이블", "value": "2열 테이블 (속성 / 값). 속성 컬럼: 회색 라벨 배경 #FAFAFA + 검정 굵은 텍스트. 값 컬럼: 흰 배경 + 일반 텍스트" },
+          { "label": "Trust Badge (인증)", "value": "FDA 510(k) 인증 배지 / KFDA 인증 / CE 마크 등. 빨간 보더 카드 + 큰 약자 (FDA/KFDA/CE) + 인증 번호" }
         ]},
-        { "type": "heading", "value": "5개 제품 상세" },
+
+        { "type": "heading", "value": "6-1. /product/smart_mcell.php Smart M-Cell (sH 6574px - 가장 풍부)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Smart M-Cell /product/smart_mcell.php", "value": "h4 '제품특징' + 5개 spec 카드 (줄기세포/성장인자/SDF-1a/백혈구/혈소판) + LED 파장별 특성 (Blue 460~475nm, Green 525~530nm, Yellow 585~590nm, Red 660nm) + 기기 사양 표" },
-          { "label": "BmSC Kit /product/bmsc_kit.php", "value": "골수 줄기세포 분리 키트, 키트 구성 요소 이미지, 사용 방법 step 다이어그램" },
-          { "label": "BSC Kit /product/bsc_kit.php", "value": "혈액 줄기세포 분리 키트, 적용 분야 카드" },
-          { "label": "Chroma M-CELL /product/chroma_mcell.php", "value": "세계 최초 빛 에너지 링거백 커버, 4가지 LED 파장 효과 비교 표" },
-          { "label": "Vacuum lock syringe /product/vacuum_lock_syringe.php", "value": "진공 잠금 주사기, 구조 단면도, 사용 시나리오 이미지" }
+          { "label": "제품 헤더", "value": "H4 'Smart M-Cell' (큰 검정) + 카테고리 '세포용원심분리장치 · 의료기기' (회색)" },
+          { "label": "섹션 ① 🟢 제품특징 (h4)", "value": "H4 '제품특징' + 본문 + 5개 spec 카드 그리드 (grid-template-columns: repeat(5, 1fr), gap 16px)" },
+          { "label": "5개 Spec 카드 (실측)", "value": "[1] 줄기세포 - '골수 유래 줄기세포 분리' / [2] 성장인자 - 'PRP 성장인자 농축' / [3] SDF-1a - '줄기세포 귀소인자' / [4] 백혈구 - '면역 세포 분리' / [5] 혈소판 - '고농도 혈소판 추출'. 각 카드: 흰 배경 + 1px 보더 + border-radius 20px + 중앙 정렬 + 큰 라벨 + 작은 설명" },
+          { "label": "섹션 ② 🟢 LED 파장별 특성 (시그니처)", "value": "H3 'LED 파장별 특성' + Pill 탭 4개 (Blue 활성 #0066FF / Green #00AA44 / Yellow #FFAA00 / Red #DD0000). 각 탭은 var(--led) CSS 변수로 동적 보더+색상. 활성 시 배경 채움 + 흰 텍스트" },
+          { "label": "LED 정보 박스 (탭별 동적 변경)", "value": "회색 #F9F9F9 박스 (border-radius 12px, padding 16px). 텍스트 예: 'Blue LED (460~475nm) — 여드름균 사멸, 항균 효과' / 'Green LED (525~530nm) — 색소 침착 개선, 피부 진정' / 'Yellow LED (585~590nm) — 홍조 개선, 혈관 수축' / 'Red LED (660nm) — 콜라겐 생성, 상처 치유'" },
+          { "label": "섹션 ③ 🟢 기기 사양 표", "value": "H3 '기기 사양' + 2열 표. 행: 분류 / 정격전압 / 소비전력 / 치수 / 중량. 값: '세포용원심분리장치 (A47070.01)' / 'AC 100-240V, 50/60Hz' / 'Max 200W' / '340 x 340 x 280 mm' / '약 8.5kg'" },
+          { "label": "섹션 ④ 인증 영역", "value": "FDA 510(k) 인증 + 허가번호 K250516 표시" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "6-2. /product/bmsc_kit.php BmSC Kit" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Spec Card Grid", "value": "→ 컴포넌트 라이브러리 19-7 참조" },
-          { "label": "LED 컬러 탭", "value": "→ 컴포넌트 라이브러리 21-8 참조" },
-          { "label": "Spec Table", "value": "→ 컴포넌트 라이브러리 23-1 참조" },
-          { "label": "Trust Badge (인증 배지)", "value": "→ 컴포넌트 라이브러리 24-5 참조" }
+          { "label": "제품", "value": "골수 줄기세포 분리 키트 (Bone Marrow Stem Cell Kit)" },
+          { "label": "콘텐츠", "value": "키트 구성 요소 이미지 (시린지/필터/용기 등) + 사용 방법 step 다이어그램 (4-5단계) + 적용 사례" }
+        ]},
+
+        { "type": "heading", "value": "6-3. /product/bsc_kit.php BSC Kit" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "제품", "value": "혈액 줄기세포 분리 키트 (Blood Stem Cell Kit)" },
+          { "label": "콘텐츠", "value": "키트 구성 + 적용 분야 카드 (관절염, 항노화, 미용성형 등)" }
+        ]},
+
+        { "type": "heading", "value": "6-4. /product/chroma_mcell.php Chroma M-CELL" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "제품", "value": "세계 최초 빛 에너지 이용한 링거백 커버 (Chromatherapy + M-CELL)" },
+          { "label": "콘텐츠", "value": "Smart M-Cell과 유사한 LED 4파장 효과 비교 표 + 사용 시나리오 사진 (정맥주사 시 링거백 커버에 LED 적용)" }
+        ]},
+
+        { "type": "heading", "value": "6-5. /product/vacuum_lock_syringe.php Vacuum lock syringe" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "제품", "value": "진공 잠금 주사기 (멸균/이송용)" },
+          { "label": "콘텐츠", "value": "구조 단면도 (잠금 메커니즘 시각화) + 사용 시나리오 + 멸균 유지 시간" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "→ 20-1" },
+          { "label": "Sub Top Menu", "value": "→ 21-3" },
+          { "label": "🟢 Spec Card Grid (5열)", "value": "→ 19-7" },
+          { "label": "🟢 LED 컬러 탭 + 동적 정보", "value": "→ 21-8 / 시그니처 컴포넌트" },
+          { "label": "Spec Table 2열", "value": "→ 23-1" },
+          { "label": "🟢 Trust Badge Row", "value": "→ 24-5 / FDA, KFDA, CE" }
         ]}
       ]
     },
 
     "service-pages": {
-      "title": "07. Service 카테고리 (4 서브페이지)",
+      "title": "07. Service 카테고리 (4페이지 정밀 분석)",
       "blocks": [
         { "type": "text", "value": "Service 페이지는 비즈니스 모델 소개에 특화. 다양한 다이어그램, 프로세스 차트, 도입 효과 카드 등 정보 시각화 컴포넌트가 풍부." },
-        { "type": "heading", "value": "Miracell Membership /service/mgp.php — 가장 풍부" },
+
+        { "type": "heading", "value": "7-1. /service/mgp.php Miracell Membership (sH 7993px)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "페이지 크기", "value": "sH 7993px, 이미지 14, 리스트 39" },
-          { "label": "H3", "value": "Miracell Membership" },
-          { "label": "주요 섹션 (h4)", "value": "1) 바이오 헬스케어, 재생의료 시장 확대 2) Miracell Membership? 3) 차별화된 성능, 우수한 안전성 4) 도입 효과 5) 운영 프로세스 6) 도입 후 변화" },
-          { "label": "콘텐츠 유형", "value": "프로세스 다이어그램, 비교 표, 인포그래픽, Before/After 카드" }
+          { "label": "Sub Banner", "value": "H1 'Service' + 'Home • Service • Miracell Membership'" },
+          { "label": "메인 헤더", "value": "H3 'Miracell Membership' (큰 검정) + 카테고리 라벨" },
+          { "label": "섹션 ① h4 '바이오 헬스케어, 재생의료 시장 확대'", "value": "재생의료 시장 트렌드 인포그래픽 + 본문 (시장 규모, 성장률 시각화)" },
+          { "label": "섹션 ② h4 'Miracell Membership?'", "value": "프로그램 정의 + 가입 혜택 카드 3-4개 (좌측 아이콘 + 우측 텍스트)" },
+          { "label": "섹션 ③ h4 '차별화된 성능, 우수한 안전성'", "value": "Service Icon Flex List (.service-icon-flex-list .icon-flex-list-item: 좌측 18rem 아이콘 박스 + 우측 텍스트 박스, border 2px solid #DDD, border-radius 1rem) × 4-5개. 각 항목: 큰 라벨 (24px weight 700) + 작은 본문 (회색)" },
+          { "label": "섹션 ④ 🟢 h4 '도입 효과'", "value": "Before/After 비교 표 또는 도입 효과 카드. 좌측 회색 배경 'Before' + 우측 빨간 그라데이션 'After' + 가운데 화살표 →" },
+          { "label": "섹션 ⑤ 🟢 h4 '운영 프로세스'", "value": "Process Flow Diagram - 4-6단계 (상담 신청 → 전문가 상담 → 도입 진행 → 운영 → 사후 관리). 각 단계: 빨간 번호 배지 + 단계명 + 설명" },
+          { "label": "섹션 ⑥ h4 '도입 후 변화'", "value": "통계 카드 (큰 숫자 + 라벨, 도입 전후 차이 %)" }
         ]},
-        { "type": "heading", "value": "4개 페이지" },
+
+        { "type": "heading", "value": "7-2. /service/cellbanking.php CellBanking (sH 11335px - 가장 김!)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Miracell Membership /service/mgp.php", "value": "병원 멤버십 프로그램 소개, 6개 섹션 풀 콘텐츠" },
-          { "label": "CellBanking /service/cellbanking.php", "value": "면역세포·줄기세포 추출 보관 서비스, 보관 절차 step 다이어그램" },
-          { "label": "Stemcell Medical Platform /service/starpia.php", "value": "줄기세포 시술 커뮤니티 플랫폼, 앱 스크린샷, 기능 소개" },
-          { "label": "Medical AICC /service/miracle_call.php", "value": "병원 업무 자동화 AI 콜센터, 통화 플로우 다이어그램" }
+          { "label": "Sub Banner", "value": "H3 'CellBanking' + 부제 '면역세포 + 줄기세포 추출·보관 서비스' + 본문 '첨단 바이오·세포시대! 빠르게 다가오는 첨단 바이오·세포시대 / 세포보관 서비스로 진화하는 미래를 대비하세요.'" },
+          { "label": "히어로 이미지", "value": "실험실 사진 - 장갑 낀 손 + 세포 보관 vial (#1.8 마이크로튜브) 핀셋으로 잡는 모습. border-radius 24px" },
+          { "label": "섹션 ① 🟢 h4 '서비스 개요'", "value": "셀뱅킹 서비스 개요 + 줄기세포 보관의 중요성" },
+          { "label": "섹션 ② h4 '세포보관서비스, 왜 미라셀인가요?'", "value": "차별화 포인트 카드 (4-6개). 각 카드: 아이콘 + 헤딩 + 본문" },
+          { "label": "섹션 ③ 🟢 h4 '세포보관 과정'", "value": "Process Flow Diagram - 채취 → 분리 → 동결 → 보관 → 인출 (5-7단계, 각 단계 사진+텍스트)" },
+          { "label": "섹션 ④ h4 '줄기세포와 필수요소를 보관하는 기술력'", "value": "기술력 소개 + 보관 대상 종류 (5종 카드)" },
+          { "label": "섹션 ⑤ h4 '인증받은 분리 보관 기술력'", "value": "인증 마크 + 본문" },
+          { "label": "섹션 ⑥ h4 '세포의 수와 퀄리티 보장'", "value": "데이터 표 또는 통계 시각화" },
+          { "label": "섹션 ⑦ h4 '미래의 건강을 보관'", "value": "마무리 CTA + 신청 안내" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "7-3. /service/starpia.php Stemcell Medical Platform" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Process Flow Diagram", "value": "→ 컴포넌트 라이브러리 24-2 참조" },
-          { "label": "Service Icon Flex List", "value": "→ 컴포넌트 라이브러리 19-10 참조 (.service-icon-flex-list .icon-flex-list-item)" },
-          { "label": "Comparison Table", "value": "→ 컴포넌트 라이브러리 23-2 참조" },
-          { "label": "Before/After Card", "value": "→ 컴포넌트 라이브러리 19-11 참조" }
+          { "label": "콘텐츠", "value": "줄기세포 시술 커뮤니티 플랫폼 'Starpia'. 앱 스크린샷 (모바일 mockup) + 주요 기능 카드 (회원 가입 / 시술 검색 / 후기 / 예약) + 가입 의료기관 통계" }
+        ]},
+
+        { "type": "heading", "value": "7-4. /service/miracle_call.php Medical AICC" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "콘텐츠", "value": "병원 업무 자동화 AI 콜센터. 통화 플로우 다이어그램 (인입→AI 응대→예약/상담→전송) + 도입 효과 통계 + 적용 사례" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 Process Flow Diagram", "value": "→ 24-2 / 다단계 프로세스 시각화" },
+          { "label": "🟢 Service Icon Flex List", "value": "→ 19-10 / 좌측 큰 아이콘 박스 + 우측 텍스트 박스 (.service-icon-flex-list 패턴)" },
+          { "label": "🟢 Comparison Table (Before/After)", "value": "→ 23-2 / 도입 효과 비교" },
+          { "label": "Stat Card Grid", "value": "→ 23-5 / 도입 후 변화 통계" }
         ]}
       ]
     },
 
     "rnd-pages": {
-      "title": "08. R&D 카테고리 (4 서브페이지)",
+      "title": "08. R&D 카테고리 (4페이지 정밀 분석)",
       "blocks": [
-        { "type": "text", "value": "R&D 페이지는 학술적 콘텐츠 중심. 인포그래픽, 분자 다이어그램, 임상 데이터 표가 주요 컴포넌트." },
-        { "type": "heading", "value": "4개 페이지" },
+        { "type": "text", "value": "R&D 페이지는 학술적·교육적 콘텐츠 중심. 인포그래픽, 분자 다이어그램, 임상 데이터 표가 주요 컴포넌트." },
+
+        { "type": "heading", "value": "8-1. /rnd/stem_cells.php 줄기세포란? (sH 6525px)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "줄기세포란? /rnd/stem_cells.php", "value": "sH 6525, 이미지 10. h4 1) 줄기세포란? 2) 재생에 필수적인 4가지 세포 3) 줄기세포의 종류 → 교육형 콘텐츠" },
-          { "label": "연구소 /rnd/rnd_center.php", "value": "연구 인력 소개, 시설 사진 갤러리, 연구 분야 카드" },
-          { "label": "신의료기술 /rnd/new_medical.php", "value": "보건복지부 신의료기술 인증 (제2023-128호 918번) 등 인증 정보" },
-          { "label": "특허/인허가 /rnd/patents.php", "value": "23건의 특허 리스트, FDA 510(k) K250516 등 글로벌 인증" }
+          { "label": "Sub Banner", "value": "H1 'R&D' + 'Home • R&D • 줄기세포란?'" },
+          { "label": "메인 헤더", "value": "H3 '줄기세포란?' (큰 검정)" },
+          { "label": "섹션 ① 🟢 h4 '줄기세포란?'", "value": "정의 본문 + 분자 일러스트 (DNA, 세포 분열 등). 큰 인포그래픽 이미지" },
+          { "label": "섹션 ② 🟢 h4 '재생에 필수적인 4가지 세포'", "value": "4개 Numbered Cell Card 그리드 (2x2 또는 4열). 각 카드: 빨간 번호 배지 01-04 + 큰 아이콘 🧬💉🧫🧪 + H4 세포명 + 본문 설명 (예: 줄기세포 / 성장인자 / SDF-1a / 백혈구 또는 다른 4가지)" },
+          { "label": "섹션 ③ h4 '줄기세포의 종류'", "value": "줄기세포 분류 (배아 / 성체 / 유도만능). 각각의 특징, 활용 분야 카드 그리드" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "8-2. /rnd/rnd_center.php 연구소" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "정보 인포그래픽", "value": "→ 컴포넌트 라이브러리 24-1 참조" },
-          { "label": "Numbered Cell Card (4가지 세포)", "value": "→ 컴포넌트 라이브러리 19-6 참조" },
-          { "label": "Patent List Table", "value": "→ 컴포넌트 라이브러리 23-1 참조" }
+          { "label": "콘텐츠", "value": "연구소 소개 + 시설 사진 갤러리 (실험실, 클린룸, 분석 장비) + 연구 인력 카드 (사진 + 이름 + 직급 + 전문 분야) + 연구 분야 카드 그리드" }
+        ]},
+
+        { "type": "heading", "value": "8-3. /rnd/new_medical.php 신의료기술" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "콘텐츠", "value": "보건복지부 신의료기술 인증 정보 (제2023-128호 918번 등). 인증 카드: 빨간 보더 + 인증 마크 + 인증 번호 + 인증 내용 + 인증 일자. 신의료기술의 의미와 적용 분야 설명" }
+        ]},
+
+        { "type": "heading", "value": "8-4. /rnd/patents.php 특허/인허가" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "빨간/주황색 인삼 약 사진 배경 (위쪽 잘림) + H1 '특허 / 인허가' (페이드인 효과)" },
+          { "label": "콘텐츠", "value": "23건의 특허 리스트 - Patent List Table. 각 행: No. 번호 / 특허명 / 발급일. FDA 510(k) K250516 등 글로벌 인증 강조 카드" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 Numbered Cell Card", "value": "→ 19-6 / 4가지 세포 카드" },
+          { "label": "정보 인포그래픽", "value": "→ 24-1 / 분자 다이어그램, 세포 분열 등" },
+          { "label": "🟢 Patent List Table", "value": "→ 23-6 / No.+제목+날짜 정렬 가능 리스트" },
+          { "label": "Certification Card", "value": "→ 24-5 / 빨간 보더 + 인증 마크" }
         ]}
       ]
     },
 
     "newsroom-pages": {
-      "title": "09. Newsroom 카테고리 (3 서브페이지)",
+      "title": "09. Newsroom 카테고리 (3페이지 정밀 분석)",
       "blocks": [
         { "type": "text", "value": "Newsroom 페이지는 게시판 패턴. 검색·필터·페이지네이션이 핵심 컴포넌트." },
+
         { "type": "heading", "value": "공통 구조" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Hero 배너", "value": "손/세포 비주얼 이미지 + 'Newsroom' 흰 큰 제목" },
-          { "label": "검색 박스", "value": ".board-search-box.search-style-radius (height 50, radius full)" },
-          { "label": "카테고리 셀렉트", "value": ".board-custom-select-box.custom-select-box (커스텀 드롭다운)" },
-          { "label": "게시물 리스트", "value": "Table-like 리스트 (제목 + 카테고리 pill + 날짜 + 조회수)" },
-          { "label": "페이지네이션", "value": "숫자 페이지 + Prev/Next 화살표" }
+          { "label": "Sub Banner", "value": "손/세포 비주얼 이미지 + 'Newsroom' 흰 큰 H1" },
+          { "label": "Sub Top Menu", "value": "공지 / 보도자료 / Contents 3개 가로 네비. 활성 빨간 강조" },
+          { "label": "Search Filter Bar", "value": ".board-search-box.search-style-radius (height 50, border-radius 99px). 좌측 카테고리 셀렉트 (.board-custom-select-box.custom-select-box) + 중앙 텍스트 검색 input + 우측 🔍 버튼" },
+          { "label": "게시물 리스트", "value": "Table-like 리스트. 각 행: 카테고리 pill (빨간 outline, 12px) + 제목 (16-18px weight 700) + 우측 날짜 (회색 13px) + 조회수 옵션" },
+          { "label": "Pagination", "value": "센터 정렬, 좌 ◀ + 숫자 (1-5) + 우 ▶. 활성 빨간 원형 36×36px, 비활성 회색" }
         ]},
-        { "type": "heading", "value": "3개 페이지" },
+
+        { "type": "heading", "value": "9-1. /newsroom/notice.php 공지" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "공지 /newsroom/notice.php", "value": "회사 공지 리스트 (게시판 형식)" },
-          { "label": "보도자료 /newsroom/news.php", "value": "언론 보도 모음 (sH 3088, 검색+필터)" },
-          { "label": "Contents /newsroom/global.php", "value": "글로벌 콘텐츠 (영상/이미지 카드 그리드)" }
+          { "label": "콘텐츠", "value": "회사 공지 리스트 (조합원 정기총회, 정관 변경 등). 게시판 형식, 카테고리 'NOTICE'" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "9-2. /newsroom/news.php 보도자료 (sH 3088px)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Board Search Box", "value": "→ 컴포넌트 라이브러리 22-7 참조" },
-          { "label": "Custom Select", "value": "→ 컴포넌트 라이브러리 22-4 참조" },
-          { "label": "Pagination", "value": "→ 컴포넌트 라이브러리 21-10 참조" },
-          { "label": "News List Item", "value": "→ 컴포넌트 라이브러리 19-3 참조" }
+          { "label": "콘텐츠", "value": "언론 보도 모음. 검색+필터 + 게시판 리스트. 카테고리 '보도자료'. 실측 콘텐츠: '미라셀(주), 미국 FDA 510(k) 원심분리기+키트 시스템 전체 승인' (2026.04.06) / '[신년인사] 2026년 새해 복 많이 받으세요!' (2026.02.13) / '미라셀(주), CGP 아카데미 개최' (2025.08.11) / '사우디아라비아 시장 진출 — 현지 파트너십 체결' (2025.05.20) / '유럽 재생의학 심포지엄 스마트엠셀 임상 결과 발표' (2025.03.15)" }
+        ]},
+
+        { "type": "heading", "value": "9-3. /newsroom/global.php Contents" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "콘텐츠", "value": "글로벌 콘텐츠 (영상/이미지). 일반 게시판 형식 아닌 카드 그리드 형태. 각 카드: 썸네일 이미지 + 제목 + 짧은 본문 + 날짜" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 Board Search Box", "value": "→ 22-7 / Pill 형태" },
+          { "label": "Custom Select", "value": "→ 22-4 / 커스텀 드롭다운" },
+          { "label": "Pagination", "value": "→ 21-10" },
+          { "label": "News List Item (카테고리 pill)", "value": "→ 19-3" },
+          { "label": "🟢 Media Card Grid (Contents)", "value": "→ 25-3 / 이미지+제목+본문 카드" }
         ]}
       ]
     },
 
     "customer-pages": {
-      "title": "10. Customer Support 카테고리 (3 서브페이지)",
+      "title": "10. Customer Support 카테고리 (3페이지 정밀 분석)",
       "blocks": [
-        { "type": "text", "value": "Customer Support 페이지는 form과 자료 다운로드가 핵심." },
-        { "type": "heading", "value": "문의사항 /customer/inquiry.php — 가장 복잡한 폼" },
+        { "type": "text", "value": "Customer Support 페이지는 form과 자료 다운로드가 핵심. 문의사항 페이지가 가장 복잡한 폼 (sH 3385px)." },
+
+        { "type": "heading", "value": "10-1. /customer/inquiry.php 문의사항 (sH 3385px)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Form 구조", "value": "1) 카테고리 select (cate: 의료용품/화장품/플랫폼/뱅킹/기점 의원/총판/위탁) 2) 답변 방식 라디오 (전화/이메일/홈페이지) 3) 본문 textarea 4) 패스워드 (6자리 숫자) 5) 보안코드 captcha (HUGPCM 형식) 6) 개인정보처리방침 동의 체크 7) '문의 리스트'(검정) / '문의하기'(빨강) 액션 버튼" },
-          { "label": "필수 표시", "value": "라벨 옆 빨간 별표 (*)" },
-          { "label": "가이드 텍스트", "value": "필드 하단에 작은 회색 안내 (예: '※ 고객 정보 보호를 위하여 게시물 비밀번호 숫자 6자리를 입력하여 주세요.')" }
+          { "label": "Sub Banner", "value": "H1 'Customer Support' + 'Home • Customer Support • 문의사항'" },
+          { "label": "메인 헤더", "value": "H3 '문의사항'" },
+          { "label": "섹션 ① 🟢 카테고리 셀렉트 (cate)", "value": "큰 셀렉트 박스. 옵션 7개: 의료용품 / 화장품 / 미라셀 글로벌 플랫폼 / 미라셀뱅킹 세포보관 서비스 / 기점 의원 / 의료기기 총판 대리점 / 영업 위탁" },
+          { "label": "섹션 ② 라디오 그룹 (cate2_1, cate2_2, cate2_3 등)", "value": "카테고리에 따라 동적으로 변경되는 세부 라디오 옵션 (각 카테고리별 2-3개씩)" },
+          { "label": "섹션 ③ 답변 방식 라디오", "value": "전화 / 이메일 / 홈페이지 답변 (3개 가로 라디오, 빨간 #DD0031 accent-color)" },
+          { "label": "섹션 ④ 본문 textarea", "value": "큰 textarea (height 160-200px, border 1px solid #DDD, border-radius 6px). 라벨 + 빨간 별표 * (필수)" },
+          { "label": "섹션 ⑤ 🟢 패스워드 (6자리)", "value": "input type='password' maxlength='6' placeholder='숫자 6자리'. 가이드 텍스트 '※ 고객 정보 보호를 위하여 게시물 비밀번호 숫자 6자리를 입력하여 주세요.'" },
+          { "label": "섹션 ⑥ 🟢 보안코드 Captcha", "value": "input + 우측 회색 박스 'HUGPCM' (대문자 6자리, 큰 Outfit 18px letter-spacing 0.2em)" },
+          { "label": "섹션 ⑦ 동의 체크박스", "value": "원형 체크 + '개인정보처리방침에 동의합니다.' + 우측 '내용 보기' outline 버튼 (popup 트리거)" },
+          { "label": "섹션 ⑧ 액션 버튼 페어", "value": "센터 정렬. '문의 리스트' (검정 #000 배경 + 흰 텍스트, padding 18×60px) / '문의하기' (빨강 #DD0031 + 흰 텍스트)" }
         ]},
-        { "type": "heading", "value": "3개 페이지" },
+
+        { "type": "heading", "value": "10-2. /customer/library.php 자료실" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "문의사항 /customer/inquiry.php", "value": "문의 폼 (위 구조 참조)" },
-          { "label": "자료실 /customer/library.php", "value": "PDF 자료 다운로드 리스트 (파일명 + 크기 + 다운로드 버튼)" },
-          { "label": "논문 /customer/research_papers.php", "value": "논문 리스트 (제목 + 저자 + 출판일 + 외부 링크)" }
+          { "label": "콘텐츠", "value": "PDF 자료 다운로드 리스트. 각 항목: 📄 PDF 아이콘 + 파일명 + 크기 (MB) + 업로드 날짜 + '⬇ Download' 빨간 pill 버튼" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "10-3. /customer/research_papers.php 논문" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Form Field with Required *", "value": "→ 컴포넌트 라이브러리 22-1 참조" },
-          { "label": "Radio Group", "value": "→ 컴포넌트 라이브러리 22-5 참조" },
-          { "label": "Captcha Field", "value": "→ 컴포넌트 라이브러리 22-8 참조" },
-          { "label": "Action Button Pair (취소/제출)", "value": "→ 컴포넌트 라이브러리 18-9 참조" },
-          { "label": "Download List Item", "value": "→ 컴포넌트 라이브러리 19-12 참조" }
+          { "label": "콘텐츠", "value": "학술 논문 리스트. 각 항목: 제목 / 저자 / 게재 학술지 / 출판일 / 외부 링크 (DOI 또는 PubMed)" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 Field with Required *", "value": "→ 22-1 / 빨간 별표 + input + 가이드 텍스트" },
+          { "label": "Textarea", "value": "→ 22-2" },
+          { "label": "🟢 Password 6-digit", "value": "→ 22-3" },
+          { "label": "Custom Select", "value": "→ 22-4" },
+          { "label": "🟢 Radio Group", "value": "→ 22-5 / 가로 배치, 빨간 accent" },
+          { "label": "Checkbox with Link", "value": "→ 22-6 / 동의 체크 + 내용 보기" },
+          { "label": "🟢 Captcha Field", "value": "→ 22-8 / HUGPCM 형식 대문자" },
+          { "label": "Action Button Pair", "value": "→ 18-6 / 검정+빨강 페어" },
+          { "label": "Download List Item", "value": "→ 19-12" }
         ]}
       ]
     },
 
     "etc-pages": {
-      "title": "11. Member · Privacy · 기타 페이지",
+      "title": "11. Member · Privacy · 기타 페이지 (3페이지 정밀 분석)",
       "blocks": [
-        { "type": "heading", "value": "3개 페이지" },
+
+        { "type": "heading", "value": "11-1. /member/login.php 로그인" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "로그인 /member/login.php", "value": "이메일/패스워드 input, '로그인 유지' 체크박스, '로그인' 빨간 버튼, '회원가입'/'아이디·비밀번호 찾기' 링크" },
-          { "label": "회원가입 /member/join_01.php", "value": "step 1 '약관 동의' (이용약관 + 개인정보처리방침 체크박스), '다음 단계' 버튼" },
-          { "label": "개인정보처리방침 /etc/privacy.php", "value": "정책 본문 + 데이터 표 (관련 서비스/수집 항목/목적/수집방법/보유 및 이용기간 5열)" }
+          { "label": "Sub Banner", "value": "H1 'Member' 또는 '로그인'" },
+          { "label": "Login Form 박스", "value": "max-width 400px, 흰 배경, border-radius 16px, padding 40px, box-shadow 0 8px 32px rgba(0,0,0,0.06). 센터 정렬" },
+          { "label": "Form 구성", "value": "1) H3 '로그인' (Outfit 28px weight 700 센터) 2) 이메일 input 3) 비밀번호 input 4) '로그인 유지' 체크박스 5) 큰 빨간 '로그인' 버튼 (full width, padding 16px) 6) 하단 링크 '회원가입 · 아이디·비밀번호 찾기'" },
+          { "label": "Focus 상태", "value": "input focus 시 border #DDD → #DD0031 전환" }
         ]},
-        { "type": "heading", "value": "공통 컴포넌트 추출" },
+
+        { "type": "heading", "value": "11-2. /member/join_01.php 회원가입" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Login Form", "value": "→ 컴포넌트 라이브러리 22-9 참조" },
-          { "label": "Terms Agreement", "value": "→ 컴포넌트 라이브러리 22-10 참조" },
-          { "label": "Data Table (Privacy)", "value": "→ 컴포넌트 라이브러리 23-1 참조" },
-          { "label": "Step Indicator (회원가입 단계)", "value": "→ 컴포넌트 라이브러리 24-3 참조" }
+          { "label": "Sub Banner", "value": "H1 'Member' 또는 '회원가입'" },
+          { "label": "🟢 Step Indicator", "value": "다단계 진행 표시. 1 약관 동의 (활성, 검정) → 2 정보 입력 → 3 가입 완료. 각 단계: 원형 번호 + 라벨, 단계 사이 연결선 (활성 빨간색, 비활성 회색)" },
+          { "label": "Step 1 콘텐츠 - 약관 동의", "value": "Terms Agreement Block × 2개: (1) 이용약관: H4 + 스크롤 가능한 회색 박스 (max-height 140px, padding 20px, 약관 본문) + 원형 체크박스 + '<b>이용약관</b>에 동의합니다.' (2) 개인정보처리방침: 동일 구조" },
+          { "label": "Action 버튼", "value": "'다음 단계' 빨간 pill 버튼 (full width 또는 센터 정렬). 모든 체크박스 체크 시에만 활성" }
+        ]},
+
+        { "type": "heading", "value": "11-3. /etc/privacy.php 개인정보처리방침" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "H1 또는 페이지 제목 '개인정보처리방침'" },
+          { "label": "섹션 ① 정책 본문", "value": "긴 텍스트 (제1조, 제2조, 제3조 … 각 조항). 좌측 정렬, line-height 1.8, 단락 간 24-32px 여백" },
+          { "label": "섹션 ② 🟢 데이터 표 (5열)", "value": "큰 표 - 관련 서비스 / 수집 항목 / 목적 / 수집방법 / 보유 및 이용기간. 헤더: 검정 #000 배경 + 흰 텍스트. 본문: 흰 배경 + 검정 텍스트, 1px solid #E8E8E8 보더. 짝수 행 #FAFAFA 배경" },
+          { "label": "예시 행 (실측)", "value": "관련 서비스: 고객문의 / 수집 항목: [필수항목] 이름, 연락처, 이메일 / 목적: 고객 문의 대응 (유형: 상담신청, 기타 문의) / 수집방법: 웹페이지를 통한 이용자 본인 제공 / 보유 및 이용기간: 상담 종료일로부터 3년이 경과한 시점까지" },
+          { "label": "추가 본문", "value": "회원의 서비스 이용과정에서 수집되는 정보, 보존·이용기간 (관계 법령 - 「전자상거래 등에서의 소비자 보호에 관한 법률」 6개월/5년/3년, 「통신비밀보호법」 1년/3개월, 「상법」 10년/5년 등 명시)" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 Login Form", "value": "→ 22-9 / 박스 + 폼 + 빨간 CTA" },
+          { "label": "🟢 Terms Agreement Block", "value": "→ 22-10 / 스크롤 박스 + 동의 체크" },
+          { "label": "🟢 Step Indicator", "value": "→ 24-3 / 다단계 폼 진행" },
+          { "label": "🟢 Data Table (5열)", "value": "→ 23-1 / 검정 헤더 + 짝수 행 회색" }
         ]}
       ]
     },
