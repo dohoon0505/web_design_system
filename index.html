@@ -49,10 +49,44 @@
       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
     </symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+      <polyline points="15 3 21 3 21 9"></polyline>
+      <line x1="10" y1="14" x2="21" y2="3"></line>
+    </symbol>
     <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="10"></circle>
       <line x1="2" y1="12" x2="22" y2="12"></line>
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.77.11 3.06.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.79.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+    </symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+      <polyline points="2 17 12 22 22 17"></polyline>
+      <polyline points="2 12 12 17 22 12"></polyline>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
     </symbol>
   </svg>
 
@@ -70,15 +104,14 @@
         <svg class="icon"><use href="#i-menu"></use></svg>
       </button>
 
-      <a class="brand" href="#" data-route="home">
+      <a class="brand topbar-brand" href="#" data-route="home">
         <span class="brand-mark" aria-hidden="true">WDS</span>
         <span class="brand-text">Web Design System</span>
+        <span class="version-badge" id="topbar-version">v0.1.0</span>
       </a>
 
-      <nav class="topbar-nav" aria-label="Primary">
-        <a href="#getting-started/about" class="topbar-link" data-section="about">About</a>
-        <a href="#getting-started/how-to-use" class="topbar-link" data-section="how-to-use">How to Use</a>
-        <a href="#analyses" class="topbar-link" data-section="analyses">Analyses</a>
+      <nav class="topbar-nav" id="topbar-nav" aria-label="Primary">
+        <!-- Populated dynamically from system.json topbarGroups -->
       </nav>
 
       <button
@@ -89,17 +122,23 @@
       >
         <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
         <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+        <span class="theme-toggle-text">
+          <span class="theme-text-light">Dark</span>
+          <span class="theme-text-dark">Light</span>
+        </span>
       </button>
     </div>
   </header>
 
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar" aria-label="Navigation">
-    <div class="sidebar-header">
-      <a class="brand brand-sidebar" href="#" data-route="home">
-        <span class="brand-mark" aria-hidden="true">WDS</span>
-        <span class="brand-text">Web Design System</span>
-      </a>
+    <!-- Sidebar brand header -->
+    <a class="sidebar-brand" href="#" data-route="home">
+      <span class="brand-mark sidebar-brand-mark" aria-hidden="true">WDS</span>
+      <span class="sidebar-brand-text">
+        <span class="brand-name">Web Design System</span>
+        <span class="brand-ver" id="sidebar-version">v0.1.0 · 2026-05-13</span>
+      </span>
       <button
         type="button"
         class="icon-button sidebar-close"
@@ -108,13 +147,18 @@
       >
         <svg class="icon"><use href="#i-x"></use></svg>
       </button>
-    </div>
+    </a>
 
     <nav class="sidebar-scroll" id="sidebar-nav" aria-label="Sections">
       <!-- Populated dynamically by main.js from system.json -->
     </nav>
 
-    <div class="sidebar-footer">
+    <!-- Sidebar footer: theme region with label + sub -->
+    <div class="sidebar-theme" id="sidebar-theme">
+      <div class="sidebar-theme-text">
+        <span class="sidebar-theme-label">테마</span>
+        <span class="sidebar-theme-sub" id="sidebar-theme-sub">Light Mode</span>
+      </div>
       <button
         type="button"
         class="icon-button theme-toggle theme-toggle-sidebar"
@@ -123,7 +167,6 @@
       >
         <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
         <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
-        <span class="theme-toggle-label">Toggle theme</span>
       </button>
     </div>
   </aside>
@@ -134,9 +177,14 @@
   <!-- Main content -->
   <main class="main" id="main">
     <div class="container" id="top">
-      <!-- Populated dynamically by main.js based on route -->
       <div class="loading" id="loading">Loading…</div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <div class="footer-summary" id="footer-summary">Web Design System</div>
+      <div class="footer-meta" id="footer-meta">MAINTAINED BY · 2026 ©</div>
+    </footer>
   </main>
 
   <script src="assets/js/main.js"></script>

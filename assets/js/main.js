@@ -17,7 +17,14 @@
   // ---------- DOM refs ----------
   const $sidebar = document.getElementById('sidebar');
   const $sidebarNav = document.getElementById('sidebar-nav');
+  const $sidebarVersion = document.getElementById('sidebar-version');
+  const $sidebarThemeSub = document.getElementById('sidebar-theme-sub');
+  const $topbarNav = document.getElementById('topbar-nav');
+  const $topbarVersion = document.getElementById('topbar-version');
   const $main = document.querySelector('.container');
+  const $footer = document.getElementById('footer');
+  const $footerSummary = document.getElementById('footer-summary');
+  const $footerMeta = document.getElementById('footer-meta');
   const $scrim = document.getElementById('scrim');
   const $hamburger = document.getElementById('hamburger');
   const $sidebarClose = document.getElementById('sidebar-close');
@@ -57,13 +64,15 @@
     return node;
   }
 
-  function svgIcon(id) {
-    return `<svg class="icon" aria-hidden="true"><use href="#i-${id}"></use></svg>`;
+  function svgIcon(id, cls) {
+    const className = cls ? ' class="' + cls + '"' : '';
+    return `<svg${className} aria-hidden="true"><use href="#i-${id}"></use></svg>`;
   }
 
   // ---------- Theme ----------
   function applyTheme(theme) {
     document.body.setAttribute('data-theme', theme);
+    if ($sidebarThemeSub) $sidebarThemeSub.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
     try { localStorage.setItem('wds-theme', theme); } catch (e) { /* ignore */ }
   }
   function initTheme() {
@@ -115,10 +124,8 @@
       state.manifest = {
         name: 'Web Design System',
         version: '0.1.0',
-        groups: [
-          { id: 'getting-started', title: 'Getting Started', items: [{ id: 'about', title: 'About', type: 'static' }] },
-          { id: 'analyses', title: 'Analyses', items: [] },
-        ],
+        buildDate: '',
+        groups: [],
         analysisSections: [],
       };
     }
@@ -138,7 +145,56 @@
     }
   }
 
+  // ---------- Header/footer chrome ----------
+  function applyChrome() {
+    const m = state.manifest;
+    if (!m) return;
+    if ($topbarVersion) $topbarVersion.textContent = 'v' + (m.version || '0.0.0');
+    if ($sidebarVersion) {
+      const date = m.buildDate ? ' · ' + m.buildDate : '';
+      $sidebarVersion.textContent = 'v' + (m.version || '0.0.0') + date;
+    }
+    if ($footerSummary) $footerSummary.textContent = m.summary || (m.name || '') + ' · v' + (m.version || '');
+    if ($footerMeta) $footerMeta.textContent = 'MAINTAINED BY ' + (m.maintainer || '·') + ' · ' + (new Date().getFullYear()) + ' ©';
+
+    // Topbar nav: group label + links
+    if ($topbarNav) {
+      $topbarNav.innerHTML = '';
+      const tg = Array.isArray(m.topbarGroups) ? m.topbarGroups : [];
+      tg.forEach((g) => {
+        const grp = el('div', { class: 'topbar-group' });
+        grp.appendChild(el('span', { class: 'group-label', text: g.label }));
+        (g.links || []).forEach((lnk) => {
+          grp.appendChild(el('a', {
+            class: 'topbar-link',
+            href: lnk.href || '#',
+            'data-route': (lnk.href || '').replace(/^#/, ''),
+            text: lnk.title,
+          }));
+        });
+        $topbarNav.appendChild(grp);
+      });
+    }
+  }
+
   // ---------- Sidebar render ----------
+  const ICON_FALLBACK = {
+    resources: 'layers',
+    reference: 'book',
+    analyses: 'globe',
+    home: 'home',
+    github: 'github',
+    info: 'info',
+    book: 'book',
+    external: 'external',
+  };
+
+  function iconFor(item, fallback) {
+    const id = item.icon || fallback || 'arrow-right';
+    // sanitize to known ids; fall back to circle-info-ish
+    return id;
+  }
+
   function renderSidebar() {
     if (!state.manifest) return;
     const groups = state.manifest.groups || [];
@@ -157,40 +213,66 @@
           if (group.id === 'analyses') {
             // expandable analysis entry with subsections
             const $li = el('li', { class: 'sidebar-expandable' });
+            const ico = iconFor(item, 'globe');
             const $link = el('a', {
               class: 'sidebar-link',
               href: `#analyses/${item.id}`,
               'data-section': item.id,
               'data-route': `analyses/${item.id}`,
-              html: `<span>${escapeHtml(item.title)}</span>${svgIcon('chevron-right')}`,
+              html: `<span class="sidebar-ico">${svgIcon(ico)}</span>` +
+                    `<span class="sidebar-link-text">${escapeHtml(item.title)}</span>` +
+                    svgIcon('chevron-down', 'chevron'),
             });
             $li.appendChild($link);
             const $sub = el('ul', { class: 'sidebar-sub' });
             analysisSections.forEach((s) => {
-              $sub.appendChild(el('li', null,
-                el('a', {
-                  class: 'sidebar-link',
-                  href: `#analyses/${item.id}/${s.id}`,
-                  'data-section': `${item.id}/${s.id}`,
-                  'data-route': `analyses/${item.id}/${s.id}`,
-                  text: s.title,
-                })
-              ));
+              const subLink = el('a', {
+                class: 'sidebar-link',
+                href: `#analyses/${item.id}/${s.id}`,
+                'data-section': `${item.id}/${s.id}`,
+                'data-route': `analyses/${item.id}/${s.id}`,
+                html: `<span class="sidebar-ico"></span>` +
+                      `<span class="sidebar-link-text">${escapeHtml(s.title)}</span>`,
+              });
+              $sub.appendChild(el('li', null, subLink));
             });
             $li.appendChild($sub);
             $ul.appendChild($li);
+          } else if (item.type === 'external') {
+            const ico = iconFor(item, 'external');
+            const $link = el('a', {
+              class: 'sidebar-link',
+              href: item.href,
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              html: `<span class="sidebar-ico">${svgIcon(ico)}</span>` +
+                    `<span class="sidebar-link-text">${escapeHtml(item.title)}</span>` +
+                    `<span class="sidebar-link-ext">${svgIcon('external')}</span>`,
+            });
+            $ul.appendChild(el('li', null, $link));
+          } else if (item.type === 'route') {
+            const ico = iconFor(item, 'home');
+            const $link = el('a', {
+              class: 'sidebar-link',
+              href: item.href || '#',
+              'data-section': item.id,
+              'data-route': (item.href || '').replace(/^#/, '') || 'home',
+              html: `<span class="sidebar-ico">${svgIcon(ico)}</span>` +
+                    `<span class="sidebar-link-text">${escapeHtml(item.title)}</span>`,
+            });
+            $ul.appendChild(el('li', null, $link));
           } else {
-            // flat static link
-            const $li = el('li', null,
-              el('a', {
-                class: 'sidebar-link',
-                href: `#${group.id}/${item.id}`,
-                'data-section': item.id,
-                'data-route': `${group.id}/${item.id}`,
-                text: item.title,
-              })
-            );
-            $ul.appendChild($li);
+            // static page link
+            const ico = iconFor(item, 'info');
+            const $link = el('a', {
+              class: 'sidebar-link',
+              href: `#${group.id}/${item.id}`,
+              'data-section': item.id,
+              'data-route': `${group.id}/${item.id}`,
+              html: `<span class="sidebar-ico">${svgIcon(ico)}</span>` +
+                    `<span class="sidebar-link-text">${escapeHtml(item.title)}</span>`,
+            });
+            $ul.appendChild(el('li', null, $link));
           }
         });
       }
@@ -198,41 +280,41 @@
       $sidebarNav.appendChild($group);
     });
 
-    // Wire expand/collapse and click-close-on-mobile
+    // Expand/collapse handling: toggle is-open on the parent <li>
     $sidebarNav.querySelectorAll('.sidebar-expandable > .sidebar-link').forEach(($a) => {
-      $a.addEventListener('click', (e) => {
-        // toggle expand without preventing navigation
-        const $li = $a.parentElement;
-        $li.classList.toggle('is-open');
+      $a.addEventListener('click', () => {
+        $a.parentElement.classList.toggle('is-open');
       });
     });
+    // Mobile auto-close
     $sidebarNav.querySelectorAll('.sidebar-link').forEach(($a) => {
       $a.addEventListener('click', () => closeSidebarIfMobile());
     });
   }
 
   function highlightSidebar(hash) {
-    $sidebarNav.querySelectorAll('.sidebar-link').forEach(($a) => {
-      $a.classList.remove('is-active');
-    });
-    if (!hash) return;
-    // try exact, then prefix (parent)
+    $sidebarNav.querySelectorAll('.sidebar-link').forEach(($a) => $a.classList.remove('is-active'));
+    if (!hash) {
+      // highlight home if present
+      const $home = $sidebarNav.querySelector('.sidebar-link[data-route="home"]');
+      if ($home) $home.classList.add('is-active');
+      return;
+    }
     let $active = $sidebarNav.querySelector(`.sidebar-link[data-route="${hash}"]`);
     if (!$active) {
-      // try parent route (e.g., analyses/amazon when hash is analyses/amazon/colors)
       const parent = hash.split('/').slice(0, 2).join('/');
       $active = $sidebarNav.querySelector(`.sidebar-link[data-route="${parent}"]`);
     }
     if ($active) {
       $active.classList.add('is-active');
-      // auto-expand parent if inside expandable
       const $exp = $active.closest('.sidebar-expandable');
       if ($exp) $exp.classList.add('is-open');
     }
-    // also highlight topbar nav
-    document.querySelectorAll('.topbar-link').forEach(($a) => {
-      $a.classList.toggle('is-active', $a.getAttribute('href') === '#' + hash);
-    });
+    if ($topbarNav) {
+      $topbarNav.querySelectorAll('.topbar-link').forEach(($a) => {
+        $a.classList.toggle('is-active', $a.getAttribute('href') === '#' + hash);
+      });
+    }
   }
 
   // ---------- Routing ----------
@@ -248,19 +330,21 @@
     if (!hash) {
       renderHome();
     } else if (hash === 'analyses') {
-      renderAnalysesIndex();
+      renderHome();
     } else if (hash.startsWith('analyses/')) {
       const parts = hash.split('/');
       const id = parts[1];
       const section = parts[2] || null;
       await renderAnalysis(id, section);
+    } else if (hash.startsWith('reference/')) {
+      renderStatic(hash.replace('reference/', ''));
     } else if (hash.startsWith('getting-started/')) {
+      // backward-compat with previous routes
       renderStatic(hash.replace('getting-started/', ''));
     } else {
       renderHome();
     }
 
-    // scroll to top of content (except section anchors)
     if (!hash.includes('/') || !hash.split('/')[2]) {
       window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
     }
@@ -268,15 +352,43 @@
 
   // ---------- Views ----------
   function renderHome() {
-    const analyses = (state.manifest.groups.find((g) => g.id === 'analyses') || {}).items || [];
+    const m = state.manifest;
+    const analyses = ((m.groups || []).find((g) => g.id === 'analyses') || {}).items || [];
+    const reference = ((m.groups || []).find((g) => g.id === 'reference') || {}).items || [];
     $main.innerHTML = '';
 
     const hero = el('div', { class: 'page-hero' });
-    hero.appendChild(el('div', { class: 'page-eyebrow', text: 'Web Design System' }));
-    hero.appendChild(el('h1', { class: 'page-title', text: 'Website Analysis Catalog' }));
-    hero.appendChild(el('p', { class: 'page-subtitle', text: '웹페이지 URL을 분석한 결과가 이 카탈로그에 누적됩니다. 각 분석은 좌측 네비게이터의 한 카테고리가 됩니다.' }));
+    hero.appendChild(el('div', { class: 'page-eyebrow', text: m.name || 'Web Design System' }));
+    hero.appendChild(el('h1', { class: 'page-title', text: (m.name || 'Web Design System') + ' · Catalog' }));
+    hero.appendChild(el('p', { class: 'page-subtitle', text: '웹페이지 URL을 분석한 결과가 이 카탈로그에 누적됩니다. 각 분석은 좌측 네비게이터의 한 카테고리가 됩니다. 아래 카테고리를 클릭해 탐색을 시작하세요.' }));
     $main.appendChild(hero);
 
+    const grid = el('div', { class: 'cat-grid' });
+
+    // Reference cards (always present)
+    reference.forEach((it) => {
+      const card = el('a', { class: 'cat-card', href: `#reference/${it.id}` });
+      card.appendChild(el('div', { class: 'cat-card-ico', html: svgIcon(iconFor(it, 'info')) }));
+      card.appendChild(el('h3', { class: 'cat-card-title', text: it.title }));
+      card.appendChild(el('p', { class: 'cat-card-desc', text: it.desc || '' }));
+      card.appendChild(el('span', { class: 'cat-card-meta', html: '자세히 보기 ' + svgIcon('arrow-right') }));
+      grid.appendChild(card);
+    });
+
+    // Analysis cards
+    analyses.forEach((a) => {
+      const card = el('a', { class: 'cat-card', href: `#analyses/${a.id}` });
+      card.appendChild(el('div', { class: 'cat-card-ico', html: svgIcon('globe') }));
+      card.appendChild(el('h3', { class: 'cat-card-title', text: a.title || a.id }));
+      if (a.url) card.appendChild(el('div', { class: 'cat-card-url', text: a.url }));
+      if (a.summary || a.desc) card.appendChild(el('p', { class: 'cat-card-desc', text: a.summary || a.desc }));
+      card.appendChild(el('span', { class: 'cat-card-meta', html: '자세히 보기 ' + svgIcon('arrow-right') }));
+      grid.appendChild(card);
+    });
+
+    $main.appendChild(grid);
+
+    // Empty-state hint when no analyses yet
     if (analyses.length === 0) {
       const empty = el('div', { class: 'empty-state' });
       empty.appendChild(el('div', { class: 'empty-state-icon', html: svgIcon('globe') }));
@@ -286,29 +398,13 @@
         text: '어시스턴트에게 분석할 웹페이지 URL을 알려주세요. 분석 결과가 좌측 네비게이터에 카테고리로 누적됩니다.',
       }));
       $main.appendChild(empty);
-      return;
     }
-
-    const grid = el('div', { class: 'card-grid' });
-    analyses.forEach((a) => {
-      const card = el('a', { class: 'card', href: `#analyses/${a.id}` });
-      card.appendChild(el('h3', { class: 'card-title', text: a.title || a.id }));
-      if (a.url) card.appendChild(el('div', { class: 'card-url', text: a.url }));
-      if (a.summary) card.appendChild(el('p', { class: 'card-desc', text: a.summary }));
-      if (a.analyzedAt) card.appendChild(el('div', { class: 'card-meta', text: 'Analyzed ' + a.analyzedAt }));
-      grid.appendChild(card);
-    });
-    $main.appendChild(grid);
-  }
-
-  function renderAnalysesIndex() {
-    renderHome();
   }
 
   function renderStatic(id) {
     $main.innerHTML = '';
     const hero = el('div', { class: 'page-hero' });
-    hero.appendChild(el('div', { class: 'page-eyebrow', text: 'Getting Started' }));
+    hero.appendChild(el('div', { class: 'page-eyebrow', text: 'Reference' }));
     const content = el('div', { class: 'content' });
 
     if (id === 'about') {
@@ -386,14 +482,12 @@
     hero.appendChild(actions);
     $main.appendChild(hero);
 
-    // Sections
     const sections = (state.manifest.analysisSections || []);
     sections.forEach((s) => {
       const $section = renderAnalysisSection(s.id, s.title, data);
       $main.appendChild($section);
     });
 
-    // Scroll to specific section
     if (section) {
       setTimeout(() => {
         const $target = document.getElementById('s-' + section);
@@ -412,35 +506,16 @@
 
     let bodyHtml = '';
     switch (sectionId) {
-      case 'overview':
-        bodyHtml = renderOverview(data);
-        break;
-      case 'tech-stack':
-        bodyHtml = renderTechStack(data.techStack);
-        break;
-      case 'colors':
-        bodyHtml = renderColors(data.colors);
-        break;
-      case 'typography':
-        bodyHtml = renderTypography(data.typography);
-        break;
-      case 'layout':
-        bodyHtml = renderLayout(data.layout);
-        break;
-      case 'components':
-        bodyHtml = renderComponents(data.components);
-        break;
-      case 'iconography':
-        bodyHtml = renderIconography(data.iconography);
-        break;
-      case 'interactions':
-        bodyHtml = renderInteractions(data.interactions);
-        break;
-      case 'accessibility':
-        bodyHtml = renderAccessibility(data.accessibility);
-        break;
-      default:
-        bodyHtml = '<p class="section-description">No content.</p>';
+      case 'overview': bodyHtml = renderOverview(data); break;
+      case 'tech-stack': bodyHtml = renderTechStack(data.techStack); break;
+      case 'colors': bodyHtml = renderColors(data.colors); break;
+      case 'typography': bodyHtml = renderTypography(data.typography); break;
+      case 'layout': bodyHtml = renderLayout(data.layout); break;
+      case 'components': bodyHtml = renderComponents(data.components); break;
+      case 'iconography': bodyHtml = renderIconography(data.iconography); break;
+      case 'interactions': bodyHtml = renderInteractions(data.interactions); break;
+      case 'accessibility': bodyHtml = renderAccessibility(data.accessibility); break;
+      default: bodyHtml = '<p class="section-description">No content.</p>';
     }
     const body = el('div', { class: 'content', html: bodyHtml });
     wrap.appendChild(body);
@@ -485,14 +560,9 @@
     if (!c) return '<p class="section-description">No color data.</p>';
     let html = '';
     const labelled = [
-      ['Primary', c.primary],
-      ['Secondary', c.secondary],
-      ['Accent', c.accent],
-      ['Background', c.background],
-      ['Surface', c.surface],
-      ['Text', c.text],
-      ['Text Muted', c.textMuted],
-      ['Border', c.border],
+      ['Primary', c.primary], ['Secondary', c.secondary], ['Accent', c.accent],
+      ['Background', c.background], ['Surface', c.surface],
+      ['Text', c.text], ['Text Muted', c.textMuted], ['Border', c.border],
     ].filter(([_, v]) => !!v);
     if (labelled.length) {
       html += '<h3>Named Roles</h3><table class="table"><thead><tr><th>Role</th><th>Value</th><th>Swatch</th></tr></thead><tbody>';
@@ -542,11 +612,7 @@
   function renderLayout(l) {
     if (!l) return '<p class="section-description">No layout data.</p>';
     let html = '';
-    const rows = [
-      ['Max Width', l.maxWidth],
-      ['Grid', l.grid],
-      ['Spacing', l.spacing],
-    ].filter(([_, v]) => !!v);
+    const rows = [['Max Width', l.maxWidth], ['Grid', l.grid], ['Spacing', l.spacing]].filter(([_, v]) => !!v);
     if (rows.length) {
       html += '<table class="table"><tbody>';
       rows.forEach(([k, v]) => html += `<tr><th>${k}</th><td>${escapeHtml(v)}</td></tr>`);
@@ -574,10 +640,7 @@
   }
   function renderIconography(i) {
     if (!i) return '<p class="section-description">No iconography data.</p>';
-    const rows = [
-      ['Library', i.library],
-      ['Style', i.style],
-    ].filter(([_, v]) => !!v);
+    const rows = [['Library', i.library], ['Style', i.style]].filter(([_, v]) => !!v);
     let html = '';
     if (rows.length) {
       html += '<table class="table"><tbody>';
@@ -589,11 +652,7 @@
   }
   function renderInteractions(i) {
     if (!i) return '<p class="section-description">No interactions data.</p>';
-    const rows = [
-      ['Animations', i.animations],
-      ['Transitions', i.transitions],
-      ['Hover', i.hover],
-    ].filter(([_, v]) => !!v);
+    const rows = [['Animations', i.animations], ['Transitions', i.transitions], ['Hover', i.hover]].filter(([_, v]) => !!v);
     let html = '';
     if (rows.length) {
       html += '<table class="table"><tbody>';
@@ -605,11 +664,7 @@
   }
   function renderAccessibility(a) {
     if (!a) return '<p class="section-description">No accessibility data.</p>';
-    const rows = [
-      ['Contrast Ratio', a.contrastRatio],
-      ['Keyboard', a.keyboard],
-      ['ARIA', a.aria],
-    ].filter(([_, v]) => !!v);
+    const rows = [['Contrast Ratio', a.contrastRatio], ['Keyboard', a.keyboard], ['ARIA', a.aria]].filter(([_, v]) => !!v);
     let html = '';
     if (rows.length) {
       html += '<table class="table"><tbody>';
@@ -644,16 +699,12 @@
     if (data.summary) { lines.push(''); lines.push(data.summary); }
     lines.push('');
 
-    // Overview
-    lines.push('## Overview');
-    lines.push('');
+    lines.push('## Overview'); lines.push('');
     [_kv('URL', data.url), _kv('Analyzed', data.analyzedAt), _kv('ID', data.id)].filter(Boolean).forEach((l) => lines.push(l));
     lines.push('');
 
-    // Tech Stack
     if (data.techStack) {
-      lines.push('## Tech Stack');
-      lines.push('');
+      lines.push('## Tech Stack'); lines.push('');
       const t = data.techStack;
       if (t.frameworks && t.frameworks.length) { lines.push('### Frameworks'); lines.push(_list(t.frameworks)); lines.push(''); }
       if (t.cssFrameworks && t.cssFrameworks.length) { lines.push('### CSS Frameworks'); lines.push(_list(t.cssFrameworks)); lines.push(''); }
@@ -664,10 +715,8 @@
       lines.push('');
     }
 
-    // Colors
     if (data.colors) {
-      lines.push('## Color Palette');
-      lines.push('');
+      lines.push('## Color Palette'); lines.push('');
       const c = data.colors;
       const labelled = [
         ['Primary', c.primary], ['Secondary', c.secondary], ['Accent', c.accent],
@@ -686,33 +735,23 @@
       }
     }
 
-    // Typography
     if (data.typography) {
-      lines.push('## Typography');
-      lines.push('');
+      lines.push('## Typography'); lines.push('');
       const t = data.typography;
       [_kv('Heading Font', t.headingFont), _kv('Body Font', t.bodyFont), _kv('Mono Font', t.monoFont)].filter(Boolean).forEach((l) => lines.push(l));
       lines.push('');
-      if (t.fontSources && t.fontSources.length) {
-        lines.push('### Font Sources');
-        lines.push(_list(t.fontSources));
-        lines.push('');
-      }
+      if (t.fontSources && t.fontSources.length) { lines.push('### Font Sources'); lines.push(_list(t.fontSources)); lines.push(''); }
       if (Array.isArray(t.sizes) && t.sizes.length) {
         lines.push('### Sizes');
         lines.push(_tableRows(['Name', 'Value', 'Usage'], t.sizes.map((s) => [s.name || '', s.value || '', s.usage || ''])));
         lines.push('');
       }
-      if (Array.isArray(t.weights) && t.weights.length) {
-        lines.push('### Weights'); lines.push(_list(t.weights)); lines.push('');
-      }
+      if (Array.isArray(t.weights) && t.weights.length) { lines.push('### Weights'); lines.push(_list(t.weights)); lines.push(''); }
       if (t.notes) { lines.push('### Notes'); lines.push(t.notes); lines.push(''); }
     }
 
-    // Layout
     if (data.layout) {
-      lines.push('## Layout & Grid');
-      lines.push('');
+      lines.push('## Layout & Grid'); lines.push('');
       const l = data.layout;
       [_kv('Max Width', l.maxWidth), _kv('Grid', l.grid), _kv('Spacing', l.spacing)].filter(Boolean).forEach((x) => lines.push(x));
       lines.push('');
@@ -724,53 +763,34 @@
       if (l.notes) { lines.push('### Notes'); lines.push(l.notes); lines.push(''); }
     }
 
-    // Components
     if (Array.isArray(data.components) && data.components.length) {
-      lines.push('## Components');
-      lines.push('');
+      lines.push('## Components'); lines.push('');
       lines.push(_tableRows(['Name', 'Type', 'Variants', 'Notes'],
         data.components.map((c) => [c.name || '', c.type || '', (c.variants || []).join(', '), c.notes || ''])));
       lines.push('');
     }
 
-    // Iconography
     if (data.iconography) {
-      lines.push('## Iconography');
-      lines.push('');
+      lines.push('## Iconography'); lines.push('');
       [_kv('Library', data.iconography.library), _kv('Style', data.iconography.style)].filter(Boolean).forEach((l) => lines.push(l));
       if (data.iconography.notes) { lines.push(''); lines.push(data.iconography.notes); }
       lines.push('');
     }
-
-    // Interactions
     if (data.interactions) {
-      lines.push('## Interactions');
-      lines.push('');
+      lines.push('## Interactions'); lines.push('');
       [_kv('Animations', data.interactions.animations), _kv('Transitions', data.interactions.transitions), _kv('Hover', data.interactions.hover)].filter(Boolean).forEach((l) => lines.push(l));
       if (data.interactions.notes) { lines.push(''); lines.push(data.interactions.notes); }
       lines.push('');
     }
-
-    // Accessibility
     if (data.accessibility) {
-      lines.push('## Accessibility');
-      lines.push('');
+      lines.push('## Accessibility'); lines.push('');
       [_kv('Contrast Ratio', data.accessibility.contrastRatio), _kv('Keyboard', data.accessibility.keyboard), _kv('ARIA', data.accessibility.aria)].filter(Boolean).forEach((l) => lines.push(l));
       if (data.accessibility.notes) { lines.push(''); lines.push(data.accessibility.notes); }
       lines.push('');
     }
+    if (data.notes) { lines.push('## Notes'); lines.push(''); lines.push(data.notes); lines.push(''); }
 
-    // Free notes
-    if (data.notes) {
-      lines.push('## Notes');
-      lines.push('');
-      lines.push(data.notes);
-      lines.push('');
-    }
-
-    lines.push('---');
-    lines.push('');
-    lines.push('_Generated by Web Design System._');
+    lines.push('---'); lines.push(''); lines.push('_Generated by Web Design System._');
     return lines.join('\n');
   }
 
@@ -806,12 +826,14 @@
       if (e.key === 'Escape') closeSidebar();
     });
 
-    // close sidebar when navigating via home brand
+    // brand → home
     document.querySelectorAll('[data-route="home"]').forEach(($a) => {
       $a.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.hash = '';
-        closeSidebarIfMobile();
+        if ($a.getAttribute('href') === '#' || $a.getAttribute('href') === null) {
+          e.preventDefault();
+          window.location.hash = '';
+          closeSidebarIfMobile();
+        }
       });
     });
   }
@@ -820,6 +842,7 @@
   async function init() {
     initTheme();
     await loadManifest();
+    applyChrome();
     renderSidebar();
     wireEvents();
     await route();

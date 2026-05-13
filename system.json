@@ -1,15 +1,44 @@
 {
   "name": "Web Design System",
   "version": "0.1.0",
+  "buildDate": "2026-05-13",
   "description": "Website analysis catalog. Each analysis becomes a category in the left navigator.",
   "schemaVersion": "1.0",
+  "repository": "https://github.com/dohoon0505/web_design_system",
+  "summary": "Web Design System · v0.1.0 · Website Analysis Catalog · Mirrors dohoon0505/desgin_system architecture",
+  "maintainer": "/DH",
+  "topbarGroups": [
+    {
+      "label": "Resources",
+      "links": [{ "id": "home", "title": "Home", "href": "#" }]
+    },
+    {
+      "label": "Reference",
+      "links": [
+        { "id": "about", "title": "About", "href": "#reference/about" },
+        { "id": "how-to-use", "title": "How to Use", "href": "#reference/how-to-use" }
+      ]
+    },
+    {
+      "label": "Catalog",
+      "links": [{ "id": "analyses", "title": "Analyses", "href": "#analyses" }]
+    }
+  ],
   "groups": [
     {
-      "id": "getting-started",
-      "title": "Getting Started",
+      "id": "resources",
+      "title": "Web Design System · Resources",
       "items": [
-        { "id": "about", "title": "About", "type": "static" },
-        { "id": "how-to-use", "title": "How to Use", "type": "static" }
+        { "id": "home", "title": "Home", "icon": "home", "type": "route", "href": "#" },
+        { "id": "github", "title": "GitHub 저장소", "icon": "github", "type": "external", "href": "https://github.com/dohoon0505/web_design_system" }
+      ]
+    },
+    {
+      "id": "reference",
+      "title": "Reference",
+      "items": [
+        { "id": "about", "title": "About", "icon": "info", "type": "static", "desc": "본 시스템의 컨셉과 구조 안내" },
+        { "id": "how-to-use", "title": "How to Use", "icon": "book", "type": "static", "desc": "분석 추가 및 카탈로그 사용 방법" }
       ]
     },
     {
