@@ -7,10 +7,6 @@
 
 set -u
 
-# Diagnostic sentinel — append timestamp every time the hook fires.
-# Remove this block once the hook is confirmed to be wired up.
-printf '%s | cwd=%s | pwd=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "${PWD:-?}" "$(pwd)" >> .claude/hook-fired.log 2>/dev/null || true
-
 emit() {
   # Emit a JSON object with a systemMessage field, escaping double quotes.
   local msg
