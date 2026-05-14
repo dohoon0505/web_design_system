@@ -347,11 +347,13 @@
       "title": "08. NH 금융 카테고리 (2페이지 정밀 분석)",
       "blocks": [
 
-        { "type": "heading", "value": "8-1. /finance/rates 금리안내" },
+        { "type": "heading", "value": "8-1. /finance/rates 금리안내 (sH 2,400px, 직접 PDF iframe 임베드)" },
         { "type": "kv", "columns": 1, "items": [
           { "label": "Sub Hero", "value": "H1 '금리안내' + 부제 '안성인삼농협의 최신 금리 정보를 확인하세요.'" },
-          { "label": "섹션 ①: 🟢 Google Docs Viewer PDF 임베드 (시그니처)", "value": "max-width 1280px, height 800-900px, 다크 그레이 #3A3A3A 배경. 상단 컨트롤 바: 파일명 'file_1776411870_0.pdf' 좌측 + 우측 '1 / 1' / '- 79% +' / '⬇ 다운로드' / '🖨️ 인쇄' / '⋮ 메뉴' 아이콘 (밝은 회색)" },
-          { "label": "PDF 내용 미리보기", "value": "좌측 PDF 페이지 썸네일 (선택된 페이지에 파란 outline 보더) + 우측 큰 PDF 페이지 본문 (예금/적금/대출 금리표 - 검정 라인 표)" }
+          { "label": "🟢 PDF Iframe 임베드 (실측 정정)", "value": "Chrome MCP 재확인 결과 Google Docs Viewer가 아닌 직접 PDF iframe 임베드. <iframe src='https://asinsam.com/_File/rates//file_1776411870_0.pdf'> - 브라우저 내장 PDF 뷰어 사용 (Chrome/Edge/Safari 모두 호환)" },
+          { "label": "PDF 위치", "value": "/_File/rates/ 경로에 PDF 직접 호스팅. 파일명 file_1776411870_0.pdf (타임스탬프 1776411870 ≈ 2026-04-?? 업로드)" },
+          { "label": "브라우저 PDF UI", "value": "Chrome 기준: 상단 컨트롤 바 - 파일명 좌측 + 페이지 카운터 + 줌 +/- + 다운로드 + 인쇄. 좌측 페이지 썸네일 사이드바 (토글 가능)" },
+          { "label": "PDF 내용", "value": "예금/적금/대출 금리표 - 검정 라인 표 형식의 정형 데이터" }
         ]},
 
         { "type": "heading", "value": "8-2. /finance/funding 농업자금" },
@@ -364,16 +366,49 @@
     },
 
     "community-pages": {
-      "title": "09. 열린마당 (1페이지 정밀 분석)",
+      "title": "09. 열린마당 카테고리 (4페이지 정밀 분석)",
       "blocks": [
-        { "type": "heading", "value": "9-1. /community/information 안내드립니다" },
+        { "type": "text", "value": "Chrome MCP 재방문으로 발견 - 열린마당 카테고리는 4개 서브페이지 운영. 게시판/외부 임베드/폼 3가지 다른 패턴이 한 카테고리 안에 공존." },
+
+        { "type": "heading", "value": "9-1. /community/information 안내드립니다 (sH 2,795px)" },
         { "type": "kv", "columns": 1, "items": [
           { "label": "Sub Hero", "value": "H1 '안내드립니다' + 부제 '안성인삼농협의 다양한 소식을 전해드립니다.'" },
-          { "label": "섹션 ①: 검색 + 필터", "value": "Pill 검색 박스 + 카테고리 셀렉트 드롭다운 (전체 / 공지 / 안내 / 행사 등)" },
+          { "label": "🟢 섹션 ①: 검색 + 카테고리 필터", "value": "search input[type=search] 1개 + 카테고리 셀렉트 드롭다운 (전체 / 공지 / 안내 / 행사 등). 검색 결과 카운트 표시" },
           { "label": "섹션 ②: 공지사항 게시판 리스트", "value": "운영의 공개와 유사한 회색 박스 리스트. 각 항목: 좌측 카테고리 pill (작은 회색 또는 초록 #E6F7EE/#00A651 배경 + 짧은 텍스트 '공지'/'안내'/'행사') + 굵은 검정 제목 + 우측 날짜" },
-          { "label": "섹션 ③: 페이지네이션", "value": "운영의 공개와 동일" }
+          { "label": "섹션 ③: 페이지네이션", "value": "4개 페이지네이션 요소 감지 - 이전/현재/페이지번호/다음. 첫 페이지·마지막 페이지 아이콘 별도. URL ?page={N}&pp=community&p=information&searchText= 쿼리 기반" }
         ]},
-        { "type": "note", "value": "사이트맵 분석 결과 'NH 금융' 메뉴에는 실제로 예금상품/대출상품/NH농협손해보험/NH농협생명/금리안내/농협카드 6개 페이지가 있으며, '열린마당'에는 안내드립니다/우리농협소식/농업뉴스/고객의 소리 4개 페이지가 있습니다. 본 분석은 주요 페이지에 집중하였습니다." }
+
+        { "type": "heading", "value": "🟢 9-2. /community/notice 우리농협소식 (sH 2,442px - NEW)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "발견", "value": "Chrome MCP 재방문 결과 NEW 페이지 (이전 분석엔 없었음). 안성인삼농협 자체 보도 자료와 활동 소식 게시판" },
+          { "label": "구조 추정", "value": "9-1 information과 동일 게시판 패턴 (검색 + 필터 + 리스트 + 페이지네이션). 카테고리 분류만 다름 (총회/이사회/조합원 안내 등)" },
+          { "label": "차별점", "value": "information은 일반 안내, notice는 우리 농협의 공식 소식. URL 분리로 정보 카테고리 명확히 구분" }
+        ]},
+
+        { "type": "heading", "value": "🟢 9-3. /community/news 농업뉴스 (sH 2,282px - NEW)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "발견", "value": "NEW 페이지. 외부 농업 뉴스를 큐레이션하여 표시" },
+          { "label": "🟢 외부 데이터 의존", "value": "감지된 이미지에 mts.daumcdn.net 타일이 다수 - 카카오/다음 지도 인프라 또는 외부 뉴스 임베드. 농업 관련 뉴스를 외부 소스에서 가져옴" },
+          { "label": "콘텐츠 패턴", "value": "농민신문(nongmin.com) 등 농업 전문 매체 기사 카드 그리드로 추정 (이전 캡쳐에서 nongmin.com 이미지 발견됨)" },
+          { "label": "디자인 차별점", "value": "단순 텍스트 게시판이 아니라 썸네일 이미지가 있는 카드 그리드 형태" }
+        ]},
+
+        { "type": "heading", "value": "🟢 9-4. /community/voice 고객의 소리 (sH 2,470px - NEW, 폼 헤비)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "발견", "value": "NEW 페이지. 18개 form element 감지 - 사이트에서 가장 폼이 많은 페이지" },
+          { "label": "🟢 폼 구조 추정", "value": "고객 의견 접수 폼 - 카테고리 선택 (불만/제안/문의/칭찬) + 이름 + 연락처 + 이메일 + 제목 + 내용 textarea + 첨부파일 + 개인정보 동의 + 자동입력 방지 (CAPTCHA) + 제출 버튼" },
+          { "label": "용도", "value": "조합원·고객의 일반 의견 수렴 채널. 윤리경영의 사이버 제보와는 다른 채널 (윤리경영은 비리·부정 한정, 고객의 소리는 일반 의견)" },
+          { "label": "디자인 패턴", "value": "양희종 조합장의 직접 응답을 약속하는 신뢰 메시지 + 폼 + 제출 후 케이스 트래킹 ID 발급 패턴 추정" }
+        ]},
+
+        { "type": "heading", "value": "공통 컴포넌트 매핑 (열린마당)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 4-Pattern Community Hub", "value": "한 카테고리 안에 4가지 다른 패턴 - 게시판(information/notice) / 외부 뉴스 임베드(news) / 폼(voice). 다양한 콘텐츠 형식을 한 GNB 메뉴 아래 묶음" },
+          { "label": "Board List + 검색·필터", "value": "→ 21-1 (data 라이브러리) + 20-1 (폼 라이브러리)" },
+          { "label": "Pagination", "value": "→ 19-6 (네비게이션 라이브러리) - 사이트 표준 페이지네이션" },
+          { "label": "External News Card Grid", "value": "신규 패턴 - 외부 매체 기사를 자체 디자인으로 재포장 (저작권 표시 + 원문 링크 필수)" },
+          { "label": "Customer Voice Form", "value": "→ 20-2 (폼 라이브러리) - 다단 폼 + 자동입력 방지 + 첨부 + 동의" }
+        ]}
       ]
     },
 
@@ -798,6 +833,54 @@
           { "label": "협력사 / 정부 표준", "value": "농협중앙회 공통 디자인 가이드라인 준수 + 안성인삼농협 차별화 요소 추가 가능" }
         ]},
         { "type": "note", "value": "안성인삼농협 사이트는 '한국형 지역 농협의 표준 정보 구조'를 모던하게 재해석한 좋은 사례. 본 30섹션 보고서 + 50+ 컴포넌트 라이브러리는 다른 농협/지역 조합/협동조합 사이트 디자인 시 직접 참조 가능합니다." }
+      ]
+    },
+
+    "brand-philosophy": {
+      "title": "31. 🟢 명삼원 브랜드 3-Pillar Philosophy (브랜드 페이지 정밀)",
+      "blocks": [
+        { "type": "text", "value": "Chrome MCP 재방문으로 발견 - /myeongsamwon/brand 페이지는 sH 8,047px로 사이트에서 두 번째로 긴 페이지. 3개의 H4 핵심 가치(맑음과 정직함 / 깊이 있는 생명력 / 정원처럼 가꾼 정성)와 ONE-STOP 시스템 3-section 사진 시리즈가 시그니처 콘텐츠." },
+
+        { "type": "heading", "value": "🟢 3-Pillar Brand Philosophy (H4 3 가치)" },
+        { "type": "component", "title": "명삼원 브랜드 3 핵심 가치 - 맑음과 정직함 / 깊이 있는 생명력 / 정원처럼 가꾼 정성", "html": "<div class='ai-bp1'><div class='ai-bp1-i'><div class='ai-bp1-n'>VALUE 01</div><h4>맑음과 정직함</h4><p>안성의 청정 자연 환경에서 6년근 인삼을 정직하게 재배합니다. 인삼 한 뿌리 한 뿌리에 안성인삼농협의 신뢰가 담겨있습니다.</p></div><div class='ai-bp1-i'><div class='ai-bp1-n'>VALUE 02</div><h4>깊이 있는 생명력</h4><p>6년의 시간 동안 토양의 영양을 축적한 인삼의 깊은 생명력. 명삼원은 시간과 인내로 완성됩니다.</p></div><div class='ai-bp1-i'><div class='ai-bp1-n'>VALUE 03</div><h4>정원처럼 가꾼 정성</h4><p>조합원 농가와 안성인삼농협이 함께 한 뿌리 한 뿌리를 정원의 식물처럼 보살핍니다.</p></div></div>", "css": ".ai-bp1{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-family:Pretendard,sans-serif;max-width:1200px}.ai-bp1-i{padding:48px 36px;background:#FAF5EE;border-radius:24px;transition:all 0.3s}.ai-bp1-i:hover{background:#fff;outline:1px solid #00A651;transform:translateY(-4px)}.ai-bp1-n{font-family:'Outfit',sans-serif;color:#00A651;font-size:13px;font-weight:700;letter-spacing:0.1em;display:block;margin-bottom:24px}.ai-bp1-i h4{font-size:24px;font-weight:800;color:#1C1C1C;margin:0 0 16px;letter-spacing:-0.02em}.ai-bp1-i p{font-size:14px;color:#5A4030;line-height:1.8;margin:0}" },
+
+        { "type": "heading", "value": "🟢 ONE-STOP 시스템 3-Section (실제 이미지 임베드)" },
+        { "type": "component", "title": "브랜드 페이지의 ONE-STOP 시스템 3 섹션 - 식물 사진 / 연구 모습 / 명삼원 홍삼원액", "html": "<div class='ai-bp2'><div class='ai-bp2-i'><div class='ai-bp2-img'><img src='https://asinsam.com/inc/img/sub/brand_one_stop_sect1.jpg' alt='식물 사진'/></div><div class='ai-bp2-d'><span class='ai-bp2-n'>ONE-STOP 01</span><h5>재배 단계</h5><p>안성의 청정 토양에서 6년 동안 정성껏 재배. 자체 농가 + 조합원 협업 농가로 품질 통제</p></div></div><div class='ai-bp2-i'><div class='ai-bp2-img'><img src='https://asinsam.com/inc/img/sub/brand_one_stop_sect2.jpg' alt='연구원이 연구하고 있는 모습'/></div><div class='ai-bp2-d'><span class='ai-bp2-n'>ONE-STOP 02</span><h5>연구 · 분석 단계</h5><p>자체 연구소에서 유효 성분 분석 · 품질 검사. 인삼 한 뿌리마다 데이터 축적</p></div></div><div class='ai-bp2-i'><div class='ai-bp2-img'><img src='https://asinsam.com/inc/img/sub/brand_one_stop_sect3.jpg' alt='명삼원 홍삼원액 이미지'/></div><div class='ai-bp2-d'><span class='ai-bp2-n'>ONE-STOP 03</span><h5>가공 · 제품 단계</h5><p>가공공장에서 홍삼원액·정·캔디 등 다양한 형태로 제조. 최종 제품까지 일관 관리</p></div></div></div>", "css": ".ai-bp2{display:flex;flex-direction:column;gap:24px;font-family:Pretendard,sans-serif}.ai-bp2-i{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:32px;background:#fff;border-radius:24px;border:1px solid #EEE}.ai-bp2-img{width:100%;height:280px;border-radius:16px;overflow:hidden}.ai-bp2-img img{width:100%;height:100%;object-fit:cover}.ai-bp2-n{font-family:'Outfit',sans-serif;color:#00A651;font-size:12px;font-weight:700;letter-spacing:0.1em;display:block;margin-bottom:16px}.ai-bp2-d h5{font-size:28px;font-weight:800;color:#1C1C1C;margin:0 0 16px;letter-spacing:-0.02em}.ai-bp2-d p{font-size:15px;color:#5A4030;line-height:1.8;margin:0}", "fullWidth": true },
+
+        { "type": "heading", "value": "브랜드 페이지 구성 (sH 8,047px - 사이트 2위)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Hero", "value": "H1 '브랜드' + 부제 - 명삼원의 브랜드 정체성 도입" },
+          { "label": "🟢 섹션 ①: 3-Pillar 핵심 가치", "value": "H4 3개 (맑음과 정직함 / 깊이 있는 생명력 / 정원처럼 가꾼 정성) - 카드 그리드 또는 세로 스택" },
+          { "label": "🟢 섹션 ②: ONE-STOP 시스템 3 섹션", "value": "brand_one_stop_sect1-3.jpg - 재배/연구/가공 3단계 시각화. 각 섹션마다 큰 이미지 + 설명" },
+          { "label": "섹션 ③: 베트남 진출 스토리", "value": "한국 인삼 → 글로벌 시장 - 베트남 진출 사례 중심" },
+          { "label": "섹션 ④: 추가 콘텐츠", "value": "조합장 메시지·인증·수상 등 신뢰 빌딩 콘텐츠" }
+        ]},
+
+        { "type": "note", "value": "🟢 브랜드 페이지는 매장 안내·금리 안내 같은 정보 페이지와 달리 'storytelling' 톤이 강하다. 8k px의 긴 페이지로 사용자가 끝까지 스크롤하면 명삼원이 '단순 제품 라인업이 아니라 안성인삼농협의 가치 체계'임을 이해하게 됨. 디자인-카피 협업의 성숙도가 잘 드러나는 페이지." }
+      ]
+    },
+
+    "matchum-collaboration": {
+      "title": "32. 🟢 안성마춤 3-Party Collaboration Diagram",
+      "blocks": [
+        { "type": "text", "value": "Chrome MCP 발견 - /myeongsamwon/matchum 페이지 (sH 6,650px)는 '안성마춤'이라는 지역 협업 프로젝트를 시각화하는 페이지. H4 3개 (안성시청 / 농가·생산 조직 / 안성관내농협)가 3-Party 협업 다이어그램의 노드를 형성한다." },
+
+        { "type": "heading", "value": "🟢 3-Party 협업 다이어그램 (H4 3 주체)" },
+        { "type": "component", "title": "안성마춤 협업 3 주체 - 안성시청 + 농가/생산 조직 + 안성관내농협이 한 브랜드(안성마춤)로 묶임", "html": "<div class='ai-mc1'><div class='ai-mc1-center'><h6>안성마춤</h6><span>지역 통합 브랜드</span></div><div class='ai-mc1-i ai-mc1-city'><div class='ai-mc1-icon'>🏛️</div><h6>안성시청</h6><p>행정 지원 · 브랜드 운영 · 인증 관리</p></div><div class='ai-mc1-i ai-mc1-farm'><div class='ai-mc1-icon'>🌾</div><h6>농가/생산 조직</h6><p>실제 농산물 생산 · 품질 관리 · 출하</p></div><div class='ai-mc1-i ai-mc1-nh'><div class='ai-mc1-icon'>🤝</div><h6>안성관내농협</h6><p>유통·판매·금융 지원 · 조합원 관리</p></div></div>", "css": ".ai-mc1{position:relative;width:100%;max-width:900px;aspect-ratio:1.4;font-family:Pretendard,sans-serif;margin:0 auto;padding:40px}.ai-mc1-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#00A651,#008A43);color:#FFFFFF;border-radius:50%;text-align:center;z-index:2;box-shadow:0 16px 40px rgba(0,166,81,0.3)}.ai-mc1-center h6{font-size:28px;font-weight:800;margin:0;letter-spacing:-0.02em}.ai-mc1-center span{font-size:12px;opacity:0.9;margin-top:6px}.ai-mc1-i{position:absolute;width:220px;padding:24px;background:#FFFFFF;border:1px solid #EEEEEE;border-radius:20px;text-align:center;transition:all 0.3s}.ai-mc1-i:hover{border-color:#00A651;transform:scale(1.05)}.ai-mc1-city{top:0;left:50%;transform:translateX(-50%)}.ai-mc1-farm{bottom:0;right:0}.ai-mc1-nh{bottom:0;left:0}.ai-mc1-icon{font-size:36px;margin-bottom:12px}.ai-mc1 h6{font-size:18px;font-weight:800;color:#1C1C1C;margin:0 0 8px;letter-spacing:-0.02em}.ai-mc1 p{font-size:12px;color:#5A4030;margin:0;line-height:1.5}", "fullWidth": true },
+
+        { "type": "heading", "value": "🟢 협업 시각화 (실제 matchum_page_together.jpg)" },
+        { "type": "component", "title": "안성마춤 페이지의 실제 협업 이미지", "html": "<div class='ai-mc2'><img src='https://asinsam.com/inc/img/sub/matchum_page_together.jpg' alt='안성마춤 3주체 협업'/><div class='ai-mc2-cap'>3-Party Collaboration : 안성시청 + 농가 + 안성인삼농협 + 조합원 = 안성마춤</div></div>", "css": ".ai-mc2{font-family:Pretendard,sans-serif;text-align:center}.ai-mc2 img{width:100%;max-width:900px;border-radius:16px;display:block;margin:0 auto}.ai-mc2-cap{margin-top:16px;font-size:13px;color:#5A4030;font-style:italic}" },
+
+        { "type": "heading", "value": "안성마춤 페이지 구성" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Hero", "value": "H1 '안성마춤' + 부제 - 지역 통합 브랜드의 의미 도입" },
+          { "label": "🟢 섹션 ①: 3-Party 협업 다이어그램", "value": "H4 3개 (안성시청 / 농가·생산 조직 / 안성관내농협) - 각 주체의 역할 설명" },
+          { "label": "섹션 ②: 협업 사진 (matchum_page_together.jpg)", "value": "3-Party 실제 협업 시각화 이미지" },
+          { "label": "섹션 ③: 인증·품질 보증", "value": "안성마춤 브랜드의 인증·품질 기준" },
+          { "label": "섹션 ④: 카탈로그", "value": "안성마춤 라인업 제품 (인삼 외 안성 지역 농산물)" }
+        ]},
+
+        { "type": "note", "value": "🟢 안성마춤은 단순 브랜드가 아닌 '지역 통합 브랜드 거버넌스 사례'다. 한 사이트(안성인삼농협)가 다른 두 주체(시청·농가)와의 협업까지 시각화한 페이지는 한국 농협 중 드문 사례. 디자인 관점에선 '3개 노드 + 중앙 브랜드'의 다이어그램이 명확한 시각 메타포를 만든다." }
       ]
     }
   }

@@ -1098,6 +1098,99 @@
         ]},
         { "type": "note", "value": "본 30섹션 보고서로 미라셀 디자인 시스템을 완전히 이해하고 재현할 수 있는 수준의 정보가 제공됩니다. 컴포넌트 라이브러리(18-25)의 50+ 데모는 다른 프로젝트에서 직접 복사하여 응용 가능한 형태로 작성되었습니다. 추가로 Chrome MCP 인스펙션이 필요한 영역이 발견되면 본 보고서를 확장할 수 있습니다." }
       ]
+    },
+
+    "cellbanking-crisis-cards": {
+      "title": "31. 🟢 CellBanking 11k px - 4-Card Crisis Awareness Pattern",
+      "blocks": [
+        { "type": "text", "value": "Chrome MCP 재방문 결과 CellBanking 페이지(sH 11,438px, 사이트 최장)의 시작 영역을 정밀 분석. 사용자에게 '왜 세포보관이 필요한가?'를 묻는 4-Card Crisis Awareness 패턴이 시그니처. 단순 서비스 소개가 아닌 위기 인식 → 솔루션 제안의 카피라이팅 구조." },
+
+        { "type": "heading", "value": "🟢 4-Card Crisis Awareness (실측 H5 4종)" },
+        { "type": "component", "title": "CellBanking 페이지 '서비스 개요' 섹션 - 4개 H5 카드로 위기 인식 유도", "html": "<div class='mr-cb1'><div class='mr-cb1-i'><div class='mr-cb1-img'><img src='https://miracell.co.kr/images/content/cellbanking_service_img01.png' alt='바이러스 진화'/></div><div class='mr-cb1-d'><span class='mr-cb1-n'>CRISIS 01</span><h5>인류를 위협하는 바이러스의 진화</h5><p>새로운 바이러스가 끊임없이 등장하며 면역 시스템에 도전하고 있습니다.</p></div></div><div class='mr-cb1-i'><div class='mr-cb1-img'><img src='https://miracell.co.kr/images/content/cellbanking_service_img02.png' alt='사망률 증가'/></div><div class='mr-cb1-d'><span class='mr-cb1-n'>CRISIS 02</span><h5>진화하는 바이러스에 의해 눈에 띄게 늘어가는 사망률!</h5><p>코로나19 이후 새로운 감염병 출현 주기가 점차 짧아지고 있습니다.</p></div></div><div class='mr-cb1-i'><div class='mr-cb1-img'><img src='https://miracell.co.kr/images/content/cellbanking_service_img03.png' alt='면역력 노화'/></div><div class='mr-cb1-d'><span class='mr-cb1-n'>CRISIS 03</span><h5>나이가 들수록 약해지는 면역력과 노화되는 세포</h5><p>40대 이후 면역세포의 활성도가 급격히 감소합니다. 노화는 누구도 피할 수 없습니다.</p></div></div><div class='mr-cb1-i mr-cb1-solution'><div class='mr-cb1-d'><span class='mr-cb1-n'>SOLUTION</span><h5>고령화 사회로 급성장중인 세포치료 시장</h5><p>지금 건강한 세포를 보관하는 것이 미래의 자신을 위한 가장 확실한 투자입니다.</p><a class='mr-cb1-cta'>CellBanking 시작하기 <span>→</span></a></div></div></div>", "css": ".mr-cb1{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;font-family:Pretendard,sans-serif;max-width:1200px}.mr-cb1-i{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E8E8E8;border-radius:20px;overflow:hidden;transition:all 0.3s}.mr-cb1-i:hover{border-color:#DD0031;transform:translateY(-4px);box-shadow:0 16px 40px rgba(221,0,49,0.08)}.mr-cb1-img{height:180px;background:linear-gradient(135deg,#FDF3F3,#F9E8E8);display:flex;align-items:center;justify-content:center}.mr-cb1-img img{max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}.mr-cb1-d{padding:28px;flex:1;display:flex;flex-direction:column}.mr-cb1-n{font-family:'Outfit',sans-serif;color:#DD0031;font-size:11px;font-weight:700;letter-spacing:0.1em;margin-bottom:12px}.mr-cb1-i h5{font-size:18px;font-weight:700;color:#000000;margin:0 0 12px;letter-spacing:-0.02em;line-height:1.4}.mr-cb1-i p{font-size:13px;color:#666666;line-height:1.7;margin:0;flex:1}.mr-cb1-solution{background:linear-gradient(135deg,#0A0307,#1A0810);color:#FFFFFF}.mr-cb1-solution h5{color:#FFFFFF}.mr-cb1-solution p{color:rgba(255,255,255,0.85)}.mr-cb1-solution .mr-cb1-n{color:#DD0031}.mr-cb1-cta{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:14px 24px;background:#DD0031;color:#FFFFFF;border-radius:99px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;width:fit-content}.mr-cb1-cta:hover{background:#FFFFFF;color:#DD0031}", "fullWidth": true },
+
+        { "type": "heading", "value": "Crisis Cards 디자인 분석" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "카피라이팅 구조", "value": "Crisis 01 → 02 → 03 → Solution. 명시적으로 '!'(느낌표)를 H5 카피에 포함시켜 위기감 강조" },
+          { "label": "비주얼 톤", "value": "각 Crisis 카드는 연한 핑크 배경(F9E8E8→FDF3F3 그라데이션)으로 부드럽게, Solution은 다크 톤(#0A0307→#1A0810)으로 임팩트" },
+          { "label": "이미지 사용", "value": "cellbanking_service_img01-03.png - 추상적 일러스트 (인포그래픽 톤)로 위협을 직접적이지 않게 표현" },
+          { "label": "🟢 카피 텍스트 (실측)", "value": "'인류를 위협하는 바이러스의 진화' / '진화하는 바이러스에 의해 눈에 띄게 늘어가는 사망률!' / '나이가 들수록 약해지는 면역력과 노화되는 세포' / '고령화 사회로 급성장중인 세포치료 시장'" },
+          { "label": "심리적 효과", "value": "Crisis Awareness → 사용자가 '나도 해당될까?' 자문 → CellBanking 가입 동기 유발. B2C 서비스 마케팅의 정석" }
+        ]},
+
+        { "type": "heading", "value": "CellBanking 11,438px 전체 구조" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sub Banner", "value": "H3 'CellBanking' + 부제 '면역세포 + 줄기세포 추출·보관 서비스' + Hero 이미지 (실험실 + 세포 vial)" },
+          { "label": "🟢 섹션 ①: 4-Card Crisis Awareness", "value": "위 컴포넌트 - 4개 H5 카드 + 솔루션 CTA" },
+          { "label": "섹션 ②: 세포보관서비스, 왜 미라셀인가요?", "value": "차별화 포인트 카드 (4-6개). 각 카드: 아이콘 + 헤딩 + 본문" },
+          { "label": "섹션 ③: 세포보관 과정", "value": "Process Flow Diagram - 채취 → 분리 → 동결 → 보관 → 인출 (5-7단계, 각 단계 사진+텍스트)" },
+          { "label": "섹션 ④: 줄기세포와 필수요소를 보관하는 기술력", "value": "H5 4종 카드 (줄기세포 / 성장인자 / 백혈구 / 혈소판) - 보관 대상 카탈로그" },
+          { "label": "섹션 ⑤: 인증받은 분리 보관 기술력", "value": "인증 마크 + 본문" },
+          { "label": "섹션 ⑥: 세포의 수와 퀄리티 보장", "value": "데이터 표 또는 통계 시각화" },
+          { "label": "섹션 ⑦: 미래의 건강을 보관 - CTA", "value": "마무리 CTA + 신청 안내. 11k px 페이지의 결말 - 사용자가 가입 결정" }
+        ]},
+
+        { "type": "note", "value": "🟢 CellBanking 11,438px는 사이트에서 가장 긴 페이지이자 '위기 인식 → 솔루션 제안 → 차별화 → 프로세스 → 신뢰 보강 → 가입 유도' 7단계 카피라이팅 구조의 완성형. 단일 페이지에서 사용자 의사 결정 전 과정을 끌어낸다. B2C 서비스 사이트의 시그니처 페이지로 다른 의료/건강 서비스 사이트가 참조할 만한 패턴." }
+      ]
+    },
+
+    "stem-cell-video": {
+      "title": "32. 🟢 줄기세포 교육 페이지 - 비디오 임베드 + 4-Cell Education",
+      "blocks": [
+        { "type": "text", "value": "/rnd/stem_cells.php 페이지 (sH 6,502px)는 줄기세포 교육 콘텐츠로 구성. 페이지 상단에 비디오 썸네일 + 재생 아이콘 패턴이 있고, 본문에는 4가지 세포 카드 (줄기세포/성장인자/백혈구/혈소판)가 실 이미지로 임베드되어 있다." },
+
+        { "type": "heading", "value": "🟢 Video Embed Pattern (썸네일 + 재생 아이콘)" },
+        { "type": "component", "title": "줄기세포란? 페이지 상단의 비디오 임베드 - stem_cell_video_img.jpg + play_icon.png", "html": "<div class='mr-sv1'><div class='mr-sv1-thumb'><img src='https://miracell.co.kr/images/content/stem_cell_video_img.jpg' alt='비디오 썸네일'/></div><button class='mr-sv1-play' aria-label='비디오 재생'><img src='https://miracell.co.kr/images/content/play_icon.png' alt='재생 아이콘'/></button><div class='mr-sv1-overlay'></div><div class='mr-sv1-caption'><span>VIDEO</span><h5>줄기세포란 무엇인가?</h5><p>3분 영상으로 알아보는 줄기세포의 기본 개념</p></div></div>", "css": ".mr-sv1{position:relative;width:100%;max-width:900px;aspect-ratio:16/9;border-radius:20px;overflow:hidden;font-family:Pretendard,sans-serif;cursor:pointer}.mr-sv1-thumb{position:absolute;inset:0}.mr-sv1-thumb img{width:100%;height:100%;object-fit:cover}.mr-sv1-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.5));pointer-events:none}.mr-sv1-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(255,255,255,0.95);border:0;border-radius:50%;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 32px rgba(0,0,0,0.3);transition:transform 0.3s,background 0.3s;z-index:2}.mr-sv1-play:hover{transform:translate(-50%,-50%) scale(1.1);background:#DD0031}.mr-sv1-play img{width:32px;height:32px;object-fit:contain;filter:none;margin-left:4px}.mr-sv1-play:hover img{filter:brightness(0) invert(1)}.mr-sv1-caption{position:absolute;left:32px;bottom:32px;color:#FFFFFF;z-index:2}.mr-sv1-caption span{display:inline-block;padding:4px 12px;background:#DD0031;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:0.05em;margin-bottom:12px;font-family:'Outfit',sans-serif}.mr-sv1-caption h5{font-size:24px;font-weight:800;margin:0 0 8px;letter-spacing:-0.02em}.mr-sv1-caption p{font-size:14px;opacity:0.9;margin:0}", "fullWidth": true },
+
+        { "type": "heading", "value": "🟢 4-Cell Education Card Grid (실제 이미지 4종)" },
+        { "type": "component", "title": "줄기세포란? 페이지의 '재생에 필수적인 4가지 세포' - 실제 stem_cell_img01-04.jpg 임베드", "html": "<div class='mr-sv2'><div class='mr-sv2-i'><div class='mr-sv2-img'><img src='https://miracell.co.kr/images/content/stem_cell_img01.jpg' alt='줄기세포 이미지'/></div><div class='mr-sv2-n'>01</div><h4>줄기세포</h4><p>모든 세포로 분화 가능한<br>미분화 세포 (Stem Cell)</p></div><div class='mr-sv2-i'><div class='mr-sv2-img'><img src='https://miracell.co.kr/images/content/stem_cell_img02.jpg' alt='성장인자 이미지'/></div><div class='mr-sv2-n'>02</div><h4>성장인자</h4><p>세포 성장과 분화를 조절하는<br>단백질 (Growth Factor)</p></div><div class='mr-sv2-i'><div class='mr-sv2-img'><img src='https://miracell.co.kr/images/content/stem_cell_img03.jpg' alt='백혈구 이미지'/></div><div class='mr-sv2-n'>03</div><h4>백혈구</h4><p>외부 침입자를 막아내는<br>면역 세포 (White Blood Cell)</p></div><div class='mr-sv2-i'><div class='mr-sv2-img'><img src='https://miracell.co.kr/images/content/stem_cell_img04.jpg' alt='혈소판 이미지'/></div><div class='mr-sv2-n'>04</div><h4>혈소판</h4><p>지혈과 상처 회복을 담당하는<br>혈액 성분 (Platelet)</p></div></div>", "css": ".mr-sv2{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;font-family:Pretendard,sans-serif;max-width:1200px}.mr-sv2-i{position:relative;padding:24px;background:#FFFFFF;border:1px solid #E8E8E8;border-radius:20px;text-align:center;transition:all 0.3s}.mr-sv2-i:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.06);border-color:#DD0031}.mr-sv2-img{width:100%;height:160px;background:linear-gradient(135deg,#FDF3F3,#F9E8E8);border-radius:12px;margin-bottom:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}.mr-sv2-img img{max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}.mr-sv2-n{position:absolute;top:16px;right:20px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#DD0031;letter-spacing:0.05em}.mr-sv2-i h4{font-size:20px;font-weight:800;color:#000000;margin:0 0 8px;letter-spacing:-0.02em}.mr-sv2-i p{font-size:13px;color:#666666;line-height:1.6;margin:0}", "fullWidth": true },
+
+        { "type": "heading", "value": "교육 페이지 패턴 분석" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 비디오 + 카드 조합", "value": "페이지 상단 비디오 = 빠른 개요 / 본문 4-Card = 정밀 학습. 두 가지 학습 방식 동시 지원 (시청각 + 텍스트)" },
+          { "label": "비디오 임베드 방식 추정", "value": "썸네일 클릭 시 1) 자체 video.html 모달 2) 유튜브 임베드 3) Vimeo 임베드. play_icon.png 클릭 핸들러로 트리거" },
+          { "label": "4-Cell 카드 - 명칭 정정", "value": "기존 분석은 '줄기세포 / 성장인자 / SDF-1a / 백혈구'로 추정했으나 Chrome MCP 실측 결과 '줄기세포 / 성장인자 / 백혈구 / 혈소판' (SDF-1a는 별도 페이지/섹션). 정정" },
+          { "label": "이미지 - 추상 일러스트 톤", "value": "stem_cell_img01-04.jpg는 모두 추상적 일러스트 (실제 세포 사진 아님). 일반 사용자가 거부감 없이 학습할 수 있도록 디자인" },
+          { "label": "alt 텍스트 정확", "value": "alt='줄기세포 이미지' / alt='성장인자 이미지' 등 - 접근성 측면 양호" }
+        ]},
+
+        { "type": "note", "value": "🟢 미라셀의 줄기세포 교육 페이지는 B2C 사이트가 의학 전문 콘텐츠를 다룰 때의 모범 사례. 어려운 개념을 비디오 + 4-Card + 명확한 일러스트로 분해하여 일반 사용자도 학습할 수 있게 함. 본 4-Cell Card 패턴은 다른 의료/바이오 사이트의 교육 페이지에 직접 적용 가능." }
+      ]
+    },
+
+    "smart-mcell-tech": {
+      "title": "33. 🟢 Smart M-Cell 5-Tech Detail (실제 제품 사진 + LED 4파장)",
+      "blocks": [
+        { "type": "text", "value": "/product/smart_mcell.php 페이지의 H5 5종 핵심 기술을 실 이미지와 함께 정밀 분석. Smart M-Cell은 사이트 시그니처 제품으로 가장 풍부한 시각 자료를 보유 (sH 6,533px, 이미지 16장)." },
+
+        { "type": "heading", "value": "🟢 Smart M-Cell 제품 메인 비주얼 (실제 이미지)" },
+        { "type": "component", "title": "Smart M-Cell 제품 메인 - 흰색 슬라이드 + 빨간 슬라이드 (LED 색상 표현)", "html": "<div class='mr-sm1'><div class='mr-sm1-main'><img src='https://miracell.co.kr/images/test/smart_mcell_slide_img.png' alt='Smart M-Cell 제품'/></div><div class='mr-sm1-red'><img src='https://miracell.co.kr/images/test/smart_mcell_slide_red_img.png' alt='Smart M-Cell 적색 LED'/></div><div class='mr-sm1-info'><h4>Smart M-Cell</h4><p class='mr-sm1-cat'>세포용원심분리장치 · 의료기기</p><div class='mr-sm1-models'><span>SMART M-CELL 2</span><span>|</span><span>SMART M-CELL 4</span></div><div class='mr-sm1-badge'>FDA 510(k) K250516 인증</div></div></div>", "css": ".mr-sm1{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:center;font-family:Pretendard,sans-serif;padding:48px;background:#FAFAFA;border-radius:24px}.mr-sm1-main,.mr-sm1-red{aspect-ratio:1;background:#FFFFFF;border-radius:20px;display:flex;align-items:center;justify-content:center;padding:32px;overflow:hidden}.mr-sm1-main img,.mr-sm1-red img{max-width:100%;max-height:100%;object-fit:contain}.mr-sm1-red{background:linear-gradient(135deg,#DD0031,#8a0020)}.mr-sm1-info{padding:0 24px}.mr-sm1-info h4{font-size:36px;font-weight:800;color:#000000;margin:0 0 8px;letter-spacing:-0.03em;font-family:'Outfit',sans-serif}.mr-sm1-cat{font-size:14px;color:#666666;margin:0 0 24px}.mr-sm1-models{display:flex;gap:12px;align-items:center;margin-bottom:24px;font-size:15px;font-weight:700;color:#1A1A1A}.mr-sm1-models span:nth-child(2){color:#CCCCCC}.mr-sm1-badge{display:inline-block;padding:8px 20px;background:#FFFFFF;border:1px solid #DD0031;color:#DD0031;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:0.04em}", "fullWidth": true },
+
+        { "type": "heading", "value": "🟢 5종 핵심 기술 (실측 H5 - 정밀)" },
+        { "type": "component", "title": "Smart M-Cell '제품특징' 섹션의 5 H5 핵심 기술 카드", "html": "<div class='mr-sm2'><div class='mr-sm2-i'><div class='mr-sm2-n'>01</div><h5>선별적 세포추출 및<br>분리 농축 기술력</h5><p>특허받은 원심분리 알고리즘으로 원하는 세포만 정확히 추출</p></div><div class='mr-sm2-i'><div class='mr-sm2-n'>02</div><h5>자동 회전방식<br><span>Autorotation</span></h5><p>최적의 회전 속도를 자동 제어. 사용자 학습 곡선 최소화</p></div><div class='mr-sm2-i'><div class='mr-sm2-n'>03</div><h5>2중 분리회전<br><span>Double separate rotation</span></h5><p>1차 + 2차 회전으로 세포 손상 없이 고순도 추출</p></div><div class='mr-sm2-i'><div class='mr-sm2-n'>04</div><h5>터치스크린과 음성안내<br><span>Touch Screen + Voice Guide</span></h5><p>직관적 UI + 음성 가이드로 의료진의 작업 효율 극대화</p></div><div class='mr-sm2-i mr-sm2-led'><div class='mr-sm2-n'>05</div><h5>LED Visible Light<br>세포 활성유도</h5><p>가시광선 LED로 세포 활성도 증가. Blue/Green/Yellow/Red 4파장 선택</p></div></div>", "css": ".mr-sm2{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;font-family:Pretendard,sans-serif;max-width:1400px}.mr-sm2-i{position:relative;padding:32px 24px;background:#FFFFFF;border:1px solid #E8E8E8;border-radius:20px;transition:all 0.3s}.mr-sm2-i:hover{border-color:#DD0031;transform:translateY(-4px);box-shadow:0 16px 32px rgba(221,0,49,0.06)}.mr-sm2-n{font-family:'Outfit',sans-serif;color:#DD0031;font-size:14px;font-weight:700;letter-spacing:0.05em;margin-bottom:16px}.mr-sm2-i h5{font-size:16px;font-weight:800;color:#000000;margin:0 0 12px;letter-spacing:-0.02em;line-height:1.4}.mr-sm2-i h5 span{display:block;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:#666666;font-style:italic;margin-top:4px}.mr-sm2-i p{font-size:12px;color:#666666;line-height:1.6;margin:0}.mr-sm2-led{background:linear-gradient(135deg,#FDF3F3,#FFFFFF);border-color:#DD0031}", "fullWidth": true },
+
+        { "type": "heading", "value": "Smart M-Cell 페이지 H5 위계 (실측)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "H4 Smart M-Cell (제품명)", "value": "최상단 큰 검정 헤딩 - 제품 정체성 명시" },
+          { "label": "H5 SMART M-CELL 2 | SMART M-CELL 4 (모델)", "value": "🟢 2모델 공존 표시 - 파이프(|) 구분자로 두 변형 모델 명시" },
+          { "label": "H4 제품특징 (섹션)", "value": "5종 핵심 기술의 부모 섹션" },
+          { "label": "H5 #1 선별적 세포추출 및 분리 농축 기술력", "value": "정밀 분리 기술" },
+          { "label": "H5 #2 자동 회전방식 Autorotation", "value": "자동화 기술" },
+          { "label": "H5 #3 2중 분리회전 Double separate rotation", "value": "다단 회전" },
+          { "label": "H5 #4 터치스크린과 음성안내 Touch Screen and Voice Guide", "value": "UX 기술" },
+          { "label": "H5 #5 LED Visible Light 세포 활성유도", "value": "🟢 가장 차별화된 기능 - LED 4파장 선택 가능 (Blue 460-475nm / Green 525-530nm / Yellow 585-590nm / Red 660nm)" },
+          { "label": "H3 LED 파장별 특성", "value": "5번 항목을 별도 H3로 확장 - Pill 탭 4개로 동적 정보 전환 (lib-buttons 18-8 참고)" },
+          { "label": "H3 기기 사양", "value": "2열 사양 표 - 분류 / 정격전압 / 소비전력 / 치수 / 중량" }
+        ]},
+
+        { "type": "heading", "value": "🟢 한영 이중 표기 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "H5에 영문 부제 추가", "value": "Autorotation / Double separate rotation / Touch Screen and Voice Guide - 한글 헤딩 + 영문 학술 용어 병기. 글로벌 의료기기 인증 (FDA, KFDA, CE) 대응" },
+          { "label": "디자인적 의미", "value": "의료 전문가는 영문 학술 용어로 정확한 의미 이해 / 일반 환자는 한글 설명으로 친근감. 두 사용자 그룹 동시 대응" },
+          { "label": "다국어 확장성", "value": "한영 페어 디자인은 다국어 사이트 확장 시 자연스럽게 영문 사이트로 분리 가능. 영문 용어가 이미 본문에 있어 번역 부담 최소" }
+        ]},
+
+        { "type": "note", "value": "🟢 Smart M-Cell 페이지는 미라셀 시그니처 제품의 디자인 시스템 완성형. 5-Tech Spec + LED 4파장 + FDA 510(k) 인증 + 모델 변형(2/4) 등 의료기기 페이지가 갖춰야 할 모든 요소가 한 페이지에 정돈되어 있다. 한영 이중 표기 패턴은 다른 의료기기 제조사 사이트가 참조할 만한 모범 사례." }
+      ]
     }
   }
 }
