@@ -738,6 +738,73 @@
         ]},
         { "type": "note", "value": "PlantyM은 한국 코퍼레이트 사이트 중 드물게 '미니멀리즘 + 스크롤 스토리텔링' 디자인을 정착시킨 사례. 70+ 파트너 매트릭스, 오비탈 다이어그램, 8,550px 스크롤 시퀀스, Concentric Circles Hero가 사이트의 4대 시그니처 컴포넌트이며 다른 코퍼레이트 그룹 사이트가 직접 참조할 만한 패턴 가이드." }
       ]
+    },
+
+    "smooth-interaction-catalog": {
+      "title": "27. 부드러운 인터랙션 카탈로그 (페이지 새로고침·점진 스크롤 재점검)",
+      "blocks": [
+        { "type": "text", "value": "Chrome MCP로 플랜티엠 메인 페이지를 새로고침 후 천천히 스크롤하며 발견한 라이브 인터랙션. 이전 정적 분석에서 'Hero가 단순 그라데이션 배경'으로 잘못 봤던 부분을 정정 - 실제로는 떡잎 + 별 + 디지털 네트워크 wireframe이 결합된 매우 정교한 비주얼. circle_move 7초 애니메이션, rolling 20초 무한 로고 슬라이드, Material Design cubic-bezier 1.2초 등 시그니처 인터랙션을 정리." },
+
+        { "type": "heading", "value": "발견 1: Hero 정정 - 떡잎 + 별 + 디지털 네트워크 Wireframe (단순 그라데이션 X)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "이전 분석 오류", "value": "기존 보고서는 Hero가 '흰색→어두운 회색 그라데이션 정적 비주얼'로 분석. 실제는 정교한 사진 + 그래픽 합성" },
+          { "label": "🟢 실제 Hero 구성 (실측)", "value": "1) 새싹·떡잎이 흙에서 자라나는 사진 (중앙 떡잎 클로즈업, 좌우에 더 작은 떡잎들) 2) 어두운 토양 배경 + 빛나는 파란 별·입자들 (디지털 메타포) 3) 하단에 청록색 와이어프레임 노드+선 (디지털 네트워크 모티프)" },
+          { "label": "디자인 메타포", "value": "'Planty' = Planting + Plant 합성어 의미를 직접 시각화. 자연(떡잎+흙) + 디지털(네트워크 wireframe + 빛나는 입자) 두 세계의 결합. 'Planty M'의 정체성 = '디지털로 자연/콘텐츠를 키운다'를 한 장으로 압축" },
+          { "label": "Header 헤더 위치", "value": "Hero 사진 위에 transparent header. 'Planty m' 로고 (Planty 텍스트 + m이 동그라미 안에 들어간 형태) + 회사소개/사업정보/PR/Careers + 우측 '문의하기 ↗' pill" }
+        ]},
+
+        { "type": "heading", "value": "발견 2: circle_move 7초 애니메이션 (Orbital Diagram 회전)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "발견", "value": "<span> 3개에 animation-name: circle_move / animation-duration: 7s 적용" },
+          { "label": "추정 적용 위치", "value": "Planty 그룹 오비탈 다이어그램의 3개 위성 노드 (Contents / Network / Investment)가 점선 궤도 위를 7초 주기로 회전. 또는 작은 데코레이션 원들이 천천히 움직임" },
+          { "label": "7초 duration의 의의", "value": "일반적 회전(20-30초)보다 빠르고, UI 트랜지션(0.3-1초)보다 훨씬 느림. '눈에 띌만한 회전 + 어지러움 유발하지 않는' 절충" },
+          { "label": "이전 분석 누락", "value": "기존 시그니처-orbital 섹션에서 'progress 채워짐' 동작만 분석. 7초 회전 애니메이션은 추가 발견 - 점선 궤도가 단순 progress가 아닌 실제 회전 운동" }
+        ]},
+
+        { "type": "heading", "value": "발견 3: rolling 20초 무한 슬라이드 (파트너 로고 매트릭스 정정)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "발견", "value": "<ul class='list'> 3개에 animation-name: rolling / animation-duration: 20s 적용" },
+          { "label": "이전 분석 정정", "value": "기존 분석은 'BUILDING A GLOBAL SERVICE + 70+ 파트너 로고 정적 매트릭스'로 봤음. 실제는 좌→우로 20초 주기 무한 슬라이드 (Marquee 패턴)" },
+          { "label": "구현 추정", "value": "CSS @keyframes rolling { from { transform: translateX(0) } to { transform: translateX(-50%) } } - 로고 리스트를 2번 복제해 자연스럽게 연결. 3개의 ul.list는 각 행마다 다른 슬라이드 방향/속도일 가능성" },
+          { "label": "왜 무한 슬라이드", "value": "정적 70+ 로고는 한 번에 보기 어려움. 무한 슬라이드로 '계속 흘러가는 파트너들' 인상 - 사용자가 일부러 멈춰 봐도 새 로고가 계속 나타나는 임팩트" }
+        ]},
+
+        { "type": "heading", "value": "발견 4: Material Design Easing (cubic-bezier 1.2초)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)", "value": "Material Design의 'Standard Easing' 공식 곡선. 1.2초 매우 긴 시간에 적용 - 큰 콘텐츠 (Hero 텍스트, 섹션 헤딩) 등장 시" },
+          { "label": "🟢 transform 1.2s cubic-bezier (변형)", "value": "위 트랜지션과 같이 묶여 사용 - opacity와 transform이 동시에 부드럽게 적용 (scroll reveal 표준)" },
+          { "label": "🟢 transform 0.18s cubic-bezier(0.2, 0, 0, 1)", "value": "Material Design의 'Accelerate Easing'. 0.18초 매우 빠른 시간 - 호버 시 미세한 변환 (scale, translate)" },
+          { "label": "디자인 의의", "value": "Google Material Design 공식 easing curve를 직접 채택 - 글로벌 디자인 시스템의 모범 사례를 따른 명확한 선택" }
+        ]},
+
+        { "type": "heading", "value": "발견 5: Plantym 로고 정확한 형태" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구조", "value": "'Planty' 텍스트 + 'm'이 동그라미 (○) 안에 들어간 모노그램 형태" },
+          { "label": "동그라미 디자인", "value": "흰색 또는 투명 outline 원형 + 안에 작은 'm' 글리프 - 'Planty'와 'm' 사이에 시각적 구분" },
+          { "label": "ring.png (606×608)와 연관", "value": "이전 분석의 ring.png 데코레이션은 이 로고의 동그라미 모티프 확대 버전 - 사이트 전체에서 ring 모티프 일관 사용" },
+          { "label": "Hero에서의 표시", "value": "어두운 배경 위에 흰색 로고 - 사진의 어두운 토양 영역과 자연스럽게 대비. 헤더 fixed 위치" }
+        ]},
+
+        { "type": "heading", "value": "발견 6: Transition 통계 (가장 정적인 사이트)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "all 0s ease 0s", "value": "532건 - 5개 사이트 중 가장 적음 (asinsam 571 / miracell 694 / kdnavien 728). 의도된 미니멀리즘" },
+          { "label": "🟢 opacity 1.2s cubic-bezier", "value": "2건 - Material Standard Easing 채택" },
+          { "label": "🟢 transform 0.18s cubic-bezier", "value": "1건 - Material Accelerate Easing 채택" },
+          { "label": "flex 0.5s", "value": "3건 - flex 트랜지션 (드물게 사용, 특별한 레이아웃 변환에)" },
+          { "label": "0.2s linear", "value": "2건 - 매우 빠른 선형 (instant feedback)" },
+          { "label": "opacity 0.3s ease-in-out", "value": "1건 - 일반 fade" },
+          { "label": "transform 5건", "value": "scale, translate 호버 효과" }
+        ]},
+
+        { "type": "heading", "value": "발견 7: 14,426px sH 정정 (이전 15,098px)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "재측정 값", "value": "14,426px - 이전 15,098px에서 약 672px (4.4%) 짧아짐. 페이지 콘텐츠 일부 업데이트로 인한 변화" },
+          { "label": "여전히 사이트 최장 페이지", "value": "회사소개 12,762px / 사이니지 12,848px과 함께 가장 긴 페이지 그룹. 8,550px .main-intro 스크롤 시퀀스 패턴은 유지 추정" },
+          { "label": "Hero 정정으로 인한 영향", "value": "Hero가 단순 그라데이션이 아닌 사진+wireframe임이 밝혀져, 메인 인트로 .main-intro의 첫 부분이 'Hero 정적 컴포넌트'가 아니라 'Hero 정교한 비주얼 + 메시지 시퀀스 시작'으로 재해석되어야 함" }
+        ]},
+
+        { "type": "note", "value": "🟢 플랜티엠 사이트는 정적 미니멀리즘을 표방하지만 실측 결과 매우 정교한 라이브 비주얼을 갖추고 있다. Hero의 떡잎+별+wireframe 합성, circle_move 7초 오비탈 회전, rolling 20초 무한 로고 슬라이드, Material Design cubic-bezier 1.2초 easing 등 정적 분석으로는 잡히지 않는 디테일이 가득. 'less is more' 디자인이지만 '움직임은 일관되고 정교한' 사례." }
+      ]
     }
   }
 }

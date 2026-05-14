@@ -1299,6 +1299,86 @@
           { "label": "섹션 #5: 인사제도 + 복리후생", "value": "→ img_talent_management.jpg (고성과 조직) + img_talent_system.png + _mo (GOAL 프레임워크) 두 비주얼 사용" }
         ]}
       ]
+    },
+
+    "smooth-interaction-catalog": {
+      "title": "34. 부드러운 인터랙션 카탈로그 (페이지 새로고침·점진 스크롤 재점검)",
+      "blocks": [
+        { "type": "text", "value": "Chrome MCP로 경동나비엔 메인 페이지를 새로고침 후 다시 점검하여 라이브 인터랙션 정밀 분석. 메인 페이지 sH 13,411px (재측정 - 이전 14,209px에서 약간 줄어듦)이며 transition 728건으로 미라셀 다음으로 인터랙티브한 사이트. 이전 분석에서 놓친 8 슬라이드 Hero, SKIP 버튼, B2B 메뉴, 글로벌 나비엔 utility nav 등을 정리." },
+
+        { "type": "heading", "value": "발견 1: Hero가 8 슬라이드 시퀀스 (이전 4 슬라이드로 추정했던 것 정정)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "정정된 슬라이드 수", "value": "Hero 우측 인디케이터에 '01 / 08' - 총 8개 슬라이드 자동 재생. 이전 분석은 4 슬라이드로 추정했으나 실제 8개" },
+          { "label": "현재 슬라이드 (실측)", "value": "Slide 1: 노트에 연필이 놓인 미니멀 사진 - 그린 톤 배경 + 연필 + 노트 라인. '시작'을 메타포화한 이미지" },
+          { "label": "5 비디오 + N 이미지 추정", "value": "이전 분석에서 main_cover/main_1/main_2/main_global/main_esg 5개 영상 확인. 추가 3개 슬라이드는 이미지 슬라이드일 가능성. 또는 영상이 6-8개일 수도" },
+          { "label": "Pre-load 확인", "value": "5개 비디오 모두 readyState 4 (HAVE_ENOUGH_DATA) - 페이지 로드 후 즉시 모두 로드됨. 적극적 prefetching 전략" },
+          { "label": "currentTime 2초 (paused)", "value": "main_cover_video.mp4가 2초 위치에서 일시정지 - 페이지 진입 후 잠시 재생되다 사용자 인터랙션을 기다리는 듯" }
+        ]},
+
+        { "type": "heading", "value": "발견 2: SKIP 버튼 (Hero 인트로 건너뛰기)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "위치", "value": "우하단 fixed - 흰 텍스트 'SKIP' (대문자, 약 14px·600)" },
+          { "label": "기능", "value": "Hero 슬라이드 자동 재생을 건너뛰고 즉시 메인 콘텐츠로 이동. 대형 Hero 인트로를 건너뛰고 싶은 사용자 (재방문자) 친화적" },
+          { "label": "이전 분석 누락", "value": "Pause/Play 버튼만 알려졌으나 SKIP은 별개의 컨트롤 - Pause는 일시정지, SKIP은 빠른 종료" },
+          { "label": "접근성 의의", "value": "prefers-reduced-motion 사용자 대응의 또 다른 형태. 영상 자동 재생을 강제하지 않고 사용자에게 통제권 부여" }
+        ]},
+
+        { "type": "heading", "value": "발견 3: Hero 좌하단 미디어 컨트롤 (▷ + Progress)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구성", "value": "▷ 재생 아이콘 + 가로 progress bar (━━━━ 절반 채워짐)" },
+          { "label": "프로그레스 바 길이", "value": "약 200-300px 가로 막대. 슬라이드 자동 재생 시간 (5초 추정)에 비례하여 좌→우로 채워짐" },
+          { "label": "현재 진행", "value": "약 50% 진행된 상태 - 다음 슬라이드로 전환 직전" },
+          { "label": "Pause/Play 토글", "value": "▷ 아이콘 클릭 시 || 로 변경 (일시정지). 슬라이더 컨트롤의 표준 패턴" }
+        ]},
+
+        { "type": "heading", "value": "발견 4: 헤더 추가 GNB 아이템 (이전 분석 누락)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Utility Nav 상단 (회색 작은 텍스트)", "value": "'글로벌 나비엔 · 고객지원' - 헤더 위에 작은 utility navigation. 분리된 두 메뉴" },
+          { "label": "Main GNB", "value": "회사소개 / 사업분야 / 홍보센터 / 지속가능경영 / 투자정보 / 인재경영·채용 (6개 - 이전 분석과 동일)" },
+          { "label": "우측 추가 컨트롤 (이전 분석 누락)", "value": "'나비엔 하우스 | B2B | 🌐 한국어 ▾ | ☰' - 4개 컨트롤. B2B는 비즈니스 고객용 별도 진입, 한국어는 다국어 셀렉터" },
+          { "label": "햄버거 메뉴", "value": "우측 끝 ☰ 햄버거 - 메가 메뉴 트리거. 클릭 시 전체 사이트맵 모달 (이전 분석에 .btn-sitemap-open으로 알려짐)" },
+          { "label": "왜 이중 GNB", "value": "Main GNB는 일반 콘텐츠 / 우측 추가 컨트롤은 비즈니스 액션 (B2B 진입·매장 찾기·언어 변경). 표준 코퍼레이트 패턴" }
+        ]},
+
+        { "type": "heading", "value": "발견 5: transform 2s 트랜지션 (매우 느린 변환 15건)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "수치", "value": "transition: 'transform 2s' 15건 - 사이트의 시그니처 느린 변환" },
+          { "label": "추정 적용 위치", "value": "Hero 배경 영상의 zoom in/out, 솔루션 카드 배경 이미지의 Ken Burns 효과, 큰 이미지의 부드러운 scale 등" },
+          { "label": "왜 2초인가", "value": "일반 호버(0.3s)·스크롤 리빌(1s)보다 훨씬 김. 사용자가 의식적으로 알아채지 못할 정도로 느린 '암묵적 움직임' - 정적 이미지 같지만 미세하게 살아있는 느낌" },
+          { "label": "디자인 의의", "value": "코퍼레이트 사이트의 '신뢰감' 톤은 빠른 인터랙션과 충돌. 2초 트랜지션은 차분한 인상을 유지하면서도 인터랙티브한 느낌 제공" }
+        ]},
+
+        { "type": "heading", "value": "발견 6: 로딩 도트 4종 (dot1/dot2/dot3/dot4 각 1.5s)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구조", "value": "각각 .dot-1 / .dot-2 / .dot-3 / .dot-4 클래스 + animation: dot1/dot2/dot3/dot4 1.5s. 4개 도트가 시차로 점등" },
+          { "label": "사용 위치", "value": "페이지에 10+ 인스턴스 발견 - 비동기 콘텐츠 로딩 중 표시 / 데이터 fetching 시 / 슬라이드 전환 중" },
+          { "label": "왜 4 도트인가", "value": "3 도트가 가장 일반적이지만 4 도트는 '더 풍부한 진행감' - 미라셀의 b9-la 회전 SVG와 유사한 시그니처 인터랙션" },
+          { "label": "이전 분석", "value": "이미 ix-hover 섹션에 'dot1/dot2/dot3/dot4 1.5s infinite' 등록되어 있음. 이번 분석으로 실제 동작 시간·위치 확인" }
+        ]},
+
+        { "type": "heading", "value": "발견 7: 광범위 Transition 통계" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "all 0s ease 0s", "value": "728건 - 사이트에서 가장 많이 사용된 기본 transition. 미라셀(694) 안성인삼(571)보다 많음 - 경동나비엔이 가장 인터랙티브" },
+          { "label": "🟢 transform 2s", "value": "15건 - 매우 느린 변환 (시그니처)" },
+          { "label": "opacity 0.7s", "value": "8건 - fade 표준" },
+          { "label": "color 0.3s 0.5s", "value": "7건 - 0.5초 지연 컬러 전환 (안성인삼과 동일 패턴)" },
+          { "label": "max-height 0.3s + visibility 0.3s", "value": "5건 - GNB 드롭다운" },
+          { "label": "opacity 1s + transform 1s", "value": "5건 - 스크롤 리빌 표준" },
+          { "label": "opacity 1s, 0.5s 다양", "value": "각 5건, 4건 - 다양한 fade duration" },
+          { "label": "color 0.3s", "value": "4건 - 호버 컬러 전환" }
+        ]},
+
+        { "type": "heading", "value": "발견 8: 글로벌 나비엔 + B2B + 다국어 시스템" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "글로벌 나비엔", "value": "Utility nav 상단의 작은 텍스트 링크. 50여 개국 진출 글로벌 사이트 (en.kdnavien.com 등) 진입" },
+          { "label": "고객지원", "value": "Utility nav의 두 번째 링크. AS·매장찾기 등 서비스 진입" },
+          { "label": "나비엔 하우스", "value": "navienhouse.com - B2C/B2B 통합 쇼룸. 외부 도메인 진입" },
+          { "label": "B2B", "value": "B2B 전용 진입 - 협력업체·기업 고객용 별도 사이트 또는 페이지 (이전 분석에서 visit.kdiwin.com / srm.kdiwin.com 패밀리사이트 패턴과 연계)" },
+          { "label": "다국어 셀렉터", "value": "🌐 한국어 ▾ - 클릭 시 다국어 메뉴 (한국어/English 등). 글로벌 50여 개국 진출 기업의 표준 컴포넌트" }
+        ]},
+
+        { "type": "note", "value": "🟢 경동나비엔 사이트는 transition 728건으로 한국 코퍼레이트 사이트 중 가장 인터랙티브. 8개 Hero 슬라이드 자동 재생 + 5개 비디오 사전 로드 + SKIP/Pause/Play 3종 컨트롤 + transform 2s 매우 느린 변환 + 글로벌 나비엔/B2B/다국어 utility nav 등 사용자 관점에서 통제권을 충분히 부여하면서도 디자인 정체성을 유지하는 균형 잡힌 시스템." }
+      ]
     }
   }
 }

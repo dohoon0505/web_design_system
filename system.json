@@ -54,7 +54,8 @@
         { "id": "ix-scroll",             "num": "23", "title": "스크롤 인터랙션 카탈로그",          "desc": "8,550px 메시지 시퀀스 / 오비탈 progress / Sticky 헤더" },
         { "id": "ix-hover",              "num": "24", "title": "호버 인터랙션 카탈로그",            "desc": "GNB / CTA / Card / Partner Logo grayscale → color" },
         { "id": "pub-semantic",          "num": "25", "title": "시맨틱 HTML · 접근성",            "desc": "user-scalable=no 이슈, alt 부재, WCAG 대비 검증" },
-        { "id": "pub-perf-seo",          "num": "26", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "PHP 정적 페이지 / 70+ 파트너 lazy load 권장 / 구조화 데이터 권장" }
+        { "id": "pub-perf-seo",          "num": "26", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "PHP 정적 페이지 / 70+ 파트너 lazy load 권장 / 구조화 데이터 권장" },
+        { "id": "smooth-interaction-catalog","num": "27", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Hero 정정 - 떡잎+별+wireframe / circle_move 7s Orbital 회전 / rolling 20s 파트너 무한 슬라이드 / Material Design cubic-bezier 1.2s easing / 전체 532건 transition" }
       ],
       "subpages": [
         { "title": "메인 (Home)", "url": "https://www.plantym.com/" },
@@ -104,7 +105,8 @@
         { "id": "ix-hover",              "num": "24", "title": "호버 인터랙션 카탈로그",            "desc": "GNB / What's New / View More / 카드 / 로고 / 4-Accordion / Globe / Scroll-to-top" },
         { "id": "ix-scroll",             "num": "25", "title": "스크롤 애니메이션 카탈로그",        "desc": "Hero fade / Stroke 슬라이드 / Curve zoom out / Counter 트리거 / Card stagger" },
         { "id": "pub-semantic",          "num": "26", "title": "시맨틱 HTML · 접근성",            "desc": "user-scalable 양호 / WCAG 대비 검증 / prefers-reduced-motion 권장" },
-        { "id": "pub-perf-seo",          "num": "27", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Drupal + AWS S3 / Image Styles / itok / 다국어 hreflang 권장" }
+        { "id": "pub-perf-seo",          "num": "27", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Drupal + AWS S3 / Image Styles / itok / 다국어 hreflang 권장" },
+        { "id": "smooth-interaction-catalog","num": "28", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Material Design Standard Easing 35건 / slideInLeft·Right·arrowBounceFade·logo-seq 4종 named animation / DRIVING stroke 텍스트 무한 슬라이드 / 한영 페어 본문 / 전체 689건 transition" }
       ],
       "subpages": [
         { "title": "메인 (Home)", "url": "https://dcamp.kr/" },
@@ -164,7 +166,8 @@
         { "id": "pub-perf-seo",        "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Next.js Image q=75/Pretendard 자체호스팅/og meta·viewport/CSS Modules 클래스명(KNTab/iconyaki)" },
         { "id": "real-product-catalog","num": "31", "title": "🟢 실 제품 카탈로그 (18종)",       "desc": "static.navienhouse.com 외부 호스트의 보일러(5)·환기청정기(5)·온수기(4)·스마트홈(4) 실 제품 사진 카탈로그 + 모델 번호" },
         { "id": "tech-animation",      "num": "32", "title": "🟢 핵심 기술 시각화 - JPG + GIF",   "desc": "사업분야 5카테고리 tech1-3 인포그래픽 - 주방기기만 GIF 애니메이션 채택한 디자인 결정" },
-        { "id": "talent-visual",       "num": "33", "title": "🟢 인재경영 페이지 비주얼 시스템",   "desc": "인재상 다이어그램 + 인사제도 GOAL + 고성과 조직 GREAT COMPANY 3종 + 데스크톱/모바일 분기" }
+        { "id": "talent-visual",       "num": "33", "title": "🟢 인재경영 페이지 비주얼 시스템",   "desc": "인재상 다이어그램 + 인사제도 GOAL + 고성과 조직 GREAT COMPANY 3종 + 데스크톱/모바일 분기" },
+        { "id": "smooth-interaction-catalog","num": "34", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Hero 8 슬라이드 (이전 4 정정) + SKIP 버튼 + 5 비디오 사전 로드 + transform 2s 15건 + 글로벌 나비엔/B2B/다국어 utility nav + 전체 728건 transition" }
       ],
       "subpages": [
         { "title": "메인 (Home)", "url": "https://www.kdnavien.co.kr/ko" },
@@ -220,7 +223,8 @@
         { "id": "pub-semantic",        "num": "29", "title": "시맨틱 HTML · 접근성",          "desc": "구조, WCAG 감사, NH Green 대비 주의" },
         { "id": "pub-perf-seo",        "num": "30", "title": "성능 · SEO · 디자인-개발 협업",  "desc": "Pretendard Variable, Kakao Map lazy, 구조화 데이터" },
         { "id": "brand-philosophy",    "num": "31", "title": "🟢 명삼원 브랜드 3-Pillar Philosophy", "desc": "브랜드 페이지 (sH 8,047px) 정밀 - 맑음과 정직함/깊이 있는 생명력/정원처럼 가꾼 정성 + ONE-STOP 시스템 3 섹션" },
-        { "id": "matchum-collaboration","num": "32", "title": "🟢 안성마춤 3-Party Collaboration", "desc": "안성시청 + 농가/생산 조직 + 안성관내농협 3 주체 협업 다이어그램 (지역 통합 브랜드 거버넌스)" }
+        { "id": "matchum-collaboration","num": "32", "title": "🟢 안성마춤 3-Party Collaboration", "desc": "안성시청 + 농가/생산 조직 + 안성관내농협 3 주체 협업 다이어그램 (지역 통합 브랜드 거버넌스)" },
+        { "id": "smooth-interaction-catalog","num": "33", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "헤더 스크롤 변환 / Hero Slider 3-Track / 단어별 페이드인 (color 0.6s) / 사이드 라디오 단계별 / Swiper Pagination / W형 카드 / Floating Popup / 광범위 transition 통계" }
       ],
       "subpages": [
         { "title": "메인 (Home)", "url": "https://asinsam.com/" },
@@ -289,7 +293,8 @@
         { "id": "pub-perf-seo",       "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "이미지·폰트 최적화, 구조화 데이터, 협업 체크리스트" },
         { "id": "cellbanking-crisis-cards","num": "31", "title": "🟢 CellBanking 4-Card Crisis Awareness", "desc": "사이트 최장 11,438px 페이지 정밀 - H5 4종 (바이러스 진화/사망률 증가/면역력 노화/시장 성장) + Solution CTA. B2C 위기인식 카피라이팅의 정석" },
         { "id": "stem-cell-video",        "num": "32", "title": "🟢 줄기세포 교육 - 비디오 임베드 + 4-Cell Cards", "desc": "줄기세포란? 페이지 - 비디오 썸네일+재생 아이콘 패턴 + 4종 세포(줄기세포/성장인자/백혈구/혈소판) 실 이미지 교육 카드" },
-        { "id": "smart-mcell-tech",       "num": "33", "title": "🟢 Smart M-Cell 5-Tech Detail", "desc": "시그니처 제품 페이지 - 실 제품 사진 + 5종 H5 핵심 기술 (Autorotation/Double rotation/Touch+Voice/LED Visible Light) + 한영 이중 표기 패턴" }
+        { "id": "smart-mcell-tech",       "num": "33", "title": "🟢 Smart M-Cell 5-Tech Detail", "desc": "시그니처 제품 페이지 - 실 제품 사진 + 5종 H5 핵심 기술 (Autorotation/Double rotation/Touch+Voice/LED Visible Light) + 한영 이중 표기 패턴" },
+        { "id": "smooth-interaction-catalog","num": "34", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Splitting.js 글자별 분할 (1.5s) / KR·EN·CN 3 다국어 / 5×4 Hero Mosaic / Scroll down 3-Dot 인디케이터 / 빨간 Pencil FAB / opacity+transform 0.8s 69건 / 전체 694건 transition" }
       ],
       "subpages": [
         { "title": "메인 (Home)", "url": "https://miracell.co.kr/kr/" },
