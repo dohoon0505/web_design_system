@@ -3,355 +3,292 @@
   "title": "현대글로비스",
   "url": "https://www.glovis.net/kr/home",
   "date": "2026-05-14",
-  "summary": "현대자동차그룹 계열 글로벌 종합물류유통기업 현대글로비스 코퍼레이트 사이트. 7개 핵심 페이지 정밀 점진 점검 - 메인(15,912px) + 회사정보 + 사업영역 3종 + 지속가능경영 + 투자정보 + FAQ. 디자인 시그니처는 (1) Hero scroll-driven 색상 전환 (흰→라벤더→다크 네이비 #001290→흰, 3,500px), (2) 거대 영문 헤딩 캡슐 영상 임베드 (GLOBAL/SMART SCM/SOLUTION 옆 사막·항만·롤러 컨베이어), (3) 5-카테고리 사업영역 sticky 가로 슬라이더 (LOGISTICS/SHIPPING/DISTRIBUTION/FUTURE BUSINESS/INNOVATION), (4) GLOVIS NOW 검정 띠 KOSPI 263,000 ▼ 실시간 ticker, (5) ESG 'Clean Flow, Make Together' + 외부 인증 4 마크 (DJBIC/한국ESG기준원 A/CDP/MSCI), (6) 3-탭 sticky 패턴 (회사정보·ESG·IR 페이지 모두 사용), (7) Pretendard subset 4 weights + Inter Bold 영문 헤딩. WA 웹 접근성 인증 (서울특별시) + cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing 19+건. 7 페이지 누적 sH 합계: 15,912 + 7,356 + 10,731 + 8,727 + 11,749 + 7,605 + 3,203 + 2,098 = 67,381px.",
+  "summary": "현대자동차그룹 계열 글로벌 종합물류유통기업 현대글로비스 코퍼레이트 사이트. 메인 + 회사정보 + 사업영역 5종 + 지속가능경영 + 투자정보 + FAQ 7개 페이지 분석. 디자인 시스템은 흰 베이스 + Glovis Navy 4톤 (#001290 메인 / #15269D / #0E0D44 / #7E7E9D 라벤더) + Pretendard subset 4 weights + Inter Bold 영문 + WA 웹 접근성 인증 (서울특별시). 모든 페이지에서 일관된 패턴 - breadcrumb + H2 72px 헤딩 + Sticky 다중 탭 + cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing. 메인 페이지에는 scroll-driven 색상 전환 + 거대 영문 캡슐 영상 임베드 + GLOVIS NOW KOSPI 실시간 ticker + 5-카테고리 사업영역 활성 토글 + Floating 3-fab utility cluster.",
   "crawledPages": 7,
   "sections": {
 
     "overview": {
-      "title": "01. 개요 · 사이트맵 · 기술 스택",
+      "title": "사이트 개요",
       "blocks": [
-        { "type": "kv", "title": "사이트 프로필", "columns": 2, "items": [
-          { "label": "사이트명", "value": "현대글로비스 (Hyundai Glovis) - 현대자동차그룹 계열 / KOSPI 086280 상장사" },
-          { "label": "정체성", "value": "🟢 '최고의 자동차 물류전문 기업에서 글로벌 종합 물류유통기업으로! 고객 가치 사슬 전반의 효율을 실현해 지속 가능한 성장을 추구합니다'" },
-          { "label": "사업 구성", "value": "🟢 5 카테고리 - 물류(Logistics·수출입/3PL/벌크/터미널) / 해운(Shipping·자동차선 운송) / 유통(Distribution·오토비즈/트레이딩/KD) / 신사업(Future Business·스마트물류솔루션/EV배터리/수소) / 기술혁신(Innovation·디지털 혁신)" },
-          { "label": "주식 + 재무", "value": "🟢 KOSPI 086280 / 263,000 KRW ▼ -21,000 (-7.39%) / 매출액 25.68조원 (실측 실시간 ticker)" },
-          { "label": "ESG 비전", "value": "🟢 'Clean Flow, Make Together' - ESG 비전 + 외부 인증 4 (DJBIC 5년 연속 / 한국ESG기준원 종합 A / CDP / MSCI)" },
-          { "label": "분석 일자", "value": "2026-05-14 (KST), Chrome MCP 7개 페이지 점진 스크롤 정밀 점검" }
-        ]},
+        { "type": "text", "value": "현대글로비스 주식회사 (HYUNDAI GLOVIS) - 현대자동차그룹 계열 글로벌 종합물류유통기업. KOSPI 086280 상장 (실측 263,000원 ▼ -21,000 -7.39%). 매출 25.68조원. 본사 서울특별시 성동구 왕십리로 83-21 (성수동 1가 685-700) / 대표전화 02-6191-9114 / FAX 02-6191-8114. 사업 5 카테고리 (물류·해운·유통·신사업·기술혁신). ESG 비전 'Clean Flow, Make Together' + 외부 인증 (DJBIC 5년 연속 / 한국ESG기준원 종합 A / CDP / MSCI)." },
 
-        { "type": "heading", "value": "기술 스택 (실측)" },
-        { "type": "kv", "columns": 2, "items": [
-          { "label": "🟢 폰트 시스템", "value": "Pretendard subset woff2 4 weights (Light 300 / Regular / Medium / Bold) + Inter Bold woff for 영문 헤딩 - 모두 자체 호스팅 /fonts/" },
-          { "label": "프레임워크", "value": "전통 SSR JSP/Spring 추정 / 20 script + 7 stylesheets / 시멘틱 태그 (header/main/nav/section/footer) 모두 사용" },
+        { "type": "kv", "title": "기술 스택", "columns": 2, "items": [
+          { "label": "주 폰트 (한글)", "value": "Pretendard subset woff2 4 weights - Light 300 / Regular 400 / Medium 500 / Bold 700 - 모두 자체 호스팅 /fonts/Pretendard/" },
+          { "label": "보조 폰트 (영문)", "value": "Inter Bold woff (woff2 아닌 구식) - 영문 거대 헤딩 전용" },
           { "label": "🟢 Light 300 본문", "value": "Pretendard Light 300 weight 적극 사용 - 한국 코퍼레이트 사이트에서 매우 드문 가벼운 톤. p:16px:300 표준" },
-          { "label": "Hero 영상", "value": "4개 <video> - 메인 페이지 dual fixed 레이어 (vis-fixed-area + intro-txt-area 각 911px) + 사업영역 페이지별 별도 영상" },
-          { "label": "이미지 호스팅", "value": "glovis.net/images/ 자체 도메인 - og-image1.jpg + 사업 사진 (자동차운반선·AGV 로봇·컨테이너선)" },
-          { "label": "URL 패턴", "value": "🟢 glovis.net/kr/home/{category}/{subcategory}/{page} - 'kr'(국가) + 'home'(섹션) + 카테고리/하위카테고리 4 단계 path" },
-          { "label": "다국어", "value": "🌐 KOR/ENG 헤더 토글 - glovis.net/ → 한글 / /en/home → 영문" },
+          { "label": "프레임워크", "value": "전통 SSR JSP/Spring 추정 / 20 script + 7 stylesheets / 시멘틱 태그 header·main·nav·section·footer 모두 사용 ✓" },
+          { "label": "Hero 시스템", "value": "4개 <video> - 메인 페이지 dual fixed 레이어 (vis-fixed-area + intro-txt-area 각 911px) + 사업영역 페이지별 별도 영상" },
+          { "label": "URL 패턴", "value": "glovis.net/kr/home/{category}/{subcategory}/{page} - 'kr'(국가) + 'home'(섹션) + 카테고리 4-단계 path" },
+          { "label": "다국어", "value": "KOR/ENG 헤더 토글 (/kr/home 한글 / /en/home 영문)" },
+          { "label": "🟢 WA 인증", "value": "서울특별시 정보화기획단 WA 웹 접근성 품질마크 - WCAG 2.1 AA 정부 인증" },
           { "label": "🔴 viewport", "value": "user-scalable=no - WCAG 1.4.4 위반 / html font-size 1px 비표준" }
         ]},
 
-        { "type": "heading", "value": "전체 사이트맵 (GNB 6 메뉴 - 실측)" },
         { "type": "sitemap", "items": [
-          { "label": "회사정보", "children": ["현대글로비스 소개 (/company/intro · sH 7,356px) + 3-탭 sticky (기업정보/사업영역/브로슈어)", "글로벌네트워크 (Europe/Americas/China/Asia Pacific)", "News PressRelease", "기타"] },
-          { "label": "사업영역 (5 카테고리)", "children": ["물류 - 수출입물류 (/business/logistical/ie-logistics · sH 10,731px) - 컨테이너선 / 3PL / 벌크 / 터미널", "해운 - 자동차선 운송 (/business/shipping/finished-transport · sH 8,727px) - GLOVIS Century 자동차운반선", "유통 - 오토비즈 (/business/distribution/autobiz) / 트레이딩 / KD", "신사업 - 스마트물류솔루션 (/business/future/smart-logistics-solution · sH 11,749px) / EV배터리 / 수소사업", "기술혁신 - 디지털 혁신 (/business/technology/digital-transformation)"] },
-          { "label": "지속가능경영", "children": ["지속가능경영 성과 (/sustainable/perfomance/esg-strategy-performance · sH 7,605px) + 5-탭 (개요/전략/성과/ESG 정책/지속가능경영 보고서)", "환경", "사회", "윤리경영 + 클린톡 신고", "공정거래 자율준수 선언"] },
-          { "label": "투자정보", "children": ["투자정보 개요 (/investment-information/intro · sH 3,203px) + 3-탭 (주식/재무정보·IR 정보·관련 문의) + IR 자료실 (CEO INVESTOR DAY 비디오·사업보고서·영업보고서·감사보고서·IR 프레젠테이션)", "주가정보", "IR 정보", "재무정보"] },
-          { "label": "고객지원", "children": ["FAQ (/customer-support/faq · sH 2,098px) + 3-카드 (신차배송조회·비즈니스 문의·챗봇) + 6-카테고리 (신차배송/운송 견적/중고차/투자정보/채용/기타)", "고객문의", "신차배송조회"] },
-          { "label": "공정거래", "children": ["공정거래 자율준수 선언 (/gcp/compliance/compliance-declaration)"] },
-          { "label": "외부 링크", "children": ["오토벨 (autobell.co.kr/main - 중고차)", "웹진 GLOVIS+ (webzine.glovis.net)", "블로그 (Naver blog/glovis0001)", "페이스북 (hyundaigloviskor)", "유튜브 (@hyundaiglovis)"] }
-        ]},
-
-        { "type": "note", "value": "현대글로비스 7 페이지 누적 sH 67,381px. 메인 페이지가 가장 깊은 23.6% (15,912px), 다음으로 신사업 스마트물류 17.5% (11,749px) / 물류 수출입 15.9% (10,731px) / 해운 자동차선 12.9% (8,727px) 순. 사업영역 5 카테고리가 가장 자세한 페이지 - 각 카테고리별 별도 사업 디테일 페이지 존재." }
+          { "label": "회사정보", "children": ["현대글로비스 소개 (sH 7,356px) + 3-탭 sticky (기업정보/사업영역/브로슈어)", "글로벌네트워크 (Europe/Americas/China/Asia Pacific)", "News PressRelease"] },
+          { "label": "사업영역 (5)", "children": ["물류 - 수출입물류 (sH 10,731px · 컨테이너선) / 3PL / 벌크 / 터미널", "해운 - 자동차선 운송 (sH 8,727px · GLOVIS Century)", "유통 - 오토비즈 / 트레이딩 / KD", "신사업 - 스마트물류솔루션 (sH 11,749px · AGV 로봇) / EV배터리 / 수소", "기술혁신 - 디지털 혁신"] },
+          { "label": "지속가능경영", "children": ["지속가능경영 성과 (sH 7,605px) + 5-탭 (개요/전략/성과/ESG 정책/지속가능경영 보고서)", "환경", "사회", "윤리경영 + 클린톡 신고", "공정거래"] },
+          { "label": "투자정보", "children": ["투자정보 개요 (sH 3,203px) + 3-탭 (주식·재무/IR 정보/관련 문의)", "IR 자료실 (CEO INVESTOR DAY 비디오 + 사업·영업·감사보고서)"] },
+          { "label": "고객지원", "children": ["FAQ (sH 2,098px) + 3-카드 (신차배송조회/비즈니스 문의/챗봇) + 6-카테고리 검색"] },
+          { "label": "외부 링크", "children": ["오토벨 autobell.co.kr (중고차)", "웹진 GLOVIS+ webzine.glovis.net", "블로그 Naver", "페이스북", "유튜브 @hyundaiglovis"] }
+        ]}
       ]
     },
 
-    "design-tokens": {
-      "title": "02. 디자인 토큰 시스템 (컬러·타이포·여백)",
+    "color-palette": {
+      "title": "컬러 팔레트",
       "blocks": [
-        { "type": "text", "value": "현대글로비스는 CSS Variables 미사용 - 전통적 SCSS 컴파일. 토큰은 실측된 computed style 기반으로 재구성. Glovis Navy 4톤이 핵심." },
-
-        { "type": "component", "title": "CSS Variables (재구성)", "css": ":root{--font-pretendard:'Pretendard',sans-serif;--font-inter:'Inter','Pretendard',sans-serif;--color-text:#333333;--color-heading:#141415;--color-secondary:#3F4146;--color-muted:#63666A;--color-light:#71737B;--color-bg:#FFFFFF;--color-bg-surface:#F1F2F9;--color-bg-light:#F5F5F5;--color-glovis-deep:#0E0D44;--color-glovis-navy:#001290;--color-glovis-blue:#15269D;--color-glovis-light:#7E7E9D;--color-accent-apple-blue:#007AFF;--color-accent-red:#E31D1A;--color-accent-green:#1A8A3A;--color-divider:#F0F0F0;--fs-hero:86px;--fs-h1:80px;--fs-h2:72px;--fs-h3:60px;--fs-h4:40px;--fs-h5:32px;--fs-body-lg:20px;--fs-body:16px;--fs-body-light:16px;--fs-small:14px;--lh-base:1.6;--header-height:80px;--header-z:11;--utils-z:10;--bp-tablet:1023px;--bp-mobile:500px;--ease-decelerate:cubic-bezier(0.215, 0.61, 0.355, 1);--transition-decel-1s:opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);--transition-fast:color 0.3s;--radius-card:8px;--radius-pill:99px}", "html": "<div style='display:grid;grid-template-columns:repeat(5,1fr);gap:8px;font-family:Pretendard,sans-serif;font-size:10px'><div style='padding:14px 8px;background:#0E0D44;color:#fff;border-radius:8px;text-align:center'><div style='opacity:0.85'>--glovis-deep</div><b>#0E0D44</b></div><div style='padding:14px 8px;background:#001290;color:#fff;border-radius:8px;text-align:center'><div style='opacity:0.85'>--glovis-navy</div><b>#001290</b></div><div style='padding:14px 8px;background:#15269D;color:#fff;border-radius:8px;text-align:center'><div style='opacity:0.85'>--glovis-blue</div><b>#15269D</b></div><div style='padding:14px 8px;background:#7E7E9D;color:#fff;border-radius:8px;text-align:center'><div style='opacity:0.85'>--glovis-light</div><b>#7E7E9D</b></div><div style='padding:14px 8px;background:#F1F2F9;color:#000;border:1px solid #ddd;border-radius:8px;text-align:center'><div style='opacity:0.85'>--surface</div><b>#F1F2F9</b></div></div>" },
+        { "type": "text", "value": "흰 베이스 위에 Glovis Navy 4톤이 메인 컬러로 작동. 본문 텍스트 #333333 270건 (사이트 최빈도) / 헤딩 #141415 42건. KOSPI 마이너스만 빨강 #E31D1A 1건 사용 (매우 신중한 강조). ESG 페이지에는 진녹색 + Glovis Navy 페어." },
 
         { "type": "palette", "title": "Glovis Navy 4톤 + 무채색 + 강조", "colors": [
-          { "name": "Body Text", "hex": "#333333", "usage": "본문 표준 (color 270건) - 사이트 최빈도" },
-          { "name": "Heading Near-Black", "hex": "#141415", "usage": "헤딩 표준 (color 42건)" },
-          { "name": "Muted Gray", "hex": "#63666A", "usage": "보조 텍스트 (color 13건)" },
+          { "name": "Body Text", "hex": "#333333", "usage": "본문 표준 - 사이트 최빈도 270건" },
+          { "name": "Heading Near-Black", "hex": "#141415", "usage": "헤딩 표준 42건" },
+          { "name": "Muted Gray", "hex": "#63666A", "usage": "보조 텍스트 13건" },
           { "name": "Light Gray", "hex": "#71737B", "usage": "비활성 카테고리 영문 헤딩 (Light 300)" },
-          { "name": "🟢 Glovis Navy", "hex": "#001290", "usage": "🟢 Glovis 메인 컬러 - 활성 카테고리·CTA·글로벌 네트워크 배경 (color 6 / BG 1)" },
+          { "name": "Glovis Navy", "hex": "#001290", "usage": "🟢 Glovis 메인 컬러 - 활성 카테고리·CTA·글로벌 네트워크 배경 (color 6 / BG 1)" },
           { "name": "Glovis Blue", "hex": "#15269D", "usage": "보조 네이비 강조 (color 5 / BG 2)" },
-          { "name": "🟢 Glovis Deep", "hex": "#0E0D44", "usage": "🟢 다크 네이비 - Hero scroll-driven 색상 진행 시 배경 (BG 4)" },
+          { "name": "Glovis Deep", "hex": "#0E0D44", "usage": "🟢 다크 네이비 - Hero scroll-driven 색상 진행 시 배경 (BG 4)" },
           { "name": "Glovis Light", "hex": "#7E7E9D", "usage": "Hero 라벤더 배경 - 색상 전환 중간 단계" },
           { "name": "Surface", "hex": "#F1F2F9", "usage": "Surface 베이지 (BG 3)" },
-          { "name": "🟢 Red Accent", "hex": "#E31D1A", "usage": "🟢 KOSPI 마이너스 ▼ 색상 - 매우 신중한 강조 (1건)" },
-          { "name": "Apple Blue", "hex": "#007AFF", "usage": "보조 링크 / 챗봇 fab" }
+          { "name": "Apple Blue", "hex": "#007AFF", "usage": "보조 링크 + 챗봇 fab" },
+          { "name": "Red Accent", "hex": "#E31D1A", "usage": "🟢 KOSPI 마이너스 ▼ 색상 - 매우 신중한 강조 (1건)" }
         ]},
 
-        { "type": "typo", "items": [
-          { "label": "H2 72px·700 (Pretendard Bold)", "size": "72px", "weight": 700, "sample": "현대글로비스 소개 / 지속가능경영 성과 / 투자정보 개요 / FAQ" },
-          { "label": "Hero 86px·500 (Pretendard Medium)", "size": "86px", "weight": 500, "sample": "연결에서 / 완결로" },
-          { "label": "H1 80px·700 (Inter Bold 영문)", "size": "80px", "weight": 700, "sample": "LOGISTICS · SHIPPING · DISTRIBUTION · FUTURE BUSINESS · INNOVATION" },
-          { "label": "H3 60px·700", "size": "60px", "weight": 700, "sample": "기업정보 / 사업영역 / 브로슈어" },
-          { "label": "H4 40px·700", "size": "40px", "weight": 700, "sample": "For More Meaningful Connections / 성과 / IR 자료실" },
-          { "label": "Body 16px·500", "size": "16px", "weight": 500, "sample": "사업 설명 - Medium body" },
-          { "label": "🟢 Body Light 16px·300", "size": "16px", "weight": 300, "sample": "Light 본문 (한국 사이트 드문)" },
-          { "label": "Caption 14px·400", "size": "14px", "weight": 400, "sample": "*25년 기준 / 2026-05-14" }
-        ]},
+        { "type": "component", "title": "Glovis Navy 4톤 진행 (Hero scroll-driven)", "css": ".gv-pal{padding:32px;background:#fff;font-family:Pretendard,sans-serif}.gv-pal__bar{display:flex;height:80px;border-radius:8px;overflow:hidden;margin-bottom:24px}.gv-pal__seg{flex:1;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;flex-direction:column;gap:4px}.gv-pal__seg small{opacity:0.8;font-weight:400;font-size:10px}.gv-pal__progress{font-size:12px;color:#666;line-height:1.7}", "html": "<div class='gv-pal'><div class='gv-pal__bar'><div class='gv-pal__seg' style='background:#FFFFFF;color:#000;border:1px solid #DDD'><span>흰</span><small>#FFFFFF</small></div><div class='gv-pal__seg' style='background:#7E7E9D'><span>라벤더</span><small>#7E7E9D</small></div><div class='gv-pal__seg' style='background:#0E0D44'><span>딥 네이비</span><small>#0E0D44</small></div><div class='gv-pal__seg' style='background:#001290'><span>Glovis Navy</span><small>#001290</small></div><div class='gv-pal__seg' style='background:#15269D'><span>Glovis Blue</span><small>#15269D</small></div></div><div class='gv-pal__progress'><strong>Hero scroll-driven 진행:</strong> 사용자가 스크롤하면 배경색이 5단계로 점진 전환 - 흰 → 라벤더 → 딥 네이비 → 네이비 → 흰 (3,500px 구간). color 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing 적용.</div></div>" },
 
-        { "type": "kv", "title": "트랜지션 + 브레이크포인트", "columns": 1, "items": [
-          { "label": "all (default)", "value": "383건 - 사이트 표준" },
-          { "label": "🟢 cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing", "value": "19+건 - Material Design Decelerate. 모션 디자이너의 의도 일관" },
-          { "label": "opacity 1s cubic-bezier", "value": "5건 - 카드 진입" },
-          { "label": "transform 1s cubic-bezier", "value": "5건 - translate·scale" },
-          { "label": "max-height 0.5s", "value": "5건 - 드롭다운" },
-          { "label": "color 0.7s cubic-bezier", "value": "5건 - Hero 색상 전환" },
-          { "label": "단순 반응형", "value": "🟢 2-단계만 - max-width 1023px (tablet) + max-width 500px (mobile) + print" }
+        { "type": "kv", "title": "WCAG 대비 검증 (모두 AAA)", "columns": 1, "items": [
+          { "label": "Body #333 on White", "value": "12.6 : 1 ✅ AAA" },
+          { "label": "Heading #141415 on White", "value": "16.7 : 1 ✅ AAA" },
+          { "label": "Glovis Navy #001290 on White", "value": "12.3 : 1 ✅ AAA" },
+          { "label": "White on Glovis Navy #001290", "value": "12.3 : 1 ✅ AAA" },
+          { "label": "White on Glovis Deep #0E0D44", "value": "16.4 : 1 ✅ AAA (최대 대비)" }
         ]}
       ]
     },
 
-    "main-page": {
-      "title": "03. 메인 페이지 (sH 15,912px) - Hero Scroll-Driven + KOSPI Ticker",
+    "typography": {
+      "title": "타이포그래피",
       "blocks": [
-        { "type": "text", "value": "메인 페이지는 7개 콘텐츠 영역으로 구성. Hero 3,500px scroll-driven 색상 전환이 22% 차지, 사업영역 5 카테고리 활성 토글이 44%, 글로벌네트워크 16%, News 13%, Footer 6%." },
+        { "type": "text", "value": "한글 Pretendard subset 4 weights (300/400/500/700) + 영문 Inter Bold 1 weight. 모두 자체 호스팅. Variable Font 미채택 - 4 weight 개별 woff2 다운로드. 헤딩 H2 72px이 표준 (대부분 페이지 동일) - 메인 Hero만 86px·500 슬로건." },
 
-        { "type": "structure", "items": [
-          { "label": "01. Header sticky (80px, z-11)", "tag": "fixed", "desc": "GNB 6 메뉴 + 검색·언어·공유·메뉴 아이콘 + KOR/ENG 토글" },
-          { "label": "02. Hero scroll-driven 색상 전환", "tag": "🟢 3,500px (22%)", "desc": "흰 배경 + 거대 영문 'GLOBAL SMART SCM SOLUTION PROVIDER' 캡슐 영상 임베드 → 라벤더 #7E7E9D → 다크 네이비 #001290 + '연결에서 → 완결로' Pretendard 86px·500 + 우측 sub copy + ⓘ Pause/Play" },
-          { "label": "03. GLOVIS NOW 검정 띠 ticker", "tag": "Hero 하단 고정", "desc": "🟢 'GLOVIS NOW' 라벨 + 보도자료 슬라이드 (현대글로비스, 서울숲에 어린이 친환경 놀이...) + 우측 KOSPI 263,000 KRW ▼ -21,000 -7.39% (빨강 #E31D1A)" },
-          { "label": "04. 사업영역 5 활성 토글", "tag": "🟢 7,000px (44%)", "desc": "좌측 사진/영상 + 우측 거대 영문 (LOGISTICS/SHIPPING/DISTRIBUTION/FUTURE BUSINESS/INNOVATION) 활성 (#71737→#001290) + 한글 설명 + → CTA" },
-          { "label": "05. 글로벌네트워크", "tag": "2,500px (16%)", "desc": "다크 네이비 #001290 풀폭 + 'For More Meaningful Connections' Inter 64-80px·700 + 세계지도 SVG + 4 영역 outline 라벨 (Americas/Europe/China/Asia Pacific)" },
-          { "label": "06. News 3카드", "tag": "2,000px (13%)", "desc": "보도자료 2 (서울숲 어린이/자동차운반선 1만대) + YouTube embed 1 (MZ 매니저 동상이몽 EP.15)" },
-          { "label": "07. Footer 산악·호수 + 모바일 앱", "tag": "900px (6%)", "desc": "산악·호수 비주얼 + 'GLOBAL SMART SCM SOLUTION' 거대 영문 + 모바일 앱 사진 + WA 접근성 인증 + Family Site + 4 유틸 (개인정보처리방침/법적고지/사이버 감사실/클린톡)" },
-          { "label": "Floating utils (z-10)", "tag": "fixed 72×152 우측", "desc": "⋮ 메뉴 + 💬 챗봇 (파란 원) + ↑ Scroll-top 3-fab" }
+        { "type": "component", "title": "타입 스케일 (Glovis 표준)", "css": ".gv-typo{padding:40px;background:#fff;font-family:'Pretendard',sans-serif;color:#141415}.gv-typo__row{padding:14px 0;border-bottom:1px solid #EEE;display:flex;align-items:baseline;gap:24px}.gv-typo__meta{flex:0 0 240px;font-family:monospace;font-size:11px;color:#71737B;font-weight:600}.gv-typo__sample{flex:1;letter-spacing:-0.02em;line-height:1.15}", "html": "<div class='gv-typo'><div class='gv-typo__row'><span class='gv-typo__meta'>Hero · 86/500</span><span class='gv-typo__sample' style='font-size:86px;font-weight:500'>연결에서 / 완결로</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>H1 · 80/700 Inter</span><span class='gv-typo__sample' style='font-family:Inter,sans-serif;font-size:80px;font-weight:700'>LOGISTICS · SHIPPING</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>H2 · 72/700 (표준)</span><span class='gv-typo__sample' style='font-size:72px;font-weight:700'>현대글로비스 소개</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>H3 · 60/700</span><span class='gv-typo__sample' style='font-size:60px;font-weight:700'>기업정보 / 사업영역 / 브로슈어</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>H4 · 40/700</span><span class='gv-typo__sample' style='font-size:40px;font-weight:700'>For More Meaningful Connections</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>Sub · 28/700</span><span class='gv-typo__sample' style='font-size:28px;font-weight:700'>현대글로비스가 이끌어가는 미래</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>Body MD · 16/500</span><span class='gv-typo__sample' style='font-size:16px;font-weight:500'>Medium body - 강조 본문</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>🟢 Body Light · 16/300</span><span class='gv-typo__sample' style='font-size:16px;font-weight:300'>Light 본문 - 한국 사이트에서 매우 드문 가벼운 톤. 사업 설명·본문 표준</span></div><div class='gv-typo__row'><span class='gv-typo__meta'>Caption · 14/400</span><span class='gv-typo__sample' style='font-size:14px;font-weight:400;color:#71737B'>*25년 기준 / 2026-05-14</span></div></div>" },
+
+        { "type": "component", "title": "@font-face 선언", "css": "", "html": "<pre style='background:#0E0D44;color:#E5E5E5;padding:24px;border-radius:8px;font-family:monospace;font-size:11px;line-height:1.7;overflow-x:auto'>/* Pretendard 4 weights subset (자체 호스팅) */\n@font-face {\n  font-family: 'Pretendard';\n  src: url('/fonts/Pretendard/Pretendard-Light.subset.woff2') format('woff2');\n  font-weight: 300;\n}\n@font-face {\n  font-family: 'Pretendard';\n  src: url('/fonts/Pretendard/Pretendard-Regular.subset.woff2') format('woff2');\n  font-weight: 400;\n}\n@font-face {\n  font-family: 'Pretendard';\n  src: url('/fonts/Pretendard/Pretendard-Medium.subset.woff2') format('woff2');\n  font-weight: 500;\n}\n@font-face {\n  font-family: 'Pretendard';\n  src: url('/fonts/Pretendard/Pretendard-Bold.subset.woff2') format('woff2');\n  font-weight: 700;\n}\n\n/* Inter Bold (영문 헤딩 전용) */\n@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter/Inter-Bold.woff') format('woff');\n  font-weight: 700;\n}\n\nbody {\n  font-family: 'Pretendard', sans-serif;\n  font-size: 16px;\n  font-weight: 300; /* Light 300 본문 표준 */\n  line-height: 1.6;\n  color: #333;\n}\n\nh2 {\n  font-size: 72px;\n  font-weight: 700;\n  color: #141415;\n  letter-spacing: -0.02em;\n}\n\n.headline--english {\n  font-family: 'Inter', sans-serif;\n  font-weight: 700;\n}</pre>" }
+      ]
+    },
+
+    "header-gnb": {
+      "title": "헤더 + GNB",
+      "blocks": [
+        { "type": "text", "value": "Sticky top z-11 / 80px / 흰 배경 + 1px #F0F0F0 border-bottom. 좌측 HYUNDAI GLOVIS 2-line 로고 (Inter Bold) + 중앙 6 GNB + 우측 4 유틸 아이콘 (검색·언어·공유·메뉴 9-dot). hover transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) - Glovis Navy #001290." },
+
+        { "type": "component", "title": "헤더 GNB 컴포넌트", "fullWidth": true, "css": ".gv-hd{position:sticky;top:0;background:#fff;z-index:11;display:flex;align-items:center;padding:0 48px;height:80px;border-bottom:1px solid #F0F0F0;font-family:Pretendard,sans-serif;gap:48px}.gv-hd__logo{display:flex;flex-direction:column;font-family:'Inter',sans-serif;color:#001290;line-height:1.1;letter-spacing:-0.02em}.gv-hd__logo small{font-size:10px;font-weight:700;letter-spacing:0.08em}.gv-hd__logo b{font-size:22px;font-weight:700}.gv-hd__nav{display:flex;gap:48px;flex:1}.gv-hd__nav a{font-size:16px;font-weight:500;color:#141415;text-decoration:none;padding:8px 0;cursor:pointer;transition:color 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-hd__nav a:hover{color:#001290}.gv-hd__util{display:flex;gap:16px;align-items:center}.gv-hd__icon{width:36px;height:36px;border-radius:99px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#141415;font-size:16px;transition:background 0.3s ease}.gv-hd__icon:hover{background:#F1F2F9}.gv-hd__dots{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:18px;height:18px}.gv-hd__dot{width:4px;height:4px;background:#141415;border-radius:50%}", "html": "<div class='gv-hd'><div class='gv-hd__logo'><small>HYUNDAI</small><b>GLOVIS</b></div><nav class='gv-hd__nav'><a>회사정보</a><a>사업영역</a><a>지속가능경영</a><a>투자정보</a><a>고객지원</a><a>공정거래</a></nav><div class='gv-hd__util'><span class='gv-hd__icon'>🔍</span><span class='gv-hd__icon'>🌐</span><span class='gv-hd__icon'>⤴</span><span class='gv-hd__icon'><span class='gv-hd__dots'><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span><span class='gv-hd__dot'></span></span></span></div></div>" }
+      ]
+    },
+
+    "hero-scroll": {
+      "title": "메인 Hero - 색상 전환 + 캡슐 영상",
+      "blocks": [
+        { "type": "text", "value": "메인 페이지 첫 3,500px - 사이트의 가장 강력한 시그니처. (1) 흰 배경에서 'GLOBAL SMART SCM SOLUTION PROVIDER' 거대 영문 헤딩 + 각 단어 옆 캡슐형 영상 임베드 (border-radius 99px <video>) - GLOBAL=사막 도로 / SMART SCM=항만 컨테이너선 / SOLUTION=롤러 컨베이어. (2) 스크롤 진행에 따라 배경이 흰 → 라벤더 → 다크 네이비 #001290 → 흰으로 5단계 전환. (3) 다크 네이비 단계에서 좌측 '연결에서 → 완결로' 86px·500 흰 슬로건 + 우측 sub copy + ⓘ Pause/Play. dual fixed 레이어 구조 (vis-fixed-area + intro-txt-area 각 911px)." },
+
+        { "type": "component", "title": "Hero Stage 1 - 흰 배경 + 캡슐 영상 임베드", "fullWidth": true, "css": ".gv-h1{background:#fff;padding:80px 80px;font-family:Pretendard,'Inter',sans-serif;min-height:640px;display:flex;align-items:center}.gv-h1__inner{display:flex;flex-direction:column;gap:24px;width:100%}.gv-h1__line{display:flex;align-items:center;gap:24px;font-family:Inter,sans-serif;font-size:80px;font-weight:700;line-height:1.05;color:#141415;letter-spacing:-0.02em}.gv-h1__capsule{height:100px;width:240px;border-radius:99px;background-size:cover;background-position:center;flex-shrink:0;box-shadow:0 8px 24px rgba(0,0,0,0.1)}.gv-h1__cap-1{background:linear-gradient(135deg,#d9a06a,#7a4828,#5a3220)}.gv-h1__cap-2{background:linear-gradient(135deg,#5a7aa8,#3a5a90,#1e3a70)}.gv-h1__cap-3{background:linear-gradient(135deg,#a8a8a8,#5a5a5a,#3a3a3a)}.gv-h1__line--ghost{color:#999}", "html": "<div class='gv-h1'><div class='gv-h1__inner'><div class='gv-h1__line'><span>GLOBAL</span><div class='gv-h1__capsule gv-h1__cap-1'></div></div><div class='gv-h1__line'><span>SMART SCM</span><div class='gv-h1__capsule gv-h1__cap-2'></div></div><div class='gv-h1__line'><div class='gv-h1__capsule gv-h1__cap-3'></div><span>SOLUTION</span></div><div class='gv-h1__line gv-h1__line--ghost'><span>PROVIDER</span></div></div></div>" },
+
+        { "type": "component", "title": "Hero Stage 2 - 다크 네이비 + 슬로건 + KOSPI Ticker", "fullWidth": true, "css": ".gv-h2{background:#001290;color:#fff;padding:80px 80px;font-family:Pretendard,sans-serif;min-height:640px;display:flex;align-items:center;position:relative}.gv-h2__grid{display:grid;grid-template-columns:1fr 1fr;gap:120px;width:100%;max-width:1280px;margin:0 auto}.gv-h2__slogan{position:relative}.gv-h2__slogan-line{display:flex;align-items:center;gap:24px;font-size:86px;font-weight:500;line-height:1.05;color:#fff;letter-spacing:-0.02em}.gv-h2__accent{width:48px;height:4px;background:#fff;border-radius:99px;flex-shrink:0}.gv-h2__sub{font-size:28px;font-weight:700;line-height:1.5;color:#fff}.gv-h2__pause{margin-top:24px;width:48px;height:48px;border-radius:99px;border:1.5px solid #fff;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff}.gv-h2__pause svg{width:14px;height:14px}.gv-h2__ticker{position:absolute;bottom:0;left:0;right:0;background:#000;color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;font-size:14px;letter-spacing:0.01em}.gv-h2__ticker-label{font-weight:700;letter-spacing:0.08em;font-family:Inter,sans-serif}.gv-h2__stock{display:flex;align-items:center;gap:14px}.gv-h2__down{color:#FF5252}", "html": "<div class='gv-h2'><div class='gv-h2__grid'><div class='gv-h2__slogan'><div class='gv-h2__slogan-line'><span class='gv-h2__accent'></span><span>연결에서</span></div><div class='gv-h2__slogan-line' style='margin-top:8px'><span class='gv-h2__accent'></span><span>완결로</span></div></div><div><div class='gv-h2__sub'>현대글로비스가 이끌어가는<br>미래의 세계는 점점 더 작아지고<br>당신의 가치는 더 커질 것입니다</div><button class='gv-h2__pause'><svg viewBox='0 0 24 24' fill='currentColor'><rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/></svg></button></div></div><div class='gv-h2__ticker'><div style='display:flex;gap:32px;align-items:center'><span class='gv-h2__ticker-label'>GLOVIS NOW</span><span>현대글로비스, 서울숲에 어린이 친환경 놀이 체험 공간 조성</span></div><div class='gv-h2__stock'><span>KOSPI 263,000 KRW</span><span class='gv-h2__down'>▼ -21,000</span><span class='gv-h2__down'>▼ -7.39%</span></div></div></div>" },
+
+        { "type": "kv", "title": "Hero 구현 가이드", "columns": 1, "items": [
+          { "label": "Dual Fixed 레이어", "value": ".vis-fixed-area + .intro-txt-area - 각각 fixed 911×1920 / 같은 위치에 layered" },
+          { "label": "Scroll-Driven 색상 전환", "value": "scrollY 0-3500 → background-color 5단계 전환 (흰 → 라벤더 #7E7E9D → 딥 네이비 #0E0D44 → Glovis Navy #001290 → 흰) / transition: background-color 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate" },
+          { "label": "캡슐 영상 임베드", "value": "<video> autoplay loop muted + border-radius: 99px + width: 240px height: 100px / 각 단어 옆에 inline 배치" },
+          { "label": "GLOVIS NOW Ticker", "value": "Hero 하단 검정 띠 (height: 40px) - JavaScript polling으로 KOSPI API 갱신. 빨강 #E31D1A ▼ 마이너스 시그널" }
         ]}
       ]
     },
 
-    "subpage-company": {
-      "title": "04. 회사정보 (/company/intro · sH 7,356px) - 3-탭 sticky + 5-사업영역 슬라이더",
+    "business-toggle": {
+      "title": "메인 사업영역 - 5-카테고리 활성 토글",
       "blocks": [
-        { "type": "text", "value": "현대글로비스 소개 페이지. breadcrumb + H2 72px + 자동차운반선 Hero + 3-탭 sticky + 글로벌 Top Tier SCM 본문 + 4-카드 정보 + 5-카테고리 가로 슬라이더." },
+        { "type": "text", "value": "메인 페이지 7,000px (사이트 44%) 영역. 좌측 50% 활성 카테고리 사진/영상 + 우측 50% 5 카테고리 거대 영문 헤딩 (LOGISTICS·SHIPPING·DISTRIBUTION·FUTURE BUSINESS·INNOVATION) 세로 스택. 스크롤 진행 시 IntersectionObserver로 현재 카테고리 활성 (#71737B → #001290 색상 토글) + 좌측 사진 opacity 1s cubic-bezier fade 전환 + 한글 설명 + → CTA 슬라이드 인." },
 
-        { "type": "heading", "value": "Hero" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Breadcrumb", "value": "홈 · 회사정보 · 회사 개요 · 현대글로비스 소개" },
-          { "label": "H2 헤딩", "value": "'현대글로비스 소개' 72px·700 검정 (Pretendard Bold)" },
-          { "label": "Hero 이미지", "value": "🟢 HYUNDAI GLOVIS 자동차운반선 (위에서 본 view + 다크 블루 바다 + GLOVIS STELLA 선박명)" },
-          { "label": "슬로건", "value": "🟢 '최고의 자동차 물류전문 / 기업에서 글로벌 종합 / 물류유통기업으로! / 고객 가치 사슬 전반의 효율을 / 실현해 지속 가능한 성장을 / 추구합니다.' 60-72px·700 흰 텍스트 (Hero 이미지 위 오버레이)" }
-        ]},
+        { "type": "component", "title": "사업영역 5-카테고리 활성 토글", "fullWidth": true, "css": ".gv-bt{background:#fff;font-family:Pretendard,sans-serif;display:grid;grid-template-columns:1fr 1fr;min-height:560px}.gv-bt__visual{background:linear-gradient(135deg,#2a4a7a,#1a3460,#0a1a40);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font-family:Inter,sans-serif;font-size:14px;font-weight:600}.gv-bt__visual::after{content:'';position:absolute;inset:30% 35%;background:radial-gradient(ellipse,rgba(255,255,255,0.15),transparent 70%)}.gv-bt__right{padding:60px;display:flex;flex-direction:column;justify-content:center}.gv-bt__label{font-size:14px;font-weight:700;color:#141415;margin-bottom:32px;letter-spacing:0.04em;font-family:Pretendard,sans-serif}.gv-bt__items{display:flex;flex-direction:column;gap:32px}.gv-bt__item{font-family:'Inter',sans-serif;font-size:64px;font-weight:700;line-height:1;color:#71737B;letter-spacing:-0.025em;cursor:pointer;transition:color 0.3s cubic-bezier(0.215,0.61,0.355,1);position:relative}.gv-bt__item.is-active{color:#001290}.gv-bt__active-desc{margin-top:18px;font-family:Pretendard,sans-serif;font-size:15px;font-weight:300;color:#333;line-height:1.7;max-width:440px}.gv-bt__cta{display:inline-flex;align-items:center;gap:10px;font-family:Pretendard,sans-serif;font-size:14px;font-weight:500;color:#000;cursor:pointer;margin-top:14px;width:fit-content}", "html": "<div class='gv-bt'><div class='gv-bt__visual'>HYUNDAI GLOVIS<br>자동차운반선 사진</div><div class='gv-bt__right'><div class='gv-bt__label'>사업소개</div><div class='gv-bt__items'><div><div class='gv-bt__item is-active'>LOGISTICS</div><div class='gv-bt__active-desc'>다양한 산업군의 고객사에게 운송, 보관/하역, 국제 물류, 물류기기 임대, 포장용역 등 고객 맞춤형 통합물류 서비스를 제공합니다.</div><div class='gv-bt__cta'>물류 →</div></div><div class='gv-bt__item'>SHIPPING</div><div class='gv-bt__item'>DISTRIBUTION</div><div class='gv-bt__item'>FUTURE BUSINESS</div><div class='gv-bt__item'>INNOVATION</div></div></div></div>" }
+      ]
+    },
 
-        { "type": "heading", "value": "🟢 3-탭 Sticky 네비 (시그니처 패턴)" },
-        { "type": "component", "title": "glv-tb1 - 3-탭 sticky (기업정보/사업영역/브로슈어)", "fullWidth": true, "css": ".glv-tb1{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:48px;padding:24px 32px;border-bottom:1px solid #EEE;z-index:10;font-family:Pretendard,sans-serif}.glv-tb1__tab{font-size:18px;font-weight:600;color:#71737B;cursor:pointer;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.glv-tb1__tab.is-active{color:#001290;border-color:#001290}", "html": "<div class='glv-tb1'><span class='glv-tb1__tab is-active'>기업정보</span><span class='glv-tb1__tab'>사업영역</span><span class='glv-tb1__tab'>브로슈어</span></div>" },
+    "global-network": {
+      "title": "메인 글로벌 네트워크 - 다크 네이비 + 4 영역",
+      "blocks": [
+        { "type": "text", "value": "메인 페이지 ~12,000 위치 - 다크 Glovis Navy #001290 풀폭 + '글로벌 네트워크' 한글 라벨 + 거대 영문 헤딩 'For More Meaningful Connections' Inter 64-80px·700 흰 텍스트 + outline 세계지도 SVG + 4 영역 outline 라벨 (Americas / Europe / China / Asia Pacific) - China 독립 분리 (현대그룹 중국 비즈니스 비중)." },
 
-        { "type": "heading", "value": "4-카드 정보 + 5-카테고리 가로 슬라이더" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Global Top Tier SCM 본문", "value": "좌측 사옥 사진 (성수동 본사) + 우측 본문 '특히 현대글로비스는 분야 최고의 선두기업와 최첨단 IT 시스템 구축을 통한 경쟁력 확보로 매년 꾸준한 성장세를 이어나가고 있습니다. 또한 지속적인 인프라 투자 및 사회 책임 활동을 통해 Global Top Tier SCM 전문 기업으로서 책임과 의무를 다하고 있습니다.'" },
-          { "label": "기업정보 4-카드", "value": "🟢 outline 픽토그램 + 라벨 + 데이터: 설립일 (건물 icon) / 본사 소재지 (위치 핀 icon) / 임원 현황 (사람 icon) / 거점 현황 (globe icon)" },
-          { "label": "🟢 사업영역 5-카테고리 가로 슬라이더", "value": "LOGISTICS · SHIPPING (활성·자동차선 운송/프로젝트 화물 및 설비 운송/벌크 운송/터미널 운영) · DISTRIBUTION (오토비즈/트레이딩/KD) · FUTURE BUSINESS (스마트 물류 솔루션) · INNOVATION - 각 카테고리 큰 사진 (자동차운반선·트럭·창고·로봇 등) + 영문 헤딩 + 작은 칩 (서비스 종류)" }
+        { "type": "component", "title": "글로벌 네트워크 4 영역", "fullWidth": true, "css": ".gv-gn{background:#001290;color:#fff;padding:80px;font-family:Pretendard,sans-serif;position:relative;overflow:hidden;min-height:560px}.gv-gn__head{position:relative;z-index:1}.gv-gn__label{font-size:14px;font-weight:700;margin-bottom:24px;letter-spacing:0.04em}.gv-gn__title{font-family:Inter,sans-serif;font-size:64px;font-weight:700;line-height:1.15;letter-spacing:-0.025em;margin-bottom:32px}.gv-gn__cta{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;cursor:pointer}.gv-gn__map{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0.15}.gv-gn__map-shape{width:80%;height:50%;background:radial-gradient(ellipse at 30% 50%,#fff 0%,transparent 35%),radial-gradient(ellipse at 70% 60%,#fff 0%,transparent 30%);filter:blur(2px)}.gv-gn__regions{position:absolute;top:50%;right:80px;transform:translateY(-50%);display:flex;flex-direction:column;gap:24px;z-index:1}.gv-gn__region{padding:14px 32px;border:1px solid rgba(255,255,255,0.4);border-radius:6px;font-size:16px;font-weight:500;background:transparent;color:#fff;cursor:pointer;min-width:220px;text-align:center;transition:all 0.4s cubic-bezier(0.215,0.61,0.355,1)}.gv-gn__region:hover{background:rgba(255,255,255,0.15);border-color:#fff}", "html": "<div class='gv-gn'><div class='gv-gn__map'><div class='gv-gn__map-shape'></div></div><div class='gv-gn__head'><div class='gv-gn__label'>글로벌 네트워크</div><div class='gv-gn__title'>For More Meaningful<br>Connections</div><div class='gv-gn__cta'>자세히 보기 →</div></div><div class='gv-gn__regions'><button class='gv-gn__region'>Americas</button><button class='gv-gn__region'>Europe</button><button class='gv-gn__region'>China</button><button class='gv-gn__region'>Asia Pacific</button></div></div>" }
+      ]
+    },
+
+    "news-cards": {
+      "title": "메인 News - 3 카드 (보도자료 + YouTube)",
+      "blocks": [
+        { "type": "text", "value": "최신소식 영역 - 3 카드 가로 배치 (보도자료 2 + YouTube 임베드 1). 각 카드 16:10 이미지 + 헤딩 (2-line clamp) + 날짜. YouTube 카드는 중앙 ▶ 재생 아이콘 오버레이. 'MZ 매니저 동상이몽 EP.15' 같은 자체 콘텐츠를 보도자료와 동등 노출." },
+
+        { "type": "component", "title": "최신소식 3 카드", "fullWidth": true, "css": ".gv-nw{background:#fff;padding:80px 64px;font-family:Pretendard,sans-serif}.gv-nw__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}.gv-nw__title{font-size:32px;font-weight:700;color:#141415;line-height:1.3;letter-spacing:-0.02em}.gv-nw__more{font-size:14px;color:#333;cursor:pointer}.gv-nw__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1280px;margin:0 auto}.gv-nw__card{cursor:pointer;transition:transform 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-nw__card:hover{transform:translateY(-4px)}.gv-nw__img{aspect-ratio:16/10;border-radius:8px;background-size:cover;background-position:center;margin-bottom:20px;position:relative;overflow:hidden}.gv-nw__img-1{background:linear-gradient(135deg,#2a8a4a,#0c5e30,#0a4220)}.gv-nw__img-2{background:linear-gradient(135deg,#3a6db8,#1e3a70,#0a1a40)}.gv-nw__img-3{background:linear-gradient(135deg,#0E0D44,#1a1860,#2a285a)}.gv-nw__play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:99px;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;color:#001290;font-size:18px}.gv-nw__card-title{font-size:18px;font-weight:700;color:#141415;line-height:1.45;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;letter-spacing:-0.01em}.gv-nw__date{font-size:13px;color:#71737B}", "html": "<div class='gv-nw'><div class='gv-nw__head'><div class='gv-nw__title'>최신소식을 전해드립니다</div><div class='gv-nw__more'>자세히 보기 →</div></div><div class='gv-nw__grid'><div class='gv-nw__card'><div class='gv-nw__img gv-nw__img-1'></div><div class='gv-nw__card-title'>현대글로비스, 서울숲에 어린이 친환경 놀이 체험 공간 조성</div><div class='gv-nw__date'>2026-04-30</div></div><div class='gv-nw__card'><div class='gv-nw__img gv-nw__img-2'></div><div class='gv-nw__card-title'>현대글로비스, 세계 최초로 차량 1만대 이상 운송 가능한 자동차운반선 도입</div><div class='gv-nw__date'>2026-04-29</div></div><div class='gv-nw__card'><div class='gv-nw__img gv-nw__img-3'><div class='gv-nw__play'>▶</div></div><div class='gv-nw__card-title'>MZ 매니저 속 숨은 책임 찾기! - 현대글로비스 동상이몽 EP.15</div><div class='gv-nw__date'>2025-12-05</div></div></div></div>" }
+      ]
+    },
+
+    "footer": {
+      "title": "푸터 - 산악·호수 + 모바일 앱",
+      "blocks": [
+        { "type": "text", "value": "푸터는 두 영역으로 분리. 상단 600px: 산악·호수·하늘 풀폭 비주얼 (뉴질랜드 풍 자연 풍경 + 호수 반영) + 거대 영문 헤딩 'GLOBAL SMART SCM SOLUTION' 96-120px·700 흰 + 우측 모바일 앱 사진 (Glovis 앱 운송 추적 화면). 하단 흰 배경: 4 유틸 링크 (개인정보처리방침/법적고지/사이버 감사실/클린톡) + 우측 WA 웹 접근성 인증 마크 + Family Site Pill + ↑ Scroll-top + 회사 정보·Copyright + Floating 우측 fab cluster (⋮ 메뉴·💬 챗봇·↑ TOP)." },
+
+        { "type": "component", "title": "푸터 상단 - 산악 + GLOBAL SMART SCM SOLUTION", "fullWidth": true, "css": ".gv-ft{position:relative;height:560px;background:linear-gradient(180deg,#a8c8e8 0%,#5e8bb8 50%,#a8c8e8 100%);font-family:Inter,Pretendard,sans-serif;color:#fff;overflow:hidden}.gv-ft__mountains{position:absolute;left:0;right:0;top:25%;height:50%;background:linear-gradient(180deg,#3a4858 0%,#1e2a3a 60%,transparent 100%);clip-path:polygon(0 60%,15% 30%,25% 40%,40% 15%,55% 35%,70% 25%,85% 40%,100% 30%,100% 100%,0 100%)}.gv-ft__lake{position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(180deg,#a8c8e8 0%,#8aa5c8 60%,#6a85a8 100%)}.gv-ft__h{position:absolute;left:48px;bottom:48px;font-size:120px;font-weight:700;line-height:1.05;color:rgba(255,255,255,0.95);letter-spacing:-0.025em;text-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1;max-width:60%}.gv-ft__phone{position:absolute;right:80px;bottom:0;width:240px;height:480px;background:#1a1a1a;border-radius:36px 36px 0 0;border:8px solid #2a2a2a;border-bottom:0;box-shadow:0 -8px 32px rgba(0,0,0,0.3);overflow:hidden}.gv-ft__phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:24px;background:#1a1a1a;border-radius:0 0 12px 12px;z-index:1}.gv-ft__phone-screen{position:absolute;inset:8px;background:linear-gradient(180deg,#001290 0%,#15269D 30%,#fff 30%,#fff 100%);border-radius:28px 28px 0 0;padding:48px 16px 0;color:#fff;font-size:11px;font-weight:600;text-align:center}.gv-ft__phone-card{margin-top:16px;background:#fff;border-radius:12px;padding:14px;color:#001290;font-size:10px;text-align:left;line-height:1.4}", "html": "<div class='gv-ft'><div class='gv-ft__mountains'></div><div class='gv-ft__lake'></div><div class='gv-ft__h'>GLOBAL SMART SCM SOLUTION</div><div class='gv-ft__phone'><div class='gv-ft__phone-screen'>GLOVIS App<div class='gv-ft__phone-card' style='color:#71737B;font-size:9px'>운송 상태<div style='font-size:14px;font-weight:700;color:#001290;margin-top:4px'>운송 진행 중</div></div><div class='gv-ft__phone-card'>예상 도착 12시간 후</div><div class='gv-ft__phone-card'>다음 거점 부산항</div></div></div></div>" },
+
+        { "type": "component", "title": "푸터 하단 - 유틸 + WA 인증 + Family Site + 회사 정보", "fullWidth": true, "css": ".gv-ft2{background:#fff;padding:48px 64px;font-family:Pretendard,sans-serif;border-top:1px solid #F0F0F0}.gv-ft2__top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:24px}.gv-ft2__links{display:flex;gap:24px;font-size:14px;font-weight:500}.gv-ft2__links a{color:#141415;text-decoration:none;cursor:pointer}.gv-ft2__links a:first-child{font-weight:700}.gv-ft2__right{display:flex;align-items:center;gap:16px}.gv-ft2__wa{width:64px;height:64px;border-radius:99px;background:linear-gradient(135deg,#1a8a3a 0%,#0c5e30 100%);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:700;text-align:center;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,0.2)}.gv-ft2__family{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid #CCC;border-radius:99px;font-size:13px;color:#000;cursor:pointer}.gv-ft2__top-btn{width:48px;height:48px;border-radius:99px;border:1px solid #CCC;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}.gv-ft2__bottom{display:flex;justify-content:space-between;font-size:12px;color:#71737B;padding-top:16px;border-top:1px solid #F0F0F0;line-height:1.7}", "html": "<div class='gv-ft2'><div class='gv-ft2__top'><div class='gv-ft2__links'><a>개인정보처리방침</a><a>법적고지</a><a>사이버 감사실</a><a>클린톡</a></div><div class='gv-ft2__right'><div class='gv-ft2__wa'>WA<br>Web<br>접근성</div><div class='gv-ft2__family'>Family Site <span style='font-size:16px'>+</span></div><button class='gv-ft2__top-btn'>↑</button></div></div><div class='gv-ft2__bottom'><div>현대글로비스 주식회사 | 서울특별시 성동구 왕십리로 83-21 (성수동 1가 685-700) | 대표전화 02-6191-9114 | FAX 02-6191-8114<br>Copyright 2024 HYUNDAI GLOVIS co.,ltd all rights reserved.</div></div></div>" },
+
+        { "type": "component", "title": "Floating utils 3-fab cluster (z-10 우측)", "css": ".gv-fl{position:relative;height:260px;background:#FAFAFA;border-radius:8px;border:1px dashed #DDD;font-family:Pretendard,sans-serif;overflow:hidden}.gv-fl__demo{padding:24px;color:#71737B;font-size:13px;line-height:1.7}.gv-fl__cluster{position:absolute;bottom:24px;right:24px;display:flex;flex-direction:column;gap:8px}.gv-fl__fab{width:56px;height:56px;border-radius:99px;background:#fff;border:1px solid #CCC;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:all 0.4s cubic-bezier(0.215,0.61,0.355,1)}.gv-fl__fab:hover{transform:translateY(-2px)}.gv-fl__chat{background:#007AFF;color:#fff;border:none}", "html": "<div class='gv-fl'><div class='gv-fl__demo'>페이지 어디서나 우측 하단에 fixed cluster (z-10) - ⋮ 메뉴 + 💬 챗봇 (파란 #007AFF) + ↑ Scroll-top.<br>cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing 일관 적용.</div><div class='gv-fl__cluster'><button class='gv-fl__fab'>⋮</button><button class='gv-fl__fab gv-fl__chat'>💬</button><button class='gv-fl__fab'>↑</button></div></div>" }
+      ]
+    },
+
+    "company-page": {
+      "title": "회사정보 - 3-탭 + 4-카드 + 5-카테고리 슬라이더",
+      "blocks": [
+        { "type": "text", "value": "회사정보 페이지 (/company/intro · sH 7,356px). breadcrumb '홈 · 회사정보 · 회사 개요 · 현대글로비스 소개' + H2 72px·700 '현대글로비스 소개' + 자동차운반선 Hero 이미지 (HYUNDAI GLOVIS Century) + 슬로건 '최고의 자동차 물류전문 기업에서 글로벌 종합 물류유통기업으로!' + 3-탭 Sticky 네비 (기업정보·사업영역·브로슈어) + 4-카드 정보 (설립일·본사·임원·거점) + 5-카테고리 가로 슬라이더 (LOGISTICS·SHIPPING·DISTRIBUTION·FUTURE BUSINESS·INNOVATION) - 각 카테고리 큰 사진 + 영문 헤딩 + 작은 칩." },
+
+        { "type": "component", "title": "회사정보 Hero + 3-탭 Sticky + 슬로건", "fullWidth": true, "css": ".gv-co{background:#fff;font-family:Pretendard,sans-serif}.gv-co__head{padding:48px 64px 0;text-align:center}.gv-co__bc{font-size:13px;color:#71737B;margin-bottom:16px}.gv-co__title{font-size:72px;font-weight:700;color:#141415;letter-spacing:-0.02em;margin-bottom:32px}.gv-co__hero{position:relative;margin:0 auto;max-width:1280px;height:480px;border-radius:8px;background:linear-gradient(135deg,#1e3a70,#0a4280,#062250);overflow:hidden;display:flex;align-items:center;padding:48px}.gv-co__hero::before{content:'';position:absolute;right:-10%;top:-20%;width:80%;height:140%;background:radial-gradient(ellipse at right top,#5a7aa8 0%,transparent 60%);transform:rotate(-12deg)}.gv-co__slogan{font-size:48px;font-weight:700;color:#fff;line-height:1.25;letter-spacing:-0.025em;position:relative;z-index:1;max-width:580px}.gv-co__tabs{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:48px;padding:24px 32px;border-bottom:1px solid #EEE;z-index:10;margin-top:48px}.gv-co__tab{font-size:18px;font-weight:600;color:#71737B;cursor:pointer;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-co__tab.is-active{color:#001290;border-color:#001290;font-weight:700}", "html": "<div class='gv-co'><div class='gv-co__head'><div class='gv-co__bc'>홈 · 회사정보 · 회사 개요 · 현대글로비스 소개</div><div class='gv-co__title'>현대글로비스 소개</div></div><div style='padding:0 64px;margin-bottom:32px'><div class='gv-co__hero'><div class='gv-co__slogan'>최고의 자동차 물류전문 기업에서 글로벌 종합 물류유통기업으로! 고객 가치 사슬 전반의 효율을 실현해 지속 가능한 성장을 추구합니다.</div></div></div><div class='gv-co__tabs'><span class='gv-co__tab is-active'>기업정보</span><span class='gv-co__tab'>사업영역</span><span class='gv-co__tab'>브로슈어</span></div></div>" },
+
+        { "type": "component", "title": "기업정보 4-카드 (설립일·본사·임원·거점)", "fullWidth": true, "css": ".gv-ci{padding:80px 64px;background:#fff;font-family:Pretendard,sans-serif}.gv-ci__title{font-size:48px;font-weight:700;color:#141415;letter-spacing:-0.02em;text-align:center;margin-bottom:48px}.gv-ci__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1280px;margin:0 auto}.gv-ci__card{padding:48px 24px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;text-align:center;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1);cursor:pointer}.gv-ci__card:hover{border-color:#001290;transform:translateY(-4px)}.gv-ci__icon{width:64px;height:64px;margin:0 auto 24px;color:#001290;display:flex;align-items:center;justify-content:center}.gv-ci__icon svg{width:48px;height:48px;stroke:currentColor;fill:none;stroke-width:1.5}.gv-ci__label{font-size:16px;font-weight:700;color:#141415;margin-bottom:8px}.gv-ci__value{font-size:13px;color:#71737B;line-height:1.6}", "html": "<div class='gv-ci'><div class='gv-ci__title'>기업정보</div><div class='gv-ci__grid'><div class='gv-ci__card'><div class='gv-ci__icon'><svg viewBox='0 0 24 24'><rect x='4' y='6' width='16' height='14'/><line x1='4' y1='10' x2='20' y2='10'/><line x1='9' y1='14' x2='9' y2='18'/><line x1='12' y1='14' x2='12' y2='18'/><line x1='15' y1='14' x2='15' y2='18'/></svg></div><div class='gv-ci__label'>설립일</div><div class='gv-ci__value'>2001년 2월 22일</div></div><div class='gv-ci__card'><div class='gv-ci__icon'><svg viewBox='0 0 24 24'><path d='M12 2 L4 9 L4 20 L20 20 L20 9 Z'/><circle cx='12' cy='12' r='2'/></svg></div><div class='gv-ci__label'>본사 소재지</div><div class='gv-ci__value'>서울특별시 성동구 왕십리로 83-21</div></div><div class='gv-ci__card'><div class='gv-ci__icon'><svg viewBox='0 0 24 24'><circle cx='8' cy='8' r='3'/><circle cx='16' cy='8' r='3'/><path d='M3 18 c0-3 3-5 5-5 s5 2 5 5'/><path d='M11 18 c0-3 3-5 5-5 s5 2 5 5'/></svg></div><div class='gv-ci__label'>임원 현황</div><div class='gv-ci__value'>대표이사 등 임원진</div></div><div class='gv-ci__card'><div class='gv-ci__icon'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><ellipse cx='12' cy='12' rx='10' ry='4'/><line x1='12' y1='2' x2='12' y2='22'/></svg></div><div class='gv-ci__label'>거점 현황</div><div class='gv-ci__value'>전 세계 50+ 거점 운영</div></div></div></div>" },
+
+        { "type": "component", "title": "사업영역 5-카테고리 가로 슬라이더", "fullWidth": true, "css": ".gv-cs{background:#0a0a18;padding:80px 0;font-family:Pretendard,sans-serif;overflow:hidden;color:#fff}.gv-cs__head{max-width:1280px;margin:0 auto 32px;padding:0 64px}.gv-cs__title{font-size:14px;font-weight:700;color:#fff;letter-spacing:0.04em;margin-bottom:16px}.gv-cs__cats{display:flex;gap:48px;padding:48px 64px;overflow-x:auto;align-items:stretch}.gv-cs__cat{flex:0 0 380px;position:relative;border-radius:8px;overflow:hidden;height:520px;background-size:cover;background-position:center;cursor:pointer;transition:transform 0.4s cubic-bezier(0.215,0.61,0.355,1)}.gv-cs__cat:hover{transform:translateY(-4px)}.gv-cs__cat::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.7))}.gv-cs__cat-1{background:linear-gradient(135deg,#3a5a3a,#1a3a2a)}.gv-cs__cat-2{background:linear-gradient(135deg,#2a4a7a,#0a2250)}.gv-cs__cat-3{background:linear-gradient(135deg,#5a4a3a,#2a1a10)}.gv-cs__cat-4{background:linear-gradient(135deg,#9a9aa8,#5a5a68)}.gv-cs__cat-5{background:linear-gradient(135deg,#3a2a5a,#1a0a3a)}.gv-cs__cat-inner{position:absolute;left:32px;right:32px;bottom:32px;z-index:1}.gv-cs__cat-h{font-family:Inter,sans-serif;font-size:36px;font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px}.gv-cs__cat-chips{display:flex;flex-wrap:wrap;gap:6px}.gv-cs__cat-chip{padding:6px 14px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);border-radius:99px;font-size:11px;font-weight:500}", "html": "<div class='gv-cs'><div class='gv-cs__head'><div class='gv-cs__title'>사업영역</div></div><div class='gv-cs__cats'><div class='gv-cs__cat gv-cs__cat-1'><div class='gv-cs__cat-inner'><div class='gv-cs__cat-h'>LOGISTICS</div><div class='gv-cs__cat-chips'><span class='gv-cs__cat-chip'>3PL 물류</span><span class='gv-cs__cat-chip'>산업재 물류</span></div></div></div><div class='gv-cs__cat gv-cs__cat-2'><div class='gv-cs__cat-inner'><div class='gv-cs__cat-h'>SHIPPING</div><div class='gv-cs__cat-chips'><span class='gv-cs__cat-chip'>자동차선 운송</span><span class='gv-cs__cat-chip'>프로젝트 화물 및 설비 운송</span><span class='gv-cs__cat-chip'>벌크 운송</span><span class='gv-cs__cat-chip'>터미널 운영</span></div></div></div><div class='gv-cs__cat gv-cs__cat-3'><div class='gv-cs__cat-inner'><div class='gv-cs__cat-h'>DISTRIBUTION</div><div class='gv-cs__cat-chips'><span class='gv-cs__cat-chip'>오토비즈</span><span class='gv-cs__cat-chip'>트레이딩</span><span class='gv-cs__cat-chip'>KD</span></div></div></div><div class='gv-cs__cat gv-cs__cat-4'><div class='gv-cs__cat-inner'><div class='gv-cs__cat-h'>FUTURE<br>BUSINESS</div><div class='gv-cs__cat-chips'><span class='gv-cs__cat-chip'>스마트 물류 솔루션</span></div></div></div><div class='gv-cs__cat gv-cs__cat-5'><div class='gv-cs__cat-inner'><div class='gv-cs__cat-h'>INNOVATION</div><div class='gv-cs__cat-chips'><span class='gv-cs__cat-chip'>디지털 혁신</span></div></div></div></div></div>" }
+      ]
+    },
+
+    "business-pages": {
+      "title": "사업영역 5종 페이지",
+      "blocks": [
+        { "type": "text", "value": "사업영역 5 카테고리 페이지는 모두 동일한 템플릿 - breadcrumb + H2 72px·700 + 큰 풀폭 Hero 사진 + 사업 콘텐츠. 페이지별 다른 비주얼 (자동차운반선·AGV 로봇·창고·트럭). 한국 대기업 코퍼레이트 사이트의 정석 패턴." },
+
+        { "type": "component", "title": "사업영역 페이지 공통 템플릿", "fullWidth": true, "css": ".gv-bp{background:#fff;font-family:Pretendard,sans-serif}.gv-bp__head{padding:48px 64px 0;text-align:center}.gv-bp__bc{font-size:13px;color:#71737B;margin-bottom:16px}.gv-bp__title{font-size:72px;font-weight:700;color:#141415;letter-spacing:-0.02em;margin-bottom:32px}.gv-bp__hero{margin:0 auto;max-width:1280px;height:520px;border-radius:8px;background-size:cover;background-position:center;position:relative;overflow:hidden}.gv-bp__hero-1{background:linear-gradient(135deg,#2a4a7a,#1a3460,#0a1a40)}.gv-bp__hero-1::after{content:'위에서 본 컨테이너선 (다크 블루 바다 + 적색·황색 컨테이너 쌓인 모습)';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:rgba(255,255,255,0.6);font-size:12px;font-weight:500}", "html": "<div class='gv-bp'><div class='gv-bp__head'><div class='gv-bp__bc'>홈 · 사업영역 · 물류 · 수출입물류</div><div class='gv-bp__title'>수출입 물류</div></div><div style='padding:0 64px;margin-bottom:64px'><div class='gv-bp__hero gv-bp__hero-1'></div></div></div>" },
+
+        { "type": "kv", "title": "5 사업영역 페이지별 Hero 비주얼", "columns": 1, "items": [
+          { "label": "1. 물류 - 수출입물류", "value": "🟢 Hero: 위에서 본 컨테이너선 (다크 블루 바다 + 적색·황색 컨테이너) + H2 '수출입 물류'. 산업재 물류·국제 물류·포장용역·통합물류 서비스" },
+          { "label": "2. 해운 - 자동차선 운송", "value": "🟢 Hero: GLOVIS Century 자동차운반선 (HYUNDAI GLOVIS 로고가 측면 큰 사이즈) + H2 '자동차선 운송'. 완성차 운송·항로 개발" },
+          { "label": "3. 유통 - 오토비즈/트레이딩/KD", "value": "Hero: 창고 또는 자동차 사진. 중고차 (오토벨) + 트레이딩 + KD 자동차 부품" },
+          { "label": "4. 신사업 - 스마트물류솔루션", "value": "🟢 Hero: AGV 자동 운반 로봇 (HS335P10 HYUNDAI) + H2 '스마트물류솔루션 사업'. EV배터리·수소사업·자동화 창고" },
+          { "label": "5. 기술혁신 - 디지털 혁신", "value": "디지털 전환·IT 시스템·데이터 기반 의사결정" }
         ]}
       ]
     },
 
-    "subpage-business": {
-      "title": "05. 사업영역 5 카테고리 (사업 페이지 통합 분석)",
+    "esg-page": {
+      "title": "지속가능경영 - 안개 숲 + Clean Flow",
       "blocks": [
-        { "type": "text", "value": "현대글로비스 사업영역 5종 페이지. 모두 동일한 템플릿 (breadcrumb + H2 72px + 큰 풀폭 Hero 사진 + 사업 콘텐츠) + 페이지마다 다른 사진/영상." },
+        { "type": "text", "value": "지속가능경영 페이지 (sH 7,605px). 위에서 본 진녹색 숲 Hero (다크 그린 톤) + 'Clean Flow, Make Together' ESG 비전 텍스트 + 5-탭 Sticky (개요·전략·성과·ESG 정책·지속가능경영 보고서) + 외부 인증 4 카드 (DJBIC 5년 연속 / 한국ESG기준원 종합 A / CDP / MSCI)." },
 
-        { "type": "heading", "value": "5-카테고리 사업영역 페이지" },
-        { "type": "structure", "items": [
-          { "label": "01. 물류 - 수출입물류", "tag": "/business/logistical/ie-logistics · sH 10,731px", "desc": "🟢 Hero: 위에서 본 컨테이너선 (다크 블루 바다 + 적색·황색 컨테이너 쌓인 모습) + H2 '수출입 물류'. 산업재 물류·국제 물류·포장용역·통합물류 서비스 / 다양한 산업군 고객사" },
-          { "label": "02. 해운 - 자동차선 운송", "tag": "/business/shipping/finished-transport · sH 8,727px", "desc": "🟢 Hero: GLOVIS Century 자동차운반선 (HYUNDAI GLOVIS 로고가 큰 측면) + H2 '자동차선 운송'. 완성차 운송·항로 개발·네트워크 확대" },
-          { "label": "03. 유통 - 오토비즈/트레이딩/KD", "tag": "/business/distribution/autobiz", "desc": "Hero: 창고 또는 자동차 사진. 중고차 (오토벨) + 트레이딩 + KD (자동차 부품)" },
-          { "label": "04. 신사업 - 스마트물류솔루션", "tag": "/business/future/smart-logistics-solution · sH 11,749px", "desc": "🟢 Hero: AGV 자동 운반 로봇 (HS335P10 HYUNDAI) + H2 '스마트물류솔루션 사업'. EV배터리·수소사업·스마트 물류 + 자동화 창고" },
-          { "label": "05. 기술혁신 - 디지털 혁신", "tag": "/business/technology/digital-transformation", "desc": "디지털 전환·IT 시스템·데이터 기반 의사결정" }
-        ]},
+        { "type": "component", "title": "ESG Hero + Clean Flow 비전", "fullWidth": true, "css": ".gv-es{background:#fff;font-family:Pretendard,sans-serif}.gv-es__head{padding:48px 64px 0;text-align:center}.gv-es__bc{font-size:13px;color:#71737B;margin-bottom:16px}.gv-es__title{font-size:72px;font-weight:700;color:#141415;letter-spacing:-0.02em;margin-bottom:32px}.gv-es__hero{position:relative;margin:0 auto;max-width:1280px;height:560px;border-radius:8px;background:linear-gradient(180deg,#1a2a1f 0%,#2a4a35 30%,#3a6248 60%,#4a7a58 100%);overflow:hidden;color:#fff;padding:60px 80px;display:flex;flex-direction:column;justify-content:flex-end}.gv-es__hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 30%,rgba(180,200,180,0.4),transparent 50%),radial-gradient(ellipse at 30% 70%,rgba(140,180,140,0.3),transparent 50%);mix-blend-mode:screen;pointer-events:none}.gv-es__vision{position:relative;font-size:64px;font-weight:700;line-height:1.3;letter-spacing:-0.02em;max-width:880px;z-index:1}.gv-es__tabs{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:48px;padding:24px 32px;border-bottom:1px solid #EEE;z-index:10;margin-top:48px}.gv-es__tab{font-size:16px;font-weight:500;color:#71737B;cursor:pointer;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-es__tab.is-active{color:#001290;border-color:#001290;font-weight:700}", "html": "<div class='gv-es'><div class='gv-es__head'><div class='gv-es__bc'>홈 · 지속가능경영 · 지속가능경영성과</div><div class='gv-es__title'>지속가능경영 성과</div></div><div style='padding:0 64px'><div class='gv-es__hero'><div class='gv-es__vision'>그리고 지배구조 부문에서 깨끗한 흐름을 함께 만들어 나간다는 'Clean Flow, Make Together'라는 ESG 비전과 전략을 수립하고, 이를 달성하기 위해 노력하고 있습니다.</div></div></div><div class='gv-es__tabs'><span class='gv-es__tab'>개요</span><span class='gv-es__tab'>전략</span><span class='gv-es__tab is-active'>성과</span><span class='gv-es__tab'>ESG 정책</span><span class='gv-es__tab'>지속가능경영 보고서</span></div></div>" },
 
-        { "type": "heading", "value": "사업영역 페이지 공통 디자인 패턴" },
-        { "type": "component", "title": "glv-bp1 - 사업영역 페이지 표준 템플릿", "fullWidth": true, "css": ".glv-bp1{background:#fff;font-family:Pretendard,sans-serif}.glv-bp1__header{padding:48px 64px 0;font-family:Pretendard,sans-serif}.glv-bp1__breadcrumb{font-size:13px;color:#666;text-align:center;margin-bottom:16px}.glv-bp1__title{font-size:72px;font-weight:700;color:#141415;text-align:center;letter-spacing:-0.02em;margin-bottom:32px}.glv-bp1__hero{margin:0 auto;max-width:1280px;aspect-ratio:16/9;border-radius:8px;background-size:cover;background-position:center;overflow:hidden}", "html": "<div class='glv-bp1'><div class='glv-bp1__header'><div class='glv-bp1__breadcrumb'>홈 · 사업영역 · 해운 · 자동차선 운송</div><div class='glv-bp1__title'>자동차선 운송</div><div class='glv-bp1__hero' style='background:linear-gradient(135deg,#2a4a7a,#1a3460),radial-gradient(circle at 30% 50%,rgba(255,255,255,0.08),transparent);background-blend-mode:multiply'><div style='display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:24px;font-weight:700'>HYUNDAI GLOVIS<br>자동차운반선 사진 위치</div></div></div></div>" }
+        { "type": "component", "title": "성과 - 외부 인증 4 카드", "fullWidth": true, "css": ".gv-ec{padding:80px 64px;background:#fff;font-family:Pretendard,sans-serif;display:grid;grid-template-columns:200px 1fr;gap:48px}.gv-ec__label{font-size:32px;font-weight:700;color:#141415;letter-spacing:-0.02em}.gv-ec__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.gv-ec__card{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:0;overflow:hidden;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-ec__card:hover{border-color:#001290;transform:translateY(-2px)}.gv-ec__card-img{background:#FAFAFA;padding:64px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:240px}.gv-ec__logo{font-family:Inter,sans-serif;font-weight:800;color:#001290;letter-spacing:-0.02em;text-align:center}.gv-ec__logo small{display:block;font-size:11px;color:#71737B;font-weight:500;margin-top:4px}.gv-ec__card-body{padding:24px 32px;border-top:1px solid #F0F0F0}.gv-ec__card-title{font-size:18px;font-weight:700;color:#141415;margin-bottom:8px;letter-spacing:-0.01em}.gv-ec__card-meta{font-size:13px;color:#71737B;line-height:1.6}.gv-ec__card-meta li{margin-bottom:4px}.gv-ec__djbic{color:#E31D1A;font-size:22px;font-weight:800;font-family:Inter,sans-serif}.gv-ec__korea{color:#1A4A8A;font-size:18px;font-weight:700}.gv-ec__cdp{color:#E31D1A;font-size:32px;font-weight:800;letter-spacing:-0.04em}.gv-ec__msci{color:#0066A6;font-size:32px;font-weight:800;letter-spacing:-0.04em}", "html": "<div class='gv-ec'><div class='gv-ec__label'>성과</div><div class='gv-ec__grid'><div class='gv-ec__card'><div class='gv-ec__card-img'><div class='gv-ec__logo'><span class='gv-ec__djbic'>Dow Jones Best-in-Class</span><small>SUSTAINABILITY</small></div></div><div class='gv-ec__card-body'><div class='gv-ec__card-title'>DJBIC (구 DJSI) WORLD 지수 편입</div><ul class='gv-ec__card-meta' style='list-style:disc;padding-left:18px;margin:0'><li>국내 물류기업 최초 DJBIC WORLD 지수 편입 (2021)</li><li>5년 연속 DJBIC WORLD, 11년 연속 ASIA-PACIFIC/KOREA 편입 (2025)</li></ul></div></div><div class='gv-ec__card'><div class='gv-ec__card-img'><div class='gv-ec__logo'><span class='gv-ec__korea'>한국ESG기준원</span><small>Korea Institute of Corporate<br>Governance and Sustainability</small></div></div><div class='gv-ec__card-body'><div class='gv-ec__card-title'>2025년 종합 등급: A</div><ul class='gv-ec__card-meta' style='list-style:disc;padding-left:18px;margin:0'><li>환경 A / 사회 A+ / 지배구조 A</li></ul></div></div><div class='gv-ec__card'><div class='gv-ec__card-img'><div class='gv-ec__logo'><span class='gv-ec__cdp'>CDP</span><small>Climate Change Disclosure</small></div></div><div class='gv-ec__card-body'><div class='gv-ec__card-title'>CDP 환경 평가</div></div></div><div class='gv-ec__card'><div class='gv-ec__card-img'><div class='gv-ec__logo'><span class='gv-ec__msci'>MSCI</span><small>Global ESG Rating</small></div></div><div class='gv-ec__card-body'><div class='gv-ec__card-title'>MSCI ESG 평가</div></div></div></div></div>" }
       ]
     },
 
-    "subpage-sustainability": {
-      "title": "06. 지속가능경영 (/sustainable · sH 7,605px) - Clean Flow + 5-탭 + 외부 인증",
+    "ir-page": {
+      "title": "투자정보 - 3-탭 + KOSPI + IR 자료실",
       "blocks": [
-        { "type": "text", "value": "ESG 지속가능경영 페이지. 진녹색 숲 Hero + 'Clean Flow, Make Together' ESG 비전 + 5-탭 sticky + 외부 인증 4 마크 (DJBIC/한국ESG기준원 A/CDP/MSCI)." },
+        { "type": "text", "value": "투자정보 페이지 (sH 3,203px). breadcrumb + H2 72px '투자정보 개요' + 3-탭 Sticky (주식/재무정보·IR 정보·관련 문의) + 좌측 주식정보 카드 (다크 네이비 그라데이션 - KOSPI 086280 263,000원) + 우측 재무정보 카드 (매출액 25.68조원) + IR 자료실 (좌측 CEO INVESTOR DAY 비디오 + 우측 4-카드 다운로드 - IR 프레젠테이션·사업보고서·영업보고서·연결감사보고서)." },
 
-        { "type": "heading", "value": "Hero + ESG 비전" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Hero 이미지", "value": "🟢 진녹색 숲 (위에서 본 view) + H2 '지속가능경영 성과' 72px·700" },
-          { "label": "🟢 ESG 비전", "value": "🟢 '그리고 지배구조 부문에서 / 깨끗한 흐름을 함께 만들어 / 나간다는 \\'Clean Flow, Make / Together\\'라는 ESG 비전과 / 전략을 수립하고, 이를 / 달성하기 위해 노력하고 / 있습니다.' 60-72px·700 흰 텍스트 (숲 비주얼 위 오버레이)" }
-        ]},
+        { "type": "component", "title": "투자정보 Hero + 3-탭 + 주식/재무 카드", "fullWidth": true, "css": ".gv-ir{background:#fff;font-family:Pretendard,sans-serif}.gv-ir__head{padding:48px 64px 0;text-align:center}.gv-ir__bc{font-size:13px;color:#71737B;margin-bottom:16px}.gv-ir__title{font-size:72px;font-weight:700;color:#141415;letter-spacing:-0.02em;margin-bottom:32px}.gv-ir__tabs{display:flex;justify-content:center;gap:48px;padding:24px 32px;border-bottom:1px solid #EEE;margin-bottom:48px}.gv-ir__tab{font-size:16px;font-weight:500;color:#71737B;cursor:pointer;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.3s}.gv-ir__tab.is-active{color:#001290;border-color:#001290;font-weight:700}.gv-ir__cards{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:0 64px 64px}.gv-ir__col-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.gv-ir__col-title{font-size:32px;font-weight:700;color:#141415;letter-spacing:-0.02em}.gv-ir__more{font-size:13px;color:#001290;cursor:pointer}.gv-ir__card{padding:40px;border-radius:8px;background:linear-gradient(135deg,#001290,#15269D);color:#fff;display:flex;flex-direction:column;gap:8px;min-height:200px;justify-content:space-between}.gv-ir__card-label{font-size:13px;font-weight:600;opacity:0.85;margin-bottom:6px}.gv-ir__card-num{font-size:56px;font-weight:700;letter-spacing:-0.025em;line-height:1}.gv-ir__card-unit{font-size:24px;font-weight:500;margin-left:6px;opacity:0.85}.gv-ir__card-change{font-size:16px;font-weight:600;color:#FF5252;margin-top:8px}", "html": "<div class='gv-ir'><div class='gv-ir__head'><div class='gv-ir__bc'>홈 · 투자정보 · 투자정보 개요</div><div class='gv-ir__title'>투자정보 개요</div></div><div class='gv-ir__tabs'><span class='gv-ir__tab is-active'>주식/재무정보</span><span class='gv-ir__tab'>IR 정보</span><span class='gv-ir__tab'>관련 문의</span></div><div class='gv-ir__cards'><div><div class='gv-ir__col-head'><div class='gv-ir__col-title'>주식정보</div><div class='gv-ir__more'>더보기 →</div></div><div class='gv-ir__card'><div><div class='gv-ir__card-label'>현대글로비스 086280 KOSPI</div><div><span class='gv-ir__card-num'>263,000</span><span class='gv-ir__card-unit'>원</span></div></div><div class='gv-ir__card-change'>▼ -21,000 (-7.39%)</div></div></div><div><div class='gv-ir__col-head'><div class='gv-ir__col-title'>재무정보</div><div class='gv-ir__more'>더보기 →</div></div><div class='gv-ir__card'><div><div class='gv-ir__card-label'>매출액</div><div><span class='gv-ir__card-num'>25.68</span><span class='gv-ir__card-unit'>조 원</span></div></div></div></div></div></div>" },
 
-        { "type": "heading", "value": "5-탭 Sticky + 외부 인증 4 카드" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🟢 5-탭 sticky", "value": "개요 | 전략 | 성과 (활성) | ESG 정책 | 지속가능경영 보고서 - 색상 #001290 active border" },
-          { "label": "🟢 외부 인증 4 카드", "value": "🟢 좌측 라벨 '성과' + 우측 2x2 카드: (1) DJBIC (구 DJSI) WORLD 지수 편입 - 국내 물류기업 최초 (2021), 5년 연속 DJBIC WORLD + 11년 연속 ASIA-PACIFIC/KOREA (2025) - 빨간 Sustainability 로고 / (2) 한국ESG기준원 - 2025년 종합 등급: A (환경 A / 사회 A+ / 지배구조 A) / (3) CDP - 환경 평가 / (4) MSCI - 글로벌 ESG 지수" }
-        ]}
+        { "type": "component", "title": "IR 자료실 - 비디오 + 4 다운로드 카드", "fullWidth": true, "css": ".gv-ia{padding:80px 64px;background:#fff;font-family:Pretendard,sans-serif}.gv-ia__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}.gv-ia__title{font-size:40px;font-weight:700;color:#141415;letter-spacing:-0.02em}.gv-ia__more{font-size:13px;color:#333;cursor:pointer}.gv-ia__grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:1280px;margin:0 auto;align-items:start}.gv-ia__video{aspect-ratio:1/1;background:linear-gradient(135deg,#0E0D44,#1a1860);border-radius:8px;position:relative;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;color:#fff;overflow:hidden}.gv-ia__video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:99px;background:rgba(255,255,255,0.9);color:#001290;display:flex;align-items:center;justify-content:center;font-size:22px}.gv-ia__video-title{font-family:Inter,sans-serif;font-size:36px;font-weight:700;line-height:1;text-align:center;margin-bottom:auto;margin-top:auto}.gv-ia__video-meta{position:absolute;bottom:0;left:0;right:0;background:#fff;color:#141415;padding:20px 24px}.gv-ia__video-meta-title{font-size:15px;font-weight:700;line-height:1.4;color:#141415}.gv-ia__video-meta-date{display:inline-block;font-size:12px;color:#71737B;border:1px solid #DDD;padding:4px 12px;border-radius:99px;margin-top:8px}.gv-ia__cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;grid-column:2 / span 2}.gv-ia__card{padding:32px 24px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1);min-height:180px;justify-content:space-between}.gv-ia__card:hover{border-color:#001290}.gv-ia__card-cat{font-size:13px;font-weight:600;color:#001290}.gv-ia__card-title{font-size:17px;font-weight:700;color:#141415}.gv-ia__card-icons{display:flex;gap:8px;margin-top:auto}.gv-ia__card-icon{width:32px;height:32px;border-radius:6px;border:1px solid #DDD;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px}", "html": "<div class='gv-ia'><div class='gv-ia__head'><div class='gv-ia__title'>IR 자료실</div><div class='gv-ia__more'>더보기 →</div></div><div class='gv-ia__grid'><div class='gv-ia__video'><div class='gv-ia__video-title'>2024<br>CEO INVESTOR DAY</div><div class='gv-ia__video-play'>▶</div><div class='gv-ia__video-meta'><div class='gv-ia__video-meta-title'>2024 CEO INVESTOR DAY - 현대글로비스</div><div class='gv-ia__video-meta-date'>2024-07-03</div></div></div><div class='gv-ia__cards'><div class='gv-ia__card'><div><div class='gv-ia__card-cat'>IR 프레젠테이션 자료</div><div class='gv-ia__card-title' style='margin-top:8px'>2026 1분기 경영실적</div></div><div class='gv-ia__card-icons'><span class='gv-ia__card-icon'>📄</span><span class='gv-ia__card-icon'>⬇</span></div></div><div class='gv-ia__card'><div><div class='gv-ia__card-cat'>정기보고서</div><div class='gv-ia__card-title' style='margin-top:8px'>제25기 사업보고서</div></div><div class='gv-ia__card-icons'><span class='gv-ia__card-icon'>📄</span><span class='gv-ia__card-icon'>⬇</span></div></div><div class='gv-ia__card'><div><div class='gv-ia__card-cat'>영업보고서</div><div class='gv-ia__card-title' style='margin-top:8px'>제25기 영업보고서</div></div><div class='gv-ia__card-icons'><span class='gv-ia__card-icon'>📄</span><span class='gv-ia__card-icon'>⬇</span></div></div><div class='gv-ia__card'><div><div class='gv-ia__card-cat'>감사보고서</div><div class='gv-ia__card-title' style='margin-top:8px'>제25기 연결감사보고서</div></div><div class='gv-ia__card-icons'><span class='gv-ia__card-icon'>📄</span><span class='gv-ia__card-icon'>⬇</span></div></div></div></div></div>" }
       ]
     },
 
-    "subpage-ir": {
-      "title": "07. 투자정보 (/investment-information · sH 3,203px) - 3-탭 + 주식·재무·IR 자료실",
+    "faq-page": {
+      "title": "FAQ - 3 카드 + 6 카테고리",
       "blocks": [
-        { "type": "text", "value": "투자정보 개요 페이지. H2 72px + 3-탭 sticky + 주식정보 카드 (KOSPI 263,000) + 재무정보 카드 (매출액 25.68조원) + IR 자료실 (CEO INVESTOR DAY 비디오 + 4-카드 다운로드)." },
+        { "type": "text", "value": "고객지원 FAQ 페이지 (sH 2,098px - 매우 짧음). breadcrumb + H2 72px 'FAQ' + 본문 설명 + 3-카드 진입점 (신차배송조회 / 비즈니스 문의 / 챗봇) outline 픽토그램 + 큰 원형 🔍 검색 아이콘 + 6-카테고리 Pill 탭 (신차배송·운송 견적·중고차·투자정보·채용·기타)." },
 
-        { "type": "heading", "value": "Hero + 3-탭" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Breadcrumb", "value": "홈 · 투자정보 · 투자정보 개요" },
-          { "label": "H2 헤딩", "value": "'투자정보 개요' 72px·700" },
-          { "label": "🟢 3-탭 sticky", "value": "주식/재무정보 (활성) | IR 정보 | 관련 문의 - 색상 #001290 active border" }
-        ]},
-
-        { "type": "heading", "value": "주식·재무 카드 (실시간 + 다크 네이비 강조)" },
-        { "type": "component", "title": "glv-ir1 - 주식정보 + 재무정보 2-카드", "fullWidth": true, "css": ".glv-ir1{padding:60px 64px;font-family:Pretendard,sans-serif;background:#fff;display:grid;grid-template-columns:1fr 1fr;gap:48px}.glv-ir1__col-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.glv-ir1__title{font-size:32px;font-weight:700;color:#141415}.glv-ir1__more{font-size:13px;color:#001290;cursor:pointer}.glv-ir1__card{padding:40px;border-radius:8px;background:linear-gradient(135deg,#001290,#15269D);color:#fff;display:flex;flex-direction:column;gap:8px;min-height:200px}.glv-ir1__label{font-size:14px;font-weight:600;opacity:0.85;margin-bottom:6px}.glv-ir1__num{font-size:56px;font-weight:700;letter-spacing:-0.02em;line-height:1}.glv-ir1__unit{font-size:24px;font-weight:500;margin-left:6px;opacity:0.85}.glv-ir1__change{font-size:16px;font-weight:600;color:#FF6E6E;margin-top:8px}", "html": "<div class='glv-ir1'><div><div class='glv-ir1__col-head'><div class='glv-ir1__title'>주식정보</div><div class='glv-ir1__more'>더보기 →</div></div><div class='glv-ir1__card'><div class='glv-ir1__label'>현대글로비스 086280 KOSPI</div><div><span class='glv-ir1__num'>263,000</span><span class='glv-ir1__unit'>원</span></div><div class='glv-ir1__change'>▼ -21,000 (-7.39%)</div></div></div><div><div class='glv-ir1__col-head'><div class='glv-ir1__title'>재무정보</div><div class='glv-ir1__more'>더보기 →</div></div><div class='glv-ir1__card'><div class='glv-ir1__label'>매출액</div><div><span class='glv-ir1__num'>25.68</span><span class='glv-ir1__unit'>조 원</span></div></div></div></div>" },
-
-        { "type": "heading", "value": "IR 자료실 (비디오 + 4-카드 다운로드)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "좌측 비디오 카드", "value": "'2024 CEO INVESTOR DAY - 현대글로비스' (2024-07-03) - 검정 배경 + ▶ 재생 아이콘 + HYUNDAI GLOVIS 로고" },
-          { "label": "우측 4-카드 다운로드", "value": "(1) IR 프레젠테이션 자료 - 2026 1분기 경영실적 + PDF·DL 아이콘 / (2) 정기보고서 - 제25기 사업보고서 / (3) 영업보고서 - 제25기 영업보고서 / (4) 감사보고서 - 제25기 연결감사보고서" }
-        ]}
+        { "type": "component", "title": "FAQ 페이지 - 3 카드 + 6 카테고리", "fullWidth": true, "css": ".gv-fq{background:#fff;font-family:Pretendard,sans-serif}.gv-fq__head{padding:48px 64px 0;text-align:center}.gv-fq__bc{font-size:13px;color:#71737B;margin-bottom:16px}.gv-fq__title{font-size:72px;font-weight:700;color:#141415;letter-spacing:-0.02em;margin-bottom:32px}.gv-fq__intro{font-size:15px;color:#71737B;line-height:1.7;margin-bottom:48px}.gv-fq__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;padding:0 64px}.gv-fq__card{padding:48px 32px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;cursor:pointer;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1);display:flex;flex-direction:column;justify-content:space-between;min-height:200px}.gv-fq__card:hover{border-color:#001290;transform:translateY(-2px)}.gv-fq__card-title{font-size:20px;font-weight:700;color:#141415;letter-spacing:-0.01em}.gv-fq__card-icon{width:80px;height:80px;display:flex;align-items:center;justify-content:end;align-self:flex-end;color:#001290;font-size:48px}.gv-fq__search-wrap{display:flex;justify-content:center;margin:64px 0 32px}.gv-fq__search{width:60px;height:60px;border-radius:99px;background:#001290;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer}.gv-fq__cats{display:flex;justify-content:center;gap:8px;padding-bottom:64px;flex-wrap:wrap;max-width:960px;margin:0 auto}.gv-fq__cat{padding:10px 22px;border:1px solid #DDD;border-radius:99px;font-size:13px;color:#000;cursor:pointer;background:#fff;transition:all 0.3s}.gv-fq__cat.is-active{background:#000;color:#fff;border-color:#000}", "html": "<div class='gv-fq'><div class='gv-fq__head'><div class='gv-fq__bc'>홈 · 고객지원 · FAQ</div><div class='gv-fq__title'>FAQ</div><div class='gv-fq__intro'>문의내용 중 고객님들이 가장 많이 하시는 질문들을 모았습니다.<br>보다 상세한 답변이 필요하신 고객님께서는 아래 준비된 바로가기 링크를 통해 개별 페이지로 이동하시기 바랍니다.</div></div><div class='gv-fq__cards'><div class='gv-fq__card'><div class='gv-fq__card-title'>신차배송조회</div><div class='gv-fq__card-icon'>🔍</div></div><div class='gv-fq__card'><div class='gv-fq__card-title'>비즈니스 문의</div><div class='gv-fq__card-icon'>💻</div></div><div class='gv-fq__card'><div class='gv-fq__card-title'>챗봇</div><div class='gv-fq__card-icon'>💬</div></div></div><div class='gv-fq__search-wrap'><div class='gv-fq__search'>🔍</div></div><div class='gv-fq__cats'><span class='gv-fq__cat is-active'>신차배송</span><span class='gv-fq__cat'>운송 견적 및 스케줄</span><span class='gv-fq__cat'>중고차</span><span class='gv-fq__cat'>투자정보</span><span class='gv-fq__cat'>채용</span><span class='gv-fq__cat'>기타</span></div></div>" }
       ]
     },
 
-    "subpage-customer": {
-      "title": "08. 고객지원 (/customer-support/faq · sH 2,098px) - 3-카드 + 6-카테고리 검색",
+    "buttons": {
+      "title": "버튼·CTA 라이브러리",
       "blocks": [
-        { "type": "text", "value": "FAQ 페이지. 매우 짧음 (2,098px) - 단순한 진입점 + 카테고리 분류." },
+        { "type": "text", "value": "Glovis는 미니멀 버튼 시스템. 텍스트 + 화살표 → 단순 CTA / ⓘ Pause-Play outline / Family Site Pill / Floating fab cluster / KOR-ENG 토글 5종. cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing 일관." },
 
-        { "type": "heading", "value": "Hero + 3-카드 진입점" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Breadcrumb + H2", "value": "홈 · 고객지원 · FAQ + 'FAQ' 72px·700" },
-          { "label": "Hero 본문", "value": "'문의내용 중 고객님들이 가장 많이 하시는 질문들을 모았습니다. / 보다 상세한 답변이 필요하신 고객님께서는 아래 준비된 바로가기 링크를 통해 개별 페이지로 이동하시기 바랍니다.'" },
-          { "label": "🟢 3-카드 진입점", "value": "outline 픽토그램 + 라벨: (1) 신차배송조회 (서류 검색 icon) / (2) 비즈니스 문의 (모니터 icon) / (3) 챗봇 (말풍선 icon) - 흰 outline 카드 3개 그리드" },
-          { "label": "🟢 6-카테고리 Pill 탭", "value": "신차배송 (활성·검정 채워진 pill) · 운송 견적 및 스케줄 · 중고차 · 투자정보 · 채용 · 기타 - 카테고리별 FAQ 분류" },
-          { "label": "검색 아이콘", "value": "🔍 큰 원형 검색 아이콘 (60×60) - 키워드 검색" }
-        ]}
+        { "type": "component", "title": "Glovis 버튼 5종", "fullWidth": true, "css": ".gv-bt{padding:48px;background:#fff;font-family:Pretendard,sans-serif;display:flex;flex-direction:column;gap:32px}.gv-bt__row{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.gv-bt__row-label{font-size:13px;color:#71737B;font-weight:600;width:200px;flex-shrink:0;font-family:monospace}.gv-bt__cta{display:inline-flex;align-items:center;gap:12px;font-size:16px;font-weight:500;color:#000;cursor:pointer;background:none;border:none;padding:0;transition:opacity 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-bt__cta:hover{opacity:0.7}.gv-bt__cta::after{content:'→';font-size:18px;transition:transform 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-bt__cta:hover::after{transform:translateX(4px)}.gv-bt__pause{width:48px;height:48px;border-radius:99px;border:1.5px solid #001290;background:transparent;color:#001290;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s}.gv-bt__pause:hover{background:#001290;color:#fff}.gv-bt__family{display:inline-flex;align-items:center;gap:14px;padding:14px 28px;background:#fff;border:1px solid #CCC;border-radius:99px;font-size:14px;color:#000;cursor:pointer;min-width:200px;justify-content:space-between;transition:border-color 0.3s}.gv-bt__family:hover{border-color:#001290}.gv-bt__lang{display:inline-flex;background:#fff;border:1px solid #CCC;border-radius:99px;padding:4px}.gv-bt__lang span{padding:6px 14px;border-radius:99px;cursor:pointer;font-size:12px;font-weight:500;color:#71737B;transition:all 0.3s}.gv-bt__lang span.is-active{background:#001290;color:#fff}.gv-bt__chip{display:inline-flex;align-items:center;padding:6px 14px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);border-radius:99px;font-size:11px;font-weight:500;color:#fff;cursor:pointer}", "html": "<div class='gv-bt'><div class='gv-bt__row'><span class='gv-bt__row-label'>텍스트 → CTA</span><button class='gv-bt__cta'>물류</button><button class='gv-bt__cta'>해운</button><button class='gv-bt__cta'>자세히 보기</button></div><div class='gv-bt__row'><span class='gv-bt__row-label'>⏸ Pause/Play Outline</span><button class='gv-bt__pause'>⏸</button><button class='gv-bt__pause'>▶</button></div><div class='gv-bt__row'><span class='gv-bt__row-label'>Family Site Pill</span><button class='gv-bt__family'><span>Family Site</span><span style='font-size:18px;color:#71737B'>+</span></button></div><div class='gv-bt__row'><span class='gv-bt__row-label'>KOR/ENG 토글</span><div class='gv-bt__lang'><span class='is-active'>KOR</span><span>ENG</span></div></div><div class='gv-bt__row' style='background:#001290;padding:24px;border-radius:8px'><span class='gv-bt__row-label' style='color:rgba(255,255,255,0.8)'>Glass Chip (사업영역)</span><span class='gv-bt__chip'>자동차선 운송</span><span class='gv-bt__chip'>프로젝트 화물</span><span class='gv-bt__chip'>벌크 운송</span><span class='gv-bt__chip'>터미널 운영</span></div></div>" }
       ]
     },
 
-    "components-library": {
-      "title": "09. 컴포넌트 라이브러리 (7 페이지 통합)",
+    "ix-hover": {
+      "title": "Hover 인터랙션",
       "blocks": [
-        { "type": "text", "value": "7 페이지에서 발견된 Glovis 표준 컴포넌트 패턴. 흰 배경 + Glovis Navy #001290 강조 + cubic-bezier Decelerate Easing 일관." },
+        { "type": "text", "value": "Glovis 사이트의 호버 통계 - all 383건 + color 0.3s 12건 + opacity 0.4s 4건 + cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing 19+건. 사이트 표준 시간은 0.3s + Decelerate Easing. 호버 패턴은 색 전환 (#71737B → #001290) / ::before line 추가 / outline → fill 토글 / border-color 강조 등." },
 
-        { "type": "heading", "value": "1. 헤더 GNB Fixed z-11" },
-        { "type": "component", "title": "glv-hd1 - Top GNB + 검색·언어·공유·메뉴", "fullWidth": true, "css": ".glv-hd1{position:sticky;top:0;background:#fff;z-index:11;display:flex;align-items:center;padding:0 48px;height:80px;border-bottom:1px solid #F0F0F0;font-family:Pretendard,sans-serif}.glv-hd1__logo{display:flex;flex-direction:column;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#001290;letter-spacing:-0.02em;margin-right:64px;line-height:1.1}.glv-hd1__logo b{font-size:22px}.glv-hd1__nav{display:flex;gap:48px;flex:1}.glv-hd1__nav a{font-size:16px;font-weight:500;color:#141415;text-decoration:none;padding:8px 0;cursor:pointer;transition:color 0.3s cubic-bezier(0.215,0.61,0.355,1)}.glv-hd1__nav a:hover{color:#001290}.glv-hd1__util{display:flex;gap:16px;align-items:center}.glv-hd1__icon{width:32px;height:32px;border-radius:99px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#141415;font-size:16px}", "html": "<div class='glv-hd1'><div class='glv-hd1__logo'><span>HYUNDAI</span><b>GLOVIS</b></div><nav class='glv-hd1__nav'><a>회사정보</a><a>사업영역</a><a>지속가능경영</a><a>투자정보</a><a>고객지원</a><a>공정거래</a></nav><div class='glv-hd1__util'><span class='glv-hd1__icon'>🔍</span><span class='glv-hd1__icon'>🌐</span><span class='glv-hd1__icon'>⤴</span><span class='glv-hd1__icon'>☰</span></div></div>" },
+        { "type": "component", "title": "GNB 호버 - color 전환 (#71737B → #001290)", "css": ".gv-hv-gnb{padding:32px;background:#fff;font-family:Pretendard,sans-serif}.gv-hv-gnb__nav{display:flex;gap:48px;justify-content:center}.gv-hv-gnb__nav a{position:relative;font-size:16px;font-weight:500;color:#141415;text-decoration:none;padding:12px 0;border-bottom:2px solid transparent;cursor:pointer;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.gv-hv-gnb__nav a:hover{color:#001290;border-color:#001290}", "html": "<div class='gv-hv-gnb'><nav class='gv-hv-gnb__nav'><a>회사정보</a><a>사업영역</a><a>지속가능경영</a><a>투자정보</a><a>고객지원</a><a>공정거래</a></nav></div>" },
 
-        { "type": "heading", "value": "2. 3/5-탭 Sticky 네비게이션 (반복 패턴)" },
-        { "type": "component", "title": "glv-tb2 - 다양한 sticky 탭", "css": ".glv-tb2{font-family:Pretendard,sans-serif;background:#fff}.glv-tb2__tabs{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:48px;padding:24px 32px;border-bottom:1px solid #EEE;z-index:10;margin-bottom:16px}.glv-tb2__tab{font-size:16px;font-weight:500;color:#71737B;cursor:pointer;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.glv-tb2__tab.is-active{color:#001290;border-color:#001290;font-weight:700}", "html": "<div class='glv-tb2'><div class='glv-tb2__tabs'><span class='glv-tb2__tab'>기업정보</span><span class='glv-tb2__tab is-active'>사업영역</span><span class='glv-tb2__tab'>브로슈어</span></div><div class='glv-tb2__tabs'><span class='glv-tb2__tab is-active'>개요</span><span class='glv-tb2__tab'>전략</span><span class='glv-tb2__tab'>성과</span><span class='glv-tb2__tab'>ESG 정책</span><span class='glv-tb2__tab'>지속가능경영 보고서</span></div></div>" },
+        { "type": "component", "title": "사업영역 5 카테고리 - ::before line 활성", "css": ".gv-hv-cat{background:#fff;padding:32px;font-family:Inter,Pretendard,sans-serif;display:flex;flex-direction:column;gap:16px;max-width:560px}.gv-hv-cat__item{display:flex;align-items:center;gap:16px;font-size:48px;font-weight:700;line-height:1.1;color:#71737B;cursor:pointer;transition:color 0.3s cubic-bezier(0.215,0.61,0.355,1);letter-spacing:-0.025em}.gv-hv-cat__item::before{content:'';width:0;height:3px;background:#001290;transition:width 0.4s cubic-bezier(0.215,0.61,0.355,1)}.gv-hv-cat__item:hover,.gv-hv-cat__item.is-active{color:#001290}.gv-hv-cat__item:hover::before,.gv-hv-cat__item.is-active::before{width:32px}", "html": "<div class='gv-hv-cat'><div class='gv-hv-cat__item is-active'>LOGISTICS</div><div class='gv-hv-cat__item'>SHIPPING</div><div class='gv-hv-cat__item'>DISTRIBUTION</div><div class='gv-hv-cat__item'>FUTURE BUSINESS</div><div class='gv-hv-cat__item'>INNOVATION</div></div>" },
 
-        { "type": "heading", "value": "3. GLOVIS NOW 검정 띠 Ticker (시그니처)" },
-        { "type": "component", "title": "glv-tk1 - 실시간 KOSPI Ticker", "fullWidth": true, "css": ".glv-tk1{background:#000;color:#fff;padding:14px 32px;font-family:Pretendard,sans-serif;font-size:14px;display:flex;justify-content:space-between;align-items:center}.glv-tk1__left{display:flex;align-items:center;gap:32px;overflow:hidden;flex:1}.glv-tk1__label{font-weight:700;letter-spacing:0.08em;flex-shrink:0;font-family:'Inter',sans-serif}.glv-tk1__news{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.glv-tk1__right{display:flex;align-items:center;gap:12px;flex-shrink:0;font-weight:500}.glv-tk1__down{color:#E31D1A;display:inline-flex;align-items:center;gap:4px}", "html": "<div class='glv-tk1'><div class='glv-tk1__left'><span class='glv-tk1__label'>GLOVIS NOW</span><span class='glv-tk1__news'>현대글로비스, 서울숲에 어린이 친환경 놀이 체험 공간 조성</span></div><div class='glv-tk1__right'><span>KOSPI 263,000 KRW</span><span class='glv-tk1__down'>▼ -21,000</span><span class='glv-tk1__down'>▼ -7.39%</span></div></div>" },
-
-        { "type": "heading", "value": "4. Floating utils z-10 (3-fab cluster)" },
-        { "type": "component", "title": "glv-fl1 - Floating cluster + WA 인증", "css": ".glv-fl1{position:relative;height:240px;background:#FAFAFA;font-family:Pretendard,sans-serif;border-radius:8px;overflow:hidden}.glv-fl1__demo{padding:24px;color:#666;font-size:13px}.glv-fl1__cluster{position:absolute;bottom:24px;right:24px;display:flex;flex-direction:column;gap:8px;z-index:10}.glv-fl1__fab{width:56px;height:56px;border-radius:99px;background:#fff;border:1px solid #CCC;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.glv-fl1__chat{background:#007AFF;color:#fff;border:none}.glv-fl1__wa{position:absolute;bottom:32px;left:32px;width:72px;height:72px;border-radius:99px;background:linear-gradient(135deg,#1a8a3a 0%,#0c5e30 100%);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:700;text-align:center;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,0.3)}", "html": "<div class='glv-fl1'><div class='glv-fl1__demo'>페이지 어디서나 우측 하단에 fixed cluster (메뉴 / 챗봇 / Scroll-top) + 좌측 WA 접근성 인증 마크</div><div class='glv-fl1__wa'>WA<br>Web<br>접근성</div><div class='glv-fl1__cluster'><button class='glv-fl1__fab'>⋮</button><button class='glv-fl1__fab glv-fl1__chat'>💬</button><button class='glv-fl1__fab'>↑</button></div></div>" },
-
-        { "type": "heading", "value": "5. 4-카드 정보 (회사정보 페이지)" },
-        { "type": "component", "title": "glv-cd1 - 4-카드 outline 픽토그램", "css": ".glv-cd1{background:#fff;padding:80px 64px;font-family:Pretendard,sans-serif}.glv-cd1__title{font-size:48px;font-weight:700;color:#141415;margin-bottom:48px;letter-spacing:-0.02em;text-align:center}.glv-cd1__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1280px;margin:0 auto}.glv-cd1__card{padding:48px 24px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;text-align:center;transition:all 0.3s cubic-bezier(0.215,0.61,0.355,1)}.glv-cd1__card:hover{border-color:#001290;transform:translateY(-2px)}.glv-cd1__icon{width:64px;height:64px;margin:0 auto 24px;font-size:48px;color:#001290;display:flex;align-items:center;justify-content:center}.glv-cd1__label{font-size:16px;font-weight:700;color:#141415;margin-bottom:8px}.glv-cd1__value{font-size:13px;color:#666;line-height:1.6}", "html": "<div class='glv-cd1'><div class='glv-cd1__title'>기업정보</div><div class='glv-cd1__grid'><div class='glv-cd1__card'><div class='glv-cd1__icon'>🏢</div><div class='glv-cd1__label'>설립일</div><div class='glv-cd1__value'>2001년 2월 22일</div></div><div class='glv-cd1__card'><div class='glv-cd1__icon'>📍</div><div class='glv-cd1__label'>본사 소재지</div><div class='glv-cd1__value'>서울특별시 성동구 왕십리로 83-21</div></div><div class='glv-cd1__card'><div class='glv-cd1__icon'>👥</div><div class='glv-cd1__label'>임원 현황</div><div class='glv-cd1__value'>대표이사 등 임원진</div></div><div class='glv-cd1__card'><div class='glv-cd1__icon'>🌍</div><div class='glv-cd1__label'>거점 현황</div><div class='glv-cd1__value'>전 세계 50+ 거점 운영</div></div></div></div>" }
+        { "type": "component", "title": "글로벌 영역 outline → fill 호버 (다크 네이비)", "css": ".gv-hv-rg{background:#001290;padding:48px;font-family:Pretendard,sans-serif;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.gv-hv-rg__region{padding:24px 32px;border:1px solid rgba(255,255,255,0.4);border-radius:8px;color:#fff;font-size:16px;font-weight:500;cursor:pointer;text-align:center;background:transparent;transition:all 0.4s cubic-bezier(0.215,0.61,0.355,1)}.gv-hv-rg__region:hover{background:rgba(255,255,255,0.15);border-color:#fff;transform:translateY(-2px)}", "html": "<div class='gv-hv-rg'><button class='gv-hv-rg__region'>Americas</button><button class='gv-hv-rg__region'>Europe</button><button class='gv-hv-rg__region'>China</button><button class='gv-hv-rg__region'>Asia Pacific</button></div>" }
       ]
     },
 
-    "signatures": {
-      "title": "10. 시그니처 패턴 (7 가지 차별화 디자인)",
+    "ix-scroll": {
+      "title": "Scroll 인터랙션",
       "blocks": [
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🟢 시그니처 1 - Hero Scroll-Driven 색상 전환 (3,500px)", "value": "메인 페이지 - 흰 배경 → 라벤더 #7E7E9D → 다크 네이비 #001290 → 흰. vis-fixed-area + intro-txt-area dual fixed 911px 레이어. cubic-bezier 0.7s color transition" },
-          { "label": "🟢 시그니처 2 - 거대 영문 헤딩 캡슐 영상 임베드", "value": "'GLOBAL'(사막 도로) + 'SMART SCM'(항만 컨테이너선) + 'SOLUTION'(롤러 컨베이어) - border-radius 99px <video> 단어 자리에 박혀있는 패턴" },
-          { "label": "🟢 시그니처 3 - 5-카테고리 사업영역 활성 토글", "value": "메인 페이지 7,000px - 좌측 사진 + 우측 거대 영문 (LOGISTICS/SHIPPING/DISTRIBUTION/FUTURE BUSINESS/INNOVATION) 활성 토글 (#71737→#001290)" },
-          { "label": "🟢 시그니처 4 - GLOVIS NOW KOSPI 검정 띠 Ticker", "value": "Hero 하단 - 'GLOVIS NOW' + 보도자료 슬라이드 + KOSPI 263,000 ▼ -21,000 -7.39% (빨강 #E31D1A) 실시간 갱신" },
-          { "label": "🟢 시그니처 5 - 3-탭 Sticky 패턴", "value": "회사정보/ESG/IR 페이지 공통 - position: sticky top: 0 + 활성 탭 #001290 border-bottom" },
-          { "label": "🟢 시그니처 6 - 'Clean Flow, Make Together' ESG 비전", "value": "ESG 페이지 - 진녹색 숲 비주얼 위 흰 텍스트 ESG 비전 선언문 + 외부 인증 4 카드 (DJBIC/한국ESG기준원 A/CDP/MSCI)" },
-          { "label": "🟢 시그니처 7 - WA 웹 접근성 인증 (서울특별시)", "value": "푸터 - 정부 인증 받은 사이트 신뢰 시그널. 한국 코퍼레이트 사이트에서 흔치 않음" }
-        ]}
-      ]
-    },
+        { "type": "text", "value": "Glovis 사이트의 핵심 스크롤 인터랙션 - (1) Hero scroll-driven 색상 진행 (3,500px / 흰 → 라벤더 → 다크 네이비 → 흰), (2) 5-카테고리 활성 토글 (7,000px / IntersectionObserver), (3) 3-탭 Sticky 활성 토글, (4) 캡슐 영상 자동 재생, (5) GLOVIS NOW KOSPI 실시간 ticker JavaScript polling." },
 
-    "interactions": {
-      "title": "11. 인터랙션 카탈로그",
-      "blocks": [
-        { "type": "kv", "title": "주요 인터랙션 (실측 통계)", "columns": 1, "items": [
-          { "label": "all (default)", "value": "383건 - 사이트 표준" },
-          { "label": "🟢 cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate", "value": "19+건 - opacity 1s + transform 1s + color 0.7s + opacity 0.3s + top 0.5s + opacity 0.4s 등 모든 transition에 일관 적용" },
-          { "label": "Hero 색상 진행", "value": "scrollY 0-3500 구간 - background-color 0.7s cubic-bezier (흰 → 라벤더 → 네이비 → 흰)" },
-          { "label": "사업영역 5 활성 토글", "value": "IntersectionObserver - 각 카테고리 진입 시 color #71737B → #001290 + 좌측 사진 opacity 1s cubic-bezier fade" },
-          { "label": "3-탭 Sticky 활성 토글", "value": "스크롤 진행 시 sticky 탭 활성 border-bottom #001290" },
-          { "label": "캡슐 영상 자동 재생", "value": "<video> autoplay loop muted - 사용자 인터랙션 없이 자동 시작" },
-          { "label": "Footer 산악·호수 자연 비주얼", "value": "정적 이미지 (애니메이션 없음) - 'global scale' 메타포만" }
-        ]}
-      ]
-    },
-
-    "accessibility-seo": {
-      "title": "12. 시멘틱 · 접근성 · 성능 · SEO",
-      "blocks": [
-        { "type": "kv", "title": "시멘틱 (실측)", "columns": 2, "items": [
-          { "label": "<html lang>", "value": "ko ✓" },
-          { "label": "<header>", "value": "🟢 1개 ✓" },
-          { "label": "<main>", "value": "1개 ✓" },
-          { "label": "<nav>", "value": "🟢 1개 ✓" },
-          { "label": "<section>", "value": "6개 ✓" },
-          { "label": "<footer>", "value": "🟢 1개 ✓" }
-        ]},
-
-        { "type": "kv", "title": "🟢 잘 한 점", "columns": 1, "items": [
-          { "label": "🟢 시멘틱 태그 완전 사용", "value": "header/main/nav/section/footer 모두 ✓ - KT&G보다 우수" },
-          { "label": "🟢 WA 웹 접근성 인증", "value": "서울특별시 정보화기획단 WA 마크 - WCAG 2.1 AA 정부 인증" },
-          { "label": "스킵 링크", "value": "<a> fixed z-100 40px - 본문 바로가기" },
-          { "label": "텍스트 대비", "value": "본문 #333 on #FFF = 12.6:1 AAA / 헤딩 #141415 = 16.7:1 AAA" }
-        ]},
-
-        { "type": "kv", "title": "🔴 약점", "columns": 1, "items": [
-          { "label": "🔴 user-scalable=no", "value": "WCAG 1.4.4 위반 - WA 인증 받았음에도 모바일 줌 제약" },
-          { "label": "🔴 html font-size 1px", "value": "매우 비표준 - 일반 16px 대신 1px. 사용자 브라우저 폰트 사이즈 무시" },
-          { "label": "🟡 article·figure 미사용", "value": "뉴스 카드가 <article>·<figure> 아닌 <div>" }
-        ]},
-
-        { "type": "kv", "title": "성능 + SEO", "columns": 1, "items": [
-          { "label": "🟢 Pretendard 4 weights subset woff2", "value": "Light 300 / Regular / Medium / Bold 별도 다운로드 - subset 처리로 파일 크기 절감" },
-          { "label": "Inter Bold woff", "value": "영문 헤딩 전용 - 구식 woff 형식 (woff2 아닌)" },
-          { "label": "🟢 meta keywords 24개", "value": "현대글로비스/글로비스/hyundai/glovis/현대자동차그룹/물류/해운/유통/신사업/기술혁신/수출입/완성차/부품물류/산업재 물류/TPL물류/자동차선/프로젝트화물/오토비즈/트레이딩/KD/수소사업/스마트물류솔루션/EV배터리/오토벨" },
-          { "label": "og:title / og:image", "value": "현대글로비스 / glovis.net/images/og-image1.jpg ✓" }
-        ]}
+        { "type": "component", "title": "Hero 색상 진행 시뮬레이션 (▶ Replay)", "fullWidth": true, "css": ".gv-sc{font-family:Pretendard,sans-serif}.gv-sc__btn{display:inline-block;padding:10px 24px;background:#001290;color:#fff;border:none;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:24px}.gv-sc__stages{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;height:240px;border-radius:8px;overflow:hidden}.gv-sc__stage{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;text-align:center;padding:24px;transition:flex 1.5s cubic-bezier(0.215,0.61,0.355,1)}.gv-sc__stage small{display:block;opacity:0.85;font-size:10px;font-weight:400;margin-top:4px}.gv-sc__stage-1{background:#fff;color:#141415}.gv-sc__stage-2{background:#7E7E9D}.gv-sc__stage-3{background:#0E0D44}.gv-sc__stage-4{background:#001290}.gv-sc__stage-5{background:#fff;color:#141415}", "html": "<div style='padding:32px;background:#fff;font-family:Pretendard,sans-serif'><div class='gv-sc'><button class='gv-sc__btn'>▶ Hero 5단계 색상 진행 (3,500px)</button><div class='gv-sc__stages'><div class='gv-sc__stage gv-sc__stage-1' style='border:1px solid #ddd'><span>Stage 1<br>scrollY 0</span><small>흰 + 캡슐 영상</small></div><div class='gv-sc__stage gv-sc__stage-2'><span>Stage 2<br>~600</span><small>라벤더 #7E7E9D</small></div><div class='gv-sc__stage gv-sc__stage-3'><span>Stage 3<br>~1500</span><small>딥 네이비 #0E0D44</small></div><div class='gv-sc__stage gv-sc__stage-4'><span>Stage 4<br>~2500</span><small>Glovis Navy #001290</small></div><div class='gv-sc__stage gv-sc__stage-5' style='border:1px solid #ddd'><span>Stage 5<br>~3500</span><small>흰 (사업영역 진입)</small></div></div></div></div>" }
       ]
     },
 
     "smooth-interaction-catalog": {
-      "title": "13. 부드러운 인터랙션 카탈로그 (라이브 재점검 - 7 페이지)",
+      "title": "부드러운 인터랙션 카탈로그",
       "blocks": [
         { "type": "text", "value": "Chrome MCP로 현대글로비스 7 페이지를 점진 스크롤하며 발견한 라이브 인터랙션. 정적 분석이 잡지 못하는 디테일 통합 정리." },
 
-        { "type": "heading", "value": "발견 1: Hero Scroll-Driven 5단계 색상 전환 (3,500px)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "scrollY 0", "value": "흰 배경 + 거대 검정 영문 'GLOBAL / SMART SCM / SOLUTION / PROVIDER' + 캡슐 영상 3개" },
+        { "type": "kv", "title": "Hero 색상 진행 5단계 (3,500px)", "columns": 1, "items": [
+          { "label": "scrollY 0", "value": "흰 배경 + 거대 영문 'GLOBAL / SMART SCM / SOLUTION / PROVIDER' + 캡슐 영상 3개 (사막·항만·롤러)" },
           { "label": "scrollY ~600", "value": "흰 → 라벤더 #7E7E9D 진행" },
-          { "label": "scrollY ~1500", "value": "라벤더 → 다크 네이비 #001290 진행 + '연결에서 → 완결로' 슬로건 페이드 인" },
-          { "label": "scrollY ~2500", "value": "🟢 완전 다크 네이비 + 슬로건 + sub copy + ⓘ Pause 버튼" },
-          { "label": "scrollY ~3500", "value": "다크 네이비 페이드 아웃 → 사업영역 진입" }
+          { "label": "scrollY ~1500", "value": "라벤더 → 딥 네이비 #0E0D44 / Glovis Navy #001290 진행 + '연결에서 → 완결로' 슬로건 페이드 인" },
+          { "label": "scrollY ~2500", "value": "완전 다크 네이비 + 슬로건 + sub copy + ⓘ Pause 버튼" },
+          { "label": "scrollY ~3500", "value": "다크 네이비 페이드 아웃 → 사업영역 5 카테고리 진입" }
         ]},
 
-        { "type": "heading", "value": "발견 2: GLOVIS NOW KOSPI 실시간 Ticker" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "구조", "value": "검정 띠 (height ~40px). 좌측 'GLOVIS NOW' + 중앙 보도자료 슬라이드 + 우측 KOSPI" },
-          { "label": "동작", "value": "🟢 JavaScript polling - 주기적 (5분 단위 추정) API 호출 → ticker 갱신. 빨간 ▼ #E31D1A 마이너스 시그널" }
+        { "type": "kv", "title": "GLOVIS NOW KOSPI 실시간 Ticker", "columns": 1, "items": [
+          { "label": "구조", "value": "Hero 하단 검정 띠 (height: 40px). 좌측 'GLOVIS NOW' 라벨 + 중앙 보도자료 슬라이드 + 우측 KOSPI" },
+          { "label": "동작", "value": "JavaScript polling - 주기적 (5분 단위 추정) KOSPI API 호출 → ticker 갱신. 빨간 ▼ #E31D1A 마이너스 시그널" }
         ]},
 
-        { "type": "heading", "value": "발견 3: 5-카테고리 활성 토글 (7,000px)" },
-        { "type": "kv", "columns": 1, "items": [
+        { "type": "kv", "title": "5-카테고리 활성 토글 (7,000px)", "columns": 1, "items": [
           { "label": "구조", "value": "IntersectionObserver - 사업영역 5 카테고리 viewport 진입 시 활성" },
-          { "label": "동작", "value": "🟢 비활성: #71737B / 활성: #001290 - 단순 color 토글 + 좌측 사진 opacity 1s cubic-bezier fade-in" }
+          { "label": "동작", "value": "비활성 #71737B / 활성 #001290 단순 color 토글 + 좌측 사진 opacity 1s cubic-bezier fade-in + ::before line 0→32px slide-in" }
         ]},
 
-        { "type": "heading", "value": "발견 4: 캡슐 영상 임베드 거대 헤딩" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "구조", "value": "🟢 border-radius 99px <video> + 거대 영문 텍스트 같은 line 가로 배치 - 단어 = 비주얼" },
-          { "label": "GLOBAL 옆", "value": "사막 도로 (글로벌 운송)" },
-          { "label": "SMART SCM 옆", "value": "항만 컨테이너선 (자동화 물류)" },
-          { "label": "SOLUTION 옆", "value": "롤러 컨베이어 (스마트 창고)" }
+        { "type": "kv", "title": "캡슐 영상 임베드 거대 헤딩", "columns": 1, "items": [
+          { "label": "구조", "value": "border-radius 99px <video> + 거대 영문 텍스트 같은 line 가로 배치 - 단어 = 비주얼" },
+          { "label": "GLOBAL 옆", "value": "사막 도로 (글로벌 운송 메타포)" },
+          { "label": "SMART SCM 옆", "value": "항만 컨테이너선 (자동화 물류 메타포)" },
+          { "label": "SOLUTION 옆", "value": "롤러 컨베이어 (스마트 창고 메타포)" }
         ]},
 
-        { "type": "heading", "value": "발견 5: 3-탭 Sticky 패턴 (회사정보·ESG·IR 공통)" },
-        { "type": "kv", "columns": 1, "items": [
+        { "type": "kv", "title": "3/5-탭 Sticky 패턴 (회사정보·ESG·IR 공통)", "columns": 1, "items": [
           { "label": "회사정보", "value": "기업정보 / 사업영역 / 브로슈어 (3-탭)" },
           { "label": "ESG", "value": "개요 / 전략 / 성과 / ESG 정책 / 지속가능경영 보고서 (5-탭)" },
           { "label": "IR", "value": "주식/재무정보 / IR 정보 / 관련 문의 (3-탭)" },
           { "label": "활성 색", "value": "#001290 + border-bottom 2px / position: sticky top: 0 + backdrop-filter: blur(8px)" }
         ]},
 
-        { "type": "heading", "value": "발견 6: 7 페이지 누적 sH 통계" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "메인", "value": "15,912px (23.6%)" },
-          { "label": "신사업 - 스마트물류솔루션", "value": "11,749px (17.5%)" },
-          { "label": "물류 - 수출입물류", "value": "10,731px (15.9%)" },
-          { "label": "해운 - 자동차선 운송", "value": "8,727px (12.9%)" },
-          { "label": "지속가능경영 성과", "value": "7,605px (11.3%)" },
-          { "label": "회사정보", "value": "7,356px (10.9%)" },
-          { "label": "투자정보 개요", "value": "3,203px (4.8%)" },
-          { "label": "FAQ", "value": "2,098px (3.1%)" },
-          { "label": "합계", "value": "🟢 67,381px - 한국 대기업 코퍼레이트 사이트 평균 깊이" }
+        { "type": "kv", "title": "5 Fixed 요소 인벤토리", "columns": 1, "items": [
+          { "label": "z-100 - 스킵 링크", "value": "<a> fixed 40px - 본문 바로가기 (키보드 접근성)" },
+          { "label": "z-11 - .header", "value": "fixed 80px - GNB sticky" },
+          { "label": "z-10 - .utils", "value": "fixed 72×152 - Floating fab cluster (메뉴/챗봇/Scroll-top)" },
+          { "label": "z-auto - .vis-fixed-area", "value": "fixed 911px - Hero 비주얼 영역" },
+          { "label": "z-auto - .intro-txt-area", "value": "fixed 911px - Hero 슬로건 텍스트 영역 (vis-fixed-area 위에 layered)" }
         ]},
 
-        { "type": "note", "value": "🟢 현대글로비스 7 페이지 정밀 점검 결과: (1) Hero scroll-driven 색상 전환 + 캡슐 영상 임베드 = 메인의 핵심 차별화, (2) 3-탭 Sticky 패턴이 모든 서브페이지에 일관 적용, (3) GLOVIS NOW KOSPI ticker가 상장사 정체성 강조, (4) 'Clean Flow, Make Together' + 외부 인증 4 = ESG 신뢰성, (5) WA 웹 접근성 인증 + 시멘틱 태그 완전 사용 = 한국 정부 표준 준수, (6) cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate Easing 19+건 = 모션 디자이너 의도 일관. 한국 대기업 코퍼레이트 사이트 디자인 시스템 성숙도 상위 10%." }
+        { "type": "kv", "title": "Transition 통계 (실측)", "columns": 1, "items": [
+          { "label": "all (default)", "value": "383건 - 사이트 표준" },
+          { "label": "🟢 cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate", "value": "19+건 - Material Design Decelerate / opacity 1s + transform 1s + color 0.7s + opacity 0.3s + top 0.5s + opacity 0.4s 등 모든 transition에 일관 적용" },
+          { "label": "opacity 1s cubic-bezier", "value": "5건 - 카드 진입" },
+          { "label": "transform 1s cubic-bezier", "value": "5건 - translate·scale" },
+          { "label": "max-height 0.5s", "value": "5건 - 드롭다운" },
+          { "label": "color 0.7s cubic-bezier", "value": "5건 - Hero 색상 전환" }
+        ]}
       ]
     }
   }
