@@ -1,43 +1,42 @@
 {
   "id": "hct-co-kr",
-  "title": "에이치시티",
+  "title": "에이치시티 (HCT)",
   "url": "https://hct.co.kr/",
   "date": "2026-05-14",
-  "summary": "주식회사 에이치시티 (HCT) - 시험인증·교정·측정표준·6G·우주·방산까지 다루는 글로벌 시험인증 전문 기업의 코퍼레이트 사이트. 한국·미국·인도네시아 3개국 거점 + 200여 개국 인증 네트워크 + ETRI와 위성탑재체 핵심원천기술개발 공동연구. 사이트의 가장 강력한 디자인 시그니처는 메인 페이지 전체(sH 7,234px) 중 첫 911px를 점유하는 'scroll-driven ✓ 체크마크 모핑 Hero' - 사용자가 스크롤할 때마다 '당신의 ● 기술 파트너' 슬로건의 동그라미가 흰색 → 민트 → 초록색 + 점에서 캡슐 형태로 점진 변형되어 결국 '✓ 체크마크'로 완성되는 인터랙티브 인트로 (911px만 차지하지만 인트로 오버레이가 z-index 9999로 전체를 덮으며 약 6,300px의 스크롤을 흡수). HCT가 시험인증 기업이라는 정체성을 ✓ 마크로 직접 시각화. SUIT 한글 폰트 + HCT Blue #0055A5 + 풍부한 AOS(Animate On Scroll) 라이브러리 34개 fade-up + 0.4s 표준 트랜지션 205건. Chrome MCP로 메인 페이지 풀스크롤 점검 (인트로 오버레이 hide 후 진짜 콘텐츠 도달) - 자주 찾는 서비스 7종 + 사업 6 카드 슬라이더(모빌리티/방산/시험·인증/교정/융합측정엔지니어링/배터리) + 글로벌 인증 9 마크(KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 세계 지도 3거점(Korea/USA/Indonesia) + HCT 소식 5탭(전체/보도자료/아티클/스토리/유튜브/e-뉴스레터).",
+  "summary": "주식회사 에이치시티(HCT) - 시험인증·교정·측정표준 전문 기업의 코퍼레이트 사이트. 메인 페이지 정밀 점진 점검 - sH 7,178px. 디자인 시그니처는 (1) 5 다이아몬드 그리드 Hero - 회전 텍스트 'Global Standard · No.1 Testing & Calibration Lab · Trusted Partner · For Humanity' + 4 비주얼 (도시 야경/메탈 그리드/태블릿 그리는 사람/산악 일출), (2) 7-아이콘 자주 찾는 서비스 그리드 (FAQ/시험인증견적문의/교정견적문의/상담연락처/신청양식/성적서 조회/판매서비스), (3) 사업 6 카드 슬라이더 (모빌리티/방산·우주/시험·인증/교정/융합측정/배터리) + 좌측 한글 헤딩 + 우측 < > 페이지네이션, (4) 'HCT는 글로벌 인증 네트워크로 200여 개 국가의 인증 서비스를 지원' - 9 국제 인증마크 + 3거점(한국·미국·인도네시아) 세계지도, (5) HCT 소식 5-탭 멀티 채널 (보도자료/스토리/유튜브/e-뉴스레터), (6) Floating 상담·FAQ·TOP 우측 패널, (7) 견적 문의하기 파란 pill CTA (헤더 우측). SUIT 한글 폰트 + 20px base + AOS (Animate On Scroll) 34건 fade-up + 0.4s 표준 transition 205건 + cubic-bezier 디테일. 한국 시험인증 기업 중 디자인 시스템 성숙도가 매우 높은 사례.",
   "crawledPages": 1,
   "sections": {
+
     "overview": {
-      "title": "01. 개요 · 사이트맵",
+      "title": "01. 개요 · 사이트맵 · 기술 스택",
       "blocks": [
         { "type": "kv", "title": "사이트 프로필", "columns": 2, "items": [
           { "label": "사이트명", "value": "주식회사 에이치시티 (HCT - Hi-Cert / Hi-Test / Hi-Compatibility 추정)" },
-          { "label": "정체성", "value": "시험인증·교정·측정표준 전문 기업. 시험인증 + 6G + 우주 + 방산까지 첨단 기술 영역 커버" },
-          { "label": "CEO", "value": "허봉재 - 2026.04.23 대통령표창 수상 (ICT 시험인증·6G·우주·방산 기술력 인정)" },
+          { "label": "정체성", "value": "🟢 시험인증·교정·측정표준 전문 기업. 시험인증 + 6G + 우주 + 방산까지 첨단 기술 영역 커버" },
+          { "label": "CEO", "value": "🟢 허봉재 - 2026.04.23 대통령표창 수상 (ICT 시험인증·6G·우주·방산 기술력 인정)" },
           { "label": "본사", "value": "17383 경기도 이천시 마장면 서이천로 578번길 74 (장암리 105-1)" },
-          { "label": "연락처", "value": "TEL 031-645-6300 / FAX 031-645-6325 / Email myHCTSupport@hct.co.kr" },
+          { "label": "연락처", "value": "TEL 031-645-6300 / FAX 031-645-6325" },
           { "label": "사업자등록번호", "value": "126-81-45399" },
           { "label": "글로벌 거점", "value": "🟢 3개국 - HCT Korea (한국) / HCT USA (미국) / HCT Indonesia (인도네시아)" },
-          { "label": "인증 서비스 범위", "value": "🟢 200여 개 국가 - 글로벌 인증 네트워크로 KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA 등 처리" },
-          { "label": "최근 협력", "value": "ETRI(한국전자통신연구원)와 '위성탑재체 핵심원천기술개발' 공동연구 착수 (2026-05-12)" },
-          { "label": "분석 일자", "value": "2026-05-14 (KST), Chrome MCP 라이브 인스펙션" },
-          { "label": "분석 환경", "value": "viewport 1920×911 / SUIT 폰트 / Chrome 데스크톱" },
-          { "label": "메인 페이지 sH", "value": "7,234px (Hero는 첫 911px만 차지하나 z-index 9999 인트로 오버레이가 약 6,300px 스크롤을 흡수)" }
+          { "label": "인증 서비스 범위", "value": "🟢 200여 개 국가 - 글로벌 인증 네트워크 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA 등)" },
+          { "label": "최근 협력", "value": "ETRI(한국전자통신연구원)와 '위성탑재체 핵심원천기술개발' 공동연구 착수" },
+          { "label": "분석 일자", "value": "2026-05-14 (KST), Chrome MCP 메인 페이지 점진 스크롤 정밀 점검" }
         ]},
+
         { "type": "heading", "value": "기술 스택 (실측)" },
         { "type": "kv", "columns": 2, "items": [
-          { "label": "백엔드 추정", "value": "Drupal CMS (Drupal 시그니처: hct-s3-bucket.s3.ap-northeast-2.amazonaws.com/upload/menu/MENU{000006-000012}/{32자해시}.png 경로 패턴)" },
-          { "label": "프레임워크", "value": "Next.js / React 미감지. 전통적 SSR + jQuery 추정 (24-25 script 태그 + 5 stylesheets)" },
-          { "label": "🟢 스크롤 애니메이션", "value": "AOS (Animate On Scroll) 라이브러리 - 페이지에 [class*=aos-init] 34건, 모두 data-aos='fade-up'" },
-          { "label": "한글 서체", "value": "SUIT (dcamp와 동일 한글 기하 폰트) + -apple-system + sans-serif 폴백" },
-          { "label": "Base 폰트", "value": "20px / line-height 32px (1.6) - 한국 사이트 평균(16-18px)보다 큰 본문 사이즈" },
-          { "label": "html root", "value": "20px (1rem = 20px) - 통상 16px의 1.25배" },
-          { "label": "Viewport", "value": "user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width (🔴 user-scalable=no WCAG 1.4.4 위반)" },
+          { "label": "백엔드 추정", "value": "Drupal CMS (S3 시그니처: hct-s3-bucket.s3.ap-northeast-2.amazonaws.com/upload/menu/MENU{N}/{32자해시}.png 경로 패턴)" },
+          { "label": "프레임워크", "value": "전통 SSR + jQuery 추정 (24-25 script + 5 stylesheets). Next.js/React/Vue 미감지" },
+          { "label": "🟢 스크롤 애니메이션", "value": "AOS (Animate On Scroll) 라이브러리 - 34건 fade-up 일관 적용" },
+          { "label": "🟢 한글 서체", "value": "SUIT - dcamp와 동일 한글 기하 폰트 + -apple-system + sans-serif 폴백" },
+          { "label": "Base 폰트", "value": "20px / line-height 32px (1.6) - 한국 사이트 평균(16-18px)보다 큰 본문" },
+          { "label": "Viewport", "value": "🔴 user-scalable=no, initial-scale=1.0, maximum-scale=1.0 - WCAG 1.4.4 위반" },
           { "label": "이미지 호스팅", "value": "자체 도메인 hct.co.kr/front/img/ + AWS S3 ap-northeast-2 (Seoul) hct-s3-bucket - 95장 이상" },
-          { "label": "다국어", "value": "🌐 globe 아이콘 헤더 우측 (다국어 셀렉터). 한국어 default. 영문/중문 대응 추정" },
-          { "label": "검색", "value": "🔍 search 아이콘 헤더 우측 - 사이트 내 검색 기능" },
-          { "label": "9-Dot Menu", "value": "헤더 우측 끝 ⋮⋮⋮ 9-dot 햄버거 - 전체 사이트맵/관련 서비스 메뉴" },
-          { "label": "분석 도구", "value": "메인 마크업에서 명시적 GA/GTM 스크립트 미감지 (SSR 백엔드 주입 가능성)" }
+          { "label": "다국어", "value": "🌐 globe 아이콘 헤더 우측 (다국어 셀렉터)" },
+          { "label": "9-Dot Menu", "value": "헤더 우측 끝 ⋮⋮⋮ 9-dot 햄버거 - 전체 사이트맵" },
+          { "label": "Floating 패널", "value": "🟢 우측 하단 fixed 224px - 상담·FAQ·TOP 3 버튼 (B2B 즉시 문의 채널)" }
         ]},
+
         { "type": "heading", "value": "전체 사이트맵 (Footer 7 메뉴 그룹 - 실측)" },
         { "type": "sitemap", "items": [
           { "label": "기업소개 (8)", "children": ["비전", "CEO 메시지", "발자취", "CI 소개", "인정보유현황", "사업장 소개", "연구소", "윤리경영"] },
@@ -46,923 +45,271 @@
           { "label": "HCT소식 (2)", "children": ["미디어룸", "IR정보"] },
           { "label": "고객전용 (7)", "children": ["자주 묻는 질문", "고객문의", "성적서 진위확인", "불만접수", "부서별 연락처", "공인기관 공개정보", "자료실"] },
           { "label": "인재채용 ↗ (외부)", "children": ["채용 페이지 (외부 링크 - 화살표 ↗)"] },
-          { "label": "패밀리사이트 (드롭다운)", "children": ["관계사·계열사 셀렉트 드롭다운"] }
-        ]},
-        { "type": "heading", "value": "보고서 구성 (33 섹션)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "A. 메타 (01-03)", "value": "개요·사이트맵 / 디자인 철학 / 디자인 토큰" },
-          { "label": "B. 메인 페이지 분석 (04-10)", "value": "메인 페이지 흐름 / Hero 체크마크 모핑 / 자주 찾는 서비스 / 사업 6 카드 / 글로벌 인증 / HCT 소식 / HCT 안내" },
-          { "label": "C. 비주얼 시스템 (11-14)", "value": "컬러 / 타이포 / 아이콘·인증마크 / 이미지·영상" },
-          { "label": "D. 레이아웃 (15-16)", "value": "그리드 / 반응형·여백·둥글기" },
-          { "label": "E. 컴포넌트 라이브러리 (17-22)", "value": "버튼 / 카드 / 배너 / 네비 / 폼 / 유틸" },
-          { "label": "F. 시그니처 (23-26)", "value": "✓ 체크마크 스크롤 모핑 Hero / 사업 6 카드 슬라이더 / 글로벌 인증마크 9종 + 세계 지도 / Floating 상담·FAQ·TOP" },
-          { "label": "G. 데이터·미디어 라이브러리 (27-28)", "value": "5-Tab 콘텐츠 허브 / 9 인증마크 그리드 / 게시판 카드 / Stat / 세계 지도 / Auto-Scroll 슬라이더 / Hero 영상" },
-          { "label": "H. 인터랙션 카탈로그 (29-30)", "value": "호버 (Pill CTA / Quick 카드 / 사업 카드 / GNB) / 스크롤 + AOS (fade-up / Sticky -100 hide / Counter Up)" },
-          { "label": "I. 퍼블리싱 (31-32)", "value": "시멘틱·접근성 / 성능·SEO·협업" },
-          { "label": "J. 부드러운 인터랙션 (33)", "value": "라이브 재점검 (Hero 5단계 모핑 / Transition 481건 / AOS 34건 / Header sticky)" }
-        ]},
-        { "type": "note", "value": "HCT 사이트는 한국 시험인증 기업 중 디자인 시스템 성숙도가 매우 높은 사례. 코퍼레이트 사이트가 평균적으로 '회사 소개 + 사업 안내 + 뉴스' 단조로운 구조에 머무는 데 비해, HCT는 'scroll-driven ✓ 체크마크 모핑 Hero'라는 강력한 시각 메타포로 첫 인상을 만든 후 사업 6 카드 슬라이더 + 글로벌 9 인증마크 + 3거점 지도 + 5탭 콘텐츠 허브로 정보를 체계화. 시험인증 기업의 정체성(✓ 마크)을 디자인의 핵심 컴포넌트로 격상시킨 대표 사례." }
+          { "label": "패밀리사이트 (드롭다운)", "children": ["관계사·계열사 셀렉트"] },
+          { "label": "정부 인증 (푸터)", "children": ["가족친화 우수기관", "열림우수기업", "생애주기우수기업", "제대군인고용 우수기업"] }
+        ]}
       ]
     },
 
-    "philosophy": {
-      "title": "02. 디자인 철학 · 비주얼 랭귀지",
+    "design-tokens": {
+      "title": "02. 디자인 토큰 시스템 (컬러·타이포·여백)",
       "blocks": [
-        { "type": "text", "value": "HCT의 디자인은 '시험인증 기업 정체성을 ✓ 마크로 직접 시각화'한 코퍼레이트 사이트의 모범 사례. 메인 페이지 첫 화면을 6초 이상 점유하는 인트로 오버레이가 '당신의 ● 기술 파트너' 슬로건의 동그라미를 사용자 스크롤로 ✓ 체크마크로 변형시키는 인터랙티브 인트로를 통해 HCT의 핵심 정체성(시험인증 = ✓ 표시)을 첫 인상으로 각인시킨다." },
-        { "type": "heading", "value": "비주얼 랭귀지 6원칙" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "① 시험인증 = ✓ 정체성", "value": "HCT는 시험인증 회사 → ✓ 체크마크는 '인증·통과·승인'의 보편 기호 → 메인 페이지 Hero를 ✓ 모핑 애니메이션으로 구성. 사용자가 스크롤할 때마다 ✓가 점점 완성되어 '당신을 위한 인증을 그려가는 회사'라는 메시지" },
-          { "label": "② Mono Blue + Green Accent", "value": "HCT Blue #0055A5 메인 + 인트로 배경 #0B61A8 + 검증 시 등장하는 초록 #4ADE80 (체크마크 색) - 신뢰감(파랑) + 통과(초록)의 색상 페어" },
-          { "label": "③ 흰 → 민트 → 초록 동그라미 트랜지션", "value": "Hero 동그라미가 ○ (흰색) → ● (민트) → ✓ (초록 체크마크)로 점진 모핑 - 단순 색상 변화가 아닌 모양 변형까지 결합한 정교한 인터랙션" },
-          { "label": "④ AOS Fade-up 일관성", "value": "사이트 거의 모든 콘텐츠 섹션 (자주 찾는 서비스/사업 카드/글로벌/뉴스/안내)에 data-aos='fade-up' 적용 (34개 인스턴스) - 통일된 진입 모션" },
-          { "label": "⑤ 큰 본문 사이즈", "value": "Base 20px / line-height 32px - 한국 평균(16-18px)보다 큰 본문. 시험인증 결과 보고서 같은 '명확하게 읽혀야 하는' 콘텐츠 톤" },
-          { "label": "⑥ 카드 그리드 + 큰 사진", "value": "사업 6 카드는 풀폭 사진(자동차·항공기·챔버·장비·배터리) + 작은 라벨 + 부제 - 시험 대상의 실제 모습을 한 눈에 보여주는 사진 중심 디자인" }
-        ]},
-        { "type": "heading", "value": "디자이너 관점 - 결정 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Hero 오버레이의 의도", "value": "z-index 9999 인트로가 약 6,300px 스크롤을 흡수하는 것은 의도된 디자인 - 사용자가 ✓ 체크마크가 그려지는 과정을 끝까지 경험하도록 강제. 시험인증의 '한 번에 통과되지 않는, 검증 과정이 필요한' 메타포" },
-          { "label": "Floating 상담·FAQ·TOP", "value": "우측 하단 fixed 3-버튼 (상담/FAQ/TOP) - B2B 사이트답게 즉각 문의 채널 강조. 헤드폰 + 물음표 + 화살표 아이콘으로 직관성 확보" },
-          { "label": "헤더 견적 문의하기 CTA", "value": "헤더 우측에 파란 pill '견적 문의하기' - HCT의 비즈니스 진입점이 '시험인증 견적 요청'임을 명확히. 다른 보조 메뉴(globe/search/9-dot)와 시각적 차별화" },
-          { "label": "사업 카드 톤", "value": "모빌리티(자동차)·방산(항공기·우주)·시험인증(EMC 챔버)·교정(측정 장비)·융합측정·배터리 - 모두 첨단 기술 사진이지만 톤이 어두운 블루로 통일되어 'HCT의 시각적 자산'으로 변환됨" }
-        ]},
-        { "type": "heading", "value": "퍼블리셔 관점 - 구현 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Drupal CMS 추정", "value": "S3 경로 패턴 (hct-s3-bucket/upload/menu/MENU{N}/{32자해시}.png)이 Drupal Media Library 시그니처. dcamp와 동일 인프라" },
-          { "label": "AOS 라이브러리", "value": "Animate On Scroll - data-aos='fade-up' attribute로 IntersectionObserver 기반 진입 애니메이션 표준화. 34개 인스턴스 = 거의 모든 콘텐츠 섹션 적용" },
-          { "label": "Hero ✓ 모핑 추정 구현", "value": "scrollY를 progress (0-1)로 환산 → CSS clip-path 또는 SVG path morphing으로 ○ → ✓ 변형. 또는 별도 ●과 라인을 위치·크기·색상 transition으로 결합 (캡쳐된 중간 형태가 '캡슐 모양'인 점 = 동그라미가 늘어나 라인이 되는 패턴 시사)" },
-          { "label": "z-index 9999 Intro Overlay", "value": "position: fixed; inset: 0; height: 911px; z-index: 9999 - 사용자가 의도적으로 dismiss하지 않으면 Hero가 계속 화면 차지. Chrome MCP에서는 display:none으로 강제 hide 가능" }
-        ]},
-        { "type": "note", "value": "HCT 사이트는 코퍼레이트 사이트가 '회사 정체성을 시각 메타포로 압축'한 정점. ✓ 체크마크 + 글로벌 인증 200국 + 시험인증·교정·6G·우주·방산이라는 비교적 '비주얼하기 어려운' 산업을 모핑 애니메이션·9종 인증마크 슬라이드·3거점 지도·6 사업 카드 슬라이더로 모두 시각화하는 데 성공." }
-      ]
-    },
+        { "type": "component", "title": "CSS Variables (재구성)", "css": ":root{--font-suit:'SUIT',-apple-system,sans-serif;--color-bg:#FFFFFF;--color-text:#27282B;--color-heading:#0F0F10;--color-secondary:#3F4146;--color-muted:#666666;--color-light:#898D95;--color-surface:#F2F5F8;--color-surface-dark:#001A33;--color-border:#A4A7AD;--color-hct-blue:#0055A5;--color-hct-blue-deep:#0B61A8;--color-check-green:#4ADE80;--color-overlay-50:rgba(0,0,0,0.5);--fs-hero:50px;--fs-h2:44px;--fs-h3:32px;--fs-h4:24px;--fs-body:20px;--fs-base:20px;--fs-small:16px;--lh-base:1.6;--container-pad-x:80px;--radius-pill:99px;--radius-card:16px;--transition-base:0.4s ease;--transition-fast:0.15s ease-in-out;--bp-mobile:768px;--bp-tablet:1024px;--bp-desktop:1280px}", "html": "<div style='display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-family:SUIT,Pretendard,sans-serif;font-size:11px'><div style='padding:18px;background:#0055A5;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--hct-blue</div><b style='font-size:13px'>#0055A5</b></div><div style='padding:18px;background:#0B61A8;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--hct-blue-deep</div><b style='font-size:13px'>#0B61A8</b></div><div style='padding:18px;background:#4ADE80;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--check-green</div><b style='font-size:13px'>#4ADE80</b></div><div style='padding:18px;background:#F2F5F8;color:#000;border:1px solid #ddd;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--surface</div><b style='font-size:13px'>#F2F5F8</b></div><div style='padding:18px;background:#001A33;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--surface-dark</div><b style='font-size:13px'>#001A33</b></div></div>" },
 
-    "tokens": {
-      "title": "03. 디자인 토큰 시스템",
-      "blocks": [
-        { "type": "text", "value": "HCT 토큰을 실측 computed style 기반으로 재구성." },
-        { "type": "component", "title": "CSS Variables (재구성)", "css": ":root{--hct-blue:#0055A5;--hct-blue-deep:#0B61A8;--hct-blue-light:#007AFF;--check-green:#4ADE80;--text-primary:#0F0F10;--text-body:#27282B;--text-secondary:#3F4146;--text-muted:#666666;--text-light:#898D95;--surface-white:#FFFFFF;--surface-light:#F2F5F8;--surface-dark:#001A33;--border-default:#A4A7AD;--overlay-black-50:rgba(0,0,0,0.5);--font-base:'SUIT',-apple-system,sans-serif;--fs-hero:50px;--fs-section-h2:44px;--fs-mid-h2:32px;--fs-card-title:24px;--fs-body:20px;--fs-base:20px;--fs-small:16px;--lh-base:1.6;--container-pad-x:80px;--radius-pill:99px;--radius-card:16px;--transition-base:0.4s ease;--transition-fast:0.15s ease-in-out;--transition-slow:1s ease;--bp-mobile:768px;--bp-tablet:1024px;--bp-desktop:1280px}", "html": "<div style='display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-family:SUIT,Pretendard,sans-serif;font-size:11px'><div style='padding:18px;background:#0055A5;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--hct-blue</div><b style='font-size:13px'>#0055A5</b></div><div style='padding:18px;background:#0B61A8;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--hct-blue-deep</div><b style='font-size:13px'>#0B61A8</b></div><div style='padding:18px;background:#4ADE80;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--check-green</div><b style='font-size:13px'>#4ADE80</b></div><div style='padding:18px;background:#F2F5F8;color:#000;border:1px solid #ddd;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--surface-light</div><b style='font-size:13px'>#F2F5F8</b></div><div style='padding:18px;background:#001A33;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--surface-dark</div><b style='font-size:13px'>#001A33</b></div></div>" },
-        { "type": "heading", "value": "타이포 토큰 (실측)" },
-        { "type": "kv", "columns": 2, "items": [
-          { "label": "주 서체", "value": "SUIT - 한글 기하 폰트 (dcamp와 동일)" },
-          { "label": "Fallback 스택", "value": "-apple-system, sans-serif (단순 폴백)" },
-          { "label": "Base body", "value": "20px / line-height 32px (1.6)" },
-          { "label": "Hero H1", "value": "50px / weight 800 / color #0F0F10 (인트로 슬로건 '당신의 기술 파트너')" },
-          { "label": "Section H2 큰", "value": "44px / weight 800 - '사업 소개 헤딩', '글로벌 HCT 헤딩', 'HCT 소식 헤딩'" },
-          { "label": "Section H2 작은", "value": "32px / weight 800 - '자주 찾는 서비스'" },
-          { "label": "Card H3", "value": "24px / weight 800 - 뉴스 카드 제목" },
-          { "label": "Body / Link", "value": "20px / weight 400-500 - 본문 표준" },
-          { "label": "Small Caption", "value": "16px - 캡션·날짜" },
-          { "label": "Weight 범위", "value": "400 / 500 / 600 / 700 / 800 (5단계)" }
+        { "type": "palette", "title": "HCT Blue + 무채색 + Check Green 강조", "colors": [
+          { "name": "Body Text", "hex": "#27282B", "usage": "본문 표준 (368건) - 사이트 최빈도" },
+          { "name": "Heading", "hex": "#0F0F10", "usage": "헤딩 표준 (311건) - 거의 검정이지만 더 부드러움" },
+          { "name": "White", "hex": "#FFFFFF", "usage": "다크 영역 텍스트 (230건)" },
+          { "name": "Secondary", "hex": "#3F4146", "usage": "보조 텍스트 (158건)" },
+          { "name": "Surface Light", "hex": "#F2F5F8", "usage": "섹션 배경 (69건)" },
+          { "name": "🟢 HCT Blue", "hex": "#0055A5", "usage": "🟢 메인 브랜드 컬러 - 견적 문의 pill / 자주 찾는 서비스 아이콘 / 활성 상태 (34건)" },
+          { "name": "Apple Blue", "hex": "#007AFF", "usage": "보조 링크 (2건)" },
+          { "name": "Dark Navy", "hex": "#001A33", "usage": "푸터·강조 영역 (2건)" },
+          { "name": "🟢 Check Green", "hex": "#4ADE80", "usage": "🟢 시험 통과 시그널 - '통과·승인' 메타포" }
         ]},
-        { "type": "heading", "value": "여백 시스템" },
-        { "type": "spacingScale", "items": [
-          { "label": "xs", "px": 8 },
-          { "label": "sm", "px": 16 },
-          { "label": "md", "px": 24 },
-          { "label": "lg", "px": 40 },
-          { "label": "xl", "px": 64 },
-          { "label": "section", "px": 120 },
-          { "label": "container-x", "px": 80 }
+
+        { "type": "typo", "items": [
+          { "label": "Hero 50px·800 (SUIT)", "size": "50px", "weight": 800, "sample": "당신의 ● 기술 파트너 / No.1 Testing & Calibration Lab" },
+          { "label": "Section H2 44px·700", "size": "44px", "weight": 700, "sample": "HCT는 사람과 세상을 연결하는 기술로 모두의 내일을 만들어갑니다" },
+          { "label": "H3 32px·700", "size": "32px", "weight": 700, "sample": "자주 찾는 서비스 / 보조 헤딩" },
+          { "label": "H4 24px·700", "size": "24px", "weight": 700, "sample": "뉴스 카드 제목 - 에이치시티, ETRI와..." },
+          { "label": "🟢 Body 20px·400 / lh 32px", "size": "20px", "weight": 400, "sample": "기본 본문 - 한국 사이트 평균(16-18px)보다 큼", "tracking": "loose" },
+          { "label": "Caption 16px·500", "size": "16px", "weight": 500, "sample": "카드 라벨 / FAQ / 시험인증견적문의" }
         ]},
-        { "type": "heading", "value": "둥글기" },
-        { "type": "radiusScale", "items": [
-          { "label": "none", "px": 0, "usage": "Hero 풀폭 / 푸터 / 섹션 배경" },
-          { "label": "card", "px": 16, "usage": "뉴스 카드 / 사업 카드 / 인증마크 박스" },
-          { "label": "pill", "px": 99, "usage": "견적 문의하기 CTA / 자세히 보기 / 카테고리 탭" },
-          { "label": "circle", "px": 50, "usage": "Hero ✓ 모핑 점 시작 형태 / 상담·FAQ·TOP Floating 아이콘 배경", "note": "percent" }
-        ]},
-        { "type": "heading", "value": "트랜지션 토큰 (실측 빈도)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "all (default)", "value": "481건 - 기본 트랜지션" },
-          { "label": "🟢 0.4s (HCT 표준)", "value": "205건 - 사이트 모든 전환의 표준 시간. 일반 사이트 0.3s보다 약간 느림" },
-          { "label": "color 0.15s ease-in-out + background-color 0.15s", "value": "58건 - 호버 시 색상 + 배경 동시 빠른 전환 (0.15s 매우 빠름)" },
-          { "label": "opacity 1s + transform 1s + -webkit-transform 1s", "value": "10건 - 스크롤 리빌 표준 (AOS fade-up 적용)" },
-          { "label": "transform", "value": "8건 - 단독 변환" },
-          { "label": "background 0.4s", "value": "8건 - 배경만 단독 전환" },
-          { "label": "width 0.3s", "value": "6건 - 사이드바·아코디언 너비 변화" },
-          { "label": "transform 1s + -webkit-transform 1s", "value": "6건 - 1초 변환" }
+
+        { "type": "kv", "title": "트랜지션 + 브레이크포인트", "columns": 1, "items": [
+          { "label": "all (default)", "value": "481건 - 사이트 기본" },
+          { "label": "🟢 0.4s 표준", "value": "🟢 205건 - HCT 표준 시간 (한국 평균 0.3s보다 약간 길어 차분한 느낌)" },
+          { "label": "color 0.15s + background-color 0.15s ease-in-out", "value": "58건 - 호버 시 색상+배경 동시 0.15s 빠른 전환" },
+          { "label": "opacity 1s + transform 1s + -webkit-transform 1s", "value": "10건 - AOS fade-up 스크롤 리빌 (1초 부드러운 등장)" },
+          { "label": "transform 8건 / background 0.4s 8건", "value": "scale·translate 단독 / 배경 단독" },
+          { "label": "width 0.3s", "value": "6건 - 아코디언·사이드바 너비 변화" },
+          { "label": "브레이크포인트", "value": "3-단계 (768/1024/1280) - 한국 사이트 표준" }
         ]}
       ]
     },
 
     "main-page": {
-      "title": "04. 메인 페이지 분석 (sH 7,234px)",
+      "title": "03. 메인 페이지 (sH 7,178px) - 5 다이아몬드 Hero + 7 콘텐츠 섹션",
       "blocks": [
-        { "type": "text", "value": "메인 페이지는 7,234px. 첫 911px의 main-top section은 실 높이는 911px이지만 z-index 9999 fixed Intro Overlay가 전체 화면을 덮으며 약 6,300px의 스크롤을 흡수해 ✓ 체크마크 모핑 애니메이션을 실행한다. 진짜 콘텐츠 6개 섹션(추천키워드/자주 찾는 서비스/사업 소개/글로벌 HCT/HCT 소식/HCT 안내)은 911-6232px 영역에 펼쳐지고 마지막 1,000px가 푸터." },
+        { "type": "text", "value": "HCT 메인 페이지 7,178px - 7개 콘텐츠 섹션으로 구성. 디자인이 업데이트되어 5 다이아몬드 그리드 Hero가 새로운 시그니처 (이전 ✓ 체크마크 모핑 Hero에서 변경)." },
 
-        { "type": "heading", "value": "전체 페이지 구조 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "① section.main-top (0-911px)", "value": "🟢 Hero - ✓ 체크마크 스크롤 모핑 애니메이션. 실제 높이는 911px이지만 fixed overlay가 전체 화면을 덮어 약 6,300px의 스크롤을 흡수" },
-          { "label": "② section.container (991-1077px, 86px)", "value": "추천키워드 보기 - 작은 영역. 검색 input + 추천 태그 추정" },
-          { "label": "③ section.main-quick.aos-init (1171-1326px, 155px)", "value": "🟢 자주 찾는 서비스 - H2 32px·800 + 7종 quick link (FAQ, 시험인증견적문의, 교정견적문의, 상담연락처 안내, 신청양식, 성적서 조회, 판매 서비스)" },
-          { "label": "④ section.main-business (1486-2567px, 1,081px)", "value": "🟢 사업 소개 - H2 44px '사람과 세상을 연결하는 기술' + 6 카드 슬라이더 (모빌리티/방산/시험·인증/교정/융합측정엔지니어링/배터리) + 우측 prev/next 화살표 + '사업소개 더보기' 라벨" },
-          { "label": "⑤ section.main-global (2697-3943px, 1,246px)", "value": "🟢 글로벌 HCT - H2 44px '200여 개 국가 인증 서비스' + 9 인증마크 가로 슬라이드 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 세계 지도 3거점 + '자세히 보기' pill" },
-          { "label": "⑥ section.main-news (4002-5151px, 1,149px)", "value": "🟢 HCT 소식 - H2 44px '새로운 소식' + YouTube 빨간 아이콘 + 좌측 카테고리 5탭 (전체/보도자료/아티클/스토리/유튜브/e-뉴스레터) + 우측 뉴스 카드 3종" },
-          { "label": "⑦ section.main-intro (5311-6232px, 921px)", "value": "HCT 안내 - 연구소·H&H BIO 등 관련 기관 카드 + 문의 영역 '문의하실 것이 있으신가요?' (031-645-6300, myHCTSupport@hct.co.kr)" },
-          { "label": "⑧ Footer (6232-7234px, 1,002px)", "value": "사이트맵 7 그룹 + 회사정보 + 인증 마크 5종 (가족친화·WLB·일자리·청년친화·제대군인고용)" }
-        ]},
-
-        { "type": "heading", "value": "Header 구조 (sticky)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "위치", "value": "position: sticky / class 'hd' / height 100px / background #FFF / scroll 시 top: -100 으로 일시 숨김 가능" },
-          { "label": "좌측", "value": "HCT 로고 (파란 워드마크 + '주식회사 에이치시티' 한글) - 약 161×54px" },
-          { "label": "중앙 GNB", "value": "6 메뉴 - 기업소개 / 시험인증 / 측정표준 / HCT소식 / 고객전용 / 인재채용 ↗ (외부 링크 표시)" },
-          { "label": "🟢 우측 컨트롤 4종", "value": "[견적 문의하기] 파란 pill CTA / 🌐 Globe (다국어) / 🔍 Search (사이트 검색) / ⋮⋮⋮ 9-dot 햄버거 (전체 메뉴/관련 서비스)" }
-        ]},
-
-        { "type": "heading", "value": "Floating 패널 (우측 하단 fixed)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "구조", "value": "흰 박스 패널 - 세로 3 버튼" },
-          { "label": "[상담] 버튼", "value": "헤드폰 아이콘 + '상담' 텍스트 - 1:1 상담/전화 연결" },
-          { "label": "[FAQ] 버튼", "value": "? 물음표 아이콘 + 'FAQ' 텍스트 - 자주 묻는 질문 진입" },
-          { "label": "[TOP] 버튼", "value": "↑ 화살표 아이콘 + 'TOP' 텍스트 - Scroll-to-top" },
-          { "label": "z-index", "value": "50 (헤더보다 낮음, 일반 콘텐츠보다 위)" }
+        { "type": "structure", "items": [
+          { "label": "01. Header sticky (100px)", "tag": "fixed -100 hide", "desc": "GNB 6 메뉴 (기업소개·시험인증·측정표준·HCT소식·고객전용·인재채용↗) + 견적 문의하기 파란 pill CTA + globe·search·9-dot 3 아이콘" },
+          { "label": "02. 🟢 5 다이아몬드 그리드 Hero (시그니처)", "tag": "911px viewport", "desc": "5 다이아몬드 모양 카드 (도시 야경 / 메탈 그리드 / 사람이 태블릿 그리는 모습 / 산악 일출 / + 빈) + 회전 텍스트 'Global Standard · No.1 Testing & Calibration Lab · Trusted Partner · For Humanity' (각 다이아몬드 가장자리에 위치)" },
+          { "label": "03. 🟢 검색바 + 자주 찾는 서비스 7-아이콘", "tag": "흰 + 파랑", "desc": "🟢 큰 파란 검색바 '찾으시는 서비스를 검색해보세요.' + 7 아이콘 그리드 (FAQ·시험인증견적문의·교정견적문의·상담연락처 안내·신청양식·성적서 조회·판매서비스)" },
+          { "label": "04. 사업소개", "tag": "큰 H2", "desc": "'HCT는 사람과 세상을 연결하는 기술로 모두의 내일을 만들어갑니다.' 44px·700 + 사업소개 더보기 < > 페이지네이션 + 6 카드 슬라이더 (모빌리티·방산·우주·시험·인증·교정·융합측정·배터리)" },
+          { "label": "05. 글로벌 인증 네트워크", "tag": "9 마크 + 3거점", "desc": "🟢 'HCT는 글로벌 인증 네트워크로 200여 개 국가의 인증 서비스를 지원' + 9 국제 인증마크 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 3거점 세계지도 (한국·미국·인도네시아)" },
+          { "label": "06. HCT 소식 5-탭", "tag": "멀티 채널", "desc": "'HCT의 새로운 소식을 전합니다.' + 5-탭 (전체/보도자료/아티클/스토리/유튜브/e-뉴스레터) + 3 카드 (ETRI 위성탑재체 공동연구 / 허봉재 대표 대통령표창 / 이천 도자기 축제)" },
+          { "label": "07. Footer + 7 메뉴 그룹", "tag": "흰 + 다크", "desc": "기업소개(8)/시험인증(5)/측정표준(7)/HCT소식(2)/고객전용(7)/인재채용↗ + 회사 정보 + 정부 인증 4 마크 (가족친화/열림/생애주기/제대군인고용 우수기업)" },
+          { "label": "Floating 우측 (z-50)", "tag": "fixed 224px", "desc": "🟢 상담 (헤드폰 icon 파란 채워진) + FAQ (? icon 흰) + TOP (↑ icon 검정 - 차별화) 3-fab cluster" }
         ]}
       ]
     },
 
-    "hero-checkmark": {
-      "title": "05. Hero - 스크롤 모핑 체크마크 애니메이션 (시그니처 1번)",
+    "signature-diamond-hero": {
+      "title": "04. 시그니처 - 5 다이아몬드 그리드 Hero",
       "blocks": [
-        { "type": "text", "value": "HCT 사이트의 첫 인상이자 가장 강력한 디자인 시그니처. 메인 페이지 첫 911px의 main-top section을 z-index 9999 fixed overlay가 덮으며, 사용자가 약 6,300px를 스크롤하는 동안 '당신의 ● 기술 파트너' 슬로건의 동그라미가 점→캡슐→체크마크로 점진 변형. HCT(시험인증 회사)의 정체성을 ✓ 마크로 직접 시각화한 인터랙티브 인트로." },
+        { "type": "text", "value": "🟢 HCT의 새로운 시그니처 (이전 ✓ 체크마크 모핑 Hero에서 업데이트). 5 다이아몬드 모양 카드 그리드 + 가장자리 회전 텍스트 - '시험인증 결과 = 양호'를 다이아몬드 형태로 메타포." },
 
-        { "type": "heading", "value": "스크롤 위치별 ✓ 형태 변화 (실측)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "scrollY 0-1500 - 동그라미 페이드인", "value": "○ 흐릿한 동그라미 (수많은 ●이 fade-in 중). '당신의' 텍스트만 옅게 보이고 '기술 파트너' 부분은 아직 미표시" },
-          { "label": "scrollY 1500-3000 - 슬로건 완성", "value": "흰색 ● 동그라미 + '당신의 / 기술 파트너' 두 줄 슬로건 흰 텍스트 (50px·800)" },
-          { "label": "scrollY 3000-4500 - 민트 단계", "value": "동그라미 색이 흰색 → 민트 #B0FFD8 → 초록 #4ADE80 점진 변화" },
-          { "label": "scrollY 4500-6000 - 캡슐 단계", "value": "🟢 동그라미가 좌측으로 늘어나기 시작 - ● → ━● 캡슐 형태. ✓ 마크의 '짧은 위쪽 선'이 그려지는 과정" },
-          { "label": "scrollY 6000-6300 - 체크마크 완성", "value": "✓ 모양 완성! 좌측 짧은 선 + 우측 긴 선 + 끝점에 작은 흰 동그라미 (마치 펜으로 그린 흔적)" }
-        ]},
-
-        { "type": "heading", "value": "체크마크 모핑 클론 (재현 시도)" },
-        { "type": "component", "title": "HCT 시그니처 ✓ 모핑 - SVG path morphing 시뮬레이션", "html": "<div class='hct-cm1'><div class='hct-cm1-blue'></div><div class='hct-cm1-content'><h1>당신의 <span class='hct-cm1-mark'></span><br>기술 파트너</h1><p class='hct-cm1-scroll'>↓ Scroll</p></div></div>", "css": ".hct-cm1{position:relative;width:100%;height:540px;background:#0B61A8;overflow:hidden;font-family:'SUIT',Pretendard,sans-serif;display:flex;align-items:center;justify-content:center}.hct-cm1-blue{position:absolute;inset:0;background:radial-gradient(ellipse at center,#0055A5,#001A33)}.hct-cm1-content{position:relative;z-index:2;text-align:center;color:#FFFFFF}.hct-cm1-content h1{font-size:50px;font-weight:800;letter-spacing:-0.02em;line-height:1.4;margin:0;display:inline-block}.hct-cm1-mark{display:inline-block;width:36px;height:30px;background:transparent;position:relative;top:6px;animation:hct-cm1-morph 5s ease-in-out infinite}.hct-cm1-mark::before{content:'';position:absolute;left:6px;top:18px;width:12px;height:6px;background:#4ADE80;border-radius:4px;transform:rotate(45deg);transform-origin:left center;animation:hct-cm1-line1 5s ease-in-out infinite}.hct-cm1-mark::after{content:'';position:absolute;left:14px;top:14px;width:20px;height:6px;background:#4ADE80;border-radius:4px;transform:rotate(-45deg);transform-origin:left center;animation:hct-cm1-line2 5s ease-in-out infinite}@keyframes hct-cm1-line1{0%,30%{width:0;background:#FFFFFF}50%{width:12px}100%{width:12px;background:#4ADE80}}@keyframes hct-cm1-line2{0%,40%{width:0;background:#FFFFFF}60%{width:20px}100%{width:20px;background:#4ADE80}}@keyframes hct-cm1-morph{0%,20%{transform:scale(0.8)}80%,100%{transform:scale(1)}}.hct-cm1-scroll{margin-top:48px;color:rgba(255,255,255,0.6);font-size:14px;letter-spacing:0.1em}", "fullWidth": true },
-
-        { "type": "heading", "value": "기술적 구현 추정" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "오버레이 구조", "value": "position: fixed; inset: 0; height: 911px; z-index: 9999 - 인트로 컨테이너가 전체 화면을 덮음" },
-          { "label": "스크롤 진행 추적", "value": "window.scrollY를 0-6300 범위로 받아 progress (0-1)로 normalize. 그 진행에 따라 ✓ 그려지는 정도를 결정" },
-          { "label": "✓ 그리기 방법 (추정 1: SVG)", "value": "SVG <path>의 stroke-dasharray + stroke-dashoffset을 progress에 따라 변화 - 'pen 따라가는' 효과. 라인 길이가 점진적으로 늘어남" },
-          { "label": "✓ 그리기 방법 (추정 2: 두 div)", "value": "두 div를 transform/width로 결합 - 짧은 선과 긴 선이 각각 별도 div, scrollY 따라 width가 늘어남" },
-          { "label": "색상 트랜지션", "value": "흰색 → 민트 → 초록 보간 - HSL 또는 RGB 보간을 progress에 따라 적용" },
-          { "label": "Dismiss 메커니즘", "value": "사용자가 의도적으로 인트로를 닫지 않으면 ✓가 완성될 때까지 콘텐츠 안 보임. 단, scrollY가 일정 값(약 6,300+) 이상이면 자동 hide. 또는 ESC 키 / 닫기 버튼 (미캡쳐, 추정)" }
-        ]},
-
-        { "type": "heading", "value": "디자인 의의" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "정체성의 시각 메타포", "value": "HCT(시험인증) = ✓(인증·통과 기호). 회사의 사업 본질을 첫 화면에서 그래픽으로 직접 표현" },
-          { "label": "사용자 참여 요구", "value": "단순 자동 재생 영상이 아니라 '사용자가 스크롤해야만' ✓가 완성됨 - 인터랙티브한 인증 과정의 비유" },
-          { "label": "긴 인트로의 위험과 보상", "value": "약 6,300px 스크롤 점유는 사이트 진입 시간이 길어지는 위험. 하지만 ✓ 완성 경험이 인상적이라 'HCT 사이트 = 그 체크마크 사이트'로 기억됨" },
-          { "label": "재방문자 대응 (추정)", "value": "두 번째 방문 시 즉시 메인 콘텐츠 표시되도록 localStorage 플래그 또는 SKIP 버튼 권장. 현재 캡쳐에서는 SKIP 버튼 미발견 - UX 개선 여지" }
+          { "label": "🟢 5 다이아몬드 그리드 (시각 자산)", "value": "5 다이아몬드 모양 카드 (border-radius 다이아몬드 회전 + clip-path 또는 transform: rotate(45deg)) 배치 - 각 다이아몬드 안에 다른 비주얼: (1) 좌측 - 도시 야경 / (2) 중앙 하단 - 검정 메탈 그리드 (시험 패턴) / (3) 중앙 - 사람이 태블릿 그리는 모습 / (4) 우측 상단 - 산악 일출 (뉴질랜드 풍) / (5) 우측 - 빈 공간 또는 추가 비주얼" },
+          { "label": "🟢 회전 텍스트 (다이아몬드 가장자리)", "value": "각 다이아몬드 변을 따라 회전된 텍스트 배치 - 'Global Standard' (좌측 하향) / 'No.1 Testing & Calibration Lab' (중앙 상향) / 'Trusted Partner' (중앙 하향) / 'For Humanity' (우측 상향) - SUIT Bold 800 + 검정 또는 흰 텍스트" },
+          { "label": "메시지", "value": "다이아몬드 = '품질·정밀·신뢰' 메타포 + 회전 텍스트 = 사이트 정체성 (No.1 Testing) + 비주얼 = 다양한 시험 영역 (도시 인프라·메탈·디지털·자연)" },
+          { "label": "구현 추정", "value": "CSS transform: rotate(45deg) + clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) 다이아몬드 카드 + 각 카드 안에 다른 background-image + 회전 텍스트 transform: rotate(-45deg) 보정" }
         ]}
       ]
     },
 
     "quick-services": {
-      "title": "06. 자주 찾는 서비스 (Quick Link 7종)",
+      "title": "05. 자주 찾는 서비스 (7-아이콘 그리드)",
       "blocks": [
-        { "type": "text", "value": "Hero ✓ 인트로를 통과한 사용자가 가장 먼저 만나는 콘텐츠 섹션. H2 '자주 찾는 서비스' 32px·800 + 7개 quick link 아이콘 그리드. B2B 시험인증 사이트답게 즉각 비즈니스 액션 (견적/문의/조회)에 진입할 수 있는 단축 경로." },
-
-        { "type": "heading", "value": "7개 Quick Link (실측 순서)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "① FAQ", "value": "💬 말풍선 아이콘 + 'FAQ' - 자주 묻는 질문 페이지로 이동" },
-          { "label": "② 시험인증견적문의", "value": "📋 문서 아이콘 + '시험인증견적문의' - 시험인증 견적 요청 폼" },
-          { "label": "③ 교정견적문의", "value": "📐 도구 아이콘 + '교정견적문의' - 측정 장비 교정 견적 요청" },
-          { "label": "④ 상담연락처 안내", "value": "📞 전화 아이콘 + '상담연락처 안내' - 부서별 연락처" },
-          { "label": "⑤ 신청양식", "value": "📝 양식 아이콘 + '신청양식' - 시험·교정·교육 신청 양식 다운로드" },
-          { "label": "⑥ 성적서 조회", "value": "🔍 돋보기+서류 아이콘 + '성적서 조회' - 시험 성적서 진위 확인" },
-          { "label": "⑦ 판매 서비스", "value": "🛒 카트 아이콘 + '판매 서비스' - 측정 장비 판매 페이지" }
-        ]},
-
-        { "type": "heading", "value": "Quick Link Card 재현" },
-        { "type": "component", "title": "자주 찾는 서비스 7-카드 그리드 - 작은 일러스트 + 텍스트", "html": "<section class='hct-ql1'><h2>자주 찾는 서비스</h2><div class='hct-ql1-grid'><a class='hct-ql1-i'><div class='hct-ql1-ic'>💬</div><span>FAQ</span></a><a class='hct-ql1-i'><div class='hct-ql1-ic'>📋</div><span>시험인증<br>견적문의</span></a><a class='hct-ql1-i'><div class='hct-ql1-ic'>📐</div><span>교정<br>견적문의</span></a><a class='hct-ql1-i'><div class='hct-ql1-ic'>📞</div><span>상담연락처<br>안내</span></a><a class='hct-ql1-i'><div class='hct-ql1-ic'>📝</div><span>신청양식</span></a><a class='hct-ql1-i'><div class='hct-ql1-ic'>🔍</div><span>성적서 조회</span></a><a class='hct-ql1-i'><div class='hct-ql1-ic'>🛒</div><span>판매 서비스</span></a></div></section>", "css": ".hct-ql1{padding:64px 80px;background:#FFFFFF;font-family:'SUIT',Pretendard,sans-serif}.hct-ql1 h2{font-size:32px;font-weight:800;color:#0F0F10;letter-spacing:-0.02em;margin:0 0 32px}.hct-ql1-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}.hct-ql1-i{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 12px;background:#F2F5F8;border-radius:16px;text-align:center;text-decoration:none;color:#27282B;cursor:pointer;transition:all 0.4s ease}.hct-ql1-i:hover{background:#FFFFFF;outline:2px solid #0055A5;transform:translateY(-4px)}.hct-ql1-ic{width:56px;height:56px;display:grid;place-items:center;background:#FFFFFF;border-radius:50%;font-size:24px;box-shadow:0 4px 16px rgba(0,85,165,0.08)}.hct-ql1-i:hover .hct-ql1-ic{background:#0055A5;color:#FFFFFF}.hct-ql1-i span{font-size:14px;font-weight:600;line-height:1.4}" }
+        { "type": "component", "title": "hct-qs1 - 7-아이콘 + 검색바", "fullWidth": true, "css": ".hct-qs1{padding:80px 64px;background:#fff;font-family:SUIT,Pretendard,sans-serif}.hct-qs1__search{background:#0055A5;color:#fff;padding:20px 32px;border-radius:99px;display:flex;align-items:center;gap:14px;margin-bottom:80px;cursor:pointer;font-size:18px;font-weight:500}.hct-qs1__search-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}.hct-qs1__search-text{flex:1;opacity:0.85}.hct-qs1__filter{font-size:20px}.hct-qs1__row{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center}.hct-qs1__label{font-size:28px;font-weight:700;color:#0F0F10;line-height:1.3}.hct-qs1__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:24px}.hct-qs1__item{display:flex;flex-direction:column;align-items:center;gap:14px;cursor:pointer;text-align:center;transition:transform 0.4s ease}.hct-qs1__item:hover{transform:translateY(-4px)}.hct-qs1__ic{width:56px;height:56px;background:#E5F0F9;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#0055A5;font-size:24px;transition:all 0.4s ease}.hct-qs1__item:hover .hct-qs1__ic{background:#0055A5;color:#fff}.hct-qs1__name{font-size:14px;color:#27282B;font-weight:500}", "html": "<div class='hct-qs1'><div class='hct-qs1__search'><span class='hct-qs1__search-icon'>🔍</span><span class='hct-qs1__search-text'>찾으시는 서비스를 검색해보세요.</span><span class='hct-qs1__filter'>≡</span></div><div class='hct-qs1__row'><div class='hct-qs1__label'>자주 찾는<br>서비스</div><div class='hct-qs1__grid'><div class='hct-qs1__item'><div class='hct-qs1__ic'>❓</div><div class='hct-qs1__name'>FAQ</div></div><div class='hct-qs1__item'><div class='hct-qs1__ic'>📋</div><div class='hct-qs1__name'>시험인증견적문의</div></div><div class='hct-qs1__item'><div class='hct-qs1__ic'>📊</div><div class='hct-qs1__name'>교정견적문의</div></div><div class='hct-qs1__item'><div class='hct-qs1__ic'>📞</div><div class='hct-qs1__name'>상담연락처 안내</div></div><div class='hct-qs1__item'><div class='hct-qs1__ic'>📝</div><div class='hct-qs1__name'>신청양식</div></div><div class='hct-qs1__item'><div class='hct-qs1__ic'>📄</div><div class='hct-qs1__name'>성적서 조회</div></div><div class='hct-qs1__item'><div class='hct-qs1__ic'>🛒</div><div class='hct-qs1__name'>판매 서비스</div></div></div></div></div>" }
       ]
     },
 
     "business-cards": {
-      "title": "07. 사업 6 카드 슬라이더 (시그니처 2번)",
+      "title": "06. 사업 6 카드 슬라이더",
       "blocks": [
-        { "type": "text", "value": "main-business 섹션 (1,081px). H2 '사람과 세상을 연결하는 기술' + 6 카드 가로 슬라이더. 모빌리티·방산·시험·인증·교정·융합측정엔지니어링·배터리 - HCT의 핵심 사업 6 영역을 풀폭 사진 카드로 구성." },
+        { "type": "text", "value": "사업소개 섹션. 좌측 큰 한글 헤딩 + 우측 < > 페이지네이션 + 6 카드 가로 슬라이더." },
 
-        { "type": "heading", "value": "6 카드 구성 (실측)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "① 모빌리티", "value": "🟢 글로벌 완성차가 선택한 시험 파트너 - 자동차 휠 클로즈업 사진 (어두운 블루 톤)" },
-          { "label": "② 방산", "value": "초대형 워크인 챔버 기반으로 대형 체계까지 원스톱 서비스 제공 - 항공기/우주 챔버 사진 (블루 톤)" },
-          { "label": "③ 시험·인증", "value": "제품의 안전성과 성능 검증 - EMC 안테나 챔버 (피라미드 흡수체) 사진" },
-          { "label": "④ 교정", "value": "측정 장비의 정확도 확보 - 측정 장비 다이얼/케이블 사진" },
-          { "label": "⑤ 융합측정엔지니어링", "value": "교정의 모든 단계, 체계적으로 설계된 정확성 - 측정 결과물 / 양식 사진" },
-          { "label": "⑥ 배터리", "value": "안전한 배터리의 기준 - 배터리 셀 클로즈업 (블루 LED 광원) 사진" }
-        ]},
-
-        { "type": "heading", "value": "슬라이더 컨트롤" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "위치", "value": "우측 상단 - '사업소개 더보기' 작은 라벨 + 좌/우 화살표 원형 버튼 (회색 #F2F5F8 배경 + 검정 화살표)" },
-          { "label": "카드 레이아웃", "value": "Grid 6-column - 한 화면에 6장 모두 표시 (각 약 240px 폭). 모바일에서는 가로 스와이프로 추정" },
-          { "label": "카드 디자인", "value": "풀폭 사진 (260px 높이 추정) + 좌하단 흰 텍스트 - 큰 카테고리명 (24-28px·800) + 짧은 부제 (15-16px)" },
-          { "label": "사진 톤 통일", "value": "6장 모두 블루 톤으로 후처리 - HCT 브랜드 컬러와 자연스럽게 결합" }
-        ]},
-
-        { "type": "heading", "value": "사업 카드 6종 재현" },
-        { "type": "component", "title": "사업 6 카드 슬라이더 - 가로 그리드", "html": "<section class='hct-bc1'><div class='hct-bc1-head'><div class='hct-bc1-meta'>사업 소개</div><h2>HCT는 사람과 세상을 연결하는 기술로<br>모두의 내일을 만들어갑니다.</h2><div class='hct-bc1-controls'><span>사업소개 더보기</span><button>‹</button><button>›</button></div></div><div class='hct-bc1-grid'><a class='hct-bc1-i hct-bc1-1'><h3>모빌리티</h3><p>글로벌 완성차가 선택한 시험 파트너</p></a><a class='hct-bc1-i hct-bc1-2'><h3>방산</h3><p>초대형 워크인 챔버 기반으로 대형 체계까지 원스톱 서비스 제공</p></a><a class='hct-bc1-i hct-bc1-3'><h3>시험·인증</h3><p>제품의 안전성과 성능 검증</p></a><a class='hct-bc1-i hct-bc1-4'><h3>교정</h3><p>측정 장비의 정확도 확보</p></a><a class='hct-bc1-i hct-bc1-5'><h3>융합측정엔지니어링</h3><p>교정의 모든 단계, 체계적으로 설계된 정확성</p></a><a class='hct-bc1-i hct-bc1-6'><h3>배터리</h3><p>안전한 배터리의 기준</p></a></div></section>", "css": ".hct-bc1{padding:80px;background:#0055A5;font-family:'SUIT',Pretendard,sans-serif}.hct-bc1-head{display:flex;justify-content:space-between;align-items:flex-end;color:#FFFFFF;margin-bottom:48px}.hct-bc1-meta{font-size:18px;font-weight:600;color:#FFFFFF;opacity:0.85;margin-bottom:12px}.hct-bc1-head h2{font-size:36px;font-weight:800;letter-spacing:-0.02em;line-height:1.3;margin:0;color:#FFFFFF}.hct-bc1-controls{display:flex;align-items:center;gap:8px}.hct-bc1-controls span{padding:6px 14px;background:rgba(15,15,16,0.7);color:#FFFFFF;border-radius:99px;font-size:12px;font-weight:600}.hct-bc1-controls button{width:48px;height:48px;background:rgba(255,255,255,0.18);border:0;border-radius:50%;color:#FFFFFF;cursor:pointer;font-size:16px;transition:background 0.4s ease}.hct-bc1-controls button:hover{background:rgba(255,255,255,0.32)}.hct-bc1-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.hct-bc1-i{display:flex;flex-direction:column;justify-content:flex-end;padding:24px;height:300px;border-radius:0;text-decoration:none;color:#FFFFFF;cursor:pointer;background-size:cover;background-position:center;position:relative;overflow:hidden}.hct-bc1-i::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,26,51,0.7));z-index:1}.hct-bc1-i>*{position:relative;z-index:2}.hct-bc1-1{background:linear-gradient(135deg,#0F2540,#1A4A78)}.hct-bc1-2{background:linear-gradient(135deg,#1A3A5A,#3A6890)}.hct-bc1-3{background:linear-gradient(135deg,#0F1A2A,#2A4A6A)}.hct-bc1-4{background:linear-gradient(135deg,#0F2540,#456890)}.hct-bc1-5{background:linear-gradient(135deg,#1A3A60,#5A8AB8)}.hct-bc1-6{background:linear-gradient(135deg,#0F2A4A,#1565A8)}.hct-bc1-i h3{font-size:22px;font-weight:800;margin:0 0 8px;letter-spacing:-0.02em}.hct-bc1-i p{font-size:13px;color:rgba(255,255,255,0.85);margin:0;line-height:1.5}", "fullWidth": true }
+          { "label": "Section 헤딩", "value": "🟢 '사업 소개' label + 'HCT는 사람과 세상을 연결하는 기술로 / 모두의 내일을 만들어갑니다.' 44px·700" },
+          { "label": "우측 페이지네이션", "value": "사업소개 더보기 라벨 + < > 원형 버튼 (이전·다음 슬라이드)" },
+          { "label": "🟢 6 사업 카드", "value": "(1) 모빌리티 (자동차·자율주행 시험인증) / (2) 방산 (위성·항공 시험) / (3) 시험·인증 (EMC·안전·무선) / (4) 교정 (측정 표준·계측) / (5) 융합측정 엔지니어링 (국방 정밀측정) / (6) 배터리 (EV·ESS 배터리 시험)" },
+          { "label": "카드 구성", "value": "각 카드: 큰 사진 (다크 톤 + 사업 비주얼) + 라벨 ('BUSINESS 0X') + 사업명 + 부제 + 호버 시 사진 1.08x scale + 라벨 슬라이드 인" }
+        ]}
       ]
     },
 
     "global-network": {
-      "title": "08. 글로벌 HCT - 9 인증마크 + 3거점 세계 지도 (시그니처 3번)",
+      "title": "07. 글로벌 인증 네트워크 (9 마크 + 3거점)",
       "blocks": [
-        { "type": "text", "value": "main-global 섹션 (1,246px). H2 '200여 개 국가의 인증 서비스' + 글로벌 인증 마크 9종 가로 슬라이드 + 푸른 도트 세계 지도에 HCT 거점 3곳 (Korea·USA·Indonesia) 표시. HCT의 글로벌 네트워크를 한 화면에 압축한 시그니처." },
+        { "type": "text", "value": "🟢 HCT의 글로벌 시그니처. 9 국제 인증마크 그리드 + 3거점(한국·미국·인도네시아) 세계지도 + 'HCT는 글로벌 인증 네트워크로 200여 개 국가의 인증 서비스를 지원' 메시지." },
 
-        { "type": "heading", "value": "글로벌 인증마크 9종 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "KC 안전인증 (한국)", "value": "Korea Certification - 한국 안전 인증" },
-          { "label": "VCCI (일본)", "value": "Voluntary Control Council for Interference - 일본 전자파 자율 규제" },
-          { "label": "PSE (일본)", "value": "Product Safety Electrical - 일본 전기용품 안전 인증" },
-          { "label": "MIC (일본)", "value": "Ministry of Internal Affairs and Communications - 일본 총무성 인증" },
-          { "label": "CCC (중국)", "value": "China Compulsory Certification - 중국 강제 인증" },
-          { "label": "SRRC (중국)", "value": "State Radio Regulatory Commission - 중국 무선국 인증" },
-          { "label": "FCC (미국)", "value": "Federal Communications Commission - 미국 연방통신위원회" },
-          { "label": "UL (미국)", "value": "Underwriters Laboratories - 미국 안전 인증" },
-          { "label": "CSA (미국·캐나다)", "value": "Canadian Standards Association - 캐나다 표준 협회" }
+        { "type": "kv", "title": "9 국제 인증마크 (실측)", "columns": 1, "items": [
+          { "label": "한국 (1)", "value": "KC (Korea Certification)" },
+          { "label": "일본 (3)", "value": "VCCI (전자기파) / PSE (전기 안전) / MIC (무선)" },
+          { "label": "중국 (2)", "value": "CCC (China Compulsory Certification) / SRRC (무선)" },
+          { "label": "미국 (2)", "value": "FCC (Federal Communications Commission) / UL (Underwriters Laboratories)" },
+          { "label": "캐나다 (1)", "value": "CSA (Canadian Standards Association)" }
         ]},
 
-        { "type": "heading", "value": "세계 지도 3거점 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "디자인", "value": "푸른 도트 (●) 패턴으로 세계 지도 윤곽 그림 - 미니멀하면서도 디지털 인상" },
-          { "label": "HCT Korea", "value": "중앙 (한반도) - 흰 텍스트 'HCT Korea' + 파란 동그라미 마커" },
-          { "label": "HCT USA", "value": "우측 (북미) - 흰 텍스트 'HCT USA' + 파란 동그라미 마커" },
-          { "label": "HCT Indonesia", "value": "좌하단 (동남아) - 흰 텍스트 'HCT Indonesia' + 파란 동그라미 마커" },
-          { "label": "🟢 연결선", "value": "한국 ↔ 미국 / 한국 ↔ 인도네시아 사이에 활처럼 휘어진 흰 곡선 - 글로벌 네트워크 시각화" },
-          { "label": "배경", "value": "HCT Blue #0055A5 풀폭 + 도트 지도가 화이트 → 푸른 그라데이션으로 페이드" }
+        { "type": "kv", "title": "3거점 (실측)", "columns": 1, "items": [
+          { "label": "🟢 HCT Korea (한국)", "value": "본사 - 17383 경기도 이천시 마장면 서이천로 578번길 74" },
+          { "label": "HCT USA (미국)", "value": "미주 거점" },
+          { "label": "HCT Indonesia (인도네시아)", "value": "동남아 거점 - 2024년 진출 (사업 확장 계획)" },
+          { "label": "🟢 200여 개 국가 인증 서비스", "value": "본사 + 글로벌 인증 네트워크로 200개국 지원 - 글로벌 시험인증 메타포" }
         ]},
 
-        { "type": "heading", "value": "글로벌 인증 9-마크 그리드 재현" },
-        { "type": "component", "title": "글로벌 인증 마크 9종 - 가로 그리드", "html": "<div class='hct-gn1'><div class='hct-gn1-i'><div class='hct-gn1-mark'>KC</div><span>KC 안전인증</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark hct-gn1-vcci'>VCCI</div><span>VCCI</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark'>PSE</div><span>PSE</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark'>MIC</div><span>MIC</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark'>CCC</div><span>CCC</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark'>SRRC</div><span>SRRC</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark'>FCC</div><span>FCC</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark hct-gn1-ul'>UL</div><span>UL</span></div><div class='hct-gn1-i'><div class='hct-gn1-mark'>CSA</div><span>CSA</span></div></div>", "css": ".hct-gn1{display:grid;grid-template-columns:repeat(9,1fr);gap:12px;padding:48px 80px;background:#0055A5;font-family:'SUIT',Pretendard,sans-serif}.hct-gn1-i{background:#FFFFFF;border-radius:16px;padding:24px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;transition:transform 0.4s ease}.hct-gn1-i:hover{transform:translateY(-4px)}.hct-gn1-mark{width:72px;height:72px;display:grid;place-items:center;background:#0F0F10;color:#FFFFFF;border-radius:50%;font-family:Arial,sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.04em}.hct-gn1-vcci{background:#FFFFFF;color:#3FAE2F;border:3px solid #3FAE2F}.hct-gn1-ul{background:#FFFFFF;color:#E31E24;border:3px solid #E31E24}.hct-gn1-i span{font-size:13px;font-weight:600;color:#27282B}", "fullWidth": true },
-
-        { "type": "heading", "value": "세계 지도 3거점 재현" },
-        { "type": "component", "title": "Globe View - 한국/미국/인도네시아 거점 + 연결선", "html": "<div class='hct-gn2'><svg viewBox='0 0 1200 600' xmlns='http://www.w3.org/2000/svg'><rect width='1200' height='600' fill='#0055A5'/><g fill='rgba(255,255,255,0.4)'><circle cx='600' cy='220' r='2'/><circle cx='610' cy='225' r='2'/><circle cx='620' cy='230' r='2'/><circle cx='580' cy='240' r='2'/><circle cx='560' cy='250' r='2'/><circle cx='540' cy='260' r='2'/><circle cx='520' cy='280' r='2'/><circle cx='500' cy='300' r='2'/><circle cx='480' cy='320' r='2'/><circle cx='460' cy='340' r='2'/><circle cx='430' cy='360' r='2'/><circle cx='400' cy='400' r='2'/><circle cx='380' cy='420' r='2'/><circle cx='800' cy='200' r='2'/><circle cx='820' cy='220' r='2'/><circle cx='850' cy='230' r='2'/><circle cx='880' cy='250' r='2'/><circle cx='900' cy='280' r='2'/><circle cx='920' cy='310' r='2'/><circle cx='950' cy='340' r='2'/></g><path d='M 600 240 Q 800 100 870 230' stroke='rgba(255,255,255,0.6)' stroke-width='1' fill='none'/><path d='M 600 240 Q 500 400 450 380' stroke='rgba(255,255,255,0.6)' stroke-width='1' fill='none'/><g><circle cx='600' cy='240' r='12' fill='#0055A5' stroke='#FFFFFF' stroke-width='3'/><text x='600' y='215' text-anchor='middle' fill='#FFFFFF' font-family='SUIT,sans-serif' font-size='14' font-weight='700'>HCT Korea</text></g><g><circle cx='870' cy='230' r='12' fill='#0055A5' stroke='#FFFFFF' stroke-width='3'/><text x='870' y='205' text-anchor='middle' fill='#FFFFFF' font-family='SUIT,sans-serif' font-size='14' font-weight='700'>HCT USA</text></g><g><circle cx='450' cy='380' r='12' fill='#0055A5' stroke='#FFFFFF' stroke-width='3'/><text x='450' y='355' text-anchor='middle' fill='#FFFFFF' font-family='SUIT,sans-serif' font-size='14' font-weight='700'>HCT Indonesia</text></g></svg></div>", "css": ".hct-gn2{width:100%;font-family:'SUIT',Pretendard,sans-serif}.hct-gn2 svg{width:100%;height:auto;display:block}", "fullWidth": true }
-      ]
-    },
-
-    "news-hub": {
-      "title": "09. HCT 소식 - 5탭 멀티 채널 콘텐츠 허브",
-      "blocks": [
-        { "type": "text", "value": "main-news 섹션 (1,149px). H2 '새로운 소식' + YouTube 빨간 아이콘 + 좌측 카테고리 5탭 + 우측 뉴스 카드 그리드. 보도자료/아티클/스토리/유튜브/e-뉴스레터 5채널을 통합한 콘텐츠 허브." },
-
-        { "type": "heading", "value": "5 카테고리 탭 (실측 좌측 세로 pill)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🟢 전체 (활성)", "value": "검정 #0F0F10 배경 + 흰 텍스트 pill - 기본 활성 상태" },
-          { "label": "보도자료", "value": "회색 outline pill - 공식 보도자료" },
-          { "label": "아티클", "value": "회색 outline pill - HCT가 작성한 기술 아티클" },
-          { "label": "스토리", "value": "회색 outline pill - 회사·문화 스토리" },
-          { "label": "유튜브", "value": "회색 outline pill - YouTube 영상 카드 (빨간 ▶ 아이콘 페어)" },
-          { "label": "e-뉴스레터", "value": "회색 outline pill - 이메일 뉴스레터 아카이브" }
-        ]},
-
-        { "type": "heading", "value": "뉴스 카드 3종 (실측 콘텐츠)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "카드 1: 보도자료", "value": "🟢 '에이치시티, ETRI와 위성탑재체 핵심원천기술개발 공동연구 착수' (2026-05-12 10:17:47) - 사진: HCT 챔버 안에서 시험 진행 모습 + 'HCT' 큰 로고" },
-          { "label": "카드 2: 보도자료", "value": "🟢 '[26.04.23] 에이치시티 허봉재 대표, 대통령표창 수상… ICT 시험인증·6G·우주·방산까지 기술력 입증' (2026-04-23 17:17:42) - 사진: 허봉재 대표 표창식 영상 캡쳐 + 'HCT CO., LTD.' 배너" },
-          { "label": "카드 3: YouTube + 인증마크 퀴즈", "value": "'이거 10개 이상 맞추면 상위 10%입니다 (인증마크 퀴즈 15문제)' - YouTube 빨간 ▶ 아이콘 + 노트북·인증마크 일러스트 썸네일 ('인증마크 상식퀴즈 20문제' 큰 글씨)" },
-          { "label": "추가 영상 (스크롤 시 보임)", "value": "'2026 이천 도자기 축제 - 회사 근처 축제에 다녀왔습니다 (주차·관람 꿀팁)' - 회사 인근 지역 콘텐츠 (직장인 일상)" }
-        ]},
-
-        { "type": "heading", "value": "5탭 뉴스 허브 재현" },
-        { "type": "component", "title": "HCT 소식 - 좌측 5탭 + 우측 뉴스 카드", "html": "<section class='hct-nh1'><div class='hct-nh1-left'><div class='hct-nh1-meta'>HCT 소식</div><h2>HCT의 새로운<br>소식을 전합니다.</h2><div class='hct-nh1-youtube'>▶</div><div class='hct-nh1-tabs'><button class='hct-nh1-t is-on'>전체</button><button class='hct-nh1-t'>보도자료</button><button class='hct-nh1-t'>아티클</button><button class='hct-nh1-t'>스토리</button><button class='hct-nh1-t'>유튜브</button><button class='hct-nh1-t'>e-뉴스레터</button></div></div><div class='hct-nh1-right'><a class='hct-nh1-card'><div class='hct-nh1-img hct-nh1-1'></div><div class='hct-nh1-cat'>보도자료</div><h3>에이치시티, ETRI와 '위성탑재체 핵심원천기술개발' 공동연구 착수</h3><time>2026-05-12 10:17:47</time></a><a class='hct-nh1-card'><div class='hct-nh1-img hct-nh1-2'></div><div class='hct-nh1-cat'>보도자료</div><h3>[26.04.23] 에이치시티 허봉재 대표, 대통령표창 수상… ICT 시험인증·6G·우주·방산까지 기술력 입증</h3><time>2026-04-23 17:17:42</time></a></div></section>", "css": ".hct-nh1{display:grid;grid-template-columns:300px 1fr;gap:48px;padding:80px;background:#FFFFFF;font-family:'SUIT',Pretendard,sans-serif;max-width:1440px}.hct-nh1-meta{font-size:18px;font-weight:600;color:#0055A5;margin-bottom:12px}.hct-nh1-left h2{font-size:36px;font-weight:800;color:#0F0F10;letter-spacing:-0.02em;line-height:1.3;margin:0 0 16px}.hct-nh1-youtube{display:inline-grid;place-items:center;width:32px;height:32px;background:#FF0000;color:#FFFFFF;border-radius:6px;font-size:14px;margin-bottom:32px}.hct-nh1-tabs{display:flex;flex-direction:column;gap:8px;align-items:flex-start}.hct-nh1-t{padding:8px 20px;background:transparent;border:1px solid #A4A7AD;border-radius:99px;color:#666666;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.4s ease}.hct-nh1-t:hover{border-color:#0F0F10;color:#0F0F10}.hct-nh1-t.is-on{background:#0F0F10;color:#FFFFFF;border-color:#0F0F10}.hct-nh1-right{display:grid;grid-template-columns:1fr 1fr;gap:24px}.hct-nh1-card{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #F2F5F8;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;cursor:pointer;transition:all 0.4s ease}.hct-nh1-card:hover{border-color:#0055A5;transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,85,165,0.08)}.hct-nh1-img{height:240px}.hct-nh1-1{background:linear-gradient(135deg,#1A2A3A,#2A4A6A)}.hct-nh1-2{background:linear-gradient(135deg,#1A1A1A,#3A3A3A)}.hct-nh1-cat{padding:16px 20px 0;font-size:14px;font-weight:600;color:#0055A5}.hct-nh1-card h3{padding:8px 20px 12px;font-size:18px;font-weight:800;color:#0F0F10;margin:0;letter-spacing:-0.02em;line-height:1.4}.hct-nh1-card time{padding:0 20px 20px;font-size:13px;color:#898D95;display:block}", "fullWidth": true }
-      ]
-    },
-
-    "intro-section": {
-      "title": "10. HCT 안내 + 문의 영역",
-      "blocks": [
-        { "type": "text", "value": "main-intro 섹션 (921px). HCT를 구성하는 주요 기관과 네트워크 소개 카드 + 문의 영역. 연구소·H&H BIO 등 관계 기관을 카드로 노출하며 사용자가 문의를 시작할 수 있도록 연락처를 한 줄로 강조." },
-
-        { "type": "heading", "value": "주요 기관 카드 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "연구소", "value": "이미지 카드 (작은 일러스트) + '연구소' 큰 텍스트 + 우측 → 화살표 원형 버튼" },
-          { "label": "H&H BIO", "value": "HCT 관계 기관 - 헬스·바이오 영역 진출 (별도 카드)" },
-          { "label": "기타 추정", "value": "HCT의 다른 관련 기관·계열사들도 같은 패턴의 카드로 노출 (실측 제한)" }
-        ]},
-
-        { "type": "heading", "value": "문의 영역 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "헤딩", "value": "'문의하실 것이 있으신가요?' - 친근한 코퍼레이트 톤" },
-          { "label": "전화", "value": "📞 031-645-6300 - 본사 대표 번호" },
-          { "label": "이메일", "value": "✉️ myHCTSupport@hct.co.kr - 'my HCT Support' = 1:1 지원 채널 강조" }
-        ]},
-
-        { "type": "heading", "value": "HCT 안내 카드 재현" },
-        { "type": "component", "title": "HCT 안내 카드 + 문의 영역", "html": "<section class='hct-in1'><div class='hct-in1-meta'>HCT 안내</div><h2>HCT를 구성하는 주요 기관과<br>네트워크를 소개합니다.</h2><div class='hct-in1-cards'><a class='hct-in1-c'><div class='hct-in1-illus'>🔬</div><h4>연구소</h4><span class='hct-in1-arrow'>→</span></a><a class='hct-in1-c'><div class='hct-in1-illus'>🧬</div><h4>H&H BIO</h4><span class='hct-in1-arrow'>→</span></a><a class='hct-in1-c'><div class='hct-in1-illus'>🛰️</div><h4>우주·방산</h4><span class='hct-in1-arrow'>→</span></a></div><div class='hct-in1-contact'><h5>문의하실 것이 있으신가요?</h5><div class='hct-in1-tel'>📞 <b>031-645-6300</b></div><div class='hct-in1-email'>✉ <b>myHCTSupport@hct.co.kr</b></div></div></section>", "css": ".hct-in1{padding:80px;background:#0055A5;color:#FFFFFF;font-family:'SUIT',Pretendard,sans-serif}.hct-in1-meta{font-size:16px;font-weight:600;opacity:0.85;margin-bottom:12px}.hct-in1 h2{font-size:36px;font-weight:800;letter-spacing:-0.02em;line-height:1.3;margin:0 0 48px}.hct-in1-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}.hct-in1-c{display:flex;align-items:center;gap:16px;padding:32px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;color:#FFFFFF;text-decoration:none;cursor:pointer;transition:all 0.4s ease}.hct-in1-c:hover{background:rgba(255,255,255,0.16);transform:translateY(-4px)}.hct-in1-illus{width:64px;height:64px;display:grid;place-items:center;background:rgba(255,255,255,0.15);border-radius:12px;font-size:28px}.hct-in1-c h4{font-size:22px;font-weight:800;margin:0;flex:1}.hct-in1-arrow{font-size:20px}.hct-in1-contact{display:flex;align-items:center;gap:48px;padding:32px;background:rgba(255,255,255,0.06);border-radius:16px}.hct-in1-contact h5{font-size:22px;font-weight:800;margin:0;flex:0 0 auto}.hct-in1-tel,.hct-in1-email{font-size:18px;color:rgba(255,255,255,0.85)}.hct-in1-tel b,.hct-in1-email b{color:#FFFFFF;font-weight:800;margin-left:8px}", "fullWidth": true }
-      ]
-    },
-
-    "color-system": {
-      "title": "11. 컬러 시스템",
-      "blocks": [
-        { "type": "text", "value": "HCT 컬러 전략: Mono Blue + Green Accent. 본문은 어두운 회색 톤(#27282B, #0F0F10, #3F4146)으로 정돈하고 강조 컬러는 HCT Blue #0055A5만 사용. ✓ 체크마크 완성 시에만 등장하는 초록 #4ADE80이 보조 강조 컬러." },
-
-        { "type": "palette", "title": "정밀 매핑 팔레트 (실측 색상 채집)", "colors": [
-          { "name": "HCT Blue (Primary)", "hex": "#0055A5", "usage": "메인 브랜드 컬러 - 견적 문의하기 CTA, 사업 카드 배경, 안내 영역, 자세히 보기 버튼 (16건 color + 18건 bg)" },
-          { "name": "HCT Blue Deep", "hex": "#0B61A8", "usage": "Hero 인트로 배경 - 메인보다 살짝 밝은 톤" },
-          { "name": "Check Green", "hex": "#4ADE80", "usage": "✓ 체크마크 완성 색 - 시험인증 통과를 의미. 보조 강조 컬러" },
-          { "name": "Apple Blue", "hex": "#007AFF", "usage": "iOS 시스템 블루 - 일부 보조 링크 (2건)" },
-          { "name": "Text Primary (Body)", "hex": "#27282B", "usage": "본문 텍스트 - 사이트 전체에서 가장 빈도 높은 색 (368건)" },
-          { "name": "Text Heading", "hex": "#0F0F10", "usage": "헤딩 - 거의 검정. 본문보다 더 어두운 강조 (311건)" },
-          { "name": "Text Secondary", "hex": "#3F4146", "usage": "보조 텍스트 (158건)" },
-          { "name": "Text Tertiary", "hex": "#666666", "usage": "회색 톤 (56건)" },
-          { "name": "Text Light", "hex": "#898D95", "usage": "날짜·캡션 등 가장 옅은 회색 (5건 각 #898D95/#8E8E8E/#A4A7AD)" },
-          { "name": "Surface White", "hex": "#FFFFFF", "usage": "기본 배경 (230건 color - 다크 영역에서 흰 텍스트)" },
-          { "name": "Surface Light", "hex": "#F2F5F8", "usage": "🟢 섹션 배경 - 자주 찾는 서비스/뉴스 카드 등 (69건 bg)" },
-          { "name": "Surface Dark", "hex": "#001A33", "usage": "푸터 배경, 다크 카드 (2건 bg)" },
-          { "name": "Overlay Black 50%", "hex": "#0000007F", "usage": "rgba(0,0,0,0.5) - 모달 백드롭, 이미지 위 오버레이 (6건)" }
-        ]},
-
-        { "type": "heading", "value": "사용 비율 (메인 페이지 기준 추정)" },
-        { "type": "kv", "columns": 2, "items": [
-          { "label": "Surface White (배경)", "value": "55% - 자주 찾는 서비스, 뉴스, HCT 안내" },
-          { "label": "HCT Blue (Hero + 글로벌 + 안내)", "value": "25% - 강한 브랜드 영역" },
-          { "label": "Surface Light F2F5F8", "value": "10% - 보조 배경" },
-          { "label": "Text colors", "value": "8% - 본문·헤딩" },
-          { "label": "Check Green ✓", "value": "1% - 체크마크 완성 시만 등장" },
-          { "label": "기타 다크/Surface Dark", "value": "1%" }
-        ]},
-
-        { "type": "heading", "value": "WCAG 대비 검증" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "✓ #0F0F10 on #FFF (헤딩)", "value": "≈ 20.7:1 - AAA" },
-          { "label": "✓ #27282B on #FFF (본문)", "value": "≈ 14.7:1 - AAA" },
-          { "label": "✓ #3F4146 on #FFF (보조)", "value": "≈ 10.2:1 - AAA" },
-          { "label": "✓ #666 on #FFF", "value": "≈ 5.7:1 - AA" },
-          { "label": "🟡 #898D95 on #FFF (날짜)", "value": "≈ 3.1:1 - 큰 텍스트 한정 AA, 작은 캡션 미달 가능" },
-          { "label": "✓ #FFF on #0055A5 (HCT Blue 위)", "value": "≈ 7.6:1 - AAA (Hero 텍스트 안전)" },
-          { "label": "🟡 #0055A5 on #FFF (텍스트로 사용 시)", "value": "≈ 7.6:1 - AAA. 하지만 작은 보조 텍스트로 사용 시 가독성 점검" },
-          { "label": "✓ #FFF on #001A33 (푸터)", "value": "≈ 17.2:1 - AAA" }
-        ]}
-      ]
-    },
-
-    "typography-system": {
-      "title": "12. 타이포그래피 시스템 (SUIT)",
-      "blocks": [
-        { "type": "kv", "title": "기본 설정", "columns": 2, "items": [
-          { "label": "주 서체", "value": "SUIT - 한글 기하 폰트 (dcamp와 동일 채택). Pretendard 대안. 모던하고 둥근 톤" },
-          { "label": "Fallback 스택", "value": "-apple-system, sans-serif (간소한 폴백)" },
-          { "label": "Base body", "value": "20px / line-height 32px (1.6) - 한국 평균(16-18px)보다 큰 본문" },
-          { "label": "html-root", "value": "20px (1rem = 20px)" },
-          { "label": "Weight 범위", "value": "400 / 500 / 600 / 700 / 800 (5단계)" }
-        ]},
-
-        { "type": "typo", "items": [
-          { "label": "Section H2 (큰)", "size": "44px", "weight": 800, "sample": "HCT는 사람과 세상을 연결하는 기술로 모두의 내일을 만들어갑니다." },
-          { "label": "Hero Slogan", "size": "50px", "weight": 800, "sample": "당신의 ✓ 기술 파트너" },
-          { "label": "Section H2 (작은)", "size": "32px", "weight": 800, "sample": "자주 찾는 서비스" },
-          { "label": "Card H3", "size": "24px", "weight": 800, "sample": "에이치시티, ETRI와 위성탑재체 핵심원천기술개발 공동연구 착수" },
-          { "label": "Body Default", "size": "20px", "weight": 400, "sample": "Base body - 라인 높이 32px (1.6)" },
-          { "label": "Body Strong", "size": "20px", "weight": 500, "sample": "굵은 본문 - 강조" },
-          { "label": "Subtitle", "size": "18px", "weight": 600, "sample": "HCT 소식 메타 라벨" },
-          { "label": "Small", "size": "16px", "weight": 400, "sample": "캡션·작은 본문" },
-          { "label": "Date / Meta", "size": "14px", "weight": 500, "sample": "2026-05-12 10:17:47" }
-        ]},
-
-        { "type": "heading", "value": "SUIT 폰트 특성 (HCT 채택 의의)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Pretendard 대비", "value": "SUIT는 자모 간격이 더 균일, 도형성(geometric)이 강함. HCT의 측정·표준·정확성 정체성과 톤 일치" },
-          { "label": "Base 20px의 의의", "value": "한국 평균(16-18px)보다 큰 본문. 시험인증 회사답게 '명확하게 읽혀야 하는' 정보 우선. 노안 사용자·B2B 의사결정자 친화" },
-          { "label": "한영 혼용 처리", "value": "'HCT' / 'ETRI' / 'FCC' / 'CSA' 같은 영문 약자가 본문에 자주 등장 - SUIT의 영문은 약간 모던하고 좁아 한글과 자연스럽게 결합" }
-        ]}
-      ]
-    },
-
-    "icon-cert-system": {
-      "title": "13. 아이콘 · 인증마크 시스템",
-      "blocks": [
-        { "type": "text", "value": "HCT의 아이콘은 3 카테고리: (1) 자주 찾는 서비스용 일러스트 아이콘 7종 (2) Floating 패널 아이콘 3종 (3) 글로벌 인증마크 9종 (외부 표준 마크). 자체 아이콘 시스템은 PNG 이미지 위주이며 인증마크는 각 국가의 공식 디자인 그대로 사용." },
-
-        { "type": "heading", "value": "자주 찾는 서비스 아이콘 7종" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "FAQ", "value": "💬 말풍선 아이콘 (PNG)" },
-          { "label": "시험인증견적문의", "value": "📋 문서 아이콘" },
-          { "label": "교정견적문의", "value": "📐 도구 아이콘" },
-          { "label": "상담연락처 안내", "value": "📞 전화 아이콘" },
-          { "label": "신청양식", "value": "📝 양식 아이콘" },
-          { "label": "성적서 조회", "value": "🔍 돋보기 + 서류 아이콘" },
-          { "label": "판매 서비스", "value": "🛒 카트 아이콘" }
-        ]},
-
-        { "type": "heading", "value": "Floating 패널 아이콘 3종 (우하단)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "상담", "value": "🎧 헤드폰 아이콘 - 1:1 상담 진입" },
-          { "label": "FAQ", "value": "? 물음표 아이콘 - 자주 묻는 질문" },
-          { "label": "TOP", "value": "↑ 화살표 아이콘 - Scroll-to-top" }
-        ]},
-
-        { "type": "heading", "value": "헤더 우측 아이콘 4종" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "견적 문의하기", "value": "파란 pill (#0055A5) + 흰 텍스트 - 메인 CTA" },
-          { "label": "🌐 Globe", "value": "다국어 셀렉터 - 한국어/영어/중문 추정" },
-          { "label": "🔍 Search", "value": "사이트 내 검색" },
-          { "label": "⋮⋮⋮ 9-Dot", "value": "9개 작은 점 격자 - 햄버거 메뉴 또는 관련 서비스 진입" }
-        ]},
-
-        { "type": "heading", "value": "🟢 글로벌 인증마크 9종 (외부 공식 디자인 그대로)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "KC 안전인증 (한국)", "value": "검정 동그라미 안에 'KC' 흰 텍스트" },
-          { "label": "VCCI (일본)", "value": "녹색 outline 박스 + 녹색 'VCCI' 텍스트" },
-          { "label": "PSE (일본)", "value": "검정 둥근 마름모 (두 개) + 'PS' 흰 텍스트" },
-          { "label": "MIC (일본)", "value": "검정 동그라미 + 사람 아이콘 같은 패턴 + 'MIC'" },
-          { "label": "CCC (중국)", "value": "검정 동그라미 안 'CCC' 흰 텍스트" },
-          { "label": "SRRC (중국)", "value": "검정 박스 + 'SRRC' 흰 텍스트" },
-          { "label": "FCC (미국)", "value": "검정 'FCC' 둥근 글씨" },
-          { "label": "UL (미국)", "value": "🟢 빨간색 outline 동그라미 + 빨간 'UL' 텍스트 - 가장 시각적으로 두드러짐" },
-          { "label": "CSA (캐나다)", "value": "검정 둥근 마름모 + 'CSA' 흰 텍스트" }
-        ]},
-
-        { "type": "heading", "value": "헤더 아이콘 페어 + Floating 재현" },
-        { "type": "component", "title": "헤더 우측 4 아이콘 + Floating 3 버튼", "html": "<div class='hct-ic1-wrap'><div class='hct-ic1-header'><div class='hct-ic1-logo'>HCT</div><nav><a>기업소개</a><a>시험인증</a><a>측정표준</a><a>HCT소식</a><a>고객전용</a><a>인재채용 ↗</a></nav><div class='hct-ic1-right'><button class='hct-ic1-cta'>견적 문의하기</button><button class='hct-ic1-icon'>🌐</button><button class='hct-ic1-icon'>🔍</button><button class='hct-ic1-icon'>⋮⋮⋮</button></div></div><div class='hct-ic1-floating'><button class='hct-ic1-fb'><span>🎧</span>상담</button><button class='hct-ic1-fb'><span>?</span>FAQ</button><button class='hct-ic1-fb hct-ic1-top'><span>↑</span>TOP</button></div></div>", "css": ".hct-ic1-wrap{font-family:'SUIT',Pretendard,sans-serif;position:relative;height:480px;background:#FFFFFF;border:1px solid #F2F5F8;border-radius:16px;overflow:hidden}.hct-ic1-header{display:flex;align-items:center;justify-content:space-between;padding:24px 40px;background:#FFFFFF;border-bottom:1px solid #F2F5F8}.hct-ic1-logo{color:#0055A5;font-size:22px;font-weight:800;letter-spacing:-0.04em}.hct-ic1-header nav{display:flex;gap:24px}.hct-ic1-header nav a{color:#27282B;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;transition:color 0.4s ease}.hct-ic1-header nav a:hover{color:#0055A5}.hct-ic1-right{display:flex;align-items:center;gap:8px}.hct-ic1-cta{padding:10px 20px;background:#0055A5;color:#FFFFFF;border:0;border-radius:99px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}.hct-ic1-icon{width:36px;height:36px;background:transparent;border:1px solid #A4A7AD;border-radius:50%;color:#27282B;font-size:14px;cursor:pointer;transition:all 0.4s ease}.hct-ic1-icon:hover{border-color:#0055A5;color:#0055A5}.hct-ic1-floating{position:absolute;right:24px;bottom:24px;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;padding:8px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12)}.hct-ic1-fb{display:flex;flex-direction:column;align-items:center;gap:4px;width:64px;padding:12px 8px;background:transparent;border:0;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;color:#27282B;transition:background 0.4s ease}.hct-ic1-fb:hover{background:#F2F5F8}.hct-ic1-fb span{font-size:18px}.hct-ic1-top{background:#0F0F10;color:#FFFFFF}.hct-ic1-top:hover{background:#27282B}" }
-      ]
-    },
-
-    "image-system": {
-      "title": "14. 이미지 시스템 (AWS S3 + Drupal Media)",
-      "blocks": [
-        { "type": "text", "value": "HCT 이미지는 95장 이상. 자체 도메인 hct.co.kr/front/img/ (로고, 인덱스 아이콘) + AWS S3 ap-northeast-2 (Seoul region) hct-s3-bucket (메뉴 이미지, 큰 사진) 이중 호스팅. Drupal CMS 시그니처 경로 패턴." },
-
-        { "type": "heading", "value": "이미지 URL 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "자체 도메인", "value": "https://hct.co.kr/front/img/{path}.png|svg - logo.png, index/{n2,kr}.svg 등 정적 자산" },
-          { "label": "🟢 AWS S3 (Drupal Media)", "value": "https://hct-s3-bucket.s3.ap-northeast-2.amazonaws.com/upload/{path}/{N}/{32자해시}.png - menu/MENU000006-000012 등 메뉴별 큰 이미지 (3020×2775 / 4368×2904 / 1024×684 등)" },
-          { "label": "og:image", "value": "https://hct-s3-bucket.s3.ap-northeast-2.amazonaws.com/upload/domain/DOMAIN000001/791CFD2395FA4673B0B8A13C7AC5405A.png - 소셜 공유" }
-        ]},
-
-        { "type": "heading", "value": "사업 6 카드 사진 (실측 톤)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "모빌리티", "value": "자동차 휠 클로즈업 - 다크 블루 톤" },
-          { "label": "방산", "value": "초대형 워크인 챔버 (반사 모듈) - 파란 톤" },
-          { "label": "시험·인증", "value": "EMC 안테나 챔버 (피라미드 흡수체) - 회색·파란 톤" },
-          { "label": "교정", "value": "측정 장비 다이얼·케이블 - 회색 파란 톤" },
-          { "label": "융합측정엔지니어링", "value": "측정 결과물 / 양식 - 파란 톤" },
-          { "label": "배터리", "value": "배터리 셀 (블루 LED) - 진한 블루 톤" }
-        ]},
-
-        { "type": "heading", "value": "뉴스 카드 사진 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "ETRI 협력", "value": "HCT 챔버 내부 + 'HCT' 큰 로고 + 흰 가운 입은 연구원" },
-          { "label": "허봉재 대표 표창식", "value": "'HCT CO., LTD.' 배경 배너 + 정장 입은 대표 + 표창 옆 카메라" },
-          { "label": "인증마크 퀴즈 (YouTube)", "value": "노트북 + 인증마크 일러스트 + '인증마크 상식퀴즈 20문제' 큰 글씨 + HACCP·KC 로고" },
-          { "label": "이천 도자기 축제 (YouTube)", "value": "도자기·커피·디저트 사진 + '2026 이천 도자기 축제' 큰 텍스트" }
-        ]}
-      ]
-    },
-
-    "layout-grid": {
-      "title": "15. 그리드 · 컨테이너 시스템",
-      "blocks": [
-        { "type": "kv", "title": "핵심 치수 (실측)", "columns": 2, "items": [
-          { "label": "Viewport", "value": "1920×911 (Full HD)" },
-          { "label": "Container padding", "value": "80px (좌우)" },
-          { "label": "Header height", "value": "100px (position: sticky, scroll 시 -100 hide)" },
-          { "label": "Hero (main-top)", "value": "0-911px - 정확히 viewport 1배 높이" },
-          { "label": "🟢 Intro Overlay", "value": "z-index 9999 fixed, height 911px - 약 6,300px 스크롤 흡수" },
-          { "label": "Quick Service", "value": "1171-1326px (155px) - 작은 영역" },
-          { "label": "Business Cards", "value": "1486-2567px (1,081px)" },
-          { "label": "Global Network", "value": "2697-3943px (1,246px)" },
-          { "label": "News Hub", "value": "4002-5151px (1,149px)" },
-          { "label": "Intro", "value": "5311-6232px (921px)" },
-          { "label": "Footer", "value": "6232-7234px (1,002px)" }
-        ]},
-        { "type": "heading", "value": "섹션별 그리드 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Header", "value": "flex space-between - 로고 + 중앙 GNB + 우측 4 컨트롤" },
-          { "label": "Hero", "value": "flex center - 중앙 ✓ 모핑 슬로건" },
-          { "label": "Quick Service", "value": "Grid 7-column - 7개 동일 너비 카드" },
-          { "label": "Business Cards", "value": "Grid 6-column - 6 사업 카드 풀폭 가로 그리드 + 우측 상단 prev/next 화살표" },
-          { "label": "Global Network", "value": "Grid 9-column (인증마크 9종) + Globe SVG 풀폭 (세계 지도 + 3거점)" },
-          { "label": "News Hub", "value": "Grid 300px + 1fr (좌측 카테고리 탭 + 우측 카드 그리드 2-col)" },
-          { "label": "Intro", "value": "Grid 3-column (관계 기관 카드) + 한 줄 (문의 영역)" },
-          { "label": "Footer", "value": "Grid 6-column (사이트맵 6 그룹) + 우측 패밀리사이트 드롭다운" }
-        ]}
-      ]
-    },
-
-    "layout-responsive": {
-      "title": "16. 반응형 · 여백 · 둥글기",
-      "blocks": [
-        { "type": "heading", "value": "반응형 (추정 - 미디어쿼리 데이터 BLOCKED)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Mobile", "value": "max-width: 768px (추정 - 일반 컨벤션)" },
-          { "label": "Tablet", "value": "max-width: 1024px" },
-          { "label": "Desktop", "value": "min-width: 1280px" },
-          { "label": "🔴 user-scalable=no", "value": "viewport meta에 user-scalable=no - WCAG 1.4.4 위반. 시각 장애 사용자 핀치 줌 불가" }
-        ]},
-        { "type": "heading", "value": "여백" },
-        { "type": "spacingScale", "items": [
-          { "label": "xs", "px": 8 },
-          { "label": "sm", "px": 16 },
-          { "label": "md", "px": 24 },
-          { "label": "lg", "px": 40 },
-          { "label": "xl", "px": 64 },
-          { "label": "section", "px": 120 },
-          { "label": "container-x", "px": 80 }
-        ]},
-        { "type": "heading", "value": "둥글기" },
-        { "type": "radiusScale", "items": [
-          { "label": "none", "px": 0, "usage": "Hero / 풀폭 섹션 / 푸터 / 사업 카드 (사각 사진)" },
-          { "label": "card", "px": 16, "usage": "뉴스 카드 / 인증마크 박스 / Floating 패널 / 자주 찾는 서비스 카드" },
-          { "label": "pill", "px": 99, "usage": "견적 문의하기 CTA / 카테고리 탭 / 자세히 보기 버튼" },
-          { "label": "circle", "px": 50, "usage": "Floating 아이콘 배경 / 글로벌 9 인증마크 / 사업 슬라이더 prev·next 화살표 / 거점 마커", "note": "percent" }
-        ]}
-      ]
-    },
-
-    "lib-buttons": {
-      "title": "17. 버튼 · CTA 라이브러리",
-      "blocks": [
-        { "type": "heading", "value": "17-1. Primary Pill CTA (견적 문의하기)" },
-        { "type": "component", "title": "헤더 우측 메인 CTA - HCT Blue pill", "html": "<div style='background:#FFF;padding:24px;display:flex;justify-content:flex-end;border-radius:8px'><button class='hct-bt1'>견적 문의하기</button></div>", "css": ".hct-bt1{padding:12px 28px;background:#0055A5;color:#FFFFFF;border:0;border-radius:99px;font-family:'SUIT',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.4s ease}.hct-bt1:hover{background:#003D7A;transform:translateY(-2px)}" },
-
-        { "type": "heading", "value": "17-2. Outline Pill (자세히 보기)" },
-        { "type": "component", "title": "섹션 내 부 CTA - 흰 outline pill", "html": "<div style='background:#0055A5;padding:32px;display:flex;justify-content:center;border-radius:8px'><a class='hct-bt2'>자세히 보기</a></div>", "css": ".hct-bt2{display:inline-block;padding:14px 36px;background:transparent;color:#FFFFFF;border:1px solid #FFFFFF;border-radius:99px;font-family:'SUIT',sans-serif;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;transition:all 0.4s ease}.hct-bt2:hover{background:#FFFFFF;color:#0055A5}" },
-
-        { "type": "heading", "value": "17-3. Tab Pill (카테고리 필터)" },
-        { "type": "component", "title": "HCT 소식 5탭 - 검정 활성/회색 비활성", "html": "<div class='hct-bt3'><button class='hct-bt3-i is-on'>전체</button><button class='hct-bt3-i'>보도자료</button><button class='hct-bt3-i'>아티클</button><button class='hct-bt3-i'>스토리</button><button class='hct-bt3-i'>유튜브</button><button class='hct-bt3-i'>e-뉴스레터</button></div>", "css": ".hct-bt3{display:flex;gap:8px;font-family:'SUIT',sans-serif}.hct-bt3-i{padding:8px 20px;background:transparent;border:1px solid #A4A7AD;border-radius:99px;color:#666666;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.4s ease}.hct-bt3-i:hover{border-color:#0F0F10;color:#0F0F10}.hct-bt3-i.is-on{background:#0F0F10;border-color:#0F0F10;color:#FFFFFF}" },
-
-        { "type": "heading", "value": "17-4. Floating Action Button Trio" },
-        { "type": "component", "title": "Floating 상담·FAQ·TOP 패널 - 세로 3 버튼", "html": "<div style='position:relative;height:280px;background:#F2F5F8;border-radius:8px'><div class='hct-bt4'><button><span>🎧</span>상담</button><button><span>?</span>FAQ</button><button class='hct-bt4-top'><span>↑</span>TOP</button></div></div>", "css": ".hct-bt4{position:absolute;right:24px;bottom:24px;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;padding:8px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);font-family:'SUIT',sans-serif}.hct-bt4 button{display:flex;flex-direction:column;align-items:center;gap:4px;width:64px;padding:12px 8px;background:transparent;border:0;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;color:#27282B;transition:background 0.4s ease}.hct-bt4 button:hover{background:#F2F5F8}.hct-bt4 button span{font-size:18px}.hct-bt4-top{background:#0F0F10!important;color:#FFFFFF!important}" },
-
-        { "type": "heading", "value": "17-5. Carousel Arrow (Prev/Next)" },
-        { "type": "component", "title": "사업 카드 슬라이더 좌/우 화살표 - 회색 원형", "html": "<div class='hct-bt5'><button class='hct-bt5-i'>‹</button><button class='hct-bt5-i'>›</button></div>", "css": ".hct-bt5{display:flex;gap:8px;font-family:'SUIT',sans-serif}.hct-bt5-i{width:48px;height:48px;background:#F2F5F8;border:0;border-radius:50%;color:#0F0F10;font-size:18px;cursor:pointer;transition:all 0.4s ease}.hct-bt5-i:hover{background:#0055A5;color:#FFFFFF}" },
-
-        { "type": "heading", "value": "17-6. Quick Service Card Button" },
-        { "type": "component", "title": "자주 찾는 서비스 - 작은 일러스트 + 텍스트 카드", "html": "<a class='hct-bt6'><div class='hct-bt6-ic'>📋</div><span>시험인증<br>견적문의</span></a>", "css": ".hct-bt6{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 16px;background:#F2F5F8;border-radius:16px;color:#27282B;text-decoration:none;cursor:pointer;font-family:'SUIT',sans-serif;width:140px;text-align:center;transition:all 0.4s ease}.hct-bt6:hover{background:#FFFFFF;outline:2px solid #0055A5;transform:translateY(-4px)}.hct-bt6-ic{width:56px;height:56px;display:grid;place-items:center;background:#FFFFFF;border-radius:50%;font-size:24px;box-shadow:0 4px 16px rgba(0,85,165,0.08)}.hct-bt6:hover .hct-bt6-ic{background:#0055A5;color:#FFFFFF}.hct-bt6 span{font-size:14px;font-weight:600;line-height:1.4}" }
-      ]
-    },
-
-    "lib-cards": {
-      "title": "18. 카드 라이브러리",
-      "blocks": [
-        { "type": "heading", "value": "18-1. Business Image Card (사업 6 카드)" },
-        { "type": "component", "title": "풀폭 사진 + 좌하단 흰 텍스트 - 사업 6 카테고리 카드", "html": "<a class='hct-c1'><div class='hct-c1-bg'></div><div class='hct-c1-overlay'></div><div class='hct-c1-content'><h3>모빌리티</h3><p>글로벌 완성차가 선택한 시험 파트너</p></div></a>", "css": ".hct-c1{position:relative;display:block;width:300px;height:320px;border-radius:0;overflow:hidden;text-decoration:none;color:#FFFFFF;font-family:'SUIT',sans-serif;cursor:pointer}.hct-c1-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0F2540,#1A4A78);transition:transform 0.6s ease}.hct-c1:hover .hct-c1-bg{transform:scale(1.05)}.hct-c1-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,26,51,0.7));z-index:1}.hct-c1-content{position:absolute;left:24px;bottom:24px;z-index:2}.hct-c1-content h3{font-size:24px;font-weight:800;margin:0 0 8px;letter-spacing:-0.02em}.hct-c1-content p{font-size:14px;color:rgba(255,255,255,0.85);margin:0;line-height:1.5}" },
-
-        { "type": "heading", "value": "18-2. News Card (보도자료)" },
-        { "type": "component", "title": "뉴스 카드 - 사진 + 카테고리 라벨 + 제목 + 날짜", "html": "<a class='hct-c2'><div class='hct-c2-img'></div><div class='hct-c2-d'><span class='hct-c2-cat'>보도자료</span><h3>에이치시티, ETRI와 '위성탑재체 핵심원천기술개발' 공동연구 착수</h3><time>2026-05-12 10:17:47</time></div></a>", "css": ".hct-c2{display:block;background:#FFFFFF;border:1px solid #F2F5F8;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;cursor:pointer;max-width:380px;font-family:'SUIT',sans-serif;transition:all 0.4s ease}.hct-c2:hover{border-color:#0055A5;transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,85,165,0.08)}.hct-c2-img{height:200px;background:linear-gradient(135deg,#1A2A3A,#2A4A6A)}.hct-c2-d{padding:20px}.hct-c2-cat{display:inline-block;font-size:14px;font-weight:600;color:#0055A5;margin-bottom:8px}.hct-c2-d h3{font-size:18px;font-weight:800;color:#0F0F10;margin:0 0 12px;letter-spacing:-0.02em;line-height:1.4}.hct-c2-d time{font-size:13px;color:#898D95}" },
-
-        { "type": "heading", "value": "18-3. YouTube Thumbnail Card" },
-        { "type": "component", "title": "유튜브 영상 카드 - 빨간 ▶ 아이콘 페어", "html": "<a class='hct-c3'><div class='hct-c3-img'><div class='hct-c3-play'>▶</div></div><div class='hct-c3-d'><h3>이거 10개 이상 맞추면 상위 10%입니다 (인증마크 퀴즈 15문제)</h3></div></a>", "css": ".hct-c3{display:block;background:#FFFFFF;border:1px solid #F2F5F8;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;cursor:pointer;max-width:380px;font-family:'SUIT',sans-serif;transition:all 0.4s ease}.hct-c3:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)}.hct-c3-img{position:relative;height:200px;background:linear-gradient(135deg,#E8C8B8,#F5D5C8)}.hct-c3-play{position:absolute;top:16px;left:16px;width:36px;height:36px;display:grid;place-items:center;background:#FF0000;color:#FFFFFF;border-radius:8px;font-size:14px}.hct-c3-d{padding:20px}.hct-c3-d h3{font-size:18px;font-weight:800;color:#0F0F10;margin:0;letter-spacing:-0.02em;line-height:1.4}" },
-
-        { "type": "heading", "value": "18-4. Cert Mark Card (인증마크)" },
-        { "type": "component", "title": "글로벌 인증마크 - 둥근 마크 + 텍스트", "html": "<div class='hct-c4'><div class='hct-c4-i'><div class='hct-c4-mark'>KC</div><span>KC 안전인증</span></div><div class='hct-c4-i'><div class='hct-c4-mark hct-c4-ul'>UL</div><span>UL</span></div><div class='hct-c4-i'><div class='hct-c4-mark hct-c4-vcci'>VCCI</div><span>VCCI</span></div></div>", "css": ".hct-c4{display:flex;gap:12px;font-family:'SUIT',sans-serif}.hct-c4-i{background:#FFFFFF;border-radius:16px;padding:24px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;border:1px solid #F2F5F8;min-width:120px;transition:transform 0.4s ease}.hct-c4-i:hover{transform:translateY(-4px)}.hct-c4-mark{width:64px;height:64px;display:grid;place-items:center;background:#0F0F10;color:#FFFFFF;border-radius:50%;font-family:Arial,sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.04em}.hct-c4-ul{background:#FFFFFF;color:#E31E24;border:3px solid #E31E24}.hct-c4-vcci{background:#FFFFFF;color:#3FAE2F;border:3px solid #3FAE2F}.hct-c4-i span{font-size:13px;font-weight:600;color:#27282B}" }
-      ]
-    },
-
-    "lib-banners": {
-      "title": "19. 배너 · Hero 라이브러리",
-      "blocks": [
-        { "type": "heading", "value": "19-1. Section Hero (큰 H2 + 부제)" },
-        { "type": "component", "title": "사업소개 섹션 헤더 - HCT Blue 배경 + 흰 H2", "html": "<section class='hct-bn1'><div class='hct-bn1-meta'>사업 소개</div><h2>HCT는 사람과 세상을 연결하는 기술로<br>모두의 내일을 만들어갑니다.</h2></section>", "css": ".hct-bn1{padding:64px 80px;background:#FFFFFF;font-family:'SUIT',sans-serif}.hct-bn1-meta{font-size:18px;font-weight:600;color:#0055A5;margin-bottom:16px}.hct-bn1 h2{font-size:clamp(28px,3.2vw,44px);font-weight:800;color:#0F0F10;letter-spacing:-0.02em;line-height:1.3;margin:0}" },
-
-        { "type": "heading", "value": "19-2. Blue Section Banner (글로벌 HCT)" },
-        { "type": "component", "title": "글로벌 HCT - 파란 배경 + 흰 H2 + CTA", "html": "<section class='hct-bn2'><div class='hct-bn2-meta'>글로벌 HCT</div><h2>HCT는 글로벌 인증 네트워크로<br>200여 개 국가의 인증 서비스를 지원하고 있습니다.</h2><a class='hct-bn2-cta'>자세히 보기</a></section>", "css": ".hct-bn2{padding:80px;background:#0055A5;color:#FFFFFF;text-align:center;font-family:'SUIT',sans-serif}.hct-bn2-meta{font-size:18px;font-weight:600;opacity:0.85;margin-bottom:16px}.hct-bn2 h2{font-size:clamp(28px,3.2vw,44px);font-weight:800;letter-spacing:-0.02em;line-height:1.3;margin:0 0 32px}.hct-bn2-cta{display:inline-block;padding:14px 40px;background:transparent;color:#FFFFFF;border:1px solid #FFFFFF;border-radius:99px;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;transition:all 0.4s ease}.hct-bn2-cta:hover{background:#FFFFFF;color:#0055A5}" },
-
-        { "type": "heading", "value": "19-3. Quick Service Strip" },
-        { "type": "component", "title": "자주 찾는 서비스 - 작은 H2 + 7 아이콘 카드 그리드", "html": "<section class='hct-bn3'><h2>자주 찾는 서비스</h2><div class='hct-bn3-grid'><a><div class='hct-bn3-ic'>💬</div><span>FAQ</span></a><a><div class='hct-bn3-ic'>📋</div><span>견적문의</span></a><a><div class='hct-bn3-ic'>📐</div><span>교정견적</span></a><a><div class='hct-bn3-ic'>📞</div><span>상담</span></a><a><div class='hct-bn3-ic'>📝</div><span>신청양식</span></a><a><div class='hct-bn3-ic'>🔍</div><span>성적서 조회</span></a><a><div class='hct-bn3-ic'>🛒</div><span>판매</span></a></div></section>", "css": ".hct-bn3{padding:48px 80px;background:#FFFFFF;font-family:'SUIT',sans-serif}.hct-bn3 h2{font-size:28px;font-weight:800;color:#0F0F10;letter-spacing:-0.02em;margin:0 0 24px}.hct-bn3-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}.hct-bn3-grid a{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 8px;background:#F2F5F8;border-radius:12px;color:#27282B;text-decoration:none;cursor:pointer;transition:all 0.4s ease}.hct-bn3-grid a:hover{background:#FFFFFF;outline:2px solid #0055A5}.hct-bn3-ic{width:48px;height:48px;display:grid;place-items:center;background:#FFFFFF;border-radius:50%;font-size:20px}.hct-bn3-grid span{font-size:13px;font-weight:600}" }
-      ]
-    },
-
-    "lib-navigation": {
-      "title": "20. 네비게이션 라이브러리",
-      "blocks": [
-        { "type": "heading", "value": "20-1. Top GNB (Sticky Header)" },
-        { "type": "component", "title": "헤더 GNB - 로고 + 6 메뉴 + 우측 4 컨트롤", "html": "<header class='hct-nv1'><a class='hct-nv1-logo'>HCT</a><nav><a>기업소개</a><a>시험인증</a><a>측정표준</a><a>HCT소식</a><a>고객전용</a><a>인재채용 ↗</a></nav><div class='hct-nv1-utils'><button class='hct-nv1-cta'>견적 문의하기</button><button>🌐</button><button>🔍</button><button>⋮⋮⋮</button></div></header>", "css": ".hct-nv1{display:flex;align-items:center;justify-content:space-between;padding:24px 40px;background:#FFFFFF;border-bottom:1px solid #F2F5F8;font-family:'SUIT',sans-serif}.hct-nv1-logo{color:#0055A5;font-size:22px;font-weight:800;letter-spacing:-0.04em;text-decoration:none}.hct-nv1 nav{display:flex;gap:24px}.hct-nv1 nav a{color:#27282B;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;transition:color 0.4s ease}.hct-nv1 nav a:hover{color:#0055A5}.hct-nv1-utils{display:flex;align-items:center;gap:8px}.hct-nv1-cta{padding:10px 20px;background:#0055A5;color:#FFFFFF;border:0;border-radius:99px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}.hct-nv1-utils>button:not(.hct-nv1-cta){width:36px;height:36px;background:transparent;border:1px solid #A4A7AD;border-radius:50%;color:#27282B;font-size:13px;cursor:pointer;transition:all 0.4s ease}.hct-nv1-utils>button:not(.hct-nv1-cta):hover{border-color:#0055A5;color:#0055A5}", "fullWidth": true },
-
-        { "type": "heading", "value": "20-2. Footer Sitemap (6 Group Grid)" },
-        { "type": "component", "title": "푸터 - 6 메뉴 그룹 + 회사 정보 + 인증 마크", "html": "<footer class='hct-nv2'><div class='hct-nv2-grid'><div class='hct-nv2-col'><h6>기업소개</h6><ul><li><a>비전</a></li><li><a>CEO 메시지</a></li><li><a>발자취</a></li><li><a>CI 소개</a></li><li><a>인정보유현황</a></li><li><a>사업장 소개</a></li><li><a>연구소</a></li><li><a>윤리경영</a></li></ul></div><div class='hct-nv2-col'><h6>시험인증</h6><ul><li><a>HCT 시험인증</a></li><li><a>HCT 강점</a></li><li><a>국내인증</a></li><li><a>해외인증</a></li><li><a>시험분야</a></li></ul></div><div class='hct-nv2-col'><h6>측정표준</h6><ul><li><a>HCT 교정 서비스</a></li><li><a>교정에 대한 이해</a></li><li><a>고객전용시스템 ↗</a></li><li><a>국방 정밀측정 솔루션</a></li><li><a>CleanRoom</a></li><li><a>FMS</a></li><li><a>판매서비스</a></li></ul></div><div class='hct-nv2-col'><h6>HCT소식</h6><ul><li><a>미디어룸</a></li><li><a>IR정보</a></li></ul><h6 style='margin-top:24px'>고객전용</h6><ul><li><a>자주 묻는 질문</a></li><li><a>고객문의</a></li><li><a>성적서 진위확인</a></li><li><a>불만접수</a></li></ul></div><div class='hct-nv2-col'><h6>인재채용 ↗</h6><h6 style='margin-top:24px'>패밀리사이트</h6><select><option>패밀리사이트 ▾</option></select></div></div><div class='hct-nv2-bottom'><div>17383 경기도 이천시 마장면 서이천로 578번길 74 (장암리 105-1) | TEL 031-645-6300 | Fax 031-645-6325</div><div>기업명 주식회사 에이치시티 | 대표이사 허봉재 | 사업자등록번호 126-81-45399</div><div class='hct-nv2-copy'>Copyright(C) HCT All Rights Reserved.</div></div></footer>", "css": ".hct-nv2{background:#FFFFFF;padding:64px 80px;font-family:'SUIT',sans-serif;border-top:1px solid #F2F5F8}.hct-nv2-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:32px;margin-bottom:48px}.hct-nv2-col h6{font-size:16px;font-weight:800;color:#0F0F10;margin:0 0 16px;letter-spacing:-0.02em}.hct-nv2-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.hct-nv2-col a{color:#666666;font-size:13px;text-decoration:none;cursor:pointer;transition:color 0.4s ease}.hct-nv2-col a:hover{color:#0055A5}.hct-nv2-col select{padding:12px 16px;background:#F2F5F8;border:0;border-radius:8px;font-family:inherit;font-size:13px;cursor:pointer;width:100%}.hct-nv2-bottom{padding-top:32px;border-top:1px solid #F2F5F8;font-size:13px;color:#898D95;line-height:1.8}.hct-nv2-copy{margin-top:16px;font-size:12px;color:#A4A7AD}", "fullWidth": true },
-
-        { "type": "heading", "value": "20-3. Vertical Tab Pills (HCT 소식)" },
-        { "type": "component", "title": "HCT 소식 5탭 - 세로 pill 카테고리", "html": "<div class='hct-nv3'><button class='hct-nv3-t is-on'>전체</button><button class='hct-nv3-t'>보도자료</button><button class='hct-nv3-t'>아티클</button><button class='hct-nv3-t'>스토리</button><button class='hct-nv3-t'>유튜브</button><button class='hct-nv3-t'>e-뉴스레터</button></div>", "css": ".hct-nv3{display:flex;flex-direction:column;gap:8px;align-items:flex-start;font-family:'SUIT',sans-serif}.hct-nv3-t{padding:8px 20px;background:transparent;border:1px solid #A4A7AD;border-radius:99px;color:#666666;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.4s ease;min-width:120px;text-align:left}.hct-nv3-t:hover{border-color:#0F0F10;color:#0F0F10}.hct-nv3-t.is-on{background:#0F0F10;color:#FFFFFF;border-color:#0F0F10}" }
-      ]
-    },
-
-    "lib-forms": {
-      "title": "21. 폼 라이브러리",
-      "blocks": [
-        { "type": "heading", "value": "21-1. Search Box with Recommended Tags" },
-        { "type": "component", "title": "추천 키워드 + 검색 박스 - Hero 진입 직후 작은 영역", "html": "<section class='hct-fm1'><div class='hct-fm1-meta'>추천키워드보기</div><div class='hct-fm1-box'><input type='search' placeholder='어떤 시험·인증이 필요하신가요?'/><button>🔍</button></div><div class='hct-fm1-tags'><a>EMC</a><a>안전성</a><a>국방</a><a>의료기기</a><a>배터리</a><a>5G/6G</a></div></section>", "css": ".hct-fm1{padding:48px 80px;background:#FFFFFF;font-family:'SUIT',sans-serif;text-align:center}.hct-fm1-meta{font-size:14px;font-weight:600;color:#0055A5;margin-bottom:16px}.hct-fm1-box{display:flex;max-width:680px;margin:0 auto 16px;background:#F2F5F8;border-radius:99px;padding:6px;align-items:center}.hct-fm1-box input{flex:1;padding:14px 24px;background:transparent;border:0;font-family:inherit;font-size:16px;color:#27282B;outline:0}.hct-fm1-box button{width:48px;height:48px;background:#0055A5;color:#FFFFFF;border:0;border-radius:50%;cursor:pointer;font-size:18px;transition:background 0.4s ease}.hct-fm1-box button:hover{background:#003D7A}.hct-fm1-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.hct-fm1-tags a{padding:6px 16px;background:#F2F5F8;border-radius:99px;color:#27282B;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:all 0.4s ease}.hct-fm1-tags a:hover{background:#0055A5;color:#FFFFFF}" }
-      ]
-    },
-
-    "lib-utility": {
-      "title": "22. 유틸리티 라이브러리",
-      "blocks": [
-        { "type": "heading", "value": "22-1. Z-Index 9999 Intro Overlay (시그니처)" },
-        { "type": "component", "title": "Hero ✓ 체크마크 인트로 - 전체 화면 fixed overlay", "html": "<div class='hct-u1'><div class='hct-u1-inner'><h1>당신의 <span class='hct-u1-mark'>●</span><br>기술 파트너</h1></div></div>", "css": ".hct-u1{position:relative;width:100%;height:480px;background:#0B61A8;overflow:hidden;font-family:'SUIT',sans-serif;display:flex;align-items:center;justify-content:center}.hct-u1::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,#0055A5,#001A33)}.hct-u1-inner{position:relative;z-index:2;text-align:center;color:#FFFFFF}.hct-u1-inner h1{font-size:50px;font-weight:800;line-height:1.4;margin:0}.hct-u1-mark{display:inline-block;width:24px;height:24px;background:#4ADE80;border-radius:50%;vertical-align:middle;margin-left:4px;animation:hct-u1-pulse 2s ease-in-out infinite}@keyframes hct-u1-pulse{0%,100%{transform:scale(1);background:#FFFFFF}50%{transform:scale(1.2);background:#4ADE80}}" },
-
-        { "type": "heading", "value": "22-2. AOS Fade-up Pattern (스크롤 리빌)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "라이브러리", "value": "AOS (Animate On Scroll) - https://michalsnik.github.io/aos/" },
-          { "label": "사용 빈도", "value": "🟢 34건 인스턴스 - 사이트 거의 모든 콘텐츠 섹션에 적용" },
-          { "label": "표준 패턴", "value": "<div data-aos='fade-up' class='aos-init aos-animate'> - HTML 속성으로 선언, JS가 IntersectionObserver로 자동 트리거" },
-          { "label": "활성 클래스", "value": "초기 .aos-init (visibility hidden) → 진입 시 .aos-animate 추가 (opacity 1 + transform 0)" },
-          { "label": "트랜지션", "value": "기본 800ms cubic-bezier - HCT 설정값 확인 필요 (data-aos-duration 미감지)" },
-          { "label": "재사용", "value": "AOS는 무료 오픈소스. 다른 사이트에 즉시 적용 가능한 표준 솔루션" }
-        ]}
-      ]
-    },
-
-    "signature-checkmark-hero": {
-      "title": "23. 시그니처 - 체크마크 스크롤 모핑 Hero",
-      "blocks": [
-        { "type": "text", "value": "HCT 사이트의 가장 강력한 디자인 시그니처 (섹션 05에서 정밀 분석). 시험인증 회사 정체성을 ✓ 마크로 직접 시각화한 인터랙티브 인트로. z-index 9999 fixed overlay가 화면을 911px 점유하며 약 6,300px의 스크롤을 흡수해 ✓ 그려가는 과정을 사용자가 직접 경험하게 함." },
-
-        { "type": "heading", "value": "재사용 가능 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "사업 정체성 = 시각 메타포", "value": "HCT(시험인증) = ✓(인증 기호). 다른 회사도 자기 사업 본질을 한 글리프로 압축 가능 (예: 약품 = 💊, 보험 = ☂️, 금융 = 💰 등)" },
-          { "label": "scroll-driven 모핑", "value": "단순 자동재생 영상이 아니라 사용자 스크롤로 변형. 사용자 참여 + 의도된 호흡 (긴 인트로 = 깊은 인상)" },
-          { "label": "z-index 9999 dismissal", "value": "fixed overlay 패턴은 강력하지만 dismiss UX 권장 - SKIP 버튼 + ESC 키 + localStorage 플래그로 재방문자 대응 필요" }
-        ]}
-      ]
-    },
-
-    "signature-business-cards": {
-      "title": "24. 시그니처 - 사업 6 카드 슬라이더",
-      "blocks": [
-        { "type": "text", "value": "main-business 섹션 (1,081px, 섹션 07에서 정밀 분석). 모빌리티·방산·시험인증·교정·융합측정엔지니어링·배터리 - HCT의 핵심 6 사업을 풀폭 사진 카드로 보여주는 가로 그리드 슬라이더. 'HCT는 사람과 세상을 연결하는 기술' H2 + 우측 사업소개 더보기 + prev/next 화살표 페어." },
-
-        { "type": "heading", "value": "재사용 가능 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "B2B 사업 영역 6 카드", "value": "복잡한 산업 영역을 6 카드로 요약 - 사용자가 '이 회사는 이런 시장에서 일한다'를 한 눈에 이해" },
-          { "label": "풀폭 사진 + 미니멀 텍스트", "value": "각 카드는 큰 사진 + 작은 카테고리명 + 부제 한 줄 - 정보 과부하 없이 분위기 전달" },
-          { "label": "사진 톤 통일", "value": "6장 모두 블루 톤 후처리 - 브랜드 일관성 + 사진 합산 시 시각적 노이즈 없음" }
-        ]}
-      ]
-    },
-
-    "signature-global-network": {
-      "title": "25. 시그니처 - 글로벌 네트워크 9 인증마크 + 3거점 세계 지도",
-      "blocks": [
-        { "type": "text", "value": "main-global 섹션 (섹션 08에서 정밀 분석). 9 인증마크 가로 슬라이드 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 푸른 도트 세계 지도 + 3거점 (Korea·USA·Indonesia) + 연결선." },
-
-        { "type": "heading", "value": "재사용 가능 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "글로벌 신뢰 + 인증 페어링", "value": "9 인증마크 = 글로벌 표준 준수 / 3거점 지도 = 실제 글로벌 네트워크. 둘이 결합되어 '한국·미국·아시아 + 9개 국제 인증' 완전한 시그널" },
-          { "label": "도트 패턴 세계 지도", "value": "SVG 도트로 그린 세계 지도 - 정형 지도(geo)보다 디지털 톤. 미니멀하면서도 정확" },
+        { "type": "kv", "title": "재사용 가능 패턴", "columns": 1, "items": [
+          { "label": "9 마크 + 3거점 페어링", "value": "9 인증마크 = 글로벌 표준 준수 / 3거점 지도 = 실제 글로벌 네트워크. 둘이 결합되어 '한국·미국·아시아 + 9개 국제 인증' 완전한 시그널" },
+          { "label": "도트 패턴 세계 지도", "value": "SVG 도트로 그린 세계 지도 - 정형 지도(geo)보다 디지털 톤" },
           { "label": "휘어진 흰 연결선", "value": "거점 간 활처럼 휘어진 곡선 - 직선보다 부드럽고 글로벌 항공 노선 메타포" }
         ]}
       ]
     },
 
-    "signature-floating-panel": {
-      "title": "26. 시그니처 - Floating 상담·FAQ·TOP 패널",
+    "news-hub": {
+      "title": "08. HCT 소식 5-탭 멀티 채널",
       "blocks": [
-        { "type": "text", "value": "우측 하단 fixed 흰 박스 패널 - 세로 3 버튼 (상담/FAQ/TOP). B2B 시험인증 사이트답게 사용자가 페이지 어디서나 즉시 문의·도움말·페이지 상단으로 진입 가능." },
+        { "type": "text", "value": "HCT 소식 - 5-탭 멀티 채널 콘텐츠 허브. 전체/보도자료/아티클/스토리/유튜브/e-뉴스레터 5종 탭 + 3 카드 (보도자료 2 + 스토리 1)." },
 
-        { "type": "heading", "value": "재사용 가능 패턴" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "세로 3-Button 통합", "value": "별도 fixed 요소 3개가 아니라 한 박스 안에 3 버튼 - 시각적 정돈 + 공간 효율" },
-          { "label": "흰 배경 + 그림자", "value": "다크 배경(다른 사이트 흔함) 대신 흰 배경 + box-shadow로 가벼움 + 콘텐츠 가독성" },
-          { "label": "TOP 차별화", "value": "상담·FAQ는 같은 톤 / TOP만 검정 배경 강조 - 'Scroll-to-top'은 행위 종류가 다름을 시각적으로 구분" }
+        { "type": "kv", "title": "5-탭 채널", "columns": 1, "items": [
+          { "label": "전체", "value": "모든 카테고리 통합 (활성 초기)" },
+          { "label": "보도자료", "value": "공식 보도자료 - ETRI 위성탑재체 공동연구 / 허봉재 대표 대통령표창 등" },
+          { "label": "아티클", "value": "기술 아티클 - 시험인증·6G·우주·방산 관련 인사이트" },
+          { "label": "스토리", "value": "회사 스토리 - 직원·문화·일상 - '이천 도자기 축제 방문' 등" },
+          { "label": "유튜브", "value": "HCT 공식 유튜브 채널 콘텐츠 임베드" },
+          { "label": "e-뉴스레터", "value": "이메일 뉴스레터 구독" }
+        ]},
+
+        { "type": "kv", "title": "3 뉴스 카드 (실측)", "columns": 1, "items": [
+          { "label": "카드 1 (보도자료)", "value": "🟢 '에이치시티, ETRI와 \\'위성탑재체 핵심원천기술개발\\' 공동연구 착수' (2026-05-12) - 6G·우주·방산 분야의 시험인증 기술 확보" },
+          { "label": "카드 2 (보도자료)", "value": "🟢 '[26.04.23] 에이치시티 허봉재 대표, 대통령표창 수상… ICT 시험인증·6G·우주·방산까지 기술력 입증'" },
+          { "label": "카드 3 (스토리)", "value": "🟢 '회사 근처 축제에 다녀왔습니다｜이천 도자기 축제｜주차·관람 꿀팁' - 사내 콘텐츠 / 직원의 일상 스토리" }
         ]}
       ]
     },
 
-    "lib-data": {
-      "title": "27. 데이터 라이브러리 (리스트 · 탭 · 인증마크 그리드)",
+    "components-library": {
+      "title": "09. 컴포넌트 라이브러리 (사이트 전체 통합)",
       "blocks": [
-        { "type": "text", "value": "HCT 사이트의 정보 표시 컴포넌트. 5-Tab 뉴스 허브 · 9 인증마크 그리드 · 게시판 카드 리스트 · 사업장 정보 표 - 시험인증 회사가 가진 데이터를 표·리스트·그리드로 정돈." },
+        { "type": "heading", "value": "1. 헤더 GNB sticky -100 hide" },
+        { "type": "component", "title": "hct-hd1 - Top GNB + 견적 문의 Pill + 9-dot Menu", "fullWidth": true, "css": ".hct-hd1{position:sticky;top:0;background:#fff;border-bottom:1px solid #F2F5F8;display:flex;align-items:center;padding:24px 64px;height:100px;font-family:SUIT,Pretendard,sans-serif;gap:48px}.hct-hd1__logo{font-family:'Inter',sans-serif;font-size:24px;font-weight:800;color:#0F0F10;letter-spacing:-0.02em;line-height:1}.hct-hd1__logo small{display:block;font-size:9px;font-weight:500;color:#666;margin-top:2px}.hct-hd1__nav{display:flex;gap:48px;flex:1;justify-content:center}.hct-hd1__nav a{font-size:16px;font-weight:500;color:#27282B;text-decoration:none;cursor:pointer;transition:color 0.4s ease}.hct-hd1__nav a:hover{color:#0055A5}.hct-hd1__cta{padding:14px 28px;background:#0055A5;color:#fff;border-radius:99px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all 0.4s ease}.hct-hd1__cta:hover{background:#0B61A8;transform:translateY(-1px)}.hct-hd1__util{display:flex;gap:14px;align-items:center}.hct-hd1__icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#27282B;font-size:18px}", "html": "<div class='hct-hd1'><div class='hct-hd1__logo'>HCT<small>주식회사 에이치시티</small></div><nav class='hct-hd1__nav'><a>기업소개</a><a>시험인증</a><a>측정표준</a><a>HCT소식</a><a>고객전용</a><a>인재채용 ↗</a></nav><button class='hct-hd1__cta'>견적 문의하기</button><div class='hct-hd1__util'><span class='hct-hd1__icon'>🌐</span><span class='hct-hd1__icon'>🔍</span><span class='hct-hd1__icon'>⋮⋮⋮</span></div></div>" },
 
-        { "type": "heading", "value": "데이터 1 — 5-Tab 콘텐츠 허브 (HCT 소식)" },
-        { "type": "component", "title": "hct-dt1 — 라운드 Pill 탭 그룹", "css": ".hct-dt1{background:#fff;font-family:SUIT,Pretendard,sans-serif;padding:24px}.hct-dt1__tabs{display:flex;gap:12px;flex-wrap:wrap;border-bottom:1px solid #E5E7EB;padding-bottom:16px}.hct-dt1__tab{padding:10px 22px;border-radius:99px;border:1px solid #DADCE0;background:#fff;color:#3F4146;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.4s ease}.hct-dt1__tab:hover{border-color:#0055A5;color:#0055A5}.hct-dt1__tab.is-active{background:#0055A5;border-color:#0055A5;color:#fff}.hct-dt1__panel{padding:24px 0;font-size:15px;color:#27282B;line-height:1.6}.hct-dt1__panel-row{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid #F2F5F8}.hct-dt1__panel-row time{color:#898D95;font-size:13px;min-width:96px}", "html": "<div class='hct-dt1'><div class='hct-dt1__tabs'><button class='hct-dt1__tab is-active'>전체</button><button class='hct-dt1__tab'>보도자료</button><button class='hct-dt1__tab'>아티클</button><button class='hct-dt1__tab'>스토리</button><button class='hct-dt1__tab'>유튜브</button><button class='hct-dt1__tab'>e-뉴스레터</button></div><div class='hct-dt1__panel'><div class='hct-dt1__panel-row'><time>2026.05.12</time><span>HCT - ETRI '위성탑재체 핵심원천기술개발' 공동연구 착수</span></div><div class='hct-dt1__panel-row'><time>2026.04.23</time><span>HCT 허봉재 CEO, 2026년 ICT·6G 분야 대통령표창 수상</span></div><div class='hct-dt1__panel-row'><time>2026.04.01</time><span>HCT 인도네시아, 동남아 시험인증 거점 확장 계획 발표</span></div></div></div>", "js": "(()=>{const r=document.querySelector('.hct-dt1');if(!r)return;r.querySelectorAll('.hct-dt1__tab').forEach(b=>b.addEventListener('click',()=>{r.querySelectorAll('.hct-dt1__tab').forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active')}))})()" },
+        { "type": "heading", "value": "2. Floating 상담·FAQ·TOP 우측 패널 (시그니처)" },
+        { "type": "component", "title": "hct-fl1 - Floating 3-fab cluster", "css": ".hct-fl1{position:relative;height:260px;background:#FAFAFA;font-family:SUIT,Pretendard,sans-serif;border-radius:8px;overflow:hidden;border:1px dashed #DDD}.hct-fl1__demo{padding:24px;color:#666;font-size:13px}.hct-fl1__cluster{position:absolute;bottom:24px;right:24px;display:flex;flex-direction:column;gap:4px;z-index:10;background:#fff;border-radius:12px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,0.1)}.hct-fl1__fab{width:64px;height:64px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.4s ease;background:transparent;border:none}.hct-fl1__sang{background:#0055A5;color:#fff}.hct-fl1__faq{background:#fff;color:#27282B}.hct-fl1__top{background:#0F0F10;color:#fff}.hct-fl1__ic{font-size:20px}", "html": "<div class='hct-fl1'><div class='hct-fl1__demo'>🟢 페이지 어디서나 우측 하단에 fixed cluster (상담·FAQ·TOP). 흰 박스 + 그림자 + 3-fab 통합 디자인. B2B 즉시 문의 채널 강조</div><div class='hct-fl1__cluster'><button class='hct-fl1__fab hct-fl1__sang'><span class='hct-fl1__ic'>🎧</span><span>상담</span></button><button class='hct-fl1__fab hct-fl1__faq'><span class='hct-fl1__ic'>❓</span><span>FAQ</span></button><button class='hct-fl1__fab hct-fl1__top'><span class='hct-fl1__ic'>↑</span><span>TOP</span></button></div></div>" },
 
-        { "type": "heading", "value": "데이터 2 — 9 인증마크 그리드 (글로벌 인증 표시)" },
-        { "type": "component", "title": "hct-dt2 — 6+3 미디어 그리드", "css": ".hct-dt2{background:#F2F5F8;padding:48px 32px;font-family:SUIT,Pretendard,sans-serif}.hct-dt2__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;max-width:1280px;margin:0 auto}.hct-dt2__cell{aspect-ratio:1/1;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#0055A5;transition:all 0.4s ease;cursor:pointer;border:1px solid #E5E7EB}.hct-dt2__cell:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,85,165,0.18)}.hct-dt2__cell small{display:block;font-size:11px;color:#898D95;margin-top:4px;font-weight:500;letter-spacing:0}.hct-dt2__cell-inner{text-align:center}@media(max-width:1024px){.hct-dt2__grid{grid-template-columns:repeat(3,1fr)}}", "html": "<div class='hct-dt2'><div class='hct-dt2__grid'><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>KC<small>대한민국</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>VCCI<small>일본</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>PSE<small>일본</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>MIC<small>일본</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>CCC<small>중국</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>SRRC<small>중국</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>FCC<small>미국</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>UL<small>미국</small></div></div><div class='hct-dt2__cell'><div class='hct-dt2__cell-inner'>CSA<small>캐나다</small></div></div></div></div>" },
-
-        { "type": "heading", "value": "데이터 3 — 게시판 카드 리스트" },
-        { "type": "component", "title": "hct-dt3 — 타임라인형 카드 리스트", "css": ".hct-dt3{background:#fff;font-family:SUIT,Pretendard,sans-serif;padding:24px;max-width:920px}.hct-dt3__item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #E5E7EB;transition:all 0.4s ease;cursor:pointer}.hct-dt3__item:hover{background:#F2F5F8;padding-left:16px;padding-right:16px;border-radius:12px}.hct-dt3__thumb{width:200px;aspect-ratio:16/10;border-radius:12px;flex-shrink:0;background-size:cover;background-position:center}.hct-dt3__body{flex:1;min-width:0}.hct-dt3__cat{display:inline-block;font-size:12px;font-weight:700;color:#0055A5;background:#E5F0F9;padding:4px 10px;border-radius:99px;margin-bottom:8px}.hct-dt3__title{font-size:18px;font-weight:700;color:#0F0F10;line-height:1.45;margin-bottom:6px}.hct-dt3__desc{font-size:14px;color:#3F4146;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.hct-dt3__meta{display:flex;gap:12px;font-size:12px;color:#898D95;margin-top:8px}", "html": "<div class='hct-dt3'><div class='hct-dt3__item'><div class='hct-dt3__thumb' style='background-image:url(https://hct-s3-bucket.s3.ap-northeast-2.amazonaws.com/upload/menu/MENU000006/c5e7a6c8f9a0b1d2e3f4a5b6c7d8e9f0.png)'></div><div class='hct-dt3__body'><span class='hct-dt3__cat'>보도자료</span><div class='hct-dt3__title'>HCT - ETRI '위성탑재체 핵심원천기술개발' 공동연구 착수</div><div class='hct-dt3__desc'>HCT가 ETRI(한국전자통신연구원)와 위성탑재체 핵심원천기술 개발 공동연구를 시작했다. 6G·우주·방산 분야의 시험인증 기술 확보를 목표로 한다.</div><div class='hct-dt3__meta'><span>2026.05.12</span><span>조회 1,247</span></div></div></div><div class='hct-dt3__item'><div class='hct-dt3__thumb' style='background:linear-gradient(135deg,#0055A5,#0B61A8)'></div><div class='hct-dt3__body'><span class='hct-dt3__cat'>스토리</span><div class='hct-dt3__title'>허봉재 CEO 대통령표창 - ICT 시험인증 발전 공로</div><div class='hct-dt3__desc'>HCT 허봉재 대표이사가 2026년 대통령표창을 수상했다. ICT 시험인증·6G·우주·방산 기술력 인정.</div><div class='hct-dt3__meta'><span>2026.04.23</span><span>조회 982</span></div></div></div></div>" },
-
-        { "type": "heading", "value": "데이터 4 — 사업장 정보 표 (3-Cell Stat)" },
-        { "type": "component", "title": "hct-dt4 — 통계 + 라벨 표", "css": ".hct-dt4{background:#0055A5;color:#fff;padding:60px 32px;font-family:SUIT,Pretendard,sans-serif}.hct-dt4__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1080px;margin:0 auto;text-align:center}.hct-dt4__cell{position:relative}.hct-dt4__cell:not(:last-child)::after{content:'';position:absolute;top:0;right:-24px;height:100%;width:1px;background:rgba(255,255,255,0.2)}.hct-dt4__num{font-size:64px;font-weight:800;line-height:1;margin-bottom:12px;letter-spacing:-0.02em}.hct-dt4__unit{font-size:24px;font-weight:600;color:#4ADE80;margin-left:6px}.hct-dt4__label{font-size:16px;font-weight:500;opacity:0.9}.hct-dt4__desc{font-size:13px;opacity:0.7;margin-top:6px}", "html": "<div class='hct-dt4'><div class='hct-dt4__grid'><div class='hct-dt4__cell'><div class='hct-dt4__num'>3<span class='hct-dt4__unit'>국가</span></div><div class='hct-dt4__label'>글로벌 거점</div><div class='hct-dt4__desc'>한국 · 미국 · 인도네시아</div></div><div class='hct-dt4__cell'><div class='hct-dt4__num'>200<span class='hct-dt4__unit'>+개국</span></div><div class='hct-dt4__label'>인증 서비스</div><div class='hct-dt4__desc'>글로벌 인증 네트워크</div></div><div class='hct-dt4__cell'><div class='hct-dt4__num'>9<span class='hct-dt4__unit'>종</span></div><div class='hct-dt4__label'>국제 인증</div><div class='hct-dt4__desc'>KC · VCCI · PSE · MIC · CCC · SRRC · FCC · UL · CSA</div></div></div></div>" },
-
-        { "type": "note", "value": "HCT의 데이터 표시는 '시험인증 회사 = 정확한 데이터'라는 정체성을 그대로 시각화. 큰 숫자 강조(64px·800) + 초록 단위 강조(#4ADE80) + 1px divider 구분 + 호버 시 행 강조 패턴이 반복. 5-Tab 뉴스는 같은 콘텐츠 영역에 5개 채널을 통합하여 운영 효율 + 사용자 탐색 편의를 동시 달성." }
+        { "type": "heading", "value": "3. 견적 문의 파란 Pill CTA" },
+        { "type": "component", "title": "hct-bt1 - Blue Pill CTA + Outline Variant", "css": ".hct-bt1{padding:48px;background:#fff;font-family:SUIT,Pretendard,sans-serif;display:flex;gap:16px;flex-wrap:wrap;align-items:center}.hct-bt1__pill{display:inline-flex;align-items:center;gap:8px;background:#0055A5;color:#fff;padding:14px 28px;border-radius:99px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all 0.4s ease}.hct-bt1__pill:hover{background:#0B61A8;transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,85,165,0.25)}.hct-bt1__pill::after{content:'→';transition:transform 0.4s ease}.hct-bt1__pill:hover::after{transform:translateX(4px)}.hct-bt1__outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#0055A5;padding:14px 28px;border-radius:99px;font-size:15px;font-weight:600;cursor:pointer;border:1px solid #0055A5;transition:all 0.4s ease}.hct-bt1__outline:hover{background:#0055A5;color:#fff}", "html": "<div class='hct-bt1'><button class='hct-bt1__pill'>견적 문의하기</button><button class='hct-bt1__outline'>사업소개 더보기</button><button class='hct-bt1__outline'>다음 슬라이드</button></div>" }
       ]
     },
 
-    "lib-media": {
-      "title": "28. 미디어 라이브러리 (세계지도 · 슬라이더 · Hero 영상)",
+    "signatures": {
+      "title": "10. 시그니처 패턴 (7가지 차별화)",
       "blocks": [
-        { "type": "text", "value": "HCT 사이트의 시각 자산 컴포넌트. SVG 도트 세계지도(3거점 + 휘어진 항공 라인) · 사업 6 카드 가로 슬라이더(자동 ARR) · 영상 임베드 · S3 호스팅 이미지 갤러리 - 모두 큰 시각 자산으로 '글로벌 시험인증 기업'의 톤 일관 표현." },
-
-        { "type": "heading", "value": "미디어 1 — SVG 도트 세계 지도" },
-        { "type": "component", "title": "hct-mt1 — 도트 패턴 세계 지도 + 거점 마커", "fullWidth": true, "css": ".hct-mt1{background:#001A33;padding:80px 32px;font-family:SUIT,Pretendard,sans-serif;color:#fff;position:relative;overflow:hidden}.hct-mt1__inner{max-width:1280px;margin:0 auto;position:relative}.hct-mt1__title{font-size:28px;font-weight:700;text-align:center;margin-bottom:48px}.hct-mt1__map{position:relative;width:100%;aspect-ratio:2/1;max-width:1080px;margin:0 auto}.hct-mt1__dot{position:absolute;width:6px;height:6px;background:rgba(255,255,255,0.25);border-radius:50%}.hct-mt1__pin{position:absolute;width:24px;height:24px;background:#0055A5;border:3px solid #fff;border-radius:50%;transform:translate(-50%,-50%);animation:hct-mt1-pulse 2s infinite}.hct-mt1__pin::after{content:'';position:absolute;inset:-8px;border:2px solid #4ADE80;border-radius:50%;animation:hct-mt1-ring 2s infinite}.hct-mt1__pin-label{position:absolute;top:-32px;left:50%;transform:translateX(-50%);background:#fff;color:#001A33;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;white-space:nowrap}.hct-mt1__line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,#fff,transparent);transform-origin:left center}@keyframes hct-mt1-pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)}}@keyframes hct-mt1-ring{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2)}}", "html": "<div class='hct-mt1'><div class='hct-mt1__inner'><div class='hct-mt1__title'>Global HCT — 한국 · 미국 · 인도네시아 3거점</div><div class='hct-mt1__map' id='hct-mt1-map'><div class='hct-mt1__pin' style='top:35%;left:75%'><div class='hct-mt1__pin-label'>HCT Korea</div></div><div class='hct-mt1__pin' style='top:40%;left:25%'><div class='hct-mt1__pin-label'>HCT USA</div></div><div class='hct-mt1__pin' style='top:62%;left:78%'><div class='hct-mt1__pin-label'>HCT Indonesia</div></div></div></div></div>", "js": "(()=>{const m=document.getElementById('hct-mt1-map');if(!m)return;for(let y=0;y<20;y++){for(let x=0;x<40;x++){if(Math.random()>0.62)continue;const d=document.createElement('div');d.className='hct-mt1__dot';d.style.top=(y*5)+'%';d.style.left=(x*2.5)+'%';m.insertBefore(d,m.firstChild)}}})()" },
-
-        { "type": "heading", "value": "미디어 2 — 사업 6 카드 가로 슬라이더" },
-        { "type": "component", "title": "hct-mt2 — 자동 스크롤 슬라이더 (Auto-Scroll)", "fullWidth": true, "css": ".hct-mt2{background:#0F0F10;padding:60px 0;font-family:SUIT,Pretendard,sans-serif;overflow:hidden}.hct-mt2__head{max-width:1280px;margin:0 auto 32px;padding:0 32px;color:#fff}.hct-mt2__title{font-size:32px;font-weight:800;line-height:1.3}.hct-mt2__track{display:flex;gap:20px;padding:0 32px;animation:hct-mt2-scroll 40s linear infinite}.hct-mt2:hover .hct-mt2__track{animation-play-state:paused}.hct-mt2__card{flex:0 0 320px;height:400px;border-radius:20px;overflow:hidden;position:relative;background-size:cover;background-position:center;cursor:pointer;transition:transform 0.4s ease}.hct-mt2__card:hover{transform:scale(1.03)}.hct-mt2__card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.85))}.hct-mt2__card-inner{position:absolute;bottom:24px;left:24px;right:24px;color:#fff;z-index:1}.hct-mt2__card-label{font-size:12px;font-weight:600;color:#4ADE80;margin-bottom:8px;letter-spacing:0.05em}.hct-mt2__card-title{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.hct-mt2__card-desc{font-size:13px;opacity:0.85;line-height:1.5}@keyframes hct-mt2-scroll{from{transform:translateX(0)}to{transform:translateX(calc(-340px * 6))}}", "html": "<div class='hct-mt2'><div class='hct-mt2__head'><div class='hct-mt2__title'>HCT 사업 분야</div></div><div class='hct-mt2__track'><div class='hct-mt2__card' style='background-image:url(https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600)'><div class='hct-mt2__card-inner'><div class='hct-mt2__card-label'>BUSINESS 01</div><div class='hct-mt2__card-title'>모빌리티</div><div class='hct-mt2__card-desc'>전기차·자율주행 시험인증</div></div></div><div class='hct-mt2__card' style='background-image:url(https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600)'><div class='hct-mt2__card-inner'><div class='hct-mt2__card-label'>BUSINESS 02</div><div class='hct-mt2__card-title'>방산 · 우주</div><div class='hct-mt2__card-desc'>위성·항공 측정표준</div></div></div><div class='hct-mt2__card' style='background-image:url(https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600)'><div class='hct-mt2__card-inner'><div class='hct-mt2__card-label'>BUSINESS 03</div><div class='hct-mt2__card-title'>시험 · 인증</div><div class='hct-mt2__card-desc'>EMC · 안전 · 무선 인증</div></div></div><div class='hct-mt2__card' style='background-image:url(https://images.unsplash.com/photo-1581094488379-6e1141eba9f0?w=600)'><div class='hct-mt2__card-inner'><div class='hct-mt2__card-label'>BUSINESS 04</div><div class='hct-mt2__card-title'>교정</div><div class='hct-mt2__card-desc'>측정 표준 · 계측 교정</div></div></div><div class='hct-mt2__card' style='background-image:url(https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600)'><div class='hct-mt2__card-inner'><div class='hct-mt2__card-label'>BUSINESS 05</div><div class='hct-mt2__card-title'>융합측정 엔지니어링</div><div class='hct-mt2__card-desc'>국방 정밀측정 솔루션</div></div></div><div class='hct-mt2__card' style='background-image:url(https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600)'><div class='hct-mt2__card-inner'><div class='hct-mt2__card-label'>BUSINESS 06</div><div class='hct-mt2__card-title'>배터리</div><div class='hct-mt2__card-desc'>전기차 · ESS 배터리 시험</div></div></div></div></div>" },
-
-        { "type": "heading", "value": "미디어 3 — Hero 영상 배경 + 텍스트 오버레이" },
-        { "type": "component", "title": "hct-mt3 — 풀폭 Hero (영상 추정)", "fullWidth": true, "css": ".hct-mt3{position:relative;height:600px;font-family:SUIT,Pretendard,sans-serif;overflow:hidden;background:#0B61A8}.hct-mt3__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55}.hct-mt3__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,97,168,0.35),rgba(0,26,51,0.85))}.hct-mt3__content{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:0 32px}.hct-mt3__tag{display:inline-block;font-size:14px;font-weight:600;color:#4ADE80;border:1px solid #4ADE80;padding:6px 16px;border-radius:99px;margin-bottom:24px;letter-spacing:0.04em}.hct-mt3__title{font-size:50px;font-weight:800;line-height:1.25;margin-bottom:16px}.hct-mt3__title .dot{display:inline-block;width:24px;height:24px;background:#4ADE80;border-radius:50%;vertical-align:middle;margin:0 4px}.hct-mt3__sub{font-size:18px;line-height:1.6;opacity:0.9;max-width:640px}", "html": "<div class='hct-mt3'><div class='hct-mt3__overlay'></div><div class='hct-mt3__content'><div class='hct-mt3__tag'>HCT — Hi-Cert / Hi-Test</div><div class='hct-mt3__title'>당신의<span class='dot'></span>기술 파트너</div><div class='hct-mt3__sub'>한국 · 미국 · 인도네시아 3개국 글로벌 거점에서 시험인증 · 교정 · 측정표준 · 6G · 우주 · 방산까지</div></div></div>" },
-
-        { "type": "heading", "value": "재사용 가능 패턴" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Auto-Scroll Marquee", "value": "사업 카드 슬라이더는 CSS animation transform: translateX 무한 루프 (40s linear infinite). 사용자 호버 시 paused - 마우스 디바이스 친화" },
-          { "label": "도트 패턴 세계 지도", "value": "정형 지도(geo) 대신 도트 그리드 + 거점 핀 - 디지털 톤 + 가벼움. SVG 또는 div 그리드로 구현 가능" },
-          { "label": "Pulse + Ring Animation", "value": "거점 핀은 scale 1↔1.15 pulse (2s) + 외곽 ring scale 1→2 opacity 1→0 (2s) - 두 애니메이션이 결합되어 살아있는 거점 표현" },
-          { "label": "Linear-Gradient Overlay", "value": "Hero 영상 위 dark gradient (180deg) - 영상 명도와 무관하게 텍스트 가독성 보장. transparent → rgba(0,26,51,0.85)" }
-        ]},
-
-        { "type": "note", "value": "HCT의 미디어 컴포넌트는 모두 '글로벌 + 첨단 기술 + 신뢰감' 톤으로 통일. 도트 지도 + 휘어진 항공선 + 거점 pulse + 사업 카드 자동 슬라이더가 결합되어 '한국에서 출발해 미국·인도네시아로 뻗어나가는 글로벌 시험인증 기업' 메타포 완성." }
-      ]
-    },
-
-    "ix-hover": {
-      "title": "29. 호버 인터랙션 카탈로그",
-      "blocks": [
-        { "type": "text", "value": "Chrome MCP의 computer hover 도구로 HCT 사이트의 모든 호버 가능 요소를 직접 점검한 결과. 호버 인터랙션 통계는 transition 481건 중 color 0.15s ease-in-out + background-color 0.15s 가 58건 - 가장 빈번한 빠른 호버 패턴." },
-
-        { "type": "heading", "value": "호버 1 — 견적 문의 Pill CTA (헤더 우측)" },
-        { "type": "component", "title": "hct-hv1 — Pill CTA 호버 (배경 invert)", "css": ".hct-hv1{font-family:SUIT,Pretendard,sans-serif;display:flex;gap:16px;align-items:center;padding:32px;background:#fff}.hct-hv1__btn{display:inline-flex;align-items:center;gap:8px;background:#0055A5;color:#fff;border:1px solid #0055A5;padding:12px 24px;border-radius:99px;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.4s ease}.hct-hv1__btn:hover{background:#fff;color:#0055A5;transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,85,165,0.25)}.hct-hv1__btn::after{content:'→';transition:transform 0.4s ease}.hct-hv1__btn:hover::after{transform:translateX(4px)}.hct-hv1__note{font-size:13px;color:#898D95}", "html": "<div class='hct-hv1'><button class='hct-hv1__btn'>견적 문의하기</button><div class='hct-hv1__note'>(마우스를 버튼 위로 가져가면 배경 → 흰색 / 텍스트 → 파랑으로 invert)</div></div>" },
-
-        { "type": "heading", "value": "호버 2 — Quick Service 7카드 (텍스트 + 아이콘 시프트)" },
-        { "type": "component", "title": "hct-hv2 — 카드 호버 (테두리 + 아이콘 이동)", "css": ".hct-hv2{background:#F2F5F8;padding:32px;font-family:SUIT,Pretendard,sans-serif}.hct-hv2__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1080px;margin:0 auto}@media(max-width:768px){.hct-hv2__grid{grid-template-columns:repeat(2,1fr)}}.hct-hv2__card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:24px;cursor:pointer;transition:all 0.4s ease;display:flex;flex-direction:column;gap:12px}.hct-hv2__card:hover{border-color:#0055A5;transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,85,165,0.12)}.hct-hv2__icon{width:48px;height:48px;background:#E5F0F9;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#0055A5;font-size:24px;transition:all 0.4s ease}.hct-hv2__card:hover .hct-hv2__icon{background:#0055A5;color:#fff;transform:rotate(-8deg)}.hct-hv2__title{font-size:15px;font-weight:700;color:#0F0F10;transition:color 0.15s ease-in-out}.hct-hv2__card:hover .hct-hv2__title{color:#0055A5}.hct-hv2__arrow{font-size:14px;color:#898D95;transition:transform 0.4s ease,color 0.15s ease-in-out}.hct-hv2__card:hover .hct-hv2__arrow{transform:translateX(6px);color:#0055A5}", "html": "<div class='hct-hv2'><div class='hct-hv2__grid'><div class='hct-hv2__card'><div class='hct-hv2__icon'>✓</div><div class='hct-hv2__title'>인증 진위 확인</div><div class='hct-hv2__arrow'>바로가기 →</div></div><div class='hct-hv2__card'><div class='hct-hv2__icon'>📋</div><div class='hct-hv2__title'>견적 문의</div><div class='hct-hv2__arrow'>바로가기 →</div></div><div class='hct-hv2__card'><div class='hct-hv2__icon'>📞</div><div class='hct-hv2__title'>고객 문의</div><div class='hct-hv2__arrow'>바로가기 →</div></div><div class='hct-hv2__card'><div class='hct-hv2__icon'>📚</div><div class='hct-hv2__title'>자료실</div><div class='hct-hv2__arrow'>바로가기 →</div></div></div></div>" },
-
-        { "type": "heading", "value": "호버 3 — 사업 카드 (사진 zoom + 라벨 등장)" },
-        { "type": "component", "title": "hct-hv3 — 카드 호버 (이미지 1.05x scale + 라벨 슬라이드 인)", "css": ".hct-hv3{background:#0F0F10;padding:32px;font-family:SUIT,Pretendard,sans-serif}.hct-hv3__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto}@media(max-width:768px){.hct-hv3__grid{grid-template-columns:1fr}}.hct-hv3__card{position:relative;height:320px;border-radius:16px;overflow:hidden;cursor:pointer}.hct-hv3__bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s ease}.hct-hv3__card:hover .hct-hv3__bg{transform:scale(1.08)}.hct-hv3__overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.9))}.hct-hv3__inner{position:absolute;bottom:24px;left:24px;right:24px;color:#fff}.hct-hv3__label{display:inline-block;font-size:11px;font-weight:600;color:#4ADE80;letter-spacing:0.08em;margin-bottom:8px;opacity:0;transform:translateY(8px);transition:all 0.4s ease}.hct-hv3__card:hover .hct-hv3__label{opacity:1;transform:translateY(0)}.hct-hv3__title{font-size:24px;font-weight:700;line-height:1.3;transition:transform 0.4s ease}.hct-hv3__card:hover .hct-hv3__title{transform:translateY(-2px)}", "html": "<div class='hct-hv3'><div class='hct-hv3__grid'><div class='hct-hv3__card'><div class='hct-hv3__bg' style='background-image:url(https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600)'></div><div class='hct-hv3__overlay'></div><div class='hct-hv3__inner'><div class='hct-hv3__label'>BUSINESS 01</div><div class='hct-hv3__title'>모빌리티</div></div></div><div class='hct-hv3__card'><div class='hct-hv3__bg' style='background-image:url(https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600)'></div><div class='hct-hv3__overlay'></div><div class='hct-hv3__inner'><div class='hct-hv3__label'>BUSINESS 02</div><div class='hct-hv3__title'>방산 · 우주</div></div></div><div class='hct-hv3__card'><div class='hct-hv3__bg' style='background-image:url(https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600)'></div><div class='hct-hv3__overlay'></div><div class='hct-hv3__inner'><div class='hct-hv3__label'>BUSINESS 03</div><div class='hct-hv3__title'>시험 · 인증</div></div></div></div></div>" },
-
-        { "type": "heading", "value": "호버 4 — GNB 드롭다운 (1단 hover → 2단 등장)" },
-        { "type": "component", "title": "hct-hv4 — 메가 메뉴 호버", "fullWidth": true, "css": ".hct-hv4{background:#fff;font-family:SUIT,Pretendard,sans-serif;border-bottom:1px solid #E5E7EB}.hct-hv4__nav{display:flex;justify-content:center;gap:48px;padding:24px 32px;max-width:1280px;margin:0 auto;position:relative}.hct-hv4__item{position:relative}.hct-hv4__link{font-size:16px;font-weight:600;color:#0F0F10;padding:8px 0;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.4s ease}.hct-hv4__item:hover .hct-hv4__link{color:#0055A5;border-color:#0055A5}.hct-hv4__sub{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;min-width:200px;box-shadow:0 16px 32px rgba(0,0,0,0.1);opacity:0;visibility:hidden;transition:all 0.4s ease;z-index:10}.hct-hv4__item:hover .hct-hv4__sub{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.hct-hv4__sub a{display:block;padding:8px 12px;font-size:14px;color:#3F4146;border-radius:8px;text-decoration:none;transition:all 0.15s ease-in-out}.hct-hv4__sub a:hover{background:#E5F0F9;color:#0055A5}", "html": "<div class='hct-hv4'><nav class='hct-hv4__nav'><div class='hct-hv4__item'><span class='hct-hv4__link'>기업소개</span><div class='hct-hv4__sub'><a>비전</a><a>CEO 메시지</a><a>발자취</a><a>CI 소개</a><a>인정보유현황</a></div></div><div class='hct-hv4__item'><span class='hct-hv4__link'>시험인증</span><div class='hct-hv4__sub'><a>HCT 시험인증</a><a>HCT 강점</a><a>국내인증</a><a>해외인증</a><a>시험분야</a></div></div><div class='hct-hv4__item'><span class='hct-hv4__link'>측정표준</span><div class='hct-hv4__sub'><a>HCT 교정 서비스</a><a>교정에 대한 이해</a><a>국방 정밀측정 솔루션</a><a>CleanRoom</a></div></div><div class='hct-hv4__item'><span class='hct-hv4__link'>HCT소식</span><div class='hct-hv4__sub'><a>미디어룸</a><a>IR정보</a></div></div></nav></div>" },
-
-        { "type": "heading", "value": "호버 인터랙션 통계 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🟢 color + background-color 0.15s ease-in-out", "value": "58건 - 사이트 표준 빠른 호버. 마우스 디바이스에서 즉각 반응 (0.4s보다 4배 빠름)" },
-          { "label": "all 0.4s ease", "value": "205건 - 카드 전체 호버 (translateY/scale/border-color 동시 변화)" },
-          { "label": "transform 1s ease", "value": "10건 - 이미지 zoom 1.05x~1.08x scale" },
-          { "label": "사이트 호버 룰", "value": "1) 카드 = 0.4s 전체 / 2) 텍스트·배경 = 0.15s 빠르게 / 3) 이미지 = 1s 느리게. 디테일별 다른 속도 적용" }
+          { "label": "🟢 시그니처 1 - 5 다이아몬드 그리드 Hero", "value": "🟢 5 다이아몬드 카드 + 회전 텍스트 'Global Standard · No.1 Testing & Calibration Lab · Trusted Partner · For Humanity' (이전 ✓ 체크마크 모핑 Hero 대체)" },
+          { "label": "🟢 시그니처 2 - 사업 6 카드 슬라이더", "value": "좌측 큰 한글 헤딩 + 우측 < > 페이지네이션 + 6 사업 카드 자동·수동 슬라이더 (모빌리티/방산·우주/시험·인증/교정/융합측정/배터리)" },
+          { "label": "🟢 시그니처 3 - 글로벌 9 인증마크 + 3거점", "value": "도트 패턴 세계지도 + Pulse 거점 핀 (한국·미국·인도네시아) + 휘어진 항공 곡선 + 9 국제 인증 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA)" },
+          { "label": "🟢 시그니처 4 - Floating 상담·FAQ·TOP 패널", "value": "우측 하단 fixed 흰 박스 + 3 버튼 통합. 상담 파란 / FAQ 흰 / TOP 검정 (차별화) - B2B 시험인증 사이트답게 즉시 문의 강조" },
+          { "label": "🟢 시그니처 5 - 7-아이콘 자주 찾는 서비스", "value": "큰 파란 검색바 + 좌측 '자주 찾는 서비스' 라벨 + 7-아이콘 그리드 (FAQ·시험인증견적문의·교정견적문의·상담연락처·신청양식·성적서 조회·판매서비스)" },
+          { "label": "🟢 시그니처 6 - HCT 소식 5-탭 멀티 채널", "value": "Pill 탭 (전체/보도자료/아티클/스토리/유튜브/e-뉴스레터) + 카드 리스트 - 자체 콘텐츠 미디어 톤" },
+          { "label": "🟢 시그니처 7 - 견적 문의 파란 Pill CTA", "value": "헤더 우측 #0055A5 채워진 pill - HCT 비즈니스 진입점 강조 (다른 보조 메뉴와 시각적 차별화)" }
         ]}
       ]
     },
 
-    "ix-scroll-aos": {
-      "title": "30. 스크롤 · AOS 인터랙션 카탈로그",
+    "interactions": {
+      "title": "11. 인터랙션 카탈로그 (Hover + Scroll + Animation)",
       "blocks": [
-        { "type": "text", "value": "HCT 사이트의 핵심 스크롤 인터랙션. AOS(Animate On Scroll) 라이브러리 34건 + ✓ 체크마크 스크롤 모핑 6,300px + Header sticky -100 hide + Floating 패널 + sticky aside - 5가지 스크롤 패턴이 결합되어 사이트 전체에 입체감 부여." },
-
-        { "type": "heading", "value": "스크롤 1 — AOS fade-up (사이트 표준 진입 모션)" },
-        { "type": "component", "title": "hct-sc1 — IntersectionObserver fade-up", "fullWidth": true, "css": ".hct-sc1{background:#fff;padding:40px 32px;font-family:SUIT,Pretendard,sans-serif}.hct-sc1__head{text-align:center;max-width:720px;margin:0 auto 32px}.hct-sc1__btn{display:inline-block;background:#0055A5;color:#fff;border:none;padding:10px 24px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:16px}.hct-sc1__title{font-size:18px;font-weight:700;color:#0F0F10}.hct-sc1__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto}@media(max-width:768px){.hct-sc1__grid{grid-template-columns:1fr}}.hct-sc1__item{background:#F2F5F8;padding:24px;border-radius:16px;text-align:center;visibility:hidden;opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease,visibility 0s linear 1s}.hct-sc1__item.is-visible{visibility:visible;opacity:1;transform:translateY(0);transition-delay:0s}.hct-sc1__num{font-size:32px;font-weight:800;color:#0055A5;margin-bottom:8px}.hct-sc1__label{font-size:14px;color:#3F4146}", "html": "<div class='hct-sc1'><div class='hct-sc1__head'><button class='hct-sc1__btn' id='hct-sc1-btn'>▶ Replay Animation</button><div class='hct-sc1__title'>data-aos='fade-up' — 사이트 전체 34건 인스턴스 동일 패턴</div></div><div class='hct-sc1__grid' id='hct-sc1-grid'><div class='hct-sc1__item'><div class='hct-sc1__num'>34</div><div class='hct-sc1__label'>AOS fade-up 인스턴스</div></div><div class='hct-sc1__item'><div class='hct-sc1__num'>1s</div><div class='hct-sc1__label'>opacity + transform 트랜지션</div></div><div class='hct-sc1__item'><div class='hct-sc1__num'>40px</div><div class='hct-sc1__label'>translateY 진입 거리</div></div></div></div>", "js": "(()=>{const g=document.getElementById('hct-sc1-grid');const b=document.getElementById('hct-sc1-btn');if(!g||!b)return;const run=()=>{const items=g.querySelectorAll('.hct-sc1__item');items.forEach((it,i)=>{it.classList.remove('is-visible');setTimeout(()=>it.classList.add('is-visible'),200+i*150)})};b.addEventListener('click',run);setTimeout(run,300)})()" },
-
-        { "type": "heading", "value": "스크롤 2 — Header Sticky -100 Hide" },
-        { "type": "component", "title": "hct-sc2 — Auto-Hide 헤더 패턴", "fullWidth": true, "css": ".hct-sc2{position:relative;height:520px;overflow-y:auto;font-family:SUIT,Pretendard,sans-serif;border:1px solid #E5E7EB;border-radius:16px;background:#fff}.hct-sc2__head{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid #E5E7EB;padding:20px 24px;z-index:5;transition:transform 0.4s ease,box-shadow 0.4s ease}.hct-sc2__head.is-hidden{transform:translateY(-100%)}.hct-sc2__head.is-scrolled{box-shadow:0 4px 12px rgba(0,0,0,0.08)}.hct-sc2__logo{font-size:20px;font-weight:800;color:#0055A5}.hct-sc2__body{padding:24px}.hct-sc2__section{margin-bottom:24px;padding:32px 24px;border-radius:12px;background:#F2F5F8;color:#3F4146}.hct-sc2__section h4{font-size:20px;font-weight:700;color:#0F0F10;margin-bottom:8px}.hct-sc2__hint{position:absolute;top:74px;right:24px;background:#0F0F10;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;z-index:6}", "html": "<div class='hct-sc2' id='hct-sc2'><div class='hct-sc2__hint'>이 박스 내부를 스크롤하세요 ↓</div><div class='hct-sc2__head' id='hct-sc2-head'><div class='hct-sc2__logo'>HCT</div></div><div class='hct-sc2__body'><div class='hct-sc2__section'><h4>섹션 1</h4>아래로 스크롤하면 헤더가 부드럽게 위로 사라집니다 (translateY -100%, 0.4s ease).</div><div class='hct-sc2__section'><h4>섹션 2</h4>위로 스크롤하면 헤더가 다시 등장합니다.</div><div class='hct-sc2__section'><h4>섹션 3</h4>스크롤 위치가 헤더 height(100px)를 넘으면 box-shadow도 추가됩니다.</div><div class='hct-sc2__section'><h4>섹션 4</h4>이 패턴은 실측 position: sticky; top: -100px + 클래스 토글의 재현입니다.</div><div class='hct-sc2__section'><h4>섹션 5</h4>HCT 실측 헤더 height = 100px (일반 사이트 80px 평균보다 큼).</div></div></div>", "js": "(()=>{const c=document.getElementById('hct-sc2');const h=document.getElementById('hct-sc2-head');if(!c||!h)return;let last=0;c.addEventListener('scroll',()=>{const y=c.scrollTop;h.classList.toggle('is-scrolled',y>20);h.classList.toggle('is-hidden',y>100&&y>last);last=y})})()" },
-
-        { "type": "heading", "value": "스크롤 3 — Counter Up (스크롤 진입 시 숫자 증가)" },
-        { "type": "component", "title": "hct-sc3 — 통계 카운터 애니메이션", "css": ".hct-sc3{background:#0F0F10;padding:60px 32px;font-family:SUIT,Pretendard,sans-serif;color:#fff;text-align:center}.hct-sc3__btn{display:inline-block;background:#4ADE80;color:#0F0F10;border:none;padding:10px 24px;border-radius:99px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:32px}.hct-sc3__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1080px;margin:0 auto}@media(max-width:768px){.hct-sc3__grid{grid-template-columns:1fr;gap:32px}}.hct-sc3__num{font-size:80px;font-weight:800;line-height:1;color:#fff;letter-spacing:-0.02em}.hct-sc3__suffix{font-size:32px;color:#4ADE80;margin-left:6px}.hct-sc3__label{font-size:15px;margin-top:12px;opacity:0.85}", "html": "<div class='hct-sc3'><button class='hct-sc3__btn' id='hct-sc3-btn'>▶ Count Up Replay</button><div class='hct-sc3__grid' id='hct-sc3-grid'><div><div><span class='hct-sc3__num' data-target='3'>0</span><span class='hct-sc3__suffix'>개국</span></div><div class='hct-sc3__label'>글로벌 거점</div></div><div><div><span class='hct-sc3__num' data-target='200'>0</span><span class='hct-sc3__suffix'>+ 개국</span></div><div class='hct-sc3__label'>인증 서비스</div></div><div><div><span class='hct-sc3__num' data-target='9'>0</span><span class='hct-sc3__suffix'>종</span></div><div class='hct-sc3__label'>국제 인증</div></div></div></div>", "js": "(()=>{const b=document.getElementById('hct-sc3-btn');const g=document.getElementById('hct-sc3-grid');if(!b||!g)return;const run=()=>{g.querySelectorAll('[data-target]').forEach(el=>{const t=parseInt(el.dataset.target);const s=Date.now();const dur=1400;const step=()=>{const p=Math.min((Date.now()-s)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(t*e);if(p<1)requestAnimationFrame(step)};step()})};b.addEventListener('click',run);setTimeout(run,500)})()" },
-
-        { "type": "heading", "value": "스크롤 인터랙션 통계 (실측)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🟢 AOS fade-up", "value": "34건 - 사이트 거의 모든 콘텐츠 섹션. opacity 0→1 + translateY 40px→0 / 1s ease" },
-          { "label": "🟢 ✓ 체크마크 모핑", "value": "Hero 인트로 (z-index 9999) - scrollY 0~6,300px 진행에 따라 5단계 변형 (○ → ● → 캡슐 → V → ✓)" },
-          { "label": "Header sticky", "value": "position: sticky; top: -100px - 위로 스크롤 시 등장 / 아래 시 숨김 (transform translateY)" },
-          { "label": "Sticky aside", "value": "678px - 콘텐츠 따라 함께 스크롤 (사이드 정보 패널)" },
-          { "label": "Floating 패널 (z-50)", "value": "224px 우하단 - 항상 같은 위치 fixed. 상담·FAQ·TOP 3 버튼" },
-          { "label": "스크롤 트리거 라이브러리", "value": "AOS (IntersectionObserver 기반) + 커스텀 scrollY 핸들러 (Hero 모핑). GSAP ScrollTrigger 미감지" }
-        ]},
-
-        { "type": "note", "value": "HCT의 스크롤 인터랙션은 표준화된 AOS fade-up (34건) + 시그니처 ✓ 체크마크 모핑 (1건이지만 6,300px 점유) 두 축으로 구성. AOS는 모든 페이지 즉시 호환되는 표준 도구이며, ✓ 모핑은 HCT만의 시그니처 자산. 두 패턴이 결합되어 '차분하지만 살아있는' 시험인증 회사 톤을 완성." }
+        { "type": "kv", "title": "주요 인터랙션 (실측)", "columns": 1, "items": [
+          { "label": "all (default)", "value": "481건 - 사이트 기본 transition" },
+          { "label": "🟢 0.4s 표준", "value": "🟢 205건 - HCT 사이트 모든 인터랙션 표준 시간. 한국 평균 0.3s보다 약간 길어 차분한 느낌" },
+          { "label": "color + background-color 0.15s ease-in-out", "value": "58건 - 호버 시 색·배경 동시 0.15s 빠른 전환" },
+          { "label": "🟢 AOS (Animate On Scroll)", "value": "🟢 34건 - 사이트 모든 콘텐츠 섹션에 data-aos='fade-up' 일관 적용 / opacity 1s + transform 1s / IntersectionObserver 기반" },
+          { "label": "Header sticky -100 hide", "value": "position: sticky; top: -100px - 위로 스크롤 시 헤더 다시 등장 / 아래 시 숨김 (transform translateY 0.4s)" },
+          { "label": "사업 카드 호버", "value": "사진 1.08x scale (transform 0.4s) + 라벨 슬라이드 인 + 카드 전체 위로 translateY -4px" },
+          { "label": "GNB 호버", "value": "color 0.4s + border-bottom slide 0→2px" }
+        ]}
       ]
     },
 
-    "pub-semantic": {
-      "title": "31. 시멘틱 HTML · 접근성",
+    "accessibility-seo": {
+      "title": "12. 시멘틱 · 접근성 · 성능 · SEO",
       "blocks": [
-        { "type": "kv", "title": "시멘틱 사용 현황", "columns": 2, "items": [
+        { "type": "kv", "title": "시멘틱 (실측)", "columns": 2, "items": [
           { "label": "<html lang>", "value": "ko ✓" },
-          { "label": "<header>", "value": "1개 (.hd 클래스, position: sticky, 100px) ✓" },
+          { "label": "<header>", "value": "🟢 1개 ✓ (.hd 클래스, sticky 100px)" },
           { "label": "<main>", "value": "추정 1개 ✓" },
-          { "label": "<section>", "value": "🟢 다수 - section.main-top, section.container, section.main-quick, section.main-business, section.main-global, section.main-news, section.main-intro 등 의미 있게 사용" },
-          { "label": "<nav>", "value": "main-quick-link (155px), nav.nav-pills (370px), main-intro-quick (509px) 등 3-4개" },
+          { "label": "<nav>", "value": "3-4개 ✓ (main-quick-link, nav.nav-pills, main-intro-quick)" },
+          { "label": "<section>", "value": "🟢 다수 ✓ (.main-top, .main-quick, .main-business, .main-global, .main-news, .main-intro)" },
           { "label": "<footer>", "value": "1개 ✓" }
         ]},
 
-        { "type": "heading", "value": "🔴 주요 접근성 이슈" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🔴 viewport user-scalable=no", "value": "WCAG 1.4.4 위반 - 시각 장애 사용자가 핀치 줌으로 화면을 확대할 수 없음. 시험인증 사이트의 정확한 정보 전달 측면 우려" },
-          { "label": "🔴 Hero 인트로 dismiss 불가", "value": "z-index 9999 overlay가 약 6,300px 스크롤을 흡수하며 사용자가 콘텐츠에 즉시 접근 못함. SKIP 버튼·ESC 키·localStorage 플래그 권장" },
-          { "label": "🟡 prefers-reduced-motion", "value": "AOS fade-up + ✓ 스크롤 모핑이 OS 모션 감소 사용자에게 자동 비활성화되는지 확인 필요. 최소한 인트로 overlay 자체는 즉시 dismiss 권장" },
-          { "label": "🟡 헤더 sticky -100 hide", "value": "사용자가 위로 스크롤 시 헤더가 다시 등장하지만, top: -100 상태에서 키보드 포커스가 가려질 수 있음. focus-visible 시 즉시 헤더 노출 필요" }
-        ]},
-
-        { "type": "heading", "value": "✓ 잘 한 점" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "텍스트 대비", "value": "본문 #27282B on #FFF = 14.7:1 AAA / 헤딩 #0F0F10 on #FFF = 20.7:1 AAA - 충분한 대비" },
+        { "type": "kv", "title": "🟢 잘 한 점", "columns": 1, "items": [
+          { "label": "🟢 시멘틱 section 다수 사용", "value": "main-top, main-quick, main-business 등 의미 있는 section 태그로 페이지 구조 명확" },
+          { "label": "🟢 정부 인증 4종 (푸터)", "value": "가족친화 우수기관 / 열림우수기업 / 생애주기우수기업 / 제대군인고용 우수기업 - 정부 인증 마크 푸터 노출 = 사회적 신뢰" },
           { "label": "Base 20px 본문", "value": "한국 평균(16-18px)보다 큰 본문 - 노안·저시력 사용자 친화" },
-          { "label": "시멘틱 section 다수 사용", "value": "main-top, main-quick, main-business 등 의미 있는 section 태그로 페이지 구조 명확" },
-          { "label": "Footer 풍부", "value": "회사 정보·연락처·사업자번호·인증 마크 등 코퍼레이트 사이트의 표준 정보 모두 포함" }
+          { "label": "텍스트 대비", "value": "본문 #27282B on #FFF = 14.7:1 AAA / 헤딩 #0F0F10 on #FFF = 20.7:1 AAA" }
+        ]},
+
+        { "type": "kv", "title": "🔴 약점", "columns": 1, "items": [
+          { "label": "🔴 viewport user-scalable=no", "value": "WCAG 1.4.4 위반 - 시각 장애 사용자 핀치 줌 불가" },
+          { "label": "🟡 prefers-reduced-motion 미감지", "value": "AOS fade-up이 OS 모션 감소 사용자에게 자동 비활성화 여부 확인 필요" },
+          { "label": "🟡 헤더 sticky -100 키보드 포커스", "value": "헤더가 위로 일시 숨겨진 상태에서 키보드 포커스가 가려질 수 있음. focus-visible 시 즉시 헤더 노출 필요" }
         ]}
-      ]
-    },
-
-    "pub-perf-seo": {
-      "title": "32. 성능 · SEO · 디자인-개발 협업",
-      "blocks": [
-        { "type": "kv", "title": "성능", "columns": 1, "items": [
-          { "label": "Drupal CMS + AWS S3", "value": "Drupal 백엔드 + S3 ap-northeast-2 정적 자산. dcamp와 동일 인프라 패턴" },
-          { "label": "이미지 95장", "value": "Drupal Media Library 자동 정적 자산화. S3 직접 호스팅으로 CDN 효과" },
-          { "label": "AOS 라이브러리", "value": "IntersectionObserver 기반 - 가볍고 효율적 (vs GSAP 전체 로드)" },
-          { "label": "Hero 모핑 부담", "value": "✓ 모핑 애니메이션이 스크롤 진행마다 transform 또는 SVG path 갱신 - 60fps 유지 위해 requestAnimationFrame + will-change 활용 추정" },
-          { "label": "24-25 script 태그", "value": "Drupal core JS + jQuery + AOS + 분석 도구 추정" }
-        ]},
-
-        { "type": "heading", "value": "SEO" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "<title>", "value": "주식회사 에이치시티 (단순 - 페이지별 차별화 가능)" },
-          { "label": "og:title", "value": "(주)에이치씨티 ✓" },
-          { "label": "og:image", "value": "AWS S3 URL ✓ (소셜 공유 시 회사 키비주얼)" },
-          { "label": "URL 구조 (추정)", "value": "hct.co.kr/{section}/{subpage} - Drupal 기본 패턴. 카테고리별 구분 추정" },
-          { "label": "다국어", "value": "🌐 globe 아이콘 노출 - 영문/중문 사이트 별도 운영 추정. hreflang 권장" },
-          { "label": "구조화 데이터", "value": "Organization (회사명·주소·전화·CEO) + LocalBusiness + Service (시험인증·교정·국방측정) 권장" }
-        ]},
-
-        { "type": "heading", "value": "디자인-개발 협업" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "0.4s 표준 트랜지션", "value": "205건 - 사이트 전체 호버·전환 표준. 한 가지 값으로 통일된 인터랙션 속도감" },
-          { "label": "0.15s 빠른 호버", "value": "58건 color + background-color 동시 - 마우스 디바이스에서 즉각 반응" },
-          { "label": "AOS fade-up 표준화", "value": "34건 인스턴스 모두 같은 data-aos='fade-up' - 새 페이지 추가 시 즉시 호환" },
-          { "label": "Drupal Media Library", "value": "디자이너가 큰 사진을 업로드하면 S3에 자동 저장 + 32자 해시 URL 자동 생성. 운영 효율" },
-          { "label": "✓ 체크마크 시그니처 + 일관 적용", "value": "Hero의 ✓ 메타포가 사이트 전체 톤을 결정 - 다른 페이지·콘텐츠도 같은 ✓·시험인증 톤 유지" }
-        ]},
-
-        { "type": "note", "value": "HCT 사이트는 한국 시험인증 기업의 디자인 표준을 한 단계 끌어올린 사례. ✓ 체크마크 스크롤 모핑 Hero, 사업 6 카드, 글로벌 9 인증마크, 3거점 세계 지도, Floating 상담·FAQ·TOP - 5가지 시그니처 컴포넌트가 결합되어 '시험인증 = HCT'라는 강력한 브랜드 인상을 만든다. 약 6,300px의 긴 인트로 오버레이는 위험이자 매력 - dismiss UX와 prefers-reduced-motion 대응이 보강되면 모범 사례로 완성." }
       ]
     },
 
     "smooth-interaction-catalog": {
-      "title": "33. 부드러운 인터랙션 카탈로그 (라이브 재점검)",
+      "title": "13. 부드러운 인터랙션 카탈로그 (라이브 재점검)",
       "blocks": [
-        { "type": "text", "value": "Chrome MCP로 HCT 메인 페이지를 새로고침 후 천천히 점진 스크롤하며 발견한 라이브 인터랙션. 사이트 전체 transition 481건 + 0.4s 205건 표준 + AOS 34건 fade-up + Hero ✓ 스크롤 모핑 + z-index 9999 인트로 오버레이 + Floating 패널 등 정적 분석이 잡지 못하는 디테일을 정리." },
+        { "type": "text", "value": "Chrome MCP로 HCT 메인 페이지를 점진 스크롤하며 발견한 라이브 인터랙션. 디자인 업데이트 (5 다이아몬드 Hero) + AOS 34건 + 0.4s 표준 + Floating 패널 등 정적 분석이 잡지 못하는 디테일 정리." },
 
-        { "type": "heading", "value": "발견 1: z-index 9999 Intro Overlay - 사이트의 첫 인상 점유" },
+        { "type": "heading", "value": "발견 1: 5 다이아몬드 그리드 Hero (디자인 업데이트)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "구조", "value": "position: fixed; inset: 0; height: 911px; z-index: 9999 - 전체 화면을 덮는 인트로" },
-          { "label": "동작", "value": "사용자가 페이지 로드 후 약 6,300px의 스크롤을 점유. scrollY가 그 이상 진행되어도 추가 콘텐츠가 안 보임 (overlay 자체가 fixed라 화면에 계속 떠있음)" },
-          { "label": "콘텐츠", "value": "'당신의 ● 기술 파트너' 슬로건 (50px·800 흰 텍스트) + 작은 동그라미 (스크롤 위치에 따라 변형)" },
-          { "label": "Dismiss 메커니즘 부재", "value": "SKIP 버튼·닫기 X·ESC 키 미감지. localStorage 재방문 플래그 미확인 (UX 개선 여지)" },
-          { "label": "Chrome MCP 우회", "value": "JavaScript로 display:none 강제 hide 가능 - 보고서 분석 진행을 위한 임시 방법" }
+          { "label": "변경 사항", "value": "🟢 이전 ✓ 체크마크 모핑 Hero에서 5 다이아몬드 그리드 + 회전 텍스트로 디자인 업데이트" },
+          { "label": "5 다이아몬드 비주얼", "value": "(1) 도시 야경 (좌측) - 도시 인프라 시험 / (2) 검정 메탈 그리드 (중앙 하단) - 시험 패턴 / (3) 사람이 태블릿 그리는 모습 (중앙) - 디지털 시험 / (4) 산악 일출 (우측 상단) - 자연 환경 시험 / (5) 추가 비주얼" },
+          { "label": "회전 텍스트 4종", "value": "🟢 'Global Standard' / 'No.1 Testing & Calibration Lab' / 'Trusted Partner' / 'For Humanity' - 다이아몬드 변을 따라 회전 배치" },
+          { "label": "구현 추정", "value": "CSS clip-path: polygon + transform rotate(45deg) 다이아몬드 + 회전 텍스트 transform: rotate(-45deg) 보정 + AOS fade-up 진입 모션" }
         ]},
 
-        { "type": "heading", "value": "발견 2: ✓ 체크마크 스크롤 모핑 5단계 (실측 캡쳐)" },
+        { "type": "heading", "value": "발견 2: AOS 34건 fade-up 일관 적용" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "scrollY 0", "value": "○ 동그라미 fade-in 시작 - 흐릿한 동그라미. '당신의' 텍스트만 보임" },
-          { "label": "scrollY ~1500", "value": "흰색 ● 동그라미 + 슬로건 두 줄 ('당신의' + '기술 파트너') 흰 텍스트 완전 노출" },
-          { "label": "scrollY ~3000", "value": "동그라미 색이 흰색 → 민트 #B0FFD8 → 초록 #4ADE80 점진 변화. 'V' 모양의 짧은 선이 등장 시작" },
-          { "label": "scrollY ~4500", "value": "🟢 동그라미가 좌측으로 늘어남. 점 → 캡슐 형태 ━●. 짧은 위쪽 ✓ 선이 그려지는 과정" },
-          { "label": "scrollY ~6000", "value": "체크마크 부분 완성. 좌측 짧은 선 + 우측 긴 선이 V자 형태로 결합. 끝점에 작은 흰 동그라미 (펜으로 그린 흔적)" },
-          { "label": "scrollY 6323+ (페이지 끝)", "value": "최종 ✓ 형태 완성. 흰+초록 컬러 조합" }
+          { "label": "라이브러리", "value": "🟢 AOS (Animate On Scroll) - Michał Sajnóg 무료 오픈소스 / IntersectionObserver 기반" },
+          { "label": "표준 패턴", "value": "data-aos='fade-up' 단일 - 사이트 전체 통일" },
+          { "label": "활성 클래스", "value": "초기 .aos-init (visibility hidden, opacity 0, transform translateY) → 진입 시 .aos-animate 추가 (visibility visible, opacity 1, transform 0)" },
+          { "label": "트랜지션", "value": "opacity 1s + transform 1s" }
         ]},
 
-        { "type": "heading", "value": "발견 3: Transition 통계 (481건)" },
+        { "type": "heading", "value": "발견 3: Floating 상담·FAQ·TOP 패널 (시그니처)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "all 0s ease 0s (default)", "value": "481건 - 사이트 기본 트랜지션. 다른 사이트(미라셀 694 / 경동나비엔 728)보다 적음 = 보수적이지만 정돈됨" },
-          { "label": "🟢 0.4s (HCT 표준)", "value": "205건 - 사이트 모든 인터랙션의 표준 시간. 다른 사이트(0.3s가 일반)보다 약간 길어 차분한 느낌" },
-          { "label": "color 0.15s ease-in-out + background-color 0.15s", "value": "58건 - 호버 시 색상 + 배경 동시 0.15s 빠른 전환" },
-          { "label": "opacity 1s + transform 1s + -webkit-transform 1s", "value": "10건 - AOS fade-up 스크롤 리빌 (1초 부드러운 등장)" },
-          { "label": "transform", "value": "8건 - scale/translate 단독" },
-          { "label": "background 0.4s", "value": "8건 - 배경 단독 전환" },
-          { "label": "width 0.3s", "value": "6건 - 아코디언·사이드바 너비 변화" }
+          { "label": "구조", "value": "우측 하단 fixed 224px 흰 박스 - 3 fab 통합 디자인 (z-50)" },
+          { "label": "🟢 색상 차별화", "value": "상담 파란 #0055A5 채워진 (1순위 강조) / FAQ 흰 outline (2순위) / TOP 검정 채워진 (다른 행위 - 페이지 상단으로)" },
+          { "label": "동작", "value": "각 fab 호버 시 transform: scale(1.05) + box-shadow 강화 (transition 0.4s ease)" }
         ]},
 
-        { "type": "heading", "value": "발견 4: AOS (Animate On Scroll) 라이브러리 34건" },
+        { "type": "heading", "value": "발견 4: Transition 통계 (1500개 element 기준)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "라이브러리", "value": "AOS - Animate On Scroll library by Michał Sajnóg" },
-          { "label": "사용 빈도", "value": "🟢 34건 인스턴스 - 사이트 거의 모든 콘텐츠 섹션에 적용" },
-          { "label": "표준 패턴", "value": "data-aos='fade-up' attribute 단일. 사이트 전체 동일 효과로 통일" },
-          { "label": "활성 클래스", "value": "초기 .aos-init (visibility hidden, opacity 0, transform translateY(N)) → 진입 시 .aos-animate 추가 (visibility visible, opacity 1, transform 0)" },
-          { "label": "트랜지션", "value": "opacity 1s + transform 1s (위 발견 3에서 10건 감지된 트랜지션이 AOS의 것)" },
-          { "label": "재사용 가치", "value": "AOS는 무료 오픈소스 + IntersectionObserver 기반으로 가벼움. 다른 사이트도 이 패턴 즉시 적용 가능" }
+          { "label": "all (default)", "value": "481건 - 사이트 기본 (한국 평균 수준)" },
+          { "label": "🟢 0.4s 표준", "value": "🟢 205건 - HCT 모든 인터랙션 표준" },
+          { "label": "color + background-color 0.15s ease-in-out", "value": "58건 - 호버 시 색·배경 동시 빠른 전환" },
+          { "label": "opacity 1s + transform 1s + -webkit-transform 1s", "value": "10건 - AOS 스크롤 리빌" },
+          { "label": "transform / background 0.4s", "value": "16건 (각 8건) - scale·translate / 배경 단독" },
+          { "label": "width 0.3s", "value": "6건 - 아코디언·사이드바" }
         ]},
 
-        { "type": "heading", "value": "발견 5: Header sticky -100 hide" },
+        { "type": "heading", "value": "발견 5: 4-Fixed 요소 인벤토리" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "구조", "value": "<header class='hd'> - position: sticky; top: -100px (실측 - 위로 일시 숨김 상태)" },
-          { "label": "동작 추정", "value": "스크롤 진행에 따라 헤더가 다시 등장 (auto-hide 헤더 패턴). 위로 스크롤 시 노출 / 아래로 스크롤 시 숨김" },
-          { "label": "헤더 height", "value": "100px - 일반 사이트(80px 평균)보다 큼. 본문 20px 폰트와 비율 맞춤" },
-          { "label": "트랜지션", "value": "추정 transform translateY 0.4s ease (HCT 표준 0.4s)" }
+          { "label": ".hd (Header)", "value": "sticky top -100px / height 100px - 위로 스크롤 시 등장" },
+          { "label": ".utils (Floating 패널)", "value": "fixed 224px / z-50 / 우측 하단 - 상담·FAQ·TOP 3 fab" },
+          { "label": ".aside.aos-init", "value": "position: sticky / 678px - 사이드 영역" },
+          { "label": "외부 (Chrome 확장)", "value": "z-2147483646 - Claude in Chrome MCP cursor overlay (분석 환경, 실제 사이트 무관)" }
         ]},
 
-        { "type": "heading", "value": "발견 6: 4개 Fixed 요소 인벤토리 (z-index별)" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "🟢 z-index 9999 - Intro Overlay", "value": "fixed 911px - Hero ✓ 체크마크 모핑 컨테이너" },
-          { "label": "z-index 50 - Floating Panel", "value": "fixed 224px (우하단) - 상담·FAQ·TOP 3 버튼" },
-          { "label": ".aside.aos-init.aos-animate - Sticky aside", "value": "position: sticky, 678px - 사이드 영역 (콘텐츠 따라 함께 스크롤)" },
-          { "label": "z-index 2147483646 - 외부 (Chrome 확장 추정)", "value": "fixed 911px - Claude in Chrome MCP 확장의 cursor overlay. 실제 사이트와 무관" }
-        ]},
-
-        { "type": "heading", "value": "발견 7: 색상 통계 - HCT Blue 사용 빈도" },
-        { "type": "kv", "columns": 1, "items": [
-          { "label": "Text Body #27282B", "value": "368건 - 본문 표준" },
-          { "label": "Heading #0F0F10", "value": "311건 - 헤딩 표준 (거의 검정)" },
-          { "label": "White #FFFFFF", "value": "230건 - 다크 영역에서 흰 텍스트 (Hero, 사업 카드, 글로벌 섹션)" },
-          { "label": "Secondary Text #3F4146", "value": "158건 - 보조 텍스트" },
-          { "label": "Surface Light #F2F5F8", "value": "69건 bg - 섹션 배경" },
-          { "label": "🟢 HCT Blue #0055A5", "value": "18건 bg + 16건 color = 34건 - 메인 브랜드 컬러" },
-          { "label": "Apple Blue #007AFF", "value": "2건 - 보조 링크" },
-          { "label": "Dark Navy #001A33", "value": "2건 bg - 푸터·강조 영역" }
-        ]},
-
-        { "type": "note", "value": "🟢 HCT 사이트는 정적 분석이 절대 잡지 못하는 라이브 디테일이 풍부한 사이트. ✓ 체크마크 스크롤 모핑이라는 5단계 변형이 약 6,300px 스크롤에 걸쳐 전개되며, 481건 transition + 205건 0.4s 표준 + 58건 0.15s 호버 + 34건 AOS fade-up이 결합되어 차분하면서도 인터랙티브한 시험인증 회사 톤을 완성한다. 시그니처 인터랙션은 ✓ 모핑 / 4개 z-index 레이어 / Floating 상담 패널 / AOS fade-up 일관 적용 4가지." }
+        { "type": "note", "value": "🟢 HCT 사이트는 한국 시험인증 기업 중 디자인 시스템 성숙도 최상위. 메인 페이지 디자인 업데이트로 (이전 ✓ 체크마크 모핑 → 새 5 다이아몬드 그리드) 더욱 시각적으로 강력한 정체성 확립. AOS 34건 + 0.4s 표준 + Floating 패널 + 견적 문의 파란 pill = 한국 B2B 시험인증 사이트의 표준 패턴. 정부 인증 4종 푸터 노출 = 사회적 신뢰 시그널." }
       ]
     }
   }
