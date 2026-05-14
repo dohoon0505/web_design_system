@@ -22,6 +22,30 @@ Web Reference Lab(웹 디자인 레퍼런스 연구소)에 변경을 가할 때 
 
 ## 절대 규칙 (반드시 지킬 것)
 
+### 0. 무조건 Chrome MCP를 통해 실제 웹사이트에 직접 접근
+
+**모든 분석은 예외 없이 `mcp__Claude_in_Chrome__*` 도구로 실제 라이브 사이트를 방문해서 진행한다.** WebFetch / 학습 데이터 / 외부 캐시 / 검색 결과 추정은 보조 정보로만 사용하며, 디자인 토큰(색상·폰트·여백·둥글기) · 컴포넌트 클래스명 · 페이지 구조 · 인터랙션 · 이미지 URL · transition·animation 통계는 **반드시 라이브 페이지에서 직접 채집한 실측값**을 사용한다.
+
+이 규칙이 있는 이유:
+
+- WebFetch는 HTML 정적 텍스트만 가져옴 — 클라이언트 하이드레이션(Next.js · React · Vue 등) 후의 실제 DOM·CSS를 잡지 못한다
+- 색상·폰트는 `getComputedStyle()`로만 정확히 채집 가능
+- 스크롤·hover·click 같은 라이브 인터랙션은 정적 HTML에 존재하지 않음
+- transition·animation 통계는 살아있는 페이지에서만 측정 가능
+- 학습 데이터 추정으로 작성된 보고서는 사실과 다를 위험이 매우 높다 (이미지 경로 오류, 존재하지 않는 클래스명 등)
+
+**Chrome MCP 워크플로**:
+
+```
+1. mcp__Claude_in_Chrome__tabs_context_mcp({ createIfEmpty: true })
+2. mcp__Claude_in_Chrome__navigate({ url, tabId })
+3. wait 3-5초 (하이드레이션 완료)
+4. javascript_tool 또는 screenshot으로 실측 데이터 채집
+5. browser_batch로 여러 액션 묶어 실행
+```
+
+WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만 허용. 그 외 분석 콘텐츠 전체는 Chrome MCP 실측이 단일 source of truth.
+
 ### 1. 섹션 타이틀에 이모지 금지
 
 사이드바·report-section-card에 노출되는 **section title 문자열에는 🟢 같은 이모지를 절대 넣지 않는다**. 사이드바 메뉴의 모노스페이스 정렬·페이지 인쇄·접근성에 깨질 수 있다.
@@ -302,6 +326,8 @@ node scripts/validate.mjs
 
 ## 기여 절차 (신규 분석 추가 시)
 
+**모든 단계는 Chrome MCP로 실제 라이브 사이트에 직접 접근해서 진행**한다 (절대 규칙 0번 참조). 학습 데이터 추정·WebFetch HTML·외부 검색은 보조 정보로만.
+
 1. 분석 대상 URL 결정 → 슬러그 ID 생성 (예: `kdnavien-co-kr`)
 2. Chrome MCP **1차 패스** (정적 구조) + **2차 패스** (디자인 토큰 채집)
 3. Chrome MCP **3차 패스** (부드러운 스크롤 — 3-4 ticks 단위) + **4차 패스** (transition·animation 통계 채집)
@@ -325,7 +351,9 @@ node scripts/validate.mjs
 ## 신규 분석 시 체크리스트
 
 ```
+[ ] **무조건 Chrome MCP로 실제 사이트 직접 접근** (절대 규칙 0)
 [ ] Chrome MCP 1-6차 패스 완료 (정적·토큰·스크롤·통계·hover·새로고침)
+[ ] 모든 색상·폰트·이미지 URL이 라이브 페이지 실측값
 [ ] 30+ 섹션 작성
 [ ] smooth-interaction-catalog 섹션 포함
 [ ] 섹션 타이틀에 이모지 없음 (본문은 OK)
