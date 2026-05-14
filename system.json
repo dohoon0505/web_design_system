@@ -326,10 +326,56 @@
         { "title": "회원가입", "url": "https://miracell.co.kr/kr/member/join_01.php" },
         { "title": "개인정보처리방침", "url": "https://miracell.co.kr/kr/etc/privacy.php" }
       ]
+    },
+    {
+      "id": "hct-co-kr",
+      "title": "에이치시티 (HCT)",
+      "url": "https://hct.co.kr/",
+      "date": "2026-05-14",
+      "analysis": "analyses/hct-co-kr/analysis.json",
+      "pagesAnalyzed": 1,
+      "sections": [
+        { "id": "overview",                  "num": "01", "title": "개요 · 사이트맵",                "desc": "사이트 프로필 (3거점/200개국 인증/CEO 대통령표창/ETRI 협력) + 7 메뉴 그룹 사이트맵" },
+        { "id": "philosophy",                "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",   "desc": "비주얼 6원칙 - 시험인증=✓ 정체성 / Mono Blue+Green Accent / AOS Fade-up 일관성 / Base 20px 큰 본문" },
+        { "id": "tokens",                    "num": "03", "title": "디자인 토큰 시스템",              "desc": "CSS Variables 재구성 - HCT Blue #0055A5 / Check Green #4ADE80 / SUIT / 0.4s 표준 transition" },
+        { "id": "main-page",                 "num": "04", "title": "메인 페이지 분석 (sH 7,234px)", "desc": "Hero z-9999 6,300px 점유 + 7섹션 흐름 + 4 fixed 요소 인벤토리" },
+        { "id": "hero-checkmark",            "num": "05", "title": "Hero - 체크마크 스크롤 모핑 (시그니처 1번)", "desc": "○ → ● → 캡슐 → V → ✓ 5단계 변형 / 50px·800 흰 슬로건 '당신의 ● 기술 파트너'" },
+        { "id": "quick-services",            "num": "06", "title": "자주 찾는 서비스 (Quick Link 7종)", "desc": "인증 진위 / 견적 문의 / 고객문의 / 자료실 등 - 카드 호버 시 아이콘 이동 + 테두리 강조" },
+        { "id": "business-cards",            "num": "07", "title": "사업 6 카드 슬라이더 (시그니처 2번)", "desc": "모빌리티 / 방산·우주 / 시험·인증 / 교정 / 융합측정 / 배터리 - 자동 스크롤 + 호버 paused" },
+        { "id": "global-network",            "num": "08", "title": "글로벌 HCT - 9 인증마크 + 3거점 (시그니처 3번)", "desc": "KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA 인증마크 그리드 + 한국·미국·인도네시아 도트 지도" },
+        { "id": "news-hub",                  "num": "09", "title": "HCT 소식 - 5탭 멀티 채널 콘텐츠 허브", "desc": "전체/보도자료/아티클/스토리/유튜브/e-뉴스레터 - Pill 탭 + 카드 리스트" },
+        { "id": "intro-section",             "num": "10", "title": "HCT 안내 + 문의 영역",            "desc": "메인 페이지 하단 - 견적 문의 / 고객 문의 / 부서 연락처 / Floating 패널" },
+        { "id": "color-system",              "num": "11", "title": "컬러 시스템",                     "desc": "HCT Blue #0055A5 (34건) + Check Green #4ADE80 + 무채색 스케일 / WCAG 검증 (본문 14.7:1 AAA)" },
+        { "id": "typography-system",         "num": "12", "title": "타이포그래피 시스템 (SUIT)",      "desc": "SUIT + -apple-system 폴백 / Base 20px·lh 1.6 (한국 평균 16-18px보다 큼) / Hero 50px·800" },
+        { "id": "icon-cert-system",          "num": "13", "title": "아이콘 · 인증마크 시스템",         "desc": "9 국제 인증마크 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 커스텀 SVG 아이콘 인벤토리" },
+        { "id": "image-system",              "num": "14", "title": "이미지 시스템 (AWS S3 + Drupal Media)", "desc": "hct-s3-bucket ap-northeast-2 + Drupal 32자 해시 URL 패턴 / 95장 이상" },
+        { "id": "layout-grid",               "num": "15", "title": "그리드 · 컨테이너 시스템",         "desc": "max-width 1280px container + 80px container padding / 7,234px 메인" },
+        { "id": "layout-responsive",         "num": "16", "title": "반응형 · 여백 · 둥글기",          "desc": "3단계 브레이크포인트 (768/1024/1280) + 16px·99px·24px 둥글기" },
+        { "id": "lib-buttons",               "num": "17", "title": "버튼 · CTA 라이브러리",            "desc": "Blue Pill (견적 문의) / Green Mint / Outline / Icon Square / Scroll-to-top 등 8종" },
+        { "id": "lib-cards",                 "num": "18", "title": "카드 라이브러리",                  "desc": "Quick Service Card / 사업 Business Card / News Card / 인증마크 Card 등 8종" },
+        { "id": "lib-banners",               "num": "19", "title": "배너 · Hero 라이브러리",           "desc": "Hero 영상 + 그라데이션 오버레이 / 인트로 모핑 / Sub Page Hero / CTA Banner 등 6종" },
+        { "id": "lib-navigation",            "num": "20", "title": "네비게이션 라이브러리",            "desc": "Top GNB (sticky -100) / Mega 메뉴 / 9-Dot Menu / Footer 7-Col / Globe·Search 유틸" },
+        { "id": "lib-forms",                 "num": "21", "title": "폼 라이브러리",                    "desc": "견적 문의 / 고객 문의 / 검색 인풋 - Drupal Form API 기반" },
+        { "id": "lib-utility",               "num": "22", "title": "유틸리티 라이브러리",              "desc": "Skip Link / Header 9-Dot / Globe 다국어 / Floating 상담·FAQ·TOP / 패밀리사이트 셀렉트" },
+        { "id": "signature-checkmark-hero",  "num": "23", "title": "시그니처 - 체크마크 스크롤 모핑 Hero", "desc": "z-index 9999 / 911px viewport / 6,300px 스크롤 점유 / 5단계 ○→✓ 변형" },
+        { "id": "signature-business-cards",  "num": "24", "title": "시그니처 - 사업 6 카드 슬라이더", "desc": "자동 스크롤 (40s linear infinite) + 호버 paused + 사진 1.08x scale + 라벨 슬라이드 인" },
+        { "id": "signature-global-network",  "num": "25", "title": "시그니처 - 글로벌 네트워크 9 인증마크 + 3거점", "desc": "도트 패턴 세계지도 + Pulse 핀 (scale 1↔1.15, 2s) + Ring scale 1→2 / 휘어진 항공 곡선" },
+        { "id": "signature-floating-panel",  "num": "26", "title": "시그니처 - Floating 상담·FAQ·TOP", "desc": "흰 박스 + 세로 3 버튼 / TOP만 검정 차별화 / box-shadow + 가벼움" },
+        { "id": "lib-data",                  "num": "27", "title": "데이터 라이브러리 (5탭·9마크·게시판·Stat)", "desc": "Pill 탭 그룹 / 6+3 인증마크 그리드 / 타임라인형 카드 리스트 / 3-Cell Stat (1px divider)" },
+        { "id": "lib-media",                 "num": "28", "title": "미디어 라이브러리 (지도·슬라이더·Hero 영상)", "desc": "SVG 도트 세계 지도 + Pulse 핀 / Auto-Scroll 사업 카드 슬라이더 / Hero 영상 + gradient 오버레이" },
+        { "id": "ix-hover",                  "num": "29", "title": "호버 인터랙션 카탈로그",            "desc": "Pill CTA invert / Quick 카드 (아이콘 rotate) / 사업 카드 (image scale) / GNB 메가 메뉴" },
+        { "id": "ix-scroll-aos",             "num": "30", "title": "스크롤 · AOS 인터랙션 카탈로그",   "desc": "AOS fade-up 34건 / Header sticky -100 hide / Counter Up / Floating z-50 / Sticky aside 678px" },
+        { "id": "pub-semantic",              "num": "31", "title": "시멘틱 HTML · 접근성",            "desc": "🔴 user-scalable=no / 🔴 Hero dismiss 부재 / ✓ 시멘틱 section 다수 / ✓ 텍스트 대비 AAA" },
+        { "id": "pub-perf-seo",              "num": "32", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Drupal+S3 / AOS IntersectionObserver / 0.4s 표준 205건 / 0.15s 빠른 호버 58건 / og·hreflang 권장" },
+        { "id": "smooth-interaction-catalog","num": "33", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "z-9999 Intro Overlay 911px / ✓ 모핑 5단계 / Transition 481건 / AOS 34건 / 0.4s 표준 / 4-Fixed 인벤토리" }
+      ],
+      "subpages": [
+        { "title": "메인 (Home)", "url": "https://hct.co.kr/" }
+      ]
     }
   ],
   "counts": {
-    "references": 5,
-    "totalComponents": 175
+    "references": 6,
+    "totalComponents": 195
   }
 }
