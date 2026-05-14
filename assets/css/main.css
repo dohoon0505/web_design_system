@@ -155,7 +155,7 @@ body {
   border-bottom: 1px solid var(--sm-border-subtle);
 }
 .topbar-inner {
-  max-width: 1240px; margin: 0 auto;
+  max-width: 1600px; margin: 0 auto;
   padding: var(--size-400) var(--size-700);
   display: flex; align-items: center; justify-content: space-between;
   gap: var(--size-500);
@@ -371,7 +371,13 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
   .topbar-inner .brand { margin-left: 48px; }
 }
 
-.container { max-width: 1240px; margin: 0 auto; padding: 0 var(--size-700); }
+.container { max-width: 1800px; margin: 0 auto; padding: 0 var(--size-700); }
+@media (min-width: 1900px) {
+  .container, .topbar-inner { max-width: 2000px; }
+}
+@media (min-width: 2400px) {
+  .container, .topbar-inner { max-width: 2400px; }
+}
 
 /* ============ HERO ============ */
 .hero {
@@ -392,12 +398,12 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
 .hero h1 {
   font: 700 clamp(40px, 5vw, 56px)/1.08 var(--font-sans);
   letter-spacing: -0.035em;
-  margin: 0 0 var(--size-500); max-width: 820px;
+  margin: 0 0 var(--size-500); max-width: 1400px;
 }
 .hero .hero-desc {
   font: 400 17px/1.65 var(--font-sans);
   color: var(--sm-content-secondary);
-  max-width: 680px; margin: 0;
+  max-width: 1200px; margin: 0;
 }
 
 /* ============ HOME SECTIONS ============ */
@@ -414,7 +420,7 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
   font: 400 15px/1.6 var(--font-sans);
   color: var(--sm-content-secondary);
   margin: 0 0 var(--size-700);
-  max-width: 600px;
+  max-width: 900px;
 }
 
 /* Analysis grid */
@@ -530,7 +536,7 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
 .report-summary {
   font: 400 16px/1.65 var(--font-sans);
   color: var(--sm-content-secondary);
-  max-width: 680px; margin: 0 0 var(--size-500);
+  max-width: 1300px; margin: 0 0 var(--size-500);
 }
 .report-url {
   display: inline-flex; align-items: center; gap: var(--size-200);
@@ -728,7 +734,7 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
   font: 400 15px/1.75 var(--font-sans);
   color: var(--sm-content-secondary);
   margin: 0 0 var(--size-500);
-  max-width: 720px;
+  max-width: 1300px;
 }
 
 /* — Note block — */
