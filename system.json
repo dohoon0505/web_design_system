@@ -58,7 +58,10 @@
         { "id": "ix-scroll",           "num": "27", "title": "스크롤 애니메이션 카탈로그",        "desc": "Hero 진입 비디오 재생/IntersectionObserver 리빌/Sticky 헤더 (.at-top 토글)/연혁 36k 스크롤 등" },
         { "id": "ix-video",            "num": "28", "title": "배경 영상 · 디바이스 분기 인터랙션", "desc": "Hero main_cover_video.mp4 (1920×960 muted loop playsInline)/Pause-Play 토글/(hover:hover) 분기" },
         { "id": "pub-semantic",        "num": "29", "title": "시멘틱 HTML · 접근성",            "desc": "구조 (main/nav×2/header/footer), 스킵링크 2종, ARIA 상태, alt 갭, WCAG 대비 검증" },
-        { "id": "pub-perf-seo",        "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Next.js Image q=75/Pretendard 자체호스팅/og meta·viewport/CSS Modules 클래스명(KNTab/iconyaki)" }
+        { "id": "pub-perf-seo",        "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Next.js Image q=75/Pretendard 자체호스팅/og meta·viewport/CSS Modules 클래스명(KNTab/iconyaki)" },
+        { "id": "real-product-catalog","num": "31", "title": "🟢 실 제품 카탈로그 (18종)",       "desc": "static.navienhouse.com 외부 호스트의 보일러(5)·환기청정기(5)·온수기(4)·스마트홈(4) 실 제품 사진 카탈로그 + 모델 번호" },
+        { "id": "tech-animation",      "num": "32", "title": "🟢 핵심 기술 시각화 - JPG + GIF",   "desc": "사업분야 5카테고리 tech1-3 인포그래픽 - 주방기기만 GIF 애니메이션 채택한 디자인 결정" },
+        { "id": "talent-visual",       "num": "33", "title": "🟢 인재경영 페이지 비주얼 시스템",   "desc": "인재상 다이어그램 + 인사제도 GOAL + 고성과 조직 GREAT COMPANY 3종 + 데스크톱/모바일 분기" }
       ],
       "subpages": [
         { "title": "메인 (Home)", "url": "https://www.kdnavien.co.kr/ko" },
