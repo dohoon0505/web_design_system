@@ -1,0 +1,819 @@
+{
+  "id": "ktng-com",
+  "title": "KT&G",
+  "url": "https://www.ktng.com/",
+  "date": "2026-05-14",
+  "summary": "KT&G 코퍼레이트 사이트. 흰 배경 + 검정 거대 한글/영문 헤딩 + Pretendard·Figtree Variable woff2 + 풀폭 자동재생 영상(홀로그래픽 크롬 곡선/∞ 인피니티/사옥 라운지 PASSION 등 시그니처 비주얼) + scroll-driven globe 시퀀스(작은 도트 → 풀스크린 지구 + 17/140/65.2B/1.478B/34 5개 보라 그라데이션 stat 카드 가로 슬라이드)가 결합된 매우 인터랙티브한 디자인. sH 11,708px / vw 1920 / Pretendard Variable 100-900 / 헤딩 128px·600 / all transition 828건 + background-size 0.3s 22건 + opacity 1s 8건 표준. 헤더 z-9997 fixed 104px (.header + .header__dimmed dim 오버레이). 메인 섹션 7개 (.kv Hero 911px / .global Globe 4555px / .sustainability 4555px / .news 1013px / .invest 1027px / .with 1083px) + 푸터 5 메뉴 컬럼 (회사소개/투자정보/지속가능경영/미디어/인재채용) + Family Site 셀렉트 + Instagram/YouTube/Facebook 소셜. Sustainability 섹션은 KT&G 3색 잎사귀 (light green/medium green/dark green) 로고 모티브 그래픽 + 'Sustainability for Growth' 거대 헤딩. (prefers-reduced-motion: reduce) 미디어쿼리 + (hover: hover) feature query 모두 지원. WebGL 2k_stars_milky_way.webp 배경 + invest-background.webp + sustainability-desktop.webp. 한국 코퍼레이트 사이트 중 비주얼 임팩트와 인터랙션 디테일이 가장 높은 톤.",
+  "crawledPages": 1,
+  "sections": {
+    "overview": {
+      "title": "01. 개요 · 사이트맵",
+      "blocks": [
+        { "type": "kv", "title": "사이트 프로필", "columns": 2, "items": [
+          { "label": "사이트명", "value": "KT&G Corporation - 한국담배인삼공사의 민영화 법인. 담배·홍삼·부동산·해외법인 6분야 사업" },
+          { "label": "정체성", "value": "글로벌 초우량 기업으로 도약하는 KT&G - meta description 인용. 한국 토종 글로벌 기업 톤" },
+          { "label": "Hero 슬로건", "value": "Beyond Limits, Towards Innovation - 128px·600 흰 영문 + 좌측 슬라이드 인 wrapper 두 줄" },
+          { "label": "메인 페이지 sH", "value": "11,708px (vw 1920 / vh 911 / scroll height 11,708px - 한국 코퍼레이트 평균 1.5배 깊이)" },
+          { "label": "분석 일자", "value": "2026-05-14 (KST), Chrome MCP 라이브 인스펙션" },
+          { "label": "분석 환경", "value": "viewport 1920×911 / Pretendard Variable woff2 / Chrome 데스크톱" },
+          { "label": "OG 이미지", "value": "https://www.ktng.com/common/images/meta-image-og.jpg ✓" },
+          { "label": "viewport", "value": "width=device-width, initial-scale=1 (🟢 user-scalable 제약 없음 - WCAG 친화)" }
+        ]},
+        { "type": "heading", "value": "기술 스택 (실측)" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "🟢 폰트 시스템", "value": "Pretendard Variable + Figtree Variable woff2 - 두 variable font 자체 호스팅 (/fonts/PretendardVariable.woff2 + /fonts/FigtreeVariable.woff2) / font-weight 100-900 / font-display: swap" },
+          { "label": "프레임워크", "value": "전통 SSR + Swiper.js 감지 (--swiper-* CSS variables). Next.js/React/Vue 시그니처 미감지" },
+          { "label": "라이브러리", "value": "Swiper.js (--swiper-theme-color #007AFF + --swiper-navigation-size 44px + .swiper-preloader-spin keyframe)" },
+          { "label": "Hero 비디오", "value": "🟢 attach/download/{uuid} 패턴 - 자체 호스팅 (1920×1080 / mp4 / muted loop) + multi-slide (홀로그래픽 크롬 곡선 / ∞ 인피니티 / 사옥 라운지 PASSION 등 다중 비주얼)" },
+          { "label": "이미지 호스팅", "value": "ktng.com/images/main/ + ktng.com/webgl/ 자체 도메인. WebP 사용 (invest-background.webp 3840×2600 / sustainability-desktop.webp / 2k_stars_milky_way.webp)" },
+          { "label": "스크립트", "value": "26 script 태그 + 2 stylesheets - 비교적 가벼움" },
+          { "label": "html font-size", "value": "16px (1rem = 16px / body 16px / 표준)" },
+          { "label": "다국어", "value": "🌐 헤더 우측 globe 아이콘 (다국어 셀렉터). 한국어 default" },
+          { "label": "유틸 메뉴 (헤더 우측)", "value": "고객문의 / 비윤리행위 신고 / 안전보건소통마당 - 컴플라이언스·CSR 채널 헤더에 노출" }
+        ]},
+        { "type": "heading", "value": "전체 사이트맵 (Footer 5 메뉴 그룹 + 유틸 - 실측)" },
+        { "type": "sitemap", "items": [
+          { "label": "회사소개 (4)", "children": ["KT&G 소개", "연혁", "주요사업", "글로벌 네트워크"] },
+          { "label": "투자정보 (7)", "children": ["IR 개요", "기업가치 제고 계획", "지배구조", "재무정보", "주식정보", "공시정보", "IR 자료실"] },
+          { "label": "지속가능경영 (5)", "children": ["ESG 개요", "환경", "사회", "윤리경영", "아카이빙"] },
+          { "label": "미디어 (3)", "children": ["뉴스룸", "소셜미디어", "라이브러리"] },
+          { "label": "인재채용 (3)", "children": ["인사제도", "직무소개", "채용가이드"] },
+          { "label": "헤더 유틸 (3)", "children": ["고객문의", "비윤리행위 신고", "안전보건소통마당"] },
+          { "label": "푸터 하단 유틸 (3)", "children": ["사이트맵", "고정형 영상정보처리기기 운영관리방침", "개인정보처리방침"] },
+          { "label": "Family Site (셀렉트)", "children": ["관계사·계열사 셀렉트 드롭다운"] },
+          { "label": "소셜 (3)", "children": ["Instagram", "YouTube", "Facebook"] }
+        ]},
+        { "type": "heading", "value": "메인 페이지 섹션 흐름 (실측 main > 9 children)" },
+        { "type": "structure", "items": [
+          { "label": "01. .kv (Hero)", "tag": "911px", "desc": "<video> 자동재생 multi-slide 홀로그래픽 크롬 영상 + 128px Beyond Limits/Towards Innovation 헤딩" },
+          { "label": "02. .global__text.page-intro", "tag": "197px", "desc": "섹션 인트로 카피 - 'Global Business Highlights' + '우리는 글로벌 리더 KT&G입니다'" },
+          { "label": "03. .global (Globe + 5 Stats)", "tag": "4,555px", "desc": "🟢 시그니처 - 작은 도트 → 풀스크린 3D 지구 줌인 + 5 stat 카드 (17/140/65.2B/1.478B/34) 우측 슬라이드" },
+          { "label": "04. .sustainability__logo-animation", "tag": "911px", "desc": "KT&G 3색 잎사귀 로고 모티브 그래픽" },
+          { "label": "05. div (Sustainability content)", "tag": "3,644px", "desc": "Sustainability for Growth 거대 헤딩 + ESG 콘텐츠" },
+          { "label": "06. .container.sustainability-content", "tag": "1,184px", "desc": "ESG 디테일 콘텐츠 영역" },
+          { "label": "07. .news", "tag": "1,013px", "desc": "Newsroom - 큰 포스터 (상상마당 영화제) + 우측 뉴스 리스트 3건 + 뉴스룸 바로가기 CTA" },
+          { "label": "08. .invest", "tag": "1,027px", "desc": "Invest Relations - 3 카드 (주가정보 / 시운드그 / IR 행사)" },
+          { "label": "09. .with", "tag": "1,083px", "desc": "We go with - 인재채용 영역" }
+        ]},
+        { "type": "note", "value": "KT&G 사이트는 한국 코퍼레이트 사이트의 디자인 시스템 성숙도 최상위 사례. 흰 배경 + 검정 거대 한글 헤딩이라는 단순한 베이스 위에 (1) Hero multi-slide 홀로그래픽 크롬 영상, (2) Globe + 5 Stat scroll-driven 시퀀스, (3) Sustainability 3색 잎사귀 로고 모티브 4가지 시그니처가 결합. Pretendard·Figtree Variable woff2 자체 호스팅으로 폰트 로딩 최적화. (prefers-reduced-motion: reduce) 미디어쿼리 지원 = 접근성 고려." }
+      ]
+    },
+
+    "philosophy": {
+      "title": "02. 디자인 철학 · 비주얼 랭귀지",
+      "blocks": [
+        { "type": "text", "value": "KT&G 디자인 시스템의 핵심 철학은 '흰 배경 + 검정 타이포 단순성' 베이스 위에 '비디오·3D·인터랙션을 통한 비주얼 임팩트 극대화'. 코퍼레이트 사이트가 일반적으로 단조로운 정보 전달에 머무는 한계를 (1) Pretendard·Figtree Variable 두 폰트 시스템, (2) 자체 호스팅 multi-slide 홀로그래픽 영상, (3) scroll-driven Globe + 5 Stat 시퀀스로 돌파." },
+        { "type": "heading", "value": "비주얼 랭귀지 6원칙" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "① 흰 + 검정 베이스, 색상은 영상에 맡김", "value": "사이트 베이스는 #FFF + #000 + #787878 무채색만. 색상 임팩트는 Hero multi-slide 영상(holographic chrome rainbow)과 Globe 보라 그라데이션 stat 카드(#8EAEFA 추정)에 집중" },
+          { "label": "② 한글 + 영문 Variable 폰트 페어", "value": "Pretendard Variable (한글) + Figtree Variable (영문) - 두 variable font를 변별 사용. 영문은 Figtree로 글로벌 톤" },
+          { "label": "③ 128px 거대 헤딩 + 좌우 mirror wrapper", "value": "Hero 'Beyond Limits, Towards Innovation' 128px·600 - 좌측 wrapper 두 줄로 두 번 표시(슬라이드 인 애니메이션용 duplicate)" },
+          { "label": "④ Hero multi-video 자동재생", "value": "단일 영상이 아닌 여러 비주얼(크롬 곡선 / ∞ 인피니티 / 사옥 라운지 S4/S5/PASSION)을 순환. 톤이 'art-direction' 수준" },
+          { "label": "⑤ scroll-driven globe storytelling", "value": "Globe 섹션 4,555px - 도트가 점차 거대한 지구로 줌인되며 우측에서 5개 stat 카드(17 locations/140 countries/65.2B sticks/1.478B sticks/34 countries)가 순차 슬라이드 인" },
+          { "label": "⑥ 3색 잎사귀 = KT&G 정체성", "value": "Sustainability 섹션 - light green/medium green/dark green 3색 풍선형 잎사귀 그래픽이 KT&G 로고 모티브 (담배잎 + 인삼잎 표현)" }
+        ]},
+        { "type": "heading", "value": "디자이너 관점 - 결정 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Hero 영상의 의도", "value": "복수의 비주얼을 순환하는 것은 '단일 메시지에 묶이지 않는 글로벌 톤'을 의도. 홀로그래픽 크롬 = 미래/혁신, ∞ = 무한대 가능성, 사옥 라운지 = 실제 KT&G 공간(사람·문화)" },
+          { "label": "Sustainability 우대", "value": "Sustainability 섹션이 .global 다음으로 가장 크며(4,555px+1,184px+911px = 6,650px) ESG가 코퍼레이트 우선 메시지임을 시각적으로 강조" },
+          { "label": "투자정보 컬럼 가장 크게", "value": "Footer 5 메뉴 그룹 중 투자정보가 7개 항목 (IR 개요/기업가치 제고/지배구조/재무/주식/공시/IR 자료실) - 상장사 책임 강조" },
+          { "label": "유틸 헤더에 노출", "value": "헤더 우측에 고객문의·비윤리행위 신고·안전보건소통마당 - 컴플라이언스·CSR 채널을 GNB와 동급으로 강조 (담배회사 사회적 책임 톤)" }
+        ]},
+        { "type": "heading", "value": "퍼블리셔 관점 - 구현 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Pretendard Variable woff2 자체 호스팅", "value": "/fonts/PretendardVariable.woff2 - font-weight: 100 900 (variable axis 1축) + font-display: swap. CDN/Google Fonts 미사용" },
+          { "label": "Figtree Variable woff2 자체 호스팅", "value": "/fonts/FigtreeVariable.woff2 - 영문 전용 variable. KT&G가 자체 다운로드/번들. 'KT&G 글로벌 브랜드'를 위한 별도 영문 톤" },
+          { "label": "Swiper.js", "value": "--swiper-theme-color: #007AFF + --swiper-navigation-size: 44px - Stat 카드 슬라이드와 News 슬라이더 추정" },
+          { "label": "WebGL 배경", "value": "ktng.com/webgl/2k_stars_milky_way.webp - Globe 섹션의 우주 별 배경. WebGL 또는 단순 background-image" },
+          { "label": "헤더 fixed z-9997", "value": "<div class='header'> position: fixed; height: 104px; z-index: 9997 + .header__dimmed z-9996 (GNB hover dim 오버레이 911px)" },
+          { "label": "(prefers-reduced-motion)", "value": "🟢 media query 감지 - OS 모션 감소 사용자에게 Hero 영상·Globe 시퀀스 자동 비활성화 권장. 접근성 친화" }
+        ]},
+        { "type": "note", "value": "KT&G 사이트는 코퍼레이트 사이트가 도달할 수 있는 디자인 임팩트의 상한선. '단순 흰 배경 + 검정 헤딩'이라는 미니멀 톤을 유지하면서도 Hero 영상·Globe scroll storytelling·3색 잎사귀 그래픽으로 강력한 인상을 만든다. 다른 한국 코퍼레이트(삼성·LG·현대) 사이트와 동급 또는 그 이상." }
+      ]
+    },
+
+    "tokens": {
+      "title": "03. 디자인 토큰 시스템",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 CSS Variables는 Swiper 라이브러리 변수 외에는 거의 정의되지 않은 전통적 SCSS 컴파일 방식. 토큰은 실측된 computed style 기반으로 재구성." },
+        { "type": "component", "title": "CSS Variables (재구성)", "css": ":root{--font-pretendard:'Pretendard',system-ui,sans-serif;--font-figtree:'Figtree',system-ui,sans-serif;--swiper-theme-color:#007AFF;--swiper-navigation-size:44px;--color-bg:#FFFFFF;--color-text:#000000;--color-text-secondary:#787878;--color-overlay-15:rgba(0,0,0,0.15);--color-overlay-20:rgba(0,0,0,0.2);--color-glass-30:rgba(255,255,255,0.3);--color-glass-70:rgba(255,255,255,0.7);--color-purple:#8EAEFA;--color-green-light:#C5E0A6;--color-green-mid:#8AAA60;--color-green-dark:#5B7339;--color-surface-cream:#F5F5F5;--fs-hero:128px;--fs-h1:80px;--fs-h2:60px;--fs-h3:40px;--fs-h4:30px;--fs-button:14px;--fs-body:16px;--fs-body-lg:18px;--header-height:104px;--header-z:9997;--header-dim-z:9996;--bp-mobile:680px;--bp-tablet:1024px;--bp-desktop:1366px;--bp-xl:1920px;--transition-fast:0.3s ease-in-out;--transition-base:all 0.3s}", "html": "<div style='display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-family:Pretendard,sans-serif;font-size:11px'><div style='padding:18px;background:#FFFFFF;color:#000;border:1px solid #ddd;border-radius:10px;text-align:center'><div style='opacity:0.65;margin-bottom:4px'>--color-bg</div><b style='font-size:13px'>#FFFFFF</b></div><div style='padding:18px;background:#000;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.7;margin-bottom:4px'>--color-text</div><b style='font-size:13px'>#000000</b></div><div style='padding:18px;background:#8EAEFA;color:#000;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--color-purple</div><b style='font-size:13px'>#8EAEFA</b></div><div style='padding:18px;background:#8AAA60;color:#fff;border-radius:10px;text-align:center'><div style='opacity:0.85;margin-bottom:4px'>--color-green-mid</div><b style='font-size:13px'>#8AAA60</b></div><div style='padding:18px;background:#F5F5F5;color:#000;border:1px solid #ddd;border-radius:10px;text-align:center'><div style='opacity:0.65;margin-bottom:4px'>--color-surface</div><b style='font-size:13px'>#F5F5F5</b></div></div>" },
+        { "type": "heading", "value": "감지된 실제 CSS Variables" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "--font-pretendard", "value": "\"Pretendard\", system-ui, sans-serif - 한글 + 영문 기본" },
+          { "label": "--font-figtree", "value": "\"Figtree\", system-ui, sans-serif - 영문 보조 (글로벌 톤)" },
+          { "label": "--swiper-theme-color", "value": "#007AFF (Apple Blue) - Swiper 슬라이더 페이지네이션·네비 컬러" },
+          { "label": "--swiper-navigation-size", "value": "44px - Swiper 좌우 화살표 크기" },
+          { "label": "--swiper-preloader-color", "value": "#fff / #000 - 슬라이더 로딩 컬러" }
+        ]},
+        { "type": "note", "value": "KT&G는 디자인 토큰을 CSS Variables 형태로 노출하지 않음 (개발 단계 SCSS 컴파일 추정). 위 재구성은 실측된 computed style을 정리. Swiper.js만 표준 CSS Variables 노출." }
+      ]
+    },
+
+    "main-page": {
+      "title": "04. 메인 페이지 분석 (sH 11,708px)",
+      "blocks": [
+        { "type": "text", "value": "메인 페이지 스크롤 흐름 분석. 1920×911 viewport에서 11,708px 스크롤 = 약 13 화면 분량. 9개 main 자식 섹션이 결합되어 'Hero → Global → Sustainability → News → Invest → 인재' 7개 콘텐츠 영역을 구성." },
+        { "type": "heading", "value": "스크롤 위치별 콘텐츠 (실측)" },
+        { "type": "structure", "items": [
+          { "label": "scrollY 0", "tag": "Hero start", "desc": "흰 배경에 fade-in 시작. 'Beyond Limits, Towards Innovation' 거대 흰 헤딩 텍스트 (배경 영상 시작 전 텍스트 페이드 인 시점)" },
+          { "label": "scrollY ~600", "tag": "Hero video active", "desc": "<video> 자동재생 - 홀로그래픽 크롬 곡선 비주얼 + 헤더 흰 글자로 명확화. 'Scroll Down' 좌하단 라벨 표시" },
+          { "label": "scrollY ~1500", "tag": "Hero exit", "desc": "Hero 영상 fade-out → 흰 배경 → 'Global Business Highlights' + '우리는 글로벌 리더 KT&G입니다' 거대 한글 헤딩 표시" },
+          { "label": "scrollY ~2500", "tag": "Globe zoom in", "desc": "🟢 작은 검정 도트가 화면 중앙에 등장 → 점점 커지며 풀스크린 3D 지구로 줌인. 별 배경 (2k_stars_milky_way.webp)" },
+          { "label": "scrollY ~3500-5000", "tag": "5 Stat 카드 슬라이드", "desc": "🟢 우측에서 5 stat 카드 순차 슬라이드: 17 locations / 140 countries / 65.2B sticks / 1.478B sticks / 34 countries. 보라 그라데이션 카드 (rgba 0,0,0,0.15 + #8EAEFA tone)" },
+          { "label": "scrollY ~5800", "tag": "Sustainability 진입", "desc": "흰 배경 + 3색 잎사귀 그래픽 + 검정 'Sustainability for Growth' 거대 헤딩. KT&G 로고 모티브 시각화" },
+          { "label": "scrollY ~7500-9000", "tag": "Sustainability content", "desc": "ESG 콘텐츠 디테일 영역 (1,184px container)" },
+          { "label": "scrollY ~9500", "tag": "Newsroom", "desc": "큰 포스터 (KT&G 상상마당 '제18회 대단한 단편영화제 공모') + 우측 뉴스 리스트 3건 + '뉴스룸 바로가기 →' CTA" },
+          { "label": "scrollY ~10500", "tag": "Invest Relations", "desc": "보라 그라데이션 배경 - 3 카드 (주가정보 / 시운드그 / IR 행사)" },
+          { "label": "scrollY ~11000", "tag": "We go with (인재)", "desc": "인재채용 섹션. 자세한 콘텐츠는 인사제도·직무소개 페이지 링크" },
+          { "label": "scrollY 11700", "tag": "Footer", "desc": "5 메뉴 그룹 + Family Site 셀렉트 + 소셜 + Copyright + 우상단 검정 원형 ↑ Scroll-top FAB" }
+        ]},
+        { "type": "heading", "value": "Fixed 요소 인벤토리 (z-index별)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "z-9997 - .header", "value": "fixed 104px - GNB 메뉴 영역. 스크롤 진행 무관 항상 상단" },
+          { "label": "z-9996 - .header__dimmed", "value": "fixed 911px - GNB 호버 시 본문 위 회색 dim 오버레이" },
+          { "label": "z-(-1) - .sustainability__logo-animation", "value": "fixed 911px - Sustainability 배경 애니메이션. 본문 뒤" },
+          { "label": "z-2147483646 - 외부", "value": "fixed 911px - Claude in Chrome MCP cursor overlay (분석 환경, 실제 사이트 무관)" }
+        ]},
+        { "type": "note", "value": "KT&G 메인 페이지는 9개 main 자식 섹션이 결합되어 11,708px 사이트 전개. Hero + Global Globe(4555px)가 사이트 전체의 절반 가까이를 차지하며, 이 두 시그니처가 KT&G 톤의 핵심. Sustainability는 6,650px (sustainability__logo-animation 911 + div 3644 + container 1184 + sustainability__bg 911 = ESG 우선 메시지)." }
+      ]
+    },
+
+    "hero-multivideo": {
+      "title": "05. Hero - Multi-Video 홀로그래픽 시그니처",
+      "blocks": [
+        { "type": "text", "value": "사이트의 첫 인상. <video> autoplay loop muted 풀폭 영상이 여러 비주얼을 순환 재생. Chrome MCP로 페이지 새로고침 후 재방문하면 매번 다른 영상이 노출됨 - 다중 비디오 또는 다중 슬라이드 구조." },
+        { "type": "heading", "value": "포착된 Hero 비주얼 (Chrome MCP 라이브 새로고침 3회)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "비주얼 1 - 홀로그래픽 크롬 곡선", "value": "무지개빛 굴절 효과가 있는 chrome 곡선 두 줄기가 viewport 가득 굴곡. 가장 첫 인상으로 '미래/혁신' 톤" },
+          { "label": "비주얼 2 - ∞ 인피니티 크롬", "value": "8자/무한대 모양의 holographic chrome shape - '무한 가능성' 메타포" },
+          { "label": "비주얼 3 - 사옥 라운지 S4/S5/PASSION", "value": "KT&G 실제 사옥 라운지 영상 - 글라스 벽에 S4/S5/PASSION 글자가 디자인되어 있고 직원들이 작업하는 모습. '실제 KT&G 공간 + 사람·문화' 톤" }
+        ]},
+        { "type": "heading", "value": "Hero 텍스트 시스템" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "메인 헤딩", "value": "'Beyond Limits, Towards Innovation' 128px·600 (Pretendard / Figtree Variable 추정)" },
+          { "label": "🟢 Duplicate Wrapper 패턴", "value": ".kv__text-wrapper 두 개에 각각 'Beyond Limits,' / 'Towards Innovation' 두 번씩 wrap - slide-in 애니메이션을 위해 미리 좌우/위아래 미러" },
+          { "label": "Scroll Down 라벨", "value": "좌하단 'Scroll Down' 18px·400 흰 텍스트 + .kv__scroll-down 표시" },
+          { "label": "헤더 흰색 텍스트", "value": "Hero 위 헤더는 흰 텍스트 (다크 영상 위에서 가시성). 스크롤 진행 시 검정으로 토글" }
+        ]},
+        { "type": "heading", "value": "비디오 기술 디테일 (실측)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "비디오 src", "value": "https://www.ktng.com/attach/download/2177f558-e00b-4ec2-a73c-737b303a2c88 (UUID 파일명 - CMS attach 시스템 추정)" },
+          { "label": "videoWidth × videoHeight", "value": "1920 × 1080 (Full HD)" },
+          { "label": "속성", "value": "muted=true + loop=true + autoplay=false (사용자 인터랙션 후 재생) + paused=true 초기" },
+          { "label": "MIME", "value": "video/mp4 - 단일 source 태그" }
+        ]},
+        { "type": "note", "value": "🟢 Multi-Slide Hero는 KT&G의 가장 강력한 디자인 시그니처. 단일 영상이 아닌 art-direction 수준의 다중 비주얼이 순환하여 'KT&G = 단일 메시지에 묶이지 않는 글로벌 브랜드' 톤을 강력하게 전달. 다른 한국 코퍼레이트 사이트(삼성·LG·KT)의 정적 Hero와 차별화되는 결정적 요소." }
+      ]
+    },
+
+    "globe-stat-signature": {
+      "title": "06. Globe + 5 Stat Scroll-Driven 시그니처",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 두 번째 강력한 시그니처. .global section 4,555px 영역에서 스크롤이 진행되면 (1) 작은 검정 도트가 점차 거대한 3D 지구로 줌인, (2) 우측에서 5개 보라 그라데이션 stat 카드가 순차 슬라이드 인하며 KT&G의 글로벌 비즈니스 지표를 시각화." },
+        { "type": "heading", "value": "Stat 5종 (실측)" },
+        { "type": "stats", "items": [
+          { "number": "17", "suffix": " locations", "label": "해외 법인 및 지사 수 (*25년 기준)" },
+          { "number": "140", "suffix": " countries", "label": "해외궐련 사업 운영 국가 수 (*25년 기준)" },
+          { "number": "65.2", "suffix": " billion sticks", "label": "해외궐련 판매수량 (*25년 기준)" },
+          { "number": "1.478", "suffix": " billion sticks", "label": "스틱 판매수량 (*25년 기준)" },
+          { "number": "34", "suffix": " countries", "label": "NGP 사업진출 국가 수 (*25년 기준)" }
+        ]},
+        { "type": "heading", "value": "Stat 카드 디자인 디테일" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 보라 그라데이션 카드", "value": "rgba(0,0,0,0.15) overlay + #8EAEFA (light purple/lavender) gradient - 다크 우주 배경 위에 떠있는 글래스 카드 톤" },
+          { "label": "카드 구성", "value": "큰 숫자 (84px·600 white) + 단위 (small white text right) + 라벨 ('해외 법인 및 지사 수') + 캡션 ('*25년 기준')" },
+          { "label": "🟢 가로 슬라이드 인 시퀀스", "value": "scrollY 진행에 따라 17→140→65.2→1.478→34 5개 카드가 우측에서 좌측으로 부드럽게 슬라이드 인" },
+          { "label": "Globe 줌 진행", "value": "도트 (small dot) → globe small (남미·태평양 보이는 작은 지구) → globe medium → globe large (한반도·일본 보이는 풀스크린 지구) - scrollY 기반 transform: scale" }
+        ]},
+        { "type": "heading", "value": "재사용 가능 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "scroll-driven scale 줌인", "value": "scrollY를 progress (0-1)로 환산 → transform: scale(0.05 + progress * 20). 단순 IntersectionObserver보다 부드러운 점진 확대" },
+          { "label": "Stat 카드 우측 슬라이드", "value": "scrollY 구간별로 5개 카드의 translateX를 순차 0→viewport width 진행. 카드 간격은 fixed gap (gap: 30px 추정)" },
+          { "label": "별 배경 (Milky Way)", "value": "2k_stars_milky_way.webp - WebGL 또는 단순 background-image. 우주감 + 글로벌 메타포" },
+          { "label": "*25년 기준 캡션", "value": "각 stat 우하단 작은 회색 캡션으로 데이터 timestamp 명시 - 코퍼레이트 신뢰성 (실시간 갱신 가능 표기)" }
+        ]},
+        { "type": "note", "value": "🟢 Globe + 5 Stat 시퀀스는 KT&G 사이트의 핵심 차별화. 4,555px라는 매우 긴 sticky scroll-driven 영역을 할당 - '한국 회사가 17 locations + 140 countries에 진출했다'는 정량 데이터를 단순 숫자가 아닌 인터랙티브 시각 경험으로 전환." }
+      ]
+    },
+
+    "sustainability-section": {
+      "title": "07. Sustainability for Growth - ESG 시그니처",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 세 번째 시그니처 - ESG 섹션. '담배회사 = 사회적 책임'이라는 inherent challenge를 정면 돌파하기 위해 사이트에서 가장 큰 영역(6,650px 누적)을 ESG에 할당. KT&G 로고 모티브인 3색 잎사귀를 거대 그래픽으로 시각화." },
+        { "type": "heading", "value": "구조 (실측)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Sustainability 진입", "value": ".sustainability__logo-animation fixed 911px z-index -1 - 본문 뒤에 깔린 fixed 배경 애니메이션" },
+          { "label": "3색 잎사귀 그래픽", "value": "🟢 light green (#C5E0A6) + medium green (#8AAA60) + dark green (#5B7339) 3개 풍선형 잎사귀가 교차 - KT&G 로고 모티브 (담배잎 + 인삼잎)" },
+          { "label": "메인 헤딩", "value": "'Sustainability for Growth' 거대 검정 영문 (Figtree Variable / 약 96-128px 추정)" },
+          { "label": "콘텐츠 길이", "value": "Sustainability 영역 누적 6,650px - 사이트의 56% 차지. ESG가 최우선 메시지" },
+          { "label": "배경", "value": "ktng.com/images/main/sustainability-desktop.webp - 데스크톱 전용 wide 배경 이미지" }
+        ]},
+        { "type": "heading", "value": "재사용 가능 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "z-index -1 fixed 배경 애니메이션", "value": "position: fixed; z-index: -1; height: 911px - 본문보다 뒤에 있으면서도 viewport 내내 따라다님. 사용자가 스크롤해도 잎사귀 그래픽이 계속 보임" },
+          { "label": "로고 모티브 = ESG 그래픽", "value": "회사 로고의 시각 요소(잎사귀)를 ESG 섹션 그래픽으로 확장 - 브랜드 정체성과 ESG 메시지의 시각적 통합" },
+          { "label": "3색 그라데이션 = 가치 위계", "value": "light → medium → dark green 단계는 'Environment(밝은) → Social(중간) → Governance(짙은)' ESG 3축의 시각적 메타포 추정" }
+        ]},
+        { "type": "note", "value": "Sustainability 섹션은 KT&G가 '담배 비즈니스의 사회적 책임'을 시각적으로 정면 마주한 결과. 거의 사이트 절반을 ESG에 할당하고 회사 로고를 그래픽 모티브로 활용하여 '담배회사 KT&G ≠ ESG에 무관심'이라는 강력한 인상을 만든다." }
+      ]
+    },
+
+    "news-section": {
+      "title": "08. Newsroom - 포스터 + 리스트 콤보",
+      "blocks": [
+        { "type": "text", "value": "메인 페이지 .news section 1,013px. 큰 포스터 (좌측) + 작은 뉴스 리스트 3건 (우측) 콤보 레이아웃." },
+        { "type": "heading", "value": "구성 (실측)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "좌측 - 큰 포스터", "value": "KT&G 상상마당 '제18회 대단한 단편영화제 공모' 포스터 (파란 + 노란 톤 / 600×400px / alt='KT&G 상상마당, ‘제18회 대단한 단편영화제’ 공모 포스터 1부. 끝.')" },
+          { "label": "좌측 - 카피", "value": "'대단한 단편영화제 공모' (헤딩) + '우수 단편영화 발굴 및 제작 지원...3개 부문 오는 6월 9일까지 동시 모집' (sub) + '2026.05.06' (date) + 좌하단 '뉴스룸 바로가기 →' 화살표 CTA" },
+          { "label": "우측 - 뉴스 리스트 3건", "value": "1) KT&G-대구지방환경청-영양군청-국립생태원, 습지 보전 위한 MOU (2026.04.29) / 2) KT&G장학재단 '문화예술 장학사업' 발레 부문 장학증서 전달 (2026.04.28) / 3) KT&G-중진공, 지역경제 활성화·청년창업 육성 위한 업무협약 체결 (2026.04.27)" },
+          { "label": "각 뉴스 카드", "value": "회색 배경 (#F5F5F5) + 타이틀 (검정 17px·700 / 1-line truncate) + 날짜 (회색 small)" }
+        ]},
+        { "type": "note", "value": "Newsroom 섹션은 '큰 비주얼 (최신 캠페인/이벤트) + 텍스트 리스트 (최근 보도자료)' 콤보 패턴. 메인 페이지에서 4건의 뉴스만 노출하고 나머지는 '뉴스룸 바로가기' CTA로 유도." }
+      ]
+    },
+
+    "invest-with-section": {
+      "title": "09. Invest Relations + We go with 영역",
+      "blocks": [
+        { "type": "text", "value": "메인 페이지의 마지막 콘텐츠 영역. .invest (1027px) + .with (1083px) - 투자정보와 인재채용을 푸터 전 마지막 메시지로 배치." },
+        { "type": "heading", "value": "Invest Relations" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "배경", "value": "invest-background.webp (3840×2600 wide 보라 그라데이션) - WebP 자동 최적화" },
+          { "label": "구성", "value": "Section 제목 + 3 카드 (주가정보 / 시운드그 / IR 행사 - 정확한 라벨은 향후 hover로 확인 필요)" },
+          { "label": "의미", "value": "상장사 코퍼레이트 사이트 표준 - 메인에 IR 진입점 노출. 외부 투자자를 위한 첫 인상" }
+        ]},
+        { "type": "heading", "value": "We go with (인재채용)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구성", "value": "'함께 일할 인재' 메시지 + 인사제도 / 직무소개 / 채용가이드 진입점" },
+          { "label": "위치", "value": "사이트 마지막 콘텐츠 - 메인 페이지 끝에서 '우리와 함께 일하자'는 메시지로 마무리" }
+        ]},
+        { "type": "note", "value": "Invest + With 영역은 한국 코퍼레이트 사이트의 정석 - 마지막에 (1) 투자자 진입점 + (2) 인재 진입점을 배치하여 '주주 + 직원'이라는 두 핵심 stakeholder에게 메시지 전달." }
+      ]
+    },
+
+    "color-system": {
+      "title": "10. 컬러 시스템",
+      "blocks": [
+        { "type": "text", "value": "KT&G는 흰 + 검정 무채색 베이스 위에 영상·그래픽의 색상에 색감을 맡기는 미니멀 톤. 실측 computed style top 15 색상." },
+        { "type": "palette", "title": "주요 색상 (실측 빈도순)", "colors": [
+          { "name": "White Background", "hex": "#FFFFFF", "usage": "본문 표준 배경 (color 426건 / BG 17건) - 사이트 베이스" },
+          { "name": "Black Text", "hex": "#000000", "usage": "본문 텍스트 + 헤딩 표준 (color 425건 / BG 18건)" },
+          { "name": "Gray Secondary", "hex": "#787878", "usage": "보조 텍스트 (color 25건) - 캡션·서브 라벨" },
+          { "name": "Overlay 15%", "hex": "rgba(0,0,0,0.15)", "usage": "Stat 카드 어두운 오버레이 (BG 6건)" },
+          { "name": "Purple Light", "hex": "#8EAEFA", "usage": "🟢 Stat 카드 보라 그라데이션 (BG 5건)" },
+          { "name": "Glass White 30", "hex": "rgba(255,255,255,0.3)", "usage": "Globe 위 글래스 카드 톤 (BG 4건)" },
+          { "name": "Surface Cream", "hex": "#F5F5F5", "usage": "뉴스 카드 배경 + 일부 섹션 surface (BG 4건)" },
+          { "name": "Glass White 70", "hex": "rgba(255,255,255,0.7)", "usage": "Hero 텍스트 fade overlay (BG 2건)" },
+          { "name": "Green Light", "hex": "#C5E0A6", "usage": "🟢 Sustainability 잎사귀 light green (KT&G 로고 모티브)" },
+          { "name": "Green Mid", "hex": "#8AAA60", "usage": "🟢 Sustainability 잎사귀 medium green (BG 1건)" },
+          { "name": "Green Dark", "hex": "#5B7339", "usage": "🟢 Sustainability 잎사귀 dark green" },
+          { "name": "Swiper Blue", "hex": "#007AFF", "usage": "Swiper.js 기본 테마 (Apple Blue) - 슬라이더 indicator·navigation" }
+        ]},
+        { "type": "heading", "value": "WCAG 대비 검증" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "본문 #000 on #FFF", "value": "21.0:1 ✓ AAA (최대 대비)" },
+          { "label": "보조 #787878 on #FFF", "value": "4.7:1 ✓ AA (큰 텍스트 AAA)" },
+          { "label": "Hero 헤딩 흰 on 다크 영상", "value": "비디오 톤 따라 가변 - 대부분 영역 AAA 추정" },
+          { "label": "Sustainability Green Mid #8AAA60 on #FFF", "value": "3.0:1 - 작은 텍스트 부적합. 그래픽 요소로만 사용 → OK" }
+        ]},
+        { "type": "note", "value": "KT&G 컬러 시스템은 무채색 베이스 + 강조 색상 최소화 톤. 영상·그래픽·Globe 시퀀스가 색감을 제공하므로 본문 CSS는 단순 #FFF/#000만 사용. 보라(#8EAEFA)는 Stat 카드에만, 3색 그린은 Sustainability에만 - 컨텍스트별 강조 색상 패턴." }
+      ]
+    },
+
+    "typography-system": {
+      "title": "11. 타이포그래피 시스템 (Pretendard + Figtree Variable)",
+      "blocks": [
+        { "type": "text", "value": "한글 + 영문 두 variable font 결합. Pretendard Variable woff2 (한글) + Figtree Variable woff2 (영문) - 둘 다 font-weight 100-900 1축 variable이며 자체 호스팅." },
+        { "type": "typo", "items": [
+          { "label": "Hero 128px·600", "size": "128px", "weight": 600, "sample": "Beyond Limits, Towards Innovation", "tracking": "tight" },
+          { "label": "Section Heading 60px·700", "size": "60px", "weight": 700, "sample": "우리는 글로벌 리더 KT&G입니다", "tracking": "normal" },
+          { "label": "Sustainability Heading", "size": "96px (추정)", "weight": 700, "sample": "Sustainability for Growth", "tracking": "normal" },
+          { "label": "H3 40px·700", "size": "40px", "weight": 700, "sample": "글로벌 비즈니스 하이라이트" },
+          { "label": "H4 30px·700", "size": "30px", "weight": 700, "sample": "Stat 카드 라벨" },
+          { "label": "Body Large 18px·500", "size": "18px", "weight": 500, "sample": "Scroll Down 라벨 / Body large emphasis" },
+          { "label": "Body 16px·400", "size": "16px", "weight": 400, "sample": "기본 본문 + 링크 + li 표준" },
+          { "label": "Button 14px·400", "size": "14px", "weight": 400, "sample": "버튼 라벨" }
+        ]},
+        { "type": "heading", "value": "Variable Font 시스템 (실측 @font-face)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 Pretendard Variable", "value": "@font-face { font-family: Pretendard; src: url('/fonts/PretendardVariable.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }" },
+          { "label": "🟢 Figtree Variable", "value": "@font-face { font-family: Figtree; src: url('/fonts/FigtreeVariable.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }" },
+          { "label": "Variable axis", "value": "wght (100-900) 1축 - italic·width 미사용" },
+          { "label": "자체 호스팅", "value": "Google Fonts·CDN 미사용 - /fonts/ 디렉토리에 직접 호스팅. 로딩 속도 + privacy 친화" },
+          { "label": "font-display: swap", "value": "FOUT (Flash of Unstyled Text) 허용 - 폰트 로딩 전 fallback (system-ui) 즉시 표시" }
+        ]},
+        { "type": "note", "value": "🟢 한글 Pretendard + 영문 Figtree 두 variable font 페어링은 한국 코퍼레이트 사이트에서 흔치 않은 패턴. Pretendard는 한글 가독성, Figtree는 영문 헤딩 톤 - 글로벌 코퍼레이트 사이트의 'KOR/ENG 균형' 톤 완성." }
+      ]
+    },
+
+    "icon-system": {
+      "title": "12. 아이콘 시스템",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 아이콘은 모두 인라인 SVG (외부 아이콘 폰트 미사용). 사이트 전체에서 가장 빈도 높은 아이콘은 '→ 화살표' (View More CTA) 와 'Globe' (다국어)." },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "라이브러리", "value": "커스텀 인라인 SVG - Font Awesome / Material Icons / Lucide 미사용" },
+          { "label": "주요 아이콘", "value": "1) → 화살표 (CTA 'View More', '네트워크 바로가기', '뉴스룸 바로가기') / 2) 🌐 Globe (헤더 우측 다국어) / 3) ↑ Scroll-top FAB (검정 원형 화이트 화살표) / 4) Sustainability 잎사귀 SVG (3색) / 5) 소셜 (Instagram / YouTube / Facebook) - footer" },
+          { "label": "→ 화살표 패턴", "value": "원형 흰 배경 + 검정 화살표 + 호버 시 translateX → KT&G 표준 CTA 패턴 (.invest__cta / .news__cta / .global__cta 등)" },
+          { "label": "Sustainability 3색 잎사귀", "value": "🟢 풍선형 (드롭/leaf) 모양 SVG 3개가 교차 - KT&G 로고의 핵심 그래픽 요소" }
+        ]},
+        { "type": "note", "value": "아이콘 시스템은 단순 - 거대 헤딩 텍스트가 시각 임팩트를 담당하므로 아이콘은 보조 역할. 외부 아이콘 라이브러리 미사용으로 페이지 로딩 가벼움." }
+      ]
+    },
+
+    "image-video-system": {
+      "title": "13. 이미지 · 영상 시스템",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 이미지·영상은 모두 자체 도메인 호스팅 + WebP 최적화. Hero 비디오는 attach/download/{uuid} CMS 패턴." },
+        { "type": "heading", "value": "이미지" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "메인 페이지 이미지 수", "value": "4장 (뉴스 포스터 1 + Invest 배경 1 + business 카드 2) - 매우 적음. 대부분 영상·CSS로 비주얼 처리" },
+          { "label": "포맷", "value": "WebP 우선 (.webp) - invest-background.webp (3840×2600) / sustainability-desktop.webp / 2k_stars_milky_way.webp" },
+          { "label": "Globe 별 배경", "value": "ktng.com/webgl/2k_stars_milky_way.webp - /webgl/ 디렉토리 = WebGL 3D 렌더링 자산 추정" },
+          { "label": "Invest 배경", "value": "ktng.com/images/main/invest-background.webp 3840×2600 - 보라 그라데이션 풀폭 배경" }
+        ]},
+        { "type": "heading", "value": "비디오" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Hero 비디오 1개", "value": "ktng.com/attach/download/2177f558-e00b-4ec2-a73c-737b303a2c88 - UUID 파일명 (CMS attach)" },
+          { "label": "해상도", "value": "1920×1080 (Full HD)" },
+          { "label": "포맷", "value": "video/mp4" },
+          { "label": "속성", "value": "muted + loop + autoplay=false (사용자 인터랙션 트리거)" },
+          { "label": "🟢 Multi-Slide", "value": "한 영상이 multiple scene 으로 구성 OR 여러 영상이 순환. 새로고침마다 다른 비주얼 노출" }
+        ]},
+        { "type": "note", "value": "🟢 KT&G는 영상·이미지를 매우 적게 사용하면서도 임팩트가 큰 자산 (Hero 비디오 + Stats globe + Sustainability 잎사귀)으로 사이트 전체 톤을 통제. WebP 자체 호스팅으로 페이지 로딩 최적화." }
+      ]
+    },
+
+    "layout-grid": {
+      "title": "14. 그리드 · 컨테이너 시스템",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 컨테이너 시스템은 .container.container--base (BEM modifier 패턴) 단일 컨테이너로 통일. 사이트 너비 1920px에서 풀-블리드 영상·이미지 + 1280px 정도 본문 컨테이너 추정." },
+        { "type": "kv", "title": "컨테이너 시스템", "columns": 1, "items": [
+          { "label": "사이트 너비", "value": "vw 1920 / body sW 1905 (스크롤바 15px 제외)" },
+          { "label": "컨테이너 클래스", "value": ".container.container--base - BEM modifier 패턴 (base / wide / narrow 변형 추정)" },
+          { "label": "Hero 컨테이너", "value": ".container.container--base.kv__text - Hero 텍스트 영역" },
+          { "label": "Sustainability 컨테이너", "value": ".container.container--base.sustainability-content (1184px high)" },
+          { "label": "사이트 패딩 추정", "value": "좌우 80-120px (1920 - 1680 = 240 / 2 = 120px)" }
+        ]},
+        { "type": "heading", "value": "섹션별 높이 (실측 main > 9 children)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": ".kv (Hero)", "value": "911px (vh 정확히 일치)" },
+          { "label": ".global__text.page-intro", "value": "197px (작은 인트로)" },
+          { "label": ".global (Globe + Stats)", "value": "4,555px - 가장 긴 단일 섹션 (사이트 39%)" },
+          { "label": ".sustainability__logo-animation", "value": "911px fixed z-(-1)" },
+          { "label": "div (Sustainability content)", "value": "3,644px" },
+          { "label": ".container.sustainability-content", "value": "1,184px" },
+          { "label": ".news", "value": "1,013px" },
+          { "label": ".invest", "value": "1,027px" },
+          { "label": ".with", "value": "1,083px" }
+        ]},
+        { "type": "note", "value": "Globe 섹션이 사이트의 39%를 차지하는 것은 의도된 디자인 - scroll-driven 시퀀스가 그만큼 길게 전개되어야 도트→지구 줌인의 부드러움이 보장됨. Sustainability 누적도 6,650px = 56% (sustainability__logo-animation 911 + div 3644 + container 1184 + 911px 추가) - ESG 메시지의 시각적 비중을 극대화." }
+      ]
+    },
+
+    "layout-responsive": {
+      "title": "15. 반응형 · 여백 · 둥글기",
+      "blocks": [
+        { "type": "kv", "title": "브레이크포인트 (실측 미디어쿼리)", "columns": 1, "items": [
+          { "label": "mobile-xs", "value": "0 - 680px (작은 모바일)" },
+          { "label": "mobile", "value": "max-width 740px (모바일)" },
+          { "label": "tablet", "value": "max-width 1024px / min-width 681px and max-width 1024px" },
+          { "label": "small-desktop", "value": "max-width 1366px / min-width 1025px and max-width 1366px" },
+          { "label": "desktop", "value": "min-width 1367px" },
+          { "label": "xl", "value": "min-width 1920px - Full HD 이상 데스크톱 추가 조정" },
+          { "label": "🟢 feature query", "value": "(hover: hover) - 터치 디바이스와 마우스 디바이스 분기 / (prefers-reduced-motion: reduce) - OS 모션 감소 사용자 친화" },
+          { "label": "기타", "value": "max-width 474px (xs 추가) / max-width 768px (별도 분기)" }
+        ]},
+        { "type": "heading", "value": "여백 시스템 (추정)" },
+        { "type": "spacingScale", "items": [
+          { "label": "xs", "px": 4 },
+          { "label": "sm", "px": 8 },
+          { "label": "md", "px": 16 },
+          { "label": "lg", "px": 24 },
+          { "label": "xl", "px": 32 },
+          { "label": "2xl", "px": 48 },
+          { "label": "3xl", "px": 64 },
+          { "label": "4xl", "px": 80 },
+          { "label": "5xl", "px": 120 }
+        ]},
+        { "type": "heading", "value": "둥글기 (추정)" },
+        { "type": "radiusScale", "items": [
+          { "label": "none", "px": 0, "usage": "Hero 텍스트 (직각)" },
+          { "label": "card", "px": 16, "usage": "Stat 카드 추정" },
+          { "label": "round-button", "px": 24, "usage": "→ View More 원형 화살표 버튼" },
+          { "label": "pill", "px": 99, "usage": "→ FAB / scroll-top 원형 버튼" },
+          { "label": "circle", "px": 9999, "usage": "Sustainability 잎사귀 그래픽 끝부분 / Stat 카드 원형 도트" }
+        ]},
+        { "type": "note", "value": "KT&G는 7단계 브레이크포인트로 데스크톱 영역을 매우 세밀하게 분기 (max 474 / 680 / 740 / 768 / 1024 / 1366 / 1920). 모바일은 단순 (max 680/740)이지만 데스크톱은 'small-desktop / desktop / xl' 3분기로 세밀. (prefers-reduced-motion: reduce) 미디어쿼리 채택은 접근성 친화의 결정적 신호." }
+      ]
+    },
+
+    "lib-buttons": {
+      "title": "16. 버튼 · CTA 라이브러리",
+      "blocks": [
+        { "type": "text", "value": "KT&G 버튼은 → 원형 화살표 CTA가 사이트 전체 표준 패턴. 거의 모든 'View More' / '바로가기'가 동일 패턴." },
+        { "type": "heading", "value": "버튼 1 - 원형 화살표 CTA (KT&G 표준)" },
+        { "type": "component", "title": "ktng-bt1 - View More 원형 화살표", "css": ".ktng-bt1{display:inline-flex;align-items:center;gap:14px;font-family:Pretendard,sans-serif;font-size:18px;font-weight:500;color:#000;cursor:pointer;background:none;border:none;padding:0;transition:all 0.3s}.ktng-bt1:hover{color:#000}.ktng-bt1__circle{width:48px;height:48px;border-radius:99px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform 0.3s ease-in-out;font-size:18px}.ktng-bt1:hover .ktng-bt1__circle{transform:translateX(6px) rotate(-12deg)}.ktng-bt1__circle svg{width:18px;height:18px}", "html": "<div style='padding:48px;background:#fff;display:flex;gap:32px;align-items:center;font-family:Pretendard,sans-serif'><button class='ktng-bt1'><span>네트워크 바로가기</span><span class='ktng-bt1__circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M5 12h14M13 5l7 7-7 7'/></svg></span></button><button class='ktng-bt1'><span>뉴스룸 바로가기</span><span class='ktng-bt1__circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M5 12h14M13 5l7 7-7 7'/></svg></span></button></div>" },
+
+        { "type": "heading", "value": "버튼 2 - 검정 Scroll-to-Top FAB" },
+        { "type": "component", "title": "ktng-bt2 - 검정 원형 ↑ FAB", "css": ".ktng-bt2{position:fixed;bottom:32px;right:32px;width:64px;height:64px;border-radius:99px;background:#000;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.2);transition:all 0.3s ease-in-out;z-index:50}.ktng-bt2:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}.ktng-bt2 svg{width:24px;height:24px}", "html": "<div style='position:relative;height:240px;background:#FAFAFA;padding:32px;font-family:Pretendard,sans-serif;color:#787878'>스크롤 시 우상단에 ↑ FAB 표시<button class='ktng-bt2' style='position:absolute'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M12 19V5M5 12l7-7 7 7'/></svg></button></div>" },
+
+        { "type": "heading", "value": "버튼 3 - GNB 메뉴 링크" },
+        { "type": "component", "title": "ktng-bt3 - 헤더 GNB 링크", "css": ".ktng-bt3{display:flex;gap:48px;font-family:Pretendard,sans-serif;padding:32px 64px;background:#fff;border-bottom:1px solid #F0F0F0;align-items:center}.ktng-bt3__logo{font-size:20px;font-weight:800}.ktng-bt3__nav{display:flex;gap:48px;flex:1;justify-content:center}.ktng-bt3__nav a{font-size:20px;font-weight:500;color:#000;text-decoration:none;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.3s}.ktng-bt3__nav a:hover{border-color:#000}.ktng-bt3__util{display:flex;gap:24px}.ktng-bt3__util a{font-size:15px;color:#787878;text-decoration:none;transition:color 0.3s}.ktng-bt3__util a:hover{color:#000}", "html": "<div class='ktng-bt3'><div class='ktng-bt3__logo'>KT&G</div><nav class='ktng-bt3__nav'><a>회사소개</a><a>투자정보</a><a>지속가능경영</a><a>미디어</a><a>인재채용</a></nav><div class='ktng-bt3__util'><a>고객문의</a><a>비윤리행위 신고</a><a>안전보건소통마당</a></div></div>" },
+
+        { "type": "heading", "value": "버튼 4 - Family Site 셀렉트 (+expand)" },
+        { "type": "component", "title": "ktng-bt4 - Family Site Pill 셀렉트", "css": ".ktng-bt4{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;background:#fff;border:1px solid #DDD;border-radius:99px;font-family:Pretendard,sans-serif;font-size:15px;color:#000;cursor:pointer;transition:all 0.3s ease-in-out;min-width:200px}.ktng-bt4:hover{border-color:#000;background:#FAFAFA}.ktng-bt4__plus{width:24px;height:24px;border-radius:99px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;color:#000;font-weight:300;font-size:18px;transition:transform 0.3s}.ktng-bt4:hover .ktng-bt4__plus{transform:rotate(90deg)}", "html": "<div style='padding:32px;background:#fff;font-family:Pretendard,sans-serif'><button class='ktng-bt4'><span>Family Site</span><span class='ktng-bt4__plus'>+</span></button></div>" },
+
+        { "type": "heading", "value": "버튼 5 - 검정 Pill CTA" },
+        { "type": "component", "title": "ktng-bt5 - 검정 채워진 Pill 버튼", "css": ".ktng-bt5{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:99px;background:#000;color:#fff;font-family:Pretendard,sans-serif;font-size:16px;font-weight:500;border:none;cursor:pointer;transition:all 0.3s ease-in-out}.ktng-bt5:hover{background:#fff;color:#000;box-shadow:inset 0 0 0 1px #000;transform:translateY(-2px)}.ktng-bt5:hover::after{transform:translateX(4px)}.ktng-bt5::after{content:'→';transition:transform 0.3s}", "html": "<div style='padding:48px;background:#fff;font-family:Pretendard,sans-serif;display:flex;gap:16px'><button class='ktng-bt5'>지속가능경영 보고서 다운로드</button><button class='ktng-bt5'>IR 자료실</button></div>" },
+
+        { "type": "note", "value": "KT&G 버튼은 매우 절제된 시스템 - 검정 원형 + 흰 화살표가 사이트 전체 CTA의 표준. 보조로 검정 Pill / Family Site 셀렉트 / GNB 텍스트 링크. 호버 시 translateX·rotate 마이크로 인터랙션." }
+      ]
+    },
+
+    "lib-cards": {
+      "title": "17. 카드 라이브러리",
+      "blocks": [
+        { "type": "text", "value": "KT&G 카드는 Stat 카드(보라 그라데이션 글래스) + News 카드(회색 박스) + Hero 영상 오버레이 3종 패턴." },
+        { "type": "heading", "value": "카드 1 - 🟢 보라 그라데이션 Stat 카드" },
+        { "type": "component", "title": "ktng-c1 - Globe + 5 Stat 시그니처", "fullWidth": true, "css": ".ktng-c1{background:radial-gradient(circle at center,#1a2540 0%,#000 100%);padding:60px 32px;font-family:Pretendard,sans-serif;color:#fff;position:relative;overflow:hidden}.ktng-c1__globe{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#3a5db8,#0a1a40 70%,#000);opacity:0.85;box-shadow:0 0 80px rgba(58,93,184,0.5)}.ktng-c1__inner{position:relative;z-index:1;display:flex;gap:24px;justify-content:center;align-items:center;min-height:520px}.ktng-c1__card{flex:0 0 220px;background:linear-gradient(135deg,rgba(142,174,250,0.35),rgba(142,174,250,0.15));border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:32px 28px;backdrop-filter:blur(12px);display:flex;flex-direction:column;justify-content:space-between;min-height:280px;transform:translateY(0);transition:transform 0.4s ease-in-out}.ktng-c1__card:nth-child(odd){transform:translateY(-12px)}.ktng-c1__card-num{font-size:64px;font-weight:600;line-height:1;color:#fff;margin-bottom:8px;display:flex;align-items:flex-end;gap:4px}.ktng-c1__card-unit{font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);margin-bottom:6px}.ktng-c1__card-label{font-size:16px;font-weight:600;color:#fff;line-height:1.4;margin-top:24px}.ktng-c1__card-caption{font-size:11px;color:rgba(255,255,255,0.6);margin-top:6px}", "html": "<div class='ktng-c1'><div class='ktng-c1__globe'></div><div class='ktng-c1__inner'><div class='ktng-c1__card'><div><div class='ktng-c1__card-num'>17<span class='ktng-c1__card-unit'>locations</span></div></div><div><div class='ktng-c1__card-label'>해외 법인 및 지사 수</div><div class='ktng-c1__card-caption'>*25년 기준</div></div></div><div class='ktng-c1__card'><div><div class='ktng-c1__card-num'>140<span class='ktng-c1__card-unit'>countries</span></div></div><div><div class='ktng-c1__card-label'>해외궐련 사업 운영 국가 수</div><div class='ktng-c1__card-caption'>*25년 기준</div></div></div><div class='ktng-c1__card'><div><div class='ktng-c1__card-num'>65.2<span class='ktng-c1__card-unit'>billion sticks</span></div></div><div><div class='ktng-c1__card-label'>해외궐련 판매수량</div><div class='ktng-c1__card-caption'>*25년 기준</div></div></div><div class='ktng-c1__card'><div><div class='ktng-c1__card-num'>1.478<span class='ktng-c1__card-unit'>billion sticks</span></div></div><div><div class='ktng-c1__card-label'>스틱 판매수량</div><div class='ktng-c1__card-caption'>*25년 기준</div></div></div><div class='ktng-c1__card'><div><div class='ktng-c1__card-num'>34<span class='ktng-c1__card-unit'>countries</span></div></div><div><div class='ktng-c1__card-label'>NGP 사업진출 국가 수</div><div class='ktng-c1__card-caption'>*25년 기준</div></div></div></div></div>" },
+
+        { "type": "heading", "value": "카드 2 - News 회색 박스 카드" },
+        { "type": "component", "title": "ktng-c2 - 회색 카드 뉴스 리스트", "css": ".ktng-c2{background:#fff;padding:32px;font-family:Pretendard,sans-serif;max-width:580px}.ktng-c2__item{background:#F5F5F5;border-radius:8px;padding:24px;margin-bottom:12px;cursor:pointer;transition:all 0.3s ease-in-out}.ktng-c2__item:hover{background:#EEE;transform:translateX(4px)}.ktng-c2__title{font-size:17px;font-weight:700;color:#000;line-height:1.4;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}.ktng-c2__date{font-size:13px;color:#787878}", "html": "<div class='ktng-c2'><div class='ktng-c2__item'><div class='ktng-c2__title'>KT&G-대구지방환경청-영양군청-국립생태원, 습지 보전 위한 MOU</div><div class='ktng-c2__date'>2026. 04. 29</div></div><div class='ktng-c2__item'><div class='ktng-c2__title'>KT&G장학재단, '문화예술 장학사업' 발레 부문 장학증서 전달</div><div class='ktng-c2__date'>2026. 04. 28</div></div><div class='ktng-c2__item'><div class='ktng-c2__title'>KT&G-중진공, 지역경제 활성화·청년창업 육성 위한 업무협약 체결</div><div class='ktng-c2__date'>2026. 04. 27</div></div></div>" },
+
+        { "type": "heading", "value": "카드 3 - 큰 포스터 카드 + 카피" },
+        { "type": "component", "title": "ktng-c3 - News 메인 카드 (포스터 + 카피)", "fullWidth": true, "css": ".ktng-c3{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;align-items:flex-end;padding:32px;background:#fff;font-family:Pretendard,sans-serif}.ktng-c3__copy{display:flex;flex-direction:column;gap:16px}.ktng-c3__title{font-size:32px;font-weight:700;color:#000;line-height:1.3}.ktng-c3__sub{font-size:16px;color:#666;line-height:1.6}.ktng-c3__date{font-size:14px;color:#787878}.ktng-c3__cta{display:inline-flex;align-items:center;gap:12px;font-size:16px;font-weight:500;color:#000;cursor:pointer;margin-top:32px}.ktng-c3__cta-arrow{width:40px;height:40px;border-radius:99px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;transition:transform 0.3s}.ktng-c3__cta:hover .ktng-c3__cta-arrow{transform:translateX(4px)}.ktng-c3__poster{background:linear-gradient(180deg,#1a4ad9,#f5a623);height:380px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-align:center;padding:20px}", "html": "<div class='ktng-c3'><div class='ktng-c3__copy'><div class='ktng-c3__title'>대단한 단편영화제 공모</div><div class='ktng-c3__sub'>우수 단편영화 발굴 및 제작 지원...3개 부문 오는 6월 9일까지 동시 모집</div><div class='ktng-c3__date'>2026. 05. 06</div><div class='ktng-c3__cta'>뉴스룸 바로가기 <span class='ktng-c3__cta-arrow'>→</span></div></div><div class='ktng-c3__poster'>KT&G 상상마당<br>제18회 대단한 단편영화제 공모 포스터</div></div>" },
+
+        { "type": "heading", "value": "카드 4 - Sustainability 잎사귀 카드" },
+        { "type": "component", "title": "ktng-c4 - 3색 잎사귀 + 영문 헤딩 카드", "css": ".ktng-c4{background:#fff;padding:80px 48px;font-family:Pretendard,sans-serif;position:relative;min-height:480px;overflow:hidden}.ktng-c4__leaves{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:300px}.ktng-c4__leaf{position:absolute;width:240px;height:90px;border-radius:99px;opacity:0.8;transform-origin:left center}.ktng-c4__leaf-1{background:#C5E0A6;top:30%;left:20%;transform:rotate(-15deg)}.ktng-c4__leaf-2{background:#8AAA60;top:40%;left:30%;transform:rotate(20deg)}.ktng-c4__leaf-3{background:#5B7339;top:50%;left:40%;transform:rotate(45deg)}.ktng-c4__heading{font-size:88px;font-weight:700;color:#000;position:relative;z-index:1;line-height:1.1}", "html": "<div class='ktng-c4'><div class='ktng-c4__leaves'><div class='ktng-c4__leaf ktng-c4__leaf-1'></div><div class='ktng-c4__leaf ktng-c4__leaf-2'></div><div class='ktng-c4__leaf ktng-c4__leaf-3'></div></div><div class='ktng-c4__heading'>Sustainability<br>for Growth</div></div>" },
+
+        { "type": "note", "value": "KT&G 카드 라이브러리는 4종 - (1) Stat 보라 글래스 카드 = 핵심 시그니처, (2) News 회색 박스 = 단순 리스트, (3) 포스터 + 카피 콤보 = 메인 뉴스 강조, (4) Sustainability 3색 잎사귀 카드 = ESG 정체성. 모두 흰 배경 + 검정 텍스트 + 카드별 강조 색상 패턴." }
+      ]
+    },
+
+    "lib-banners": {
+      "title": "18. 배너 · Hero 라이브러리",
+      "blocks": [
+        { "type": "text", "value": "Hero 비디오 + Globe 시퀀스 + Sustainability 배너 3종." },
+        { "type": "heading", "value": "Hero 1 - Multi-Video 풀폭" },
+        { "type": "component", "title": "ktng-bn1 - Hero <video> + 128px 헤딩", "fullWidth": true, "css": ".ktng-bn1{position:relative;height:600px;font-family:Pretendard,'Figtree',sans-serif;overflow:hidden;background:#000}.ktng-bn1__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85}.ktng-bn1__bg{position:absolute;inset:0;background:linear-gradient(135deg,#a0a0c0,#d0d0e8,#7088c0);opacity:0.9}.ktng-bn1__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.3))}.ktng-bn1__inner{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 80px;z-index:1;color:#fff}.ktng-bn1__heading{font-size:96px;font-weight:600;line-height:1.05;letter-spacing:-0.02em}.ktng-bn1__heading span{display:block}.ktng-bn1__scroll{position:absolute;bottom:32px;left:80px;font-size:14px;color:rgba(255,255,255,0.9)}", "html": "<div class='ktng-bn1'><div class='ktng-bn1__bg'></div><div class='ktng-bn1__overlay'></div><div class='ktng-bn1__inner'><div class='ktng-bn1__heading'><span>Beyond Limits,</span><span>Towards Innovation</span></div></div><div class='ktng-bn1__scroll'>Scroll Down</div></div>" },
+
+        { "type": "heading", "value": "Hero 2 - Globe + Stats scroll-driven 시퀀스" },
+        { "type": "component", "title": "ktng-bn2 - Globe 줌인 인터랙티브", "fullWidth": true, "css": ".ktng-bn2{position:relative;height:600px;background:radial-gradient(ellipse at center,#0a1840 0%,#000 100%);font-family:Pretendard,sans-serif;color:#fff;overflow:hidden}.ktng-bn2__stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 60% 70%,#fff,transparent),radial-gradient(1.5px 1.5px at 35% 45%,#fff,transparent),radial-gradient(1px 1px at 80% 20%,#fff,transparent),radial-gradient(2px 2px at 50% 90%,#fff,transparent);background-size:300px 300px;opacity:0.4}.ktng-bn2__globe{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#4a6dd0,#1a3aa0 50%,#0a1a50);box-shadow:0 0 60px rgba(74,109,208,0.6);animation:ktng-bn2-rotate 30s linear infinite}@keyframes ktng-bn2-rotate{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}.ktng-bn2__inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 80px}.ktng-bn2__caption{font-size:18px;color:rgba(255,255,255,0.8);font-weight:500;margin-bottom:12px}.ktng-bn2__heading{font-size:48px;font-weight:700;line-height:1.3}.ktng-bn2__cta{display:inline-flex;align-items:center;gap:12px;margin-top:24px;cursor:pointer}.ktng-bn2__cta-circle{width:40px;height:40px;border-radius:99px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700}", "html": "<div class='ktng-bn2'><div class='ktng-bn2__stars'></div><div class='ktng-bn2__globe'></div><div class='ktng-bn2__inner'><div class='ktng-bn2__caption'>Global Business Highlights</div><div class='ktng-bn2__heading'>우리는 글로벌 리더<br>KT&G입니다</div><div class='ktng-bn2__cta'>네트워크 바로가기 <span class='ktng-bn2__cta-circle'>→</span></div></div></div>" },
+
+        { "type": "heading", "value": "Hero 3 - Sustainability 흰 배경 + 잎사귀" },
+        { "type": "component", "title": "ktng-bn3 - Sustainability 풀폭 배너", "fullWidth": true, "css": ".ktng-bn3{position:relative;height:560px;background:#fff;font-family:Pretendard,'Figtree',sans-serif;overflow:hidden;display:flex;align-items:center;justify-content:center}.ktng-bn3__heading{font-size:120px;font-weight:700;color:#000;line-height:1.05;letter-spacing:-0.02em;text-align:center;position:relative;z-index:1}.ktng-bn3__leaves{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:380px;z-index:0}.ktng-bn3__leaf{position:absolute;width:340px;height:120px;border-radius:99px}.ktng-bn3__leaf-1{background:#C5E0A6;top:20%;left:5%;transform:rotate(-22deg)}.ktng-bn3__leaf-2{background:#8AAA60;top:40%;left:25%;transform:rotate(15deg);opacity:0.85}.ktng-bn3__leaf-3{background:#5B7339;top:55%;left:35%;transform:rotate(48deg);opacity:0.8}", "html": "<div class='ktng-bn3'><div class='ktng-bn3__leaves'><div class='ktng-bn3__leaf ktng-bn3__leaf-1'></div><div class='ktng-bn3__leaf ktng-bn3__leaf-2'></div><div class='ktng-bn3__leaf ktng-bn3__leaf-3'></div></div><div class='ktng-bn3__heading'>Sustainability<br>for Growth</div></div>" },
+
+        { "type": "note", "value": "KT&G의 배너 라이브러리 3종은 모두 풀폭 + 거대 헤딩 (96-120px) 패턴 통일. 차이는 배경 - (1) Hero 영상, (2) Globe + 별, (3) 흰 + 3색 잎사귀 - 컨텍스트별 비주얼 변경." }
+      ]
+    },
+
+    "lib-navigation": {
+      "title": "19. 네비게이션 라이브러리",
+      "blocks": [
+        { "type": "heading", "value": "네비 1 - 헤더 GNB Fixed z-9997" },
+        { "type": "component", "title": "ktng-nv1 - Fixed Top GNB + Dim Overlay", "fullWidth": true, "css": ".ktng-nv1{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);z-index:100;display:flex;align-items:center;padding:24px 64px;border-bottom:1px solid #F0F0F0;font-family:Pretendard,sans-serif;height:104px}.ktng-nv1__logo{font-size:24px;font-weight:800;margin-right:64px;letter-spacing:-0.02em}.ktng-nv1__nav{display:flex;gap:56px;flex:1;justify-content:center}.ktng-nv1__nav a{font-size:18px;font-weight:500;color:#000;text-decoration:none;padding:8px 0;transition:opacity 0.3s ease-in-out;cursor:pointer}.ktng-nv1__nav a:hover{opacity:0.6}.ktng-nv1__util{display:flex;gap:32px;align-items:center}.ktng-nv1__util a{font-size:14px;color:#787878;text-decoration:none;transition:color 0.3s}.ktng-nv1__util a:hover{color:#000}.ktng-nv1__globe{width:32px;height:32px;border-radius:99px;border:1px solid #DDD;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer}", "html": "<div class='ktng-nv1'><div class='ktng-nv1__logo'>KT&G</div><nav class='ktng-nv1__nav'><a>회사소개</a><a>투자정보</a><a>지속가능경영</a><a>미디어</a><a>인재채용</a></nav><div class='ktng-nv1__util'><a>고객문의</a><a>비윤리행위 신고</a><a>안전보건소통마당</a><span class='ktng-nv1__globe'>🌐</span></div></div>" },
+
+        { "type": "heading", "value": "네비 2 - Footer 5컬럼 + Family Site" },
+        { "type": "component", "title": "ktng-nv2 - Footer 메뉴", "fullWidth": true, "css": ".ktng-nv2{background:#fff;padding:64px;font-family:Pretendard,sans-serif;border-top:1px solid #F0F0F0}.ktng-nv2__top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px}.ktng-nv2__cols{display:grid;grid-template-columns:repeat(5,1fr);gap:48px;flex:1}.ktng-nv2__col-title{font-size:18px;font-weight:700;color:#000;margin-bottom:24px}.ktng-nv2__col a{display:block;font-size:14px;color:#787878;text-decoration:none;padding:6px 0;transition:color 0.3s}.ktng-nv2__col a:hover{color:#000}.ktng-nv2__family{min-width:240px;margin-left:48px}.ktng-nv2__pill{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border:1px solid #DDD;border-radius:99px;cursor:pointer;font-size:15px}.ktng-nv2__bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #F0F0F0;padding-top:24px;font-size:13px;color:#787878}.ktng-nv2__bottom-links{display:flex;gap:24px}.ktng-nv2__social{display:flex;gap:14px;font-size:18px}", "html": "<div class='ktng-nv2'><div class='ktng-nv2__top'><div class='ktng-nv2__cols'><div class='ktng-nv2__col'><div class='ktng-nv2__col-title'>회사소개</div><a>KT&G 소개</a><a>연혁</a><a>주요사업</a><a>글로벌 네트워크</a></div><div class='ktng-nv2__col'><div class='ktng-nv2__col-title'>투자정보</div><a>IR 개요</a><a>기업가치 제고 계획</a><a>지배구조</a><a>재무정보</a><a>주식정보</a><a>공시정보</a><a>IR 자료실</a></div><div class='ktng-nv2__col'><div class='ktng-nv2__col-title'>지속가능경영</div><a>ESG 개요</a><a>환경</a><a>사회</a><a>윤리경영</a><a>아카이빙</a></div><div class='ktng-nv2__col'><div class='ktng-nv2__col-title'>미디어</div><a>뉴스룸</a><a>소셜미디어</a><a>라이브러리</a></div><div class='ktng-nv2__col'><div class='ktng-nv2__col-title'>인재채용</div><a>인사제도</a><a>직무소개</a><a>채용가이드</a></div></div><div class='ktng-nv2__family'><div class='ktng-nv2__pill'><span>Family Site</span><span style='font-size:20px'>+</span></div><div class='ktng-nv2__social' style='margin-top:32px;justify-content:flex-end'><span>📷</span><span>▶</span><span>📘</span></div></div></div><div class='ktng-nv2__bottom'><div class='ktng-nv2__bottom-links'><a style='color:#787878;text-decoration:none'>사이트맵</a><a style='color:#787878;text-decoration:none'>고정형 영상정보처리기기 운영관리방침</a><a style='color:#787878;text-decoration:none'>개인정보처리방침</a></div><div>Copyright © 2025 KT&G Corp. All Rights Reserved.</div></div></div>" },
+
+        { "type": "note", "value": "KT&G 네비게이션은 매우 미니멀 - GNB 5 메뉴 + 헤더 유틸 3개 (고객문의/비윤리행위/안전보건). Footer는 5컬럼으로 GNB 미러링. Family Site Pill은 정형화된 한국 코퍼레이트 패턴." }
+      ]
+    },
+
+    "lib-content": {
+      "title": "20. 콘텐츠 컴포넌트 라이브러리",
+      "blocks": [
+        { "type": "heading", "value": "콘텐츠 1 - Section Title + Sub" },
+        { "type": "component", "title": "ktng-ct1 - 작은 라벨 + 큰 헤딩", "css": ".ktng-ct1{padding:80px 64px;font-family:Pretendard,'Figtree',sans-serif;background:#fff;text-align:center}.ktng-ct1__label{font-size:18px;font-weight:500;color:#000;margin-bottom:24px;letter-spacing:0.02em}.ktng-ct1__heading{font-size:60px;font-weight:700;color:#000;line-height:1.3;letter-spacing:-0.02em}", "html": "<div class='ktng-ct1'><div class='ktng-ct1__label'>Global Business Highlights</div><div class='ktng-ct1__heading'>우리는 글로벌 리더 KT&G입니다</div></div>" },
+
+        { "type": "heading", "value": "콘텐츠 2 - Hero Mirror Wrapper Headline" },
+        { "type": "component", "title": "ktng-ct2 - 좌우 mirror 헤딩 (slide-in 패턴)", "fullWidth": true, "css": ".ktng-ct2{padding:80px 64px;font-family:Pretendard,'Figtree',sans-serif;background:linear-gradient(135deg,#a0a0c0,#d0d0e8);min-height:520px;display:flex;align-items:center;color:#fff}.ktng-ct2__wrap{overflow:hidden}.ktng-ct2__line{display:flex;gap:32px;animation:ktng-ct2-slide 12s linear infinite}.ktng-ct2__line span{font-size:96px;font-weight:600;line-height:1.1;white-space:nowrap;letter-spacing:-0.02em}@keyframes ktng-ct2-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}", "html": "<div class='ktng-ct2'><div><div class='ktng-ct2__wrap'><div class='ktng-ct2__line'><span>Beyond Limits,</span><span>Beyond Limits,</span></div></div><div class='ktng-ct2__wrap'><div class='ktng-ct2__line' style='animation-direction:reverse'><span>Towards Innovation</span><span>Towards Innovation</span></div></div></div></div>" },
+
+        { "type": "heading", "value": "콘텐츠 3 - KOSPI/IR 데이터 영역" },
+        { "type": "component", "title": "ktng-ct3 - 투자정보 요약 카드 그리드", "css": ".ktng-ct3{padding:64px 32px;background:linear-gradient(135deg,#b8a0d8,#a0b0e0);font-family:Pretendard,sans-serif;color:#fff}.ktng-ct3__head{margin-bottom:48px}.ktng-ct3__label{font-size:18px;margin-bottom:12px;opacity:0.85}.ktng-ct3__title{font-size:48px;font-weight:700;line-height:1.2}.ktng-ct3__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px}.ktng-ct3__card{background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.25);border-radius:16px;padding:32px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all 0.3s ease-in-out}.ktng-ct3__card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.22)}.ktng-ct3__card-label{font-size:16px;opacity:0.8;margin-bottom:8px}.ktng-ct3__card-num{font-size:48px;font-weight:700;line-height:1.1}.ktng-ct3__card-foot{font-size:14px;opacity:0.85;margin-top:auto;display:flex;align-items:center;gap:8px}", "html": "<div class='ktng-ct3'><div class='ktng-ct3__head'><div class='ktng-ct3__label'>Invest Relations</div><div class='ktng-ct3__title'>주주 가치 제고를 위한 투명한 정보 공개</div></div><div class='ktng-ct3__grid'><div class='ktng-ct3__card'><div><div class='ktng-ct3__card-label'>주가정보</div><div class='ktng-ct3__card-num'>KOSPI</div></div><div class='ktng-ct3__card-foot'>실시간 주가 확인 →</div></div><div class='ktng-ct3__card'><div><div class='ktng-ct3__card-label'>재무정보</div><div class='ktng-ct3__card-num'>2025 Q1</div></div><div class='ktng-ct3__card-foot'>분기별 실적 발표 →</div></div><div class='ktng-ct3__card'><div><div class='ktng-ct3__card-label'>IR 행사</div><div class='ktng-ct3__card-num'>Upcoming</div></div><div class='ktng-ct3__card-foot'>IR Day / Earnings Call →</div></div></div></div>" },
+
+        { "type": "note", "value": "KT&G 콘텐츠 컴포넌트는 큰 헤딩 중심 + Mirror Wrapper slide-in + IR 글래스 카드 그리드. 모두 sharp typography + minimal decoration." }
+      ]
+    },
+
+    "lib-data": {
+      "title": "21. 데이터 디스플레이 라이브러리",
+      "blocks": [
+        { "type": "text", "value": "5 Stat 카드 + 뉴스 게시판 + 글로벌 네트워크 위계 표시." },
+        { "type": "heading", "value": "데이터 1 - 큰 숫자 Stat (HCT 패턴 응용)" },
+        { "type": "component", "title": "ktng-dt1 - 흰 배경 4-Stat Counter", "css": ".ktng-dt1{background:#000;color:#fff;padding:80px 32px;font-family:Pretendard,sans-serif}.ktng-dt1__head{text-align:center;margin-bottom:48px}.ktng-dt1__title{font-size:48px;font-weight:700;line-height:1.2}.ktng-dt1__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;max-width:1280px;margin:0 auto;text-align:center}.ktng-dt1__num{font-size:72px;font-weight:700;line-height:1;letter-spacing:-0.02em}.ktng-dt1__unit{font-size:24px;font-weight:400;color:rgba(255,255,255,0.7);margin-left:6px}.ktng-dt1__label{font-size:15px;margin-top:14px;opacity:0.85}.ktng-dt1__caption{font-size:12px;opacity:0.5;margin-top:6px}", "html": "<div class='ktng-dt1'><div class='ktng-dt1__head'><div class='ktng-dt1__title'>Global Business Highlights</div></div><div class='ktng-dt1__grid'><div><div class='ktng-dt1__num'>17<span class='ktng-dt1__unit'>locations</span></div><div class='ktng-dt1__label'>해외 법인 및 지사 수</div><div class='ktng-dt1__caption'>*25년 기준</div></div><div><div class='ktng-dt1__num'>140<span class='ktng-dt1__unit'>countries</span></div><div class='ktng-dt1__label'>해외궐련 사업 운영 국가 수</div><div class='ktng-dt1__caption'>*25년 기준</div></div><div><div class='ktng-dt1__num'>65.2<span class='ktng-dt1__unit'>B sticks</span></div><div class='ktng-dt1__label'>해외궐련 판매수량</div><div class='ktng-dt1__caption'>*25년 기준</div></div><div><div class='ktng-dt1__num'>34<span class='ktng-dt1__unit'>countries</span></div><div class='ktng-dt1__label'>NGP 사업진출 국가 수</div><div class='ktng-dt1__caption'>*25년 기준</div></div></div></div>" },
+
+        { "type": "heading", "value": "데이터 2 - 뉴스 게시판 리스트" },
+        { "type": "component", "title": "ktng-dt2 - 텍스트 뉴스 게시판", "css": ".ktng-dt2{background:#fff;padding:48px;font-family:Pretendard,sans-serif;max-width:920px}.ktng-dt2__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #000}.ktng-dt2__title{font-size:24px;font-weight:700}.ktng-dt2__more{font-size:14px;color:#787878;cursor:pointer}.ktng-dt2__list{list-style:none;padding:0;margin:0}.ktng-dt2__item{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid #F0F0F0;cursor:pointer;transition:all 0.3s}.ktng-dt2__item:hover{padding-left:8px}.ktng-dt2__item-title{font-size:16px;color:#000;flex:1}.ktng-dt2__item-date{font-size:14px;color:#787878}", "html": "<div class='ktng-dt2'><div class='ktng-dt2__head'><div class='ktng-dt2__title'>뉴스룸</div><div class='ktng-dt2__more'>전체 보기 →</div></div><ul class='ktng-dt2__list'><li class='ktng-dt2__item'><span class='ktng-dt2__item-title'>KT&G-대구지방환경청-영양군청-국립생태원, 습지 보전 위한 MOU 체결</span><span class='ktng-dt2__item-date'>2026. 04. 29</span></li><li class='ktng-dt2__item'><span class='ktng-dt2__item-title'>KT&G장학재단, '문화예술 장학사업' 발레 부문 장학증서 전달</span><span class='ktng-dt2__item-date'>2026. 04. 28</span></li><li class='ktng-dt2__item'><span class='ktng-dt2__item-title'>KT&G-중진공, 지역경제 활성화·청년창업 육성 위한 업무협약 체결</span><span class='ktng-dt2__item-date'>2026. 04. 27</span></li><li class='ktng-dt2__item'><span class='ktng-dt2__item-title'>KT&G 상상마당, '제18회 대단한 단편영화제' 공모</span><span class='ktng-dt2__item-date'>2026. 05. 06</span></li></ul></div>" },
+
+        { "type": "note", "value": "KT&G 데이터 라이브러리는 시그니처 5 Stat 카드 외에 텍스트 뉴스 게시판 표준 패턴 - 한국 코퍼레이트 사이트의 정석." }
+      ]
+    },
+
+    "lib-utility": {
+      "title": "22. 유틸리티 라이브러리",
+      "blocks": [
+        { "type": "heading", "value": "유틸 1 - 스킵 링크 + skipNavi 패턴" },
+        { "type": "component", "title": "ktng-ut1 - 스킵 링크 (접근성)", "css": ".ktng-ut1{font-family:Pretendard,sans-serif;background:#fff;padding:32px}.ktng-ut1__skip{position:absolute;top:-100px;left:0;background:#000;color:#fff;padding:12px 24px;text-decoration:none;font-size:15px;font-weight:700;border-radius:0 0 8px 0;transition:top 0.3s ease-in-out}.ktng-ut1__skip:focus{top:0}.ktng-ut1__demo{padding:32px;background:#FAFAFA;border:2px dashed #DDD;border-radius:8px;text-align:center;color:#787878}", "html": "<div class='ktng-ut1' style='position:relative;min-height:120px'><a href='#main' class='ktng-ut1__skip'>본문 바로가기</a><div class='ktng-ut1__demo'>Tab 키를 누르면 좌상단에서 '본문 바로가기' 스킵 링크가 슬라이드 인 (top: -100 → 0)</div></div>" },
+
+        { "type": "heading", "value": "유틸 2 - 검정 ↑ Scroll-to-Top FAB" },
+        { "type": "component", "title": "ktng-ut2 - Fixed FAB 우상단", "css": ".ktng-ut2{position:relative;height:280px;background:#FAFAFA;font-family:Pretendard,sans-serif;border-radius:8px;overflow:hidden}.ktng-ut2__demo{padding:32px;color:#787878;font-size:14px}.ktng-ut2__fab{position:absolute;top:80px;right:32px;width:64px;height:64px;border-radius:99px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;box-shadow:0 8px 24px rgba(0,0,0,0.2);transition:all 0.3s}.ktng-ut2__fab:hover{transform:translateY(-4px) scale(1.05)}.ktng-ut2__fab svg{width:28px;height:28px}", "html": "<div class='ktng-ut2'><div class='ktng-ut2__demo'>푸터 진입 시 우상단에 fixed ↑ 버튼 표시</div><button class='ktng-ut2__fab'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'><path d='M12 19V5M5 12l7-7 7 7'/></svg></button></div>" },
+
+        { "type": "heading", "value": "유틸 3 - 헤더 dimmed 오버레이 z-9996" },
+        { "type": "component", "title": "ktng-ut3 - GNB 호버 dim", "css": ".ktng-ut3{position:relative;height:300px;background:#FFF;font-family:Pretendard,sans-serif;border-radius:8px;overflow:hidden}.ktng-ut3__header{position:absolute;top:0;left:0;right:0;height:80px;background:#FFF;display:flex;align-items:center;padding:0 32px;font-weight:700;z-index:10;border-bottom:1px solid #EEE}.ktng-ut3__dim{position:absolute;inset:0;background:rgba(0,0,0,0.4);z-index:5;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s}.ktng-ut3:hover .ktng-ut3__dim{opacity:1;visibility:visible}.ktng-ut3__content{padding:120px 32px;color:#787878}", "html": "<div class='ktng-ut3'><div class='ktng-ut3__header'>KT&G 헤더 (호버 시 dim 활성화)</div><div class='ktng-ut3__dim'></div><div class='ktng-ut3__content'>이 영역에 마우스 호버 → 본문 위에 회색 dim 오버레이 (.header__dimmed z-9996)가 표시되어 GNB 메뉴 영역이 시각적으로 분리됨</div></div>" },
+
+        { "type": "heading", "value": "유틸 4 - Globe 다국어 셀렉터" },
+        { "type": "component", "title": "ktng-ut4 - 헤더 우측 globe + 다국어 메뉴", "css": ".ktng-ut4{font-family:Pretendard,sans-serif;background:#fff;padding:32px;position:relative}.ktng-ut4__btn{width:40px;height:40px;border-radius:99px;border:1px solid #DDD;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;font-size:18px}.ktng-ut4__btn:hover{border-color:#000;background:#F5F5F5}.ktng-ut4__menu{position:absolute;top:80px;right:32px;background:#fff;border:1px solid #DDD;border-radius:12px;padding:8px 0;min-width:160px;box-shadow:0 12px 32px rgba(0,0,0,0.1);display:none}.ktng-ut4__menu.is-open{display:block}.ktng-ut4__menu a{display:block;padding:10px 20px;color:#000;text-decoration:none;font-size:14px;transition:background 0.3s}.ktng-ut4__menu a:hover{background:#F5F5F5}", "html": "<div class='ktng-ut4'><button class='ktng-ut4__btn'>🌐</button><div class='ktng-ut4__menu is-open'><a>한국어 (KO)</a><a>English (EN)</a><a>中文 (ZH)</a><a>日本語 (JA)</a></div></div>" },
+
+        { "type": "note", "value": "유틸리티 라이브러리 - 스킵 링크 (a z-100 fixed 40px) + Scroll-top FAB + Header dim Overlay + Globe 다국어 4종. 스킵 링크는 키보드 사용자 친화, dim 오버레이는 GNB의 시각적 분리." }
+      ]
+    },
+
+    "signature-multivideo-hero": {
+      "title": "23. 시그니처 - Multi-Video 홀로그래픽 Hero",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 가장 강력한 디자인 시그니처. 단일 영상이 아닌 art-direction 수준의 multi-slide 영상이 순환 재생되어 사이트 첫 인상의 임팩트를 극대화." },
+        { "type": "heading", "value": "재사용 가능 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "Mirror Wrapper Headline", "value": "Hero 헤딩 텍스트 wrapper에 같은 텍스트를 두 번씩 wrap - slide-in 애니메이션을 위해 미리 좌우/위아래 미러. CSS marquee 효과 가능" },
+          { "label": "<video> 자체 호스팅 + UUID 파일명", "value": "ktng.com/attach/download/{uuid} - CMS attach 시스템 패턴. CDN 미사용으로 1920×1080 Full HD 직접 호스팅" },
+          { "label": "muted + loop + autoplay=false", "value": "사용자 인터랙션 전에는 paused, 페이지 활성화 후 자동 재생. 모바일 브라우저 자동재생 제약 우회" },
+          { "label": "art-direction 다중 비주얼", "value": "홀로그래픽 크롬 / 인피니티 / 사옥 라운지 - 일관된 브랜드 톤 (미래/혁신/사람·문화) 안에서 다양한 비주얼 순환" }
+        ]}
+      ]
+    },
+
+    "signature-globe-scroll": {
+      "title": "24. 시그니처 - Globe + 5 Stat Scroll-Driven",
+      "blocks": [
+        { "type": "text", "value": "두 번째 강력한 시그니처. .global section 4,555px 영역에서 scroll-driven으로 (1) 도트→풀스크린 지구 줌인, (2) 5개 보라 stat 카드 우측 슬라이드 인을 동시 진행." },
+        { "type": "heading", "value": "재사용 가능 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "긴 sticky scroll-driven (4,555px)", "value": "단일 섹션이 viewport 5배 길이 - 사용자가 부드럽게 점진 확대를 경험할 수 있도록 충분한 스크롤 거리 할당" },
+          { "label": "transform: scale + radial gradient globe", "value": "지구는 단순 div + radial-gradient (남미·태평양 → 한반도·일본 영역으로 회전) + scrollY 기반 scale 0.05 → 20" },
+          { "label": "5 Stat 카드 순차 슬라이드 인", "value": "각 카드가 viewport width / 5 진행마다 활성. 가로 슬라이드 + 카드별 translateY 미세 차이 (홀수/짝수 12px 차)로 자연스러움 강조" },
+          { "label": "별 배경 (Milky Way WebP)", "value": "ktng.com/webgl/2k_stars_milky_way.webp - 우주감 + 글로벌 메타포. 디자인 자산 카탈로그가 webgl/ 디렉토리에서 직접 호스팅" }
+        ]}
+      ]
+    },
+
+    "signature-sustainability": {
+      "title": "25. 시그니처 - 3색 잎사귀 + Sustainability for Growth",
+      "blocks": [
+        { "type": "text", "value": "세 번째 시그니처. KT&G 로고 모티브인 3색 잎사귀 그래픽을 ESG 섹션 풀폭 배경으로 확장하여 '회사 정체성 = ESG'를 시각적으로 통합." },
+        { "type": "heading", "value": "재사용 가능 패턴" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "z-index -1 fixed 배경 애니메이션", "value": "fixed; z-index: -1; height: 911px - 본문보다 뒤에 깔린 fixed 그래픽. 스크롤해도 항상 viewport에 표시" },
+          { "label": "3색 풍선형 잎사귀 (border-radius 99px rotate)", "value": "단순 div + border-radius: 99px + 다른 색상 + 다른 rotate 각도 (3개)로 회사 로고 분위기 재현. SVG 미사용으로 가벼움" },
+          { "label": "거대 영문 헤딩 (88-120px)", "value": "'Sustainability for Growth' Figtree Variable - 잎사귀 그래픽을 가로지르며 표시되어 그래픽 + 텍스트가 layer composition" },
+          { "label": "ESG 영역의 비중 (6,650px / 56%)", "value": "사이트 절반 이상을 ESG에 할당 - 담배회사 KT&G의 사회적 책임 메시지 가장 강하게 강조" }
+        ]}
+      ]
+    },
+
+    "lib-data-ir": {
+      "title": "26. 데이터 라이브러리 - IR Stat / News Card",
+      "blocks": [
+        { "type": "heading", "value": "추가 데이터 패턴 (Invest 영역)" },
+        { "type": "component", "title": "ktng-ir1 - 글래스 IR 카드", "css": ".ktng-ir1{background:linear-gradient(135deg,#b8a0d8 0%,#9fb2dd 100%);padding:60px 32px;font-family:Pretendard,sans-serif;color:#fff}.ktng-ir1__head{text-align:center;max-width:720px;margin:0 auto 48px}.ktng-ir1__title{font-size:40px;font-weight:700;line-height:1.3}.ktng-ir1__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px;margin:0 auto}.ktng-ir1__card{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);border-radius:16px;padding:32px;backdrop-filter:blur(12px);transition:all 0.3s;cursor:pointer;min-height:240px;display:flex;flex-direction:column;justify-content:space-between}.ktng-ir1__card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.25)}.ktng-ir1__card-label{font-size:14px;opacity:0.85}.ktng-ir1__card-num{font-size:36px;font-weight:700;line-height:1.2;margin-top:8px}.ktng-ir1__card-foot{font-size:14px;display:flex;align-items:center;gap:8px;opacity:0.9}", "html": "<div class='ktng-ir1'><div class='ktng-ir1__head'><div class='ktng-ir1__title'>주주가치 제고를 위한 투명한 IR 정보</div></div><div class='ktng-ir1__grid'><div class='ktng-ir1__card'><div><div class='ktng-ir1__card-label'>주식정보</div><div class='ktng-ir1__card-num'>KOSPI 033780</div></div><div class='ktng-ir1__card-foot'>실시간 주가 확인 →</div></div><div class='ktng-ir1__card'><div><div class='ktng-ir1__card-label'>재무정보</div><div class='ktng-ir1__card-num'>2025 1Q 실적</div></div><div class='ktng-ir1__card-foot'>분기 실적 발표 →</div></div><div class='ktng-ir1__card'><div><div class='ktng-ir1__card-label'>IR 행사</div><div class='ktng-ir1__card-num'>Upcoming Events</div></div><div class='ktng-ir1__card-foot'>IR Day · Earnings Call →</div></div></div></div>" },
+
+        { "type": "note", "value": "IR 영역은 보라 그라데이션 배경 + 글래스 카드 3종. KT&G가 상장사 책임을 시각적으로 강조하는 패턴." }
+      ]
+    },
+
+    "ix-hover": {
+      "title": "27. 호버 인터랙션 카탈로그",
+      "blocks": [
+        { "type": "text", "value": "KT&G 사이트의 호버 통계 - background-size 0.3s ease-in-out 22건 + background-color 0.3s 6건 + transform 0.3s ease-in-out 2건 + transform 0.18s cubic-bezier 1건. 사이트의 인터랙션 표준 시간은 0.3s." },
+        { "type": "heading", "value": "호버 1 - GNB 메뉴 (border-bottom slide)" },
+        { "type": "component", "title": "ktng-hv1 - GNB 호버 border 전환", "css": ".ktng-hv1{background:#fff;padding:32px;font-family:Pretendard,sans-serif}.ktng-hv1__nav{display:flex;gap:48px;justify-content:center}.ktng-hv1__nav a{position:relative;font-size:18px;font-weight:500;color:#000;text-decoration:none;padding:12px 0;cursor:pointer}.ktng-hv1__nav a::after{content:'';position:absolute;left:50%;bottom:0;width:0;height:2px;background:#000;transform:translateX(-50%);transition:width 0.3s ease-in-out}.ktng-hv1__nav a:hover::after{width:100%}", "html": "<div class='ktng-hv1'><nav class='ktng-hv1__nav'><a>회사소개</a><a>투자정보</a><a>지속가능경영</a><a>미디어</a><a>인재채용</a></nav></div>" },
+
+        { "type": "heading", "value": "호버 2 - View More 화살표 회전" },
+        { "type": "component", "title": "ktng-hv2 - 원형 → 화살표 호버 (translateX + rotate)", "css": ".ktng-hv2{background:#fff;padding:48px;font-family:Pretendard,sans-serif;display:flex;gap:32px}.ktng-hv2__cta{display:inline-flex;align-items:center;gap:14px;font-size:18px;font-weight:500;color:#000;cursor:pointer;background:none;border:none}.ktng-hv2__circle{width:48px;height:48px;border-radius:99px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease-in-out;font-size:18px}.ktng-hv2__cta:hover .ktng-hv2__circle{transform:translateX(6px) rotate(-12deg)}", "html": "<div class='ktng-hv2'><button class='ktng-hv2__cta'><span>네트워크 바로가기</span><span class='ktng-hv2__circle'>→</span></button><button class='ktng-hv2__cta'><span>뉴스룸 바로가기</span><span class='ktng-hv2__circle'>→</span></button><button class='ktng-hv2__cta'><span>지속가능경영</span><span class='ktng-hv2__circle'>→</span></button></div>" },
+
+        { "type": "heading", "value": "호버 3 - News 카드 (translateX + bg)" },
+        { "type": "component", "title": "ktng-hv3 - 카드 호버 좌측 시프트", "css": ".ktng-hv3{background:#fff;padding:32px;font-family:Pretendard,sans-serif;max-width:580px}.ktng-hv3__item{background:#F5F5F5;border-radius:8px;padding:24px;margin-bottom:8px;cursor:pointer;transition:all 0.3s ease-in-out;display:flex;justify-content:space-between;align-items:center}.ktng-hv3__item:hover{background:#000;color:#fff;transform:translateX(8px)}.ktng-hv3__item-title{font-size:15px;font-weight:700}.ktng-hv3__item-date{font-size:13px;opacity:0.7}", "html": "<div class='ktng-hv3'><div class='ktng-hv3__item'><span class='ktng-hv3__item-title'>KT&G-대구지방환경청 MOU</span><span class='ktng-hv3__item-date'>2026.04.29</span></div><div class='ktng-hv3__item'><span class='ktng-hv3__item-title'>KT&G장학재단 발레 부문</span><span class='ktng-hv3__item-date'>2026.04.28</span></div><div class='ktng-hv3__item'><span class='ktng-hv3__item-title'>KT&G-중진공 업무협약</span><span class='ktng-hv3__item-date'>2026.04.27</span></div></div>" },
+
+        { "type": "heading", "value": "호버 인터랙션 통계 (실측)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "all 0.3s (사이트 표준)", "value": "828건 - 사이트 전체 호버·전환 표준 (모든 인터랙티브 요소)" },
+          { "label": "🟢 background-size 0.3s ease-in-out", "value": "22건 - 배경 이미지 zoom 호버 (.news__poster:hover background-size: 110% 등 추정)" },
+          { "label": "background-color 0.3s", "value": "6건 - 배경 단독 색상 전환" },
+          { "label": "color 0.3s + background-color 0.3s 동시", "value": "6건 - 카드 호버 시 색·배경 페어 전환" },
+          { "label": "transform 0.3s ease-in-out", "value": "2건 - scale·translate 단독 호버" },
+          { "label": "transform 0.18s cubic-bezier(0.2, 0, 0, 1)", "value": "1건 - 매우 빠른 sharp easing (Material Design Sharp Curve 변형)" },
+          { "label": "border-color 0.3s", "value": "1건 - GNB border-bottom slide" }
+        ]}
+      ]
+    },
+
+    "ix-scroll": {
+      "title": "28. 스크롤 인터랙션 카탈로그",
+      "blocks": [
+        { "type": "text", "value": "KT&G의 핵심 스크롤 인터랙션. Hero text fade-in + Globe + 5 Stats scroll-driven + Sustainability fixed-bg 잎사귀 + Header dim toggle." },
+        { "type": "heading", "value": "스크롤 1 - Hero 텍스트 + 영상 fade-in" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "패턴", "value": "scrollY 0에서 흰 배경에 흰 텍스트 'Beyond Limits, Towards Innovation'이 fade-in opacity 0→1 (약 1초)" },
+          { "label": "비디오 트리거", "value": "scrollY ~300 진행 시 <video>.play() 자동 실행 - 사용자가 페이지를 약간 스크롤한 후 자동 재생" }
+        ]},
+
+        { "type": "heading", "value": "스크롤 2 - Globe 도트 → 풀스크린 지구 줌인" },
+        { "type": "component", "title": "ktng-sc2 - scroll-driven scale 줌인 시뮬레이션", "fullWidth": true, "css": ".ktng-sc2{background:radial-gradient(ellipse at center,#0a1840,#000);padding:60px 32px;font-family:Pretendard,sans-serif;color:#fff;height:520px;position:relative;overflow:hidden}.ktng-sc2__hint{position:absolute;top:24px;left:24px;font-size:13px;background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:99px;z-index:5}.ktng-sc2__slider{position:absolute;bottom:32px;left:24px;right:24px;display:flex;align-items:center;gap:16px;z-index:5}.ktng-sc2__slider input{flex:1;cursor:pointer}.ktng-sc2__globe{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--s,0.05));width:600px;height:600px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#4a6dd0,#1a3aa0 50%,#0a1a50);box-shadow:0 0 80px rgba(74,109,208,0.6);transition:transform 0.4s ease-out}", "html": "<div class='ktng-sc2' id='ktng-sc2'><div class='ktng-sc2__hint'>scroll 시뮬레이션 - 슬라이더를 움직이세요</div><div class='ktng-sc2__globe' id='ktng-sc2-globe'></div><div class='ktng-sc2__slider'><span style='font-size:12px'>도트</span><input type='range' min='5' max='200' value='5' id='ktng-sc2-input'><span style='font-size:12px'>풀스크린 지구</span></div></div>", "js": "(()=>{const i=document.getElementById('ktng-sc2-input');const g=document.getElementById('ktng-sc2-globe');if(!i||!g)return;i.addEventListener('input',()=>{const s=parseInt(i.value)/100;g.style.setProperty('--s',s)})})()" },
+
+        { "type": "heading", "value": "스크롤 인터랙션 통계 (실측)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "opacity 0.5s", "value": "1건 - Hero fade-in" },
+          { "label": "opacity 0.3s ease-in-out", "value": "1건 - 카드 진입 모션" },
+          { "label": "all 828건 (default)", "value": "사이트 표준 - 모든 인터랙티브 요소" },
+          { "label": "transform 1s ease-out (추정)", "value": "Globe scale 줌인 - scrollY 기반 progress 변환" },
+          { "label": "Sustainability fixed bg", "value": "position: fixed; z-index: -1; height: 911px - 본문이 위에서 흘러도 잎사귀 그래픽이 viewport에 고정" }
+        ]}
+      ]
+    },
+
+    "pub-semantic": {
+      "title": "29. 시멘틱 HTML · 접근성",
+      "blocks": [
+        { "type": "kv", "title": "시멘틱 사용 현황 (실측)", "columns": 2, "items": [
+          { "label": "<html lang>", "value": "ko ✓" },
+          { "label": "<header>", "value": "🔴 0개 - <div class='header'> 사용 (시멘틱 미준수)" },
+          { "label": "<main>", "value": "1개 ✓" },
+          { "label": "<nav>", "value": "🔴 0개 - <div class='gnb'> 추정 사용 (시멘틱 미준수)" },
+          { "label": "<section>", "value": "4개 (.global, .news, .invest, .with) ✓" },
+          { "label": "<footer>", "value": "🔴 0개 - <div class='footer'> 사용" },
+          { "label": "<article>", "value": "0개" },
+          { "label": "<figure>", "value": "0개" }
+        ]},
+
+        { "type": "heading", "value": "✓ 잘 한 점" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 (prefers-reduced-motion: reduce)", "value": "미디어쿼리 지원 - OS 모션 감소 사용자에게 Hero 영상 + Globe 시퀀스 자동 비활성화 권장. WCAG 2.1 권장 사항" },
+          { "label": "🟢 user-scalable 제약 없음", "value": "viewport: width=device-width, initial-scale=1 - maximum-scale·user-scalable=no 미설정 = WCAG 1.4.4 준수" },
+          { "label": "스킵 링크", "value": "'본문 바로가기' 스킵 링크 추정 (a fixed z-100) - 키보드 사용자 친화" },
+          { "label": "텍스트 대비", "value": "본문 #000 on #FFF = 21:1 AAA (최대 대비)" },
+          { "label": "🟢 alt 텍스트 풍부", "value": "포스터 이미지에 'KT&G 상상마당, '제18회 대단한 단편영화제' 공모 포스터 1부. 끝.' - 매우 자세한 alt" }
+        ]},
+
+        { "type": "heading", "value": "🔴 주요 접근성 이슈" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🔴 시멘틱 태그 미준수", "value": "<header> 0 / <nav> 0 / <footer> 0 - 모두 <div class='...'> 사용. 스크린리더 사용자에게 페이지 구조 전달 불가" },
+          { "label": "🟡 Hero 영상 autoplay 우회", "value": "muted + loop + autoplay (사용자 인터랙션 후) 조합. (prefers-reduced-motion) 대응 ✓ but 영상 컨트롤 UI 부재 - Pause 버튼 미감지" },
+          { "label": "🟡 헤더 dim 오버레이 키보드", "value": "z-9996 dim이 hover 트리거 - 키보드 사용자가 GNB 진입 시에도 활성화되는지 확인 필요" }
+        ]},
+        { "type": "note", "value": "KT&G는 (prefers-reduced-motion) 채택 + viewport 제약 없음 + 풍부한 alt - 접근성 친화 신호가 강함. 단 시멘틱 태그 미준수는 디자인 시스템 표준에서 벗어난 약점." }
+      ]
+    },
+
+    "pub-perf-seo": {
+      "title": "30. 성능 · SEO · 디자인-개발 협업",
+      "blocks": [
+        { "type": "kv", "title": "성능", "columns": 1, "items": [
+          { "label": "🟢 Pretendard·Figtree Variable woff2 자체 호스팅", "value": "단일 woff2 파일로 weight 100-900 + font-display: swap. CDN 없이도 빠른 폰트 로딩" },
+          { "label": "WebP 우선", "value": "main 이미지 모두 .webp (invest-background.webp 3840×2600 / sustainability-desktop.webp / 2k_stars_milky_way.webp)" },
+          { "label": "스크립트 26개", "value": "Next.js·React 없이 vanilla + Swiper.js 추정. 한국 사이트 평균(30-40개)보다 적음" },
+          { "label": "Stylesheets 2개", "value": "매우 적음 - 모든 CSS가 2 파일에 집중. 폰트는 별도 @font-face inline 추정" },
+          { "label": "이미지 4장 (메인 페이지)", "value": "극도로 적음 - Hero 비디오 + CSS 그래픽 위주" }
+        ]},
+
+        { "type": "heading", "value": "SEO" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "<title>", "value": "KT&G ✓ (단순)" },
+          { "label": "meta description", "value": "글로벌 초우량 기업으로 도약하는 KT&G 홈페이지입니다 ✓" },
+          { "label": "og:title", "value": "KT&G ✓" },
+          { "label": "og:image", "value": "ktng.com/common/images/meta-image-og.jpg ✓" },
+          { "label": "Twitter Card", "value": "미감지 - 추가 권장" },
+          { "label": "구조화 데이터", "value": "Organization (회사명·주소·CEO·전화) + LocalBusiness 권장" }
+        ]},
+
+        { "type": "heading", "value": "디자인-개발 협업" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "BEM modifier 패턴", "value": ".kv__background, .kv__text-wrapper, .kv__scroll-down-label, .global__text, .container.container--base, .header__dimmed - 모두 BEM (Block__Element--Modifier)" },
+          { "label": "Pretendard + Figtree 두 폰트 디자인 결정", "value": "한글은 Pretendard, 영문은 Figtree - 디자이너가 영문 톤을 별도 고려 (Helvetica/Inter가 아닌 Figtree 선택)" },
+          { "label": "Hero attach/{uuid} CMS", "value": "ktng.com/attach/download/{uuid} 패턴은 백엔드 CMS의 attachment 시스템 - 디자이너가 영상 업로드 → 자동 UUID 부여 → URL 자동 생성" },
+          { "label": "Sustainability webp 데스크톱 전용", "value": "sustainability-desktop.webp - 모바일용 별도 sustainability-mobile.webp 추정. 디자이너가 디바이스별 별도 비주얼 제공" }
+        ]},
+
+        { "type": "note", "value": "KT&G는 한국 코퍼레이트 사이트 중 폰트·이미지 최적화가 가장 잘 된 사례. Variable Font 자체 호스팅 + WebP + 적은 스크립트로 페이지 로딩이 가벼움. 다만 시멘틱 태그 미준수는 SEO·접근성 양쪽에서 약점." }
+      ]
+    },
+
+    "pub-design-system": {
+      "title": "31. 디자인 시스템 성숙도 평가",
+      "blocks": [
+        { "type": "text", "value": "KT&G 사이트의 디자인 시스템 성숙도를 한국 코퍼레이트 사이트 평균 대비 평가." },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 디자인 토큰", "value": "Pretendard + Figtree Variable 폰트 시스템 / 7 브레이크포인트 / BEM 클래스 네이밍 - 매우 일관" },
+          { "label": "🟢 컴포넌트 라이브러리", "value": "원형 화살표 CTA + 글래스 카드 + 거대 헤딩 - 사이트 전체 단일 패턴" },
+          { "label": "🟢 인터랙션 통일", "value": "0.3s ease-in-out 표준 (828 + 22 + 6 + 6 = 86% 비중)" },
+          { "label": "🟢 시그니처 강도", "value": "Multi-video Hero + Globe scroll + 3색 잎사귀 3종 - 한국 코퍼레이트 평균(1-2종)보다 많음" },
+          { "label": "🟡 시멘틱 태그", "value": "header/nav/footer 미사용 - 디자인 우선 결정으로 시멘틱 약점" },
+          { "label": "🟢 접근성 신호", "value": "(prefers-reduced-motion) + viewport 제약 없음 + 풍부한 alt - 접근성 친화" },
+          { "label": "🟢 폰트 자체 호스팅", "value": "Google Fonts/CDN 미사용 = 로딩 속도 + privacy" }
+        ]},
+        { "type": "note", "value": "종합 평가: KT&G는 한국 코퍼레이트 사이트 디자인 시스템 성숙도 상위 5% (삼성·LG·KT급). 미니멀 톤 + 시그니처 인터랙션 + variable font + WebP 최적화 - 디자인과 기술의 균형이 매우 우수." }
+      ]
+    },
+
+    "pub-content-strategy": {
+      "title": "32. 콘텐츠 전략 분석",
+      "blocks": [
+        { "type": "text", "value": "메인 페이지 9개 섹션의 비중을 통한 KT&G의 콘텐츠 우선순위 분석." },
+        { "type": "kv", "title": "섹션별 비중 (사이트 11,708px 기준)", "columns": 1, "items": [
+          { "label": "Global (Globe + Stats)", "value": "4,555px = 38.9% - 🟢 글로벌 비즈니스가 최우선 메시지" },
+          { "label": "Sustainability 누적", "value": "6,650px = 56.8% - 🟢 ESG가 사이트의 절반 이상 차지 (담배회사의 사회적 책임 강조)" },
+          { "label": "News", "value": "1,013px = 8.7% - 보도자료 진입점" },
+          { "label": "Invest", "value": "1,027px = 8.8% - IR 진입점 (상장사 책임)" },
+          { "label": "With (인재채용)", "value": "1,083px = 9.3% - 채용 메시지" },
+          { "label": "Hero", "value": "911px = 7.8% - 첫 인상 (영상 위주)" }
+        ]},
+        { "type": "heading", "value": "콘텐츠 우선순위 결정" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "1순위: ESG (56.8%)", "value": "사이트의 절반 이상 - '담배회사 KT&G가 진심으로 ESG에 투자하는가?'에 대한 시각적 답변" },
+          { "label": "2순위: 글로벌 비즈니스 (38.9%)", "value": "17 locations + 140 countries + 65.2B sticks - 한국 토종 글로벌 기업 톤" },
+          { "label": "3순위: IR + 인재 + News (균등 ~9%)", "value": "상장사 표준 - 투자자·구직자·미디어 3 stakeholder 균등 노출" },
+          { "label": "Hero (7.8%)", "value": "오히려 적게 - 영상 자체로 강한 인상을 만들고 빠르게 콘텐츠로 진행" }
+        ]},
+        { "type": "note", "value": "KT&G 메인 페이지는 ESG + 글로벌이 사이트의 95.7%를 차지. 다른 한국 코퍼레이트 사이트가 '제품·서비스 → 회사소개 → 채용·뉴스' 순서인 것과 대조적 - KT&G는 '글로벌 정체성 + ESG 정체성'을 메인 메시지로 강조." }
+      ]
+    },
+
+    "smooth-interaction-catalog": {
+      "title": "33. 부드러운 인터랙션 카탈로그 (라이브 재점검)",
+      "blocks": [
+        { "type": "text", "value": "Chrome MCP로 KT&G 메인 페이지를 새로고침 후 점진 스크롤하며 발견한 라이브 인터랙션. 사이트 전체 transition 828건 표준 + Hero multi-video + Globe scroll storytelling + Sustainability fixed bg + GNB hover dim 등 정적 분석이 잡지 못하는 디테일 정리." },
+
+        { "type": "heading", "value": "발견 1: Multi-Video Hero - 새로고침마다 다른 비주얼" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "관찰 1회차", "value": "홀로그래픽 무지개빛 chrome 곡선 두 줄기가 viewport 굴곡" },
+          { "label": "관찰 2회차 (새로고침 후)", "value": "∞ 인피니티 모양 holographic chrome shape" },
+          { "label": "관찰 3회차 (헤더 hover 후)", "value": "KT&G 실제 사옥 라운지 영상 (S4/S5/PASSION 글자가 벽에 그려진 작업 공간)" },
+          { "label": "결론", "value": "Hero는 single video가 아닌 multi-slide / multi-cut 영상 시스템. 각 비주얼은 '미래·혁신·실제 KT&G 공간' 톤" },
+          { "label": "<video> 속성", "value": "1920×1080 / mp4 / muted + loop + autoplay (paused initial - 사용자 인터랙션 후 재생)" }
+        ]},
+
+        { "type": "heading", "value": "발견 2: Globe + 5 Stat scroll-driven 시퀀스 (4,555px)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "scrollY ~2000", "value": "흰 배경에 작은 검정 도트 ●가 viewport 중앙에 등장" },
+          { "label": "scrollY ~2500", "value": "도트가 점차 커지며 풀스크린 3D 지구 (남미·태평양 영역 보임)" },
+          { "label": "scrollY ~3000", "value": "🟢 우측에서 첫 stat 카드 '17 locations / 해외 법인 및 지사 수' 보라 그라데이션으로 슬라이드 인" },
+          { "label": "scrollY ~3500", "value": "두 번째 카드 '140 countries' 슬라이드 인 - 첫 카드는 좌측으로 미끄러짐" },
+          { "label": "scrollY ~4000", "value": "세 번째 카드 '65.2 billion sticks' 슬라이드 인" },
+          { "label": "scrollY ~4500", "value": "네 번째 카드 '1.478 billion sticks' 슬라이드 인" },
+          { "label": "scrollY ~5000", "value": "다섯 번째 카드 '34 countries / NGP 사업진출 국가 수' 슬라이드 인 - 모든 카드 가시" },
+          { "label": "scrollY ~5500", "value": "지구 + 5 카드 페이드 아웃 - Sustainability 섹션 진입 준비" }
+        ]},
+
+        { "type": "heading", "value": "발견 3: Sustainability 3색 잎사귀 fixed bg" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구조", "value": ".sustainability__logo-animation position: fixed; z-index: -1; height: 911px" },
+          { "label": "동작", "value": "사용자가 scrollY 5800-9000 영역에서 스크롤하는 동안 3색 풍선형 잎사귀가 viewport 중앙에 계속 표시 (본문보다 뒤에)" },
+          { "label": "잎사귀 색상", "value": "🟢 light green #C5E0A6 + medium green #8AAA60 + dark green #5B7339 - KT&G 로고의 시각 모티브" },
+          { "label": "잎사귀 회전 각도", "value": "-22° / 15° / 48° - 3개 잎사귀가 서로 다른 각도로 교차 = 살아있는 leaf cluster 느낌" },
+          { "label": "메시지", "value": "헤딩 'Sustainability for Growth' (Figtree 96-120px) - 잎사귀 위에 layer composition" }
+        ]},
+
+        { "type": "heading", "value": "발견 4: 헤더 dim Overlay z-9996" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구조", "value": ".header__dimmed position: fixed; height: 911px; z-index: 9996 (header 9997 바로 아래)" },
+          { "label": "동작", "value": "사용자가 .header에 hover 진입 시 .header__dimmed 가 fade-in (opacity 0→1, 0.3s) = 본문 위에 검정 30% dim 오버레이" },
+          { "label": "효과", "value": "GNB 메뉴 영역이 본문과 명확히 분리되어 시각적으로 강조. 호버 해제 시 fade-out" },
+          { "label": "트랜지션", "value": "background-color 0.3s 또는 opacity 0.3s ease-in-out 추정" }
+        ]},
+
+        { "type": "heading", "value": "발견 5: Hero Mirror Wrapper 슬라이드 (textual marquee)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "구조", "value": ".kv__text-wrapper 두 개. 각 wrapper 안에 .kv__text-item (128px·600)가 두 번씩 wrap (동일 텍스트 mirror)" },
+          { "label": "동작 추정", "value": "CSS transform: translateX 무한 루프 또는 cubic-bezier easing - 'Beyond Limits,' / 'Towards Innovation' 헤딩이 좌우로 슬라이드" },
+          { "label": "트랜지션", "value": "transform 0.18s cubic-bezier(0.2, 0, 0, 1) - Material Design Sharp Curve 변형 + 매우 빠른 0.18s" },
+          { "label": "효과", "value": "정적처럼 보이는 거대 헤딩이 미세하게 움직이는 ambient marquee = 살아있는 페이지 톤" }
+        ]},
+
+        { "type": "heading", "value": "발견 6: Transition 통계 (1500개 element 기준)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "all (default)", "value": "🟢 828건 - 사이트 최대 빈도 transition. 모든 인터랙티브 요소" },
+          { "label": "background-size 0.3s ease-in-out", "value": "22건 - 배경 이미지 zoom hover" },
+          { "label": "0.3s (단순)", "value": "9건 - 디테일 미지정" },
+          { "label": "background-color 0.3s", "value": "6건" },
+          { "label": "background-color 0.3s + color 0.3s 페어", "value": "6건 - 카드 호버 색·배경 동시" },
+          { "label": "transform 0.3s + transform 0.3s ease-in-out", "value": "4건 - scale·translate" },
+          { "label": "opacity 0.5s", "value": "1건 - Hero fade-in" },
+          { "label": "opacity 0.3s ease-in-out", "value": "1건 - 카드 진입" },
+          { "label": "🟢 transform 0.18s cubic-bezier(0.2, 0, 0, 1)", "value": "1건 - Hero 헤딩 sharp curve. 모션 디자이너의 의도 강조" },
+          { "label": "border-color 0.3s", "value": "1건 - GNB border slide" },
+          { "label": "사이트 표준 결론", "value": "🟢 0.3s ease-in-out이 KT&G 표준 - 한국 사이트 평균과 일치하지만 sharp curve(0.18s) 채택은 모션 디자이너의 디테일" }
+        ]},
+
+        { "type": "heading", "value": "발견 7: 4개 Fixed 요소 인벤토리 (z-index별)" },
+        { "type": "kv", "columns": 1, "items": [
+          { "label": "🟢 z-9997 - .header", "value": "fixed 104px - GNB. 항상 상단" },
+          { "label": "z-9996 - .header__dimmed", "value": "fixed 911px - GNB hover dim 오버레이 (조건부)" },
+          { "label": "z-(-1) - .sustainability__logo-animation", "value": "fixed 911px - ESG 잎사귀 배경 애니메이션. 본문 뒤" },
+          { "label": "z-50 (추정) - Scroll-top FAB", "value": "fixed 64×64 우상단 검정 원형 ↑ 버튼" }
+        ]},
+
+        { "type": "note", "value": "🟢 KT&G 사이트는 정적 분석이 절대 잡지 못하는 라이브 디테일의 정점. (1) Multi-Video Hero가 새로고침마다 다른 비주얼 노출, (2) Globe + 5 Stat 4,555px scroll-driven 시퀀스, (3) Sustainability 3색 잎사귀 fixed bg 6,650px 영역, (4) GNB dim z-9996 hover toggle, (5) Hero 헤딩 sharp curve 0.18s cubic-bezier - 모두 라이브 점검에서만 발견되는 차별화 디자인 요소. 한국 코퍼레이트 사이트 디자인 시스템 성숙도 최상위 사례." }
+      ]
+    }
+  }
+}

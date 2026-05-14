@@ -328,6 +328,98 @@
       ]
     },
     {
+      "id": "ktng-com",
+      "title": "KT&G",
+      "url": "https://www.ktng.com/",
+      "date": "2026-05-14",
+      "analysis": "analyses/ktng-com/analysis.json",
+      "pagesAnalyzed": 1,
+      "sections": [
+        { "id": "overview",                  "num": "01", "title": "개요 · 사이트맵",                "desc": "사이트 프로필 (글로벌 초우량 기업) + 5 메뉴 GNB + 헤더 유틸 3 (고객문의/비윤리/안전보건) + 9 main 자식 섹션" },
+        { "id": "philosophy",                "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",   "desc": "비주얼 6원칙 - 흰+검정 베이스 / Pretendard+Figtree Variable / 128px 거대 헤딩 / Multi-Video Hero / Globe scroll / 3색 잎사귀" },
+        { "id": "tokens",                    "num": "03", "title": "디자인 토큰 시스템",              "desc": "CSS Variables 재구성 - 색상 (white/black/#787878/#8EAEFA purple/3색 green) + Pretendard·Figtree Variable woff2" },
+        { "id": "main-page",                 "num": "04", "title": "메인 페이지 분석 (sH 11,708px)", "desc": "9 main 자식 섹션 - Hero 911 + Globe 4555 + Sustainability 6650 누적 + News 1013 + Invest 1027 + With 1083 + 4 fixed 요소" },
+        { "id": "hero-multivideo",           "num": "05", "title": "Hero - Multi-Video 홀로그래픽 시그니처", "desc": "새로고침마다 다른 비주얼 (홀로그래픽 크롬 / ∞ 인피니티 / 사옥 라운지 PASSION) + 128px·600 Mirror Wrapper 헤딩" },
+        { "id": "globe-stat-signature",      "num": "06", "title": "Globe + 5 Stat Scroll-Driven 시그니처", "desc": "4,555px sticky scroll-driven - 도트→풀스크린 지구 줌인 + 5 stat 카드 (17/140/65.2B/1.478B/34) 우측 슬라이드 인" },
+        { "id": "sustainability-section",    "num": "07", "title": "Sustainability for Growth - ESG 시그니처", "desc": "3색 잎사귀 그래픽 (light/medium/dark green) fixed bg z-(-1) 911px + 'Sustainability for Growth' 거대 헤딩 / ESG 56%" },
+        { "id": "news-section",              "num": "08", "title": "Newsroom - 포스터 + 리스트 콤보", "desc": "큰 포스터 (상상마당 단편영화제) + 우측 뉴스 리스트 3건 (MOU / 장학재단 / 중진공) + 뉴스룸 바로가기 CTA" },
+        { "id": "invest-with-section",       "num": "09", "title": "Invest Relations + We go with 영역", "desc": "보라 그라데이션 IR 3카드 + 인재채용 We go with - 상장사 + 채용 메시지" },
+        { "id": "color-system",              "num": "10", "title": "컬러 시스템",                     "desc": "흰+검정 무채색 베이스 (color 426+425건) + 보조 #787878 25건 + 보라 #8EAEFA Stat 카드 + 3색 green Sustainability" },
+        { "id": "typography-system",         "num": "11", "title": "타이포그래피 시스템 (Pretendard + Figtree Variable)", "desc": "Pretendard Variable + Figtree Variable woff2 자체 호스팅 / 128px Hero / 60px H2 / 16px body" },
+        { "id": "icon-system",               "num": "12", "title": "아이콘 시스템",                   "desc": "커스텀 인라인 SVG - → 원형 화살표 CTA + Globe 다국어 + ↑ Scroll-top + Sustainability 잎사귀 + 소셜 3종" },
+        { "id": "image-video-system",        "num": "13", "title": "이미지 · 영상 시스템",             "desc": "WebP 우선 (invest-background 3840×2600 / sustainability-desktop / 2k_stars_milky_way) + Hero attach/{uuid} multi-slide" },
+        { "id": "layout-grid",               "num": "14", "title": "그리드 · 컨테이너 시스템",         "desc": ".container.container--base BEM modifier / 1920 풀폭 + 1680 본문 추정 / 9 main 자식 섹션 (Globe 39% / Sustainability 56%)" },
+        { "id": "layout-responsive",         "num": "15", "title": "반응형 · 여백 · 둥글기",          "desc": "7단계 브레이크포인트 (474/680/740/768/1024/1366/1920) + (hover: hover) + (prefers-reduced-motion: reduce) feature query" },
+        { "id": "lib-buttons",               "num": "16", "title": "버튼 · CTA 라이브러리",            "desc": "5종 - 원형 화살표 (View More) / 검정 ↑ Scroll-top FAB / GNB 메뉴 링크 / Family Site Pill / 검정 Pill CTA" },
+        { "id": "lib-cards",                 "num": "17", "title": "카드 라이브러리",                  "desc": "4종 - 보라 그라데이션 Stat 카드 (시그니처) / News 회색 박스 / 포스터+카피 콤보 / 3색 잎사귀 Sustainability" },
+        { "id": "lib-banners",               "num": "18", "title": "배너 · Hero 라이브러리",           "desc": "Multi-Video Hero / Globe + Stats scroll-driven / Sustainability 흰+잎사귀 3종" },
+        { "id": "lib-navigation",            "num": "19", "title": "네비게이션 라이브러리",            "desc": "Fixed Top GNB z-9997 + Dim Overlay z-9996 / Footer 5컬럼 + Family Site / Sub 메뉴 호버" },
+        { "id": "lib-content",               "num": "20", "title": "콘텐츠 컴포넌트 라이브러리",        "desc": "Section Title + Sub / Hero Mirror Wrapper Headline / IR 글래스 카드 그리드" },
+        { "id": "lib-data",                  "num": "21", "title": "데이터 디스플레이 라이브러리",      "desc": "큰 숫자 4-Stat Counter / 뉴스 게시판 리스트 - 한국 코퍼레이트 정석" },
+        { "id": "lib-utility",               "num": "22", "title": "유틸리티 라이브러리",              "desc": "스킵 링크 / 검정 ↑ FAB / Header dim Overlay z-9996 / Globe 다국어 셀렉터" },
+        { "id": "signature-multivideo-hero", "num": "23", "title": "시그니처 - Multi-Video 홀로그래픽 Hero", "desc": "Mirror Wrapper Headline / <video> 자체 호스팅 UUID / muted+loop+autoplay / art-direction 다중 비주얼" },
+        { "id": "signature-globe-scroll",    "num": "24", "title": "시그니처 - Globe + 5 Stat Scroll-Driven", "desc": "긴 sticky scroll-driven 4,555px / transform scale + radial gradient globe / 5 Stat 카드 순차 슬라이드 / 별 배경 WebP" },
+        { "id": "signature-sustainability",  "num": "25", "title": "시그니처 - 3색 잎사귀 + Sustainability for Growth", "desc": "z-index -1 fixed 배경 애니메이션 / 3색 풍선형 잎사귀 (border-radius 99px rotate) / 거대 영문 헤딩 layer / ESG 56%" },
+        { "id": "lib-data-ir",               "num": "26", "title": "데이터 라이브러리 - IR Stat / News Card", "desc": "보라 그라데이션 IR 글래스 카드 3종 (주식정보 / 재무정보 / IR 행사) - 상장사 책임 시각화" },
+        { "id": "ix-hover",                  "num": "27", "title": "호버 인터랙션 카탈로그",            "desc": "GNB border slide / View More 화살표 translateX+rotate / News 카드 좌측 시프트 / 0.3s 표준 + 0.18s sharp curve" },
+        { "id": "ix-scroll",                 "num": "28", "title": "스크롤 인터랙션 카탈로그",          "desc": "Hero 텍스트+영상 fade-in / Globe 도트→풀스크린 줌인 / 5 Stat 가로 슬라이드 / Sustainability fixed bg" },
+        { "id": "pub-semantic",              "num": "29", "title": "시멘틱 HTML · 접근성",            "desc": "🟢 (prefers-reduced-motion) + user-scalable 제약 없음 + 풍부 alt / 🔴 header/nav/footer 시멘틱 미준수" },
+        { "id": "pub-perf-seo",              "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Pretendard·Figtree Variable woff2 자체 호스팅 / WebP 우선 / 26 script / og 메타 / BEM 클래스" },
+        { "id": "pub-design-system",         "num": "31", "title": "디자인 시스템 성숙도 평가",        "desc": "상위 5% (삼성·LG·KT급) - 미니멀 톤 + 3 시그니처 + Variable Font + (prefers-reduced-motion) 채택" },
+        { "id": "pub-content-strategy",      "num": "32", "title": "콘텐츠 전략 분석",                "desc": "ESG 56% + Global 39% = 사이트 95.7%. 한국 코퍼레이트 평균과 차별화된 'ESG+글로벌' 우선" },
+        { "id": "smooth-interaction-catalog","num": "33", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Multi-Video Hero 3 variants / Globe 5단계 줌인 / Sustainability 3색 잎사귀 fixed / GNB dim z-9996 / Sharp Curve 0.18s / Transition 828건" }
+      ],
+      "subpages": [
+        { "title": "메인 (Home)", "url": "https://www.ktng.com/" }
+      ]
+    },
+    {
+      "id": "glovis-net",
+      "title": "현대글로비스",
+      "url": "https://www.glovis.net/kr/home",
+      "date": "2026-05-14",
+      "analysis": "analyses/glovis-net/analysis.json",
+      "pagesAnalyzed": 1,
+      "sections": [
+        { "id": "overview",                   "num": "01", "title": "개요 · 사이트맵",                "desc": "현대자동차그룹 계열 글로벌 종합물류유통기업 / 6 GNB (회사정보/사업영역/지속가능경영/투자정보/고객지원/공정거래) + KOR/ENG / 사업 5 카테고리" },
+        { "id": "philosophy",                 "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",   "desc": "다크 네이비 + 흰 + 라벤더 3색 진행 / 거대 영문 + 캡슐 영상 임베드 / Pretendard Light 300 본문 / KOSPI Ticker / 산악·호수 자연 비주얼" },
+        { "id": "tokens",                     "num": "03", "title": "디자인 토큰 시스템",              "desc": "재구성 - Glovis Navy 4톤 (#001290 / #15269D / #0E0D44 / #7E7E9D) + Pretendard subset 4 weights + Inter Bold" },
+        { "id": "main-page",                  "num": "04", "title": "메인 페이지 분석 (sH 15,912px)", "desc": "Hero scroll-driven 3,500 + 사업영역 7,000 (44%) + 글로벌 2,500 + News 2,000 + Footer 900 + 5 Fixed 요소" },
+        { "id": "hero-scroll-driven",         "num": "05", "title": "Hero - Scroll-Driven 색상 전환 시그니처", "desc": "3,500px 색상 전환 (흰→라벤더→다크네이비→흰) + 캡슐 영상 임베드 + '연결에서→완결로' 슬로건 + GLOVIS NOW KOSPI ticker" },
+        { "id": "business-categories",        "num": "06", "title": "사업영역 5 카테고리 활성 토글 시그니처", "desc": "LOGISTICS / SHIPPING / DISTRIBUTION / FUTURE BUSINESS / INNOVATION - 좌측 사진/영상 + 우측 거대 영문 헤딩 활성 토글 (#71737 → #001290)" },
+        { "id": "global-network",             "num": "07", "title": "글로벌 네트워크 - For More Meaningful Connections", "desc": "다크 네이비 #001290 풀폭 + 'For More Meaningful Connections' + 세계지도 SVG outline + 4 영역 (Americas/Europe/China/Asia Pacific)" },
+        { "id": "news-section",               "num": "08", "title": "News 3카드 - 최신 소식",       "desc": "보도자료 2 (어린이 친환경 놀이 / 자동차운반선 1만대) + YouTube embed 1 (MZ 매니저 동상이몽 EP.15) 동등 노출" },
+        { "id": "footer-section",             "num": "09", "title": "Footer - GLOBAL SMART SCM SOLUTION + 모바일 앱", "desc": "산악·호수 자연 비주얼 + 거대 영문 헤딩 + 모바일 앱 사진 + WA 접근성 인증 + Family Site + 4 유틸 (개인정보/법적/사이버감사/클린톡)" },
+        { "id": "color-system",               "num": "10", "title": "컬러 시스템",                     "desc": "Glovis Navy 4톤 (deep/navy/blue/light) + #333 text 270건 + #141415 heading + KOSPI 빨강 #E31D1A / 모두 WCAG AAA" },
+        { "id": "typography-system",          "num": "11", "title": "타이포그래피 시스템 (Pretendard + Inter)", "desc": "Pretendard subset woff2 4 weights (300/400/500/700) + Inter Bold 영문 헤딩 / 86px Hero + Light 300 본문 강조" },
+        { "id": "icon-system",                "num": "12", "title": "아이콘 시스템",                   "desc": "커스텀 SVG - → CTA + ⓘ Pause/Play + ⋮ 메뉴 + 💬 챗봇 + ↑ Scroll-top + ▼ KOSPI 하락 + ▶ YouTube" },
+        { "id": "image-video-system",         "num": "13", "title": "이미지 · 영상 시스템",             "desc": "33 이미지 + 4 <video> + YouTube 임베드 / 캡슐 영상 임베드 (사막/항만/롤러) + 자동차운반선·AGV 로봇 사업 사진" },
+        { "id": "layout-grid",                "num": "14", "title": "그리드 · 컨테이너 시스템",         "desc": "vw 1920 / sH 15,912 (한국 최장급) / Header 80 + Floating utils 72×152 + Hero dual fixed 911" },
+        { "id": "layout-responsive",          "num": "15", "title": "반응형 · 여백 · 둥글기",          "desc": "단순 2단계 (tablet 1023 / mobile 500) + landscape orientation + print 미디어쿼리" },
+        { "id": "lib-buttons",                "num": "16", "title": "버튼 · CTA 라이브러리",            "desc": "5종 - 텍스트+→ / ⓘ Pause-Play outline / Family Site Pill / Floating utility fab 3 / KOR/ENG 토글" },
+        { "id": "lib-cards",                  "num": "17", "title": "카드 라이브러리",                  "desc": "3종 - 뉴스 카드 (사진+제목+날짜) / 사업영역 좌사진+우 영문 헤딩 / 다크 네이비 글로벌 4 영역" },
+        { "id": "lib-banners",                "num": "18", "title": "배너 · Hero 라이브러리",           "desc": "3종 - Hero start (흰+캡슐) / 다크 네이비 슬로건+KOSPI ticker / Footer 산악·호수" },
+        { "id": "lib-navigation",             "num": "19", "title": "네비게이션 라이브러리",            "desc": "3종 - Top GNB sticky z-11 / 사업영역 5 사이드 활성 / Footer + WA 인증 + Family Site" },
+        { "id": "lib-content",                "num": "20", "title": "콘텐츠 컴포넌트 라이브러리",        "desc": "캡슐 영상 임베드 거대 헤딩 / 한글 슬로건 + sub copy 페어 / For More Meaningful Connections + CTA" },
+        { "id": "lib-data",                   "num": "21", "title": "데이터 디스플레이 라이브러리",      "desc": "GLOVIS NOW + KOSPI 실시간 Ticker (검정 띠 / ▼ #E31D1A) / News 게시판 리스트" },
+        { "id": "lib-utility",                "num": "22", "title": "유틸리티 라이브러리",              "desc": "스킵 링크 z-100 (본문 바로가기) / Floating utils z-10 cluster (메뉴/챗봇/Scroll-top) / WA 인증 마크" },
+        { "id": "signature-hero-storytelling","num": "23", "title": "시그니처 - Scroll-Driven Hero Storytelling", "desc": "vis-fixed-area + intro-txt-area dual fixed 레이어 / 3,500px 색상 진행 / cubic-bezier 0.7s color transition" },
+        { "id": "signature-business-toggle",  "num": "24", "title": "시그니처 - 사업영역 5 카테고리 활성 토글", "desc": "좌·우 sticky 분할 / 회색 → 파란 #001290 활성 / opacity 1s cubic-bezier 좌측 사진 fade / 한·영 페어" },
+        { "id": "signature-capsule-video",    "num": "25", "title": "시그니처 - 캡슐 영상 임베드 거대 헤딩", "desc": "border-radius 99px <video> / 'GLOBAL'=사막 + 'SMART SCM'=항만 + 'SOLUTION'=롤러 / 단어 = 비주얼" },
+        { "id": "signature-global-network",   "num": "26", "title": "시그니처 - 다크 네이비 글로벌 네트워크 4 영역", "desc": "단색 다크 네이비 #001290 풀폭 / outline 세계지도 SVG / outline 라벨 → hover fill / China 독립 분리" },
+        { "id": "ix-hover",                   "num": "27", "title": "호버 인터랙션 카탈로그",            "desc": "GNB border+color 전환 / 카테고리 ::before line / 글로벌 영역 fill / cubic-bezier(0.215, 0.61, 0.355, 1) 19건" },
+        { "id": "ix-scroll",                  "num": "28", "title": "스크롤 인터랙션 카탈로그",          "desc": "Hero 색상 진행 3,500 / 사업영역 5 토글 7,000 / opacity+transform 1s cubic-bezier Decelerate" },
+        { "id": "pub-semantic",               "num": "29", "title": "시멘틱 HTML · 접근성",            "desc": "🟢 header/main/nav/section/footer 모두 사용 + WA 인증 + 스킵 링크 / 🔴 user-scalable=no + html 1px 비표준" },
+        { "id": "pub-perf-seo",               "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Pretendard 4 weights subset + Inter woff / 4 video 부담 / 자세한 keywords 24개 / cubic-bezier Decelerate 일관" },
+        { "id": "pub-design-system",          "num": "31", "title": "디자인 시스템 성숙도 평가",        "desc": "상위 10% - 정통 다크 네이비 + 한·영 폰트 페어 + WA 인증 / KT&G보다 시멘틱·인증 우수 / Variable Font·user-scalable에서 약점" },
+        { "id": "pub-content-strategy",       "num": "32", "title": "콘텐츠 전략 분석",                "desc": "사업영역 44% + Hero 22% + 글로벌 16% + News 13% + Footer 6% / KT&G의 ESG 56%와 대조적 '사업 = 정체성' 톤" },
+        { "id": "smooth-interaction-catalog", "num": "33", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Hero 5단계 색상 진행 / GLOVIS NOW KOSPI / 사업영역 5 토글 / 캡슐 영상 / Light 300 / cubic-bezier Decelerate / Transition 383건" }
+      ],
+      "subpages": [
+        { "title": "메인 (Home)", "url": "https://www.glovis.net/kr/home" }
+      ]
+    },
+    {
       "id": "hct-co-kr",
       "title": "에이치시티 (HCT)",
       "url": "https://hct.co.kr/",
@@ -375,7 +467,7 @@
     }
   ],
   "counts": {
-    "references": 6,
-    "totalComponents": 195
+    "references": 8,
+    "totalComponents": 245
   }
 }
