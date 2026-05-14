@@ -22,6 +22,14 @@
   ],
   "references": [
     {
+      "id": "kdnavien-co-kr",
+      "title": "경동나비엔",
+      "url": "https://www.kdnavien.co.kr/ko",
+      "date": "2026-05-14",
+      "analysis": "analyses/kdnavien-co-kr/analysis.json",
+      "pagesAnalyzed": 1
+    },
+    {
       "id": "asinsam",
       "title": "안성인삼농협 명삼원",
       "url": "https://asinsam.com",
@@ -156,7 +164,7 @@
     }
   ],
   "counts": {
-    "references": 2,
-    "totalComponents": 115
+    "references": 3,
+    "totalComponents": 123
   }
 }
