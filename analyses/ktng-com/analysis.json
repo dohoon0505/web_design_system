@@ -8,38 +8,38 @@
   "sections": {
 
     "site-overview": {
-      "title": "01. 사이트 개요 · 사이트맵",
+      "title": "01. 사이트 개요",
       "blocks": [
         { "type": "text", "value": "주식회사 케이티앤지 (KT&G CORPORATION). 1987년 4월 1일 설립. 매출 65,797억원 / 임직원 4,094명 (25년 사업보고서 기준) / 4 사업 영역 (담배 66.4% · 건강기능 17.3% · 제약·바이오 5.5% · 부동산 10.8%). 글로벌: 해외 법인·지사 17 / 해외궐련 사업 운영 140국 / 해외궐련 판매 65.2 billion sticks / NGP 스틱 1.478 billion. 신용등급 5종 - AAA × 3 (나이스신용평가/한국기업평가/한국신용평가) + A3 (Moody's) + A- (S&P). 2026-05-15 13:46 기준 주가 180,500원 ▼ 8,500 (-4.50%) — IR 페이지 dark navy ticker 라이브 연동. GNB 5 메뉴 (회사소개·투자정보·지속가능경영·미디어·인재채용) + 우측 고객문의·비윤리행위 신고·안전보건소통마당·🌐 언어." },
 
-        { "type": "kv", "title": "라이브 채집 사이트 메트릭 (Chrome MCP 2026-05-15)", "columns": 2, "items": [
-          { "label": "총 sH 합계", "value": "90,459px (9 페이지)" },
-          { "label": "메인 (Home)", "value": "sH 11,708px" },
-          { "label": "회사소개", "value": "sH 8,067px" },
-          { "label": "연혁", "value": "sH 32,263px (사이트 최장)" },
-          { "label": "주요사업", "value": "sH 8,814px" },
-          { "label": "글로벌 네트워크", "value": "sH 5,276px" },
-          { "label": "IR 개요", "value": "sH 4,510px" },
-          { "label": "ESG 개요", "value": "sH 8,347px" },
-          { "label": "뉴스룸", "value": "sH 4,089px" },
-          { "label": "인사제도", "value": "sH 9,385px" },
-          { "label": "Body 폰트", "value": "Pretendard, system-ui, sans-serif (실측)" },
-          { "label": "Body 크기", "value": "16px (15.9994px 실측)" }
+        { "type": "kv", "title": "라이브 채집 페이지 길이 (2026-05-15)", "columns": 2, "items": [
+          { "label": "총 페이지 길이 합계", "value": "약 90,459px (9개 페이지)" },
+          { "label": "메인", "value": "11,708px" },
+          { "label": "회사소개 · KT&G 소개", "value": "8,067px" },
+          { "label": "회사소개 · 연혁", "value": "32,263px (사이트 최장)" },
+          { "label": "회사소개 · 주요사업", "value": "8,814px" },
+          { "label": "회사소개 · 글로벌 네트워크", "value": "5,276px" },
+          { "label": "투자정보 IR", "value": "4,510px" },
+          { "label": "지속가능경영 ESG", "value": "8,347px" },
+          { "label": "미디어 뉴스룸", "value": "4,089px" },
+          { "label": "인재채용 인사제도", "value": "9,385px" },
+          { "label": "본문 폰트", "value": "Pretendard, system-ui, sans-serif" },
+          { "label": "본문 크기", "value": "16px" }
         ]},
 
         { "type": "sitemap", "items": [
-          { "label": "메인 (Home sH 11,708)", "children": ["Hero 잎사귀 4-blade iridescent 비디오 (poster=2d1bc226 / mp4=2177f558) - 영문 'Beyond Limits, Towards Innovation' 헤드라인", ".global 4275 검은 우주 + 둥근 지구 circle + 'Global Business Highlights' + '네트워크 바로가기 →' CTA", ".sustainability__logo-animation 855 + 'Sustainability for Growth' + 4 녹색 잎사귀 모티브", ".invest 다크 그라데이션 + glassmorphism (주가정보 KT&G 180,500원 라이브 KOSPI/KOSDAQ/NASDAQ Ticker + 신용등급 AAA × 3 + 사업보고서 fade-in)", ".news Latest News + 빅 카드 fade-in (단편영화제)", ".with KT&G의 주요 핵심사업 + Footer + world map 이미지"] },
-          { "label": "회사소개 GNB (4 페이지)", "children": ["KT&G 소개 sH 8,067 - infinity loop iridescent Hero + '경계를 넘어서는 상상력으로, 미래의 혁신을 만들어갑니다' + 사업 포트폴리오", "연혁 sH 32,263 (최장) - cosmic light beam Hero + sticky 5-시대 nav (혁신·NOW-2021 / 확장·2020-2012 / 도약·2011-2002 / 성장·2001-1987 / 시작·1986-1883) + 연도별 row", "주요사업 sH 8,814 - Modernize iridescent Hero + 3 sequence (해외궐련 dark globe·NGP product·건기식)", "글로벌 네트워크 sH 5,276 - 법인 카드 그리드 (국기 + 주소 + 이메일 + 전화)"] },
-          { "label": "투자정보 (/ir/overview sH 4,510)", "children": ["흰 Hero + 다크 네이비 KT&G 180,500원 라이브 stock Ticker (2026.05.15 13:46 기준)", "경영실적 2025 4Q ghosted reveal", "다크 네이비 financial 영역 + 신용평가 5 outline 원형 (1.5px solid #8EAEFA) + 재무하이라이트 3D 차트 + 별도보고서 흰 카드", "IR 행사 black heading + 더보기 pill + 3 카드 (2026.5.7 / 26.2.5 / 25.11.6)", "KT&G 더 알아보기 (turquoise 3D wave) + Contact us (orange metallic ring) 어비스 카드"] },
-          { "label": "지속가능경영 (/sustainability/overview sH 8,347)", "children": ["안개 숲 kv-desktop.webp Hero + 'Empowering Sustainability for Growth' (Arial)", "6-panel ESG 전략 dark green particle bg (담배·환경·건기식·사회·제약·거버넌스)", "한국ESG기준원 4-Year A 등급 table (2025/2024/2023/2022 종합평가·E·S·G)", "환경 image-bg 카드"] },
-          { "label": "미디어 (/media/news/all sH 4,089)", "children": ["뉴스룸 84px headline + Pill 탭 (전체/보도자료/카드뉴스) + 검색", "보도자료 카드 그리드 (단편영화제 poster / DJBIC World KT&G logo / 환경청 MOU / 장학금 / 청년창업 / Daechi Artist Fellowship)", "더보기 pill"] },
-          { "label": "인재채용 (/career/hrsystem sH 9,385)", "children": ["사옥 거대 계단 Hero + '함께 성장하며, 미래를 향해 인재를 만드는 KT&G입니다'", "PEOPLE 거대 black heading + Optimize gradient + 3 인재상 (성과/협력/도전) + purple 4-blade icon", "VALUE D&I", "BENEFIT ghost reveal + 보상정책·인사제도 다이어그램", "CAREER 1,200 교육과정"] }
+          { "label": "메인 페이지", "children": ["영문 Hero 비디오 (Beyond Limits, Towards Innovation)", "지구 글로벌 섹션 (Global Business Highlights + 네트워크 바로가기)", "지속가능 경영 섹션 (Sustainability for Growth + 4 잎사귀)", "투자 정보 섹션 (라이브 KOSPI 티커 + 신용등급 + 사업보고서)", "뉴스 섹션 (Latest News + 빅 카드 페이드인)", "푸터 (주요 핵심사업 안내 + 세계지도)"] },
+          { "label": "회사소개 (4개 페이지)", "children": ["KT&G 소개 - 잎사귀 비디오 Hero + 사업 포트폴리오 2×2 그리드", "연혁 - 우주 빛 Hero + 5-시대 스티키 네비 + 연도별 이벤트 (사이트 최장 페이지)", "주요사업 - Modernize Hero + 3 스티키 시퀀스 (해외궐련 · NGP · 건강기능)", "글로벌 네트워크 - 12개국 해외 법인 카드 그리드 (국기 + 주소 + 연락처)"] },
+          { "label": "투자정보 IR", "children": ["라이브 KT&G 주가 티커 (180,500원 ▼ -4.50%)", "다크 네이비 신용평가 5개 외곽선 배지", "재무 하이라이트 3D 차트 카드", "별도보고서 다운로드 카드", "IR 행사 카드 3개 + 더보기", "KT&G 더 알아보기 + Contact us 어비스 카드"] },
+          { "label": "지속가능경영 ESG", "children": ["안개 숲 Hero (Empowering Sustainability for Growth)", "다크 그린 6-패널 ESG 전략 (담배 · 환경 · 건기식 · 사회 · 제약 · 거버넌스)", "한국ESG기준원 4년 A 등급 테이블 (2022~2025)", "환경 이미지 카드"] },
+          { "label": "미디어 뉴스룸", "children": ["뉴스룸 헤딩 + 필 탭 (전체 · 보도자료 · 카드뉴스)", "검색창", "보도자료 카드 그리드 (3가지 시각 패턴)", "더보기 페이지네이션"] },
+          { "label": "인재채용 인사제도", "children": ["사옥 거대 계단 Hero", "PEOPLE 거대 헤딩 + 3 인재상 (성과 · Optimize · 협력)", "VALUE 다양성 포용", "BENEFIT 보상 정책 다이어그램", "CAREER 1,200 교육과정"] }
         ]}
       ]
     },
 
     "philosophy": {
-      "title": "02. 디자인 철학 · 비주얼 랭귀지",
+      "title": "02. 디자인 철학",
       "blocks": [
         { "type": "text", "value": "KT&G 디자인 시스템은 '코퍼레이트 트러스트'와 '인터랙티브 모더니티'를 양 축으로 결합한 무채색 시스템이다. 본문 단일 컬러 #000 + 보조 #787878 외에 강조 컬러를 거의 사용하지 않는 대신, 라이브 KOSPI ticker · iridescent Hero 비디오 · glassmorphism 카드 · scroll-reveal 거대 ghost 헤딩 등 인터랙션 레이어로 풍부함을 만든다. 'all' transition 752건 + 'background-size 0.3s ease-in-out' 22건이 라이브 채집된 점이 이 사이트가 단순한 코퍼레이트 사이트가 아니라 매우 인터랙티브한 디자인 시스템임을 정량으로 증명한다." },
 
@@ -62,7 +62,7 @@
     },
 
     "tokens": {
-      "title": "03. 디자인 토큰 시스템 (CSS Variables)",
+      "title": "03. 디자인 토큰",
       "blocks": [
         { "type": "text", "value": "Chrome MCP getComputedStyle 라이브 채집 토큰. 메인 페이지 800개 요소 스캔 결과를 기준으로 정리." },
 
@@ -73,7 +73,7 @@
     },
 
     "main-page": {
-      "title": "04. 메인 페이지 (sH 11,708)",
+      "title": "04. 메인 페이지",
       "blocks": [
         { "type": "text", "value": "메인 페이지 라이브 재실측 - 9 main 자식 섹션. 2026-05-15 시점 신규 디자인 확인. 모든 비디오·이미지 URL은 KT&G CDN 실측값." },
 
@@ -106,7 +106,7 @@
     },
 
     "sub-about-intro": {
-      "title": "05. Sub - KT&G 소개 (sH 8,067)",
+      "title": "05. 회사소개 · KT&G 소개",
       "blocks": [
         { "type": "text", "value": "회사소개 > KT&G 소개 페이지. 라이브 채집 - Hero infinity loop iridescent 비디오 + 사업 포트폴리오 + 비전·경영이념. Title: 'KT&G 소개 | 회사소개 | KT&G'" },
 
@@ -121,7 +121,7 @@
     },
 
     "sub-about-history": {
-      "title": "06. Sub - 연혁 (sH 32,263 · 사이트 최장)",
+      "title": "06. 회사소개 · 연혁",
       "blocks": [
         { "type": "text", "value": "회사소개 > 연혁 (/about/history). 사이트 최장 페이지. cosmic light beam Hero + sticky 5-시대 nav + 연도별 row 패턴. Title: '연혁 | 회사소개 | KT&G'" },
 
@@ -136,7 +136,7 @@
     },
 
     "sub-about-business": {
-      "title": "07. Sub - 주요사업 (sH 8,814)",
+      "title": "07. 회사소개 · 주요사업",
       "blocks": [
         { "type": "text", "value": "회사소개 > 주요사업 (/about/business). Modernize iridescent Hero + 3 sticky sequence (해외궐련·NGP·건기식). Title: '주요사업 | 회사소개 | KT&G'" },
 
@@ -151,7 +151,7 @@
     },
 
     "sub-about-network": {
-      "title": "08. Sub - 글로벌 네트워크 (sH 5,276)",
+      "title": "08. 회사소개 · 글로벌 네트워크",
       "blocks": [
         { "type": "text", "value": "회사소개 > 글로벌 네트워크 (/about/network/overseas). 12+ 해외 법인 정보 카드 그리드. Title: '해외 | 글로벌 네트워크 | 회사소개 | KT&G'" },
 
@@ -163,7 +163,7 @@
     },
 
     "sub-ir-overview": {
-      "title": "09. Sub - 투자정보 IR (sH 4,510) ★ 사용자 강조 영역",
+      "title": "09. 투자정보 IR",
       "blocks": [
         { "type": "text", "value": "투자정보 > IR 개요. 핵심: (1) 흰 Hero + 다크 네이비 KT&G 180,500원 라이브 stock ticker 카드 (2) 경영실적 ghost 텍스트 reveal (3) 다크 네이비 financial 영역 + 신용평가 5 outline 원형 (1.5px solid #8EAEFA) + 재무하이라이트 3D 차트 (blue) + 별도보고서 흰 카드 (4) IR 행사 black heading + 더보기 pill + 3 카드 (5) KT&G 더 알아보기 (turquoise 3D wave) + Contact us (orange metallic ring) 어비스 카드." },
 
@@ -184,7 +184,7 @@
     },
 
     "sub-esg": {
-      "title": "10. Sub - 지속가능경영 ESG (sH 8,347)",
+      "title": "10. 지속가능경영 ESG",
       "blocks": [
         { "type": "text", "value": "지속가능경영 > ESG 개요. 안개 숲 Hero + 6-panel ESG 전략 + 한국ESG기준원 4-Year A 등급 table. Title: 'ESG 개요 | 지속가능경영 | KT&G'" },
 
@@ -202,7 +202,7 @@
     },
 
     "sub-media": {
-      "title": "11. Sub - 미디어 뉴스룸 (sH 4,089)",
+      "title": "11. 미디어 뉴스룸",
       "blocks": [
         { "type": "text", "value": "미디어 > 뉴스룸 (/media/news/all). container--m 헤딩 + Pill 탭 + 검색 + 보도자료 카드 그리드 + 더보기. Title: '전체 | 뉴스룸 | 미디어 | KT&G'" },
 
@@ -215,7 +215,7 @@
     },
 
     "sub-careers": {
-      "title": "12. Sub - 인재채용 인사제도 (sH 9,385)",
+      "title": "12. 인재채용 인사제도",
       "blocks": [
         { "type": "text", "value": "인재채용 > 인사제도 (/career/hrsystem). 사옥 거대 계단 Hero + PEOPLE·Optimize 거대 헤딩 + BENEFIT scroll-reveal. Title: '인사제도 | 인재채용'" },
 
@@ -272,7 +272,7 @@
     },
 
     "typography-system": {
-      "title": "14. 타이포그래피 시스템",
+      "title": "14. 타이포그래피",
       "blocks": [
         { "type": "text", "value": "Pretendard, system-ui, sans-serif 단일 폰트 (body.fontFamily 라이브 실측). 11단계 BEM 타입스케일 + weight 400/500/600/700 4종. ESG Hero만 Arial (영문 헤딩 'Empowering Sustainability for Growth' 추가 굵게)." },
 
@@ -320,7 +320,7 @@
     },
 
     "image-system": {
-      "title": "16. 이미지 · 영상 시스템",
+      "title": "16. 이미지 영상 시스템",
       "blocks": [
         { "type": "text", "value": "WebP 메인 포맷 + SVG 다이어그램·로고 + webm+mp4 듀얼 비디오. attach/download/{UUID} CMS 패턴 (메인 Hero 비디오)·images/{category}/{slug}-desktop.webp 정적 경로 패턴 (서브페이지 이미지)." },
 
@@ -343,7 +343,7 @@
     },
 
     "layout-grid": {
-      "title": "17. 레이아웃 · 그리드 · 컨테이너",
+      "title": "17. 레이아웃 · 그리드",
       "blocks": [
         { "type": "kv", "title": "라이브 채집 컨테이너 시스템", "columns": 2, "items": [
           { "label": "container--base", "value": "1741px max-width - 메인·서브페이지 풀폭 컨테이너" },
@@ -399,7 +399,7 @@
     },
 
     "lib-components": {
-      "title": "19. 컴포넌트 라이브러리 (10 하위 그룹)",
+      "title": "19. 컴포넌트 라이브러리",
       "blocks": [
         { "type": "text", "value": "ktng- 접두사 컨벤션으로 작성. 10 하위 그룹 (buttons / cards / banners / navigation / forms / data / content / utility / embed / media). 모든 component 블록 라이브 채집 디자인 반영." },
 
@@ -454,7 +454,7 @@
     },
 
     "signature-aaa-outline": {
-      "title": "20. 시그니처 - AAA Outline Badge (1.5px solid #8EAEFA)",
+      "title": "20. 시그니처 · 신용평가 외곽선 배지",
       "blocks": [
         { "type": "text", "value": "KT&G IR financial 영역의 가장 시각적 시그니처 컴포넌트. 다크 네이비 그라데이션 배경 위에 1.5px solid #8EAEFA (밝은 청색 outline) + rgba(0,0,0,0.15) bg + 40px·400 흰 글자로 신용평가 등급(AAA × 3 + A3 + A-)을 표현. 사용자가 지속적으로 강조한 영역." },
         { "type": "kv", "title": "라이브 채집 정확한 스펙", "columns": 1, "items": [
@@ -468,7 +468,7 @@
     },
 
     "signature-sticky-sequence": {
-      "title": "21. 시그니처 - 3-Sticky Business Sequence (해외궐련·NGP·건기식)",
+      "title": "21. 시그니처 · 3-스티키 사업 시퀀스",
       "blocks": [
         { "type": "text", "value": "주요사업 (/about/business) 페이지의 가장 독특한 패턴. 3 sequence 풀폭 (each 911px) sticky로 viewport에 고정되며 좌측 64-84px 거대 헤딩 + 본문 + 우측 glassmorphism counter 카드를 노출. 스크롤 진입 시 텍스트 reveal + sequence 별 다른 배경 visual." },
         { "type": "kv", "title": "3 sequence 라이브 채집", "columns": 1, "items": [
@@ -482,7 +482,7 @@
     },
 
     "signature-year-timeline": {
-      "title": "22. 시그니처 - Year Navigation Timeline (연혁 5-시대)",
+      "title": "22. 시그니처 · 연혁 타임라인",
       "blocks": [
         { "type": "text", "value": "연혁 /about/history (sH 32,263 - 사이트 최장 페이지)의 sticky 5-시대 navigation + 연도별 row 패턴. 좌측 4-col 거대 연도 (104px·600) + 우측 8-col 월별 이벤트 bullet list." },
         { "type": "kv", "title": "라이브 채집 5 시대 구조", "columns": 1, "items": [
@@ -498,7 +498,7 @@
     },
 
     "signature-financial-panel": {
-      "title": "23. 시그니처 - IR Financial Dark Panel (★ 사용자 핵심 강조)",
+      "title": "23. 시그니처 · IR 재무 패널",
       "blocks": [
         { "type": "text", "value": "IR /ir/overview의 가장 시각적 시그니처. 다크 네이비 그라데이션 배경 + 5 outline AAA 원형 + 재무하이라이트 3D 차트 카드 + 흰 다운로드 카드의 4-요소 조합." },
         { "type": "kv", "title": "4-요소 상세 (라이브 채집)", "columns": 1, "items": [
@@ -512,7 +512,7 @@
     },
 
     "ix-hover": {
-      "title": "24. 인터랙션 - 호버 카탈로그",
+      "title": "24. 인터랙션 · 호버 카탈로그",
       "blocks": [
         { "type": "text", "value": "Chrome MCP transition 통계 채집: 'all 0.3s ease-in-out' 752건 + 'background-size 0.3s ease-in-out' 22건 + 'transform 0.3s ease-in-out' 2건. 표준 timing 0.3s ease-in-out 일관 적용." },
         { "type": "kv", "title": "라이브 호버 인터랙션 카탈로그", "columns": 1, "items": [
@@ -533,7 +533,7 @@
     },
 
     "ix-scroll": {
-      "title": "25. 인터랙션 - 스크롤 카탈로그",
+      "title": "25. 인터랙션 · 스크롤 카탈로그",
       "blocks": [
         { "type": "kv", "title": "라이브 채집 스크롤 인터랙션", "columns": 1, "items": [
           { "label": "🟢 Sticky Year Navigation (연혁)", "value": "5-시대 nav position:sticky + top:0 + z-index:10. 진입 시대에 따라 자동 활성 시대 underline 이동 - IntersectionObserver 기반 스크롤 동기화 패턴" },
@@ -548,7 +548,7 @@
     },
 
     "ix-video": {
-      "title": "26. 인터랙션 - 비디오 · 모션 카탈로그",
+      "title": "26. 인터랙션 · 비디오 모션",
       "blocks": [
         { "type": "kv", "title": "라이브 채집 비디오·모션 인터랙션", "columns": 1, "items": [
           { "label": "🟢 메인 Hero 비디오 - 새로고침 변환", "value": "<video autoplay loop muted playsinline poster=attach/download/2d1bc226 source mp4=attach/download/2177f558>. CMS UUID 기반으로 매번 새로고침 시 비디오 frame이 다른 visual 노출 (홀로그래픽 크롬 곡선 / iridescent 잎사귀 / infinity 루프 4-blade 등)" },
@@ -563,7 +563,7 @@
     },
 
     "pub-semantic": {
-      "title": "27. 퍼블리싱 - 시맨틱 · 접근성",
+      "title": "27. 퍼블리싱 · 시맨틱 접근성",
       "blocks": [
         { "type": "kv", "title": "라이브 채집 시맨틱 · 접근성", "columns": 1, "items": [
           { "label": "프레임워크", "value": "Next.js + React (_next/static/chunks 경로 라이브 채집) - SSR + 클라이언트 하이드레이션 + 동적 import" },
@@ -578,7 +578,7 @@
     },
 
     "pub-perf-seo": {
-      "title": "28. 퍼블리싱 - 성능 · SEO",
+      "title": "28. 퍼블리싱 · 성능 SEO",
       "blocks": [
         { "type": "kv", "title": "라이브 채집 성능 · SEO 지표", "columns": 1, "items": [
           { "label": "이미지 포맷", "value": "WebP 메인 (kv-desktop.webp / sequence-N-desktop.webp / financial.webp / hrsystem-desktop.webp 등) - PNG/JPG보다 25-35% 작음. SVG 다이어그램·로고용 (strategy-desktop.svg / MSCILogoPc.svg 등)" },
@@ -593,7 +593,7 @@
     },
 
     "smooth-interaction-catalog": {
-      "title": "29. 부드러운 인터랙션 카탈로그 (라이브 재점검 통합)",
+      "title": "29. 부드러운 인터랙션 카탈로그",
       "blocks": [
         { "type": "text", "value": "Chrome MCP 7-step 방법론 라이브 정밀 재점검 (2026-05-15) 결과 발견된 모든 부드러운 인터랙션을 통합 정리. 정적 분석으로는 잡히지 않는 라이브 동작 + 이번 점검에서 발견된 OLD 보고서 시점 이후 디자인 변경 사항." },
 
