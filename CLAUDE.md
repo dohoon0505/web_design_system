@@ -139,6 +139,20 @@ WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만 허용
 
 총합 = 27-34 섹션 정도가 자연스럽다. 사이트가 풍부하면 더 많아져도 좋다.
 
+## 7-Step 방법론 (KT&G 보고서에서 정립)
+
+레퍼런스 보고서 작성 시 다음 순서를 따른다. KT&G 분석 (2026-05-15)에서 정립되었고, 모든 후속 분석에 적용한다. 본 방법론은 아래 "라이브 인스펙션" 섹션의 1~6차 패스를 실용적 작업 흐름으로 재정의한다.
+
+1. **빠른 사이트 써치** — Chrome MCP `tabs_context_mcp` + 메인 1회 `navigate` → 사이트맵·GNB·footer URL 수집. 사이트 전체 구조 1차 파악
+2. **사이트 개요 + 사이트맵 작성** — `analysis.json`의 `site-overview` 섹션 먼저 채움 (사업 정체성·페이지 목록·기본 토큰)
+3. **사이트맵 전체 페이지 방문** — 메인 + 모든 서브페이지 1회씩 Chrome MCP `navigate`. 페이지마다 `wait 3-5s` 후 sH·title·body 폰트/색상 등 기본 토큰 채집
+4. **3-4 ticks 정밀 스크롤 + wait + 상태 채집** — 페이지당 5-8 스크롤 단위 (라이브 인스펙션 3차 패스 참조). `window.scrollTo` JS 사용 시 `document_idle` 대기 우회 가능
+5. **페이지별 섹션 + 라이브러리/접근성/기술/SEO/인터랙션 분리 작성** — Main / Sub × N (Company Intro / IR / ESG / Media / Career 등) / 컴포넌트 라이브러리 (단일 섹션 + 8-10 하위 그룹 heading 블록) / a11y (pub-semantic) / 기술 (image-system) / SEO (pub-perf-seo) / 인터랙션 카탈로그 (ix-hover · ix-scroll · ix-video). 실제 사이트 이미지 src 임베드 필수
+6. **페이지별 QA** — 각 페이지 작성 완료 즉시 Chrome MCP 재방문 + 스크린샷 + 보고서 비교. 디자인 100% 일치 여부 검증. QA 카드 component 블록 또는 `note` 블록으로 라이브 vs 재현 차이 명시 (analyses/{id}/screenshots/ 폴더 활용 또는 KT&G CDN URL 직접 임베드)
+7. **모든 디자인 QA + 버튼·인터랙션 효과 100% 구현** — Step 6를 모든 페이지·모든 디자인에 적용. 버튼 hover/active/disabled, 카드 transform, CTA rotate, 비디오 dual-source 등 인터랙션 누락 없음
+
+**중요**: 7-Step 진행 중 사이트가 OLD 보고서 시점 이후 리뉴얼된 경우 (KT&G 2026-05-15의 경우 .global Earth Globe 리뉴얼·.invest glassmorphism·AAA outline 색상 #A2C3FE → #8EAEFA 변경 등) 모든 디자인 변경 사항을 `smooth-interaction-catalog`의 "발견 #N" 형식으로 명시한다. OLD 데이터를 그대로 재사용하지 말 것.
+
 ## 라이브 인스펙션 — Chrome MCP
 
 `mcp__Claude_in_Chrome__*` 도구로 실제 렌더된 페이지의 computed style을 직접 채집한다. WebFetch는 Next.js·React 같은 클라이언트 하이드레이션이 필요한 사이트에서 색상·폰트·레이아웃을 거의 잡지 못한다.
@@ -363,4 +377,8 @@ node scripts/validate.mjs
 [ ] system.json.counts.references 갱신
 [ ] node scripts/validate.mjs 통과
 [ ] 브라우저 렌더 확인
+[ ] Step 6 페이지별 라이브 vs 재현 QA 완료
+[ ] Step 7 모든 버튼·hover·active·인터랙션 css 정의됨
+[ ] analyses/{id}/screenshots/ 폴더에 QA 라이브 스크린샷 저장됨 (또는 KT&G CDN URL 직접 임베드)
+[ ] 보고서 안에 QA 카드 component 블록 또는 note 차이 명시 임베드됨
 ```
