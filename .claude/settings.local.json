@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pwsh -File scripts/serve.ps1)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
+    ]
+  }
+}
