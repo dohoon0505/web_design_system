@@ -148,10 +148,90 @@ WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만 허용
 3. **사이트맵 전체 페이지 방문** — 메인 + 모든 서브페이지 1회씩 Chrome MCP `navigate`. 페이지마다 `wait 3-5s` 후 sH·title·body 폰트/색상 등 기본 토큰 채집
 4. **3-4 ticks 정밀 스크롤 + wait + 상태 채집** — 페이지당 5-8 스크롤 단위 (라이브 인스펙션 3차 패스 참조). `window.scrollTo` JS 사용 시 `document_idle` 대기 우회 가능
 5. **페이지별 섹션 + 라이브러리/접근성/기술/SEO/인터랙션 분리 작성** — Main / Sub × N (Company Intro / IR / ESG / Media / Career 등) / 컴포넌트 라이브러리 (단일 섹션 + 8-10 하위 그룹 heading 블록) / a11y (pub-semantic) / 기술 (image-system) / SEO (pub-perf-seo) / 인터랙션 카탈로그 (ix-hover · ix-scroll · ix-video). 실제 사이트 이미지 src 임베드 필수
-6. **페이지별 QA** — 각 페이지 작성 완료 즉시 Chrome MCP 재방문 + 스크린샷 + 보고서 비교. 디자인 100% 일치 여부 검증. QA 카드 component 블록 또는 `note` 블록으로 라이브 vs 재현 차이 명시 (analyses/{id}/screenshots/ 폴더 활용 또는 KT&G CDN URL 직접 임베드)
-7. **모든 디자인 QA + 버튼·인터랙션 효과 100% 구현** — Step 6를 모든 페이지·모든 디자인에 적용. 버튼 hover/active/disabled, 카드 transform, CTA rotate, 비디오 dual-source 등 인터랙션 누락 없음
+6. **페이지별 정량적 동작 QA (Mandatory)** — **텍스트 자기 보고형 QA 절대 금지**. 각 페이지 작성 완료 즉시 다음 (a)~(d) 4단계 수행:
+   - (a) 로컬 서버 (`python -m http.server 8088` 또는 `pwsh scripts/serve.ps1`)로 보고서를 띄우고 `#ref/{id}/{section}` URL에서 실제 렌더 확인
+   - (b) **Frame-by-Frame 비교**: 라이브 사이트에서 sY=0% / 25% / 50% / 75% / 100% 5단계 screenshot + 같은 스크롤 위치에서 보고서 렌더 화면도 캡처 (총 10장)
+   - (c) **Computed Style 시계열 채집**: 의심되는 요소(sticky/animation/counter)의 `getComputedStyle(el).position` · `getBoundingClientRect().top` · `opacity` · `animationName`을 매 스크롤 위치에서 JS로 채집 → 라이브와 보고서가 동일 수치인지 표로 대조
+   - (d) 차이 발견 시 즉시 컴포넌트 수정 → 일치할 때까지 반복. 차이 없음을 확인한 후에만 다음 페이지로
+   - `note` 블록에는 반드시 정량 데이터(좌표·position 값·color hex·duration ms) 또는 GIF/스크린샷 비교 카드만 허용. "QA 확인 완료" 같은 텍스트 자기 보고는 0% 가치이며 **금지**.
+7. **모든 디자인 + 인터랙션 QA** — Step 6의 정량 검증을 페이지마다 모든 컴포넌트에 적용. 버튼 hover/active/disabled, 카드 transform, CTA rotate, 비디오 dual-source, **sticky bg / scroll-reveal / counter 애니메이션** 등 인터랙션 누락 0건. `validate.mjs` 통과는 JSON 스키마 검증이지 시각·동작 검증이 아님 — 별개 절차로 처리.
 
-**중요**: 7-Step 진행 중 사이트가 OLD 보고서 시점 이후 리뉴얼된 경우 (KT&G 2026-05-15의 경우 .global Earth Globe 리뉴얼·.invest glassmorphism·AAA outline 색상 #A2C3FE → #8EAEFA 변경 등) 모든 디자인 변경 사항을 `smooth-interaction-catalog`의 "발견 #N" 형식으로 명시한다. OLD 데이터를 그대로 재사용하지 말 것.
+**중요 1 (디자인 변경 추적)**: 7-Step 진행 중 사이트가 OLD 보고서 시점 이후 리뉴얼된 경우 (KT&G 2026-05-15의 경우 .global Earth Globe 리뉴얼·.invest glassmorphism·AAA outline 색상 #A2C3FE → #8EAEFA 변경 등) 모든 디자인 변경 사항을 `smooth-interaction-catalog`의 "발견 #N" 형식으로 명시한다. OLD 데이터를 그대로 재사용하지 말 것.
+
+**중요 2 (응답 지연 대응)**: 라이브 사이트가 느리거나 Chrome MCP가 응답 지연되어도 **점검 횟수·깊이를 절대 줄이지 말 것**. KT&G 2026-05-15 사례에서 사이트 로딩 지연을 이유로 점검을 단축한 결과 sub-about-business sticky-sequence 패턴을 놓쳤음. 우회 옵션: (1) `wait duration` 5초 → 8~12초로 증가 (2) `browser_batch` 묶음을 줄이고 단일 호출로 분리 (3) 응답 끊김 시 `list_connected_browsers`로 사이드 패널 권한 확인 후 재시도. **'OLD 데이터로 채우고 진도 빼기'는 금지**.
+
+## 정량적 동작 검증 (Quantitative Behavior QA)
+
+**KT&G 2026-05-16 사례에서 의무화**: `sub-about-business` sticky-sequence + counter 패턴을 textual 자기 보고형 QA로 통과시킨 결과, 라이브 사이트는 배경 sticky + 스크롤 카드 + 카운터 애니메이션이 동작하지만 보고서는 정적 카드 1개로 잘못 재현되어 사용자가 직접 지적해야 했음. 재발 방지를 위해 다음 4가지 방법을 모든 페이지에 의무화한다.
+
+### 방법 1: Frame-by-Frame 스크린샷 비교
+`browser_batch`로 라이브 사이트에서 N개 스크롤 위치 (예: sY 0% / 25% / 50% / 75% / 100%)마다 screenshot + 같은 위치에서 보고서 렌더 화면도 캡처. 두 시퀀스를 나란히 두면 sticky·이동·고정 동작 차이가 즉시 보임.
+
+```json
+// browser_batch 표준 5단계 비교 시퀀스
+[
+  {"name":"javascript_tool","input":{"action":"javascript_exec","tabId":X,"text":"window.scrollTo(0, 0); 'top'"}},
+  {"name":"computer","input":{"action":"screenshot","tabId":X}},
+  {"name":"javascript_tool","input":{"action":"javascript_exec","tabId":X,"text":"window.scrollTo(0, document.body.scrollHeight*0.25); '25%'"}},
+  {"name":"computer","input":{"action":"screenshot","tabId":X}},
+  // ... 50%, 75%, 100% 동일 패턴
+]
+```
+
+### 방법 2: Computed Style 시계열 채집 (가장 객관적)
+스크롤 시 의심 요소의 CSS 값을 JS로 매 위치에서 기록 → 라이브와 보고서가 동일 수치인지 표로 대조. **시각 판단(스크린샷)보다 신뢰도 높음.**
+
+```js
+// 표준 채집 패턴 — 모든 sticky/animation 의심 요소에 적용
+JSON.stringify({
+  sY: window.scrollY,
+  els: ['.sticky-target','.counter-card','.animated-bg'].map(function(sel) {
+    var el = document.querySelector(sel);
+    if (!el) return null;
+    var cs = getComputedStyle(el);
+    var r = el.getBoundingClientRect();
+    return {
+      sel: sel,
+      position: cs.position,         // sticky/fixed/relative 확인
+      top: Math.round(r.top),        // viewport 상단으로부터의 거리
+      animationName: cs.animationName,
+      transition: cs.transition.slice(0,40),
+      opacity: cs.opacity
+    };
+  })
+})
+```
+
+해석:
+- `position: sticky` + `top` 값이 스크롤 중 항상 0 근처 → 정상 sticky 작동
+- `top` 값이 스크롤 양만큼 음수로 줄어듦 → sticky 안 됨 (`overflow: hidden` 부모 의심)
+- `animationName !== 'none'` → CSS @keyframes 활성
+- `opacity` 변화 → fade-in/out 작동 중
+
+### 방법 3: 클래스명·CSS 키워드 패턴 매칭 (작성 시점 안전장치)
+라이브 페이지의 클래스명에 다음 키워드가 보이면 **즉시 멈춰서** computed style을 채집 후 재현에 반영. 자동 트리거 룰:
+
+| 키워드 패턴 | 의미 | 필수 채집 항목 |
+|---|---|---|
+| `sticky-*` / `*--sticky` | position:sticky 가능성 99% | position, top, height, 부모 overflow |
+| `sequence-*` / `parallax-*` | 스크롤 기반 인터랙션 | outer height vs inner sticky height |
+| `counter-*` / `count-up` / `__number` | IntersectionObserver + 숫자 애니메이션 | data-target, animationDuration |
+| `*-animation` / `__animated` / `animate-*` | CSS @keyframes 또는 JS 애니메이션 | animationName, animationDuration |
+| `*-reveal` / `*-fade-*` / `aos-*` | 진입 시 opacity/transform 트랜지션 | opacity, transform, IntersectionObserver |
+
+### 방법 4: GIF 생성 비교 (옵션)
+`mcp__Claude_in_Chrome__gif_creator`로 라이브 사이트와 보고서 렌더 모두 GIF 캡처 → 두 GIF를 나란히 두고 동작 패턴 일치 검증. Frame-by-Frame보다 자연스러운 비교 가능.
+
+### QA 안티패턴 (절대 금지)
+다음 행동은 KT&G 사례에서 실패로 입증된 패턴이며 향후 절대 금지:
+
+- ❌ **"QA 확인 완료" 같은 텍스트 자기 보고** — 0% 가치. 정량 데이터 또는 스크린샷 비교 카드만 허용.
+- ❌ **`validate.mjs` 통과 = 시각·동작 검증으로 간주** — JSON 스키마 검증일 뿐.
+- ❌ **단일 스크린샷으로 sticky/scroll 동작 판정** — 정적 캡처는 한순간의 모습만 보여줌. 시간축 비교 필수.
+- ❌ **라이브 사이트가 느리다고 점검 횟수 축소** — `wait` 늘리고 끝까지 점검.
+- ❌ **보고서를 한 번도 로컬에서 렌더해 보지 않고 작성 종료** — 모든 컴포넌트는 실제 브라우저에서 1회 이상 확인 필수.
+- ❌ **클래스명에 sticky·sequence·animation·counter 키워드가 보이는데 computed style 채집 생략** — 클래스명은 라이브 사이트가 직접 알려주는 힌트.
+- ❌ **OLD 보고서 데이터를 spot-check 없이 그대로 복사** — 사이트는 리뉴얼되었을 수 있음.
 
 ## 라이브 인스펙션 — Chrome MCP
 
@@ -375,10 +455,17 @@ node scripts/validate.mjs
 [ ] 컴포넌트 클래스명 접두사 부착
 [ ] system.json.references[] 엔트리 추가
 [ ] system.json.counts.references 갱신
-[ ] node scripts/validate.mjs 통과
-[ ] 브라우저 렌더 확인
-[ ] Step 6 페이지별 라이브 vs 재현 QA 완료
-[ ] Step 7 모든 버튼·hover·active·인터랙션 css 정의됨
-[ ] analyses/{id}/screenshots/ 폴더에 QA 라이브 스크린샷 저장됨 (또는 KT&G CDN URL 직접 임베드)
+[ ] node scripts/validate.mjs 통과 (JSON 스키마 — 시각/동작 검증 아님)
+[ ] **로컬 서버 띄워 브라우저에서 #ref/{id}/{section} 직접 렌더 확인** (필수)
+[ ] **Frame-by-Frame 스크린샷 비교 완료** (sY 0/25/50/75/100% 5단계 × 라이브+보고서 = 10장)
+[ ] **Computed Style 시계열 채집 완료** — sticky/animation/counter 요소의 position·top·animationName 수치 표로 비교
+[ ] **클래스명에 sticky·sequence·animation·counter·reveal·parallax 키워드 보이면 즉시 computed style 채집** (자가 점검)
+[ ] note 블록에 정량 데이터(좌표·position 값·hex·duration ms) 또는 스크린샷 비교 카드만 — **텍스트 자기보고 0건**
+[ ] 사이트 응답 지연 시 점검 축소 안 함 (wait 5초 → 8~12초로 증가하여 우회)
+[ ] OLD 보고서 데이터를 그대로 복사하지 않음 — 라이브 spot-check 후 일치 확인
+[ ] Step 6 페이지별 정량 동작 QA 완료
+[ ] Step 7 모든 버튼·hover·active·sticky·scroll·counter·video 인터랙션 css/js 정의됨
+[ ] analyses/{id}/screenshots/ 폴더에 QA 라이브 스크린샷 저장됨 (또는 사이트 CDN URL 직접 임베드)
 [ ] 보고서 안에 QA 카드 component 블록 또는 note 차이 명시 임베드됨
+[ ] **QA 안티패턴 7종 모두 회피** (텍스트 자기보고 / validate.mjs를 동작 검증으로 간주 / 단일 스크린샷 판정 / 응답 지연 시 축소 / 렌더 미확인 / 클래스명 키워드 무시 / OLD 데이터 그대로 복사)
 ```
