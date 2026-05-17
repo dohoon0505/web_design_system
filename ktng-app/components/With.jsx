@@ -8,6 +8,21 @@ const FOOTER_COLS = [
   { h: '인재채용', items: ['인사제도', '직무소개', '채용가이드'] },
 ];
 
+const WITH_CARDS = [
+  {
+    title: 'Business',
+    desc: 'KT&G의 주요 핵심사업을 소개합니다',
+    cta: '주요사업 바로가기',
+    img: 'https://www.ktng.com/images/main/with-1.webp',
+  },
+  {
+    title: 'Career',
+    desc: 'KT&G와 함께 성장할 글로벌 인재를 찾습니다',
+    cta: '인재채용 바로가기',
+    img: 'https://www.ktng.com/images/main/with-2.webp',
+  },
+];
+
 export default function With() {
   const sectionRef = useRef(null);
   useEffect(() => {
@@ -15,7 +30,7 @@ export default function With() {
     if (!els) return;
     const obs = new IntersectionObserver(es => {
       es.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
     els.forEach(el => obs.observe(el));
     return () => obs.disconnect();
   }, []);
@@ -23,11 +38,23 @@ export default function With() {
   return (
     <>
       <section ref={sectionRef} className="with">
-        <div className="with__hero">
-          <h2 className="with__h" data-reveal>KT&G의 주요 핵심사업을 소개합니다</h2>
-          <button className="with__cta" data-reveal>주요사업 바로가기 <span className="with__cta-icon">→</span></button>
+        <div className="with__container">
+          <div className="with__heading" data-reveal>
+            <div className="with__eyebrow">With KT&G</div>
+            <h2 className="with__h">함께 그리는 KT&G의 미래</h2>
+          </div>
+          <div className="with__grid">
+            {WITH_CARDS.map((c, i) => (
+              <div key={i} className="with__card" data-reveal>
+                <h3 className="with__card-title">{c.title}</h3>
+                <p className="with__card-desc">{c.desc}</p>
+                <button className="with__card-cta">{c.cta} <span className="with__card-cta-icon">→</span></button>
+                <div className="with__card-img" style={{ backgroundImage: `url(${c.img})` }} />
+              </div>
+            ))}
+          </div>
+          <button className="with__top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Scroll to top">↑</button>
         </div>
-        <div className="with__map" />
       </section>
       <footer className="footer">
         <div className="footer__grid">
@@ -50,16 +77,25 @@ export default function With() {
         </div>
       </footer>
       <style jsx>{`
-        .with { position: relative; padding: 120px 89px 0; background: #fff; height: 1083px; overflow: hidden; }
-        .with__hero { max-width: 1500px; margin: 0 auto 120px; text-align: center; }
-        .with__h { font-size: 84px; font-weight: 600; color: rgba(0,0,0,0.15); letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 32px; opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out, color 1s ease-out; }
-        .with__h.is-visible { opacity: 1; transform: translateY(0); color: rgba(0,0,0,0.25); }
-        .with__cta { display: inline-flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 500; color: #000; background: transparent; border: none; cursor: pointer; opacity: 0; transform: translateY(20px); transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s; }
-        .with__cta.is-visible { opacity: 1; transform: translateY(0); }
-        .with__cta-icon { width: 48px; height: 48px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; transition: var(--tx-all); }
-        .with__cta:hover .with__cta-icon { transform: translateX(6px) rotate(-12deg); }
-        .with__map { position: relative; width: 100%; height: 320px; margin-bottom: 80px; border-radius: 24px; overflow: hidden; background: radial-gradient(ellipse at 30% 50%, rgba(216,144,125,0.25) 0%, transparent 50%), radial-gradient(ellipse at 70% 50%, rgba(180,100,140,0.3) 0%, transparent 50%), linear-gradient(135deg, #1a2545 0%, #2a3565 50%, #4a3050 100%); }
-        .with__map::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 8% 20% at 15% 50%, rgba(216,144,125,0.6), transparent 70%), radial-gradient(ellipse 12% 30% at 35% 55%, rgba(80,40,30,0.7), transparent 70%), radial-gradient(ellipse 18% 35% at 55% 50%, rgba(60,30,25,0.8), transparent 70%), radial-gradient(ellipse 15% 25% at 75% 55%, rgba(216,144,125,0.5), transparent 70%); mix-blend-mode: screen; }
+        .with { position: relative; padding: 120px 89px; background: #fff; min-height: 1083px; }
+        .with__container { max-width: 1500px; margin: 0 auto; position: relative; }
+        .with__heading { margin-bottom: 64px; opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .with__heading.is-visible { opacity: 1; transform: translateY(0); }
+        .with__eyebrow { font-size: 18px; font-weight: 500; color: #000; margin-bottom: 24px; letter-spacing: 0.02em; }
+        .with__h { font-size: 64px; font-weight: 600; color: #000; letter-spacing: -0.025em; line-height: 1.15; margin: 0; }
+        .with__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .with__card { position: relative; opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .with__card.is-visible { opacity: 1; transform: translateY(0); }
+        .with__card:nth-child(2).is-visible { transition-delay: 0.2s; }
+        .with__card-title { font-size: 88px; font-weight: 600; color: #000; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 24px; }
+        .with__card-desc { font-size: 20px; color: #000; line-height: 1.5; margin: 0 0 24px; }
+        .with__card-cta { display: inline-flex; align-items: center; gap: 14px; font-size: 18px; font-weight: 500; color: #000; background: transparent; border: none; cursor: pointer; padding: 0; margin-bottom: 40px; }
+        .with__card-cta-icon { width: 40px; height: 40px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); font-size: 16px; }
+        .with__card-cta:hover .with__card-cta-icon { transform: translateX(6px) rotate(-12deg); }
+        .with__card-img { width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 16px; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+        .with__card:hover .with__card-img { transform: scale(1.02); }
+        .with__top-btn { position: absolute; right: 0; bottom: -16px; width: 56px; height: 56px; border-radius: 50%; background: #000; color: #fff; border: none; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+        .with__top-btn:hover { transform: translateY(-4px); }
         .footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.06); padding: 60px 89px 40px; }
         .footer__grid { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr) auto; gap: 40px; }
         .footer__col h4 { font-size: 16px; font-weight: 600; color: #000; margin: 0 0 18px; }
@@ -71,7 +107,12 @@ export default function With() {
         .footer__social { display: flex; gap: 14px; }
         .footer__social a { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: #000; text-decoration: none; font-size: 14px; }
         .footer__bottom { max-width: 1500px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.04); display: flex; justify-content: space-between; font-size: 12px; color: #787878; flex-wrap: wrap; gap: 14px; }
-        @media (max-width: 1024px) { .with__h { font-size: 42px; } .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1024px) {
+          .with__h { font-size: 36px; }
+          .with__grid { grid-template-columns: 1fr; gap: 48px; }
+          .with__card-title { font-size: 48px; }
+          .footer__grid { grid-template-columns: repeat(2, 1fr); }
+        }
       `}</style>
     </>
   );
