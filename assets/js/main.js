@@ -322,6 +322,27 @@
     if (block.title) {
       h += '<div class="blk-component-title">' + escapeHtml(block.title) + '</div>';
     }
+
+    // Preview-button mode: when block.preview URL is set, render a thumbnail card + [프리뷰] button
+    // that opens a Figma-style modal with the live preview page (matching KT&G tech stack).
+    if (block.preview) {
+      var thumbBg = block.thumbBg ? ' style="background:' + escapeHtml(block.thumbBg) + '"' : '';
+      var thumbLabel = block.thumbLabel || block.title || 'Preview';
+      h += '<div class="blk-preview-card">';
+      h += '  <div class="blk-preview-thumb"' + thumbBg + '>';
+      h += '    <div class="blk-preview-thumb-label">' + escapeHtml(thumbLabel) + '</div>';
+      h += '    <div class="blk-preview-thumb-meta">' + escapeHtml(block.preview) + '</div>';
+      h += '  </div>';
+      h += '  <button class="blk-preview-btn" data-preview-url="' + escapeHtml(block.preview) + '" data-preview-title="' + escapeHtml(block.title || '') + '">';
+      h += '    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+      h += '    <span>프리뷰 열기</span>';
+      h += '  </button>';
+      h += '</div>';
+      h += '</div>';
+      return h;
+    }
+
+    // Legacy inline preview mode (existing component blocks with inline HTML/CSS/JS)
     var previewCls = 'blk-component-preview' + (block.fullWidth ? ' blk-component-preview--full' : '');
     h += '<div class="' + previewCls + '" id="' + id + '"';
     h += ' data-html="' + escapeHtml(block.html || '') + '"';
@@ -387,6 +408,85 @@
         ioObserver.observe(el);
       }
     });
+
+    // Wire up [프리뷰 열기] buttons → open modal with the preview page
+    var previewBtns = document.querySelectorAll('.blk-preview-btn');
+    previewBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var url = btn.getAttribute('data-preview-url');
+        var title = btn.getAttribute('data-preview-title') || '';
+        openPreviewModal(url, title);
+      });
+    });
+  }
+
+  /* ============ PREVIEW MODAL (Figma-style overlay) ============ */
+  function ensurePreviewModal() {
+    var modal = document.getElementById('preview-modal');
+    if (modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'preview-modal';
+    modal.className = 'preview-modal';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('role', 'dialog');
+    modal.innerHTML = ''
+      + '<div class="preview-modal__backdrop" data-close></div>'
+      + '<div class="preview-modal__panel">'
+      +   '<header class="preview-modal__header">'
+      +     '<div class="preview-modal__title-wrap">'
+      +       '<span class="preview-modal__badge">PREVIEW</span>'
+      +       '<span class="preview-modal__title"></span>'
+      +     '</div>'
+      +     '<div class="preview-modal__controls">'
+      +       '<a class="preview-modal__open-tab" target="_blank" rel="noopener noreferrer" title="새 탭에서 열기">'
+      +         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+      +       '</a>'
+      +       '<button class="preview-modal__close" data-close title="닫기 (ESC)" aria-label="닫기">'
+      +         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+      +       '</button>'
+      +     '</div>'
+      +   '</header>'
+      +   '<div class="preview-modal__viewport">'
+      +     '<iframe class="preview-modal__frame" title="Preview" loading="lazy"></iframe>'
+      +   '</div>'
+      + '</div>';
+    document.body.appendChild(modal);
+
+    // Close handlers
+    modal.querySelectorAll('[data-close]').forEach(function (el) {
+      el.addEventListener('click', closePreviewModal);
+    });
+    // ESC key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closePreviewModal();
+    });
+    return modal;
+  }
+
+  function openPreviewModal(url, title) {
+    var modal = ensurePreviewModal();
+    var frame = modal.querySelector('.preview-modal__frame');
+    var titleEl = modal.querySelector('.preview-modal__title');
+    var openTab = modal.querySelector('.preview-modal__open-tab');
+    titleEl.textContent = title || 'Preview';
+    openTab.setAttribute('href', url);
+    frame.setAttribute('src', url);
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePreviewModal() {
+    var modal = document.getElementById('preview-modal');
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // Clear iframe src to stop video/audio
+    setTimeout(function () {
+      var frame = modal.querySelector('.preview-modal__frame');
+      if (frame) frame.setAttribute('src', 'about:blank');
+    }, 220);
   }
 
   /* ============ REPORT RENDERING ============ */
