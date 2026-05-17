@@ -360,6 +360,126 @@ const animEls = Array.from(document.querySelectorAll('*')).filter(el => {
 - 인터랙션이 필요하면 `js` 필드에 vanilla JS 한 줄짜리 IIFE로 작성
 - `fullWidth: true` 옵션으로 큰 데모 컴포넌트는 풀폭 가능
 
+## Tier-A 아키텍처: 별도 프로젝트 + 프리뷰 모달 (KT&G 2026-05-17에서 정립)
+
+복잡한 페이지 (스크롤 인터랙션, sticky-sequence, 동적 차트, 라이브 데이터 등)는 **인라인 component 블록의 본질적 한계** (보고서 컨테이너의 overflow/scroll context · viewport 단위 부정확 · CSS/JS 충돌 등) 때문에 100% 재현 불가능하다. 이런 경우 다음 아키텍처를 적용한다.
+
+### 언제 Tier-A를 적용하는가
+
+다음 중 하나라도 해당되면 인라인 컴포넌트 대신 별도 프로젝트 + 프리뷰 모달 사용:
+- `position:sticky`나 `scroll-driven` 인터랙션이 핵심인 섹션 (sticky-sequence, parallax 등)
+- viewport 단위 `100vh`로는 라이브 정확한 px 재현 불가능한 풀폭 섹션
+- WebGL / Three.js / Lottie 등 외부 라이브러리 의존 컴포넌트
+- 라이브 데이터 polling (KOSPI ticker, 카운터 등) 필요
+- 복잡한 IntersectionObserver/RAF 시퀀스
+- 보고서 컨테이너의 `overflow:hidden` 영향받는 sticky 패턴
+
+단순 컴포넌트 (버튼, 카드, 폼 등)는 그대로 인라인 `component` 블록 사용.
+
+### 별도 프로젝트 구조 (라이브 사이트의 실제 기술 스택과 일치)
+
+라이브 사이트의 실제 기술 스택 (Next.js + React, Vue + Nuxt, Vanilla JS 등)을 직접 사용해 별도 프로젝트로 빌드. KT&G 사례 (Next.js + React):
+
+```
+{site}-app/                           ← 라이브 사이트와 동일한 기술 스택의 클론
+├── package.json                      ← 라이브 사이트가 쓰는 프레임워크 버전 일치
+├── next.config.js                    ← output:'export' (정적 빌드)
+├── pages/
+│   ├── _app.js
+│   └── index.jsx                    ← 메인 페이지 (섹션 조합)
+├── components/
+│   ├── Hero.jsx                     ← 라이브 사이트의 정확한 클래스명 (.kv 등) + styled-jsx
+│   ├── Global.jsx                   ← useRef + useEffect + IntersectionObserver
+│   └── ... (라이브의 각 섹션 1:1 대응)
+├── styles/globals.css               ← 디자인 토큰 + Pretendard 등 폰트 import
+└── README.md                        ← 빌드 가이드
+```
+
+빌드 명령:
+```bash
+cd {site}-app
+npm install
+npm run export    # → ../public/{site}-preview/ 정적 빌드 출력
+```
+
+### 임시 정적 HTML 대안
+
+Next.js 빌드 전이거나 환경에 npm 없는 경우, `components/{site}/*.html` 폴더에 동등 정적 HTML 파일을 만들어 preview URL로 사용 가능. 디자인은 동일하지만 React 소스가 아닌 vanilla HTML/CSS/JS.
+
+### 보고서의 [프리뷰 열기] 버튼 + 피그마 모달
+
+`assets/js/main.js`의 `renderComponent()`가 `block.preview` 필드를 감지하면 인라인 렌더 대신 프리뷰 카드 + 버튼을 출력한다:
+
+```json
+{
+  "type": "component",
+  "title": "독립 컴포넌트 (Next.js): ktng-app/components/Invest.jsx",
+  "preview": "components/ktng/invest.html",
+  "thumbBg": "linear-gradient(135deg,#d8c4b0,#a8aab8,#c0a890)",
+  "thumbLabel": "메인 .invest — Invest Relations 5장 카드"
+}
+```
+
+버튼 클릭 시 피그마 스타일 모달 오버레이가 열림:
+- 96vw × 94vh 풀스크린 패널
+- 검정 헤더 + `PREVIEW` 청색 배지 + 컴포넌트 제목 + ↗ 새 탭 열기 + × 닫기
+- ESC 키 / 배경 클릭 / × 버튼 모두 닫기 지원
+- body scroll lock + iframe src clear on close (비디오/오디오 자동 중단)
+- cubic-bezier(0.22,1,0.36,1) pop 애니메이션
+
+### 라이브 정확한 px 사용 (100vh 금지)
+
+**100vh 절대 금지**. 라이브 사이트의 정확한 픽셀값을 사용한다. 라이브는 viewport와 무관한 고정 px:
+
+| 컴포넌트 | 라이브 정확 px | ❌ 금지 |
+|---|---|---|
+| KT&G .kv | `height: 855px` | `100vh` (≈911) |
+| KT&G .global outer | `4275px` | `500vh` |
+| KT&G .global__content (sticky) | `855px` | `100vh` |
+| KT&G .invest | `1027px` | `100vh` |
+| KT&G .news | `1013px` | `100vh` |
+| KT&G .with | `1083px` | `120vh` |
+
+라이브 정확 px 채집 방법:
+```js
+// Chrome MCP javascript_tool
+JSON.stringify(Array.from(document.querySelectorAll('main > *, .target')).map(el => ({
+  cls: el.className.toString(),
+  h: el.offsetHeight  // ← 라이브 정확 px
+})))
+```
+
+### React 컴포넌트 작성 규칙
+
+- 라이브 사이트의 정확한 클래스명 사용 (`.kv`, `.global`, `.invest` 등) — BEM 컨벤션 그대로
+- `useRef + useEffect` 로 IntersectionObserver / scroll listener 구현
+- `styled-jsx` 또는 CSS Modules로 컴포넌트 스코프 CSS
+- `globals.css`에 디자인 토큰 (CSS Variables) 공통 정의
+- 라이브 사이트의 실제 CDN 자산 (이미지, 비디오) 직접 임베드
+- prefers-reduced-motion 미디어 쿼리로 접근성 지원
+
+### 디자이너 사용 가이드
+
+1. 보고서에서 [프리뷰 열기] 클릭 → 모달로 100% 동일 디자인 확인
+2. `{site}-app/components/{Name}.jsx` 그대로 복사해 자기 Next.js 프로젝트에 사용
+3. `{site}-app/styles/globals.css`의 디자인 토큰도 함께 복사
+4. 라이브 사이트와 동일한 클래스명 사용 → 다른 곳에 붙여넣어도 동작 일치
+
+### Tier-A 적용 시 체크리스트
+
+```
+[ ] {site}-app/ Next.js + React (또는 라이브 사이트의 실제 프레임워크) 프로젝트 신규 생성
+[ ] components/{Name}.jsx 각 섹션 1:1 대응 + 라이브 클래스명 그대로 사용
+[ ] styles/globals.css에 디자인 토큰 + 폰트 정의
+[ ] 모든 height를 라이브 정확한 px로 (100vh 금지)
+[ ] 라이브 CDN 자산 직접 임베드 (KT&G의 webgl/2k_stars_milky_way.webp 등)
+[ ] 임시 정적 HTML 동등 (components/{site}/*.html) 작성하여 preview URL로 즉시 동작
+[ ] analysis.json component 블록에 block.preview / thumbBg / thumbLabel 추가
+[ ] 보고서 모달 동작 검증 ([프리뷰 열기] 클릭 → 모달 오픈 → 콘텐츠 정상 → ESC 닫기)
+[ ] React 소스 + 정적 HTML 양쪽 모두 라이브와 시각 일치 (Chrome MCP 교차 검증)
+[ ] {site}-app/README.md에 빌드 명령 + 디자이너 가이드 명시
+```
+
 ## 시그니처 컴포넌트 표기
 
 해당 사이트의 정체성을 만드는 독특한 패턴(다른 사이트에는 거의 없는)은 본문 안에서 🟢 emoji로 표시한다. 단 **섹션 타이틀에는 절대 금지**.
@@ -468,4 +588,7 @@ node scripts/validate.mjs
 [ ] analyses/{id}/screenshots/ 폴더에 QA 라이브 스크린샷 저장됨 (또는 사이트 CDN URL 직접 임베드)
 [ ] 보고서 안에 QA 카드 component 블록 또는 note 차이 명시 임베드됨
 [ ] **QA 안티패턴 7종 모두 회피** (텍스트 자기보고 / validate.mjs를 동작 검증으로 간주 / 단일 스크린샷 판정 / 응답 지연 시 축소 / 렌더 미확인 / 클래스명 키워드 무시 / OLD 데이터 그대로 복사)
+[ ] **Tier-A 결정**: sticky-sequence/parallax/WebGL/라이브 ticker 같은 복잡 인터랙션이 있으면 → 별도 프로젝트 + 프리뷰 모달 (인라인 component 블록 금지)
+[ ] **Tier-A 적용 시**: {site}-app/ Next.js + React 프로젝트 생성 + 라이브 정확한 px 사용 (100vh 금지) + block.preview URL 추가 + 모달 동작 검증
+[ ] **Tier-A 임시 정적 HTML**: components/{site}/*.html 동등 파일도 함께 만들어 npm 빌드 전에도 preview URL 즉시 동작
 ```

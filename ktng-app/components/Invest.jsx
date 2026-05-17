@@ -102,7 +102,7 @@ export default function Invest() {
         </div>
       </div>
       <style jsx>{`
-        .iv { position: relative; padding: 80px 89px; color: #000; min-height: 100vh; background: linear-gradient(135deg, rgba(220,170,150,0.45) 0%, rgba(180,190,200,0.5) 25%, rgba(160,170,180,0.55) 50%, rgba(170,170,170,0.5) 75%, rgba(200,180,160,0.45) 100%), linear-gradient(180deg, #d8d8d8 0%, #b8b8b8 100%); overflow: hidden; }
+        .iv { position: relative; padding: 80px 89px; color: #000; height: 1027px; background: linear-gradient(135deg, rgba(220,170,150,0.45) 0%, rgba(180,190,200,0.5) 25%, rgba(160,170,180,0.55) 50%, rgba(170,170,170,0.5) 75%, rgba(200,180,160,0.45) 100%), linear-gradient(180deg, #d8d8d8 0%, #b8b8b8 100%); overflow: hidden; }
         .iv__title { font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.01em; margin-bottom: 32px; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         .iv__grid { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 24px; align-items: stretch; }
         .iv__col-mid { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; }

@@ -9,7 +9,7 @@ export default function Sustainability() {
         <div className="sus__leaf sus__leaf--4" />
       </div>
       <style jsx>{`
-        .sus { position: relative; height: 100vh; background: #fff; overflow: hidden; padding: 0 89px; display: flex; align-items: center; }
+        .sus { position: relative; height: 855px; background: #fff; overflow: hidden; padding: 0 89px; display: flex; align-items: center; }
         .sus__h { font-size: 84px; font-weight: 600; color: #000; letter-spacing: -0.025em; line-height: 1.15; position: relative; z-index: 2; max-width: 60%; margin: 0; }
         .sus__leaves { position: absolute; top: 50%; right: 12%; transform: translateY(-50%); width: 560px; height: 560px; pointer-events: none; z-index: 1; }
         .sus__leaf { position: absolute; width: 140px; height: 320px; border-radius: 70px; transform-origin: bottom center; animation: sus-sway 6s ease-in-out infinite; }

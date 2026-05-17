@@ -102,9 +102,9 @@ export default function Global() {
         </div>
       </div>
       <style jsx>{`
-        .global { position: relative; height: 500vh; background: #fff; }
+        .global { position: relative; height: 4275px; background: #fff; }
         .global__stars { position: absolute; inset: 0; background: #000 url('https://www.ktng.com/webgl/2k_stars_milky_way.webp') center/cover no-repeat; opacity: 0.85; z-index: 0; }
-        .global__content { position: sticky; top: 0; height: 100vh; overflow: hidden; z-index: 1; }
+        .global__content { position: sticky; top: 0; height: 855px; overflow: hidden; z-index: 1; }
         .global__heading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 5; background: #fff; padding: 80px 89px; width: 100%; box-sizing: border-box; will-change: opacity; }
         .global__label { font-size: 18px; font-weight: 500; color: #000; margin-bottom: 24px; letter-spacing: 0.02em; }
         .global__title { font-size: 72px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; margin: 0; color: #000; }

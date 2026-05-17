@@ -50,7 +50,7 @@ export default function With() {
         </div>
       </footer>
       <style jsx>{`
-        .with { position: relative; padding: 120px 89px 0; background: #fff; min-height: 100vh; overflow: hidden; }
+        .with { position: relative; padding: 120px 89px 0; background: #fff; height: 1083px; overflow: hidden; }
         .with__hero { max-width: 1500px; margin: 0 auto 120px; text-align: center; }
         .with__h { font-size: 84px; font-weight: 600; color: rgba(0,0,0,0.15); letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 32px; opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out, color 1s ease-out; }
         .with__h.is-visible { opacity: 1; transform: translateY(0); color: rgba(0,0,0,0.25); }

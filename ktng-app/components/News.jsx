@@ -46,7 +46,7 @@ export default function News() {
         </div>
       </div>
       <style jsx>{`
-        .news { position: relative; padding: 120px 89px; background: #fff; min-height: 100vh; overflow: hidden; }
+        .news { position: relative; padding: 120px 89px; background: #fff; height: 1013px; overflow: hidden; }
         .news__label { font-size: 18px; font-weight: 500; color: #787878; margin-bottom: 48px; letter-spacing: 0.04em; opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .news__label.is-visible { opacity: 1; transform: translateY(0); }
         .news__grid { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }

@@ -24,7 +24,7 @@ export default function Hero() {
       </div>
       <div className="kv__scroll">Scroll Down</div>
       <style jsx>{`
-        .kv { position: relative; height: 100vh; width: 100%; overflow: hidden; background: #000; }
+        .kv { position: relative; height: 855px; width: 100%; overflow: hidden; background: #000; }
         .kv :global(.kv__video) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         .kv__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.2)); z-index: 1; }
         .kv__text { position: absolute; inset: 0; padding: 0 89px; display: flex; flex-direction: column; justify-content: center; z-index: 2; color: #fff; }
