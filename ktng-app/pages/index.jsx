@@ -17,8 +17,8 @@ export default function Home() {
         <Hero />
         <Global />
         <Sustainability />
-        <Invest />
         <News />
+        <Invest />
         <With />
       </main>
     </>
