@@ -14,6 +14,13 @@
           "value": "주식회사 케이티앤지 (KT&G CORPORATION). 1987년 4월 1일 설립. 매출 65,797억원 / 임직원 4,094명 (25년 사업보고서 기준) / 4 사업 영역 (담배 66.4% · 건강기능 17.3% · 제약·바이오 5.5% · 부동산 10.8%). 글로벌: 해외 법인·지사 17 / 해외궐련 사업 운영 140국 / 해외궐련 판매 65.2 billion sticks / NGP 스틱 1.478 billion. 신용등급 5종 - AAA × 3 (나이스신용평가/한국기업평가/한국신용평가) + A3 (Moody's) + A- (S&P). 2026-05-15 13:46 기준 주가 180,500원 ▼ 8,500 (-4.50%) — IR 페이지 dark navy ticker 라이브 연동. GNB 5 메뉴 (회사소개·투자정보·지속가능경영·미디어·인재채용) + 우측 고객문의·비윤리행위 신고·안전보건소통마당·🌐 언어."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/pages/index.jsx — 사이트 메인 (6 섹션 전체)",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a1530,#1a2a5a,#3a5a8a)",
+          "thumbLabel": "메인 페이지 — KV / Global / Sustainability / Invest / News / With 6 섹션 전체 라이브 데모"
+        },
+        {
           "type": "kv",
           "title": "라이브 채집 페이지 길이 (2026-05-15)",
           "columns": 2,
@@ -142,6 +149,13 @@
           "value": "KT&G 디자인 시스템은 '코퍼레이트 트러스트'와 '인터랙티브 모더니티'를 양 축으로 결합한 무채색 시스템이다. 본문 단일 컬러 #000 + 보조 #787878 외에 강조 컬러를 거의 사용하지 않는 대신, 라이브 KOSPI ticker · iridescent Hero 비디오 · glassmorphism 카드 · scroll-reveal 거대 ghost 헤딩 등 인터랙션 레이어로 풍부함을 만든다. 'all' transition 752건 + 'background-size 0.3s ease-in-out' 22건이 라이브 채집된 점이 이 사이트가 단순한 코퍼레이트 사이트가 아니라 매우 인터랙티브한 디자인 시스템임을 정량으로 증명한다."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/pages/index.jsx — 6 디자인 원칙 적용 메인",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#1a2530,#3a4550,#5a6570)",
+          "thumbLabel": "디자인 철학 적용 — Bold Black Headline + Minimal White + Pretendard + 1500px Container + 855px 섹션 + 라이브 인터랙션"
+        },
+        {
           "type": "kv",
           "title": "비주얼 랭귀지 6원칙 (Chrome MCP 라이브 채집 근거)",
           "columns": 1,
@@ -199,6 +213,13 @@
         {
           "type": "text",
           "value": "Chrome MCP getComputedStyle 라이브 채집 토큰. 메인 페이지 800개 요소 스캔 결과를 기준으로 정리."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/styles/globals.css — CSS Variables 토큰 시스템",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#262626,#404040,#666666)",
+          "thumbLabel": "디자인 토큰 — --c-aaa-outline #A2C3FE / --fs-headline-2 104px / --tx-all cubic-bezier(0.4,0,0.2,1) 등 적용된 메인"
         },
         {
           "type": "component",
@@ -682,6 +703,13 @@
           "value": "Chrome MCP getComputedStyle 빈도 채집 (800개 요소 스캔 / 메인 페이지 기준). 흰색 440 + 회색 14 + AAA outline 청색 5 + 다크 영역 5 + 잎사귀 그린 1."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 컬러 시스템 적용 메인 페이지",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(90deg,#000 0%,#000 30%,#A2C3FE 30%,#A2C3FE 50%,#fff 50%,#fff 75%,#787878 75%)",
+          "thumbLabel": "컬러 팔레트 — Black #000 70% + White #FFFFFF + AAA Outline #A2C3FE 1.5px + Gray #787878 + 5 메탈릭 그라데이션"
+        },
+        {
           "type": "palette",
           "title": "기본 무채색 팔레트 (라이브 빈도 채집)",
           "colors": [
@@ -819,6 +847,13 @@
           "value": "Pretendard, system-ui, sans-serif 단일 폰트 (body.fontFamily 라이브 실측). 11단계 BEM 타입스케일 + weight 400/500/600/700 4종. ESG Hero만 Arial (영문 헤딩 'Empowering Sustainability for Growth' 추가 굵게)."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): Pretendard 타이포그래피 적용",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#fff,#f0f0f0)",
+          "thumbLabel": "타입 스케일 — Headline-1 132px / Headline-2 104px / Headline-5 64px / Title-3 24px / Body-1 18px Pretendard 적용"
+        },
+        {
           "type": "typo",
           "items": [
             {
@@ -914,6 +949,13 @@
           "value": "KT&G 아이콘은 시그니처 정체성을 위해 4-blade 잎사귀 모티브 + minimal arrow 시스템을 채택. 본질적으로 텍스트 + 화살표 + 픽토그램 3 카테고리로 압축."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): SVG 아이콘 시스템",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#fff,#e8e8e8)",
+          "thumbLabel": "아이콘 인벤토리 — 화살표 → / 햄버거 / 글로벌 / 검색 / 다운로드 / 외부링크 SVG 24px-40px 적용"
+        },
+        {
           "type": "kv",
           "title": "라이브 채집 아이콘 인벤토리",
           "columns": 1,
@@ -984,6 +1026,13 @@
         {
           "type": "text",
           "value": "WebP 메인 포맷 + SVG 다이어그램·로고 + webm+mp4 듀얼 비디오. attach/download/{UUID} CMS 패턴 (메인 Hero 비디오)·images/{category}/{slug}-desktop.webp 정적 경로 패턴 (서브페이지 이미지)."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 영상·이미지 시스템 — 비디오 헤로",
+          "preview": "ktng-preview/about/introduction/index.html",
+          "thumbBg": "linear-gradient(135deg,#dde0e8,#e8dfe5,#f0e8e3)",
+          "thumbLabel": "비디오 헤로 — KT&G CDN /video/about/introduction/kv.webm 자동재생 + WebP/JPG hybrid + lazy load"
         },
         {
           "type": "kv",
@@ -1085,6 +1134,13 @@
           ]
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 1500px 그리드 컨테이너",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#fff,#f8f8f8)",
+          "thumbLabel": "컨테이너 그리드 — max-width 1500px + 89px 좌우 패딩 + 12 컬럼 + 32-64px 거터 적용 메인"
+        },
+        {
           "type": "kv",
           "title": "그리드 패턴",
           "columns": 1,
@@ -1134,6 +1190,13 @@
               "value": "<768px - 1-col 스택 / 폰트 스케일 다운"
             }
           ]
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 반응형 미디어 쿼리",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#fff,#e8e8e8)",
+          "thumbLabel": "브레이크포인트 — 1024px (tablet) / 768px (mobile) media query 적용된 메인 페이지"
         },
         {
           "type": "spacingScale",
@@ -1219,6 +1282,13 @@
         {
           "type": "text",
           "value": "ktng- 접두사 컨벤션으로 작성. 10 하위 그룹 (buttons / cards / banners / navigation / forms / data / content / utility / embed / media). 모든 component 블록 라이브 채집 디자인 반영."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 26 라이브러리 컴포넌트 모두 사용",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a1530,#1a2a5a,#3a5a8a)",
+          "thumbLabel": "컴포넌트 라이브러리 — 버튼/카드/뉴스/배너/네비/검색/탭/카운터/CTA 등 26 컴포넌트가 사용된 메인 페이지"
         },
         {
           "type": "heading",
@@ -1440,6 +1510,13 @@
           "value": "KT&G IR financial 영역의 가장 시각적 시그니처 컴포넌트. 다크 네이비 그라데이션 배경 위에 1.5px solid #A2C3FE (밝은 청색 outline) + rgba(0,0,0,0.15) bg + 40px·400 흰 글자로 신용평가 등급(AAA × 3 + A3 + A-)을 표현. 사용자가 지속적으로 강조한 영역."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/components/IRFinancial.jsx — AAA 아웃라인 배지",
+          "preview": "ktng-preview/ir/overview/index.html",
+          "thumbBg": "linear-gradient(135deg,#A2C3FE,#8EAEFA,#7B9DF5)",
+          "thumbLabel": "AAA 아웃라인 — #A2C3FE 1.5px solid 원 안에 헤어라인 AAA 텍스트 (NICE/한국기업/한국신용/Moodys/SP 5개)"
+        },
+        {
           "type": "kv",
           "title": "라이브 채집 정확한 스펙",
           "columns": 1,
@@ -1474,6 +1551,13 @@
         {
           "type": "text",
           "value": "주요사업 (/about/business) 페이지의 가장 독특한 패턴. 라이브 채집된 핵심 구조: `.sticky-sequence__image-wrapper`는 position:sticky top:0 height:911px로 viewport에 고정 + `.sticky-sequence__text-content`도 sticky로 머무름 + 우측 카운터 카드는 자연스럽게 스크롤됨. 풀 3-sequence 구현은 09번 섹션 '회사소개 · 주요사업'에 있고, 본 섹션은 재사용 가능한 1-sequence 데모를 제공합니다."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/components/BusinessSticky.jsx — 3 sticky-sequence",
+          "preview": "ktng-preview/about/business/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a1530,#1a2a5a,#3a5a8a)",
+          "thumbLabel": "시그니처 sticky-sequence — 배경 이미지 911px sticky + 카드 카운터 IntersectionObserver (해외궐련/NGP/건강기능 3 시퀀스)"
         },
         {
           "type": "kv",
@@ -1528,6 +1612,13 @@
           "value": "연혁 /about/history (sH 32,263 - 사이트 최장 페이지)의 sticky 5-시대 navigation + 연도별 row 패턴. 좌측 4-col 거대 연도 (104px·600) + 우측 8-col 월별 이벤트 bullet list."
         },
         {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/components/HistoryPage.jsx — Year Navigation Sticky",
+          "preview": "ktng-preview/about/history/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a0a12,#3a1010,#f59c1a)",
+          "thumbLabel": "Year Timeline — 5 era pill navigation sticky top:0 + 시대별 활성 underline + 연도별 월별 이벤트 리스트"
+        },
+        {
           "type": "kv",
           "title": "라이브 채집 5 시대 구조",
           "columns": 1,
@@ -1570,6 +1661,13 @@
         {
           "type": "text",
           "value": "IR /ir/overview의 가장 시각적 시그니처. 다크 네이비 그라데이션 배경 + 5 outline AAA 원형 + 재무하이라이트 3D 차트 카드 + 흰 다운로드 카드의 4-요소 조합. 풀 구현은 09번 섹션 '투자정보 IR'에 있고, 본 섹션은 호버 글로우 효과가 있는 AAA 배지 클러스터 데모를 제공합니다."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): ktng-app/components/IRFinancial.jsx — 재무정보 패널",
+          "preview": "ktng-preview/ir/overview/index.html",
+          "thumbBg": "linear-gradient(135deg,#1a2530,#3a4555,#5a6575)",
+          "thumbLabel": "재무하이라이트 — financial.webp 배경 + AAA 5 outline 배지 + highlight 카드 + 별도 보고서 다운로드"
         },
         {
           "type": "kv",
@@ -1617,6 +1715,13 @@
         {
           "type": "text",
           "value": "Chrome MCP transition 통계 채집: 'all 0.3s ease-in-out' 752건 + 'background-size 0.3s ease-in-out' 22건 + 'transform 0.3s ease-in-out' 2건. 표준 timing 0.3s ease-in-out 일관 적용."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): hover 인터랙션 카탈로그",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#fff,#f0f0f0)",
+          "thumbLabel": "Hover 카탈로그 — 카드 translateY(-4px) + box-shadow + 화살표 회전 + 색 변화 cubic-bezier(0.4,0,0.2,1) 메인"
         },
         {
           "type": "kv",
@@ -1709,6 +1814,13 @@
               "value": "전체 사이트 'all 0.3s ease-in-out' 표준 - cubic-bezier 명시 없이 기본 ease-in-out 사용"
             }
           ]
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 스크롤 인터랙션 — 지구 zoom + sticky",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a1020,#1a2540,#3a5570)",
+          "thumbLabel": "스크롤 인터랙션 — Global.jsx 지구 scale 0.05→1 + cards 가로 translateX + sticky 855px (RAF 기반)"
         }
       ]
     },
@@ -1749,6 +1861,13 @@
               "value": "background-size 0.3s ease-in-out (22건) - 카드 hover 시 배경 이미지 미세 확대 (background-size:100% → 105%) 효과"
             }
           ]
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 비디오 인터랙션 — 인피니티 루프",
+          "preview": "ktng-preview/about/introduction/index.html",
+          "thumbBg": "linear-gradient(135deg,#dde0e8,#e8dfe5,#f0e8e3)",
+          "thumbLabel": "비디오 헤로 — autoplay + muted + loop + playsInline + webm/mp4 dual source + cover fit"
         }
       ]
     },
@@ -1789,6 +1908,13 @@
               "value": "라이브 채집 추정 - 검색 input·소셜 아이콘·Scroll-to-Top FAB 등 아이콘 button에 aria-label 적용 권장. 라이브 audit 필요."
             }
           ]
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 시멘틱 HTML + 접근성",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#fff,#e8e8e8)",
+          "thumbLabel": "시멘틱 마크업 — main/section/nav/article 적용 + WCAG AA 컨트라스트 + 키보드 네비게이션 적용된 메인"
         }
       ]
     },
@@ -1829,6 +1955,13 @@
               "value": "🌐 언어 globe 아이콘 헤더 우측 - KO·EN 다국어 추정. hreflang 메타 적용 추정 (audit 필요)"
             }
           ]
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 정적 사전 렌더링",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a0a0a,#262626,#404040)",
+          "thumbLabel": "Next.js Static Export — 8 라우트 사전 렌더링 (First Load 78-91 kB) + WebP 최적화 + meta tags"
         }
       ]
     },
@@ -1838,6 +1971,13 @@
         {
           "type": "text",
           "value": "Chrome MCP 7-step 방법론 라이브 정밀 재점검 (2026-05-15) 결과 발견된 모든 부드러운 인터랙션을 통합 정리. 정적 분석으로는 잡히지 않는 라이브 동작 + 이번 점검에서 발견된 OLD 보고서 시점 이후 디자인 변경 사항."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (Next.js): 모든 라이브 인터랙션이 적용된 메인",
+          "preview": "ktng-preview/index.html",
+          "thumbBg": "linear-gradient(135deg,#0a1530,#1a2a5a,#3a5a8a)",
+          "thumbLabel": "모든 라이브 인터랙션 — 지구 zoom + cards 가로 + sticky + 카운터 + ticker + fade-in + leaves sway + cubic-bezier easing"
         },
         {
           "type": "heading",
