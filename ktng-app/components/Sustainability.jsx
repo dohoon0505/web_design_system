@@ -13,7 +13,7 @@ export default function Sustainability() {
   useEffect(() => {
     const obs = new IntersectionObserver(es => {
       es.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.05, rootMargin: '0px 0px -10% 0px' });
     const els = [
       ...(susRef.current?.querySelectorAll('[data-reveal]') || []),
       ...(contentRef.current?.querySelectorAll('[data-reveal]') || []),
@@ -41,11 +41,11 @@ export default function Sustainability() {
         <style jsx>{`
           .sus { position: relative; height: 855px; background: #fff; overflow: hidden; padding: 80px 89px; display: flex; flex-direction: column; justify-content: space-between; }
           .sus__bg { position: absolute; inset: 0; background: linear-gradient(180deg, #fff 0%, #f9f9f6 100%); }
-          .sus__heading-wrapper { position: relative; z-index: 2; opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
-          .sus__heading-wrapper.is-visible { opacity: 1; transform: translateY(0); }
+          .sus__heading-wrapper { position: relative; z-index: 2; opacity: 1; transform: translateY(0); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+          .sus__heading-wrapper:not(.is-visible) { opacity: 0.5; transform: translateY(15px); }
           .sus__subtitle-small { font-size: 18px; font-weight: 500; color: #000; letter-spacing: 0.02em; }
-          .sus__leaves { position: absolute; top: 50%; right: 10%; transform: translateY(-50%); width: 620px; height: 620px; pointer-events: none; z-index: 1; opacity: 0; transition: opacity 1.2s ease-out 0.3s; }
-          .sus__leaves.is-visible { opacity: 1; }
+          .sus__leaves { position: absolute; top: 50%; right: 10%; transform: translateY(-50%); width: 620px; height: 620px; pointer-events: none; z-index: 1; opacity: 1; transition: opacity 1.2s ease-out 0.2s; }
+          .sus__leaves:not(.is-visible) { opacity: 0.5; }
           .sus__leaf { position: absolute; width: 150px; height: 360px; border-radius: 75px; transform-origin: bottom center; animation: sus-sway 6s ease-in-out infinite; background-size: 620px 620px; background-position: center; background-repeat: no-repeat; }
           .sus__leaf--1 { top: 0;    left: 150px; background-color: #c9e2bb; transform: rotate(15deg);  animation-delay: 0s; }
           .sus__leaf--2 { top: 30px; left: 240px; background-image: url(${GRASS_URL}); background-position: -200px -100px; transform: rotate(-10deg); animation-delay: 1.5s; }
@@ -56,8 +56,8 @@ export default function Sustainability() {
           .sus__leaf--2 { --rot: -10deg; }
           .sus__leaf--3 { --rot: 20deg; }
           .sus__leaf--4 { --rot: -5deg; }
-          .sus__main-title { position: relative; z-index: 2; opacity: 0; transform: translateY(40px); transition: opacity 1.2s ease-out 0.6s, transform 1.2s ease-out 0.6s; }
-          .sus__main-title.is-visible { opacity: 1; transform: translateY(0); }
+          .sus__main-title { position: relative; z-index: 2; opacity: 1; transform: translateY(0); transition: opacity 1.2s ease-out 0.4s, transform 1.2s ease-out 0.4s; }
+          .sus__main-title:not(.is-visible) { opacity: 0.5; transform: translateY(20px); }
           .sus__title-h { font-size: 96px; font-weight: 600; color: #000; letter-spacing: -0.025em; line-height: 1.1; margin: 0; max-width: 60%; }
           @media (max-width: 1024px) {
             .sus__title-h { font-size: 48px; max-width: 100%; }
@@ -89,19 +89,19 @@ export default function Sustainability() {
         <style jsx>{`
           .sus-content { position: relative; padding: 120px 89px; background: #f5f9f4; min-height: 1112px; }
           .sus-content__container { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px 96px; align-items: start; }
-          .sus-content__headline-wrapper { grid-column: 1 / -1; opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; margin-bottom: 48px; }
-          .sus-content__headline-wrapper.is-visible { opacity: 1; transform: translateY(0); }
+          .sus-content__headline-wrapper { grid-column: 1 / -1; opacity: 1; transform: translateY(0); transition: opacity 0.8s ease-out, transform 0.8s ease-out; margin-bottom: 48px; }
+          .sus-content__headline-wrapper:not(.is-visible) { opacity: 0.4; transform: translateY(20px); }
           .sus-content__headline { font-size: 64px; font-weight: 600; color: #000; letter-spacing: -0.025em; line-height: 1.15; margin: 0; }
           .sus-content__headline span { display: block; }
           .sus-content__stats { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; border-top: 1px solid rgba(0,0,0,0.15); padding-top: 48px; }
-          .sus-content__stat { opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; }
-          .sus-content__stat.is-visible { opacity: 1; transform: translateY(0); }
-          .sus-content__stat:nth-child(2).is-visible { transition-delay: 0.2s; }
+          .sus-content__stat { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+          .sus-content__stat:not(.is-visible) { opacity: 0.4; transform: translateY(15px); }
+          .sus-content__stat:nth-child(2).is-visible { transition-delay: 0.15s; }
           .sus-content__stat-eyebrow { font-size: 20px; font-weight: 500; color: #000; margin-bottom: 24px; line-height: 1.4; }
           .sus-content__stat-cap { font-size: 14px; color: #787878; font-weight: 400; }
           .sus-content__stat-value { font-size: 56px; font-weight: 600; color: #1a5a1a; letter-spacing: -0.02em; line-height: 1.1; }
-          .sus-content__cta-wrapper { grid-column: 1 / -1; margin-top: 32px; opacity: 0; transition: opacity 1s ease-out 0.4s; }
-          .sus-content__cta-wrapper.is-visible { opacity: 1; }
+          .sus-content__cta-wrapper { grid-column: 1 / -1; margin-top: 32px; opacity: 1; transition: opacity 0.8s ease-out 0.3s; }
+          .sus-content__cta-wrapper:not(.is-visible) { opacity: 0.4; }
           .sus-content__cta { display: inline-flex; align-items: center; gap: 14px; font-size: 18px; font-weight: 500; color: #000; background: transparent; border: none; cursor: pointer; padding: 0; }
           .sus-content__cta-icon { width: 48px; height: 48px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
           .sus-content__cta:hover .sus-content__cta-icon { transform: translateX(6px) rotate(-12deg); }
