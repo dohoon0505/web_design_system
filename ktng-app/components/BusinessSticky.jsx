@@ -97,10 +97,10 @@ function Sequence({ seq, index }) {
         </div>
       </div>
       <style jsx>{`
-        .sticky-sequence { position: relative; height: 2095px; color: #fff; font-family: 'Pretendard', system-ui, sans-serif; overflow: hidden; }
-        .sticky-sequence__image-wrapper { position: sticky; top: 0; height: 855px; width: 100%; z-index: 0; }
+        .sticky-sequence { position: relative; height: 2095px; color: #fff; font-family: 'Pretendard', system-ui, sans-serif; }
+        .sticky-sequence__image-wrapper { position: sticky; top: 0; height: 911px; width: 100%; z-index: 0; overflow: hidden; }
         .sticky-sequence__image { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
-        .sticky-sequence__content { position: relative; margin-top: -855px; height: 2095px; padding: 0 89px; z-index: 1; }
+        .sticky-sequence__content { position: relative; margin-top: -911px; height: 2095px; padding: 0 89px; z-index: 1; }
         .sticky-sequence__text-row { display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: start; min-height: 1935px; padding-top: 160px; }
         .sticky-sequence__text-content { position: sticky; top: 160px; align-self: start; max-width: 560px; }
         .sticky-sequence__main-title { font-size: 64px; font-weight: 600; margin: 0 0 24px; letter-spacing: -0.025em; line-height: 1.15; }

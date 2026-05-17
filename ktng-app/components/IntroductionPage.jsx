@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const STATS = [
-  { num: 1987, suffix: '년 4월 1일', decimal: 0, label: '설립일' },
+  { num: 1987, suffix: '년 4월 1일', decimal: 0, label: '설립일', noComma: true },
   { num: 65797, suffix: '억원', decimal: 0, label: '매출', note: '*25년 사업보고서 기준' },
   { num: 4094, suffix: '명', decimal: 0, label: '임직원수', note: '*25년 사업보고서 기준' },
 ];
@@ -13,20 +13,20 @@ const PORTFOLIO = [
   { name: '제약·바이오', pct: 5.5, bg: 'linear-gradient(135deg,#306060 0%,#103030 100%)' },
 ];
 
-const fmt = (v) => Math.round(v).toLocaleString('en-US');
+const fmt = (v, noComma) => noComma ? String(Math.round(v)) : Math.round(v).toLocaleString('en-US');
 
 export default function IntroductionPage() {
   const numRefs = useRef([]);
   useEffect(() => {
-    const animate = (el, target) => {
+    const animate = (el, target, noComma) => {
       const start = performance.now();
       const dur = 1800;
       const tick = (now) => {
         const t = Math.min((now - start) / dur, 1);
         const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = fmt(target * eased);
+        el.textContent = fmt(target * eased, noComma);
         if (t < 1) requestAnimationFrame(tick);
-        else el.textContent = fmt(target);
+        else el.textContent = fmt(target, noComma);
       };
       requestAnimationFrame(tick);
     };
@@ -35,7 +35,7 @@ export default function IntroductionPage() {
         if (e.isIntersecting && !e.target.dataset.animated) {
           e.target.dataset.animated = '1';
           const i = parseInt(e.target.dataset.idx, 10);
-          animate(e.target, STATS[i].num);
+          animate(e.target, STATS[i].num, STATS[i].noComma);
         }
       });
     }, { threshold: 0.4 });
