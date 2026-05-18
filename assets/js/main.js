@@ -491,6 +491,43 @@
     h += '<svg class="ico"><use href="#i-link"/></svg>' + escapeHtml(analysis.url);
     h += '</a>';
     h += '</div>';
+
+    // Render ALL sections inline below the header (no separate navigation)
+    var defs = getSectionDefs(analysis.id);
+    var sectionIds = defs.length > 0 ? defs.map(function (d) { return d.id; })
+                                     : Object.keys(analysis.sections);
+    sectionIds.forEach(function (sid) {
+      var sec = analysis.sections[sid];
+      if (!sec) return;
+      var def = defs.find ? defs.find(function (d) { return d.id === sid; }) : null;
+      var num = def && def.num ? def.num : '';
+      h += '<section class="report-inline-section" id="sec-' + escapeHtml(sid) + '">';
+      h += '<div class="report-section-header">';
+      if (num) h += '<span class="report-section-header-num">' + escapeHtml(num) + '</span>';
+      h += '<h2 class="report-section-title">' + escapeHtml(sec.title) + '</h2>';
+      h += '</div>';
+      h += '<div class="report-blocks">';
+      if (sec.blocks && sec.blocks.length > 0) {
+        sec.blocks.forEach(function (block) {
+          h += renderBlock(block);
+        });
+      } else if (sec.items && sec.items.length > 0) {
+        h += '<div class="report-findings">';
+        sec.items.forEach(function (item) {
+          h += '<div class="finding-row">';
+          h += '<div class="finding-label">' + escapeHtml(item.label) + '</div>';
+          h += '<div class="finding-value">' + escapeHtml(item.value) + '</div>';
+          h += '</div>';
+        });
+        h += '</div>';
+      }
+      h += '</div>';
+      if (sec.note) {
+        h += '<div class="blk-note"><div class="blk-note-icon">i</div><p>' + escapeHtml(sec.note) + '</p></div>';
+      }
+      h += '</section>';
+    });
+
     return h;
   }
 

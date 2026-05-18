@@ -1358,3 +1358,35 @@ footer {
   background: linear-gradient(135deg, #1c1e2c 0%, #15171f 100%);
   border-color: rgba(255,255,255,0.08);
 }
+
+/* ============ INLINE SECTION RENDERING (in ref overview) ============ */
+.report-inline-section {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.report-inline-section .report-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.report-inline-section .report-section-header-num {
+  font-size: 18px;
+  font-weight: 500;
+  color: #787878;
+  letter-spacing: 0.02em;
+}
+.report-inline-section .report-section-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.2;
+}
+[data-theme="dark"] .report-inline-section {
+  border-top-color: rgba(255,255,255,0.08);
+}
+[data-theme="dark"] .report-inline-section .report-section-header-num { color: #aaa; }
+[data-theme="dark"] .report-inline-section .report-section-title { color: #fff; }
