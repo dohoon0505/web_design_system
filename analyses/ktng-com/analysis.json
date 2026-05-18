@@ -2255,6 +2255,535 @@
           "value": "★ KT&G 보고서 v2 (2026-05-15) - 7-step 방법론 적용 완료. Chrome MCP 라이브 정밀 점검을 통해 OLD 시점 이후 사이트 리뉴얼 (Earth Globe / 4 잎사귀 / Glassmorphism Ticker / AAA outline #A2C3FE / 어비스 카드 / 사옥 계단 Hero) 모두 채집. tokens 섹션에 라이브 채집 토큰 (--c-aaa-outline: #A2C3FE 등) pinning. 29 섹션 + 23 component 블록 + 10 라이브러리 하위 그룹 구조로 디자이너가 보고서만 보고 KT&G 디자인을 100% 정확히 재현 가능."
         }
       ]
+    },
+    "component-header": {
+      "title": "35. 컴포넌트 측정 - Header (GNB + Mega Menu)",
+      "blocks": [
+        {
+          "type": "heading",
+          "value": "Header 컴포넌트 정량 측정 (Chrome MCP 라이브 실측)"
+        },
+        {
+          "type": "text",
+          "value": "메인 페이지 상단 헤더 영역(로고 + GNB 네비게이션 + 우측 유틸리티 + 메가메뉴) 컴포넌트의 모든 CSS computed style과 hover transition timing을 라이브에서 직접 측정한 결과입니다."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (격리 HTML): components/ktng/header.html",
+          "preview": "components/ktng/header.html",
+          "thumbBg": "linear-gradient(180deg,#fff 0%,#f5f5f5 50%,#000 100%)",
+          "thumbLabel": "KT&G Header — fixed 104px / backdrop-filter blur(20px) / 5 GNB 메뉴 + 메가메뉴 ~500ms ease-out RAF"
+        },
+        {
+          "type": "kv",
+          "title": "스크롤 전/후 헤더 상태",
+          "columns": 2,
+          "items": [
+            {
+              "label": ".header 높이",
+              "value": "104px (스크롤 무관 항상 동일)"
+            },
+            {
+              "label": ".header position",
+              "value": "fixed (top:0)"
+            },
+            {
+              "label": "backgroundColor",
+              "value": "rgba(0,0,0,0) 투명 (항상)"
+            },
+            {
+              "label": ".header__inner backdrop-filter",
+              "value": "blur(20px) (항상 활성)"
+            },
+            {
+              "label": "z-index",
+              "value": "9997"
+            },
+            {
+              "label": "className 토글",
+              "value": "없음 — 스크롤 시 클래스 변화 미발생"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "GNB 메가메뉴 Hover Transition",
+          "columns": 2,
+          "items": [
+            {
+              "label": "컨테이너",
+              "value": ".header__two-depth (overflow:hidden)"
+            },
+            {
+              "label": "CSS transition",
+              "value": "all 0s ease 0s (미설정 — JS RAF 구동)"
+            },
+            {
+              "label": "Hover → 첫 height 변화 delay",
+              "value": "~241ms (라이브 실측)"
+            },
+            {
+              "label": "height 0 → 426px 풀 애니메이션",
+              "value": "~500ms (240~720ms 구간)"
+            },
+            {
+              "label": "easing 곡선",
+              "value": "ease-out (cubic-bezier(0.4, 0, 0.2, 1) 추정)"
+            },
+            {
+              "label": ".header__inner 확장",
+              "value": "104 → 530px (= 104 + 426)"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "GNB 메뉴 텍스트 default vs hover/active",
+          "columns": 2,
+          "items": [
+            {
+              "label": "Default color (hero 위)",
+              "value": "#FFFFFF (흰색)"
+            },
+            {
+              "label": "Mega-open color",
+              "value": "#000000 (검정 자동 전환)"
+            },
+            {
+              "label": "fontWeight (불변)",
+              "value": "500"
+            },
+            {
+              "label": "fontSize",
+              "value": "20px (1.25rem) / letter-spacing -0.4px"
+            },
+            {
+              "label": "Hovered 메뉴 표식",
+              "value": "bottom underline (#3F42E5 / 1.5px / 3px offset)"
+            },
+            {
+              "label": "서브메뉴 underline transition",
+              "value": "background-size 0.3s ease-in-out"
+            }
+          ]
+        }
+      ]
+    },
+    "component-hero": {
+      "title": "36. 컴포넌트 측정 - Hero KV (Visual)",
+      "blocks": [
+        {
+          "type": "heading",
+          "value": "Hero KV (메인 첫 화면 Visual) 컴포넌트 정량 측정"
+        },
+        {
+          "type": "text",
+          "value": "메인 페이지 첫 화면의 Visual 영역(.kv) — 비디오 배경 + 텍스트 마스크 reveal + dimmed overlay + scroll-down 인디케이터 — 의 정확한 viewport 단위, transform 변위량, opacity 값을 라이브에서 측정한 결과입니다."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (격리 HTML): components/ktng/hero-kv.html",
+          "preview": "components/ktng/hero-kv.html",
+          "thumbBg": "linear-gradient(135deg,#dde0e8,#e8dfe5,#f0e8e3)",
+          "thumbLabel": "KT&G Hero KV — 100svh / 비디오 cover / 텍스트 마스크 reveal 0.9s cubic-bezier(0.22,1,0.36,1) / dim 10%"
+        },
+        {
+          "type": "kv",
+          "title": "해상도 대응 - 100vh vs 고정 px",
+          "columns": 2,
+          "items": [
+            {
+              "label": "CSS 룰",
+              "value": ".main .kv { height: 100svh; }"
+            },
+            {
+              "label": "Small Viewport Height 사용",
+              "value": "모바일 iOS Safari 등 주소창 동적 환경에서 안정"
+            },
+            {
+              "label": "viewport.innerHeight (현재)",
+              "value": "855px → resolved height 855px"
+            },
+            {
+              "label": "min-height / max-height",
+              "value": "0 / none (미설정)"
+            },
+            {
+              "label": "overflow",
+              "value": "hidden"
+            },
+            {
+              "label": "서브페이지 비교",
+              "value": ".introduction .kv { height: 100vh; } — 메인만 svh"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "텍스트 슬라이드 인 (마스크 Reveal 패턴)",
+          "columns": 2,
+          "items": [
+            {
+              "label": "DOM 구조",
+              "value": ".kv__text-wrapper > .kv__text-item × 2 (라인당 2 카피)"
+            },
+            {
+              "label": "wrapper 속성",
+              "value": "overflow:hidden; height:145px (클리핑 마스크)"
+            },
+            {
+              "label": "측정된 transform",
+              "value": "matrix(1,0,0,1, 0, 144.797) = translateY(144.8px)"
+            },
+            {
+              "label": "transform 변위량",
+              "value": "wrapper height와 동일 (= line-height 1배)"
+            },
+            {
+              "label": "font-size",
+              "value": "127.999px (= 128px, headline-1 8rem)"
+            },
+            {
+              "label": "fontWeight / color",
+              "value": "600 / rgb(255,255,255) 흰색"
+            },
+            {
+              "label": "2 라인 stagger 시각 추정",
+              "value": "~150-200ms"
+            },
+            {
+              "label": "slide-up duration 시각 추정",
+              "value": "~800-1000ms"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "Dimmed Overlay (어두운 오버레이)",
+          "columns": 2,
+          "items": [
+            {
+              "label": "셀렉터",
+              "value": ".main .kv__background::after"
+            },
+            {
+              "label": "position",
+              "value": "absolute / top:0 left:0 / width:100% height:100%"
+            },
+            {
+              "label": "background",
+              "value": "rgba(0, 0, 0, 0.1) = opacity 10%"
+            },
+            {
+              "label": "구현 방식",
+              "value": "background-color alpha (opacity 속성 미사용)"
+            },
+            {
+              "label": "용도",
+              "value": "비디오 위 텍스트 가독성 개선"
+            }
+          ]
+        }
+      ]
+    },
+    "component-content": {
+      "title": "37. 컴포넌트 측정 - Content (BUSINESS .with + PR CENTER .news)",
+      "blocks": [
+        {
+          "type": "heading",
+          "value": "BUSINESS (.with) + PR CENTER (.news) 콘텐츠 카드 섹션 정량 측정"
+        },
+        {
+          "type": "text",
+          "value": "메인 페이지 중간의 \"With KT&G\" Business/Career 2-카드 섹션과 \"Latest News\" 보도자료 섹션의 IntersectionObserver threshold, Stagger 시간차, hover scale 정확한 수치를 측정했습니다."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (격리 HTML): components/ktng/business-pr.html",
+          "preview": "components/ktng/business-pr.html",
+          "thumbBg": "linear-gradient(135deg,#fff 0%,#f5f5f5 50%,#fff 100%)",
+          "thumbLabel": "KT&G BUSINESS + PR CENTER — threshold 0.3 / stagger 150ms / translateY(80px) / hover scale 1.1 ease-in-out 0.3s"
+        },
+        {
+          "type": "kv",
+          "title": "섹션 매핑 (KT&G 실제 라벨 기준)",
+          "columns": 1,
+          "items": [
+            {
+              "label": "BUSINESS (사업영역)",
+              "value": ".with 섹션 — \"함께 그리는 KT&G의 미래\" + Business/Career 2-card"
+            },
+            {
+              "label": "PR CENTER",
+              "value": ".news 섹션 — \"Latest News\" + 1 featured + 4 list items"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "IntersectionObserver Threshold",
+          "columns": 2,
+          "items": [
+            {
+              "label": "sY=6700 (section 2% 가시)",
+              "value": "첫 카드 0% → 미트리거"
+            },
+            {
+              "label": "sY=7120 (43% 가시)",
+              "value": "미트리거 유지"
+            },
+            {
+              "label": "sY=7360 (67% 가시)",
+              "value": "첫 카드 11% → 트리거됨"
+            },
+            {
+              "label": "sY=7680 (99% 가시)",
+              "value": "모든 카드 100% 완료"
+            },
+            {
+              "label": "트리거 임계",
+              "value": "section ~50-60% 가시화 시점"
+            },
+            {
+              "label": "권장 옵션",
+              "value": "{ threshold: 0.3, rootMargin: \"0px 0px -10% 0px\" }"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "Stagger 시간차 (카드 간 지연)",
+          "columns": 2,
+          "items": [
+            {
+              "label": "1st (label/title)",
+              "value": "transition-delay 0ms / duration 800ms ease-out"
+            },
+            {
+              "label": "2nd (featured big)",
+              "value": "transition-delay 150ms / duration 900ms ease-out"
+            },
+            {
+              "label": "3rd~6th (list items)",
+              "value": "delay 300/450/600/750ms (stagger 150ms씩)"
+            },
+            {
+              "label": "Stagger 간격",
+              "value": "150ms (line by line)"
+            },
+            {
+              "label": "초기 transform",
+              "value": "translateY(80px) → translateY(0)"
+            },
+            {
+              "label": "초기 opacity",
+              "value": "0 → 1"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "Card Hover (scale + 추가 효과)",
+          "columns": 2,
+          "items": [
+            {
+              "label": ".news-card hover scale",
+              "value": "1.1 (0.3s ease-in-out)"
+            },
+            {
+              "label": ".main-news hover scale",
+              "value": "1.05 (0.3s)"
+            },
+            {
+              "label": ".with__item hover scale",
+              "value": "1.1 (0.3s ease-in-out)"
+            },
+            {
+              "label": ".news-list-button hover",
+              "value": "bg #3F42E5 + 32x32px (보라 확장)"
+            },
+            {
+              "label": "아이콘 화살표 hover",
+              "value": "translateX(100%) (0.3s)"
+            },
+            {
+              "label": "box-shadow hover 효과",
+              "value": "검출 없음 — KT&G는 scale 변환만 사용"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "sY 0~100% 스크롤 오차 검증 결과",
+          "columns": 2,
+          "items": [
+            {
+              "label": "0% (sY=0)",
+              "value": "[0,0,0,0,0,0] 모두 초기"
+            },
+            {
+              "label": "25% (sY=684)",
+              "value": "[0,0,0,0,0,0] 미트리거"
+            },
+            {
+              "label": "50% (sY=1367)",
+              "value": "[15,0,0,0,0,0] 첫 카드만 진행 (stagger 정확)"
+            },
+            {
+              "label": "75% (sY=2051)",
+              "value": "[100,100,100,100,100,100] 완료"
+            },
+            {
+              "label": "100% (sY=2734)",
+              "value": "[100,100,100,100,100,100] 유지"
+            }
+          ]
+        }
+      ]
+    },
+    "component-footer": {
+      "title": "38. 컴포넌트 측정 - Footer",
+      "blocks": [
+        {
+          "type": "heading",
+          "value": "Footer (하단 영역) 컴포넌트 정량 측정"
+        },
+        {
+          "type": "text",
+          "value": "하단 푸터 영역(.footer) — 5 메뉴 컬럼 + Family Site 드롭다운 + SNS 아이콘 3종 + 사이트맵·방침 + Copyright — 의 padding, border, font-size, color 수치를 라이브에서 측정한 결과입니다."
+        },
+        {
+          "type": "component",
+          "title": "독립 컴포넌트 (격리 HTML): components/ktng/footer.html",
+          "preview": "components/ktng/footer.html",
+          "thumbBg": "linear-gradient(180deg,#fff 0%,#fff 70%,#f5f5f5 100%)",
+          "thumbLabel": "KT&G Footer — 5 nav 컬럼 + Family Site + SNS 3종 + Copyright (582px height, white bg, 1px #DDD border-top)"
+        },
+        {
+          "type": "kv",
+          "title": "Footer 컨테이너",
+          "columns": 2,
+          "items": [
+            {
+              "label": "셀렉터",
+              "value": ".footer"
+            },
+            {
+              "label": "background",
+              "value": "rgb(255,255,255) 흰색"
+            },
+            {
+              "label": "padding",
+              "value": "4rem max(3rem, 4.2708vw) 3rem (64px상 / 좌우 가변 / 48px하)"
+            },
+            {
+              "label": "border-top",
+              "value": "1px solid rgb(221,221,221) (#DDD)"
+            },
+            {
+              "label": "총 높이",
+              "value": "582px"
+            },
+            {
+              "label": "margin-bottom (container)",
+              "value": "2.5rem (40px)"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "5 메뉴 컬럼 (.footer__nav)",
+          "columns": 2,
+          "items": [
+            {
+              "label": ".footer__nav-wrapper",
+              "value": "display:flex; gap:4rem (64px)"
+            },
+            {
+              "label": ".footer__nav-title",
+              "value": "18px (1.125rem) / 500 / -0.36px / color:#000"
+            },
+            {
+              "label": ".footer__nav-list",
+              "value": "gap:1rem (16px); margin-top:1.5rem (24px)"
+            },
+            {
+              "label": ".footer__nav-list-item",
+              "value": "16px (1rem) / -0.32px / color:rgb(120,120,120)"
+            },
+            {
+              "label": "컬럼 수",
+              "value": "5 (회사소개 / 투자정보 / 지속가능경영 / 미디어 / 인재채용)"
+            },
+            {
+              "label": "hover 효과",
+              "value": "color rgb(120,120,120) → #000 (0.3s ease)"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "SNS 아이콘 + Family Site + Copyright",
+          "columns": 2,
+          "items": [
+            {
+              "label": ".footer__sns-icon",
+              "value": "width × height 1.75rem (28×28px)"
+            },
+            {
+              "label": "SNS 아이콘 수",
+              "value": "3개 (Instagram / YouTube / Facebook)"
+            },
+            {
+              "label": ".footer__copyright",
+              "value": "font-size 0.9375rem (15px) / color rgb(120,120,120)"
+            },
+            {
+              "label": ".drop-down__trigger",
+              "value": "\"Family Site +\" border-radius 100px (pill)"
+            },
+            {
+              "label": ".footer__info-item",
+              "value": "사이트맵 / 고정형 영상정보처리기기 운영관리방침 / 개인정보처리방침"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "title": "Footer 검증 (라이브 vs 내 컴포넌트)",
+          "columns": 2,
+          "items": [
+            {
+              "label": "background",
+              "value": "rgb(255,255,255) → 일치"
+            },
+            {
+              "label": "padding",
+              "value": "64px 82px 48px → 일치"
+            },
+            {
+              "label": "border-top color",
+              "value": "rgb(221,221,221) → 일치"
+            },
+            {
+              "label": "nav 컬럼 수",
+              "value": "5 → 일치"
+            },
+            {
+              "label": "SNS 아이콘 수",
+              "value": "3 → 일치"
+            },
+            {
+              "label": "copyright 색",
+              "value": "rgb(120,120,120) → 일치"
+            },
+            {
+              "label": "총 높이",
+              "value": "582px(라이브) vs 595px(컴포넌트) → 98% 일치"
+            }
+          ]
+        }
+      ]
     }
   }
 }

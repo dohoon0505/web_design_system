@@ -9,16 +9,66 @@
     "readme": "README.md"
   },
   "analysisSections": [
-    { "id": "overview",      "num": "01", "title": "개요",           "desc": "사이트 프로필, 기술 스택, 사이트맵" },
-    { "id": "philosophy",    "num": "02", "title": "디자인 철학",     "desc": "비주얼 랭귀지 원칙과 결정 패턴" },
-    { "id": "tokens",        "num": "03", "title": "디자인 토큰",     "desc": "CSS Variables - 색상/타입/여백/둥글기" },
-    { "id": "main-page",     "num": "04", "title": "메인 페이지",     "desc": "메인 페이지 전체 흐름 분석" },
-    { "id": "color-system",  "num": "05", "title": "컬러 시스템",     "desc": "팔레트, 사용 비율, 대비 검증" },
-    { "id": "typography",    "num": "06", "title": "타이포그래피",    "desc": "타입 스케일, 폰트 페어링" },
-    { "id": "layout",        "num": "07", "title": "레이아웃",       "desc": "그리드, 반응형, 여백, 둥글기" },
-    { "id": "components",    "num": "08", "title": "컴포넌트",        "desc": "재사용 가능한 UI 컴포넌트" },
-    { "id": "interaction",   "num": "09", "title": "인터랙션",        "desc": "호버, 스크롤, 커서 효과" },
-    { "id": "publishing",    "num": "10", "title": "퍼블리싱",        "desc": "시맨틱 HTML, 접근성, 성능, SEO" }
+    {
+      "id": "overview",
+      "num": "01",
+      "title": "개요",
+      "desc": "사이트 프로필, 기술 스택, 사이트맵"
+    },
+    {
+      "id": "philosophy",
+      "num": "02",
+      "title": "디자인 철학",
+      "desc": "비주얼 랭귀지 원칙과 결정 패턴"
+    },
+    {
+      "id": "tokens",
+      "num": "03",
+      "title": "디자인 토큰",
+      "desc": "CSS Variables - 색상/타입/여백/둥글기"
+    },
+    {
+      "id": "main-page",
+      "num": "04",
+      "title": "메인 페이지",
+      "desc": "메인 페이지 전체 흐름 분석"
+    },
+    {
+      "id": "color-system",
+      "num": "05",
+      "title": "컬러 시스템",
+      "desc": "팔레트, 사용 비율, 대비 검증"
+    },
+    {
+      "id": "typography",
+      "num": "06",
+      "title": "타이포그래피",
+      "desc": "타입 스케일, 폰트 페어링"
+    },
+    {
+      "id": "layout",
+      "num": "07",
+      "title": "레이아웃",
+      "desc": "그리드, 반응형, 여백, 둥글기"
+    },
+    {
+      "id": "components",
+      "num": "08",
+      "title": "컴포넌트",
+      "desc": "재사용 가능한 UI 컴포넌트"
+    },
+    {
+      "id": "interaction",
+      "num": "09",
+      "title": "인터랙션",
+      "desc": "호버, 스크롤, 커서 효과"
+    },
+    {
+      "id": "publishing",
+      "num": "10",
+      "title": "퍼블리싱",
+      "desc": "시맨틱 HTML, 접근성, 성능, SEO"
+    }
   ],
   "references": [
     {
@@ -29,46 +79,214 @@
       "analysis": "analyses/plantym-com/analysis.json",
       "pagesAnalyzed": 11,
       "sections": [
-        { "id": "overview",              "num": "01", "title": "개요 · 사이트맵",                "desc": "Planty 그룹 (콘텐츠·네트워크·투자) 코퍼레이트 사이트, 11페이지 PHP 정적" },
-        { "id": "philosophy",            "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",     "desc": "미니멀 + 스크롤 스토리텔링 + 단일 강조 컬러 (오렌지 #FC6D25)" },
-        { "id": "tokens",                "num": "03", "title": "디자인 토큰 시스템",              "desc": "CSS Variables 재구성 + 7단계 브레이크포인트" },
-        { "id": "main-page",             "num": "04", "title": "메인 페이지 분석 (15k 스크롤)",  "desc": "8,550px .main-intro 스크롤 시퀀스 + 5개 영역" },
-        { "id": "about-pages",           "num": "05", "title": "회사소개 카테고리 (4페이지)",     "desc": "기업정보 (12,762px) / 연혁 / CI / 고객센터" },
-        { "id": "business-pages",        "num": "06", "title": "사업정보 카테고리 (3페이지)",     "desc": "모아진 매거진 / 주스샵 매장음악 (30,000 매장) / 디지털 사이니지" },
-        { "id": "pr-careers",            "num": "07", "title": "PR · Careers (3페이지)",        "desc": "공지사항 / 보도자료 / Careers (MBO 평가)" },
-        { "id": "color-system",          "num": "08", "title": "컬러 시스템",                    "desc": "단일 오렌지 #FC6D25 + 무채색 - WCAG 검증" },
-        { "id": "typography-system",     "num": "09", "title": "타이포그래피 시스템",             "desc": "Pretendard + 광범위 폴백 스택 - 80/60/48/32/18px 5단계" },
-        { "id": "icon-system",           "num": "10", "title": "아이콘 시스템",                  "desc": "PNG 이미지 위주 - ring.png / mission-bg / partners-logo" },
-        { "id": "image-system",          "num": "11", "title": "이미지 시스템",                  "desc": "사업 시나리오 사진 / 70+ 파트너 매트릭스 / Mission BG 시리즈" },
-        { "id": "layout-grid",           "num": "12", "title": "그리드 · 컨테이너 시스템",        "desc": "15,098px 메인 / 5 .sec 분할 / 120px container padding" },
-        { "id": "layout-responsive",     "num": "13", "title": "반응형 · 여백 · 둥글기",         "desc": "7단계 브레이크포인트 (500/767/970/1024/1240/1400)" },
-        { "id": "lib-buttons",           "num": "14", "title": "버튼 · CTA 라이브러리",           "desc": "5종 - Dark Pill CTA / GNB Link / Orange Scroll-to-top / View More / Carousel arrows" },
-        { "id": "lib-banners",           "num": "15", "title": "배너 · Hero 라이브러리",          "desc": "5종 - 그라데이션 Hero / Concentric Circles / Sub Page Hero / Mission BG / BUILDING A GLOBAL SERVICE" },
-        { "id": "lib-cards",             "num": "16", "title": "카드 라이브러리",                "desc": "5종 - News Notice / Press Thumbnail / Business Feature / Stat / CEO Photo" },
-        { "id": "lib-navigation",        "num": "17", "title": "네비게이션 라이브러리",            "desc": "Top GNB / Footer Multi-Col / News Carousel Indicator" },
-        { "id": "lib-forms",             "num": "18", "title": "폼 라이브러리",                  "desc": "Contact Inquiry (11 elements) / Board Search" },
-        { "id": "lib-content",           "num": "19", "title": "콘텐츠 컴포넌트",                 "desc": "Massive Single-Message Scroll / Vision-Mission-Slogan Triple / MBO Infographic" },
-        { "id": "signature-orbital",     "num": "20", "title": "시그니처 - Planty 그룹 오비탈 다이어그램", "desc": "Planty 중앙 + Contents/Network/Investment 3 노드 + 점선 궤도 + 글로브 와이어프레임" },
-        { "id": "signature-concentric",  "num": "21", "title": "시그니처 - Concentric Circles Orange Hero", "desc": "오렌지 풀폭 + 4단계 동심원 그라데이션 + 흰 'New Content Lifestyle' 헤딩" },
-        { "id": "signature-partners-matrix","num": "22", "title": "시그니처 - Partner Matrix (70+ 로고)", "desc": "정부·대학·공기업 70+ 로고 그리드 + 'BUILDING A GLOBAL SERVICE' 거대 헤딩" },
-        { "id": "ix-scroll",             "num": "23", "title": "스크롤 인터랙션 카탈로그",          "desc": "8,550px 메시지 시퀀스 / 오비탈 progress / Sticky 헤더" },
-        { "id": "ix-hover",              "num": "24", "title": "호버 인터랙션 카탈로그",            "desc": "GNB / CTA / Card / Partner Logo grayscale → color" },
-        { "id": "pub-semantic",          "num": "25", "title": "시맨틱 HTML · 접근성",            "desc": "user-scalable=no 이슈, alt 부재, WCAG 대비 검증" },
-        { "id": "pub-perf-seo",          "num": "26", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "PHP 정적 페이지 / 70+ 파트너 lazy load 권장 / 구조화 데이터 권장" },
-        { "id": "smooth-interaction-catalog","num": "27", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Hero 정정 - 떡잎+별+wireframe / circle_move 7s Orbital 회전 / rolling 20s 파트너 무한 슬라이드 / Material Design cubic-bezier 1.2s easing / 전체 532건 transition" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 사이트맵",
+          "desc": "Planty 그룹 (콘텐츠·네트워크·투자) 코퍼레이트 사이트, 11페이지 PHP 정적"
+        },
+        {
+          "id": "philosophy",
+          "num": "02",
+          "title": "디자인 철학 · 비주얼 랭귀지",
+          "desc": "미니멀 + 스크롤 스토리텔링 + 단일 강조 컬러 (오렌지 #FC6D25)"
+        },
+        {
+          "id": "tokens",
+          "num": "03",
+          "title": "디자인 토큰 시스템",
+          "desc": "CSS Variables 재구성 + 7단계 브레이크포인트"
+        },
+        {
+          "id": "main-page",
+          "num": "04",
+          "title": "메인 페이지 분석 (15k 스크롤)",
+          "desc": "8,550px .main-intro 스크롤 시퀀스 + 5개 영역"
+        },
+        {
+          "id": "about-pages",
+          "num": "05",
+          "title": "회사소개 카테고리 (4페이지)",
+          "desc": "기업정보 (12,762px) / 연혁 / CI / 고객센터"
+        },
+        {
+          "id": "business-pages",
+          "num": "06",
+          "title": "사업정보 카테고리 (3페이지)",
+          "desc": "모아진 매거진 / 주스샵 매장음악 (30,000 매장) / 디지털 사이니지"
+        },
+        {
+          "id": "pr-careers",
+          "num": "07",
+          "title": "PR · Careers (3페이지)",
+          "desc": "공지사항 / 보도자료 / Careers (MBO 평가)"
+        },
+        {
+          "id": "color-system",
+          "num": "08",
+          "title": "컬러 시스템",
+          "desc": "단일 오렌지 #FC6D25 + 무채색 - WCAG 검증"
+        },
+        {
+          "id": "typography-system",
+          "num": "09",
+          "title": "타이포그래피 시스템",
+          "desc": "Pretendard + 광범위 폴백 스택 - 80/60/48/32/18px 5단계"
+        },
+        {
+          "id": "icon-system",
+          "num": "10",
+          "title": "아이콘 시스템",
+          "desc": "PNG 이미지 위주 - ring.png / mission-bg / partners-logo"
+        },
+        {
+          "id": "image-system",
+          "num": "11",
+          "title": "이미지 시스템",
+          "desc": "사업 시나리오 사진 / 70+ 파트너 매트릭스 / Mission BG 시리즈"
+        },
+        {
+          "id": "layout-grid",
+          "num": "12",
+          "title": "그리드 · 컨테이너 시스템",
+          "desc": "15,098px 메인 / 5 .sec 분할 / 120px container padding"
+        },
+        {
+          "id": "layout-responsive",
+          "num": "13",
+          "title": "반응형 · 여백 · 둥글기",
+          "desc": "7단계 브레이크포인트 (500/767/970/1024/1240/1400)"
+        },
+        {
+          "id": "lib-buttons",
+          "num": "14",
+          "title": "버튼 · CTA 라이브러리",
+          "desc": "5종 - Dark Pill CTA / GNB Link / Orange Scroll-to-top / View More / Carousel arrows"
+        },
+        {
+          "id": "lib-banners",
+          "num": "15",
+          "title": "배너 · Hero 라이브러리",
+          "desc": "5종 - 그라데이션 Hero / Concentric Circles / Sub Page Hero / Mission BG / BUILDING A GLOBAL SERVICE"
+        },
+        {
+          "id": "lib-cards",
+          "num": "16",
+          "title": "카드 라이브러리",
+          "desc": "5종 - News Notice / Press Thumbnail / Business Feature / Stat / CEO Photo"
+        },
+        {
+          "id": "lib-navigation",
+          "num": "17",
+          "title": "네비게이션 라이브러리",
+          "desc": "Top GNB / Footer Multi-Col / News Carousel Indicator"
+        },
+        {
+          "id": "lib-forms",
+          "num": "18",
+          "title": "폼 라이브러리",
+          "desc": "Contact Inquiry (11 elements) / Board Search"
+        },
+        {
+          "id": "lib-content",
+          "num": "19",
+          "title": "콘텐츠 컴포넌트",
+          "desc": "Massive Single-Message Scroll / Vision-Mission-Slogan Triple / MBO Infographic"
+        },
+        {
+          "id": "signature-orbital",
+          "num": "20",
+          "title": "시그니처 - Planty 그룹 오비탈 다이어그램",
+          "desc": "Planty 중앙 + Contents/Network/Investment 3 노드 + 점선 궤도 + 글로브 와이어프레임"
+        },
+        {
+          "id": "signature-concentric",
+          "num": "21",
+          "title": "시그니처 - Concentric Circles Orange Hero",
+          "desc": "오렌지 풀폭 + 4단계 동심원 그라데이션 + 흰 'New Content Lifestyle' 헤딩"
+        },
+        {
+          "id": "signature-partners-matrix",
+          "num": "22",
+          "title": "시그니처 - Partner Matrix (70+ 로고)",
+          "desc": "정부·대학·공기업 70+ 로고 그리드 + 'BUILDING A GLOBAL SERVICE' 거대 헤딩"
+        },
+        {
+          "id": "ix-scroll",
+          "num": "23",
+          "title": "스크롤 인터랙션 카탈로그",
+          "desc": "8,550px 메시지 시퀀스 / 오비탈 progress / Sticky 헤더"
+        },
+        {
+          "id": "ix-hover",
+          "num": "24",
+          "title": "호버 인터랙션 카탈로그",
+          "desc": "GNB / CTA / Card / Partner Logo grayscale → color"
+        },
+        {
+          "id": "pub-semantic",
+          "num": "25",
+          "title": "시맨틱 HTML · 접근성",
+          "desc": "user-scalable=no 이슈, alt 부재, WCAG 대비 검증"
+        },
+        {
+          "id": "pub-perf-seo",
+          "num": "26",
+          "title": "성능 · SEO · 디자인-개발 협업",
+          "desc": "PHP 정적 페이지 / 70+ 파트너 lazy load 권장 / 구조화 데이터 권장"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "27",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
+          "desc": "Hero 정정 - 떡잎+별+wireframe / circle_move 7s Orbital 회전 / rolling 20s 파트너 무한 슬라이드 / Material Design cubic-bezier 1.2s easing / 전체 532건 transition"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://www.plantym.com/" },
-        { "title": "기업정보", "url": "https://www.plantym.com/about/company.php" },
-        { "title": "연혁", "url": "https://www.plantym.com/about/history.php" },
-        { "title": "CI", "url": "https://www.plantym.com/about/ci.php" },
-        { "title": "고객센터", "url": "https://www.plantym.com/about/contact.php" },
-        { "title": "디지털 매거진 (모아진)", "url": "https://www.plantym.com/business/moazine.php" },
-        { "title": "매장음악 (주스샵)", "url": "https://www.plantym.com/business/joo.php" },
-        { "title": "디지털 사이니지", "url": "https://www.plantym.com/business/signage.php" },
-        { "title": "공지사항", "url": "https://www.plantym.com/pr/notice.php" },
-        { "title": "보도자료", "url": "https://www.plantym.com/pr/press.php" },
-        { "title": "Careers", "url": "https://www.plantym.com/careers/" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://www.plantym.com/"
+        },
+        {
+          "title": "기업정보",
+          "url": "https://www.plantym.com/about/company.php"
+        },
+        {
+          "title": "연혁",
+          "url": "https://www.plantym.com/about/history.php"
+        },
+        {
+          "title": "CI",
+          "url": "https://www.plantym.com/about/ci.php"
+        },
+        {
+          "title": "고객센터",
+          "url": "https://www.plantym.com/about/contact.php"
+        },
+        {
+          "title": "디지털 매거진 (모아진)",
+          "url": "https://www.plantym.com/business/moazine.php"
+        },
+        {
+          "title": "매장음악 (주스샵)",
+          "url": "https://www.plantym.com/business/joo.php"
+        },
+        {
+          "title": "디지털 사이니지",
+          "url": "https://www.plantym.com/business/signage.php"
+        },
+        {
+          "title": "공지사항",
+          "url": "https://www.plantym.com/pr/notice.php"
+        },
+        {
+          "title": "보도자료",
+          "url": "https://www.plantym.com/pr/press.php"
+        },
+        {
+          "title": "Careers",
+          "url": "https://www.plantym.com/careers/"
+        }
       ]
     },
     {
@@ -79,51 +297,236 @@
       "analysis": "analyses/dcamp-kr/analysis.json",
       "pagesAnalyzed": 6,
       "sections": [
-        { "id": "overview",              "num": "01", "title": "개요 · 사이트맵",                "desc": "스타트업 액셀러레이터 (KB·신한 등 19개 은행 출연), 8개 프로그램 + 236개 포트폴리오" },
-        { "id": "philosophy",            "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",     "desc": "Dark Mode + Single Orange + 거대 타이포 + Animated Counter - 글로벌 VC 톤" },
-        { "id": "tokens",                "num": "03", "title": "디자인 토큰 시스템",              "desc": "CSS Variables 재구성 + SUIT 폰트 + 3단계 브레이크포인트" },
-        { "id": "main-page",             "num": "04", "title": "메인 페이지 분석 (9,865px)",     "desc": "Hero / Orange Curve / Featured / 4-Accordion / News / Impact / Newsletter" },
-        { "id": "program-batch",         "num": "05", "title": "Program - dcamp batch 정밀",   "desc": "10,244px / 11 H2 섹션 / 디캠프 배치 8기 모집 페이지" },
-        { "id": "startup-page",          "num": "06", "title": "Startup - 236 포트폴리오",      "desc": "/startups 236 카드 + 3-필터 (dcamp batch / 구분 / 분류)" },
-        { "id": "color-system",          "num": "07", "title": "컬러 시스템",                    "desc": "검정+흰+회색 800회 + 오렌지 #FF5E27 + Dark vs Light 영역 분리" },
-        { "id": "typography-system",     "num": "08", "title": "타이포그래피 시스템 (SUIT)",      "desc": "SUIT 한글 기하 폰트 + 120-160px Hero + 11 단계 스케일" },
-        { "id": "image-system",          "num": "09", "title": "이미지 시스템 (S3 + Drupal)",   "desc": "AWS S3 ap-northeast-2 + Drupal Image Styles + itok access token" },
-        { "id": "layout-grid",           "num": "10", "title": "그리드 · 컨테이너 시스템",        "desc": "9,865px / 80px container padding / Masonry + Grid 혼용" },
-        { "id": "layout-responsive",     "num": "11", "title": "반응형 · 여백 · 둥글기",         "desc": "3단계 단순 시스템 (1024/1600/hover)" },
-        { "id": "lib-buttons",           "num": "12", "title": "버튼 · CTA 라이브러리",           "desc": "6종 - What's New 오렌지 / View More Outline / Scroll-to-top / Subscribe / Badge / Featured CTA" },
-        { "id": "lib-cards",             "num": "13", "title": "카드 라이브러리",                "desc": "4종 - News Event (오렌지 카테고리) / Animated Counter / News Story / Startup Logo" },
-        { "id": "lib-banners",           "num": "14", "title": "배너 · Hero 라이브러리",          "desc": "3종 - DRIVING YOUR NEXT GROWTH / Featured Slide / For your beginning" },
-        { "id": "lib-navigation",        "num": "15", "title": "네비게이션 라이브러리",            "desc": "Top GNB / 4-Accordion Program Selector / Dark Footer (4-Col + Office)" },
-        { "id": "lib-forms",             "num": "16", "title": "폼 라이브러리",                  "desc": "Newsletter Subscribe (33,560 구독자) / Startup Filter Select" },
-        { "id": "lib-data",              "num": "17", "title": "데이터 디스플레이",               "desc": "Animated Counter Card (8,676억원) / 11 H2 Section Table" },
-        { "id": "lib-content",           "num": "18", "title": "콘텐츠 컴포넌트",                 "desc": "Section Title with View More / Triple Slogan / Hero Sub Description" },
-        { "id": "lib-utility",           "num": "19", "title": "유틸리티 컴포넌트",               "desc": "Multilingual Globe Toggle / Stroke Outline Text Background / Orange Logo" },
-        { "id": "signature-driving-typo","num": "20", "title": "시그니처 - DRIVING YOUR NEXT GROWTH 거대 타이포", "desc": "120-160px 흰 헤딩 + 흐릿한 outline stroke 배경 텍스트 무한 슬라이드" },
-        { "id": "signature-orange-curve","num": "21", "title": "시그니처 - Orange Dot Grid Curve Hero", "desc": "다크 배경 + 수만 개 오렌지 도트가 곡선 형성 (떠오르는 빛 메타포)" },
-        { "id": "signature-impact-counter","num": "22", "title": "시그니처 - Animated Counter Impact", "desc": "투자 금액 8,425 → 8,676 억원 동적 증가 + 펀드 수 72 → 74 개" },
-        { "id": "signature-newsletter",  "num": "23", "title": "시그니처 - Newsletter 33,560명 구독자", "desc": "오렌지 구독자 카운트 배지 + 좌측 메시지 + 우측 폼" },
-        { "id": "ix-hover",              "num": "24", "title": "호버 인터랙션 카탈로그",            "desc": "GNB / What's New / View More / 카드 / 로고 / 4-Accordion / Globe / Scroll-to-top" },
-        { "id": "ix-scroll",             "num": "25", "title": "스크롤 애니메이션 카탈로그",        "desc": "Hero fade / Stroke 슬라이드 / Curve zoom out / Counter 트리거 / Card stagger" },
-        { "id": "pub-semantic",          "num": "26", "title": "시맨틱 HTML · 접근성",            "desc": "user-scalable 양호 / WCAG 대비 검증 / prefers-reduced-motion 권장" },
-        { "id": "pub-perf-seo",          "num": "27", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Drupal + AWS S3 / Image Styles / itok / 다국어 hreflang 권장" },
-        { "id": "smooth-interaction-catalog","num": "28", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Material Design Standard Easing 35건 / slideInLeft·Right·arrowBounceFade·logo-seq 4종 named animation / DRIVING stroke 텍스트 무한 슬라이드 / 한영 페어 본문 / 전체 689건 transition" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 사이트맵",
+          "desc": "스타트업 액셀러레이터 (KB·신한 등 19개 은행 출연), 8개 프로그램 + 236개 포트폴리오"
+        },
+        {
+          "id": "philosophy",
+          "num": "02",
+          "title": "디자인 철학 · 비주얼 랭귀지",
+          "desc": "Dark Mode + Single Orange + 거대 타이포 + Animated Counter - 글로벌 VC 톤"
+        },
+        {
+          "id": "tokens",
+          "num": "03",
+          "title": "디자인 토큰 시스템",
+          "desc": "CSS Variables 재구성 + SUIT 폰트 + 3단계 브레이크포인트"
+        },
+        {
+          "id": "main-page",
+          "num": "04",
+          "title": "메인 페이지 분석 (9,865px)",
+          "desc": "Hero / Orange Curve / Featured / 4-Accordion / News / Impact / Newsletter"
+        },
+        {
+          "id": "program-batch",
+          "num": "05",
+          "title": "Program - dcamp batch 정밀",
+          "desc": "10,244px / 11 H2 섹션 / 디캠프 배치 8기 모집 페이지"
+        },
+        {
+          "id": "startup-page",
+          "num": "06",
+          "title": "Startup - 236 포트폴리오",
+          "desc": "/startups 236 카드 + 3-필터 (dcamp batch / 구분 / 분류)"
+        },
+        {
+          "id": "color-system",
+          "num": "07",
+          "title": "컬러 시스템",
+          "desc": "검정+흰+회색 800회 + 오렌지 #FF5E27 + Dark vs Light 영역 분리"
+        },
+        {
+          "id": "typography-system",
+          "num": "08",
+          "title": "타이포그래피 시스템 (SUIT)",
+          "desc": "SUIT 한글 기하 폰트 + 120-160px Hero + 11 단계 스케일"
+        },
+        {
+          "id": "image-system",
+          "num": "09",
+          "title": "이미지 시스템 (S3 + Drupal)",
+          "desc": "AWS S3 ap-northeast-2 + Drupal Image Styles + itok access token"
+        },
+        {
+          "id": "layout-grid",
+          "num": "10",
+          "title": "그리드 · 컨테이너 시스템",
+          "desc": "9,865px / 80px container padding / Masonry + Grid 혼용"
+        },
+        {
+          "id": "layout-responsive",
+          "num": "11",
+          "title": "반응형 · 여백 · 둥글기",
+          "desc": "3단계 단순 시스템 (1024/1600/hover)"
+        },
+        {
+          "id": "lib-buttons",
+          "num": "12",
+          "title": "버튼 · CTA 라이브러리",
+          "desc": "6종 - What's New 오렌지 / View More Outline / Scroll-to-top / Subscribe / Badge / Featured CTA"
+        },
+        {
+          "id": "lib-cards",
+          "num": "13",
+          "title": "카드 라이브러리",
+          "desc": "4종 - News Event (오렌지 카테고리) / Animated Counter / News Story / Startup Logo"
+        },
+        {
+          "id": "lib-banners",
+          "num": "14",
+          "title": "배너 · Hero 라이브러리",
+          "desc": "3종 - DRIVING YOUR NEXT GROWTH / Featured Slide / For your beginning"
+        },
+        {
+          "id": "lib-navigation",
+          "num": "15",
+          "title": "네비게이션 라이브러리",
+          "desc": "Top GNB / 4-Accordion Program Selector / Dark Footer (4-Col + Office)"
+        },
+        {
+          "id": "lib-forms",
+          "num": "16",
+          "title": "폼 라이브러리",
+          "desc": "Newsletter Subscribe (33,560 구독자) / Startup Filter Select"
+        },
+        {
+          "id": "lib-data",
+          "num": "17",
+          "title": "데이터 디스플레이",
+          "desc": "Animated Counter Card (8,676억원) / 11 H2 Section Table"
+        },
+        {
+          "id": "lib-content",
+          "num": "18",
+          "title": "콘텐츠 컴포넌트",
+          "desc": "Section Title with View More / Triple Slogan / Hero Sub Description"
+        },
+        {
+          "id": "lib-utility",
+          "num": "19",
+          "title": "유틸리티 컴포넌트",
+          "desc": "Multilingual Globe Toggle / Stroke Outline Text Background / Orange Logo"
+        },
+        {
+          "id": "signature-driving-typo",
+          "num": "20",
+          "title": "시그니처 - DRIVING YOUR NEXT GROWTH 거대 타이포",
+          "desc": "120-160px 흰 헤딩 + 흐릿한 outline stroke 배경 텍스트 무한 슬라이드"
+        },
+        {
+          "id": "signature-orange-curve",
+          "num": "21",
+          "title": "시그니처 - Orange Dot Grid Curve Hero",
+          "desc": "다크 배경 + 수만 개 오렌지 도트가 곡선 형성 (떠오르는 빛 메타포)"
+        },
+        {
+          "id": "signature-impact-counter",
+          "num": "22",
+          "title": "시그니처 - Animated Counter Impact",
+          "desc": "투자 금액 8,425 → 8,676 억원 동적 증가 + 펀드 수 72 → 74 개"
+        },
+        {
+          "id": "signature-newsletter",
+          "num": "23",
+          "title": "시그니처 - Newsletter 33,560명 구독자",
+          "desc": "오렌지 구독자 카운트 배지 + 좌측 메시지 + 우측 폼"
+        },
+        {
+          "id": "ix-hover",
+          "num": "24",
+          "title": "호버 인터랙션 카탈로그",
+          "desc": "GNB / What's New / View More / 카드 / 로고 / 4-Accordion / Globe / Scroll-to-top"
+        },
+        {
+          "id": "ix-scroll",
+          "num": "25",
+          "title": "스크롤 애니메이션 카탈로그",
+          "desc": "Hero fade / Stroke 슬라이드 / Curve zoom out / Counter 트리거 / Card stagger"
+        },
+        {
+          "id": "pub-semantic",
+          "num": "26",
+          "title": "시맨틱 HTML · 접근성",
+          "desc": "user-scalable 양호 / WCAG 대비 검증 / prefers-reduced-motion 권장"
+        },
+        {
+          "id": "pub-perf-seo",
+          "num": "27",
+          "title": "성능 · SEO · 디자인-개발 협업",
+          "desc": "Drupal + AWS S3 / Image Styles / itok / 다국어 hreflang 권장"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "28",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
+          "desc": "Material Design Standard Easing 35건 / slideInLeft·Right·arrowBounceFade·logo-seq 4종 named animation / DRIVING stroke 텍스트 무한 슬라이드 / 한영 페어 본문 / 전체 689건 transition"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://dcamp.kr/" },
-        { "title": "Who we are", "url": "https://dcamp.kr/about/who-we-are" },
-        { "title": "What we do", "url": "https://dcamp.kr/about/what-we-do" },
-        { "title": "dcamp batch", "url": "https://dcamp.kr/program/batch" },
-        { "title": "investment", "url": "https://dcamp.kr/program/investment" },
-        { "title": "global", "url": "https://dcamp.kr/program/global" },
-        { "title": "growth coaching", "url": "https://dcamp.kr/program/growth-coaching" },
-        { "title": "d.day", "url": "https://dcamp.kr/program/dday" },
-        { "title": "space", "url": "https://dcamp.kr/program/space" },
-        { "title": "officehour", "url": "https://dcamp.kr/program/officehour" },
-        { "title": "family service", "url": "https://dcamp.kr/program/family-service" },
-        { "title": "Startup (236 포트폴리오)", "url": "https://dcamp.kr/startups" },
-        { "title": "Notice", "url": "https://dcamp.kr/news/notice" },
-        { "title": "Story", "url": "https://dcamp.kr/news/story" },
-        { "title": "Media", "url": "https://dcamp.kr/news/media" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://dcamp.kr/"
+        },
+        {
+          "title": "Who we are",
+          "url": "https://dcamp.kr/about/who-we-are"
+        },
+        {
+          "title": "What we do",
+          "url": "https://dcamp.kr/about/what-we-do"
+        },
+        {
+          "title": "dcamp batch",
+          "url": "https://dcamp.kr/program/batch"
+        },
+        {
+          "title": "investment",
+          "url": "https://dcamp.kr/program/investment"
+        },
+        {
+          "title": "global",
+          "url": "https://dcamp.kr/program/global"
+        },
+        {
+          "title": "growth coaching",
+          "url": "https://dcamp.kr/program/growth-coaching"
+        },
+        {
+          "title": "d.day",
+          "url": "https://dcamp.kr/program/dday"
+        },
+        {
+          "title": "space",
+          "url": "https://dcamp.kr/program/space"
+        },
+        {
+          "title": "officehour",
+          "url": "https://dcamp.kr/program/officehour"
+        },
+        {
+          "title": "family service",
+          "url": "https://dcamp.kr/program/family-service"
+        },
+        {
+          "title": "Startup (236 포트폴리오)",
+          "url": "https://dcamp.kr/startups"
+        },
+        {
+          "title": "Notice",
+          "url": "https://dcamp.kr/news/notice"
+        },
+        {
+          "title": "Story",
+          "url": "https://dcamp.kr/news/story"
+        },
+        {
+          "title": "Media",
+          "url": "https://dcamp.kr/news/media"
+        }
       ]
     },
     {
@@ -134,54 +537,260 @@
       "analysis": "analyses/kdnavien-co-kr/analysis.json",
       "pagesAnalyzed": 12,
       "sections": [
-        { "id": "overview",            "num": "01", "title": "개요 · 사이트맵",                "desc": "사이트 프로필, 12페이지 사이트맵, 기술 스택" },
-        { "id": "philosophy",          "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",     "desc": "비주얼 6원칙, 단일 강조 컬러 전략, 카탈로그 톤" },
-        { "id": "tokens",              "num": "03", "title": "디자인 토큰 시스템",              "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)" },
-        { "id": "main-page",           "num": "04", "title": "메인 페이지 분석",                "desc": "Hero/Solution Intro/4 Lifestyle Cards/ESG/Footer 흐름" },
-        { "id": "about-pages",         "num": "05", "title": "회사소개 카테고리",                "desc": "5페이지 정밀 - 소개(스토리텔링)/비전(핵심가치)/CEO(인사말)/연혁(36k 타임라인)/계열사·글로벌" },
-        { "id": "business-pages",      "num": "06", "title": "사업분야 카테고리",                "desc": "9페이지 정밀 - 보일러/온수기/환기청정기 (Environment)·주방기기/숙면매트 (Living)·스마트홈/스마트앱 (Connectivity)·구독/나비엔하우스 (Convenience). 공통 제품 페이지 템플릿" },
-        { "id": "pr-pages",            "num": "07", "title": "홍보센터 카테고리",                "desc": "뉴스(4탭 게시판 550건)·미디어·KDZ" },
-        { "id": "esg-pages",           "num": "08", "title": "지속가능경영 카테고리",            "desc": "ESG 전략·보고서·고객중심경영·사회공헌·안전보건·윤리경영" },
-        { "id": "invest-talent-pages", "num": "09", "title": "투자정보 · 인재경영",              "desc": "공시·전자공고·주가·IR (공시 API)·인재경영 5탭 (인재상/직무/채용/인사제도/복지)" },
-        { "id": "color-system",        "num": "10", "title": "컬러 시스템",                     "desc": "단일 오렌지 #FF730F + 무채색 스케일, 사용 비율, WCAG 대비" },
-        { "id": "typography-system",   "num": "11", "title": "타이포그래피 시스템",              "desc": "Pretendard 단일 서체, 12단계 타입 스케일, 10-72px" },
-        { "id": "icon-system",         "num": "12", "title": "아이콘 시스템",                   "desc": "Iconyaki (자체 SVG 아이콘 컴포넌트), currentColor, 24/20/16 viewBox" },
-        { "id": "image-system",        "num": "13", "title": "이미지 · 영상 시스템",             "desc": "Next.js Image (PNG/WebP), Hero 배경 비디오, Solution 공간 사진, og_image" },
-        { "id": "layout-grid",         "num": "14", "title": "그리드 · 컨테이너 시스템",         "desc": "1600px inner / 1920px 풀블리드, 페이지별 cont-wrap 패턴" },
-        { "id": "layout-responsive",   "num": "15", "title": "반응형 · 여백 · 둥글기",          "desc": "4단계 중단점 (479/767/1239/1240) + 8단계 데스크톱 미세 조정" },
-        { "id": "lib-buttons",         "num": "16", "title": "버튼 · CTA 라이브러리",            "desc": "GNB 메뉴/스킵링크/사이트맵 버튼/Pill CTA/패밀리사이트 모달 트리거 등 8종" },
-        { "id": "lib-cards",           "num": "17", "title": "카드 라이브러리",                  "desc": "Solution Glass Card/Product Hero/News Board Card/Stats Card/핵심가치 Card 등 9종" },
-        { "id": "lib-banners",         "num": "18", "title": "배너 · Hero 라이브러리",           "desc": "Main Hero (배경 비디오)/Sub Page Hero/Product Hero/ESG Banner 등 5종" },
-        { "id": "lib-navigation",      "num": "19", "title": "네비게이션 라이브러리",            "desc": "3단 GNB Submenu/Breadcrumb/Sub Top Menu/Section Number Indicator/Footer 등 7종" },
-        { "id": "lib-tabs-forms",      "num": "20", "title": "탭 · 폼 라이브러리",              "desc": "Line Tab (KNTab)/Search Box/Pagination/Family Site Modal 등 6종" },
-        { "id": "lib-data",            "num": "21", "title": "데이터 디스플레이 라이브러리",      "desc": "Board List (News Card)/Year Timeline/Stats Number/공시 Table 등 5종" },
-        { "id": "lib-content",         "num": "22", "title": "콘텐츠 컴포넌트 라이브러리",        "desc": "Page Title Box/Chapter Heading/CEO Message/핵심가치 3-Col/제품 핵심기술 3-Feature 등 7종" },
-        { "id": "lib-utility",         "num": "23", "title": "오버레이 · 유틸리티 라이브러리",  "desc": "Skip Link/Iconyaki SVG Wrapper/ARIA 모달 패턴/Sticky Header 변환 등 5종" },
-        { "id": "lib-embed",           "num": "24", "title": "임베드 · 미디어 컴포넌트",         "desc": "Hero 배경 비디오 (muted/loop/playsInline)/Next.js Image 최적화 패턴 등 4종" },
-        { "id": "lib-media",           "num": "25", "title": "솔루션 · 라이프스타일 카드 라이브러리", "desc": "🟢 4-Lifestyle Solution Card (smart/relax/pleasant/cozy) 정밀 클론 + Map Dot Anchor + Section Number Indicator" },
-        { "id": "ix-hover",            "num": "26", "title": "호버 인터랙션 카탈로그",            "desc": "GNB 드롭다운 (max-height 0.3s+visibility)/Solution Card .active 토글/지연 색상 전환 등 8종" },
-        { "id": "ix-scroll",           "num": "27", "title": "스크롤 애니메이션 카탈로그",        "desc": "Hero 진입 비디오 재생/IntersectionObserver 리빌/Sticky 헤더 (.at-top 토글)/연혁 36k 스크롤 등" },
-        { "id": "ix-video",            "num": "28", "title": "배경 영상 · 디바이스 분기 인터랙션", "desc": "Hero main_cover_video.mp4 (1920×960 muted loop playsInline)/Pause-Play 토글/(hover:hover) 분기" },
-        { "id": "pub-semantic",        "num": "29", "title": "시멘틱 HTML · 접근성",            "desc": "구조 (main/nav×2/header/footer), 스킵링크 2종, ARIA 상태, alt 갭, WCAG 대비 검증" },
-        { "id": "pub-perf-seo",        "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "Next.js Image q=75/Pretendard 자체호스팅/og meta·viewport/CSS Modules 클래스명(KNTab/iconyaki)" },
-        { "id": "real-product-catalog","num": "31", "title": "🟢 실 제품 카탈로그 (18종)",       "desc": "static.navienhouse.com 외부 호스트의 보일러(5)·환기청정기(5)·온수기(4)·스마트홈(4) 실 제품 사진 카탈로그 + 모델 번호" },
-        { "id": "tech-animation",      "num": "32", "title": "🟢 핵심 기술 시각화 - JPG + GIF",   "desc": "사업분야 5카테고리 tech1-3 인포그래픽 - 주방기기만 GIF 애니메이션 채택한 디자인 결정" },
-        { "id": "talent-visual",       "num": "33", "title": "🟢 인재경영 페이지 비주얼 시스템",   "desc": "인재상 다이어그램 + 인사제도 GOAL + 고성과 조직 GREAT COMPANY 3종 + 데스크톱/모바일 분기" },
-        { "id": "smooth-interaction-catalog","num": "34", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Hero 8 슬라이드 (이전 4 정정) + SKIP 버튼 + 5 비디오 사전 로드 + transform 2s 15건 + 글로벌 나비엔/B2B/다국어 utility nav + 전체 728건 transition" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 사이트맵",
+          "desc": "사이트 프로필, 12페이지 사이트맵, 기술 스택"
+        },
+        {
+          "id": "philosophy",
+          "num": "02",
+          "title": "디자인 철학 · 비주얼 랭귀지",
+          "desc": "비주얼 6원칙, 단일 강조 컬러 전략, 카탈로그 톤"
+        },
+        {
+          "id": "tokens",
+          "num": "03",
+          "title": "디자인 토큰 시스템",
+          "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)"
+        },
+        {
+          "id": "main-page",
+          "num": "04",
+          "title": "메인 페이지 분석",
+          "desc": "Hero/Solution Intro/4 Lifestyle Cards/ESG/Footer 흐름"
+        },
+        {
+          "id": "about-pages",
+          "num": "05",
+          "title": "회사소개 카테고리",
+          "desc": "5페이지 정밀 - 소개(스토리텔링)/비전(핵심가치)/CEO(인사말)/연혁(36k 타임라인)/계열사·글로벌"
+        },
+        {
+          "id": "business-pages",
+          "num": "06",
+          "title": "사업분야 카테고리",
+          "desc": "9페이지 정밀 - 보일러/온수기/환기청정기 (Environment)·주방기기/숙면매트 (Living)·스마트홈/스마트앱 (Connectivity)·구독/나비엔하우스 (Convenience). 공통 제품 페이지 템플릿"
+        },
+        {
+          "id": "pr-pages",
+          "num": "07",
+          "title": "홍보센터 카테고리",
+          "desc": "뉴스(4탭 게시판 550건)·미디어·KDZ"
+        },
+        {
+          "id": "esg-pages",
+          "num": "08",
+          "title": "지속가능경영 카테고리",
+          "desc": "ESG 전략·보고서·고객중심경영·사회공헌·안전보건·윤리경영"
+        },
+        {
+          "id": "invest-talent-pages",
+          "num": "09",
+          "title": "투자정보 · 인재경영",
+          "desc": "공시·전자공고·주가·IR (공시 API)·인재경영 5탭 (인재상/직무/채용/인사제도/복지)"
+        },
+        {
+          "id": "color-system",
+          "num": "10",
+          "title": "컬러 시스템",
+          "desc": "단일 오렌지 #FF730F + 무채색 스케일, 사용 비율, WCAG 대비"
+        },
+        {
+          "id": "typography-system",
+          "num": "11",
+          "title": "타이포그래피 시스템",
+          "desc": "Pretendard 단일 서체, 12단계 타입 스케일, 10-72px"
+        },
+        {
+          "id": "icon-system",
+          "num": "12",
+          "title": "아이콘 시스템",
+          "desc": "Iconyaki (자체 SVG 아이콘 컴포넌트), currentColor, 24/20/16 viewBox"
+        },
+        {
+          "id": "image-system",
+          "num": "13",
+          "title": "이미지 · 영상 시스템",
+          "desc": "Next.js Image (PNG/WebP), Hero 배경 비디오, Solution 공간 사진, og_image"
+        },
+        {
+          "id": "layout-grid",
+          "num": "14",
+          "title": "그리드 · 컨테이너 시스템",
+          "desc": "1600px inner / 1920px 풀블리드, 페이지별 cont-wrap 패턴"
+        },
+        {
+          "id": "layout-responsive",
+          "num": "15",
+          "title": "반응형 · 여백 · 둥글기",
+          "desc": "4단계 중단점 (479/767/1239/1240) + 8단계 데스크톱 미세 조정"
+        },
+        {
+          "id": "lib-buttons",
+          "num": "16",
+          "title": "버튼 · CTA 라이브러리",
+          "desc": "GNB 메뉴/스킵링크/사이트맵 버튼/Pill CTA/패밀리사이트 모달 트리거 등 8종"
+        },
+        {
+          "id": "lib-cards",
+          "num": "17",
+          "title": "카드 라이브러리",
+          "desc": "Solution Glass Card/Product Hero/News Board Card/Stats Card/핵심가치 Card 등 9종"
+        },
+        {
+          "id": "lib-banners",
+          "num": "18",
+          "title": "배너 · Hero 라이브러리",
+          "desc": "Main Hero (배경 비디오)/Sub Page Hero/Product Hero/ESG Banner 등 5종"
+        },
+        {
+          "id": "lib-navigation",
+          "num": "19",
+          "title": "네비게이션 라이브러리",
+          "desc": "3단 GNB Submenu/Breadcrumb/Sub Top Menu/Section Number Indicator/Footer 등 7종"
+        },
+        {
+          "id": "lib-tabs-forms",
+          "num": "20",
+          "title": "탭 · 폼 라이브러리",
+          "desc": "Line Tab (KNTab)/Search Box/Pagination/Family Site Modal 등 6종"
+        },
+        {
+          "id": "lib-data",
+          "num": "21",
+          "title": "데이터 디스플레이 라이브러리",
+          "desc": "Board List (News Card)/Year Timeline/Stats Number/공시 Table 등 5종"
+        },
+        {
+          "id": "lib-content",
+          "num": "22",
+          "title": "콘텐츠 컴포넌트 라이브러리",
+          "desc": "Page Title Box/Chapter Heading/CEO Message/핵심가치 3-Col/제품 핵심기술 3-Feature 등 7종"
+        },
+        {
+          "id": "lib-utility",
+          "num": "23",
+          "title": "오버레이 · 유틸리티 라이브러리",
+          "desc": "Skip Link/Iconyaki SVG Wrapper/ARIA 모달 패턴/Sticky Header 변환 등 5종"
+        },
+        {
+          "id": "lib-embed",
+          "num": "24",
+          "title": "임베드 · 미디어 컴포넌트",
+          "desc": "Hero 배경 비디오 (muted/loop/playsInline)/Next.js Image 최적화 패턴 등 4종"
+        },
+        {
+          "id": "lib-media",
+          "num": "25",
+          "title": "솔루션 · 라이프스타일 카드 라이브러리",
+          "desc": "🟢 4-Lifestyle Solution Card (smart/relax/pleasant/cozy) 정밀 클론 + Map Dot Anchor + Section Number Indicator"
+        },
+        {
+          "id": "ix-hover",
+          "num": "26",
+          "title": "호버 인터랙션 카탈로그",
+          "desc": "GNB 드롭다운 (max-height 0.3s+visibility)/Solution Card .active 토글/지연 색상 전환 등 8종"
+        },
+        {
+          "id": "ix-scroll",
+          "num": "27",
+          "title": "스크롤 애니메이션 카탈로그",
+          "desc": "Hero 진입 비디오 재생/IntersectionObserver 리빌/Sticky 헤더 (.at-top 토글)/연혁 36k 스크롤 등"
+        },
+        {
+          "id": "ix-video",
+          "num": "28",
+          "title": "배경 영상 · 디바이스 분기 인터랙션",
+          "desc": "Hero main_cover_video.mp4 (1920×960 muted loop playsInline)/Pause-Play 토글/(hover:hover) 분기"
+        },
+        {
+          "id": "pub-semantic",
+          "num": "29",
+          "title": "시멘틱 HTML · 접근성",
+          "desc": "구조 (main/nav×2/header/footer), 스킵링크 2종, ARIA 상태, alt 갭, WCAG 대비 검증"
+        },
+        {
+          "id": "pub-perf-seo",
+          "num": "30",
+          "title": "성능 · SEO · 디자인-개발 협업",
+          "desc": "Next.js Image q=75/Pretendard 자체호스팅/og meta·viewport/CSS Modules 클래스명(KNTab/iconyaki)"
+        },
+        {
+          "id": "real-product-catalog",
+          "num": "31",
+          "title": "🟢 실 제품 카탈로그 (18종)",
+          "desc": "static.navienhouse.com 외부 호스트의 보일러(5)·환기청정기(5)·온수기(4)·스마트홈(4) 실 제품 사진 카탈로그 + 모델 번호"
+        },
+        {
+          "id": "tech-animation",
+          "num": "32",
+          "title": "🟢 핵심 기술 시각화 - JPG + GIF",
+          "desc": "사업분야 5카테고리 tech1-3 인포그래픽 - 주방기기만 GIF 애니메이션 채택한 디자인 결정"
+        },
+        {
+          "id": "talent-visual",
+          "num": "33",
+          "title": "🟢 인재경영 페이지 비주얼 시스템",
+          "desc": "인재상 다이어그램 + 인사제도 GOAL + 고성과 조직 GREAT COMPANY 3종 + 데스크톱/모바일 분기"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "34",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
+          "desc": "Hero 8 슬라이드 (이전 4 정정) + SKIP 버튼 + 5 비디오 사전 로드 + transform 2s 15건 + 글로벌 나비엔/B2B/다국어 utility nav + 전체 728건 transition"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://www.kdnavien.co.kr/ko" },
-        { "title": "경동나비엔 소개", "url": "https://www.kdnavien.co.kr/ko/about/about" },
-        { "title": "기업 이념 · 비전", "url": "https://www.kdnavien.co.kr/ko/about/vision" },
-        { "title": "CEO 인사말", "url": "https://www.kdnavien.co.kr/ko/about/ceo-message" },
-        { "title": "연혁", "url": "https://www.kdnavien.co.kr/ko/about/history" },
-        { "title": "보일러 (Environment)", "url": "https://www.kdnavien.co.kr/ko/business/environment/boiler" },
-        { "title": "주방기기 (Living)", "url": "https://www.kdnavien.co.kr/ko/business/living/kitchen-appliances" },
-        { "title": "스마트 홈 시스템 (Connectivity)", "url": "https://www.kdnavien.co.kr/ko/business/connectivity/smarthome" },
-        { "title": "뉴스 (Press Release)", "url": "https://www.kdnavien.co.kr/ko/pr/press-release" },
-        { "title": "ESG 전략", "url": "https://www.kdnavien.co.kr/ko/sustainability/esg/strategy" },
-        { "title": "공시정보", "url": "https://www.kdnavien.co.kr/ko/invest/disclosure" },
-        { "title": "인재경영 · 채용", "url": "https://www.kdnavien.co.kr/ko/talent" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://www.kdnavien.co.kr/ko"
+        },
+        {
+          "title": "경동나비엔 소개",
+          "url": "https://www.kdnavien.co.kr/ko/about/about"
+        },
+        {
+          "title": "기업 이념 · 비전",
+          "url": "https://www.kdnavien.co.kr/ko/about/vision"
+        },
+        {
+          "title": "CEO 인사말",
+          "url": "https://www.kdnavien.co.kr/ko/about/ceo-message"
+        },
+        {
+          "title": "연혁",
+          "url": "https://www.kdnavien.co.kr/ko/about/history"
+        },
+        {
+          "title": "보일러 (Environment)",
+          "url": "https://www.kdnavien.co.kr/ko/business/environment/boiler"
+        },
+        {
+          "title": "주방기기 (Living)",
+          "url": "https://www.kdnavien.co.kr/ko/business/living/kitchen-appliances"
+        },
+        {
+          "title": "스마트 홈 시스템 (Connectivity)",
+          "url": "https://www.kdnavien.co.kr/ko/business/connectivity/smarthome"
+        },
+        {
+          "title": "뉴스 (Press Release)",
+          "url": "https://www.kdnavien.co.kr/ko/pr/press-release"
+        },
+        {
+          "title": "ESG 전략",
+          "url": "https://www.kdnavien.co.kr/ko/sustainability/esg/strategy"
+        },
+        {
+          "title": "공시정보",
+          "url": "https://www.kdnavien.co.kr/ko/invest/disclosure"
+        },
+        {
+          "title": "인재경영 · 채용",
+          "url": "https://www.kdnavien.co.kr/ko/talent"
+        }
       ]
     },
     {
@@ -192,65 +801,302 @@
       "analysis": "analyses/asinsam/analysis.json",
       "pagesAnalyzed": 24,
       "sections": [
-        { "id": "overview",            "num": "01", "title": "개요 · 사이트맵",              "desc": "사이트 프로필, 24페이지 사이트맵, 기술 스택" },
-        { "id": "philosophy",          "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",   "desc": "비주얼 6원칙, 듀얼 톤 전략 (NH Green + Ginseng Brown)" },
-        { "id": "tokens",              "num": "03", "title": "디자인 토큰 시스템",            "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)" },
-        { "id": "main-page",           "num": "04", "title": "메인 페이지 분석",              "desc": "Hero/About/Service/Product/Contact 등 9개 섹션" },
-        { "id": "nh-pages",            "num": "05", "title": "안성인삼농협 카테고리",          "desc": "7페이지 정밀 분석 - 인사말(Four Core Missions)/연혁(Vertical Timeline)/조직도(4-Level Diagram)/오시는 길/공개·공시(게시판)/조합원(가입 절차)" },
-        { "id": "myeongsamwon-pages",  "num": "06", "title": "명삼원 카테고리",                "desc": "6페이지 정밀 - 브랜드(3-Pillar Philosophy)/제품(홍삼·수삼 상세)/매장(Kakao Map)/안성마춤 협업" },
-        { "id": "biz-pages",           "num": "07", "title": "사업분야 카테고리",              "desc": "4페이지 정밀 - 신용사업(Sticky 5탭: 예금/BC카드/NH카드/농협보험/대출)/지도/가공(Fade-In)/하나로마트" },
-        { "id": "finance-pages",       "num": "08", "title": "NH 금융 카테고리",              "desc": "2페이지 정밀 - 금리안내(직접 PDF iframe 임베드, 정정)/농업자금(지원 프로그램 카드)" },
-        { "id": "community-pages",     "num": "09", "title": "열린마당 4페이지",              "desc": "Chrome MCP 재방문 확장 - 안내드립니다/우리농협소식/농업뉴스/고객의 소리(폼 헤비)" },
-        { "id": "color-system",        "num": "10", "title": "컬러 시스템",                   "desc": "NH Green + Ginseng Brown 듀얼 톤, 18색 매핑" },
-        { "id": "typography-system",   "num": "11", "title": "타이포그래피 시스템",            "desc": "Pretendard Variable 단일 서체, 한글 가독성 최적화" },
-        { "id": "icon-system",         "num": "12", "title": "아이콘 시스템",                 "desc": "Outline + Text-First, Material 스타일" },
-        { "id": "image-system",        "num": "13", "title": "이미지 · 그래픽 시스템",          "desc": "인삼 사진, 다크 우드 톤, 카카오 지도, PDF Viewer" },
-        { "id": "layout-grid",         "num": "14", "title": "그리드 · 컨테이너 시스템",        "desc": "1280px max, 섹션별 grid 패턴" },
-        { "id": "layout-responsive",   "num": "15", "title": "반응형 · 여백 · 둥글기",         "desc": "3단계 중단점, 8의 배수, 6단계 둥글기" },
-        { "id": "lib-buttons",         "num": "16", "title": "버튼 · CTA 라이브러리",          "desc": "쇼핑몰/카달로그/더보기/Pill Tab/Map Button 등" },
-        { "id": "lib-cards",           "num": "17", "title": "카드 라이브러리",                "desc": "Product/Green BG/Dark Wood/Cream/News List 등" },
-        { "id": "lib-banners",         "num": "18", "title": "배너 · Hero 라이브러리",         "desc": "Sub Hero/Main Slider/Premium/Fade-In Headline" },
-        { "id": "lib-navigation",     "num": "19", "title": "네비게이션 라이브러리",           "desc": "Header GNB/Breadcrumb/Side Radio/Slider Indicator 등" },
-        { "id": "lib-forms",           "num": "20", "title": "폼 라이브러리",                  "desc": "Search/Filter Select/Contact Field/Agreement/Submit" },
-        { "id": "lib-data",            "num": "21", "title": "데이터 디스플레이 라이브러리",    "desc": "Disclosure Table/Rate Table/Vertical Timeline/Stat" },
-        { "id": "lib-content",         "num": "22", "title": "콘텐츠 컴포넌트 라이브러리",      "desc": "Fade-In Headline/CEO Greeting/Org Chart/Process Flow/Quote" },
-        { "id": "lib-utility",         "num": "23", "title": "오버레이 · 유틸리티 라이브러리",  "desc": "Footer/Sticky Header/Scroll Top/Modal/Notification" },
-        { "id": "lib-embed",           "num": "24", "title": "임베드 컴포넌트",                "desc": "Kakao Map/Google PDF Viewer/Image Gallery" },
-        { "id": "lib-media",           "num": "25", "title": "미디어 컴포넌트",                "desc": "Product Detail Image/Video Banner/Image with Tag" },
-        { "id": "ix-hover",            "num": "26", "title": "호버 인터랙션 카탈로그",          "desc": "10+ 호버 패턴 매핑" },
-        { "id": "ix-scroll",           "num": "27", "title": "스크롤 애니메이션 카탈로그",      "desc": "Headline Fade-In (회색→초록), Header Sticky 등" },
-        { "id": "ix-cursor",           "num": "28", "title": "Hero 슬라이더 · 인디케이터 효과", "desc": "Progress Bar 5s, Pause/Play 토글" },
-        { "id": "pub-semantic",        "num": "29", "title": "시맨틱 HTML · 접근성",          "desc": "구조, WCAG 감사, NH Green 대비 주의" },
-        { "id": "pub-perf-seo",        "num": "30", "title": "성능 · SEO · 디자인-개발 협업",  "desc": "Pretendard Variable, Kakao Map lazy, 구조화 데이터" },
-        { "id": "brand-philosophy",    "num": "31", "title": "🟢 명삼원 브랜드 3-Pillar Philosophy", "desc": "브랜드 페이지 (sH 8,047px) 정밀 - 맑음과 정직함/깊이 있는 생명력/정원처럼 가꾼 정성 + ONE-STOP 시스템 3 섹션" },
-        { "id": "matchum-collaboration","num": "32", "title": "🟢 안성마춤 3-Party Collaboration", "desc": "안성시청 + 농가/생산 조직 + 안성관내농협 3 주체 협업 다이어그램 (지역 통합 브랜드 거버넌스)" },
-        { "id": "smooth-interaction-catalog","num": "33", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "헤더 스크롤 변환 / Hero Slider 3-Track / 단어별 페이드인 (color 0.6s) / 사이드 라디오 단계별 / Swiper Pagination / W형 카드 / Floating Popup / 광범위 transition 통계" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 사이트맵",
+          "desc": "사이트 프로필, 24페이지 사이트맵, 기술 스택"
+        },
+        {
+          "id": "philosophy",
+          "num": "02",
+          "title": "디자인 철학 · 비주얼 랭귀지",
+          "desc": "비주얼 6원칙, 듀얼 톤 전략 (NH Green + Ginseng Brown)"
+        },
+        {
+          "id": "tokens",
+          "num": "03",
+          "title": "디자인 토큰 시스템",
+          "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)"
+        },
+        {
+          "id": "main-page",
+          "num": "04",
+          "title": "메인 페이지 분석",
+          "desc": "Hero/About/Service/Product/Contact 등 9개 섹션"
+        },
+        {
+          "id": "nh-pages",
+          "num": "05",
+          "title": "안성인삼농협 카테고리",
+          "desc": "7페이지 정밀 분석 - 인사말(Four Core Missions)/연혁(Vertical Timeline)/조직도(4-Level Diagram)/오시는 길/공개·공시(게시판)/조합원(가입 절차)"
+        },
+        {
+          "id": "myeongsamwon-pages",
+          "num": "06",
+          "title": "명삼원 카테고리",
+          "desc": "6페이지 정밀 - 브랜드(3-Pillar Philosophy)/제품(홍삼·수삼 상세)/매장(Kakao Map)/안성마춤 협업"
+        },
+        {
+          "id": "biz-pages",
+          "num": "07",
+          "title": "사업분야 카테고리",
+          "desc": "4페이지 정밀 - 신용사업(Sticky 5탭: 예금/BC카드/NH카드/농협보험/대출)/지도/가공(Fade-In)/하나로마트"
+        },
+        {
+          "id": "finance-pages",
+          "num": "08",
+          "title": "NH 금융 카테고리",
+          "desc": "2페이지 정밀 - 금리안내(직접 PDF iframe 임베드, 정정)/농업자금(지원 프로그램 카드)"
+        },
+        {
+          "id": "community-pages",
+          "num": "09",
+          "title": "열린마당 4페이지",
+          "desc": "Chrome MCP 재방문 확장 - 안내드립니다/우리농협소식/농업뉴스/고객의 소리(폼 헤비)"
+        },
+        {
+          "id": "color-system",
+          "num": "10",
+          "title": "컬러 시스템",
+          "desc": "NH Green + Ginseng Brown 듀얼 톤, 18색 매핑"
+        },
+        {
+          "id": "typography-system",
+          "num": "11",
+          "title": "타이포그래피 시스템",
+          "desc": "Pretendard Variable 단일 서체, 한글 가독성 최적화"
+        },
+        {
+          "id": "icon-system",
+          "num": "12",
+          "title": "아이콘 시스템",
+          "desc": "Outline + Text-First, Material 스타일"
+        },
+        {
+          "id": "image-system",
+          "num": "13",
+          "title": "이미지 · 그래픽 시스템",
+          "desc": "인삼 사진, 다크 우드 톤, 카카오 지도, PDF Viewer"
+        },
+        {
+          "id": "layout-grid",
+          "num": "14",
+          "title": "그리드 · 컨테이너 시스템",
+          "desc": "1280px max, 섹션별 grid 패턴"
+        },
+        {
+          "id": "layout-responsive",
+          "num": "15",
+          "title": "반응형 · 여백 · 둥글기",
+          "desc": "3단계 중단점, 8의 배수, 6단계 둥글기"
+        },
+        {
+          "id": "lib-buttons",
+          "num": "16",
+          "title": "버튼 · CTA 라이브러리",
+          "desc": "쇼핑몰/카달로그/더보기/Pill Tab/Map Button 등"
+        },
+        {
+          "id": "lib-cards",
+          "num": "17",
+          "title": "카드 라이브러리",
+          "desc": "Product/Green BG/Dark Wood/Cream/News List 등"
+        },
+        {
+          "id": "lib-banners",
+          "num": "18",
+          "title": "배너 · Hero 라이브러리",
+          "desc": "Sub Hero/Main Slider/Premium/Fade-In Headline"
+        },
+        {
+          "id": "lib-navigation",
+          "num": "19",
+          "title": "네비게이션 라이브러리",
+          "desc": "Header GNB/Breadcrumb/Side Radio/Slider Indicator 등"
+        },
+        {
+          "id": "lib-forms",
+          "num": "20",
+          "title": "폼 라이브러리",
+          "desc": "Search/Filter Select/Contact Field/Agreement/Submit"
+        },
+        {
+          "id": "lib-data",
+          "num": "21",
+          "title": "데이터 디스플레이 라이브러리",
+          "desc": "Disclosure Table/Rate Table/Vertical Timeline/Stat"
+        },
+        {
+          "id": "lib-content",
+          "num": "22",
+          "title": "콘텐츠 컴포넌트 라이브러리",
+          "desc": "Fade-In Headline/CEO Greeting/Org Chart/Process Flow/Quote"
+        },
+        {
+          "id": "lib-utility",
+          "num": "23",
+          "title": "오버레이 · 유틸리티 라이브러리",
+          "desc": "Footer/Sticky Header/Scroll Top/Modal/Notification"
+        },
+        {
+          "id": "lib-embed",
+          "num": "24",
+          "title": "임베드 컴포넌트",
+          "desc": "Kakao Map/Google PDF Viewer/Image Gallery"
+        },
+        {
+          "id": "lib-media",
+          "num": "25",
+          "title": "미디어 컴포넌트",
+          "desc": "Product Detail Image/Video Banner/Image with Tag"
+        },
+        {
+          "id": "ix-hover",
+          "num": "26",
+          "title": "호버 인터랙션 카탈로그",
+          "desc": "10+ 호버 패턴 매핑"
+        },
+        {
+          "id": "ix-scroll",
+          "num": "27",
+          "title": "스크롤 애니메이션 카탈로그",
+          "desc": "Headline Fade-In (회색→초록), Header Sticky 등"
+        },
+        {
+          "id": "ix-cursor",
+          "num": "28",
+          "title": "Hero 슬라이더 · 인디케이터 효과",
+          "desc": "Progress Bar 5s, Pause/Play 토글"
+        },
+        {
+          "id": "pub-semantic",
+          "num": "29",
+          "title": "시맨틱 HTML · 접근성",
+          "desc": "구조, WCAG 감사, NH Green 대비 주의"
+        },
+        {
+          "id": "pub-perf-seo",
+          "num": "30",
+          "title": "성능 · SEO · 디자인-개발 협업",
+          "desc": "Pretendard Variable, Kakao Map lazy, 구조화 데이터"
+        },
+        {
+          "id": "brand-philosophy",
+          "num": "31",
+          "title": "🟢 명삼원 브랜드 3-Pillar Philosophy",
+          "desc": "브랜드 페이지 (sH 8,047px) 정밀 - 맑음과 정직함/깊이 있는 생명력/정원처럼 가꾼 정성 + ONE-STOP 시스템 3 섹션"
+        },
+        {
+          "id": "matchum-collaboration",
+          "num": "32",
+          "title": "🟢 안성마춤 3-Party Collaboration",
+          "desc": "안성시청 + 농가/생산 조직 + 안성관내농협 3 주체 협업 다이어그램 (지역 통합 브랜드 거버넌스)"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "33",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
+          "desc": "헤더 스크롤 변환 / Hero Slider 3-Track / 단어별 페이드인 (color 0.6s) / 사이드 라디오 단계별 / Swiper Pagination / W형 카드 / Floating Popup / 광범위 transition 통계"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://asinsam.com/" },
-        { "title": "인사말", "url": "https://asinsam.com/nh/greet" },
-        { "title": "연혁", "url": "https://asinsam.com/nh/history" },
-        { "title": "조직도", "url": "https://asinsam.com/nh/org" },
-        { "title": "오시는 길", "url": "https://asinsam.com/nh/location" },
-        { "title": "운영의 공개", "url": "https://asinsam.com/nh/disclosure" },
-        { "title": "경영공시", "url": "https://asinsam.com/nh/report" },
-        { "title": "조합원안내", "url": "https://asinsam.com/nh/member" },
-        { "title": "브랜드 스토리", "url": "https://asinsam.com/myeongsamwon/brand" },
-        { "title": "제품", "url": "https://asinsam.com/myeongsamwon/products" },
-        { "title": "명삼원 홍삼", "url": "https://asinsam.com/myeongsamwon/products/red-ginseng" },
-        { "title": "명삼원 수삼", "url": "https://asinsam.com/myeongsamwon/products/fresh-ginseng" },
-        { "title": "매장안내", "url": "https://asinsam.com/myeongsamwon/store" },
-        { "title": "안성마춤", "url": "https://asinsam.com/myeongsamwon/matchum" },
-        { "title": "신용사업", "url": "https://asinsam.com/biz/credit" },
-        { "title": "지도사업", "url": "https://asinsam.com/biz/guidance" },
-        { "title": "가공사업", "url": "https://asinsam.com/biz/processing" },
-        { "title": "하나로마트", "url": "https://asinsam.com/biz/mart" },
-        { "title": "금리안내", "url": "https://asinsam.com/finance/rates" },
-        { "title": "농업자금", "url": "https://asinsam.com/finance/funding" },
-        { "title": "안내드립니다", "url": "https://asinsam.com/community/information" },
-        { "title": "우리농협소식", "url": "https://asinsam.com/community/notice" },
-        { "title": "농업뉴스", "url": "https://asinsam.com/community/news" },
-        { "title": "고객의 소리", "url": "https://asinsam.com/community/voice" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://asinsam.com/"
+        },
+        {
+          "title": "인사말",
+          "url": "https://asinsam.com/nh/greet"
+        },
+        {
+          "title": "연혁",
+          "url": "https://asinsam.com/nh/history"
+        },
+        {
+          "title": "조직도",
+          "url": "https://asinsam.com/nh/org"
+        },
+        {
+          "title": "오시는 길",
+          "url": "https://asinsam.com/nh/location"
+        },
+        {
+          "title": "운영의 공개",
+          "url": "https://asinsam.com/nh/disclosure"
+        },
+        {
+          "title": "경영공시",
+          "url": "https://asinsam.com/nh/report"
+        },
+        {
+          "title": "조합원안내",
+          "url": "https://asinsam.com/nh/member"
+        },
+        {
+          "title": "브랜드 스토리",
+          "url": "https://asinsam.com/myeongsamwon/brand"
+        },
+        {
+          "title": "제품",
+          "url": "https://asinsam.com/myeongsamwon/products"
+        },
+        {
+          "title": "명삼원 홍삼",
+          "url": "https://asinsam.com/myeongsamwon/products/red-ginseng"
+        },
+        {
+          "title": "명삼원 수삼",
+          "url": "https://asinsam.com/myeongsamwon/products/fresh-ginseng"
+        },
+        {
+          "title": "매장안내",
+          "url": "https://asinsam.com/myeongsamwon/store"
+        },
+        {
+          "title": "안성마춤",
+          "url": "https://asinsam.com/myeongsamwon/matchum"
+        },
+        {
+          "title": "신용사업",
+          "url": "https://asinsam.com/biz/credit"
+        },
+        {
+          "title": "지도사업",
+          "url": "https://asinsam.com/biz/guidance"
+        },
+        {
+          "title": "가공사업",
+          "url": "https://asinsam.com/biz/processing"
+        },
+        {
+          "title": "하나로마트",
+          "url": "https://asinsam.com/biz/mart"
+        },
+        {
+          "title": "금리안내",
+          "url": "https://asinsam.com/finance/rates"
+        },
+        {
+          "title": "농업자금",
+          "url": "https://asinsam.com/finance/funding"
+        },
+        {
+          "title": "안내드립니다",
+          "url": "https://asinsam.com/community/information"
+        },
+        {
+          "title": "우리농협소식",
+          "url": "https://asinsam.com/community/notice"
+        },
+        {
+          "title": "농업뉴스",
+          "url": "https://asinsam.com/community/news"
+        },
+        {
+          "title": "고객의 소리",
+          "url": "https://asinsam.com/community/voice"
+        }
       ]
     },
     {
@@ -261,70 +1107,324 @@
       "analysis": "analyses/miracell/analysis.json",
       "pagesAnalyzed": 28,
       "sections": [
-        { "id": "overview",           "num": "01", "title": "개요 · 사이트맵",                "desc": "사이트 프로필, 28페이지 사이트맵, 기술 스택" },
-        { "id": "philosophy",         "num": "02", "title": "디자인 철학 · 비주얼 랭귀지",     "desc": "비주얼 6원칙, 디자인 결정 패턴" },
-        { "id": "tokens",             "num": "03", "title": "디자인 토큰 시스템",              "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)" },
-        { "id": "main-page",          "num": "04", "title": "메인 페이지 분석",                "desc": "Hero/About/Service/Product/News/Contact/Footer 7섹션" },
-        { "id": "about-pages",        "num": "05", "title": "About Us 카테고리",               "desc": "5페이지 정밀 - 기업소개(H3+조직도)/CEO(메시지+서명)/연혁(Pill 5탭+Year Grid)/오시는길(카카오 지도)/CI(로고+의미카드+컬러가이드 #790E17)" },
-        { "id": "product-pages",      "num": "06", "title": "Product 카테고리",                "desc": "5페이지 정밀 - Smart M-Cell(5 spec 카드+LED 4파장 탭+기기 사양표)/BmSC/BSC/Chroma M-CELL/Vacuum lock syringe + FDA 510(k) 인증" },
-        { "id": "service-pages",      "num": "07", "title": "Service 카테고리",                "desc": "4페이지 정밀 - Membership(6 h4 섹션)/CellBanking(sH 11335px 7섹션)/Platform/AICC + Process Flow + Before/After" },
-        { "id": "rnd-pages",          "num": "08", "title": "R&D 카테고리",                    "desc": "4페이지 정밀 - 줄기세포란?(4가지 세포 Numbered Cell Card)/연구소/신의료기술(인증)/특허(23건 Patent List)" },
-        { "id": "newsroom-pages",     "num": "09", "title": "Newsroom 카테고리",               "desc": "3페이지 정밀 - 공지/보도자료(검색+필터+게시판)/Contents(Media Card Grid)" },
-        { "id": "customer-pages",     "num": "10", "title": "Customer Support 카테고리",       "desc": "3페이지 정밀 - 문의사항(8섹션 폼: 카테고리/라디오/textarea/패스워드/Captcha HUGPCM)/자료실/논문" },
-        { "id": "etc-pages",          "num": "11", "title": "Member · Privacy · 기타",         "desc": "3페이지 정밀 - 로그인(박스+빨간 CTA)/회원가입(Step Indicator+Terms)/개인정보처리방침(5열 Data Table)" },
-        { "id": "color-system",       "num": "12", "title": "컬러 시스템",                     "desc": "20+ 색상 정밀 매핑, 그라데이션, WCAG 검증" },
-        { "id": "typography-system",  "num": "13", "title": "타이포그래피 시스템",              "desc": "16개 타입 스케일, font-outfit, 한글 강조 패턴" },
-        { "id": "icon-system",        "num": "14", "title": "아이콘 시스템",                   "desc": "XEIcon + Custom SVG + Unicode, 14개 아이콘 매핑" },
-        { "id": "layout-grid",        "num": "15", "title": "그리드 · 컨테이너 시스템",         "desc": "1500px 컨테이너, 섹션별 그리드 패턴" },
-        { "id": "layout-responsive",  "num": "16", "title": "반응형 · 여백 · 둥글기",          "desc": "3단계 중단점, 8의 배수 여백, 7단계 둥글기" },
-        { "id": "image-system",       "num": "17", "title": "이미지 · 그래픽 시스템",           "desc": "Hero 모자이크 15장, About 세포, Contact 네트워크" },
-        { "id": "lib-buttons",        "num": "18", "title": "버튼 · CTA 라이브러리",            "desc": "View More, Family Site, Privacy, Header CTA, FAB, Pill Tab" },
-        { "id": "lib-cards",          "num": "19", "title": "카드 라이브러리",                  "desc": "Hero 셀, Service, News, Product, Counter, Spec, CEO 등" },
-        { "id": "lib-banners",        "num": "20", "title": "배너 · Hero 라이브러리",           "desc": "Sub Banner, Main Hero(마스크), Pink, Dark Particle" },
-        { "id": "lib-navigation",     "num": "21", "title": "네비게이션 라이브러리",            "desc": "GNB, Header, Sub Top Menu, Side Nav, Breadcrumb, Footer" },
-        { "id": "lib-forms",          "num": "22", "title": "폼 라이브러리",                    "desc": "Input, Textarea, Password, Select, Radio, Checkbox, Captcha" },
-        { "id": "lib-data",           "num": "23", "title": "데이터 디스플레이 라이브러리",      "desc": "Data Table, Comparison Table, Timeline, Counter, Stat" },
-        { "id": "lib-content",        "num": "24", "title": "콘텐츠 컴포넌트",                  "desc": "Korean Headline, Process Flow, Step, Org Chart, Trust Badge" },
-        { "id": "lib-utility",        "num": "25", "title": "오버레이 · 유틸리티",              "desc": "Map Embed, FAB, Scroll Indicator, Dropdown, Toast, Modal" },
-        { "id": "ix-hover",           "num": "26", "title": "호버 인터랙션 카탈로그",            "desc": "18개 hover 패턴, 호버 디자인 4원칙" },
-        { "id": "ix-scroll",          "num": "27", "title": "스크롤 애니메이션 카탈로그",        "desc": "Continuous 8 + Triggered 8, GSAP/IO 패턴" },
-        { "id": "ix-cursor",          "num": "28", "title": "마우스 추적 · 커서 효과",           "desc": "Hero Spotlight Mask, Mouse Pointer 회전" },
-        { "id": "pub-semantic",       "num": "29", "title": "시맨틱 HTML · 접근성",            "desc": "구조, WCAG 2.1, 키보드, ARIA, prefers-reduced-motion" },
-        { "id": "pub-perf-seo",       "num": "30", "title": "성능 · SEO · 디자인-개발 협업",   "desc": "이미지·폰트 최적화, 구조화 데이터, 협업 체크리스트" },
-        { "id": "cellbanking-crisis-cards","num": "31", "title": "🟢 CellBanking 4-Card Crisis Awareness", "desc": "사이트 최장 11,438px 페이지 정밀 - H5 4종 (바이러스 진화/사망률 증가/면역력 노화/시장 성장) + Solution CTA. B2C 위기인식 카피라이팅의 정석" },
-        { "id": "stem-cell-video",        "num": "32", "title": "🟢 줄기세포 교육 - 비디오 임베드 + 4-Cell Cards", "desc": "줄기세포란? 페이지 - 비디오 썸네일+재생 아이콘 패턴 + 4종 세포(줄기세포/성장인자/백혈구/혈소판) 실 이미지 교육 카드" },
-        { "id": "smart-mcell-tech",       "num": "33", "title": "🟢 Smart M-Cell 5-Tech Detail", "desc": "시그니처 제품 페이지 - 실 제품 사진 + 5종 H5 핵심 기술 (Autorotation/Double rotation/Touch+Voice/LED Visible Light) + 한영 이중 표기 패턴" },
-        { "id": "smooth-interaction-catalog","num": "34", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "Splitting.js 글자별 분할 (1.5s) / KR·EN·CN 3 다국어 / 5×4 Hero Mosaic / Scroll down 3-Dot 인디케이터 / 빨간 Pencil FAB / opacity+transform 0.8s 69건 / 전체 694건 transition" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 사이트맵",
+          "desc": "사이트 프로필, 28페이지 사이트맵, 기술 스택"
+        },
+        {
+          "id": "philosophy",
+          "num": "02",
+          "title": "디자인 철학 · 비주얼 랭귀지",
+          "desc": "비주얼 6원칙, 디자인 결정 패턴"
+        },
+        {
+          "id": "tokens",
+          "num": "03",
+          "title": "디자인 토큰 시스템",
+          "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)"
+        },
+        {
+          "id": "main-page",
+          "num": "04",
+          "title": "메인 페이지 분석",
+          "desc": "Hero/About/Service/Product/News/Contact/Footer 7섹션"
+        },
+        {
+          "id": "about-pages",
+          "num": "05",
+          "title": "About Us 카테고리",
+          "desc": "5페이지 정밀 - 기업소개(H3+조직도)/CEO(메시지+서명)/연혁(Pill 5탭+Year Grid)/오시는길(카카오 지도)/CI(로고+의미카드+컬러가이드 #790E17)"
+        },
+        {
+          "id": "product-pages",
+          "num": "06",
+          "title": "Product 카테고리",
+          "desc": "5페이지 정밀 - Smart M-Cell(5 spec 카드+LED 4파장 탭+기기 사양표)/BmSC/BSC/Chroma M-CELL/Vacuum lock syringe + FDA 510(k) 인증"
+        },
+        {
+          "id": "service-pages",
+          "num": "07",
+          "title": "Service 카테고리",
+          "desc": "4페이지 정밀 - Membership(6 h4 섹션)/CellBanking(sH 11335px 7섹션)/Platform/AICC + Process Flow + Before/After"
+        },
+        {
+          "id": "rnd-pages",
+          "num": "08",
+          "title": "R&D 카테고리",
+          "desc": "4페이지 정밀 - 줄기세포란?(4가지 세포 Numbered Cell Card)/연구소/신의료기술(인증)/특허(23건 Patent List)"
+        },
+        {
+          "id": "newsroom-pages",
+          "num": "09",
+          "title": "Newsroom 카테고리",
+          "desc": "3페이지 정밀 - 공지/보도자료(검색+필터+게시판)/Contents(Media Card Grid)"
+        },
+        {
+          "id": "customer-pages",
+          "num": "10",
+          "title": "Customer Support 카테고리",
+          "desc": "3페이지 정밀 - 문의사항(8섹션 폼: 카테고리/라디오/textarea/패스워드/Captcha HUGPCM)/자료실/논문"
+        },
+        {
+          "id": "etc-pages",
+          "num": "11",
+          "title": "Member · Privacy · 기타",
+          "desc": "3페이지 정밀 - 로그인(박스+빨간 CTA)/회원가입(Step Indicator+Terms)/개인정보처리방침(5열 Data Table)"
+        },
+        {
+          "id": "color-system",
+          "num": "12",
+          "title": "컬러 시스템",
+          "desc": "20+ 색상 정밀 매핑, 그라데이션, WCAG 검증"
+        },
+        {
+          "id": "typography-system",
+          "num": "13",
+          "title": "타이포그래피 시스템",
+          "desc": "16개 타입 스케일, font-outfit, 한글 강조 패턴"
+        },
+        {
+          "id": "icon-system",
+          "num": "14",
+          "title": "아이콘 시스템",
+          "desc": "XEIcon + Custom SVG + Unicode, 14개 아이콘 매핑"
+        },
+        {
+          "id": "layout-grid",
+          "num": "15",
+          "title": "그리드 · 컨테이너 시스템",
+          "desc": "1500px 컨테이너, 섹션별 그리드 패턴"
+        },
+        {
+          "id": "layout-responsive",
+          "num": "16",
+          "title": "반응형 · 여백 · 둥글기",
+          "desc": "3단계 중단점, 8의 배수 여백, 7단계 둥글기"
+        },
+        {
+          "id": "image-system",
+          "num": "17",
+          "title": "이미지 · 그래픽 시스템",
+          "desc": "Hero 모자이크 15장, About 세포, Contact 네트워크"
+        },
+        {
+          "id": "lib-buttons",
+          "num": "18",
+          "title": "버튼 · CTA 라이브러리",
+          "desc": "View More, Family Site, Privacy, Header CTA, FAB, Pill Tab"
+        },
+        {
+          "id": "lib-cards",
+          "num": "19",
+          "title": "카드 라이브러리",
+          "desc": "Hero 셀, Service, News, Product, Counter, Spec, CEO 등"
+        },
+        {
+          "id": "lib-banners",
+          "num": "20",
+          "title": "배너 · Hero 라이브러리",
+          "desc": "Sub Banner, Main Hero(마스크), Pink, Dark Particle"
+        },
+        {
+          "id": "lib-navigation",
+          "num": "21",
+          "title": "네비게이션 라이브러리",
+          "desc": "GNB, Header, Sub Top Menu, Side Nav, Breadcrumb, Footer"
+        },
+        {
+          "id": "lib-forms",
+          "num": "22",
+          "title": "폼 라이브러리",
+          "desc": "Input, Textarea, Password, Select, Radio, Checkbox, Captcha"
+        },
+        {
+          "id": "lib-data",
+          "num": "23",
+          "title": "데이터 디스플레이 라이브러리",
+          "desc": "Data Table, Comparison Table, Timeline, Counter, Stat"
+        },
+        {
+          "id": "lib-content",
+          "num": "24",
+          "title": "콘텐츠 컴포넌트",
+          "desc": "Korean Headline, Process Flow, Step, Org Chart, Trust Badge"
+        },
+        {
+          "id": "lib-utility",
+          "num": "25",
+          "title": "오버레이 · 유틸리티",
+          "desc": "Map Embed, FAB, Scroll Indicator, Dropdown, Toast, Modal"
+        },
+        {
+          "id": "ix-hover",
+          "num": "26",
+          "title": "호버 인터랙션 카탈로그",
+          "desc": "18개 hover 패턴, 호버 디자인 4원칙"
+        },
+        {
+          "id": "ix-scroll",
+          "num": "27",
+          "title": "스크롤 애니메이션 카탈로그",
+          "desc": "Continuous 8 + Triggered 8, GSAP/IO 패턴"
+        },
+        {
+          "id": "ix-cursor",
+          "num": "28",
+          "title": "마우스 추적 · 커서 효과",
+          "desc": "Hero Spotlight Mask, Mouse Pointer 회전"
+        },
+        {
+          "id": "pub-semantic",
+          "num": "29",
+          "title": "시맨틱 HTML · 접근성",
+          "desc": "구조, WCAG 2.1, 키보드, ARIA, prefers-reduced-motion"
+        },
+        {
+          "id": "pub-perf-seo",
+          "num": "30",
+          "title": "성능 · SEO · 디자인-개발 협업",
+          "desc": "이미지·폰트 최적화, 구조화 데이터, 협업 체크리스트"
+        },
+        {
+          "id": "cellbanking-crisis-cards",
+          "num": "31",
+          "title": "🟢 CellBanking 4-Card Crisis Awareness",
+          "desc": "사이트 최장 11,438px 페이지 정밀 - H5 4종 (바이러스 진화/사망률 증가/면역력 노화/시장 성장) + Solution CTA. B2C 위기인식 카피라이팅의 정석"
+        },
+        {
+          "id": "stem-cell-video",
+          "num": "32",
+          "title": "🟢 줄기세포 교육 - 비디오 임베드 + 4-Cell Cards",
+          "desc": "줄기세포란? 페이지 - 비디오 썸네일+재생 아이콘 패턴 + 4종 세포(줄기세포/성장인자/백혈구/혈소판) 실 이미지 교육 카드"
+        },
+        {
+          "id": "smart-mcell-tech",
+          "num": "33",
+          "title": "🟢 Smart M-Cell 5-Tech Detail",
+          "desc": "시그니처 제품 페이지 - 실 제품 사진 + 5종 H5 핵심 기술 (Autorotation/Double rotation/Touch+Voice/LED Visible Light) + 한영 이중 표기 패턴"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "34",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
+          "desc": "Splitting.js 글자별 분할 (1.5s) / KR·EN·CN 3 다국어 / 5×4 Hero Mosaic / Scroll down 3-Dot 인디케이터 / 빨간 Pencil FAB / opacity+transform 0.8s 69건 / 전체 694건 transition"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://miracell.co.kr/kr/" },
-        { "title": "기업소개", "url": "https://miracell.co.kr/kr/about/intro.php" },
-        { "title": "CEO소개", "url": "https://miracell.co.kr/kr/about/ceo.php" },
-        { "title": "연혁", "url": "https://miracell.co.kr/kr/about/history.php" },
-        { "title": "오시는 길", "url": "https://miracell.co.kr/kr/about/location01.php" },
-        { "title": "CI", "url": "https://miracell.co.kr/kr/about/ci.php" },
-        { "title": "Smart M-Cell", "url": "https://miracell.co.kr/kr/product/smart_mcell.php" },
-        { "title": "BmSC Kit", "url": "https://miracell.co.kr/kr/product/bmsc_kit.php" },
-        { "title": "BSC Kit", "url": "https://miracell.co.kr/kr/product/bsc_kit.php" },
-        { "title": "Chroma M-CELL", "url": "https://miracell.co.kr/kr/product/chroma_mcell.php" },
-        { "title": "Vacuum lock syringe", "url": "https://miracell.co.kr/kr/product/vacuum_lock_syringe.php" },
-        { "title": "Miracell Membership", "url": "https://miracell.co.kr/kr/service/mgp.php" },
-        { "title": "CellBanking", "url": "https://miracell.co.kr/kr/service/cellbanking.php" },
-        { "title": "Stemcell Medical Platform", "url": "https://miracell.co.kr/kr/service/starpia.php" },
-        { "title": "Medical AICC", "url": "https://miracell.co.kr/kr/service/miracle_call.php" },
-        { "title": "줄기세포란?", "url": "https://miracell.co.kr/kr/rnd/stem_cells.php" },
-        { "title": "연구소", "url": "https://miracell.co.kr/kr/rnd/rnd_center.php" },
-        { "title": "신의료기술", "url": "https://miracell.co.kr/kr/rnd/new_medical.php" },
-        { "title": "특허/인허가", "url": "https://miracell.co.kr/kr/rnd/patents.php" },
-        { "title": "공지", "url": "https://miracell.co.kr/kr/newsroom/notice.php" },
-        { "title": "보도자료", "url": "https://miracell.co.kr/kr/newsroom/news.php" },
-        { "title": "Contents", "url": "https://miracell.co.kr/kr/newsroom/global.php" },
-        { "title": "문의사항", "url": "https://miracell.co.kr/kr/customer/inquiry.php" },
-        { "title": "자료실", "url": "https://miracell.co.kr/kr/customer/library.php" },
-        { "title": "논문", "url": "https://miracell.co.kr/kr/customer/research_papers.php" },
-        { "title": "로그인", "url": "https://miracell.co.kr/kr/member/login.php" },
-        { "title": "회원가입", "url": "https://miracell.co.kr/kr/member/join_01.php" },
-        { "title": "개인정보처리방침", "url": "https://miracell.co.kr/kr/etc/privacy.php" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://miracell.co.kr/kr/"
+        },
+        {
+          "title": "기업소개",
+          "url": "https://miracell.co.kr/kr/about/intro.php"
+        },
+        {
+          "title": "CEO소개",
+          "url": "https://miracell.co.kr/kr/about/ceo.php"
+        },
+        {
+          "title": "연혁",
+          "url": "https://miracell.co.kr/kr/about/history.php"
+        },
+        {
+          "title": "오시는 길",
+          "url": "https://miracell.co.kr/kr/about/location01.php"
+        },
+        {
+          "title": "CI",
+          "url": "https://miracell.co.kr/kr/about/ci.php"
+        },
+        {
+          "title": "Smart M-Cell",
+          "url": "https://miracell.co.kr/kr/product/smart_mcell.php"
+        },
+        {
+          "title": "BmSC Kit",
+          "url": "https://miracell.co.kr/kr/product/bmsc_kit.php"
+        },
+        {
+          "title": "BSC Kit",
+          "url": "https://miracell.co.kr/kr/product/bsc_kit.php"
+        },
+        {
+          "title": "Chroma M-CELL",
+          "url": "https://miracell.co.kr/kr/product/chroma_mcell.php"
+        },
+        {
+          "title": "Vacuum lock syringe",
+          "url": "https://miracell.co.kr/kr/product/vacuum_lock_syringe.php"
+        },
+        {
+          "title": "Miracell Membership",
+          "url": "https://miracell.co.kr/kr/service/mgp.php"
+        },
+        {
+          "title": "CellBanking",
+          "url": "https://miracell.co.kr/kr/service/cellbanking.php"
+        },
+        {
+          "title": "Stemcell Medical Platform",
+          "url": "https://miracell.co.kr/kr/service/starpia.php"
+        },
+        {
+          "title": "Medical AICC",
+          "url": "https://miracell.co.kr/kr/service/miracle_call.php"
+        },
+        {
+          "title": "줄기세포란?",
+          "url": "https://miracell.co.kr/kr/rnd/stem_cells.php"
+        },
+        {
+          "title": "연구소",
+          "url": "https://miracell.co.kr/kr/rnd/rnd_center.php"
+        },
+        {
+          "title": "신의료기술",
+          "url": "https://miracell.co.kr/kr/rnd/new_medical.php"
+        },
+        {
+          "title": "특허/인허가",
+          "url": "https://miracell.co.kr/kr/rnd/patents.php"
+        },
+        {
+          "title": "공지",
+          "url": "https://miracell.co.kr/kr/newsroom/notice.php"
+        },
+        {
+          "title": "보도자료",
+          "url": "https://miracell.co.kr/kr/newsroom/news.php"
+        },
+        {
+          "title": "Contents",
+          "url": "https://miracell.co.kr/kr/newsroom/global.php"
+        },
+        {
+          "title": "문의사항",
+          "url": "https://miracell.co.kr/kr/customer/inquiry.php"
+        },
+        {
+          "title": "자료실",
+          "url": "https://miracell.co.kr/kr/customer/library.php"
+        },
+        {
+          "title": "논문",
+          "url": "https://miracell.co.kr/kr/customer/research_papers.php"
+        },
+        {
+          "title": "로그인",
+          "url": "https://miracell.co.kr/kr/member/login.php"
+        },
+        {
+          "title": "회원가입",
+          "url": "https://miracell.co.kr/kr/member/join_01.php"
+        },
+        {
+          "title": "개인정보처리방침",
+          "url": "https://miracell.co.kr/kr/etc/privacy.php"
+        }
       ]
     },
     {
@@ -335,46 +1435,242 @@
       "analysis": "analyses/ktng-com/analysis.json",
       "pagesAnalyzed": 9,
       "sections": [
-        { "id": "site-overview",              "num": "01", "title": "사이트 개요", "desc": "9개 페이지 라이브 정밀 점검 결과 + 사업 4영역 + 11단계 타입스케일 + 사이트맵" },
-        { "id": "philosophy",                 "num": "02", "title": "디자인 철학", "desc": "무채색 코퍼레이트 트러스트 · 거대 타이포 · 인터랙티브 모더니티 6원칙" },
-        { "id": "tokens",                     "num": "03", "title": "디자인 토큰", "desc": "라이브 채집 CSS Variables · 색상 · 타입스케일 · 컨테이너 · 트랜지션" },
-        { "id": "main-page",                  "num": "04", "title": "메인 페이지", "desc": "Hero 비디오 · 지구 글로벌 섹션 · 잎사귀 ESG · 주가 글래스모피즘 · 뉴스 · 푸터 6 섹션 분석" },
-        { "id": "sub-about-intro",            "num": "05", "title": "회사소개 · KT&G 소개", "desc": "infinity loop iridescent Hero + 사업 포트폴리오 2×2 그리드 + 비전 영역" },
-        { "id": "sub-about-history",          "num": "06", "title": "회사소개 · 연혁", "desc": "cosmic light beam Hero + 5-시대 스티키 네비 + 연도별 row (사이트 최장 페이지)" },
-        { "id": "sub-about-business",         "num": "07", "title": "회사소개 · 주요사업", "desc": "Modernize Hero + 3 스티키 시퀀스 (해외궐련·NGP·건강기능) + 글래스 카운터" },
-        { "id": "sub-about-network",          "num": "08", "title": "회사소개 · 글로벌 네트워크", "desc": "12개국 해외 법인 카드 그리드 (러시아·카자흐스탄·우즈베키스탄·인니·대만·미국 등)" },
-        { "id": "sub-ir-overview",            "num": "09", "title": "투자정보 IR", "desc": "★ 라이브 KOSPI 티커 + 다크 네이비 신용평가 5 배지 + 재무 하이라이트 차트 + 어비스 카드" },
-        { "id": "sub-esg",                    "num": "10", "title": "지속가능경영 ESG", "desc": "안개 숲 Hero + 다크 그린 6-패널 전략 + 한국ESG기준원 4년 A 등급 테이블" },
-        { "id": "sub-media",                  "num": "11", "title": "미디어 뉴스룸", "desc": "필 탭 (전체·보도자료·카드뉴스) + 검색 + 보도자료 카드 그리드 + 더보기" },
-        { "id": "sub-careers",                "num": "12", "title": "인재채용 인사제도", "desc": "사옥 거대 계단 Hero + PEOPLE 거대 헤딩 + Optimize 그라데이션 + BENEFIT 고스트 리빌" },
-        { "id": "color-system",               "num": "13", "title": "컬러 시스템", "desc": "라이브 채집 빈도 - 흰색 440 / 회색 14 / 신용평가 외곽선 청색 5 / 강조 컬러 부재 무채색 시스템" },
-        { "id": "typography-system",          "num": "14", "title": "타이포그래피", "desc": "Pretendard 단일 폰트 + 11단계 BEM 타입스케일 (16px → 104px) + weight 400·500·600" },
-        { "id": "icon-system",                "num": "15", "title": "아이콘 시스템", "desc": "외부 링크 · 다운로드 · 우측 화살표 CTA · 상단 이동 · 스크롤 다운 · 소셜 · 국기 12개 인벤토리" },
-        { "id": "image-system",               "num": "16", "title": "이미지 영상 시스템", "desc": "WebP 정적 + SVG 다이어그램 + 듀얼 코덱 (webm+mp4) + CSS 합성 그라데이션 + CMS 비디오" },
-        { "id": "layout-grid",                "num": "17", "title": "레이아웃 · 그리드", "desc": "컨테이너 1741·1500·1280 · 거터 89px · Hero 911 표준 · 카드 그리드 패턴 4종" },
-        { "id": "layout-responsive",          "num": "18", "title": "반응형 · 여백 · 둥글기", "desc": "브레이크포인트 4단계 · 여백 9단계 · 둥글기 6단계 (카드 8/12/16/18 · pill 100 · 배지 50%)" },
-        { "id": "lib-components",             "num": "19", "title": "컴포넌트 라이브러리", "desc": "10 하위 그룹 · 23 컴포넌트 - 버튼 / 카드 / 배너 / 네비 / 폼 / 데이터 / 콘텐츠 / 유틸 / 임베드 / 미디어" },
-        { "id": "signature-aaa-outline",      "num": "20", "title": "시그니처 · 신용평가 외곽선 배지", "desc": "★ 1.5px 청색 외곽선 + 반투명 배경 + 흰 글자 + 120 원형 - 다크 네이비 위에만 사용" },
-        { "id": "signature-sticky-sequence",  "num": "21", "title": "시그니처 · 3-스티키 사업 시퀀스", "desc": "주요사업 페이지 - 3 시퀀스 (해외궐련·NGP·건기식) + 글래스모피즘 큰 숫자 카운터" },
-        { "id": "signature-year-timeline",    "num": "22", "title": "시그니처 · 연혁 타임라인", "desc": "5-시대 스티키 네비게이션 + 연도별 row + 월별 이벤트 bullet 리스트 패턴" },
-        { "id": "signature-financial-panel",  "num": "23", "title": "시그니처 · IR 재무 패널", "desc": "★ 다크 네이비 그라데이션 + 신용평가 5 배지 + 3D 차트 카드 + 흰 다운로드 카드 4요소" },
-        { "id": "ix-hover",                   "num": "24", "title": "인터랙션 · 호버 카탈로그", "desc": "표준 0.3s ease-in-out · 호버 패턴 7종 (버튼 색 반전 / 카드 4px 부상 / CTA 회전 / 글래스 강화 등)" },
-        { "id": "ix-scroll",                  "num": "25", "title": "인터랙션 · 스크롤 카탈로그", "desc": "스티키 네비 · 시퀀스 스티키 · 고스트 리빌 · 뉴스 페이드인 · 상단 이동 FAB · 푸터 지도 등장" },
-        { "id": "ix-video",                   "num": "26", "title": "인터랙션 · 비디오 모션", "desc": "Hero 비디오 듀얼 코덱 · 스크롤 다운 라인 애니메이션 · 지구 회전 · 잎사귀 미세 흔들림 · 주가 라이브 폴링" },
-        { "id": "pub-semantic",               "num": "27", "title": "퍼블리싱 · 시맨틱 접근성", "desc": "Next.js + React + BEM 클래스 · 시맨틱 구조 · WCAG 2.1 AA 추정 · 키보드 네비 · 다국어" },
-        { "id": "pub-perf-seo",               "num": "28", "title": "퍼블리싱 · 성능 SEO", "desc": "WebP + SVG + 듀얼 코덱 · CMS CDN · Title 메타 패턴 · Pretendard Variable Font + 폴백" },
-        { "id": "smooth-interaction-catalog", "num": "29", "title": "부드러운 인터랙션 카탈로그", "desc": "라이브 재점검에서 발견한 11개 디자인 변경 사항 + 트랜지션 / 색상 / sH 정량 통계 통합" }
+        {
+          "id": "site-overview",
+          "num": "01",
+          "title": "사이트 개요",
+          "desc": "9개 페이지 라이브 정밀 점검 결과 + 사업 4영역 + 11단계 타입스케일 + 사이트맵"
+        },
+        {
+          "id": "philosophy",
+          "num": "02",
+          "title": "디자인 철학",
+          "desc": "무채색 코퍼레이트 트러스트 · 거대 타이포 · 인터랙티브 모더니티 6원칙"
+        },
+        {
+          "id": "tokens",
+          "num": "03",
+          "title": "디자인 토큰",
+          "desc": "라이브 채집 CSS Variables · 색상 · 타입스케일 · 컨테이너 · 트랜지션"
+        },
+        {
+          "id": "main-page",
+          "num": "04",
+          "title": "메인 페이지",
+          "desc": "Hero 비디오 · 지구 글로벌 섹션 · 잎사귀 ESG · 주가 글래스모피즘 · 뉴스 · 푸터 6 섹션 분석"
+        },
+        {
+          "id": "sub-about-intro",
+          "num": "05",
+          "title": "회사소개 · KT&G 소개",
+          "desc": "infinity loop iridescent Hero + 사업 포트폴리오 2×2 그리드 + 비전 영역"
+        },
+        {
+          "id": "sub-about-history",
+          "num": "06",
+          "title": "회사소개 · 연혁",
+          "desc": "cosmic light beam Hero + 5-시대 스티키 네비 + 연도별 row (사이트 최장 페이지)"
+        },
+        {
+          "id": "sub-about-business",
+          "num": "07",
+          "title": "회사소개 · 주요사업",
+          "desc": "Modernize Hero + 3 스티키 시퀀스 (해외궐련·NGP·건강기능) + 글래스 카운터"
+        },
+        {
+          "id": "sub-about-network",
+          "num": "08",
+          "title": "회사소개 · 글로벌 네트워크",
+          "desc": "12개국 해외 법인 카드 그리드 (러시아·카자흐스탄·우즈베키스탄·인니·대만·미국 등)"
+        },
+        {
+          "id": "sub-ir-overview",
+          "num": "09",
+          "title": "투자정보 IR",
+          "desc": "★ 라이브 KOSPI 티커 + 다크 네이비 신용평가 5 배지 + 재무 하이라이트 차트 + 어비스 카드"
+        },
+        {
+          "id": "sub-esg",
+          "num": "10",
+          "title": "지속가능경영 ESG",
+          "desc": "안개 숲 Hero + 다크 그린 6-패널 전략 + 한국ESG기준원 4년 A 등급 테이블"
+        },
+        {
+          "id": "sub-media",
+          "num": "11",
+          "title": "미디어 뉴스룸",
+          "desc": "필 탭 (전체·보도자료·카드뉴스) + 검색 + 보도자료 카드 그리드 + 더보기"
+        },
+        {
+          "id": "sub-careers",
+          "num": "12",
+          "title": "인재채용 인사제도",
+          "desc": "사옥 거대 계단 Hero + PEOPLE 거대 헤딩 + Optimize 그라데이션 + BENEFIT 고스트 리빌"
+        },
+        {
+          "id": "color-system",
+          "num": "13",
+          "title": "컬러 시스템",
+          "desc": "라이브 채집 빈도 - 흰색 440 / 회색 14 / 신용평가 외곽선 청색 5 / 강조 컬러 부재 무채색 시스템"
+        },
+        {
+          "id": "typography-system",
+          "num": "14",
+          "title": "타이포그래피",
+          "desc": "Pretendard 단일 폰트 + 11단계 BEM 타입스케일 (16px → 104px) + weight 400·500·600"
+        },
+        {
+          "id": "icon-system",
+          "num": "15",
+          "title": "아이콘 시스템",
+          "desc": "외부 링크 · 다운로드 · 우측 화살표 CTA · 상단 이동 · 스크롤 다운 · 소셜 · 국기 12개 인벤토리"
+        },
+        {
+          "id": "image-system",
+          "num": "16",
+          "title": "이미지 영상 시스템",
+          "desc": "WebP 정적 + SVG 다이어그램 + 듀얼 코덱 (webm+mp4) + CSS 합성 그라데이션 + CMS 비디오"
+        },
+        {
+          "id": "layout-grid",
+          "num": "17",
+          "title": "레이아웃 · 그리드",
+          "desc": "컨테이너 1741·1500·1280 · 거터 89px · Hero 911 표준 · 카드 그리드 패턴 4종"
+        },
+        {
+          "id": "layout-responsive",
+          "num": "18",
+          "title": "반응형 · 여백 · 둥글기",
+          "desc": "브레이크포인트 4단계 · 여백 9단계 · 둥글기 6단계 (카드 8/12/16/18 · pill 100 · 배지 50%)"
+        },
+        {
+          "id": "lib-components",
+          "num": "19",
+          "title": "컴포넌트 라이브러리",
+          "desc": "10 하위 그룹 · 23 컴포넌트 - 버튼 / 카드 / 배너 / 네비 / 폼 / 데이터 / 콘텐츠 / 유틸 / 임베드 / 미디어"
+        },
+        {
+          "id": "signature-aaa-outline",
+          "num": "20",
+          "title": "시그니처 · 신용평가 외곽선 배지",
+          "desc": "★ 1.5px 청색 외곽선 + 반투명 배경 + 흰 글자 + 120 원형 - 다크 네이비 위에만 사용"
+        },
+        {
+          "id": "signature-sticky-sequence",
+          "num": "21",
+          "title": "시그니처 · 3-스티키 사업 시퀀스",
+          "desc": "주요사업 페이지 - 3 시퀀스 (해외궐련·NGP·건기식) + 글래스모피즘 큰 숫자 카운터"
+        },
+        {
+          "id": "signature-year-timeline",
+          "num": "22",
+          "title": "시그니처 · 연혁 타임라인",
+          "desc": "5-시대 스티키 네비게이션 + 연도별 row + 월별 이벤트 bullet 리스트 패턴"
+        },
+        {
+          "id": "signature-financial-panel",
+          "num": "23",
+          "title": "시그니처 · IR 재무 패널",
+          "desc": "★ 다크 네이비 그라데이션 + 신용평가 5 배지 + 3D 차트 카드 + 흰 다운로드 카드 4요소"
+        },
+        {
+          "id": "ix-hover",
+          "num": "24",
+          "title": "인터랙션 · 호버 카탈로그",
+          "desc": "표준 0.3s ease-in-out · 호버 패턴 7종 (버튼 색 반전 / 카드 4px 부상 / CTA 회전 / 글래스 강화 등)"
+        },
+        {
+          "id": "ix-scroll",
+          "num": "25",
+          "title": "인터랙션 · 스크롤 카탈로그",
+          "desc": "스티키 네비 · 시퀀스 스티키 · 고스트 리빌 · 뉴스 페이드인 · 상단 이동 FAB · 푸터 지도 등장"
+        },
+        {
+          "id": "ix-video",
+          "num": "26",
+          "title": "인터랙션 · 비디오 모션",
+          "desc": "Hero 비디오 듀얼 코덱 · 스크롤 다운 라인 애니메이션 · 지구 회전 · 잎사귀 미세 흔들림 · 주가 라이브 폴링"
+        },
+        {
+          "id": "pub-semantic",
+          "num": "27",
+          "title": "퍼블리싱 · 시맨틱 접근성",
+          "desc": "Next.js + React + BEM 클래스 · 시맨틱 구조 · WCAG 2.1 AA 추정 · 키보드 네비 · 다국어"
+        },
+        {
+          "id": "pub-perf-seo",
+          "num": "28",
+          "title": "퍼블리싱 · 성능 SEO",
+          "desc": "WebP + SVG + 듀얼 코덱 · CMS CDN · Title 메타 패턴 · Pretendard Variable Font + 폴백"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "29",
+          "title": "부드러운 인터랙션 카탈로그",
+          "desc": "라이브 재점검에서 발견한 11개 디자인 변경 사항 + 트랜지션 / 색상 / sH 정량 통계 통합"
+        },
+        {
+          "id": "component-header",
+          "num": "35",
+          "title": "컴포넌트 측정 - Header",
+          "desc": "GNB + 메가메뉴 hover transition 정확 ms + 텍스트 컬러 변화"
+        },
+        {
+          "id": "component-hero",
+          "num": "36",
+          "title": "컴포넌트 측정 - Hero KV",
+          "desc": "100svh + 텍스트 마스크 reveal + dim 10% overlay"
+        },
+        {
+          "id": "component-content",
+          "num": "37",
+          "title": "컴포넌트 측정 - Content (BUSINESS .with + PR CENTER .news)",
+          "desc": "IntersectionObserver threshold + Stagger 150ms + hover scale 1.1"
+        },
+        {
+          "id": "component-footer",
+          "num": "38",
+          "title": "컴포넌트 측정 - Footer",
+          "desc": "5 nav 컬럼 + SNS 3종 + Family Site + Copyright (582px / #DDD border)"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://www.ktng.com/" },
-        { "title": "KT&G 소개", "url": "https://www.ktng.com/about/introduction" },
-        { "title": "연혁", "url": "https://www.ktng.com/about/history" },
-        { "title": "주요사업", "url": "https://www.ktng.com/about/business" },
-        { "title": "글로벌 네트워크", "url": "https://www.ktng.com/about/network/overseas" },
-        { "title": "IR 개요", "url": "https://www.ktng.com/ir/overview" },
-        { "title": "ESG 개요", "url": "https://www.ktng.com/sustainability/overview" },
-        { "title": "뉴스룸", "url": "https://www.ktng.com/media/news/all" },
-        { "title": "인사제도", "url": "https://www.ktng.com/career/hrsystem" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://www.ktng.com/"
+        },
+        {
+          "title": "KT&G 소개",
+          "url": "https://www.ktng.com/about/introduction"
+        },
+        {
+          "title": "연혁",
+          "url": "https://www.ktng.com/about/history"
+        },
+        {
+          "title": "주요사업",
+          "url": "https://www.ktng.com/about/business"
+        },
+        {
+          "title": "글로벌 네트워크",
+          "url": "https://www.ktng.com/about/network/overseas"
+        },
+        {
+          "title": "IR 개요",
+          "url": "https://www.ktng.com/ir/overview"
+        },
+        {
+          "title": "ESG 개요",
+          "url": "https://www.ktng.com/sustainability/overview"
+        },
+        {
+          "title": "뉴스룸",
+          "url": "https://www.ktng.com/media/news/all"
+        },
+        {
+          "title": "인사제도",
+          "url": "https://www.ktng.com/career/hrsystem"
+        }
       ]
     },
     {
@@ -385,28 +1681,112 @@
       "analysis": "analyses/glovis-net/analysis.json",
       "pagesAnalyzed": 7,
       "sections": [
-        { "id": "site-overview",             "num": "01", "title": "사이트 개요", "desc": "Chrome MCP 라이브 실측 - KOSPI 086280 248,500 KRW ▼ -14,500 -5.51% (2026-05-15 12:23) / 매출 25.68조원 영업이익 1.55조원 (2023) / 설립 2001.02.22 / 본사 서울 성동구 / 인원 국내 2,031명 해외 10,275명 / 거점 국내 57 해외 97 / 사업 5 카테고리 / Pretendard + 16px·300 본문 187건 (Light 시그니처)" },
-        { "id": "main-page",                 "num": "02", "title": "메인 페이지", "desc": "sH 15,912 - main-vis 2733 Hero '연결에서 / 완결로' 86px·500 Light + GLOBAL SMART SCM SOLUTION PROVIDER + KOSPI Ticker / main-biz 7744 5-사업 활성 토글 (LOGISTICS·SHIPPING·DISTRIBUTION·FUTURE BUSINESS·INNOVATION) / main-invest 1023 blue-bg + 다크 Navy KOSPI 카드 / main-global-net 2208 'For More Meaningful Connections' + Europe 11법인 7지사 25사무소 + Americas/China/Asia Pacific / main-newsroom 1116 3카드 / main-sustain 911 + 슬로건 무한 슬라이딩" },
-        { "id": "sub-company",               "num": "03", "title": "Sub - 회사정보 (/company/intro sH 7608)", "desc": "단일 페이지 5 섹션 - sub-kv-motion '최고의 자동차 물류전문 기업에서 글로벌 종합 물류유통기업으로!' / global 'GLOBAL SMART SCM SOLUTION PROVIDER' / infomation 4-card (설립 2001.02.22 / 본사 / 인원 국내 2,031명 해외 10,275명 / 거점 국내 57 해외 97) / business 5 카테고리 + 각 세부 (LOGISTICS 5 / SHIPPING 4 / DISTRIBUTION 3 / FUTURE 2 / INNOVATION 1) / brochure 국문/영문/中文" },
-        { "id": "sub-business",              "num": "04", "title": "Sub - 사업영역 (5 페이지)", "desc": "수출입 물류 (sH 10,871) 라이브 실측 - main-service 3280 5-서비스 (해상운송·항공운송·CBeC·GDC·글로벌 W&D) Sticky 탭 / strong-point color-bg 1207 특장점 3 (적시 운송·프리미엄 운영·End-to-End 물류) #F1F2F9 라벤더 영역 / service-process 1539 6-Step (국내 내륙운송→수출 통관→선적→해상 운송→수입 통관→현지 운송) / related-news 825 + cus-support 482. 동일 템플릿 5 사업 페이지 적용" },
-        { "id": "sub-esg",                   "num": "05", "title": "Sub - 지속가능경영 (/sustainable/perfomance sH 7745)", "desc": "단일 페이지 5 섹션 - 개요 272 (DJSI WORLD 첫 편입 + TCFD/UNGC) / 전략 922 Global ESG Leading SCM Provider + Clean Flow | Make Together + 친환경·동행·신뢰 / 성과 1764 DJBIC 5년 연속 + 2025 종합 A (E:A/S:A+/G:A) + CDP Leadership A + MSCI BBB / ESG 정책 1355 11개 정책 (인권/환경/반부패/윤리/협력사/녹색구매/폐선/안전보건/다양성/이해관계자/지역사회) 국문·영문 / 보고서 712 (2015-2025 11년 분)" },
-        { "id": "sub-ir",                    "num": "06", "title": "Sub - 투자정보 (/investment-information/intro sH 3203)", "desc": "단일 페이지 3 섹션 - inner 661 (주식정보 086280 249,000 KRW ▼ -14,000 -5.32% + 재무 25.68조원/1.55조원 2023년) / inner 1223 IR 일정 (삼성 GIC 2026 / NDR 파리·런던·암스테르담·홍콩·싱가포르) + IR 자료실 (2024 CEO INVESTOR DAY + 프레젠테이션 + 2026 1Q 경영실적) + 정기보고서 (제25기 사업/영업/연결감사) / cus-support 482 IR 문의" },
-        { "id": "sub-support",               "num": "07", "title": "Sub - 고객지원 (/customer-support/faq sH 2098)", "desc": "FAQ 단일 페이지 - 6 카테고리 Pill 탭 (신차배송 7Q / 운송 견적 및 스케줄 / 중고차 / 투자정보 / 채용 / 기타) + Q&A 아코디언. 신차배송 7Q 실측 - 내 차 조회 / 탁송 / 생산일·출고일 / 인수 / 시간 / 일정 지정 / 재탁송" },
-        { "id": "color-system",              "num": "08", "title": "컬러 시스템", "desc": "Chrome MCP 라이브 실측 (1500개 요소 스캔) - #333 본문 270건 (1위) + #FFF 49건 + #141415 헤딩 42건 + #63666A 13건 + #2F2F36 12건 / Glovis Navy 4톤 #001290 6건 + #15269D 7건 + #0E0D44 4건 + #F1F2F9 3건 라벤더 영역 배경 / #E31D1A KOSPI 하락 1건 (한국 증시 표준)" },
-        { "id": "typography",                "num": "09", "title": "타이포그래피 시스템", "desc": "Pretendard 단일 폰트 (body.fontFamily 실측). 본문 16px·300 (Light) 187건 가장 많이 사용 - KT&G와 달리 본문 light weight 채택이 시그니처. 13단계 타입스케일 - 86px·500 Hero / 60px·700 / 48px·700 / 32px·700 / 30px·700 / 24px·700 / 20px·500 / 18px·500 / 16px·300 본문 / 14px·400 button" },
-        { "id": "lib-components",            "num": "10", "title": "컴포넌트 라이브러리", "desc": "라이브 실측 3 핵심 컴포넌트 - Pill 탭 (100px radius + 14px·500 + 활성 #001290 흰 글자) / Stock Dark Card (Navy 그라데이션 #001290→#15269D→#0E0D44 + glassmorphism + 60px·700 가격 + 빨강 ▼ 등락) / 4-Card 기업정보 (#F1F2F9 라벤더 bg + 14px·500 라벨 + 24px·700 값) + 5-사업 활성 토글 + 6-Step 프로세스 + 4-인증 카드" },
-        { "id": "tech-a11y-seo",             "num": "11", "title": "주요 기술 · 접근성 · SEO", "desc": "Next.js + React + CSS Modules + class 기반 (sub-kv-motion-section / main-vis / main-biz / blue-bg-section / strong-point color-bg / service-process) + 표준 Easing cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate + 실시간 KOSPI Polling (5초 추정) / WA 웹 접근성 품질 인증 (서울특별시) / 다국어 KOR/ENG/中文 + hreflang" },
-        { "id": "smooth-interaction-catalog","num": "12", "title": "부드러운 인터랙션 카탈로그", "desc": "Chrome MCP 1-6차 패스 라이브 재점검 통합 - 메인 15,912 6 섹션 + 회사정보 7,608 5 섹션 + 수출입 물류 10,871 6 섹션 + ESG 7,745 5 섹션 + IR 3,203 3 섹션 + FAQ 2,098 - 모든 디자인 토큰 라이브 실측값. 실시간 KOSPI 086280 248,500 KRW ▼ -14,500 -5.51% (2026-05-15 12:23 기준) Ticker 시그니처. 디자이너가 보고서만 보고 Glovis 디자인 100% 재현 가능" }
+        {
+          "id": "site-overview",
+          "num": "01",
+          "title": "사이트 개요",
+          "desc": "Chrome MCP 라이브 실측 - KOSPI 086280 248,500 KRW ▼ -14,500 -5.51% (2026-05-15 12:23) / 매출 25.68조원 영업이익 1.55조원 (2023) / 설립 2001.02.22 / 본사 서울 성동구 / 인원 국내 2,031명 해외 10,275명 / 거점 국내 57 해외 97 / 사업 5 카테고리 / Pretendard + 16px·300 본문 187건 (Light 시그니처)"
+        },
+        {
+          "id": "main-page",
+          "num": "02",
+          "title": "메인 페이지",
+          "desc": "sH 15,912 - main-vis 2733 Hero '연결에서 / 완결로' 86px·500 Light + GLOBAL SMART SCM SOLUTION PROVIDER + KOSPI Ticker / main-biz 7744 5-사업 활성 토글 (LOGISTICS·SHIPPING·DISTRIBUTION·FUTURE BUSINESS·INNOVATION) / main-invest 1023 blue-bg + 다크 Navy KOSPI 카드 / main-global-net 2208 'For More Meaningful Connections' + Europe 11법인 7지사 25사무소 + Americas/China/Asia Pacific / main-newsroom 1116 3카드 / main-sustain 911 + 슬로건 무한 슬라이딩"
+        },
+        {
+          "id": "sub-company",
+          "num": "03",
+          "title": "Sub - 회사정보 (/company/intro sH 7608)",
+          "desc": "단일 페이지 5 섹션 - sub-kv-motion '최고의 자동차 물류전문 기업에서 글로벌 종합 물류유통기업으로!' / global 'GLOBAL SMART SCM SOLUTION PROVIDER' / infomation 4-card (설립 2001.02.22 / 본사 / 인원 국내 2,031명 해외 10,275명 / 거점 국내 57 해외 97) / business 5 카테고리 + 각 세부 (LOGISTICS 5 / SHIPPING 4 / DISTRIBUTION 3 / FUTURE 2 / INNOVATION 1) / brochure 국문/영문/中文"
+        },
+        {
+          "id": "sub-business",
+          "num": "04",
+          "title": "Sub - 사업영역 (5 페이지)",
+          "desc": "수출입 물류 (sH 10,871) 라이브 실측 - main-service 3280 5-서비스 (해상운송·항공운송·CBeC·GDC·글로벌 W&D) Sticky 탭 / strong-point color-bg 1207 특장점 3 (적시 운송·프리미엄 운영·End-to-End 물류) #F1F2F9 라벤더 영역 / service-process 1539 6-Step (국내 내륙운송→수출 통관→선적→해상 운송→수입 통관→현지 운송) / related-news 825 + cus-support 482. 동일 템플릿 5 사업 페이지 적용"
+        },
+        {
+          "id": "sub-esg",
+          "num": "05",
+          "title": "Sub - 지속가능경영 (/sustainable/perfomance sH 7745)",
+          "desc": "단일 페이지 5 섹션 - 개요 272 (DJSI WORLD 첫 편입 + TCFD/UNGC) / 전략 922 Global ESG Leading SCM Provider + Clean Flow | Make Together + 친환경·동행·신뢰 / 성과 1764 DJBIC 5년 연속 + 2025 종합 A (E:A/S:A+/G:A) + CDP Leadership A + MSCI BBB / ESG 정책 1355 11개 정책 (인권/환경/반부패/윤리/협력사/녹색구매/폐선/안전보건/다양성/이해관계자/지역사회) 국문·영문 / 보고서 712 (2015-2025 11년 분)"
+        },
+        {
+          "id": "sub-ir",
+          "num": "06",
+          "title": "Sub - 투자정보 (/investment-information/intro sH 3203)",
+          "desc": "단일 페이지 3 섹션 - inner 661 (주식정보 086280 249,000 KRW ▼ -14,000 -5.32% + 재무 25.68조원/1.55조원 2023년) / inner 1223 IR 일정 (삼성 GIC 2026 / NDR 파리·런던·암스테르담·홍콩·싱가포르) + IR 자료실 (2024 CEO INVESTOR DAY + 프레젠테이션 + 2026 1Q 경영실적) + 정기보고서 (제25기 사업/영업/연결감사) / cus-support 482 IR 문의"
+        },
+        {
+          "id": "sub-support",
+          "num": "07",
+          "title": "Sub - 고객지원 (/customer-support/faq sH 2098)",
+          "desc": "FAQ 단일 페이지 - 6 카테고리 Pill 탭 (신차배송 7Q / 운송 견적 및 스케줄 / 중고차 / 투자정보 / 채용 / 기타) + Q&A 아코디언. 신차배송 7Q 실측 - 내 차 조회 / 탁송 / 생산일·출고일 / 인수 / 시간 / 일정 지정 / 재탁송"
+        },
+        {
+          "id": "color-system",
+          "num": "08",
+          "title": "컬러 시스템",
+          "desc": "Chrome MCP 라이브 실측 (1500개 요소 스캔) - #333 본문 270건 (1위) + #FFF 49건 + #141415 헤딩 42건 + #63666A 13건 + #2F2F36 12건 / Glovis Navy 4톤 #001290 6건 + #15269D 7건 + #0E0D44 4건 + #F1F2F9 3건 라벤더 영역 배경 / #E31D1A KOSPI 하락 1건 (한국 증시 표준)"
+        },
+        {
+          "id": "typography",
+          "num": "09",
+          "title": "타이포그래피 시스템",
+          "desc": "Pretendard 단일 폰트 (body.fontFamily 실측). 본문 16px·300 (Light) 187건 가장 많이 사용 - KT&G와 달리 본문 light weight 채택이 시그니처. 13단계 타입스케일 - 86px·500 Hero / 60px·700 / 48px·700 / 32px·700 / 30px·700 / 24px·700 / 20px·500 / 18px·500 / 16px·300 본문 / 14px·400 button"
+        },
+        {
+          "id": "lib-components",
+          "num": "10",
+          "title": "컴포넌트 라이브러리",
+          "desc": "라이브 실측 3 핵심 컴포넌트 - Pill 탭 (100px radius + 14px·500 + 활성 #001290 흰 글자) / Stock Dark Card (Navy 그라데이션 #001290→#15269D→#0E0D44 + glassmorphism + 60px·700 가격 + 빨강 ▼ 등락) / 4-Card 기업정보 (#F1F2F9 라벤더 bg + 14px·500 라벨 + 24px·700 값) + 5-사업 활성 토글 + 6-Step 프로세스 + 4-인증 카드"
+        },
+        {
+          "id": "tech-a11y-seo",
+          "num": "11",
+          "title": "주요 기술 · 접근성 · SEO",
+          "desc": "Next.js + React + CSS Modules + class 기반 (sub-kv-motion-section / main-vis / main-biz / blue-bg-section / strong-point color-bg / service-process) + 표준 Easing cubic-bezier(0.215, 0.61, 0.355, 1) Decelerate + 실시간 KOSPI Polling (5초 추정) / WA 웹 접근성 품질 인증 (서울특별시) / 다국어 KOR/ENG/中文 + hreflang"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "12",
+          "title": "부드러운 인터랙션 카탈로그",
+          "desc": "Chrome MCP 1-6차 패스 라이브 재점검 통합 - 메인 15,912 6 섹션 + 회사정보 7,608 5 섹션 + 수출입 물류 10,871 6 섹션 + ESG 7,745 5 섹션 + IR 3,203 3 섹션 + FAQ 2,098 - 모든 디자인 토큰 라이브 실측값. 실시간 KOSPI 086280 248,500 KRW ▼ -14,500 -5.51% (2026-05-15 12:23 기준) Ticker 시그니처. 디자이너가 보고서만 보고 Glovis 디자인 100% 재현 가능"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://www.glovis.net/kr/home" },
-        { "title": "현대글로비스 소개", "url": "https://www.glovis.net/kr/home/company/intro" },
-        { "title": "수출입 물류", "url": "https://www.glovis.net/kr/home/business/logistical/ie-logistics" },
-        { "title": "자동차선 운송", "url": "https://www.glovis.net/kr/home/business/shipping/finished-transport" },
-        { "title": "스마트물류솔루션", "url": "https://www.glovis.net/kr/home/business/future/smart-logistics-solution" },
-        { "title": "지속가능경영 성과", "url": "https://www.glovis.net/kr/home/sustainable/perfomance/esg-strategy-performance" },
-        { "title": "투자정보 개요", "url": "https://www.glovis.net/kr/home/investment-information/intro" },
-        { "title": "FAQ", "url": "https://www.glovis.net/kr/home/customer-support/faq" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://www.glovis.net/kr/home"
+        },
+        {
+          "title": "현대글로비스 소개",
+          "url": "https://www.glovis.net/kr/home/company/intro"
+        },
+        {
+          "title": "수출입 물류",
+          "url": "https://www.glovis.net/kr/home/business/logistical/ie-logistics"
+        },
+        {
+          "title": "자동차선 운송",
+          "url": "https://www.glovis.net/kr/home/business/shipping/finished-transport"
+        },
+        {
+          "title": "스마트물류솔루션",
+          "url": "https://www.glovis.net/kr/home/business/future/smart-logistics-solution"
+        },
+        {
+          "title": "지속가능경영 성과",
+          "url": "https://www.glovis.net/kr/home/sustainable/perfomance/esg-strategy-performance"
+        },
+        {
+          "title": "투자정보 개요",
+          "url": "https://www.glovis.net/kr/home/investment-information/intro"
+        },
+        {
+          "title": "FAQ",
+          "url": "https://www.glovis.net/kr/home/customer-support/faq"
+        }
       ]
     },
     {
@@ -417,22 +1797,90 @@
       "analysis": "analyses/hct-co-kr/analysis.json",
       "pagesAnalyzed": 1,
       "sections": [
-        { "id": "overview",                  "num": "01", "title": "개요 · 사이트맵 · 기술 스택", "desc": "주식회사 에이치시티 (시험인증·교정·측정표준) / 3거점 (한국·미국·인도네시아) / 200여 개국 인증 / SUIT 폰트 / 7 메뉴 사이트맵 / 정부 인증 4 마크 (가족친화/열림/생애주기/제대군인고용)" },
-        { "id": "design-tokens",             "num": "02", "title": "디자인 토큰 시스템 (컬러·타이포·여백)", "desc": "HCT Blue #0055A5 + Check Green #4ADE80 + SUIT 20px base / 0.4s 표준 transition 205건 + 0.15s 빠른 호버 58건 / 3-단계 반응형 (768/1024/1280)" },
-        { "id": "main-page",                 "num": "03", "title": "메인 페이지 (sH 7,178px) - 5 다이아몬드 Hero + 7 콘텐츠 섹션", "desc": "Hero 다이아몬드 그리드 + 자주 찾는 서비스 7-아이콘 + 사업 6 카드 + 글로벌 9 인증+3거점 + HCT 소식 5탭 + Footer + Floating 상담·FAQ·TOP" },
-        { "id": "signature-diamond-hero",    "num": "04", "title": "시그니처 - 5 다이아몬드 그리드 Hero", "desc": "5 다이아몬드 카드 (도시 야경 / 메탈 그리드 / 태블릿 그리는 사람 / 산악 일출) + 회전 텍스트 'Global Standard · No.1 Testing & Calibration Lab · Trusted Partner · For Humanity' - 디자인 업데이트 (이전 ✓ 체크마크 모핑 대체)" },
-        { "id": "quick-services",            "num": "05", "title": "자주 찾는 서비스 (7-아이콘 그리드)", "desc": "큰 파란 검색바 + 7-아이콘 그리드 (FAQ / 시험인증견적문의 / 교정견적문의 / 상담연락처 안내 / 신청양식 / 성적서 조회 / 판매서비스)" },
-        { "id": "business-cards",            "num": "06", "title": "사업 6 카드 슬라이더", "desc": "'HCT는 사람과 세상을 연결하는 기술로 모두의 내일을 만들어갑니다' 44px·700 + 사업 6 카드 (모빌리티·방산·우주·시험·인증·교정·융합측정·배터리) + < > 페이지네이션" },
-        { "id": "global-network",            "num": "07", "title": "글로벌 인증 네트워크 (9 마크 + 3거점)", "desc": "🟢 '200여 개 국가 인증 서비스' + 9 국제 인증마크 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 3거점 세계지도 (한국 본사·미국·인도네시아 2024 진출)" },
-        { "id": "news-hub",                  "num": "08", "title": "HCT 소식 5-탭 멀티 채널", "desc": "전체/보도자료/아티클/스토리/유튜브/e-뉴스레터 - 3 카드 (ETRI 위성탑재체 공동연구 / 허봉재 대표 대통령표창 / 이천 도자기 축제 스토리)" },
-        { "id": "components-library",        "num": "09", "title": "컴포넌트 라이브러리 (사이트 전체 통합)", "desc": "헤더 GNB sticky -100 + 견적 문의 파란 pill CTA + 9-dot Menu + Floating 상담·FAQ·TOP cluster + Blue Pill / Outline 버튼 시스템" },
-        { "id": "signatures",                "num": "10", "title": "시그니처 패턴 7종", "desc": "5 다이아몬드 그리드 Hero / 사업 6 카드 슬라이더 / 글로벌 9 인증+3거점 / Floating 상담·FAQ·TOP / 7-아이콘 자주 찾는 서비스 / HCT 소식 5-탭 / 견적 문의 파란 pill" },
-        { "id": "interactions",              "num": "11", "title": "인터랙션 카탈로그 (Hover + Scroll + Animation)", "desc": "Transition 481건 + 0.4s 표준 205건 + AOS (Animate On Scroll) 34건 fade-up / 0.15s 빠른 호버 58건 / Header sticky -100 hide" },
-        { "id": "accessibility-seo",         "num": "12", "title": "시멘틱 · 접근성 · 성능 · SEO", "desc": "🟢 시멘틱 section 다수 사용 + 정부 인증 4종 + 본문 20px (한국 평균보다 큼) + 텍스트 대비 AAA / 🔴 user-scalable=no + AOS prefers-reduced-motion 미감지" },
-        { "id": "smooth-interaction-catalog","num": "13", "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)", "desc": "5 다이아몬드 Hero 디자인 업데이트 / AOS 34건 일관 / Floating 상담·FAQ·TOP / 4-Fixed 요소 / Transition 481건" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 사이트맵 · 기술 스택",
+          "desc": "주식회사 에이치시티 (시험인증·교정·측정표준) / 3거점 (한국·미국·인도네시아) / 200여 개국 인증 / SUIT 폰트 / 7 메뉴 사이트맵 / 정부 인증 4 마크 (가족친화/열림/생애주기/제대군인고용)"
+        },
+        {
+          "id": "design-tokens",
+          "num": "02",
+          "title": "디자인 토큰 시스템 (컬러·타이포·여백)",
+          "desc": "HCT Blue #0055A5 + Check Green #4ADE80 + SUIT 20px base / 0.4s 표준 transition 205건 + 0.15s 빠른 호버 58건 / 3-단계 반응형 (768/1024/1280)"
+        },
+        {
+          "id": "main-page",
+          "num": "03",
+          "title": "메인 페이지 (sH 7,178px) - 5 다이아몬드 Hero + 7 콘텐츠 섹션",
+          "desc": "Hero 다이아몬드 그리드 + 자주 찾는 서비스 7-아이콘 + 사업 6 카드 + 글로벌 9 인증+3거점 + HCT 소식 5탭 + Footer + Floating 상담·FAQ·TOP"
+        },
+        {
+          "id": "signature-diamond-hero",
+          "num": "04",
+          "title": "시그니처 - 5 다이아몬드 그리드 Hero",
+          "desc": "5 다이아몬드 카드 (도시 야경 / 메탈 그리드 / 태블릿 그리는 사람 / 산악 일출) + 회전 텍스트 'Global Standard · No.1 Testing & Calibration Lab · Trusted Partner · For Humanity' - 디자인 업데이트 (이전 ✓ 체크마크 모핑 대체)"
+        },
+        {
+          "id": "quick-services",
+          "num": "05",
+          "title": "자주 찾는 서비스 (7-아이콘 그리드)",
+          "desc": "큰 파란 검색바 + 7-아이콘 그리드 (FAQ / 시험인증견적문의 / 교정견적문의 / 상담연락처 안내 / 신청양식 / 성적서 조회 / 판매서비스)"
+        },
+        {
+          "id": "business-cards",
+          "num": "06",
+          "title": "사업 6 카드 슬라이더",
+          "desc": "'HCT는 사람과 세상을 연결하는 기술로 모두의 내일을 만들어갑니다' 44px·700 + 사업 6 카드 (모빌리티·방산·우주·시험·인증·교정·융합측정·배터리) + < > 페이지네이션"
+        },
+        {
+          "id": "global-network",
+          "num": "07",
+          "title": "글로벌 인증 네트워크 (9 마크 + 3거점)",
+          "desc": "🟢 '200여 개 국가 인증 서비스' + 9 국제 인증마크 (KC/VCCI/PSE/MIC/CCC/SRRC/FCC/UL/CSA) + 3거점 세계지도 (한국 본사·미국·인도네시아 2024 진출)"
+        },
+        {
+          "id": "news-hub",
+          "num": "08",
+          "title": "HCT 소식 5-탭 멀티 채널",
+          "desc": "전체/보도자료/아티클/스토리/유튜브/e-뉴스레터 - 3 카드 (ETRI 위성탑재체 공동연구 / 허봉재 대표 대통령표창 / 이천 도자기 축제 스토리)"
+        },
+        {
+          "id": "components-library",
+          "num": "09",
+          "title": "컴포넌트 라이브러리 (사이트 전체 통합)",
+          "desc": "헤더 GNB sticky -100 + 견적 문의 파란 pill CTA + 9-dot Menu + Floating 상담·FAQ·TOP cluster + Blue Pill / Outline 버튼 시스템"
+        },
+        {
+          "id": "signatures",
+          "num": "10",
+          "title": "시그니처 패턴 7종",
+          "desc": "5 다이아몬드 그리드 Hero / 사업 6 카드 슬라이더 / 글로벌 9 인증+3거점 / Floating 상담·FAQ·TOP / 7-아이콘 자주 찾는 서비스 / HCT 소식 5-탭 / 견적 문의 파란 pill"
+        },
+        {
+          "id": "interactions",
+          "num": "11",
+          "title": "인터랙션 카탈로그 (Hover + Scroll + Animation)",
+          "desc": "Transition 481건 + 0.4s 표준 205건 + AOS (Animate On Scroll) 34건 fade-up / 0.15s 빠른 호버 58건 / Header sticky -100 hide"
+        },
+        {
+          "id": "accessibility-seo",
+          "num": "12",
+          "title": "시멘틱 · 접근성 · 성능 · SEO",
+          "desc": "🟢 시멘틱 section 다수 사용 + 정부 인증 4종 + 본문 20px (한국 평균보다 큼) + 텍스트 대비 AAA / 🔴 user-scalable=no + AOS prefers-reduced-motion 미감지"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "13",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
+          "desc": "5 다이아몬드 Hero 디자인 업데이트 / AOS 34건 일관 / Floating 상담·FAQ·TOP / 4-Fixed 요소 / Transition 481건"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home)", "url": "https://hct.co.kr/" }
+        {
+          "title": "메인 (Home)",
+          "url": "https://hct.co.kr/"
+        }
       ]
     }
   ],
