@@ -127,24 +127,12 @@
     }
     var html = '';
     refs.forEach(function (ref) {
-      var defs = getSectionDefs(ref.id);
-      html += '<li class="sidebar-expandable">';
+      html += '<li>';
       html += '<a class="sidebar-link" href="#ref/' + escapeHtml(ref.id) + '" data-section="ref/' + escapeHtml(ref.id) + '">';
       html += '<svg class="ico"><use href="#i-link"/></svg>';
       html += escapeHtml(ref.title);
-      html += '<svg class="chevron" width="14" height="14"><use href="#i-chevron-down"/></svg>';
       html += '</a>';
-      html += '<ul class="sidebar-sub">';
-      defs.forEach(function (sec) {
-        var sectionPath = 'ref/' + ref.id + '/' + sec.id;
-        // Strip "(N종)" quantity suffix from sidebar display only
-        var sidebarTitle = (sec.title || '').replace(/\s*\([0-9]+종\)\s*$/, '');
-        html += '<li><a class="sidebar-link" href="#' + sectionPath + '" data-section="' + sectionPath + '">';
-        html += '<span class="sidebar-sec-num">' + escapeHtml(sec.num) + '</span>';
-        html += escapeHtml(sidebarTitle);
-        html += '</a></li>';
-      });
-      html += '</ul></li>';
+      html += '</li>';
     });
     refNavList.innerHTML = html;
   }
@@ -499,31 +487,10 @@
     h += '<span class="report-date">' + escapeHtml(analysis.date) + '</span>';
     h += '</div>';
     h += '<h1 class="report-title">' + escapeHtml(analysis.title) + ' 레퍼런스 보고서</h1>';
-    h += '<p class="report-summary">' + escapeHtml(analysis.summary) + '</p>';
     h += '<a class="report-url" href="' + escapeHtml(analysis.url) + '" target="_blank" rel="noopener noreferrer">';
     h += '<svg class="ico"><use href="#i-link"/></svg>' + escapeHtml(analysis.url);
     h += '</a>';
-    if (analysis.crawledPages) {
-      h += '<span class="report-crawled">' + analysis.crawledPages + '개 페이지 크롤링</span>';
-    }
     h += '</div>';
-
-    var defs = getSectionDefs(analysis.id);
-    h += '<div class="report-sections-grid">';
-    defs.forEach(function (def) {
-      var sec = analysis.sections[def.id];
-      if (!sec) return;
-      var sectionPath = 'ref/' + analysis.id + '/' + def.id;
-      var blockCount = sec.blocks ? sec.blocks.length : (sec.items ? sec.items.length : 0);
-      h += '<a class="report-section-card" href="#' + sectionPath + '">';
-      h += '<div class="report-section-num">' + escapeHtml(def.num) + '</div>';
-      h += '<h3>' + escapeHtml(sec.title) + '</h3>';
-      h += '<p>' + escapeHtml(def.desc) + '</p>';
-      h += '<span class="report-section-count">' + blockCount + '개 블록</span>';
-      h += '</a>';
-    });
-    h += '</div>';
-
     return h;
   }
 
@@ -604,13 +571,7 @@
       l.classList.remove('is-active');
     });
     var link = document.querySelector('.sidebar-link[data-section="' + id + '"]');
-    if (!link) return;
-    link.classList.add('is-active');
-    var sub = link.closest('.sidebar-sub');
-    if (sub) {
-      var exp = sub.closest('.sidebar-expandable');
-      if (exp) exp.classList.add('is-open');
-    }
+    if (link) link.classList.add('is-active');
   }
 
   /* ============ ROUTING ============ */
@@ -629,16 +590,17 @@
     }
 
     var refId = parts[1];
-    var sectionId = parts[2] || null;
 
-    highlightSidebar(hash);
+    // Section URLs redirect to ref overview (sections removed from UX per simplified spec)
+    if (parts[2]) {
+      location.replace('#ref/' + refId);
+      return;
+    }
+
+    highlightSidebar('ref/' + refId);
 
     loadAnalysis(refId).then(function (analysis) {
-      if (sectionId) {
-        showReport(renderSection(analysis, sectionId));
-      } else {
-        showReport(renderRefOverview(analysis));
-      }
+      showReport(renderRefOverview(analysis));
     }).catch(function () {
       showReport('<div class="report-header"><a class="report-back" href="#">← 홈으로</a><h1 class="report-title">분석 데이터를 불러올 수 없습니다</h1></div>');
     });
@@ -648,24 +610,7 @@
   document.addEventListener('click', function (e) {
     var link = e.target.closest('.sidebar-link');
     if (!link) return;
-
-    var parent = link.parentElement;
-    if (parent && parent.classList.contains('sidebar-expandable')) {
-      var targetHash = link.getAttribute('href') || '';
-      var currentHash = location.hash || '';
-      if (targetHash === currentHash || '#' + targetHash === currentHash) {
-        e.preventDefault();
-        parent.classList.toggle('is-open');
-        return;
-      }
-      parent.classList.add('is-open');
-    }
-
-    if (link.closest('.sidebar-sub')) {
-      closeSidebarMobile();
-    } else if (!parent || !parent.classList.contains('sidebar-expandable')) {
-      closeSidebarMobile();
-    }
+    closeSidebarMobile();
   });
 
   document.addEventListener('keydown', function (e) {
