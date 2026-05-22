@@ -73,220 +73,28 @@
   "references": [
     {
       "id": "plantym-com",
-      "title": "플랜티엠",
+      "title": "플랜티엠 (메인 100% 재현)",
       "url": "https://www.plantym.com/",
-      "date": "2026-05-14",
+      "date": "2026-05-22",
       "analysis": "analyses/plantym-com/analysis.json",
-      "pagesAnalyzed": 11,
+      "pagesAnalyzed": 1,
       "sections": [
-        {
-          "id": "overview",
-          "num": "01",
-          "title": "개요 · 사이트맵",
-          "desc": "Planty 그룹 (콘텐츠·네트워크·투자) 코퍼레이트 사이트, 11페이지 PHP 정적"
-        },
-        {
-          "id": "philosophy",
-          "num": "02",
-          "title": "디자인 철학 · 비주얼 랭귀지",
-          "desc": "미니멀 + 스크롤 스토리텔링 + 단일 강조 컬러 (오렌지 #FC6D25)"
-        },
-        {
-          "id": "tokens",
-          "num": "03",
-          "title": "디자인 토큰 시스템",
-          "desc": "CSS Variables 재구성 + 7단계 브레이크포인트"
-        },
-        {
-          "id": "main-page",
-          "num": "04",
-          "title": "메인 페이지 분석 (15k 스크롤)",
-          "desc": "8,550px .main-intro 스크롤 시퀀스 + 5개 영역"
-        },
-        {
-          "id": "about-pages",
-          "num": "05",
-          "title": "회사소개 카테고리 (4페이지)",
-          "desc": "기업정보 (12,762px) / 연혁 / CI / 고객센터"
-        },
-        {
-          "id": "business-pages",
-          "num": "06",
-          "title": "사업정보 카테고리 (3페이지)",
-          "desc": "모아진 매거진 / 주스샵 매장음악 (30,000 매장) / 디지털 사이니지"
-        },
-        {
-          "id": "pr-careers",
-          "num": "07",
-          "title": "PR · Careers (3페이지)",
-          "desc": "공지사항 / 보도자료 / Careers (MBO 평가)"
-        },
-        {
-          "id": "color-system",
-          "num": "08",
-          "title": "컬러 시스템",
-          "desc": "단일 오렌지 #FC6D25 + 무채색 - WCAG 검증"
-        },
-        {
-          "id": "typography-system",
-          "num": "09",
-          "title": "타이포그래피 시스템",
-          "desc": "Pretendard + 광범위 폴백 스택 - 80/60/48/32/18px 5단계"
-        },
-        {
-          "id": "icon-system",
-          "num": "10",
-          "title": "아이콘 시스템",
-          "desc": "PNG 이미지 위주 - ring.png / mission-bg / partners-logo"
-        },
-        {
-          "id": "image-system",
-          "num": "11",
-          "title": "이미지 시스템",
-          "desc": "사업 시나리오 사진 / 70+ 파트너 매트릭스 / Mission BG 시리즈"
-        },
-        {
-          "id": "layout-grid",
-          "num": "12",
-          "title": "그리드 · 컨테이너 시스템",
-          "desc": "15,098px 메인 / 5 .sec 분할 / 120px container padding"
-        },
-        {
-          "id": "layout-responsive",
-          "num": "13",
-          "title": "반응형 · 여백 · 둥글기",
-          "desc": "7단계 브레이크포인트 (500/767/970/1024/1240/1400)"
-        },
-        {
-          "id": "lib-buttons",
-          "num": "14",
-          "title": "버튼 · CTA 라이브러리",
-          "desc": "5종 - Dark Pill CTA / GNB Link / Orange Scroll-to-top / View More / Carousel arrows"
-        },
-        {
-          "id": "lib-banners",
-          "num": "15",
-          "title": "배너 · Hero 라이브러리",
-          "desc": "5종 - 그라데이션 Hero / Concentric Circles / Sub Page Hero / Mission BG / BUILDING A GLOBAL SERVICE"
-        },
-        {
-          "id": "lib-cards",
-          "num": "16",
-          "title": "카드 라이브러리",
-          "desc": "5종 - News Notice / Press Thumbnail / Business Feature / Stat / CEO Photo"
-        },
-        {
-          "id": "lib-navigation",
-          "num": "17",
-          "title": "네비게이션 라이브러리",
-          "desc": "Top GNB / Footer Multi-Col / News Carousel Indicator"
-        },
-        {
-          "id": "lib-forms",
-          "num": "18",
-          "title": "폼 라이브러리",
-          "desc": "Contact Inquiry (11 elements) / Board Search"
-        },
-        {
-          "id": "lib-content",
-          "num": "19",
-          "title": "콘텐츠 컴포넌트",
-          "desc": "Massive Single-Message Scroll / Vision-Mission-Slogan Triple / MBO Infographic"
-        },
-        {
-          "id": "signature-orbital",
-          "num": "20",
-          "title": "시그니처 - Planty 그룹 오비탈 다이어그램",
-          "desc": "Planty 중앙 + Contents/Network/Investment 3 노드 + 점선 궤도 + 글로브 와이어프레임"
-        },
-        {
-          "id": "signature-concentric",
-          "num": "21",
-          "title": "시그니처 - Concentric Circles Orange Hero",
-          "desc": "오렌지 풀폭 + 4단계 동심원 그라데이션 + 흰 'New Content Lifestyle' 헤딩"
-        },
-        {
-          "id": "signature-partners-matrix",
-          "num": "22",
-          "title": "시그니처 - Partner Matrix (70+ 로고)",
-          "desc": "정부·대학·공기업 70+ 로고 그리드 + 'BUILDING A GLOBAL SERVICE' 거대 헤딩"
-        },
-        {
-          "id": "ix-scroll",
-          "num": "23",
-          "title": "스크롤 인터랙션 카탈로그",
-          "desc": "8,550px 메시지 시퀀스 / 오비탈 progress / Sticky 헤더"
-        },
-        {
-          "id": "ix-hover",
-          "num": "24",
-          "title": "호버 인터랙션 카탈로그",
-          "desc": "GNB / CTA / Card / Partner Logo grayscale → color"
-        },
-        {
-          "id": "pub-semantic",
-          "num": "25",
-          "title": "시맨틱 HTML · 접근성",
-          "desc": "user-scalable=no 이슈, alt 부재, WCAG 대비 검증"
-        },
-        {
-          "id": "pub-perf-seo",
-          "num": "26",
-          "title": "성능 · SEO · 디자인-개발 협업",
-          "desc": "PHP 정적 페이지 / 70+ 파트너 lazy load 권장 / 구조화 데이터 권장"
-        },
-        {
-          "id": "smooth-interaction-catalog",
-          "num": "27",
-          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
-          "desc": "Hero 정정 - 떡잎+별+wireframe / circle_move 7s Orbital 회전 / rolling 20s 파트너 무한 슬라이드 / Material Design cubic-bezier 1.2s easing / 전체 532건 transition"
-        }
+        { "id": "overview", "num": "01", "title": "개요 · 메인 페이지 전용 분석", "desc": "1920×1080 측정 · 전체 17,125px · Header→Hero→Orbital→View→News→Partners→Footer 7섹션 좌표" },
+        { "id": "tokens", "num": "02", "title": "디자인 토큰 — :root CSS Variables 실측", "desc": "6 변수 (--accent-color #fc6d25 / --primary-color #000 / --secondary-color #333 / --bg-sub-color #f7f7f7 등) · Pretendard 폰트" },
+        { "id": "header", "num": "03", "title": "헤더 — 100px Fixed Header", "desc": "fixed 100px · 로고+GNB 4 depth-1 (회사소개/사업정보/PR/Careers)+depth-2 풀다운+햄버거" },
+        { "id": "hero", "num": "04", "title": "Hero — 1080px Video Background", "desc": "1080px · 비디오 배경 자동재생/loop · Planting the Value 96px Pretendard 700 · ScrollReveal 1.2s cubic-bezier" },
+        { "id": "orbital", "num": "05", "title": "Orbital Intro — GSAP ScrollTrigger 시그니처 10,800px", "desc": "🟢 .pin-spacer 10,800px + .motion 1080 sticky · SVG 점선 원 진행률 + ring.png + 3-panel 텍스트 시퀀스" },
+        { "id": "view", "num": "06", "title": "View — 3 비즈니스 카드", "desc": "937px · 3 카드 (Moazine 디지털 매거진 / JOOS# 매장음악 / SHOP DS 디지털 사이니지) · alternating Y translate ScrollReveal" },
+        { "id": "news", "num": "07", "title": "News — Notice + PR 양쪽 Swiper", "desc": "1,552px · h3 PlantyM 액센트 + Notice Swiper + PR Swiper + progress bar + prev/next" },
+        { "id": "partners", "num": "08", "title": "Partners — 13+ 로고 Marquee", "desc": "1,035px · 2-Row Marquee + 13+ 로고 (partners-logo1-* + logo2-*) · rolling 20s linear infinite" },
+        { "id": "footer", "num": "09", "title": "Footer — 사이트맵 + Plantynet 회사정보", "desc": "641px · 사이트맵 4 · Plantynet 김진해 · Tel 1660-0838 · Family Site · btn-top FAB" },
+        { "id": "typography", "num": "10", "title": "타이포그래피 시스템", "desc": "Pretendard 단일 패밀리 · Hero H1 96px / View H2 60px / Section H3 48px / body 18px" },
+        { "id": "color-system", "num": "11", "title": "컬러 시스템", "desc": "9 컬러 · #fc6d25 액센트 단일 · #000/#333/#1a1a1a/#888/#999/#f7f7f7/#ebebeb/#fff 회색 7톤" },
+        { "id": "interactions", "num": "12", "title": "인터랙션 시스템 — Transition·Animation 통계", "desc": "525 'all' · circle_move 7s · rolling 20s · ScrollReveal 1.2s cubic-bezier · GSAP ScrollTrigger pin/scrub" },
+        { "id": "smooth-interaction-catalog", "num": "13", "title": "부드러운 인터랙션 카탈로그 (라이브 5-Round 대조 검증)", "desc": "8 발견 + 5-Round 검증 결과 · 시그니처 GSAP Orbital · Hero Video Reveal · 3-Card Alternating · Logo Marquee · News Swiper · btn-top FAB · GNB Depth-2 · 액센트 #fc6d25 단색 패턴" }
       ],
       "subpages": [
-        {
-          "title": "메인 (Home)",
-          "url": "https://www.plantym.com/"
-        },
-        {
-          "title": "기업정보",
-          "url": "https://www.plantym.com/about/company.php"
-        },
-        {
-          "title": "연혁",
-          "url": "https://www.plantym.com/about/history.php"
-        },
-        {
-          "title": "CI",
-          "url": "https://www.plantym.com/about/ci.php"
-        },
-        {
-          "title": "고객센터",
-          "url": "https://www.plantym.com/about/contact.php"
-        },
-        {
-          "title": "디지털 매거진 (모아진)",
-          "url": "https://www.plantym.com/business/moazine.php"
-        },
-        {
-          "title": "매장음악 (주스샵)",
-          "url": "https://www.plantym.com/business/joo.php"
-        },
-        {
-          "title": "디지털 사이니지",
-          "url": "https://www.plantym.com/business/signage.php"
-        },
-        {
-          "title": "공지사항",
-          "url": "https://www.plantym.com/pr/notice.php"
-        },
-        {
-          "title": "보도자료",
-          "url": "https://www.plantym.com/pr/press.php"
-        },
-        {
-          "title": "Careers",
-          "url": "https://www.plantym.com/careers/"
-        }
+        { "title": "메인 (Home) — 본 보고서 분석 대상", "url": "https://www.plantym.com/" }
       ]
     },
     {
