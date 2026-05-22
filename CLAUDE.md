@@ -169,33 +169,63 @@ function escapeHtml(str) {
 
 이 수정 전에는 HTML 안 `class="..."` 같은 double-quote가 `data-html="..."` 속성을 깨뜨려 컴포넌트가 렌더되지 않았음. 현재는 single/double 양쪽 안전.
 
-### Mirror Mode 작업 체크리스트
+### Mirror Mode 작업 체크리스트 (이중 모드 표준)
 
 ```
-[ ] 사용자 요청에 "100% 동일 / 정밀 재현 / 메인만" → Mirror Mode 진입
+[ ] 사용자 요청에 "100% 동일 / 정밀 재현 / 메인만 / 풀픽셀" → Mirror Mode 진입
 [ ] 기존 analysis.json 백업 (analysis.backup.json)
 [ ] crawledPages: 1, subpages 배열은 메인 1개만
 [ ] :root CSS Variables 전수 추출 (document.styleSheets → CSSRule selectorText ':root')
 [ ] 페이지 차원 (sH, sW, viewport) + 각 article/section 좌표(top/h) 정밀 측정
 [ ] 8가지 히든 패턴 의도적 탐색 (Slot Counter / FAB / Particle / Rotating SVG / Marquee / Splitting / Dual Logo / Mouse Pointer)
-[ ] 모든 섹션에 component 블록 1개+ 포함 (kv 표만 늘어놓기 금지)
+[ ] 모든 섹션에 인라인 component 블록 1개+ 포함 (kv 표만 늘어놓기 금지)
 [ ] 실제 이미지 CDN URL 직접 임베드
-[ ] 5-Round E2E 양 사이트 대조 완료 (라이브 N장 + 보고서 N장)
-[ ] 마지막 섹션에 5-Round 검증 결과 표 + 발견 패턴 정리
-[ ] 일치율 90%+ 달성 못하면 Tier-A 적용 검토
+[ ] 5-Round E2E 양 사이트 대조 완료 (라이브 N장 + 보고서 N장 페어 비교)
+[ ] **Tier-A 병행 작성 (Mirror Mode 표준)** — {id}-app/styles/globals.css + components/{id}/*.html 8개+
+[ ] **각 인라인 component 직후에 block.preview URL을 가진 Tier-A 블록 추가**
+[ ] Playwright로 Tier-A 모달 동작 검증 ([프리뷰 열기] → iframe 로드 → ESC 닫기)
+[ ] 마지막 섹션에 5-Round 검증 결과 표 + 발견 패턴 정리 + Tier-A 일치율 명시
 [ ] node scripts/validate.mjs 5 OK / 0 error 통과
 ```
 
 ## Tier-A 아키텍처 — 별도 프로젝트 + 프리뷰 모달
 
+### 이중 모드 동시 적용 (인라인 + Tier-A 모달) — 미라셀 2026-05-22 정립 표준
+
+Mirror Mode에서 **인라인 component 블록을 그대로 두고 그 직후 Tier-A 프리뷰 블록을 추가**하는 것이 최선의 패턴. 두 가지가 보완 관계:
+
+| 모드 | 사용 시점 | 일치율 | 디자이너 활용 |
+|------|----------|-------|---------------|
+| **인라인 component** | 보고서 스크롤 중 빠른 시각 확인 | 90-95% (컨테이너 비례 축소) | 한눈에 보고 토큰 확인 |
+| **Tier-A 풀스크린 모달** | [프리뷰 열기] 클릭 — 라이브 정확 px | **100% 1:1** | HTML/CSS 그대로 복사·사용 |
+
+작성 방식:
+
+```json
+"sections": {
+  "hero": {
+    "blocks": [
+      { "type": "kv", "title": "Hero 토큰", "items": [...] },
+      { "type": "component", "title": "Hero 인라인 프리뷰 (비례 축소)",
+        "html": "...", "css": "..." },
+      { "type": "note", "value": "원본 1080px 풀 높이..." },
+      { "type": "component", "title": "Tier-A 풀스크린 프리뷰 — site-app/components/hero (라이브 정확 1080px)",
+        "preview": "components/site/hero.html",
+        "thumbBg": "#000",
+        "thumbLabel": "Hero 1080px · 5컬럼 무한 스크롤 · 실 CDN 이미지" }
+    ]
+  }
+}
+```
+
 ### 언제 Tier-A를 적용하는가
 
-인라인 `component` 블록은 보고서 컨테이너의 overflow/축소 비율 때문에 라이브 절대 픽셀(1080×1905 같은)을 100% 재현 불가능하다. 다음 중 하나라도 해당되면 Tier-A:
+**Mirror Mode 작업이면 기본적으로 모든 섹션에 Tier-A 동반 적용** (미라셀 2026-05-22 베스트 프랙티스). 다음 중 하나라도 해당되면 Tier-A는 **필수**:
 
-- Mirror Mode 5-Round 후에도 일치율이 95% 미만
 - 라이브의 viewport 풀폭(1920px) / 풀높이(1080px) 섹션이 핵심
 - `position: sticky` / `scroll-driven` / WebGL / Three.js / 라이브 ticker
 - 보고서 컨테이너의 `overflow:hidden` 영향받는 sticky 패턴
+- 디자이너가 HTML/CSS를 그대로 복사해 자기 프로젝트에 쓰고 싶어 함
 
 ### 별도 프로젝트 구조
 
@@ -282,17 +312,20 @@ JSON.stringify(Array.from(document.querySelectorAll('main > *, article')).map(el
 - `prefers-reduced-motion` 미디어 쿼리로 접근성 지원
 - 인터랙션은 vanilla JS (IntersectionObserver / requestAnimationFrame)
 
-### Tier-A 체크리스트
+### Tier-A 체크리스트 (이중 모드 동시 적용 기준)
 
 ```
 [ ] {site}-app/ 프로젝트 생성 (라이브 기술 스택)
-[ ] components/{site}/*.html 정적 HTML 8개+ (각 섹션 1:1)
-[ ] styles/globals.css에 :root 디자인 토큰
-[ ] 모든 height를 라이브 정확한 px로 (100vh 금지)
-[ ] 라이브 CDN 자산 직접 임베드
-[ ] analysis.json component 블록에 block.preview / thumbBg / thumbLabel 추가
-[ ] 보고서 모달 동작 검증 ([프리뷰 열기] → 모달 → ESC 닫기)
-[ ] {site}-app/README.md에 빌드 명령 + 디자이너 가이드
+[ ] {site}-app/styles/globals.css 에 :root 디자인 토큰 + 폰트 import + 키프레임
+[ ] components/{site}/*.html 정적 HTML 8개+ (각 섹션 1:1, 라이브 정확 px)
+[ ] 모든 height를 라이브 정확한 px로 (100vh 금지) — Hero 1080, About 1512 등
+[ ] 라이브 CDN 자산 직접 임베드 (https://{site}/images/...)
+[ ] analysis.json 의 각 인라인 component 블록 직후에 Tier-A 블록 추가
+    - `type: "component"` + `title: "Tier-A 풀스크린 프리뷰 — ..."` + `preview: "components/{site}/{section}.html"`
+    - `thumbBg` (그라데이션 또는 색상) + `thumbLabel` (한 줄 요약)
+[ ] 보고서 모달 동작 검증 (Playwright로 [프리뷰 열기] 클릭 → iframe 로드 → ESC/× 닫기)
+[ ] {site}-app/README.md 에 디자이너 사용 가이드 + 라이브 ID/Class 매핑 표
+[ ] 인라인(빠른 시각) + Tier-A 모달(100% 정확) 양쪽 모두 정상 동작 확인
 ```
 
 ## 컴포넌트 작성 규칙
@@ -375,32 +408,54 @@ node scripts/validate.mjs
 - ❌ **OLD 보고서 데이터를 spot-check 없이 그대로 복사** — 사이트는 리뉴얼되었을 수 있음
 - ❌ **라이브 단방향 또는 보고서 단방향 측정 후 "5회 대조 완료"라고 마킹** — 진정한 양방향 동시 비교만 인정
 
-## 미라셀 Mirror Mode 사례 (2026-05-22 기준)
+## 미라셀 Mirror Mode 사례 (2026-05-22 기준 — 최종)
 
 | 항목 | 결과 |
 |------|------|
 | 작업 모드 | Mirror Mode (단일 페이지 100% 재현) |
+| crawledPages / subpages | 1 / 1 (메인만, 서브페이지 27개 의도적 제외) |
 | 섹션 수 | 15 |
-| component 블록 | 14개 |
-| 발견 히든 패턴 | 8가지 모두 발견 |
-| 5-Round E2E 일치율 | Round 1 87.5% → Round 5 94.75% |
-| Tier-A 적용 여부 | ✅ miracell-app + components/miracell/*.html |
+| 인라인 component 블록 | 14개 |
+| Tier-A 풀스크린 프리뷰 | 8개 (Header / Hero / About / Service / Product / News / Contact / Footer) |
+| 발견 히든 패턴 | 8가지 모두 발견 (Slot Counter / Pencil FAB / Particle / 회전 SVG / Marquee / Splitting / 듀얼 로고 / **마우스 추적 커서**) |
+| 5-Round E2E 일치율 | Round 1 87.5% → Round 5 94.75% (인라인) / Tier-A 모달 100% |
+| Tier-A 자산 | `miracell-app/styles/globals.css` (24 변수) + `components/miracell/*.html` 8개 + 보고서 모달 연결 |
 | 인프라 버그 수정 | escapeHtml `"`/`'` escape 추가 (다른 보고서에도 영향) |
+| UI 개선 | 사이드바 접기 버튼 추가 + topbar 제거 |
 
-100% 도달 불가 사유: 보고서 컨테이너 안에 demo가 비례 축소되어 들어가므로 절대 픽셀 일치는 구조상 어려움. 디자인 토큰(폰트·color·radius·키프레임)은 100% 일치. **풀폭 라이브 정확 px**가 필요하면 Tier-A 모달로 분리.
+**핵심 학습**: 인라인 단독으로는 보고서 컨테이너 안에 demo가 비례 축소되어 절대 픽셀 일치가 구조상 어려움. **이중 모드 (인라인 + Tier-A 모달)** 동시 적용으로 인라인 90-95% + Tier-A 100% 양쪽 충족. 디자인 토큰(폰트·color·radius·키프레임)은 양쪽 모두 100% 일치.
+
+## 최종 베스트 프랙티스 요약 (미라셀 사례 후)
+
+신규 Mirror Mode 작업 시 다음 순서를 그대로 따르면 일치율 95%+ + Tier-A 100% 보장.
+
+1. **사용자 요청 키워드 감지** — "100% 동일 / 정밀 재현 / 메인만 / 풀픽셀" → Mirror Mode + Tier-A 기본 적용
+2. **Playwright MCP 라이브 1차 측정** — `:root` 변수 전수 추출 + 페이지 차원(sH/sW) + 섹션별 좌표(top/h) + 8 히든 패턴 의도 탐색
+3. **인라인 component 블록 작성** — `kv` 토큰 표 + `html`/`css` 페어 (10-15 섹션, demo 540px 정도로 비례 축소)
+4. **5-Round E2E 양 사이트 대조** — Round 1 동시 스크린샷, Round 2 차이 수정, Round 3 computed style 채집, Round 4 hover 인터랙션, Round 5 최종 픽셀 확인
+5. **Tier-A 동시 작성** — `{site}-app/styles/globals.css` + `components/{site}/*.html` 8개+ (라이브 정확 px, 100vh 금지)
+6. **`block.preview` URL 추가** — 각 인라인 component 직후에 Tier-A 프리뷰 블록 (모달용)
+7. **모달 동작 검증** — Playwright로 [프리뷰 열기] 클릭 → iframe 로드 → ESC 닫기 확인
+8. **검증 표 기록** — `smooth-interaction-catalog`에 5-Round 결과 + 8 히든 패턴 + Tier-A 일치율 표
+9. **`node scripts/validate.mjs` 통과** + 로컬 서버 렌더 확인 + 커밋·푸시
+
+이 9단계를 거치면 디자이너가 (a) 보고서로 빠른 시각 학습 (b) Tier-A 모달로 정확한 픽셀 확인 (c) 정적 HTML 복사로 자기 프로젝트 즉시 적용 — 세 가지 모두 가능.
 
 ## 기여 절차
 
 1. 분석 대상 URL 결정 → 슬러그 ID 생성 (예: `miracell`)
-2. 작업 모드 결정: 일반 카탈로그 vs Mirror Mode
-3. Playwright MCP로 라이브 사이트 측정 (1차 패스)
+2. 작업 모드 결정: 일반 카탈로그 vs Mirror Mode (사용자 요청에 "100% / 정밀 / 메인만" 키워드 있으면 Mirror Mode)
+3. Playwright MCP로 라이브 사이트 측정 (1차 패스, `:root` 변수 + 페이지 차원 + 섹션 좌표)
 4. `analyses/{id}/analysis.json` 작성:
    - 일반: 30+ 섹션, 컴포넌트 라이브러리 중심
-   - Mirror Mode: 10-15 섹션, `component` 비중 70%+
-   - 마지막은 `smooth-interaction-catalog`
+   - Mirror Mode: 10-15 섹션, `component` 비중 70%+ + 마지막은 `smooth-interaction-catalog`
    - 섹션 타이틀에 이모지 금지
 5. `system.json.references[]` 엔트리 추가 + `counts.references` 갱신
-6. Mirror Mode: 5-Round E2E 양 사이트 대조 → 일치율 표 기록
-7. 일치율 95% 미만이면 Tier-A 적용 (`{id}-app/` + `components/{id}/*.html`)
-8. `node scripts/validate.mjs` 통과 + 로컬 서버 렌더 확인
-9. 커밋 메시지에 영향받은 계층 + 실측 수치 포함
+6. Mirror Mode: **5-Round E2E 양 사이트 대조** → 일치율 표 기록 (라이브 N장 + 보고서 N장 페어 비교)
+7. **Mirror Mode 기본으로 Tier-A 병행 적용**:
+   - `{id}-app/styles/globals.css` 디자인 토큰 정의
+   - `components/{id}/*.html` 정적 HTML 8개+ (라이브 정확 px, 100vh 금지)
+   - 인라인 component 블록 직후에 `block.preview` URL을 가진 Tier-A 블록 추가
+   - Playwright로 모달 동작 검증
+8. `node scripts/validate.mjs` 통과 + 로컬 서버 렌더 확인 + Tier-A 모달 8개 클릭 검증
+9. 커밋 메시지에 영향받은 계층 + 실측 수치 + 일치율 % + Tier-A 적용 여부 포함
