@@ -1,106 +1,60 @@
 # CLAUDE.md — 기여 가이드라인
 
-Web Reference Lab(웹 디자인 레퍼런스 연구소)에 변경을 가할 때 따라야 할 원칙. 본 문서는 운영자(/DH)와 AI 코딩 에이전트가 공동으로 따르는 단일 합의 문서다.
+Web Reference Lab(웹 디자인 레퍼런스 연구소)에 변경을 가할 때 따라야 할 원칙. 운영자(/DH)와 AI 코딩 에이전트의 단일 합의 문서.
 
-## 🚨 AI 에이전트 자동화 실행 프로토콜 (Claude Code 전용)
+## 🚨 자동화 실행 프로토콜
 
-본 문서를 읽는 AI 에이전트(Claude Code)는 사용자의 반복적인 프롬프트 지시가 없더라도 다음의 4대 원칙을 **무조건 자동 수행**해야 한다. 이 원칙을 우회하거나 타협하는 것은 엄격히 금지된다.
+본 문서를 읽는 AI 에이전트는 사용자의 반복 지시 없이도 다음 4대 원칙을 **무조건 자동 수행**한다.
 
-### 1. 상호작용 및 언어 원칙
-- 터미널 내의 모든 내부 사고 과정(Thinking), 진행 상황 보고, 오류 메시지, 최종 답변은 **예외 없이 100% 한국어로만** 출력한다.
-
-### 2. 산출물 출력 원칙 (채팅창 코드 출력 금지)
-- 완성된 컴포넌트 코드나 동작하는 스크립트를 터미널 채팅창에 Raw Code Block 형태로 길게 나열하지 마라.
-- 코드 수정 및 산출물 생성 시에는 반드시 파일 시스템 도구를 사용하여 `analyses/...` 또는 별도 프로젝트 지정 경로에 **직접 다운로드 및 구동이 가능한 형태의 파일로 생성 및 저장**해야 한다.
-
-### 3. 작업 순서 통제 (선 실측, 후 코딩 강제)
-- 사용자가 컴포넌트 구현을 지시하면 **절대 즉시 코드를 작성하지 마라.**
-- 반드시 `mcp__Claude_in_Chrome__*` 도구를 사용해 타겟 URL에 먼저 접속하여 `getComputedStyle`과 `getBoundingClientRect`로 실측 수치(정확한 높이 px, 헥스 색상, 애니메이션 ms, 폰트 웨이트 등)를 먼저 채집하라.
-- 채집된 정량 데이터를 터미널에 표 형태로 보고한 후, 그 실측 데이터를 기반으로만 코딩을 시작한다.
-
-### 4. 자가 검증 루프 강제 (Self-Correction Loop)
-- 코드를 파일로 저장한 직후, 사용자에게 "작업을 완료했습니다"라고 보고하기 전에 **스스로 Step 6의 정량적 동작 검증을 백그라운드에서 즉시 실행**하라.
-- 로컬 서버의 렌더링 결과와 라이브 사이트 간에 스크롤 단계별(sY 0~100%) 오차가 1px이라도 발생하면 사용자에게 묻지 말고 즉시 원인을 분석하여 코드를 수정하라.
-- 양쪽의 오차가 완벽히 0으로 수렴했음을 데이터 표나 스크린샷으로 증명한 후에만 최종 작업 완료를 보고한다. "확인했습니다" 같은 텍스트 자기 보고는 절대 금지한다.
+1. **언어 100% 한국어** — 사고 과정·진행 보고·오류·최종 답변 전부
+2. **채팅창 코드 금지** — 산출물은 파일 시스템에 직접 저장, 실행 가능한 형태로
+3. **선 실측 후 코딩** — Playwright MCP로 `getComputedStyle`·`getBoundingClientRect` 실측 후 정량 표 보고, 그 데이터로만 코딩 시작
+4. **자가 검증 루프 강제** — "확인했습니다" 텍스트 자기보고 금지. 양 사이트(라이브 ↔ 보고서) 스크롤 단계별 오차가 1px이라도 발생하면 즉시 분석·수정, 오차 0으로 수렴했음을 표·스크린샷으로 증명 후 보고
 
 ## 프로젝트 개요
 
-실제 운영 중인 웹사이트의 디자인 시스템을 연구원 수준으로 분석하는 레퍼런스 카탈로그. **단순 디자인 메모가 아니라, 다른 프로젝트에서 곧바로 꺼내 쓸 수 있는 컴포넌트 라이브러리**가 산출물이다. 한 사이트당 메인 + 서브 카테고리 페이지를 모두 라이브로 점검하고, 디자이너와 퍼블리셔가 동시에 활용할 수 있는 30+ 섹션 보고서로 정리한다.
+실제 운영 중인 웹사이트의 디자인 시스템을 연구원 수준으로 분석하는 레퍼런스 카탈로그. **다른 프로젝트에서 곧바로 꺼내 쓸 수 있는 컴포넌트 라이브러리**가 산출물.
 
-## 기준선: 5개 기존 보고서
+### 두 가지 작업 모드
 
-신규 분석은 아래 5개 보고서의 평균 품질을 충족해야 한다.
+| 모드 | 사용 시점 | 페이지 분석 | 섹션 수 | 산출물 |
+|------|----------|------------|---------|--------|
+| **일반 카탈로그** | "사이트 전체 분석" 요청 | 메인 + 서브 30+ 페이지 | 30+ | 인라인 `component` 블록 라이브러리 |
+| **Mirror Mode** | "100% 동일 재현 / 정밀 클론 / 메인만" 요청 | 단일 페이지 정밀 | 10-15 | `component` 블록 70%+ 비중 + Tier-A 프리뷰 모달 |
 
-| 레퍼런스 | 페이지 분석 | 섹션 수 | 줄 수 |
-|----------|------------|--------|------|
-| [analyses/kdnavien-co-kr/analysis.json](analyses/kdnavien-co-kr/analysis.json) | 경동나비엔 (12페이지) | 34 | 1,384 |
-| [analyses/miracell/analysis.json](analyses/miracell/analysis.json) | 미라셀 (28페이지) | 34 | 1,273 |
-| [analyses/asinsam/analysis.json](analyses/asinsam/analysis.json) | 안성인삼농협 (24페이지) | 33 | 974 |
-| [analyses/plantym-com/analysis.json](analyses/plantym-com/analysis.json) | 플랜티엠 (11페이지) | 27 | 810 |
-| [analyses/dcamp-kr/analysis.json](analyses/dcamp-kr/analysis.json) | 디캠프 (6페이지) | 28 | 787 |
+## 절대 규칙
 
-5개 모두 31번째 이후 섹션에 `smooth-interaction-catalog`(부드러운 인터랙션 카탈로그)를 포함한다.
+### 0. Playwright MCP로 라이브 사이트 직접 측정
 
-## 절대 규칙 (반드시 지킬 것)
-
-### 0. 무조건 Chrome MCP를 통해 실제 웹사이트에 직접 접근
-
-**모든 분석은 예외 없이 `mcp__Claude_in_Chrome__*` 도구로 실제 라이브 사이트를 방문해서 진행한다.** WebFetch / 학습 데이터 / 외부 캐시 / 검색 결과 추정은 보조 정보로만 사용하며, 디자인 토큰(색상·폰트·여백·둥글기) · 컴포넌트 클래스명 · 페이지 구조 · 인터랙션 · 이미지 URL · transition·animation 통계는 **반드시 라이브 페이지에서 직접 채집한 실측값**을 사용한다.
-
-이 규칙이 있는 이유:
-
-- WebFetch는 HTML 정적 텍스트만 가져옴 — 클라이언트 하이드레이션(Next.js · React · Vue 등) 후의 실제 DOM·CSS를 잡지 못한다
-- 색상·폰트는 `getComputedStyle()`로만 정확히 채집 가능
-- 스크롤·hover·click 같은 라이브 인터랙션은 정적 HTML에 존재하지 않음
-- transition·animation 통계는 살아있는 페이지에서만 측정 가능
-- 학습 데이터 추정으로 작성된 보고서는 사실과 다를 위험이 매우 높다 (이미지 경로 오류, 존재하지 않는 클래스명 등)
-
-**Chrome MCP 워크플로**:
+`.mcp.json`에 등록된 `@playwright/mcp` 서버를 통해 모든 실측을 수행한다. 학습 데이터 추정·외부 캐시·WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만.
 
 ```
-1. mcp__Claude_in_Chrome__tabs_context_mcp({ createIfEmpty: true })
-2. mcp__Claude_in_Chrome__navigate({ url, tabId })
-3. wait 3-5초 (하이드레이션 완료)
-4. javascript_tool 또는 screenshot으로 실측 데이터 채집
-5. browser_batch로 여러 액션 묶어 실행
+1. mcp__playwright__browser_navigate({ url })
+2. wait 3-5초 (하이드레이션 완료)
+3. mcp__playwright__browser_evaluate({ function: '() => { ... }' })
+4. mcp__playwright__browser_take_screenshot
+5. mcp__playwright__browser_hover/click (인터랙션 측정)
 ```
-
-WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만 허용. 그 외 분석 콘텐츠 전체는 Chrome MCP 실측이 단일 source of truth.
 
 ### 1. 섹션 타이틀에 이모지 금지
 
-사이드바·report-section-card에 노출되는 **section title 문자열에는 🟢 같은 이모지를 절대 넣지 않는다**. 사이드바 메뉴의 모노스페이스 정렬·페이지 인쇄·접근성에 깨질 수 있다.
+`sections.{id}.title` 문자열에는 🟢 같은 이모지를 절대 넣지 않는다. 본문(`value`, `label`, `text`)에서만 허용.
 
 ```json
 // 잘못된 예
-{ "id": "lib-cards", "num": "16", "title": "🟢 카드 라이브러리", "desc": "..." }
+{ "title": "20. 🟢 시그니처 - Orbital", ... }
 // 올바른 예
-{ "id": "lib-cards", "num": "16", "title": "카드 라이브러리", "desc": "..." }
+{ "title": "20. 시그니처 - Orbital",
+  "blocks": [{"type":"kv","items":[{"label":"🟢 특징","value":"..."}]}] }
 ```
 
-본문(블록 안 `value`, `label`, `text` 등) 안에서는 이모지를 강조용으로 사용해도 무방하다. 단 남발은 피한다.
+### 2. 실제 사이트 이미지 적극 사용
 
-### 2. 섹션 수 자유 (30+ 권장, 상한 없음)
+라이브 사이트의 실제 이미지·영상 URL을 그대로 `<img src>`, `background-image:url(...)`로 임베드. 비공개 연구 자료라 저작권·CDN 비용 고려 X.
 
-기존엔 "정확히 30섹션" 규칙이 있었으나 폐기. 사이트마다 발견되는 패턴 수가 달라 강제 제한이 무의미하다. **콘텐츠가 30섹션 이상 펼쳐질 만하면 자유롭게 늘린다**. 최소 25 이상은 유지 권장 (메타 3 + 페이지 분석 5 + 비주얼 4 + 레이아웃 2 + 컴포넌트 라이브러리 8 + 인터랙션 2 + 퍼블리싱 1).
+### 3. smooth-interaction-catalog 섹션 필수
 
-### 3. 실제 사이트 이미지 적극 사용
-
-연구·내부 참조 용도이므로 **분석 대상 사이트의 실제 이미지·영상 URL을 그대로 `<img src>`, `background-image: url(...)`로 임베드해도 된다**. 비주얼 충실도가 극적으로 올라간다.
-
-```css
-/* 권장 패턴 */
-.kn-md1-smart .kn-md1-bg{background-image:url(https://www.kdnavien.co.kr/images/main/home1.webp)}
-
-/* 외부 호스트도 OK (S3, CDN 등) */
-.dc-im1-img img{src:"https://s3-ap-northeast-2.amazonaws.com/dcamp-web-public/styles/max_650x650/s3-public/2026-04/배치8기.png"}
-```
-
-상업 배포가 아니라 비공개 연구 자료이므로 저작권·CDN 비용 이슈는 고려하지 않는다.
-
-### 4. 부드러운 인터랙션 카탈로그 섹션 필수
-
-마지막 섹션은 `smooth-interaction-catalog`라는 ID로 통일하며, 정적 분석으로는 잡히지 않는 라이브 동작을 정리한다. 5개 기존 보고서 모두 채택. (점검 방법은 아래 "라이브 인스펙션" 참조)
+마지막 섹션은 `smooth-interaction-catalog` ID로 통일. 정적 분석으로 잡히지 않는 라이브 동작 (Splitting.js 글자별 fade-in / Slot Counter / Particle Network / 마우스 추적 커서 등)을 정리.
 
 ## 보고서 데이터 모델
 
@@ -108,470 +62,101 @@ WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만 허용
 
 ```json
 {
-  "id": "kdnavien-co-kr",
-  "title": "경동나비엔",
-  "url": "https://www.kdnavien.co.kr/ko",
-  "date": "2026-05-14",
-  "summary": "2-3 문단 — 사이트 정체성, 기술 스택, 시그니처 패턴 압축",
-  "crawledPages": 12,
+  "id": "miracell",
+  "title": "미라셀 (메인 100% 재현)",
+  "url": "https://miracell.co.kr/kr/",
+  "date": "2026-05-22",
+  "summary": "2-3 문단 — 사이트 정체성, 기술 스택, 시그니처 패턴",
+  "crawledPages": 1,
   "sections": {
-    "overview":   { "title": "01. 개요 · 사이트맵", "blocks": [...] },
-    "philosophy": { "title": "02. 디자인 철학",     "blocks": [...] },
+    "overview":   { "title": "01. 개요", "blocks": [...] },
     ...
-    "smooth-interaction-catalog": { "title": "34. 부드러운 인터랙션 카탈로그 (라이브 재점검)", "blocks": [...] }
+    "smooth-interaction-catalog": { "title": "N. 부드러운 인터랙션 카탈로그", "blocks": [...] }
   }
 }
 ```
 
-`system.json.references[]`에 등록할 때 동일 `id` + 커스텀 `sections` 배열(`{id, num, title, desc}`)을 함께 추가한다. `analysisSections`의 기본 10섹션은 사용하지 않고 사이트별 커스텀 30+ 섹션을 사용한다.
+`system.json.references[]`에 동일 `id` + 커스텀 `sections` 배열(`{id, num, title, desc}`)을 함께 등록.
 
 ## 블록 타입 카탈로그
 
-`assets/js/main.js`의 `renderBlock()`이 처리하는 블록 타입. 다른 타입을 쓰면 렌더되지 않는다.
+`assets/js/main.js`의 `renderBlock()`이 처리하는 블록 타입. 다른 타입은 렌더되지 않음.
 
 | 타입 | 용도 | 필수/선택 키 |
 |------|------|-----|
 | `heading` | h2 헤딩 | `value` |
 | `text` | 단락 텍스트 | `value` |
-| `note` | i 아이콘 노트 | `value` |
+| `note` | i 아이콘 노트 (정량 데이터 전용) | `value` |
 | `kv` | 키-값 리스트 (1/2/3 컬럼) | `title?`, `columns?`, `items[{label, value}]` |
 | `stats` | 큰 숫자 카드 그리드 | `items[{number, suffix?, label}]` |
 | `sitemap` | 부모 + 자식 그룹 | `items[{label, children[]}]` |
 | `structure` | 순번 + 라벨 + 태그 + 설명 | `items[{label, tag?, desc}]` |
 | `palette` | 컬러 스와치 표 | `title?`, `colors[{name, hex, usage}]` |
 | `typo` | 폰트 샘플 표 | `items[{label, size, weight, sample, tracking?}]` |
-| `component` | HTML/CSS/JS 라이브 프리뷰 | `title?`, `html`, `css`, `js?`, `fullWidth?` |
+| `component` | HTML/CSS/JS 라이브 프리뷰 (인라인) | `title?`, `html`, `css`, `js?`, `fullWidth?` |
+| `component` (Tier-A) | 프리뷰 모달 (별도 페이지) | `title?`, `preview`, `thumbBg?`, `thumbLabel?` |
 | `spacingScale` | 여백 바 | `items[{label, px}]` |
 | `radiusScale` | 둥글기 박스 | `items[{label, px, usage?, note?}]` |
 
-## 권장 섹션 템플릿 (30+ 섹션)
+## Mirror Mode — 단일 페이지 100% 동일 재현 (미라셀 2026-05-22 정립)
 
-| 그룹 | 섹션 ID 예시 | 섹션 수 | 내용 |
-|------|--------------|--------|------|
-| **A. 메타 (01-03)** | `overview` `philosophy` `tokens` | 3 | 사이트 프로필+사이트맵 / 비주얼 6원칙+결정 패턴 / CSS Variables+토큰 |
-| **B. 페이지 분석 (04-09)** | `main-page` `{category}-pages` × 5 | 5-7 | 메인 페이지 흐름 + 카테고리별 5-7페이지 정밀 분석 |
-| **C. 비주얼 시스템 (10-13)** | `color-system` `typography-system` `icon-system` `image-system` | 4 | 팔레트·사용비율·WCAG / 타입스케일 / 아이콘 인벤토리 / 이미지·영상 전략 |
-| **D. 레이아웃 (14-15)** | `layout-grid` `layout-responsive` | 2 | 컨테이너+섹션 그리드 / 브레이크포인트+여백+둥글기 |
-| **E. 컴포넌트 라이브러리 (16-25)** | `lib-buttons` `lib-cards` `lib-banners` `lib-navigation` `lib-forms` `lib-data` `lib-content` `lib-utility` `lib-embed` `lib-media` | 8-10 | 각 8-12종 `component` 블록, HTML+CSS 페어 |
-| **F. 시그니처 패턴 (개수 가변)** | `signature-*` | 2-5 | 해당 사이트만의 독특한 시각·인터랙션 패턴 (오비탈 다이어그램, Animated Counter, Drive Typo 등) |
-| **G. 인터랙션 (26-28)** | `ix-hover` `ix-scroll` `ix-cursor` (또는 `ix-video` 등) | 2-3 | 호버 카탈로그 / 스크롤 애니메이션 / 마우스·터치 분기 |
-| **H. 퍼블리싱 (29-30)** | `pub-semantic` `pub-perf-seo` | 2 | 시멘틱+WCAG+키보드 / 성능+SEO+개발협업 |
-| **I. 부드러운 인터랙션 (필수 마지막)** | `smooth-interaction-catalog` | 1 | 라이브 재점검에서 발견한 모든 라이브 동작 통합 |
+### 핵심 원칙 6가지
 
-총합 = 27-34 섹션 정도가 자연스럽다. 사이트가 풍부하면 더 많아져도 좋다.
+1. **단일 페이지 집중** — `crawledPages: 1`, `subpages` 배열은 메인 1개만
+2. **10-15 섹션 구조** — 헤더/히어로/미들/푸터 + 비주얼(타입·컬러) + 인터랙션 카탈로그
+3. **`component` 블록 비중 70%+** — `kv` 표만 늘어놓지 말고 모든 섹션에 시각 컴포넌트 1개+
+4. **실 이미지 CDN URL 임베드 의무** — `https://{site}/images/...` 절대 경로 그대로
+5. **5-Round E2E 양 사이트 대조** — 우회 없이 라이브 ↔ 보고서 5회 왕복
+6. **디자인 토큰 100% 실측** — `:root` CSS Variables, transform 값(`translate(-76.748%,0%)` 같은 어색한 % 그대로), 클래스명까지 라이브 측정값. 단순 텍스트 설명(`"White 60% + Black 30%"`) 절대 금지
 
-## 7-Step 방법론 (KT&G 보고서에서 정립)
+### 5-Round E2E 양 사이트 대조 방법론 (94.75% 달성 핵심)
 
-레퍼런스 보고서 작성 시 다음 순서를 따른다. KT&G 분석 (2026-05-15)에서 정립되었고, 모든 후속 분석에 적용한다. 본 방법론은 아래 "라이브 인스펙션" 섹션의 1~6차 패스를 실용적 작업 흐름으로 재정의한다.
+각 라운드에서 **라이브와 보고서를 양쪽 동시에 Playwright로 띄우고** 비교한다. 한쪽만 측정 후 "확인했다"고 마킹하는 것은 검증이 아니다.
 
-1. **빠른 사이트 써치** — Chrome MCP `tabs_context_mcp` + 메인 1회 `navigate` → 사이트맵·GNB·footer URL 수집. 사이트 전체 구조 1차 파악
-2. **사이트 개요 + 사이트맵 작성** — `analysis.json`의 `site-overview` 섹션 먼저 채움 (사업 정체성·페이지 목록·기본 토큰)
-3. **사이트맵 전체 페이지 방문** — 메인 + 모든 서브페이지 1회씩 Chrome MCP `navigate`. 페이지마다 `wait 3-5s` 후 sH·title·body 폰트/색상 등 기본 토큰 채집
-4. **3-4 ticks 정밀 스크롤 + wait + 상태 채집** — 페이지당 5-8 스크롤 단위 (라이브 인스펙션 3차 패스 참조). `window.scrollTo` JS 사용 시 `document_idle` 대기 우회 가능
-5. **페이지별 섹션 + 라이브러리/접근성/기술/SEO/인터랙션 분리 작성** — Main / Sub × N (Company Intro / IR / ESG / Media / Career 등) / 컴포넌트 라이브러리 (단일 섹션 + 8-10 하위 그룹 heading 블록) / a11y (pub-semantic) / 기술 (image-system) / SEO (pub-perf-seo) / 인터랙션 카탈로그 (ix-hover · ix-scroll · ix-video). 실제 사이트 이미지 src 임베드 필수
-6. **페이지별 정량적 동작 QA (Mandatory)** — **텍스트 자기 보고형 QA 절대 금지**. 각 페이지 작성 완료 즉시 다음 (a)~(d) 4단계 수행:
-   - (a) 로컬 서버 (`python -m http.server 8088` 또는 `pwsh scripts/serve.ps1`)로 보고서를 띄우고 `#ref/{id}/{section}` URL에서 실제 렌더 확인
-   - (b) **Frame-by-Frame 비교**: 라이브 사이트에서 sY=0% / 25% / 50% / 75% / 100% 5단계 screenshot + 같은 스크롤 위치에서 보고서 렌더 화면도 캡처 (총 10장)
-   - (c) **Computed Style 시계열 채집**: 의심되는 요소(sticky/animation/counter)의 `getComputedStyle(el).position` · `getBoundingClientRect().top` · `opacity` · `animationName`을 매 스크롤 위치에서 JS로 채집 → 라이브와 보고서가 동일 수치인지 표로 대조
-   - (d) 차이 발견 시 즉시 컴포넌트 수정 → 일치할 때까지 반복. 차이 없음을 확인한 후에만 다음 페이지로
-   - `note` 블록에는 반드시 정량 데이터(좌표·position 값·color hex·duration ms) 또는 GIF/스크린샷 비교 카드만 허용. "QA 확인 완료" 같은 텍스트 자기 보고는 0% 가치이며 **금지**.
-7. **모든 디자인 + 인터랙션 QA** — Step 6의 정량 검증을 페이지마다 모든 컴포넌트에 적용. 버튼 hover/active/disabled, 카드 transform, CTA rotate, 비디오 dual-source, **sticky bg / scroll-reveal / counter 애니메이션** 등 인터랙션 누락 0건. `validate.mjs` 통과는 JSON 스키마 검증이지 시각·동작 검증이 아님 — 별개 절차로 처리.
+| 라운드 | 작업 |
+|--------|------|
+| **Round 1: 동시 스크린샷** | 라이브 N장 + 보고서 N장 = 양쪽 N개 섹션 페어 비교. 각 페어 일치율(%) 산정 |
+| **Round 2: 차이점 즉시 수정** | Round 1에서 발견한 차이 (텍스트 크기/색상/레이아웃) 즉시 CSS 수정 |
+| **Round 3: Computed Style 정량 채집** | 핵심 요소 12개+의 `fs/fw/color/w/h/bg/br/padding`를 라이브에서 채집 → 보고서 토큰 표와 1:1 대조 |
+| **Round 4: Hover/Click 인터랙션** | `mcp__playwright__browser_hover` + getComputedStyle로 hover 상태 측정. 카드 자체 transform vs 페이지 전역 커서(.mouse-pointer)인지 식별 |
+| **Round 5: 재측정 + 일치율 표** | Round 2 수정 후 다시 양 사이트 스크린샷, 일치율 비교 표를 `smooth-interaction-catalog`에 기록 |
 
-**중요 1 (디자인 변경 추적)**: 7-Step 진행 중 사이트가 OLD 보고서 시점 이후 리뉴얼된 경우 (KT&G 2026-05-15의 경우 .global Earth Globe 리뉴얼·.invest glassmorphism·AAA outline 색상 #A2C3FE → #8EAEFA 변경 등) 모든 디자인 변경 사항을 `smooth-interaction-catalog`의 "발견 #N" 형식으로 명시한다. OLD 데이터를 그대로 재사용하지 말 것.
+각 라운드 끝에 `node scripts/validate.mjs` 통과 + 보고서 렌더 확인. 자기보고 텍스트 절대 금지.
 
-**중요 2 (응답 지연 대응)**: 라이브 사이트가 느리거나 Chrome MCP가 응답 지연되어도 **점검 횟수·깊이를 절대 줄이지 말 것**. KT&G 2026-05-15 사례에서 사이트 로딩 지연을 이유로 점검을 단축한 결과 sub-about-business sticky-sequence 패턴을 놓쳤음. 우회 옵션: (1) `wait duration` 5초 → 8~12초로 증가 (2) `browser_batch` 묶음을 줄이고 단일 호출로 분리 (3) 응답 끊김 시 `list_connected_browsers`로 사이드 패널 권한 확인 후 재시도. **'OLD 데이터로 채우고 진도 빼기'는 금지**.
+### 정적 분석으로 놓치는 8가지 히든 패턴 (의도적 탐색)
 
-## 정량적 동작 검증 (Quantitative Behavior QA)
+미라셀 사례에서 정적 분석으로 잡히지 않아 5-Round 중 발견된 패턴. 신규 작업 시 **반드시 의도적으로 찾아본다**:
 
-**KT&G 2026-05-16 사례에서 의무화**: `sub-about-business` sticky-sequence + counter 패턴을 textual 자기 보고형 QA로 통과시킨 결과, 라이브 사이트는 배경 sticky + 스크롤 카드 + 카운터 애니메이션이 동작하지만 보고서는 정적 카드 1개로 잘못 재현되어 사용자가 직접 지적해야 했음. 재발 방지를 위해 다음 4가지 방법을 모든 페이지에 의무화한다.
+1. **Slot Machine Counter** — `.count-num-item` ul 안 0-9 셀이 세로 cycling. About 섹션 통계 (창립일·고객·특허) 등
+2. **Quick FAB** — `.cm-quick-menu` 우하단 fixed 원형 (보통 60-90px). Contact us / Scroll-to-top 등
+3. **Particle Network 배경** — Hero/Contact의 빨간 점+선 네트워크. radial-gradient 또는 canvas
+4. **회전 SVG textPath** — `<svg><defs><path id='c'/></defs><textPath href='#c'>VIEW MORE…</textPath>` 형태로 원형 텍스트가 14s linear infinite 회전
+5. **마퀴 무한 텍스트** — `.marquee .mar_ch` 에 `transform: translate(-76.748%, 0%)` 같은 어색한 % 값으로 끝없는 좌측 이동
+6. **Splitting.js 글자별 fade-in** — `.cm-word-split-JS words chars splitting` 클래스 마커. 단어→글자 2단 분할 후 stagger 0.05s
+7. **헤더 듀얼 로고 fade** — `<h1>` 안에 흰/검정 로고 PNG 두 장이 겹침. 스크롤 위치에 따라 opacity 토글
+8. **마우스 추적 커스텀 커서** — `.mouse-pointer.active.is-moving.view` (position:fixed z:10000). Service/Product 카드 hover 시 `.view` 클래스 추가로 191/163 빨간 원형 + 회전 VIEW MORE 텍스트 표시. **카드 자체 hover가 아님**
 
-### 방법 1: Frame-by-Frame 스크린샷 비교
-`browser_batch`로 라이브 사이트에서 N개 스크롤 위치 (예: sY 0% / 25% / 50% / 75% / 100%)마다 screenshot + 같은 위치에서 보고서 렌더 화면도 캡처. 두 시퀀스를 나란히 두면 sticky·이동·고정 동작 차이가 즉시 보임.
-
-```json
-// browser_batch 표준 5단계 비교 시퀀스
-[
-  {"name":"javascript_tool","input":{"action":"javascript_exec","tabId":X,"text":"window.scrollTo(0, 0); 'top'"}},
-  {"name":"computer","input":{"action":"screenshot","tabId":X}},
-  {"name":"javascript_tool","input":{"action":"javascript_exec","tabId":X,"text":"window.scrollTo(0, document.body.scrollHeight*0.25); '25%'"}},
-  {"name":"computer","input":{"action":"screenshot","tabId":X}},
-  // ... 50%, 75%, 100% 동일 패턴
-]
-```
-
-### 방법 2: Computed Style 시계열 채집 (가장 객관적)
-스크롤 시 의심 요소의 CSS 값을 JS로 매 위치에서 기록 → 라이브와 보고서가 동일 수치인지 표로 대조. **시각 판단(스크린샷)보다 신뢰도 높음.**
-
-```js
-// 표준 채집 패턴 — 모든 sticky/animation 의심 요소에 적용
-JSON.stringify({
-  sY: window.scrollY,
-  els: ['.sticky-target','.counter-card','.animated-bg'].map(function(sel) {
-    var el = document.querySelector(sel);
-    if (!el) return null;
-    var cs = getComputedStyle(el);
-    var r = el.getBoundingClientRect();
-    return {
-      sel: sel,
-      position: cs.position,         // sticky/fixed/relative 확인
-      top: Math.round(r.top),        // viewport 상단으로부터의 거리
-      animationName: cs.animationName,
-      transition: cs.transition.slice(0,40),
-      opacity: cs.opacity
-    };
-  })
-})
-```
-
-해석:
-- `position: sticky` + `top` 값이 스크롤 중 항상 0 근처 → 정상 sticky 작동
-- `top` 값이 스크롤 양만큼 음수로 줄어듦 → sticky 안 됨 (`overflow: hidden` 부모 의심)
-- `animationName !== 'none'` → CSS @keyframes 활성
-- `opacity` 변화 → fade-in/out 작동 중
-
-### 방법 3: 클래스명·CSS 키워드 패턴 매칭 (작성 시점 안전장치)
-라이브 페이지의 클래스명에 다음 키워드가 보이면 **즉시 멈춰서** computed style을 채집 후 재현에 반영. 자동 트리거 룰:
-
-| 키워드 패턴 | 의미 | 필수 채집 항목 |
-|---|---|---|
-| `sticky-*` / `*--sticky` | position:sticky 가능성 99% | position, top, height, 부모 overflow |
-| `sequence-*` / `parallax-*` | 스크롤 기반 인터랙션 | outer height vs inner sticky height |
-| `counter-*` / `count-up` / `__number` | IntersectionObserver + 숫자 애니메이션 | data-target, animationDuration |
-| `*-animation` / `__animated` / `animate-*` | CSS @keyframes 또는 JS 애니메이션 | animationName, animationDuration |
-| `*-reveal` / `*-fade-*` / `aos-*` | 진입 시 opacity/transform 트랜지션 | opacity, transform, IntersectionObserver |
-
-### 방법 4: GIF 생성 비교 (옵션)
-`mcp__Claude_in_Chrome__gif_creator`로 라이브 사이트와 보고서 렌더 모두 GIF 캡처 → 두 GIF를 나란히 두고 동작 패턴 일치 검증. Frame-by-Frame보다 자연스러운 비교 가능.
-
-### QA 안티패턴 (절대 금지)
-다음 행동은 KT&G 사례에서 실패로 입증된 패턴이며 향후 절대 금지:
-
-- ❌ **"QA 확인 완료" 같은 텍스트 자기 보고** — 0% 가치. 정량 데이터 또는 스크린샷 비교 카드만 허용.
-- ❌ **`validate.mjs` 통과 = 시각·동작 검증으로 간주** — JSON 스키마 검증일 뿐.
-- ❌ **단일 스크린샷으로 sticky/scroll 동작 판정** — 정적 캡처는 한순간의 모습만 보여줌. 시간축 비교 필수.
-- ❌ **라이브 사이트가 느리다고 점검 횟수 축소** — `wait` 늘리고 끝까지 점검.
-- ❌ **보고서를 한 번도 로컬에서 렌더해 보지 않고 작성 종료** — 모든 컴포넌트는 실제 브라우저에서 1회 이상 확인 필수.
-- ❌ **클래스명에 sticky·sequence·animation·counter 키워드가 보이는데 computed style 채집 생략** — 클래스명은 라이브 사이트가 직접 알려주는 힌트.
-- ❌ **OLD 보고서 데이터를 spot-check 없이 그대로 복사** — 사이트는 리뉴얼되었을 수 있음.
-
-## 라이브 인스펙션 — Chrome MCP
-
-`mcp__Claude_in_Chrome__*` 도구로 실제 렌더된 페이지의 computed style을 직접 채집한다. WebFetch는 Next.js·React 같은 클라이언트 하이드레이션이 필요한 사이트에서 색상·폰트·레이아웃을 거의 잡지 못한다.
-
-**웹사이트는 정적 mockup이 아니라 라이브 인터랙션 시스템**이다. 헤더는 스크롤 시 색이 바뀌고, 헤딩은 단어별로 fade-in 하고, 슬라이더는 자동 재생하고, 카운터는 동적으로 증가한다. **'한 번에 10+ ticks 스크롤 후 캡쳐'** 방식으로는 이런 디테일을 절대 잡을 수 없다. 아래의 다중 패스 점검을 반드시 거친다.
-
-### 1차 패스 — 정적 구조 (3분)
-
-1. `navigate` → 페이지 로드
-2. `wait` 3-5초 (인트로 애니메이션·하이드레이션 완료까지)
-3. `javascript_tool`로 sH (`document.body.scrollHeight`), title, meta 채집
-4. `getComputedStyle`로 body 폰트 스택·기본 크기 채집
-
-### 2차 패스 — 디자인 토큰 채집
-
-`browser_batch` 한 호출로 다음을 동시에 수집:
-
-- **색상 빈도**: `getComputedStyle(el).color/backgroundColor`를 Map에 누적 → top 25
-- **폰트 크기·웨이트**: `['h1','h2','h3','h4','h5','p','a','button','li','span']`별 sel:fontSize:fontWeight 키 누적
-- **미디어 쿼리**: `document.styleSheets`를 순회하며 `CSSMediaRule.conditionText` → 브레이크포인트 파악
-- **이미지·비디오 URL**: `<img>` `<video>` 전체 + `<source>`. Next.js Image는 `url=` 쿼리 디코드
-- **fixed 요소 인벤토리**: 좌측 사이드 네비, 우하단 FAB, Floating Popup, Scroll-to-top — 모두 fixed라서 정적 캡쳐에 빠질 수 있음
-
-### 3차 패스 — 부드러운 스크롤 인터랙션 점검 (필수, 가장 중요)
-
-정적 분석이 잡지 못하는 라이브 동작을 캡쳐. **한 번에 3-4 ticks씩만 스크롤**하고 매번 캡쳐한다. **한 번에 10+ ticks 절대 금지** — 그 사이에 발생하는 모든 트랜지션을 놓친다.
-
-```json
-// 표준 스크롤 단위 (browser_batch 묶음)
-[
-  {"name": "computer", "input": {"action": "scroll", "scroll_direction": "down", "scroll_amount": 3, "coordinate": [960, 400], "tabId": X}},
-  {"name": "computer", "input": {"action": "wait", "duration": 2, "tabId": X}},
-  {"name": "computer", "input": {"action": "screenshot", "tabId": X}},
-  {"name": "javascript_tool", "input": {"action": "javascript_exec", "tabId": X, "text": "(()=>{ /* 상태 채집 */ })()"}}
-]
-```
-
-각 스크롤 위치에서 점검할 것:
-
-- **헤더 클래스 변화**: `header.className`을 채집 — 스크롤 시 `down` / `header_down` / `is-scrolled` / `at-top` 등이 토글되는지
-- **활성 요소**: `[class*=active]`, `[class*=is-visible]`, `[class*=is-on]`, `[class*=current]`, `[class*=fade]` 검색
-- **슬라이더 상태**: `[class*=swiper-slide-active]`, `[class*=slick-active]`, `.current.num` 등 현재 인디케이터
-- **사이드 네비 단계별 활성**: 좌측 라디오 네비가 viewport 진입 섹션에 따라 어떻게 활성 도트가 이동하는지
-
-### 4차 패스 — Transition·Animation 통계 (정량적 라이브 근거)
-
-```javascript
-// transition 빈도 Map 누적 — top 12 출력
-const trans = new Map();
-document.querySelectorAll('*').forEach((el, i) => {
-  if (i > 800) return;
-  const cs = getComputedStyle(el);
-  if (cs.transition && cs.transition !== 'all 0s ease 0s' && cs.transition !== 'none') {
-    const key = cs.transition.slice(0, 60);
-    trans.set(key, (trans.get(key) || 0) + 1);
-  }
-});
-[...trans.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12);
-
-// animation 캡쳐 — animationName !== 'none'
-const animEls = Array.from(document.querySelectorAll('*')).filter(el => {
-  const cs = getComputedStyle(el);
-  return cs.animationName && cs.animationName !== 'none';
-}).slice(0, 12).map(el => ({
-  tag: el.tagName,
-  cls: (el.className?.toString?.() || '').slice(0, 60),
-  anim: getComputedStyle(el).animationName,
-  dur: getComputedStyle(el).animationDuration
-}));
-```
-
-해석 가이드:
-
-| 패턴 | 의미 |
-|------|------|
-| `all` 빈도 500↓ | 정적 사이트 |
-| `all` 빈도 700↑ | 매우 인터랙티브 사이트 |
-| `cubic-bezier(0.4, 0, 0.2, 1)` | Material Design Standard Easing 명시 채택 |
-| `cubic-bezier(0, 0, 0.2, 1)` | Material Design Decelerate Easing |
-| `color 0.6s` 같은 긴 컬러 전환 | 단어별 fade-in 헤딩 패턴 |
-| `transform 2s` 같은 매우 긴 변환 | 정적처럼 보이나 미세하게 살아있는 ambient 모션 |
-| 명명된 `animation-name` (`slideInLeft` / `arrowBounceFade` / `circle_move` / `rolling` / `logo-seq`) | 사이트의 시그니처 named animation |
-| `splitting` / `cm-word-split-JS` 클래스명 | Splitting.js 글자별 분할 애니메이션 |
-
-### 5차 패스 — Hover·Click 테스트
-
-```json
-// 호버
-{"name": "computer", "input": {"action": "hover", "coordinate": [780, 400], "tabId": X}}
-// 클릭
-{"name": "computer", "input": {"action": "left_click", "coordinate": [780, 400], "tabId": X}}
-```
-
-`computer hover`로 마우스를 GNB·카드·버튼 위에 올린 후 캡쳐 → 호버 상태 색·변환 정확히 확인. 사이드 라디오 네비, 4-Accordion, 게시판 필터 등은 클릭으로 직접 펼친 후 캡쳐.
-
-### 6차 패스 — 페이지 새로고침 후 재점검 (가장 자주 놓침)
-
-**핵심**: 페이지를 새로고침하고 처음부터 다시 본다. 사용자가 처음 페이지에 들어오는 순간 가장 강한 인상을 받기 때문이다.
-
-- 인트로 애니메이션 (페이지 진입 시 텍스트가 어떻게 등장하는지)
-- 첫 5초 동안만 보이는 모달·팝업
-- Hero 슬라이드의 첫→두 번째 전환 타이밍
-- 5초·10초·30초 후 상태 비교
-
-## 컴포넌트 작성 규칙
-
-`component` 블록의 HTML/CSS는 외부에서 그대로 복사해서 쓸 수 있어야 한다.
-
-### 클래스명 접두사로 사이트 구별
-
-| 사이트 | 접두사 | 예시 |
-|--------|--------|------|
-| kdnavien | `kn-` | `kn-bn1` (banner 1), `kn-md1` (media 1) |
-| miracell | `b1-` / `c1-` / `bn1-` / `mr-` | 라이브러리 번호 기반 |
-| asinsam | `ai-` / `ai-bt1` | 라이브러리 번호 기반 |
-| plantym | `pm-` | `pm-bt1`, `pm-c1`, `pm-bn1` |
-| dcamp | `dc-` | `dc-bt1`, `dc-c1`, `dc-bn1` |
-
-### 작성 규칙
-
-- `html` 안 인라인 스타일은 데모 컨테이너용으로만 사용. 컴포넌트 자체는 클래스 기반 CSS
-- **실제 사이트의 이미지 URL을 그대로 임베드** (비주얼 충실도가 극적으로 올라감)
-- 색상은 토큰 hex (CSS variable 노출 없는 사이트에서도 보고서에서는 hex 사용)
-- 폰트는 분석된 사이트의 실 폰트 명시 (예: `Pretendard, SUIT` — 시스템에 없어도 OK, 폴백 적용)
-- 인터랙션이 필요하면 `js` 필드에 vanilla JS 한 줄짜리 IIFE로 작성
-- `fullWidth: true` 옵션으로 큰 데모 컴포넌트는 풀폭 가능
-
-## Tier-A 아키텍처: 별도 프로젝트 + 프리뷰 모달 (KT&G 2026-05-17에서 정립)
-
-복잡한 페이지 (스크롤 인터랙션, sticky-sequence, 동적 차트, 라이브 데이터 등)는 **인라인 component 블록의 본질적 한계** (보고서 컨테이너의 overflow/scroll context · viewport 단위 부정확 · CSS/JS 충돌 등) 때문에 100% 재현 불가능하다. 이런 경우 다음 아키텍처를 적용한다.
-
-### 언제 Tier-A를 적용하는가
-
-다음 중 하나라도 해당되면 인라인 컴포넌트 대신 별도 프로젝트 + 프리뷰 모달 사용:
-- `position:sticky`나 `scroll-driven` 인터랙션이 핵심인 섹션 (sticky-sequence, parallax 등)
-- viewport 단위 `100vh`로는 라이브 정확한 px 재현 불가능한 풀폭 섹션
-- WebGL / Three.js / Lottie 등 외부 라이브러리 의존 컴포넌트
-- 라이브 데이터 polling (KOSPI ticker, 카운터 등) 필요
-- 복잡한 IntersectionObserver/RAF 시퀀스
-- 보고서 컨테이너의 `overflow:hidden` 영향받는 sticky 패턴
-
-단순 컴포넌트 (버튼, 카드, 폼 등)는 그대로 인라인 `component` 블록 사용.
-
-### 별도 프로젝트 구조 (라이브 사이트의 실제 기술 스택과 일치)
-
-라이브 사이트의 실제 기술 스택 (Next.js + React, Vue + Nuxt, Vanilla JS 등)을 직접 사용해 별도 프로젝트로 빌드. KT&G 사례 (Next.js + React):
+### Mirror Mode 섹션 구조 권장 (페이지 흐름 순)
 
 ```
-{site}-app/                           ← 라이브 사이트와 동일한 기술 스택의 클론
-├── package.json                      ← 라이브 사이트가 쓰는 프레임워크 버전 일치
-├── next.config.js                    ← output:'export' (정적 빌드)
-├── pages/
-│   ├── _app.js
-│   └── index.jsx                    ← 메인 페이지 (섹션 조합)
-├── components/
-│   ├── Hero.jsx                     ← 라이브 사이트의 정확한 클래스명 (.kv 등) + styled-jsx
-│   ├── Global.jsx                   ← useRef + useEffect + IntersectionObserver
-│   └── ... (라이브의 각 섹션 1:1 대응)
-├── styles/globals.css               ← 디자인 토큰 + Pretendard 등 폰트 import
-└── README.md                        ← 빌드 가이드
+01. 개요 · 메인 페이지 전용 분석
+02. 디자인 토큰 — :root CSS Variables 실측
+03. 헤더 — Top Fixed Object
+04. GNB + 풀스크린 사이트맵 (OPEN)
+05. Hero (라이브 패턴 재현)
+06-N. 미들 섹션들 (about / service / product / news / contact ...)
+N+1. Footer
+N+2. 타이포그래피 시스템
+N+3. 컬러 시스템
+N+4. 인터랙션 시스템 — Transition·Animation 통계
+마지막. 부드러운 인터랙션 카탈로그 (5-Round 검증 결과 표 포함)
 ```
 
-빌드 명령:
-```bash
-cd {site}-app
-npm install
-npm run export    # → ../public/{site}-preview/ 정적 빌드 출력
-```
+각 섹션 = (a) `kv` 토큰 표 + (b) `component` 라이브 프리뷰 + (c) `note` 정량 차이 3종 세트.
 
-### 임시 정적 HTML 대안
+### 인프라 핵심 사항
 
-Next.js 빌드 전이거나 환경에 npm 없는 경우, `components/{site}/*.html` 폴더에 동등 정적 HTML 파일을 만들어 preview URL로 사용 가능. 디자인은 동일하지만 React 소스가 아닌 vanilla HTML/CSS/JS.
-
-### 보고서의 [프리뷰 열기] 버튼 + 피그마 모달
-
-`assets/js/main.js`의 `renderComponent()`가 `block.preview` 필드를 감지하면 인라인 렌더 대신 프리뷰 카드 + 버튼을 출력한다:
-
-```json
-{
-  "type": "component",
-  "title": "독립 컴포넌트 (Next.js): ktng-app/components/Invest.jsx",
-  "preview": "components/ktng/invest.html",
-  "thumbBg": "linear-gradient(135deg,#d8c4b0,#a8aab8,#c0a890)",
-  "thumbLabel": "메인 .invest — Invest Relations 5장 카드"
-}
-```
-
-버튼 클릭 시 피그마 스타일 모달 오버레이가 열림:
-- 96vw × 94vh 풀스크린 패널
-- 검정 헤더 + `PREVIEW` 청색 배지 + 컴포넌트 제목 + ↗ 새 탭 열기 + × 닫기
-- ESC 키 / 배경 클릭 / × 버튼 모두 닫기 지원
-- body scroll lock + iframe src clear on close (비디오/오디오 자동 중단)
-- cubic-bezier(0.22,1,0.36,1) pop 애니메이션
-
-### 라이브 정확한 px 사용 (100vh 금지)
-
-**100vh 절대 금지**. 라이브 사이트의 정확한 픽셀값을 사용한다. 라이브는 viewport와 무관한 고정 px:
-
-| 컴포넌트 | 라이브 정확 px | ❌ 금지 |
-|---|---|---|
-| KT&G .kv | `height: 855px` | `100vh` (≈911) |
-| KT&G .global outer | `4275px` | `500vh` |
-| KT&G .global__content (sticky) | `855px` | `100vh` |
-| KT&G .invest | `1027px` | `100vh` |
-| KT&G .news | `1013px` | `100vh` |
-| KT&G .with | `1083px` | `120vh` |
-
-라이브 정확 px 채집 방법:
-```js
-// Chrome MCP javascript_tool
-JSON.stringify(Array.from(document.querySelectorAll('main > *, .target')).map(el => ({
-  cls: el.className.toString(),
-  h: el.offsetHeight  // ← 라이브 정확 px
-})))
-```
-
-### React 컴포넌트 작성 규칙
-
-- 라이브 사이트의 정확한 클래스명 사용 (`.kv`, `.global`, `.invest` 등) — BEM 컨벤션 그대로
-- `useRef + useEffect` 로 IntersectionObserver / scroll listener 구현
-- `styled-jsx` 또는 CSS Modules로 컴포넌트 스코프 CSS
-- `globals.css`에 디자인 토큰 (CSS Variables) 공통 정의
-- 라이브 사이트의 실제 CDN 자산 (이미지, 비디오) 직접 임베드
-- prefers-reduced-motion 미디어 쿼리로 접근성 지원
-
-### 디자이너 사용 가이드
-
-1. 보고서에서 [프리뷰 열기] 클릭 → 모달로 100% 동일 디자인 확인
-2. `{site}-app/components/{Name}.jsx` 그대로 복사해 자기 Next.js 프로젝트에 사용
-3. `{site}-app/styles/globals.css`의 디자인 토큰도 함께 복사
-4. 라이브 사이트와 동일한 클래스명 사용 → 다른 곳에 붙여넣어도 동작 일치
-
-### Tier-A 적용 시 체크리스트
-
-```
-[ ] {site}-app/ Next.js + React (또는 라이브 사이트의 실제 프레임워크) 프로젝트 신규 생성
-[ ] components/{Name}.jsx 각 섹션 1:1 대응 + 라이브 클래스명 그대로 사용
-[ ] styles/globals.css에 디자인 토큰 + 폰트 정의
-[ ] 모든 height를 라이브 정확한 px로 (100vh 금지)
-[ ] 라이브 CDN 자산 직접 임베드 (KT&G의 webgl/2k_stars_milky_way.webp 등)
-[ ] 임시 정적 HTML 동등 (components/{site}/*.html) 작성하여 preview URL로 즉시 동작
-[ ] analysis.json component 블록에 block.preview / thumbBg / thumbLabel 추가
-[ ] 보고서 모달 동작 검증 ([프리뷰 열기] 클릭 → 모달 오픈 → 콘텐츠 정상 → ESC 닫기)
-[ ] React 소스 + 정적 HTML 양쪽 모두 라이브와 시각 일치 (Chrome MCP 교차 검증)
-[ ] {site}-app/README.md에 빌드 명령 + 디자이너 가이드 명시
-```
-
-## 100% 동일 재현 모드 (Mirror Mode) — 단일 페이지 정밀 클론 방법론 (미라셀 2026-05-22에서 정립)
-
-기존 30+ 섹션 종합 분석 모드와 별개로, **사용자가 명시적으로 "100% 동일 재현"을 요청**할 때 적용하는 별도 작업 모드. 카탈로그 깊이를 희생하고 **한 페이지의 모든 디자인 토큰·컴포넌트를 픽셀 단위로 재현**하는 데 집중한다.
-
-### 언제 Mirror Mode를 적용하는가
-
-- 사용자가 "메인 페이지만 100% 동일하게 재현해 주세요" 같은 단일 페이지 정밀 요청
-- 서브페이지 분석을 제외하고 한 화면의 모든 디자인을 시각 컴포넌트로 복원해야 할 때
-- 디자이너 / 퍼블리셔가 한 페이지 단위로 빠르게 디자인 시스템을 학습해야 할 때
-
-기본 모드(30+ 섹션 카탈로그)는 그대로 유지된다. Mirror Mode는 별도 작업 흐름이다.
-
-### Mirror Mode 핵심 원칙
-
-1. **단일 페이지 집중**: `crawledPages: 1`, 서브페이지 분석은 시도조차 하지 않는다
-2. **8-15 섹션 구조**: 헤더/히어로/미들 섹션들/푸터 + 비주얼 시스템(타입·컬러) + 인터랙션 = 10-15 섹션
-3. **컴포넌트 블록 비중 70%+**: `kv` 토큰 표만 늘어놓지 않고 모든 섹션에 `component` 블록 (HTML/CSS 라이브 프리뷰) 1개 이상 포함
-4. **실 이미지 URL 임베드 의무**: `<img src='https://{site}/images/...'>`, `background-image:url(...)` 모두 라이브 CDN URL 직접 사용
-5. **5-Pass 양 사이트 대조**: Playwright MCP로 라이브 ↔ 로컬 보고서를 최소 5회 왕복하며 시각 차이를 픽셀 단위로 좁힘
-6. **디자인 토큰 100% 실측**: `:root` CSS Variables, 클래스명, transform 값(예: `translate(-76.748%, 0%)`)까지 라이브 측정값만 사용. 단순 텍스트 설명("색상 사용 비율 White 60%...") 금지
-
-### 5-Pass 양 사이트 대조 방법론
-
-각 패스에서 라이브 사이트와 로컬 보고서를 **동시에** Playwright로 띄우고 비교한다.
-
-| 패스 | 목적 | 주요 작업 |
-|---|---|---|
-| **1차 (초기 측정)** | 사이트 전체 구조와 디자인 토큰 채집 | CSS Variables 24개+, 섹션 좌표(top/h), 폰트 패밀리, 메인 컬러, 페이지 차원 |
-| **2차 (기본 컴포넌트 작성)** | 헤더/히어로/푸터 등 골격 컴포넌트 작성 후 1차 시각 비교 | 보고서에 component 블록 12개+ 작성. 렌더 확인 후 차이점 1차 수정 |
-| **3차 (히든 컴포넌트 발견)** | 정적 분석으로 놓친 동적 요소 찾기 | Counter / Marquee / Slot Machine / Particle Network / 회전 SVG 등. 클래스명 `.count-num-*`, `.cm-quick-menu`, `.list-item.cover*` 등 라이브에서만 보이는 패턴 |
-| **4차 (이미지·배경 실 URL 교체)** | Generic gradient → 실 CDN 이미지로 교체 | 카드 배경, 섹션 배경, 일러스트 PNG 모두 라이브 사이트의 정확한 URL로 |
-| **5차 (최종 픽셀 확인)** | 5단계 스크롤 위치에서 양 사이트 스크린샷 비교 | sY 0/25/50/75/100% 각 위치에서 라이브+보고서 캡처 → 일치율 확인 |
-
-각 패스 끝에 `node scripts/validate.mjs` 통과 + 보고서 렌더 확인 + 차이점이 더 이상 안 보일 때까지 반복.
-
-### 발견하기 쉽게 놓치는 라이브 패턴 (Mirror Mode 체크리스트)
-
-미라셀 2026-05-22 사례에서 정적 분석으로는 절대 잡히지 않아 5-Pass 중 발견된 패턴들. 신규 Mirror Mode 작업에서는 **최소 다음 8가지를 의도적으로 찾아본다**:
-
-1. **Slot Machine Counter**: `.count-num-item` 같은 클래스의 ul 안 0-9 숫자 셀이 세로로 cycling
-2. **Pencil/Quick FAB**: `.cm-quick-menu.active`, `.cm-contact-btn` 우하단 fixed 원형 버튼 (보통 60-90px)
-3. **Particle Network 배경**: Hero / Contact 섹션의 빨간 점+선 네트워크 (radial gradient 또는 canvas)
-4. **회전 SVG textPath**: `<svg><defs><path id='circle'></defs><textPath href='#circle'>` 형태의 원형 텍스트 회전 (CTA 버튼 외곽)
-5. **마퀴 무한 텍스트**: `.marquee .mar_ch` 안 `transform: translate(-76.748%, 0%)` 같은 의도적 어색한 % 값으로 끝없는 좌측 이동
-6. **Splitting.js 글자별 fade-in**: `.cm-word-split-JS words chars splitting` 클래스 마커. 헤딩 단어 → 글자 2단계 분할 후 stagger 0.05s
-7. **헤더 듀얼 로고 fade**: `<h1 class='logo'>`에 흰/검정 로고 PNG 두 장이 겹침. 스크롤 위치에 따라 opacity 토글
-8. **Service/Product 카드 풀이미지 배경**: 디자인 시스템은 종종 generic gradient로 보이지만, 라이브는 카드별 고유 이미지(`main_service_bg01-03.jpg`). `getComputedStyle(el).backgroundImage`로 진짜 URL 채집
-
-### Mirror Mode 섹션 구조 권장
-
-단일 페이지 100% 재현에 적합한 10-15 섹션. 페이지 흐름 순서 그대로:
-
-```
-01. 개요 · 메인 페이지 전용 분석            (overview)
-02. 디자인 토큰 — :root CSS Variables 실측  (tokens)
-03. 헤더 — Top Fixed Object                 (header)
-04. GNB + 풀스크린 사이트맵 (OPEN)          (gnb-sitemap)
-05. Hero #mainVisual — 라이브 패턴 재현     (hero)
-06-N. 페이지 흐름 순서대로 미들 섹션들      (about / service / product / news / contact ...)
-N+1. Footer — White/Dark Layout            (footer)
-N+2. 타이포그래피 시스템                   (typography)
-N+3. 컬러 시스템                           (color-system)
-N+4. 인터랙션 시스템 — Transition·Animation 통계 (interactions)
-마지막. 부드러운 인터랙션 카탈로그 (5회 대조 검증)  (smooth-interaction-catalog)
-```
-
-각 섹션마다 (a) `kv` 토큰 표 + (b) `component` 라이브 프리뷰 + (c) `note` 정량 차이 명시 3종 세트로 구성.
-
-### Mirror Mode에서 발견된 인프라 버그 (수정 후 다른 보고서에도 적용)
-
-**escapeHtml 의 `"` 미escape 버그 (2026-05-22 수정)**: `assets/js/main.js`의 `escapeHtml` 함수는 textNode + innerHTML 방식으로 `<`, `>`, `&`만 escape하고 `"`는 그대로 둔다. 이 함수가 `data-html="${escapeHtml(html)}"` 같은 속성 값 escape에도 쓰여서, HTML 안의 `class="..."` 같은 double-quote가 속성을 깨뜨려 컴포넌트가 렌더되지 않는 버그가 있었음. 수정:
+**escapeHtml `"`/`'` escape 적용** (2026-05-22 수정). `assets/js/main.js`:
 
 ```js
 function escapeHtml(str) {
@@ -582,48 +167,168 @@ function escapeHtml(str) {
 }
 ```
 
-이 수정 이전 보고서들은 HTML 안에서 single quote (`'`)로 속성을 감싸는 방식으로 우회하고 있었음. 이제는 single/double 모두 안전.
+이 수정 전에는 HTML 안 `class="..."` 같은 double-quote가 `data-html="..."` 속성을 깨뜨려 컴포넌트가 렌더되지 않았음. 현재는 single/double 양쪽 안전.
 
-### Mirror Mode 작업 시 체크리스트
+### Mirror Mode 작업 체크리스트
 
 ```
-[ ] 사용자 요청에 "100% 동일", "정밀 재현", "메인만" 등 표현 → Mirror Mode 진입
+[ ] 사용자 요청에 "100% 동일 / 정밀 재현 / 메인만" → Mirror Mode 진입
 [ ] 기존 analysis.json 백업 (analysis.backup.json)
-[ ] crawledPages: 1 로 명시, subpages 배열은 메인 1개만
+[ ] crawledPages: 1, subpages 배열은 메인 1개만
 [ ] :root CSS Variables 전수 추출 (document.styleSheets → CSSRule selectorText ':root')
 [ ] 페이지 차원 (sH, sW, viewport) + 각 article/section 좌표(top/h) 정밀 측정
-[ ] 8가지 히든 패턴 의도적 탐색 (Slot Counter / FAB / Particle / Rotating SVG / Marquee / Splitting / Dual Logo / Real Card BG)
+[ ] 8가지 히든 패턴 의도적 탐색 (Slot Counter / FAB / Particle / Rotating SVG / Marquee / Splitting / Dual Logo / Mouse Pointer)
 [ ] 모든 섹션에 component 블록 1개+ 포함 (kv 표만 늘어놓기 금지)
-[ ] 실제 이미지 URL 라이브에서 channel.jpg/.png 직접 임베드 (CDN 호스트 그대로)
-[ ] 5-Pass 양 사이트 대조 완료 — 각 패스 후 보고서 렌더 + 라이브 스크린샷 비교
-[ ] 마지막 섹션에 5-Pass 검증 결과 표 + 발견 N개 정리
-[ ] escapeHtml 수정 적용된 main.js 사용 (single/double quote 양쪽 안전)
+[ ] 실제 이미지 CDN URL 직접 임베드
+[ ] 5-Round E2E 양 사이트 대조 완료 (라이브 N장 + 보고서 N장)
+[ ] 마지막 섹션에 5-Round 검증 결과 표 + 발견 패턴 정리
+[ ] 일치율 90%+ 달성 못하면 Tier-A 적용 검토
 [ ] node scripts/validate.mjs 5 OK / 0 error 통과
-[ ] 보고서 #ref/{id} 진입 → 12개+ 컴포넌트 모두 STYLE+DIV 자식 구조로 렌더 확인
 ```
+
+## Tier-A 아키텍처 — 별도 프로젝트 + 프리뷰 모달
+
+### 언제 Tier-A를 적용하는가
+
+인라인 `component` 블록은 보고서 컨테이너의 overflow/축소 비율 때문에 라이브 절대 픽셀(1080×1905 같은)을 100% 재현 불가능하다. 다음 중 하나라도 해당되면 Tier-A:
+
+- Mirror Mode 5-Round 후에도 일치율이 95% 미만
+- 라이브의 viewport 풀폭(1920px) / 풀높이(1080px) 섹션이 핵심
+- `position: sticky` / `scroll-driven` / WebGL / Three.js / 라이브 ticker
+- 보고서 컨테이너의 `overflow:hidden` 영향받는 sticky 패턴
+
+### 별도 프로젝트 구조
+
+라이브 사이트의 실제 기술 스택(Next.js + React / Vue + Nuxt / Vanilla JS)을 그대로 클론.
+
+```
+{site}-app/                          ← 라이브 사이트 클론
+├── README.md                        ← 빌드 가이드
+├── index.html                       ← Vanilla 또는 라이브 SSG 결과
+├── components/                      ← 각 섹션 1:1 대응
+│   ├── header.html
+│   ├── hero.html
+│   ├── about.html
+│   └── ...
+├── styles/
+│   └── globals.css                  ← 디자인 토큰 (CSS Variables)
+└── (선택) package.json + Next/React
+```
+
+빌드 명령 (Next.js 클론인 경우):
+```bash
+cd {site}-app && npm install && npm run export
+```
+
+### 정적 HTML preview (즉시 동작)
+
+npm 빌드 없이도 즉시 동작하도록 `components/{site}/*.html` 단독 HTML 파일을 함께 만든다. 디자인 동일, 소스만 Vanilla.
+
+```
+components/{site}/
+├── hero.html          ← 풀폭/풀높이 + 라이브 CDN 자산
+├── about.html
+├── service.html
+├── product.html
+├── news.html
+├── contact.html
+└── footer.html
+```
+
+### 보고서 모달 연결
+
+`analysis.json`의 `component` 블록에 `preview` 필드만 추가하면 인라인 렌더 대신 프리뷰 카드 + 모달 버튼이 표시된다.
+
+```json
+{
+  "type": "component",
+  "title": "독립 컴포넌트: miracell-app/components/Hero",
+  "preview": "components/miracell/hero.html",
+  "thumbBg": "linear-gradient(135deg,#000,#dd0031)",
+  "thumbLabel": "Hero #mainVisual — 5-Roller Montage 1080px"
+}
+```
+
+버튼 클릭 → 96vw × 94vh 풀스크린 모달 (`assets/js/main.js`의 `openPreviewModal()`):
+- 검정 헤더 + `PREVIEW` 청색 배지 + 컴포넌트 제목 + ↗ 새 탭 + × 닫기
+- ESC / 배경 클릭 / × 모두 닫기
+- iframe src clear on close (비디오 자동 중단)
+- cubic-bezier(0.22,1,0.36,1) pop 애니메이션
+
+### 라이브 정확한 px 사용 (100vh 금지)
+
+라이브 사이트는 viewport와 무관한 고정 px. 보고서 컨테이너 안에서도 동일 px로 재현.
+
+| 요소 | 라이브 정확 px | ❌ 금지 |
+|---|---|---|
+| Miracell #mainVisual | `1080px` | `100vh` |
+| Miracell #mainAbout | `1512px` | `100vh` |
+| Miracell #mainContact | `451px` | `auto` |
+| 전체 페이지 sH | `7170px` | - |
+
+채집 방법:
+```js
+JSON.stringify(Array.from(document.querySelectorAll('main > *, article')).map(el => ({
+  cls: el.className.toString(),
+  h: el.offsetHeight
+})))
+```
+
+### Tier-A 작성 규칙
+
+- 라이브 사이트의 정확한 클래스명 사용 (`.kv`, `.mainVisual`, `.main-about-wrap` 등 BEM 그대로)
+- 라이브 실제 CDN 자산(`https://{site}/images/...`) 직접 임베드
+- `styles/globals.css`에 `:root` CSS Variables 공통 정의
+- `prefers-reduced-motion` 미디어 쿼리로 접근성 지원
+- 인터랙션은 vanilla JS (IntersectionObserver / requestAnimationFrame)
+
+### Tier-A 체크리스트
+
+```
+[ ] {site}-app/ 프로젝트 생성 (라이브 기술 스택)
+[ ] components/{site}/*.html 정적 HTML 8개+ (각 섹션 1:1)
+[ ] styles/globals.css에 :root 디자인 토큰
+[ ] 모든 height를 라이브 정확한 px로 (100vh 금지)
+[ ] 라이브 CDN 자산 직접 임베드
+[ ] analysis.json component 블록에 block.preview / thumbBg / thumbLabel 추가
+[ ] 보고서 모달 동작 검증 ([프리뷰 열기] → 모달 → ESC 닫기)
+[ ] {site}-app/README.md에 빌드 명령 + 디자이너 가이드
+```
+
+## 컴포넌트 작성 규칙
+
+### 클래스명 접두사로 사이트 구별
+
+| 사이트 | 접두사 | 예시 |
+|--------|--------|------|
+| kdnavien | `kn-` | `kn-bn1`, `kn-md1` |
+| miracell | `mr-` | `mr-hero`, `mr-about-h4`, `mr-fab` |
+| asinsam | `ai-` | `ai-bt1` |
+| plantym | `pm-` | `pm-bt1` |
+| dcamp | `dc-` | `dc-bt1` |
+
+### 인라인 component 블록 규칙
+
+- `html` 안 인라인 스타일은 데모 컨테이너용으로만, 컴포넌트 자체는 클래스 기반 CSS
+- 실 이미지 URL 그대로 임베드
+- 색상은 토큰 hex (`#dd0031` 같은)
+- 폰트는 라이브 실 폰트 (예: `'Pretendard', 'Outfit'`)
+- `fullWidth: true` 옵션으로 풀폭 데모 가능
 
 ## 시그니처 컴포넌트 표기
 
-해당 사이트의 정체성을 만드는 독특한 패턴(다른 사이트에는 거의 없는)은 본문 안에서 🟢 emoji로 표시한다. 단 **섹션 타이틀에는 절대 금지**.
+사이트만의 독특한 패턴은 본문 안에서 🟢 emoji로 표시. **섹션 타이틀에는 절대 금지**.
 
 ```json
-// 잘못된 예
-{ "title": "20. 🟢 시그니처 - Orbital Diagram", ... }
-// 올바른 예
-{ "title": "20. 시그니처 - Planty 그룹 오비탈 다이어그램",
-  "blocks": [
-    { "type": "kv", "items": [
-      { "label": "🟢 시그니처 특징", "value": "..." }
-    ]}
-  ]
-}
+{ "title": "20. 시그니처 - Orbital Diagram",
+  "blocks": [{"type":"kv","items":[{"label":"🟢 특징","value":"..."}]}] }
 ```
 
 ## 안전 / 보안
 
-- `analysis.json`의 사용자 제공 텍스트는 모두 `escapeHtml()`을 거쳐 렌더링됨 (main.js)
-- 외부 링크는 `target="_blank" rel="noopener noreferrer"` 적용 (renderer가 자동 적용)
-- 컴포넌트 블록 안 HTML/CSS는 안전한 표준 마크업만 — `<script>` 직접 삽입 금지(`js` 필드 사용)
+- `analysis.json` 사용자 텍스트는 모두 `escapeHtml()`을 거쳐 렌더링
+- 외부 링크는 `target="_blank" rel="noopener noreferrer"` 자동 적용
+- 컴포넌트 블록 HTML/CSS는 안전한 표준 마크업만. `<script>` 직접 삽입 금지(`js` 필드 사용)
 
 ## 컨벤션
 
@@ -631,14 +336,16 @@ function escapeHtml(str) {
 - 단일 진입점: `index.html`
 - 정적 자원: `assets/css/`, `assets/js/`
 - 분석 데이터: `analyses/{id}/analysis.json`
+- Tier-A 정적 HTML: `components/{id}/*.html`
+- Tier-A 프로젝트: `{id}-app/`
 - 스크립트: `scripts/` (validate.mjs, serve.ps1)
 
 ### 네이밍
 - 분석 ID: `^[a-z0-9][a-z0-9-]*$` (영소문자 시작)
 - 날짜: ISO 8601 (`YYYY-MM-DD`)
 - 색상: hex (`#RRGGBB` 또는 `#RRGGBBAA`)
-- 섹션 번호: 두 자리 0-패드 (`01`, `02`, ..., `34`)
-- 섹션 ID: kebab-case (`signature-orbital`, `smooth-interaction-catalog`)
+- 섹션 번호: 두 자리 0-패드 (`01`, `02`, ..., `15`)
+- 섹션 ID: kebab-case (`smooth-interaction-catalog`)
 
 ### 브라우저 호환
 - 최신 evergreen (Chrome, Firefox, Safari, Edge)
@@ -650,67 +357,50 @@ function escapeHtml(str) {
 node scripts/validate.mjs
 ```
 
-기대 결과: `5 OK / 0 warn / 0 error`.
+기대 결과: `5 OK / 0 warn / 0 error`. JSON 스키마 검증일 뿐 시각·동작 검증은 별개.
 
-추가 검증:
+### 시각·동작 검증 (별개 절차)
+- `pwsh scripts/serve.ps1` 또는 Node 인라인 서버로 `http://localhost:8080/#ref/{id}` 띄움
+- Playwright MCP로 라이브 ↔ 보고서 양 사이트 동시 스크린샷 + computed style 채집
+- 5-Round E2E 대조 후 일치율 표를 `smooth-interaction-catalog`에 명시
 
-- `system.json.references[]` 엔트리의 `id`가 `analyses/{id}/analysis.json`의 `id`와 동일한지
-- `system.json.counts.references`가 실제 등록된 수와 일치하는지 (수동 갱신)
-- 섹션 ID가 `system.json.references[].sections[].id`와 `analyses/{id}/analysis.json`의 `sections` 키와 일치하는지
-- **섹션 타이틀에 이모지가 없는지 확인** (사이드바 렌더 시 깨질 수 있음)
-- 브라우저 라이브 확인: `pwsh scripts/serve.ps1` → `http://localhost:8080/#ref/{id}` 사이드바·섹션 렌더 점검
+## QA 안티패턴 (절대 금지)
 
-## 기여 절차 (신규 분석 추가 시)
+- ❌ **"QA 확인 완료" 텍스트 자기보고** — 0% 가치. 정량 데이터 또는 스크린샷 비교만
+- ❌ **`validate.mjs` 통과 = 시각·동작 검증으로 간주** — JSON 스키마 검증일 뿐
+- ❌ **단일 스크린샷으로 sticky/scroll 동작 판정** — 시간축 비교 필수
+- ❌ **라이브 사이트가 느리다고 점검 횟수 축소** — wait 5초 → 8~12초 늘리고 끝까지
+- ❌ **보고서를 한 번도 로컬에서 렌더해 보지 않고 작성 종료**
+- ❌ **클래스명에 `sticky/sequence/animation/counter/parallax` 키워드 보이는데 computed style 채집 생략**
+- ❌ **OLD 보고서 데이터를 spot-check 없이 그대로 복사** — 사이트는 리뉴얼되었을 수 있음
+- ❌ **라이브 단방향 또는 보고서 단방향 측정 후 "5회 대조 완료"라고 마킹** — 진정한 양방향 동시 비교만 인정
 
-**모든 단계는 Chrome MCP로 실제 라이브 사이트에 직접 접근해서 진행**한다 (절대 규칙 0번 참조). 학습 데이터 추정·WebFetch HTML·외부 검색은 보조 정보로만.
+## 미라셀 Mirror Mode 사례 (2026-05-22 기준)
 
-1. 분석 대상 URL 결정 → 슬러그 ID 생성 (예: `kdnavien-co-kr`)
-2. Chrome MCP **1차 패스** (정적 구조) + **2차 패스** (디자인 토큰 채집)
-3. Chrome MCP **3차 패스** (부드러운 스크롤 — 3-4 ticks 단위) + **4차 패스** (transition·animation 통계 채집)
-4. Chrome MCP **5차 패스** (Hover·Click 테스트) + **6차 패스** (페이지 새로고침 재점검)
-5. `analyses/{id}/` 폴더 생성
-6. `analyses/{id}/analysis.json` 작성:
-   - 30+ 섹션 (콘텐츠가 많으면 더 늘려도 OK, 상한 없음)
-   - 마지막 섹션은 반드시 `smooth-interaction-catalog`
-   - 실제 사이트 이미지 URL을 컴포넌트 블록에 임베드
-   - **섹션 타이틀에 이모지 금지** (본문 안에서만 사용)
-   - 컴포넌트 클래스명 접두사 부착 (`kn-`, `mr-`, `ai-`, `pm-`, `dc-` 등)
-7. `system.json.references[]` 엔트리 추가:
-   - `id`, `title`, `url`, `date`, `analysis` 경로, `pagesAnalyzed`
-   - 30+ 개 커스텀 `sections` 배열 (각 `{id, num, title, desc}`)
-   - `subpages` 배열 (분석된 페이지 URL 목록)
-8. `system.json.counts.references` 갱신 + `totalComponents` 추정 갱신
-9. `node scripts/validate.mjs` 통과
-10. 브라우저에서 `#ref/{id}` 진입 → 모든 섹션 렌더 확인. 특히 `smooth-interaction-catalog`의 kv·heading 카운트 출력 확인
-11. 커밋 메시지에 영향받은 계층(analyses/system.json/docs) 명시. 실측 sH·transition·animation 수치 포함 권장
+| 항목 | 결과 |
+|------|------|
+| 작업 모드 | Mirror Mode (단일 페이지 100% 재현) |
+| 섹션 수 | 15 |
+| component 블록 | 14개 |
+| 발견 히든 패턴 | 8가지 모두 발견 |
+| 5-Round E2E 일치율 | Round 1 87.5% → Round 5 94.75% |
+| Tier-A 적용 여부 | ✅ miracell-app + components/miracell/*.html |
+| 인프라 버그 수정 | escapeHtml `"`/`'` escape 추가 (다른 보고서에도 영향) |
 
-## 신규 분석 시 체크리스트
+100% 도달 불가 사유: 보고서 컨테이너 안에 demo가 비례 축소되어 들어가므로 절대 픽셀 일치는 구조상 어려움. 디자인 토큰(폰트·color·radius·키프레임)은 100% 일치. **풀폭 라이브 정확 px**가 필요하면 Tier-A 모달로 분리.
 
-```
-[ ] **무조건 Chrome MCP로 실제 사이트 직접 접근** (절대 규칙 0)
-[ ] Chrome MCP 1-6차 패스 완료 (정적·토큰·스크롤·통계·hover·새로고침)
-[ ] 모든 색상·폰트·이미지 URL이 라이브 페이지 실측값
-[ ] 30+ 섹션 작성
-[ ] smooth-interaction-catalog 섹션 포함
-[ ] 섹션 타이틀에 이모지 없음 (본문은 OK)
-[ ] 실제 사이트 이미지 URL 컴포넌트 임베드
-[ ] 컴포넌트 클래스명 접두사 부착
-[ ] system.json.references[] 엔트리 추가
-[ ] system.json.counts.references 갱신
-[ ] node scripts/validate.mjs 통과 (JSON 스키마 — 시각/동작 검증 아님)
-[ ] **로컬 서버 띄워 브라우저에서 #ref/{id}/{section} 직접 렌더 확인** (필수)
-[ ] **Frame-by-Frame 스크린샷 비교 완료** (sY 0/25/50/75/100% 5단계 × 라이브+보고서 = 10장)
-[ ] **Computed Style 시계열 채집 완료** — sticky/animation/counter 요소의 position·top·animationName 수치 표로 비교
-[ ] **클래스명에 sticky·sequence·animation·counter·reveal·parallax 키워드 보이면 즉시 computed style 채집** (자가 점검)
-[ ] note 블록에 정량 데이터(좌표·position 값·hex·duration ms) 또는 스크린샷 비교 카드만 — **텍스트 자기보고 0건**
-[ ] 사이트 응답 지연 시 점검 축소 안 함 (wait 5초 → 8~12초로 증가하여 우회)
-[ ] OLD 보고서 데이터를 그대로 복사하지 않음 — 라이브 spot-check 후 일치 확인
-[ ] Step 6 페이지별 정량 동작 QA 완료
-[ ] Step 7 모든 버튼·hover·active·sticky·scroll·counter·video 인터랙션 css/js 정의됨
-[ ] analyses/{id}/screenshots/ 폴더에 QA 라이브 스크린샷 저장됨 (또는 사이트 CDN URL 직접 임베드)
-[ ] 보고서 안에 QA 카드 component 블록 또는 note 차이 명시 임베드됨
-[ ] **QA 안티패턴 7종 모두 회피** (텍스트 자기보고 / validate.mjs를 동작 검증으로 간주 / 단일 스크린샷 판정 / 응답 지연 시 축소 / 렌더 미확인 / 클래스명 키워드 무시 / OLD 데이터 그대로 복사)
-[ ] **Tier-A 결정**: sticky-sequence/parallax/WebGL/라이브 ticker 같은 복잡 인터랙션이 있으면 → 별도 프로젝트 + 프리뷰 모달 (인라인 component 블록 금지)
-[ ] **Tier-A 적용 시**: {site}-app/ Next.js + React 프로젝트 생성 + 라이브 정확한 px 사용 (100vh 금지) + block.preview URL 추가 + 모달 동작 검증
-[ ] **Tier-A 임시 정적 HTML**: components/{site}/*.html 동등 파일도 함께 만들어 npm 빌드 전에도 preview URL 즉시 동작
-```
+## 기여 절차
+
+1. 분석 대상 URL 결정 → 슬러그 ID 생성 (예: `miracell`)
+2. 작업 모드 결정: 일반 카탈로그 vs Mirror Mode
+3. Playwright MCP로 라이브 사이트 측정 (1차 패스)
+4. `analyses/{id}/analysis.json` 작성:
+   - 일반: 30+ 섹션, 컴포넌트 라이브러리 중심
+   - Mirror Mode: 10-15 섹션, `component` 비중 70%+
+   - 마지막은 `smooth-interaction-catalog`
+   - 섹션 타이틀에 이모지 금지
+5. `system.json.references[]` 엔트리 추가 + `counts.references` 갱신
+6. Mirror Mode: 5-Round E2E 양 사이트 대조 → 일치율 표 기록
+7. 일치율 95% 미만이면 Tier-A 적용 (`{id}-app/` + `components/{id}/*.html`)
+8. `node scripts/validate.mjs` 통과 + 로컬 서버 렌더 확인
+9. 커밋 메시지에 영향받은 계층 + 실측 수치 포함
