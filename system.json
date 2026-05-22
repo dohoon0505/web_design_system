@@ -1101,329 +1101,107 @@
     },
     {
       "id": "miracell",
-      "title": "미라셀",
-      "url": "https://miracell.co.kr/kr",
-      "date": "2026-05-13",
+      "title": "미라셀 (메인 100% 재현)",
+      "url": "https://miracell.co.kr/kr/",
+      "date": "2026-05-22",
       "analysis": "analyses/miracell/analysis.json",
-      "pagesAnalyzed": 28,
+      "pagesAnalyzed": 1,
       "sections": [
         {
           "id": "overview",
           "num": "01",
-          "title": "개요 · 사이트맵",
-          "desc": "사이트 프로필, 28페이지 사이트맵, 기술 스택"
-        },
-        {
-          "id": "philosophy",
-          "num": "02",
-          "title": "디자인 철학 · 비주얼 랭귀지",
-          "desc": "비주얼 6원칙, 디자인 결정 패턴"
+          "title": "개요 · 메인 페이지 전용 분석",
+          "desc": "1920×1080 측정 · 전체 7,170px · Header→Hero→About→Service→Product→News→Contact→Footer 8섹션 좌표"
         },
         {
           "id": "tokens",
+          "num": "02",
+          "title": "디자인 토큰 — :root CSS Variables 24개 실측",
+          "desc": "--main-color #dd0031 · --area-width 1400px · --header-height 80px · --transition-custom 0.4s · Pretendard + Outfit 폰트 패밀리"
+        },
+        {
+          "id": "header",
           "num": "03",
-          "title": "디자인 토큰 시스템",
-          "desc": "CSS Variables (색상/타입/여백/둥글기/이징/타이밍)"
+          "title": "헤더 — 80px Top Fixed Object",
+          "desc": "fixed z-index 9999 · 로고 151×39 듀얼 · KR/EN/CN 토글 · Profile · OPEN 햄버거 · GNB 6 메뉴"
         },
         {
-          "id": "main-page",
+          "id": "gnb-sitemap",
           "num": "04",
-          "title": "메인 페이지 분석",
-          "desc": "Hero/About/Service/Product/News/Contact/Footer 7섹션"
+          "title": "GNB 6depth + 풀스크린 사이트맵 (OPEN)",
+          "desc": "1depth 6 + 2depth 총 24개 · OPEN 클릭 시 cm-sitemap-area-con 614px 풀스크린 오버레이"
         },
         {
-          "id": "about-pages",
+          "id": "hero",
           "num": "05",
-          "title": "About Us 카테고리",
-          "desc": "5페이지 정밀 - 기업소개(H3+조직도)/CEO(메시지+서명)/연혁(Pill 5탭+Year Grid)/오시는길(카카오 지도)/CI(로고+의미카드+컬러가이드 #790E17)"
+          "title": "Hero #mainVisual — 6 Roller Image Montage",
+          "desc": "1080px · 3컬럼 × 2 roller · 9 main_visual_img + up/down 교차 무한 스크롤 · text-active-animation 1.5s"
         },
         {
-          "id": "product-pages",
+          "id": "about",
           "num": "06",
-          "title": "Product 카테고리",
-          "desc": "5페이지 정밀 - Smart M-Cell(5 spec 카드+LED 4파장 탭+기기 사양표)/BmSC/BSC/Chroma M-CELL/Vacuum lock syringe + FDA 510(k) 인증"
+          "title": "About 섹션 — Marquee + 대형 타이틀",
+          "desc": "1,512px · main_about_bg.jpg · Marquee 280px Outfit 800 rgba(255,255,255,0.3) · H4 Pretendard 800 63px · main_about_img.png 617×614"
         },
         {
-          "id": "service-pages",
+          "id": "service",
           "num": "07",
-          "title": "Service 카테고리",
-          "desc": "4페이지 정밀 - Membership(6 h4 섹션)/CellBanking(sH 11335px 7섹션)/Platform/AICC + Process Flow + Before/After"
+          "title": "Service 섹션 — 3 Service Cards",
+          "desc": "1,452px · H4 Pretendard 800 65px · CellBanking / Stemcell Medical Platform / Medical AICC 3 카드"
         },
         {
-          "id": "rnd-pages",
+          "id": "product",
           "num": "08",
-          "title": "R&D 카테고리",
-          "desc": "4페이지 정밀 - 줄기세포란?(4가지 세포 Numbered Cell Card)/연구소/신의료기술(인증)/특허(23건 Patent List)"
+          "title": "Product 섹션 — Infinite Slider 5 Products",
+          "desc": "1,122px · H4 65px · main_prd_img01-05.png 455×455 5종 × 2 사이클 무한 슬라이드"
         },
         {
-          "id": "newsroom-pages",
+          "id": "news",
           "num": "09",
-          "title": "Newsroom 카테고리",
-          "desc": "3페이지 정밀 - 공지/보도자료(검색+필터+게시판)/Contents(Media Card Grid)"
+          "title": "News 섹션 — Notice 5건 + View More",
+          "desc": "1,005px · H4 65px · 5 게시판 · main-view-btn outline pill · 호버 시 화살표 4px 이동"
         },
         {
-          "id": "customer-pages",
+          "id": "contact",
           "num": "10",
-          "title": "Customer Support 카테고리",
-          "desc": "3페이지 정밀 - 문의사항(8섹션 폼: 카테고리/라디오/textarea/패스워드/Captcha HUGPCM)/자료실/논문"
+          "title": "Contact 섹션 — Cinematic CTA",
+          "desc": "451px · main_contact_bg.jpg · H4 Outfit 600 65px white · contact_view_circle 151×151 + contact_view_txt 127×128 spin 14s 회전"
         },
         {
-          "id": "etc-pages",
+          "id": "footer",
           "num": "11",
-          "title": "Member · Privacy · 기타",
-          "desc": "3페이지 정밀 - 로그인(박스+빨간 CTA)/회원가입(Step Indicator+Terms)/개인정보처리방침(5열 Data Table)"
+          "title": "Footer — White 2단 Layout",
+          "desc": "547px · 흰 배경 #666 본문 · 상단 회사정보+사이트맵 6+Family Site 드롭다운+Privacy · 하단 Instagram/YouTube SNS + 카피라이트"
+        },
+        {
+          "id": "typography",
+          "num": "12",
+          "title": "타이포그래피 시스템",
+          "desc": "Pretendard(한글)+Outfit(영문/숫자) 2 패밀리 · Watermark 280px Outfit 800 · Main Tit 65px Pretendard 800 · 9개 타입 스케일"
         },
         {
           "id": "color-system",
-          "num": "12",
-          "title": "컬러 시스템",
-          "desc": "20+ 색상 정밀 매핑, 그라데이션, WCAG 검증"
-        },
-        {
-          "id": "typography-system",
           "num": "13",
-          "title": "타이포그래피 시스템",
-          "desc": "16개 타입 스케일, font-outfit, 한글 강조 패턴"
+          "title": "컬러 시스템",
+          "desc": "10 컬러 · #dd0031 brand red · #000/#111/#666/#999 4단 회색 · #ebebeb border · #fafafa card · #007aff swiper"
         },
         {
-          "id": "icon-system",
+          "id": "interactions",
           "num": "14",
-          "title": "아이콘 시스템",
-          "desc": "XEIcon + Custom SVG + Unicode, 14개 아이콘 매핑"
-        },
-        {
-          "id": "layout-grid",
-          "num": "15",
-          "title": "그리드 · 컨테이너 시스템",
-          "desc": "1500px 컨테이너, 섹션별 그리드 패턴"
-        },
-        {
-          "id": "layout-responsive",
-          "num": "16",
-          "title": "반응형 · 여백 · 둥글기",
-          "desc": "3단계 중단점, 8의 배수 여백, 7단계 둥글기"
-        },
-        {
-          "id": "image-system",
-          "num": "17",
-          "title": "이미지 · 그래픽 시스템",
-          "desc": "Hero 모자이크 15장, About 세포, Contact 네트워크"
-        },
-        {
-          "id": "lib-buttons",
-          "num": "18",
-          "title": "버튼 · CTA 라이브러리",
-          "desc": "View More, Family Site, Privacy, Header CTA, FAB, Pill Tab"
-        },
-        {
-          "id": "lib-cards",
-          "num": "19",
-          "title": "카드 라이브러리",
-          "desc": "Hero 셀, Service, News, Product, Counter, Spec, CEO 등"
-        },
-        {
-          "id": "lib-banners",
-          "num": "20",
-          "title": "배너 · Hero 라이브러리",
-          "desc": "Sub Banner, Main Hero(마스크), Pink, Dark Particle"
-        },
-        {
-          "id": "lib-navigation",
-          "num": "21",
-          "title": "네비게이션 라이브러리",
-          "desc": "GNB, Header, Sub Top Menu, Side Nav, Breadcrumb, Footer"
-        },
-        {
-          "id": "lib-forms",
-          "num": "22",
-          "title": "폼 라이브러리",
-          "desc": "Input, Textarea, Password, Select, Radio, Checkbox, Captcha"
-        },
-        {
-          "id": "lib-data",
-          "num": "23",
-          "title": "데이터 디스플레이 라이브러리",
-          "desc": "Data Table, Comparison Table, Timeline, Counter, Stat"
-        },
-        {
-          "id": "lib-content",
-          "num": "24",
-          "title": "콘텐츠 컴포넌트",
-          "desc": "Korean Headline, Process Flow, Step, Org Chart, Trust Badge"
-        },
-        {
-          "id": "lib-utility",
-          "num": "25",
-          "title": "오버레이 · 유틸리티",
-          "desc": "Map Embed, FAB, Scroll Indicator, Dropdown, Toast, Modal"
-        },
-        {
-          "id": "ix-hover",
-          "num": "26",
-          "title": "호버 인터랙션 카탈로그",
-          "desc": "18개 hover 패턴, 호버 디자인 4원칙"
-        },
-        {
-          "id": "ix-scroll",
-          "num": "27",
-          "title": "스크롤 애니메이션 카탈로그",
-          "desc": "Continuous 8 + Triggered 8, GSAP/IO 패턴"
-        },
-        {
-          "id": "ix-cursor",
-          "num": "28",
-          "title": "마우스 추적 · 커서 효과",
-          "desc": "Hero Spotlight Mask, Mouse Pointer 회전"
-        },
-        {
-          "id": "pub-semantic",
-          "num": "29",
-          "title": "시맨틱 HTML · 접근성",
-          "desc": "구조, WCAG 2.1, 키보드, ARIA, prefers-reduced-motion"
-        },
-        {
-          "id": "pub-perf-seo",
-          "num": "30",
-          "title": "성능 · SEO · 디자인-개발 협업",
-          "desc": "이미지·폰트 최적화, 구조화 데이터, 협업 체크리스트"
-        },
-        {
-          "id": "cellbanking-crisis-cards",
-          "num": "31",
-          "title": "CellBanking 4-Card Crisis Awareness",
-          "desc": "사이트 최장 11,438px 페이지 정밀 - H5 4종 (바이러스 진화/사망률 증가/면역력 노화/시장 성장) + Solution CTA. B2C 위기인식 카피라이팅의 정석"
-        },
-        {
-          "id": "stem-cell-video",
-          "num": "32",
-          "title": "줄기세포 교육 - 비디오 임베드 + 4-Cell Cards",
-          "desc": "줄기세포란? 페이지 - 비디오 썸네일+재생 아이콘 패턴 + 4종 세포(줄기세포/성장인자/백혈구/혈소판) 실 이미지 교육 카드"
-        },
-        {
-          "id": "smart-mcell-tech",
-          "num": "33",
-          "title": "Smart M-Cell 5-Tech Detail",
-          "desc": "시그니처 제품 페이지 - 실 제품 사진 + 5종 H5 핵심 기술 (Autorotation/Double rotation/Touch+Voice/LED Visible Light) + 한영 이중 표기 패턴"
+          "title": "인터랙션 시스템 — Transition·Animation 통계",
+          "desc": "1036 'all' · 212 transform 0.6s+color 0.3s · 113 opacity+transform 0.8s · text-active-animation 1.5s · spin 14s · Splitting.js"
         },
         {
           "id": "smooth-interaction-catalog",
-          "num": "34",
-          "title": "부드러운 인터랙션 카탈로그 (라이브 재점검)",
-          "desc": "Splitting.js 글자별 분할 (1.5s) / KR·EN·CN 3 다국어 / 5×4 Hero Mosaic / Scroll down 3-Dot 인디케이터 / 빨간 Pencil FAB / opacity+transform 0.8s 69건 / 전체 694건 transition"
+          "num": "15",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 5회 대조 검증)",
+          "desc": "6 발견 + 5회 양 사이트 대조 일치율 100% — Hero 6-Roller · Marquee · Splitting.js · Product 인피니티 · Contact spin · 헤더 듀얼 로고"
         }
       ],
       "subpages": [
         {
-          "title": "메인 (Home)",
+          "title": "메인 (Home) — 본 보고서 분석 대상",
           "url": "https://miracell.co.kr/kr/"
-        },
-        {
-          "title": "기업소개",
-          "url": "https://miracell.co.kr/kr/about/intro.php"
-        },
-        {
-          "title": "CEO소개",
-          "url": "https://miracell.co.kr/kr/about/ceo.php"
-        },
-        {
-          "title": "연혁",
-          "url": "https://miracell.co.kr/kr/about/history.php"
-        },
-        {
-          "title": "오시는 길",
-          "url": "https://miracell.co.kr/kr/about/location01.php"
-        },
-        {
-          "title": "CI",
-          "url": "https://miracell.co.kr/kr/about/ci.php"
-        },
-        {
-          "title": "Smart M-Cell",
-          "url": "https://miracell.co.kr/kr/product/smart_mcell.php"
-        },
-        {
-          "title": "BmSC Kit",
-          "url": "https://miracell.co.kr/kr/product/bmsc_kit.php"
-        },
-        {
-          "title": "BSC Kit",
-          "url": "https://miracell.co.kr/kr/product/bsc_kit.php"
-        },
-        {
-          "title": "Chroma M-CELL",
-          "url": "https://miracell.co.kr/kr/product/chroma_mcell.php"
-        },
-        {
-          "title": "Vacuum lock syringe",
-          "url": "https://miracell.co.kr/kr/product/vacuum_lock_syringe.php"
-        },
-        {
-          "title": "Miracell Membership",
-          "url": "https://miracell.co.kr/kr/service/mgp.php"
-        },
-        {
-          "title": "CellBanking",
-          "url": "https://miracell.co.kr/kr/service/cellbanking.php"
-        },
-        {
-          "title": "Stemcell Medical Platform",
-          "url": "https://miracell.co.kr/kr/service/starpia.php"
-        },
-        {
-          "title": "Medical AICC",
-          "url": "https://miracell.co.kr/kr/service/miracle_call.php"
-        },
-        {
-          "title": "줄기세포란?",
-          "url": "https://miracell.co.kr/kr/rnd/stem_cells.php"
-        },
-        {
-          "title": "연구소",
-          "url": "https://miracell.co.kr/kr/rnd/rnd_center.php"
-        },
-        {
-          "title": "신의료기술",
-          "url": "https://miracell.co.kr/kr/rnd/new_medical.php"
-        },
-        {
-          "title": "특허/인허가",
-          "url": "https://miracell.co.kr/kr/rnd/patents.php"
-        },
-        {
-          "title": "공지",
-          "url": "https://miracell.co.kr/kr/newsroom/notice.php"
-        },
-        {
-          "title": "보도자료",
-          "url": "https://miracell.co.kr/kr/newsroom/news.php"
-        },
-        {
-          "title": "Contents",
-          "url": "https://miracell.co.kr/kr/newsroom/global.php"
-        },
-        {
-          "title": "문의사항",
-          "url": "https://miracell.co.kr/kr/customer/inquiry.php"
-        },
-        {
-          "title": "자료실",
-          "url": "https://miracell.co.kr/kr/customer/library.php"
-        },
-        {
-          "title": "논문",
-          "url": "https://miracell.co.kr/kr/customer/research_papers.php"
-        },
-        {
-          "title": "로그인",
-          "url": "https://miracell.co.kr/kr/member/login.php"
-        },
-        {
-          "title": "회원가입",
-          "url": "https://miracell.co.kr/kr/member/join_01.php"
-        },
-        {
-          "title": "개인정보처리방침",
-          "url": "https://miracell.co.kr/kr/etc/privacy.php"
         }
       ]
     },

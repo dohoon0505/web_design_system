@@ -501,6 +501,107 @@ JSON.stringify(Array.from(document.querySelectorAll('main > *, .target')).map(el
 [ ] {site}-app/README.md에 빌드 명령 + 디자이너 가이드 명시
 ```
 
+## 100% 동일 재현 모드 (Mirror Mode) — 단일 페이지 정밀 클론 방법론 (미라셀 2026-05-22에서 정립)
+
+기존 30+ 섹션 종합 분석 모드와 별개로, **사용자가 명시적으로 "100% 동일 재현"을 요청**할 때 적용하는 별도 작업 모드. 카탈로그 깊이를 희생하고 **한 페이지의 모든 디자인 토큰·컴포넌트를 픽셀 단위로 재현**하는 데 집중한다.
+
+### 언제 Mirror Mode를 적용하는가
+
+- 사용자가 "메인 페이지만 100% 동일하게 재현해 주세요" 같은 단일 페이지 정밀 요청
+- 서브페이지 분석을 제외하고 한 화면의 모든 디자인을 시각 컴포넌트로 복원해야 할 때
+- 디자이너 / 퍼블리셔가 한 페이지 단위로 빠르게 디자인 시스템을 학습해야 할 때
+
+기본 모드(30+ 섹션 카탈로그)는 그대로 유지된다. Mirror Mode는 별도 작업 흐름이다.
+
+### Mirror Mode 핵심 원칙
+
+1. **단일 페이지 집중**: `crawledPages: 1`, 서브페이지 분석은 시도조차 하지 않는다
+2. **8-15 섹션 구조**: 헤더/히어로/미들 섹션들/푸터 + 비주얼 시스템(타입·컬러) + 인터랙션 = 10-15 섹션
+3. **컴포넌트 블록 비중 70%+**: `kv` 토큰 표만 늘어놓지 않고 모든 섹션에 `component` 블록 (HTML/CSS 라이브 프리뷰) 1개 이상 포함
+4. **실 이미지 URL 임베드 의무**: `<img src='https://{site}/images/...'>`, `background-image:url(...)` 모두 라이브 CDN URL 직접 사용
+5. **5-Pass 양 사이트 대조**: Playwright MCP로 라이브 ↔ 로컬 보고서를 최소 5회 왕복하며 시각 차이를 픽셀 단위로 좁힘
+6. **디자인 토큰 100% 실측**: `:root` CSS Variables, 클래스명, transform 값(예: `translate(-76.748%, 0%)`)까지 라이브 측정값만 사용. 단순 텍스트 설명("색상 사용 비율 White 60%...") 금지
+
+### 5-Pass 양 사이트 대조 방법론
+
+각 패스에서 라이브 사이트와 로컬 보고서를 **동시에** Playwright로 띄우고 비교한다.
+
+| 패스 | 목적 | 주요 작업 |
+|---|---|---|
+| **1차 (초기 측정)** | 사이트 전체 구조와 디자인 토큰 채집 | CSS Variables 24개+, 섹션 좌표(top/h), 폰트 패밀리, 메인 컬러, 페이지 차원 |
+| **2차 (기본 컴포넌트 작성)** | 헤더/히어로/푸터 등 골격 컴포넌트 작성 후 1차 시각 비교 | 보고서에 component 블록 12개+ 작성. 렌더 확인 후 차이점 1차 수정 |
+| **3차 (히든 컴포넌트 발견)** | 정적 분석으로 놓친 동적 요소 찾기 | Counter / Marquee / Slot Machine / Particle Network / 회전 SVG 등. 클래스명 `.count-num-*`, `.cm-quick-menu`, `.list-item.cover*` 등 라이브에서만 보이는 패턴 |
+| **4차 (이미지·배경 실 URL 교체)** | Generic gradient → 실 CDN 이미지로 교체 | 카드 배경, 섹션 배경, 일러스트 PNG 모두 라이브 사이트의 정확한 URL로 |
+| **5차 (최종 픽셀 확인)** | 5단계 스크롤 위치에서 양 사이트 스크린샷 비교 | sY 0/25/50/75/100% 각 위치에서 라이브+보고서 캡처 → 일치율 확인 |
+
+각 패스 끝에 `node scripts/validate.mjs` 통과 + 보고서 렌더 확인 + 차이점이 더 이상 안 보일 때까지 반복.
+
+### 발견하기 쉽게 놓치는 라이브 패턴 (Mirror Mode 체크리스트)
+
+미라셀 2026-05-22 사례에서 정적 분석으로는 절대 잡히지 않아 5-Pass 중 발견된 패턴들. 신규 Mirror Mode 작업에서는 **최소 다음 8가지를 의도적으로 찾아본다**:
+
+1. **Slot Machine Counter**: `.count-num-item` 같은 클래스의 ul 안 0-9 숫자 셀이 세로로 cycling
+2. **Pencil/Quick FAB**: `.cm-quick-menu.active`, `.cm-contact-btn` 우하단 fixed 원형 버튼 (보통 60-90px)
+3. **Particle Network 배경**: Hero / Contact 섹션의 빨간 점+선 네트워크 (radial gradient 또는 canvas)
+4. **회전 SVG textPath**: `<svg><defs><path id='circle'></defs><textPath href='#circle'>` 형태의 원형 텍스트 회전 (CTA 버튼 외곽)
+5. **마퀴 무한 텍스트**: `.marquee .mar_ch` 안 `transform: translate(-76.748%, 0%)` 같은 의도적 어색한 % 값으로 끝없는 좌측 이동
+6. **Splitting.js 글자별 fade-in**: `.cm-word-split-JS words chars splitting` 클래스 마커. 헤딩 단어 → 글자 2단계 분할 후 stagger 0.05s
+7. **헤더 듀얼 로고 fade**: `<h1 class='logo'>`에 흰/검정 로고 PNG 두 장이 겹침. 스크롤 위치에 따라 opacity 토글
+8. **Service/Product 카드 풀이미지 배경**: 디자인 시스템은 종종 generic gradient로 보이지만, 라이브는 카드별 고유 이미지(`main_service_bg01-03.jpg`). `getComputedStyle(el).backgroundImage`로 진짜 URL 채집
+
+### Mirror Mode 섹션 구조 권장
+
+단일 페이지 100% 재현에 적합한 10-15 섹션. 페이지 흐름 순서 그대로:
+
+```
+01. 개요 · 메인 페이지 전용 분석            (overview)
+02. 디자인 토큰 — :root CSS Variables 실측  (tokens)
+03. 헤더 — Top Fixed Object                 (header)
+04. GNB + 풀스크린 사이트맵 (OPEN)          (gnb-sitemap)
+05. Hero #mainVisual — 라이브 패턴 재현     (hero)
+06-N. 페이지 흐름 순서대로 미들 섹션들      (about / service / product / news / contact ...)
+N+1. Footer — White/Dark Layout            (footer)
+N+2. 타이포그래피 시스템                   (typography)
+N+3. 컬러 시스템                           (color-system)
+N+4. 인터랙션 시스템 — Transition·Animation 통계 (interactions)
+마지막. 부드러운 인터랙션 카탈로그 (5회 대조 검증)  (smooth-interaction-catalog)
+```
+
+각 섹션마다 (a) `kv` 토큰 표 + (b) `component` 라이브 프리뷰 + (c) `note` 정량 차이 명시 3종 세트로 구성.
+
+### Mirror Mode에서 발견된 인프라 버그 (수정 후 다른 보고서에도 적용)
+
+**escapeHtml 의 `"` 미escape 버그 (2026-05-22 수정)**: `assets/js/main.js`의 `escapeHtml` 함수는 textNode + innerHTML 방식으로 `<`, `>`, `&`만 escape하고 `"`는 그대로 둔다. 이 함수가 `data-html="${escapeHtml(html)}"` 같은 속성 값 escape에도 쓰여서, HTML 안의 `class="..."` 같은 double-quote가 속성을 깨뜨려 컴포넌트가 렌더되지 않는 버그가 있었음. 수정:
+
+```js
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  // textNode.innerHTML escapes <, >, & but NOT " or '
+  return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+```
+
+이 수정 이전 보고서들은 HTML 안에서 single quote (`'`)로 속성을 감싸는 방식으로 우회하고 있었음. 이제는 single/double 모두 안전.
+
+### Mirror Mode 작업 시 체크리스트
+
+```
+[ ] 사용자 요청에 "100% 동일", "정밀 재현", "메인만" 등 표현 → Mirror Mode 진입
+[ ] 기존 analysis.json 백업 (analysis.backup.json)
+[ ] crawledPages: 1 로 명시, subpages 배열은 메인 1개만
+[ ] :root CSS Variables 전수 추출 (document.styleSheets → CSSRule selectorText ':root')
+[ ] 페이지 차원 (sH, sW, viewport) + 각 article/section 좌표(top/h) 정밀 측정
+[ ] 8가지 히든 패턴 의도적 탐색 (Slot Counter / FAB / Particle / Rotating SVG / Marquee / Splitting / Dual Logo / Real Card BG)
+[ ] 모든 섹션에 component 블록 1개+ 포함 (kv 표만 늘어놓기 금지)
+[ ] 실제 이미지 URL 라이브에서 channel.jpg/.png 직접 임베드 (CDN 호스트 그대로)
+[ ] 5-Pass 양 사이트 대조 완료 — 각 패스 후 보고서 렌더 + 라이브 스크린샷 비교
+[ ] 마지막 섹션에 5-Pass 검증 결과 표 + 발견 N개 정리
+[ ] escapeHtml 수정 적용된 main.js 사용 (single/double quote 양쪽 안전)
+[ ] node scripts/validate.mjs 5 OK / 0 error 통과
+[ ] 보고서 #ref/{id} 진입 → 12개+ 컴포넌트 모두 STYLE+DIV 자식 구조로 렌더 확인
+```
+
 ## 시그니처 컴포넌트 표기
 
 해당 사이트의 정체성을 만드는 독특한 패턴(다른 사이트에는 거의 없는)은 본문 안에서 🟢 emoji로 표시한다. 단 **섹션 타이틀에는 절대 금지**.

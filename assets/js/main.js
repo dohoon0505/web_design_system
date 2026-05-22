@@ -5,7 +5,9 @@
   function escapeHtml(str) {
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
+    // textNode.innerHTML escapes <, >, & but NOT " or '
+    // Without escaping these, attribute values (data-html="...") break when content contains "
+    return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
   var blockIdCounter = 0;
