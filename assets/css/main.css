@@ -147,23 +147,7 @@ body {
               color var(--motion-base) var(--ease-standard);
 }
 
-/* ============ TOPBAR ============ */
-.topbar {
-  position: sticky; top: 0; z-index: 200;
-  background: color-mix(in oklab, var(--sm-background-default) 86%, transparent);
-  backdrop-filter: blur(12px) saturate(160%);
-  border-bottom: 1px solid var(--sm-border-subtle);
-}
-.topbar-inner {
-  max-width: 1600px; margin: 0 auto;
-  padding: var(--size-400) var(--size-700);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--size-500);
-}
-.brand {
-  display: flex; align-items: center; gap: var(--size-300);
-  text-decoration: none; color: var(--sm-content-primary);
-}
+/* Topbar removed in 2026-05-22 — Reference Lab brand now lives in sidebar */
 .brand-mark {
   width: 36px; height: 36px;
   background: var(--sm-content-primary);
@@ -180,22 +164,6 @@ body {
   background: var(--p-amber-400);
   border-radius: 50%;
 }
-.brand-text { font-weight: 700; letter-spacing: -0.02em; font-size: 16px; }
-.topbar-nav {
-  display: flex; gap: var(--size-500); align-items: center;
-}
-.theme-toggle {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 12px;
-  background: var(--sm-background-muted);
-  border: 1px solid var(--sm-border-subtle);
-  border-radius: var(--radius-full);
-  color: var(--sm-content-primary);
-  font: 500 11px/1 var(--font-mono);
-  cursor: pointer;
-  transition: all var(--motion-fast) var(--ease-standard);
-}
-.theme-toggle:hover { border-color: var(--sm-border-strong); }
 
 /* ============ SIDEBAR ============ */
 .sidebar {
@@ -357,9 +325,46 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
 }
 .sidebar-scrim.is-visible { opacity: 1; }
 
-@media (min-width: 1100px) {
-  body { padding-left: 300px; }
+/* ============ SIDEBAR COLLAPSE (desktop) ============ */
+.sidebar-collapse {
+  position: fixed; top: 16px; left: 280px; z-index: 320;
+  width: 28px; height: 56px;
+  background: var(--sm-background-default);
+  border: 1px solid var(--sm-border-subtle);
+  border-left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  cursor: pointer;
+  display: none; align-items: center; justify-content: center;
+  color: var(--sm-content-secondary);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+  transition: left var(--motion-base) var(--ease-standard),
+              transform var(--motion-fast) var(--ease-standard),
+              background var(--motion-fast),
+              color var(--motion-fast);
 }
+.sidebar-collapse:hover {
+  background: var(--sm-background-muted);
+  color: var(--sm-content-primary);
+}
+.sidebar-collapse .collapse-arrow {
+  transition: transform var(--motion-base) var(--ease-standard);
+}
+body.sidebar-collapsed .sidebar-collapse { left: 0; }
+body.sidebar-collapsed .sidebar-collapse .collapse-arrow {
+  transform: rotate(180deg); transform-origin: 12px 12px;
+}
+
+/* === Desktop layout === */
+@media (min-width: 1100px) {
+  body { padding-left: 300px; transition: padding-left var(--motion-base) var(--ease-standard); }
+  .sidebar-collapse { display: inline-flex; }
+  body.sidebar-collapsed { padding-left: 0; }
+  body.sidebar-collapsed .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+}
+
 @media (max-width: 1099px) {
   .sidebar {
     transform: translateX(-100%);
@@ -368,15 +373,18 @@ svg.ico { width: 24px; height: 24px; display: inline-block; flex-shrink: 0; vert
   .sidebar.is-open { transform: translateX(0); }
   .sidebar-scrim.is-open { display: block; }
   .sidebar-toggle { display: inline-flex; }
-  .topbar-inner .brand { margin-left: 48px; }
+  .sidebar-collapse { display: none; }
 }
 
-.container { max-width: 1800px; margin: 0 auto; padding: 0 var(--size-700); }
+.container { max-width: 1800px; margin: 0 auto; padding: var(--size-500) var(--size-700) 0; transition: max-width var(--motion-base) var(--ease-standard); }
+body.sidebar-collapsed .container { max-width: 2200px; }
 @media (min-width: 1900px) {
-  .container, .topbar-inner { max-width: 2000px; }
+  .container { max-width: 2000px; }
+  body.sidebar-collapsed .container { max-width: 2400px; }
 }
 @media (min-width: 2400px) {
-  .container, .topbar-inner { max-width: 2400px; }
+  .container { max-width: 2400px; }
+  body.sidebar-collapsed .container { max-width: 2800px; }
 }
 
 /* ============ HERO ============ */

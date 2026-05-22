@@ -70,6 +70,25 @@
     if (window.matchMedia('(max-width: 1099px)').matches) closeSidebar();
   }
 
+  /* ============ SIDEBAR COLLAPSE (desktop) ============ */
+  function toggleSidebarCollapse() {
+    var body = document.body;
+    var collapsed = body.classList.toggle('sidebar-collapsed');
+    try { localStorage.setItem('sidebar-collapsed', collapsed ? '1' : '0'); } catch(e) {}
+    var btn = document.querySelector('.sidebar-collapse');
+    if (btn) btn.setAttribute('aria-label', collapsed ? '사이드바 펴기' : '사이드바 접기');
+  }
+  window.toggleSidebarCollapse = toggleSidebarCollapse;
+
+  // Restore collapsed state on load
+  (function restoreSidebarCollapsed() {
+    try {
+      if (localStorage.getItem('sidebar-collapsed') === '1') {
+        document.body.classList.add('sidebar-collapsed');
+      }
+    } catch(e) {}
+  })();
+
   /* ============ STATE ============ */
   var systemData = null;
   var analysisCache = {};

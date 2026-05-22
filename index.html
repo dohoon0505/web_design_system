@@ -48,11 +48,18 @@
 </button>
 <div class="sidebar-scrim" onclick="closeSidebar()"></div>
 
+<!-- ============ SIDEBAR COLLAPSE TOGGLE (desktop) ============ -->
+<button class="sidebar-collapse" onclick="toggleSidebarCollapse()" aria-label="사이드바 접기/펴기" title="사이드바 접기 / 펴기">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path class="collapse-arrow" d="M15 6l-6 6 6 6"/>
+  </svg>
+</button>
+
 <!-- ============ SIDEBAR ============ -->
 <aside class="sidebar" id="sidebar">
   <a class="sidebar-brand" href="#">
     <div class="brand-mark">WR</div>
-    <div>
+    <div class="sidebar-brand-text">
       <div class="brand-name">Reference Lab</div>
       <div class="brand-ver">v0.0.0</div>
     </div>
@@ -86,22 +93,6 @@
     </button>
   </div>
 </aside>
-
-<!-- ============ TOPBAR ============ -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="#">
-      <div class="brand-mark">WR</div>
-      <div class="brand-text">Web Reference Lab</div>
-    </a>
-    <nav class="topbar-nav">
-      <button class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">☾</span>
-        <span id="theme-label">Dark</span>
-      </button>
-    </nav>
-  </div>
-</header>
 
 <!-- ============ MAIN CONTENT ============ -->
 <div class="container" id="top">
