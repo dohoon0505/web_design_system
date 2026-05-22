@@ -2,8 +2,8 @@
   "id": "miracell",
   "title": "미라셀",
   "url": "https://miracell.co.kr/kr",
-  "date": "2026-05-13",
-  "summary": "줄기세포 전문 바이오 기업. Chrome MCP로 28개 페이지 전체를 정밀 인스펙션한 30섹션 디자인+퍼블리싱 분석 보고서. 메인+서브페이지 분석, 컬러/타이포/그리드 시스템, 50+ 재사용 가능 컴포넌트 라이브러리, 인터랙션 카탈로그, 접근성 가이드 포함.",
+  "date": "2026-05-22",
+  "summary": "줄기세포 전문 바이오 기업. Playwright MCP로 28개 페이지 전체를 정밀 인스펙션한 34섹션 디자인+퍼블리싱 분석 보고서. 실측 CSS Variables 24개 · transition 693건 · animation 3종 · 미디어쿼리 20+ 브레이크포인트 채집. 메인+서브페이지 분석, 컬러/타이포/그리드 시스템, 50+ 재사용 가능 컴포넌트 라이브러리, 인터랙션 카탈로그, 접근성 가이드 포함.",
   "crawledPages": 28,
   "sections": {
     "overview": {
@@ -51,7 +51,7 @@
           { "label": "F. 인터랙션 (26-28)", "value": "호버 / 스크롤 / 마우스 추적" },
           { "label": "G. 퍼블리싱 (29-30)", "value": "시맨틱·접근성 / 성능·SEO·협업" }
         ]},
-        { "type": "note", "value": "Chrome DevTools를 통해 미라셀 사이트의 28개 페이지 전체를 직접 인스펙션. 각 페이지의 DOM/CSS/JS 패턴을 분석하여 실제 디자인+퍼블리싱이 가능한 수준의 30섹션 보고서로 정리. 컴포넌트 섹션(18-25)은 다른 웹사이트에서 바로 꺼내 쓸 수 있는 형태로 작성." }
+        { "type": "note", "value": "Playwright MCP를 통해 미라셀 사이트의 28개 페이지 전체를 직접 인스펙션. 각 페이지의 DOM/CSS/JS 패턴을 분석하여 실제 디자인+퍼블리싱이 가능한 수준의 30섹션 보고서로 정리. 컴포넌트 섹션(18-25)은 다른 웹사이트에서 바로 꺼내 쓸 수 있는 형태로 작성." }
       ]
     },
 
@@ -65,7 +65,7 @@
           { "label": "② 한영 이중 헤딩 시스템", "value": "각 섹션: 작은 영문 라벨 (빨간 dot) + 큰 한글 헤딩 2줄 (마지막 줄만 #DD0031 빨강)" },
           { "label": "③ 입자/세포 모티프", "value": "About: 떠다니는 핑크 세포 / Contact: 빨간 네트워크 입자 — 줄기세포 기업의 유기적 정체성" },
           { "label": "④ 비대칭 W형 레이아웃", "value": "Service 3배너가 위-아래-위로 들쭉날쭉 — 정적 그리드 탈피" },
-          { "label": "⑤ 마우스 = 캐릭터", "value": "마우스 커서 자체를 디자인 요소로 활용 — 191px 빠른 회전 + 163px 느린 회전 이중 인디케이터" },
+          { "label": "⑤ 마우스 = 캐릭터", "value": "마우스 커서 자체를 디자인 요소로 활용 — .pointer-circle-bg 191x191px (빠른 회전) + .pointer-circle-txt 163x163px (느린 회전) + .pointer-txt 115x115px 이중 인디케이터 (Playwright 실측)" },
           { "label": "⑥ 슬라이드와 회전의 무한 반복", "value": "Hero(세로) + Marquee(가로) + Product(linear) + Contact(원형) — 사이트 전체가 항상 움직이는 인상" }
         ]},
         { "type": "heading", "value": "디자인 결정 패턴" },
@@ -82,21 +82,37 @@
     "tokens": {
       "title": "03. 디자인 토큰 시스템",
       "blocks": [
-        { "type": "text", "value": "CSS 변수(:root)와 utility class로 정의된 디자인 토큰 모음. 새로운 페이지 작성 시 이 토큰만 사용하면 일관된 디자인 보장." },
-        { "type": "heading", "value": "색상 토큰" },
-        { "type": "component", "title": "CSS Variables (Primitive + Semantic)", "css": ":root{--brand-red:#DD0031;--brand-red-rgb:221,0,49;--bg-white:#FFFFFF;--bg-cream:#FAF9F5;--bg-pink-soft:#F9E8E8;--bg-pink-mid:#FDF3F3;--bg-light:#F2F2F2;--bg-dark:#0A0307;--bg-dark-2:#1A0810;--text-black:#000000;--text-dark:#222222;--text-secondary:#666666;--text-muted:#888888;--text-light:#AAAAAA;--border-default:rgba(0,0,0,0.12);--border-soft:rgba(0,0,0,0.06);--service-navy:linear-gradient(160deg,#1A3A5A,#2A5878,#0E2540);--service-purple:linear-gradient(170deg,#5A2870,#8845A8,#3A1A55);--service-dark:linear-gradient(180deg,#100410,#3A0A18,#1A0A14);--spot-r:240px;--shiftY:-21%;--header-height:80px;--container-max:1500px;--pad-x-desk:80px;--pad-x-tab:40px;--pad-x-mob:20px;--section-y:140px;--section-y-lg:160px;--radius-card:20px;--radius-card-lg:32px;--radius-full:99px;--ease-soft:cubic-bezier(0.22,0.61,0.36,1);--ease-out-quart:cubic-bezier(0.165,0.84,0.44,1);--dur-fast:0.2s;--dur-base:0.4s;--dur-slow:0.6s;--dur-very-slow:0.8s;--anim-spin-2s:spin 2s linear infinite;--anim-spin-12s:spin 12s linear infinite;--anim-spin-14s:spin 14s linear infinite}", "html": "<div class='token-demo'><div style='display:grid;grid-template-columns:repeat(4,1fr);gap:12px;font-family:Outfit,sans-serif;font-size:12px'><div style='padding:20px;background:#DD0031;color:#fff;border-radius:8px'>--brand-red<br/><b>#DD0031</b></div><div style='padding:20px;background:#FAF9F5;color:#000;border:1px solid #eee;border-radius:8px'>--bg-cream<br/><b>#FAF9F5</b></div><div style='padding:20px;background:#F9E8E8;color:#000;border-radius:8px'>--bg-pink-soft<br/><b>#F9E8E8</b></div><div style='padding:20px;background:#0A0307;color:#fff;border-radius:8px'>--bg-dark<br/><b>#0A0307</b></div></div></div>" },
-        { "type": "heading", "value": "타이포 토큰" },
+        { "type": "text", "value": "Playwright MCP로 :root 스타일시트에서 직접 추출한 CSS Variables 24개. 기존 보고서의 추정 토큰이 아닌, 실제 라이브 사이트의 정확한 변수명과 값." },
+        { "type": "heading", "value": "실측 :root CSS Variables (24개)" },
+        { "type": "component", "title": "CSS Variables (Playwright MCP 실측 — :root에서 직접 추출)", "css": ":root{--main-color:#dd0031;--area-box-width:1760px;--area-wide-width:1700px;--area-width:1400px;--area-padding:30px;--header-top:55px;--header-height:80px;--sub-visual-height:100vh;--sub-menu-height:36px;--full-height:100vh;--transition-custom:all 0.4s ease-in-out;--transition-custom2:all 0.8s ease-in-out;--font-family1:'Pretendard','나눔고딕',NanumGothic,'Nanum Gothic','돋움',Dotum,Arial,sans-serif;--font-family2:'Outfit','나눔고딕',NanumGothic,'Nanum Gothic','돋움',Dotum,Arial,sans-serif;--spot-r:240px;--shiftY:-21%;--board-main-color:var(--main-color);--board-list-height:90px;--board-list-font-size:1.7rem;--board-list-font-color:#111;--board-list-icon-width:60px;--board-view-font-size:14px;--swiper-theme-color:#007aff;--swiper-navigation-size:44px}", "html": "<div class='token-demo'><div style='display:grid;grid-template-columns:repeat(4,1fr);gap:12px;font-family:Outfit,sans-serif;font-size:12px'><div style='padding:20px;background:#dd0031;color:#fff;border-radius:8px'>--main-color<br/><b>#dd0031</b></div><div style='padding:20px;background:#111;color:#fff;border-radius:8px'>--board-list-font-color<br/><b>#111</b></div><div style='padding:20px;background:#007aff;color:#fff;border-radius:8px'>--swiper-theme-color<br/><b>#007aff</b></div><div style='padding:20px;background:#fff;color:#000;border:1px solid #eee;border-radius:8px'>--area-width<br/><b>1400px</b></div></div></div>" },
+        { "type": "heading", "value": "레이아웃 토큰 (실측)" },
         { "type": "kv", "columns": 2, "items": [
-          { "label": "--font-latin", "value": "'Outfit', sans-serif (.font-outfit 클래스)" },
-          { "label": "--font-kr", "value": "'Pretendard', 'Noto Sans KR', sans-serif" },
-          { "label": "--fs-hero", "value": "clamp(100px, 15vw, 210px)" },
-          { "label": "--fs-display", "value": "clamp(48px, 7vw, 108px)" },
-          { "label": "--fs-h2-kr", "value": "clamp(36px, 4.5vw, 68px)" },
-          { "label": "--fs-h2-en", "value": "clamp(32px, 3.8vw, 56px)" },
-          { "label": "--fs-h3", "value": "clamp(28px, 3.2vw, 46px)" },
-          { "label": "--fs-h4", "value": "24px" },
-          { "label": "--fs-body", "value": "15-16px" },
-          { "label": "--fs-meta", "value": "13-14px" }
+          { "label": "--area-box-width", "value": "1760px (최대 박스 폭)" },
+          { "label": "--area-wide-width", "value": "1700px (와이드 컨테이너)" },
+          { "label": "--area-width", "value": "1400px (기본 콘텐츠 폭)" },
+          { "label": "--area-padding", "value": "30px (좌우 패딩)" },
+          { "label": "--header-height", "value": "80px (고정 헤더 높이)" },
+          { "label": "--header-top", "value": "55px (헤더 내 콘텐츠 상단)" },
+          { "label": "--sub-visual-height", "value": "100vh (서브 배너 높이)" },
+          { "label": "--sub-menu-height", "value": "36px (서브 탑메뉴 높이)" }
+        ]},
+        { "type": "heading", "value": "타이포 토큰 (실측)" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "--font-family1", "value": "Pretendard, 나눔고딕, Dotum, Arial (한글 기본)" },
+          { "label": "--font-family2", "value": "Outfit, 나눔고딕, Dotum, Arial (영문/숫자)" },
+          { "label": "Sub Banner H2", "value": "100px / weight 600 / Outfit (실측)" },
+          { "label": "페이지 H3", "value": "65px / weight 700 / Outfit (실측)" },
+          { "label": "섹션 H4", "value": "40px / weight 700 / Pretendard (실측)" },
+          { "label": "body 기본", "value": "12px / weight 400 / Pretendard (실측)" },
+          { "label": "--board-list-font-size", "value": "1.7rem (게시판 리스트)" },
+          { "label": "--board-view-font-size", "value": "14px (게시판 상세)" }
+        ]},
+        { "type": "heading", "value": "트랜지션 토큰 (실측)" },
+        { "type": "kv", "columns": 2, "items": [
+          { "label": "--transition-custom", "value": "all 0.4s ease-in-out (호버 기본)" },
+          { "label": "--transition-custom2", "value": "all 0.8s ease-in-out (스크롤 진입)" },
+          { "label": "--spot-r", "value": "240px (Hero 마우스 스포트라이트 반경)" },
+          { "label": "--shiftY", "value": "-21% (Hero 이미지 위치 오프셋)" }
         ]},
         { "type": "heading", "value": "여백 · 둥글기 토큰" },
         { "type": "spacingScale", "items": [
@@ -124,16 +140,17 @@
     "main-page": {
       "title": "04. 메인 페이지 분석",
       "blocks": [
-        { "type": "text", "value": "메인 페이지 7개 섹션의 디자인+퍼블리싱 분석. Chrome DevTools로 채집한 실제 DOM/CSS 클래스명 기반." },
-        { "type": "heading", "value": "전체 페이지 흐름" },
+        { "type": "text", "value": "메인 페이지 7개 섹션의 디자인+퍼블리싱 분석. Playwright MCP로 채집한 실측 DOM/CSS 클래스명·높이(px) 기반. 전체 scrollHeight: 6970px." },
+        { "type": "heading", "value": "전체 페이지 흐름 (Playwright 실측)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "① Hero (#mainVisual)", "value": "height:100vh, .gray-layer + .color-layer + .spot-ring, 5열 모자이크 무한 슬라이드" },
-          { "label": "② About (#mainAbout)", "value": "옅은 핑크 배경, 떠다니는 세포, 한글 헤딩, 우측 슬롯머신 카운터 3개" },
-          { "label": "③ Service (#mainService)", "value": "W형 비대칭 3배너 (CellBanking/Stemcell Medical Platform/Medical AICC)" },
-          { "label": "④ Product (#mainProduct)", "value": ".main-prd-slide-con (Swiper linear infinite), 5개 제품 카드 무한 가로 슬라이드" },
-          { "label": "⑤ News (#mainNews)", "value": "좌측 헤딩+빨간 View More, 우측 5개 보도자료 리스트" },
-          { "label": "⑥ Contact", "value": "다크 배경+빨간 네트워크 입자 SVG, 회전 VIEW MORE + 가로 긴 화살표" },
-          { "label": "⑦ Footer", "value": "흰 배경 4단 (로고/Company Info/Quick Links/Family·Privacy 버튼)" }
+          { "label": "① Hero (section.full-height)", "value": "height:100vh(880px), .gray-layer + .color-layer + .spot-ring, 5열 모자이크 무한 슬라이드. 클래스: visual-active" },
+          { "label": "② About (.main-about-con)", "value": "height:1182px, offsetTop:150px. 옅은 핑크 배경, 떠다니는 세포, 한글 헤딩, 우측 슬롯머신 카운터 3개" },
+          { "label": "③ Marquee (.marquee)", "value": "height:280px. 'STEM CELL SPECIALIST MIRACELL' 가로 무한 롤링 텍스트" },
+          { "label": "④ Service (.main-service-con)", "value": "height:1252px, offsetTop:2592px. W형 비대칭 3배너 (.main-service-cover-scroll). 내부 .main-service-img-box height:851px" },
+          { "label": "⑤ Product (.main-prd-con)", "value": "height:872px, offsetTop:4094px. Swiper linear infinite 5개 제품 카드 무한 가로 슬라이드" },
+          { "label": "⑥ News (.main-news-con)", "value": "height:605px, offsetTop:5216px. 좌측 헤딩+빨간 View More, 우측 5개 보도자료 리스트" },
+          { "label": "⑦ Contact (.main-contact-con)", "value": "height:151px, offsetTop:6122px. 다크 배경+빨간 네트워크 입자 SVG, 회전 VIEW MORE + 가로 긴 화살표" },
+          { "label": "⑧ Footer (footer)", "value": "height:547px, offsetTop:6423px. 흰 배경 bg:#FFF 4단 (로고/Company Info/Quick Links/Family·Privacy 버튼)" }
         ]},
         { "type": "heading", "value": "디자이너 체크리스트" },
         { "type": "kv", "columns": 1, "items": [
@@ -158,7 +175,7 @@
     "about-pages": {
       "title": "05. About Us 카테고리 (5페이지 정밀 분석)",
       "blocks": [
-        { "type": "text", "value": "Chrome DevTools로 직접 인스펙션한 About Us 카테고리 5개 페이지의 정확한 섹션 구성, 디자인 요소, 인터랙션. 모든 서브페이지는 공통적으로 'Sub Banner(현미경 다크 이미지 + 흰 큰 제목 + 브레드크럼 + Scroll down) + Sub Top Menu(5개 페이지 가로 네비) + 페이지별 콘텐츠 + Contact 다크 섹션 + Footer' 구조를 가짐." },
+        { "type": "text", "value": "Playwright MCP로 직접 인스펙션한 About Us 카테고리 5개 페이지의 정확한 섹션 구성, 디자인 요소, 인터랙션. 모든 서브페이지는 공통적으로 'Sub Banner(.sub-visual-about, height:880px, 현미경 다크 이미지 + 흰 큰 제목 + 브레드크럼 + Scroll down) + 페이지별 콘텐츠(.about-page, height:2885px) + Contact 다크 섹션 + Footer' 구조를 가짐." },
 
         { "type": "heading", "value": "공통 레이아웃 패턴" },
         { "type": "kv", "columns": 1, "items": [
@@ -167,7 +184,7 @@
           { "label": "콘텐츠 영역", "value": "max-width 1500px, padding-y 섹션마다 다름 (140-200px). 한영 이중 헤딩 패턴 적용 (작은 영문 라벨 + 빨간 dot + 큰 한글 헤딩)" }
         ]},
 
-        { "type": "heading", "value": "5-1. /about/intro.php 기업소개 (sH 4480px)" },
+        { "type": "heading", "value": "5-1. /about/intro.php 기업소개 (sH 4462px, Playwright 실측)" },
         { "type": "kv", "columns": 1, "items": [
           { "label": "Sub Banner", "value": "H1 'About Us' + 브레드크럼 'Home • About Us • 기업소개'" },
           { "label": "섹션 ① H3 메인 헤딩", "value": "센터 정렬 '혁신적인 줄기세포 바이오 기술로, / 건강한 내일을 만듭니다.' (clamp 32-48px, weight 700). 마지막 줄 빨간색 강조 또는 페이드인" },
@@ -226,7 +243,7 @@
     "product-pages": {
       "title": "06. Product 카테고리 (5페이지 정밀 분석)",
       "blocks": [
-        { "type": "text", "value": "Chrome DevTools로 직접 인스펙션한 Product 카테고리 5개 페이지. Smart M-Cell이 가장 풍부 (sH 6574px, 이미지 16장, 리스트 47개, 탭 1개)." },
+        { "type": "text", "value": "Playwright MCP로 직접 인스펙션한 Product 카테고리 5개 페이지. Smart M-Cell이 가장 풍부 (sH 6556px 실측, 이미지 16장, slick 슬라이더, 탭 1개). Sub Banner height:880px, product-page height:5129px." },
 
         { "type": "heading", "value": "공통 페이지 구조" },
         { "type": "kv", "columns": 1, "items": [
@@ -238,7 +255,7 @@
           { "label": "Trust Badge (인증)", "value": "FDA 510(k) 인증 배지 / KFDA 인증 / CE 마크 등. 빨간 보더 카드 + 큰 약자 (FDA/KFDA/CE) + 인증 번호" }
         ]},
 
-        { "type": "heading", "value": "6-1. /product/smart_mcell.php Smart M-Cell (sH 6574px - 가장 풍부)" },
+        { "type": "heading", "value": "6-1. /product/smart_mcell.php Smart M-Cell (sH 6556px 실측 - 가장 풍부)" },
         { "type": "kv", "columns": 1, "items": [
           { "label": "제품 헤더", "value": "H4 'Smart M-Cell' (큰 검정) + 카테고리 '세포용원심분리장치 · 의료기기' (회색)" },
           { "label": "섹션 ① 🟢 제품특징 (h4)", "value": "H4 '제품특징' + 본문 + 5개 spec 카드 그리드 (grid-template-columns: repeat(5, 1fr), gap 16px)" },
@@ -290,7 +307,7 @@
       "blocks": [
         { "type": "text", "value": "Service 페이지는 비즈니스 모델 소개에 특화. 다양한 다이어그램, 프로세스 차트, 도입 효과 카드 등 정보 시각화 컴포넌트가 풍부." },
 
-        { "type": "heading", "value": "7-1. /service/mgp.php Miracell Membership (sH 7993px)" },
+        { "type": "heading", "value": "7-1. /service/mgp.php Miracell Membership (sH 7975px 실측)" },
         { "type": "kv", "columns": 1, "items": [
           { "label": "Sub Banner", "value": "H1 'Service' + 'Home • Service • Miracell Membership'" },
           { "label": "메인 헤더", "value": "H3 'Miracell Membership' (큰 검정) + 카테고리 라벨" },
@@ -340,7 +357,7 @@
       "blocks": [
         { "type": "text", "value": "R&D 페이지는 학술적·교육적 콘텐츠 중심. 인포그래픽, 분자 다이어그램, 임상 데이터 표가 주요 컴포넌트." },
 
-        { "type": "heading", "value": "8-1. /rnd/stem_cells.php 줄기세포란? (sH 6525px)" },
+        { "type": "heading", "value": "8-1. /rnd/stem_cells.php 줄기세포란? (sH 6507px 실측)" },
         { "type": "kv", "columns": 1, "items": [
           { "label": "Sub Banner", "value": "H1 'R&D' + 'Home • R&D • 줄기세포란?'" },
           { "label": "메인 헤더", "value": "H3 '줄기세포란?' (큰 검정)" },
@@ -502,7 +519,7 @@
       "title": "12. 컬러 시스템",
       "blocks": [
         { "type": "text", "value": "사용 비율: White 60% + Black/Gray 30% + Cream/Pink/Light 8% + Brand Red 2%. 절제된 모노크롬 위 단일 포인트 컬러 전략." },
-        { "type": "palette", "title": "정밀 매핑 팔레트 (Chrome DevTools 채집)", "colors": [
+        { "type": "palette", "title": "정밀 매핑 팔레트 (Playwright MCP getComputedStyle 채집)", "colors": [
           { "name": "Brand Red", "hex": "#DD0031", "usage": "로고 dot, 섹션 라벨 dot, 헤딩 마지막 줄, View More, 마우스 포인터, 네트워크 입자, Privacy 버튼, 플로팅 버튼 (총 8지점)" },
           { "name": "Hero Black", "hex": "#000000", "usage": "Hero 배경, 본문 헤딩, GNB(스크롤 후), Family Site 버튼" },
           { "name": "White", "hex": "#FFFFFF", "usage": "기본 배경, 다크 섹션 텍스트" },
@@ -541,7 +558,7 @@
           { "label": "본문 행간", "value": "1.5-1.8" },
           { "label": "본문 자간", "value": "한글 -0.02em, 영문 -0.01em" }
         ]},
-        { "type": "heading", "value": "정밀 타입 스케일 (Chrome 실측)" },
+        { "type": "heading", "value": "정밀 타입 스케일 (Playwright MCP 실측)" },
         { "type": "typo", "items": [
           { "label": "Hero H1 (Miracell)", "size": "clamp(100px,15vw,210px)", "weight": 700, "sample": "Miracell", "tracking": "-0.025em" },
           { "label": "Marquee (STEM CELLS)", "size": "clamp(120px,18vw,280px)", "weight": 900, "sample": "STEM CELLS", "tracking": "-0.04em" },
@@ -606,12 +623,12 @@
       "title": "15. 그리드 · 컨테이너 시스템",
       "blocks": [
         { "type": "kv", "title": "핵심 치수", "columns": 2, "items": [
-          { "label": "콘텐츠 max-width", "value": "1500px (.area)" },
+          { "label": "콘텐츠 max-width (실측)", "value": "--area-width: 1400px / --area-wide-width: 1700px / --area-box-width: 1760px" },
           { "label": "Hero/Footer 풀블리드", "value": "100vw (no max-width)" },
-          { "label": "콘텐츠 패딩", "value": "Desktop 80px / Tablet 40px / Mobile 20px" },
-          { "label": "Header 높이", "value": "80px (--header-height)" },
-          { "label": "Hero 높이", "value": "calc(100vh - var(--header-height))" },
-          { "label": "Sub Banner 높이", "value": "898px (Hero 동일)" }
+          { "label": "콘텐츠 패딩 (실측)", "value": "--area-padding: 30px (Desktop)" },
+          { "label": "Header 높이 (실측)", "value": "80px (--header-height), 내부 top: --header-top: 55px" },
+          { "label": "Hero 높이 (실측)", "value": "--full-height: 100vh (880px at 1692px viewport)" },
+          { "label": "Sub Banner 높이 (실측)", "value": "--sub-visual-height: 100vh (880px), Sub Menu --sub-menu-height: 36px" }
         ]},
         { "type": "heading", "value": "섹션별 그리드 패턴" },
         { "type": "kv", "columns": 1, "items": [
@@ -630,11 +647,15 @@
     "layout-responsive": {
       "title": "16. 반응형 · 여백 · 둥글기",
       "blocks": [
-        { "type": "heading", "value": "반응형 중단점" },
+        { "type": "heading", "value": "반응형 중단점 (Playwright 실측 — CSSMediaRule에서 직접 추출)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "Desktop (≥1280px)", "value": "풀 레이아웃, 80px 패딩, Hero 모자이크 400px 패널, GNB 모두 표시" },
-          { "label": "Tablet (768-1279px)", "value": "다열 → 2열/축소, 40px 패딩, GNB 축소, Hero 패널 축소" },
-          { "label": "Mobile (<768px)", "value": "단열 스택, 20px 패딩, GNB 햄버거로, About W형 → 세로 스택, 사이드 네비 → 상단 가로 탭, mouse-pointer 비활성" }
+          { "label": "XL Desktop (≥1820px)", "value": "max-width:1820px, 1760px, 1730px, 1660px — 초대형 모니터 대응, 세부 패딩/마진 조절" },
+          { "label": "Desktop (1281-1536px)", "value": "max-width:1536px, 1520px, 1460px, 1366px — 일반 데스크탑, 풀 레이아웃" },
+          { "label": "Narrow Desktop (1025-1280px)", "value": "min-width:1025px, max-width:1280px, 1220px — 기본 데스크탑+좁은 화면 분기" },
+          { "label": "Tablet (481-1024px)", "value": "min-width:481px and max-width:1280px, min-width:801px — 태블릿 범위" },
+          { "label": "Mobile (≤800px)", "value": "max-width:800px — 주요 모바일 분기점 (GNB 햄버거, 단열 스택)" },
+          { "label": "Small Mobile (≤640px)", "value": "max-width:640px, 480px, 412px, 390px — 소형 모바일 세부 조절" },
+          { "label": "Short Viewport", "value": "min-width:1281px and max-height:750px — 데스크탑이지만 높이가 작은 경우 별도 처리" }
         ]},
         { "type": "heading", "value": "여백 시스템 (8의 배수)" },
         { "type": "spacingScale", "items": [
@@ -1096,14 +1117,14 @@
           { "label": "코드 컨벤션", "value": "CSS 변수는 :root에 일괄 정의 / 클래스명은 prefix로 컴포넌트 구분 (.mc-, .nv-, .bn-) / JS는 IIFE로 스코프 격리 / GSAP은 module로 lazy load" },
           { "label": "테스팅", "value": "Lighthouse (Performance, Accessibility, SEO 각 90+ 목표) + axe-core (접근성 자동화) + Storybook (컴포넌트 단위 테스트)" }
         ]},
-        { "type": "note", "value": "본 30섹션 보고서로 미라셀 디자인 시스템을 완전히 이해하고 재현할 수 있는 수준의 정보가 제공됩니다. 컴포넌트 라이브러리(18-25)의 50+ 데모는 다른 프로젝트에서 직접 복사하여 응용 가능한 형태로 작성되었습니다. 추가로 Chrome MCP 인스펙션이 필요한 영역이 발견되면 본 보고서를 확장할 수 있습니다." }
+        { "type": "note", "value": "본 30섹션 보고서로 미라셀 디자인 시스템을 완전히 이해하고 재현할 수 있는 수준의 정보가 제공됩니다. 컴포넌트 라이브러리(18-25)의 50+ 데모는 다른 프로젝트에서 직접 복사하여 응용 가능한 형태로 작성되었습니다. 추가로 Playwright MCP 인스펙션이 필요한 영역이 발견되면 본 보고서를 확장할 수 있습니다." }
       ]
     },
 
     "cellbanking-crisis-cards": {
-      "title": "31. 🟢 CellBanking 11k px - 4-Card Crisis Awareness Pattern",
+      "title": "31. CellBanking 11k px - 4-Card Crisis Awareness Pattern",
       "blocks": [
-        { "type": "text", "value": "Chrome MCP 재방문 결과 CellBanking 페이지(sH 11,438px, 사이트 최장)의 시작 영역을 정밀 분석. 사용자에게 '왜 세포보관이 필요한가?'를 묻는 4-Card Crisis Awareness 패턴이 시그니처. 단순 서비스 소개가 아닌 위기 인식 → 솔루션 제안의 카피라이팅 구조." },
+        { "type": "text", "value": "Playwright MCP 재방문 결과 CellBanking 페이지(sH 11,438px, 사이트 최장)의 시작 영역을 정밀 분석. 사용자에게 '왜 세포보관이 필요한가?'를 묻는 4-Card Crisis Awareness 패턴이 시그니처. 단순 서비스 소개가 아닌 위기 인식 → 솔루션 제안의 카피라이팅 구조." },
 
         { "type": "heading", "value": "🟢 4-Card Crisis Awareness (실측 H5 4종)" },
         { "type": "component", "title": "CellBanking 페이지 '서비스 개요' 섹션 - 4개 H5 카드로 위기 인식 유도", "html": "<div class='mr-cb1'><div class='mr-cb1-i'><div class='mr-cb1-img'><img src='https://miracell.co.kr/images/content/cellbanking_service_img01.png' alt='바이러스 진화'/></div><div class='mr-cb1-d'><span class='mr-cb1-n'>CRISIS 01</span><h5>인류를 위협하는 바이러스의 진화</h5><p>새로운 바이러스가 끊임없이 등장하며 면역 시스템에 도전하고 있습니다.</p></div></div><div class='mr-cb1-i'><div class='mr-cb1-img'><img src='https://miracell.co.kr/images/content/cellbanking_service_img02.png' alt='사망률 증가'/></div><div class='mr-cb1-d'><span class='mr-cb1-n'>CRISIS 02</span><h5>진화하는 바이러스에 의해 눈에 띄게 늘어가는 사망률!</h5><p>코로나19 이후 새로운 감염병 출현 주기가 점차 짧아지고 있습니다.</p></div></div><div class='mr-cb1-i'><div class='mr-cb1-img'><img src='https://miracell.co.kr/images/content/cellbanking_service_img03.png' alt='면역력 노화'/></div><div class='mr-cb1-d'><span class='mr-cb1-n'>CRISIS 03</span><h5>나이가 들수록 약해지는 면역력과 노화되는 세포</h5><p>40대 이후 면역세포의 활성도가 급격히 감소합니다. 노화는 누구도 피할 수 없습니다.</p></div></div><div class='mr-cb1-i mr-cb1-solution'><div class='mr-cb1-d'><span class='mr-cb1-n'>SOLUTION</span><h5>고령화 사회로 급성장중인 세포치료 시장</h5><p>지금 건강한 세포를 보관하는 것이 미래의 자신을 위한 가장 확실한 투자입니다.</p><a class='mr-cb1-cta'>CellBanking 시작하기 <span>→</span></a></div></div></div>", "css": ".mr-cb1{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;font-family:Pretendard,sans-serif;max-width:1200px}.mr-cb1-i{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E8E8E8;border-radius:20px;overflow:hidden;transition:all 0.3s}.mr-cb1-i:hover{border-color:#DD0031;transform:translateY(-4px);box-shadow:0 16px 40px rgba(221,0,49,0.08)}.mr-cb1-img{height:180px;background:linear-gradient(135deg,#FDF3F3,#F9E8E8);display:flex;align-items:center;justify-content:center}.mr-cb1-img img{max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}.mr-cb1-d{padding:28px;flex:1;display:flex;flex-direction:column}.mr-cb1-n{font-family:'Outfit',sans-serif;color:#DD0031;font-size:11px;font-weight:700;letter-spacing:0.1em;margin-bottom:12px}.mr-cb1-i h5{font-size:18px;font-weight:700;color:#000000;margin:0 0 12px;letter-spacing:-0.02em;line-height:1.4}.mr-cb1-i p{font-size:13px;color:#666666;line-height:1.7;margin:0;flex:1}.mr-cb1-solution{background:linear-gradient(135deg,#0A0307,#1A0810);color:#FFFFFF}.mr-cb1-solution h5{color:#FFFFFF}.mr-cb1-solution p{color:rgba(255,255,255,0.85)}.mr-cb1-solution .mr-cb1-n{color:#DD0031}.mr-cb1-cta{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:14px 24px;background:#DD0031;color:#FFFFFF;border-radius:99px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;width:fit-content}.mr-cb1-cta:hover{background:#FFFFFF;color:#DD0031}", "fullWidth": true },
@@ -1134,7 +1155,7 @@
     },
 
     "stem-cell-video": {
-      "title": "32. 🟢 줄기세포 교육 페이지 - 비디오 임베드 + 4-Cell Education",
+      "title": "32. 줄기세포 교육 페이지 - 비디오 임베드 + 4-Cell Education",
       "blocks": [
         { "type": "text", "value": "/rnd/stem_cells.php 페이지 (sH 6,502px)는 줄기세포 교육 콘텐츠로 구성. 페이지 상단에 비디오 썸네일 + 재생 아이콘 패턴이 있고, 본문에는 4가지 세포 카드 (줄기세포/성장인자/백혈구/혈소판)가 실 이미지로 임베드되어 있다." },
 
@@ -1148,7 +1169,7 @@
         { "type": "kv", "columns": 1, "items": [
           { "label": "🟢 비디오 + 카드 조합", "value": "페이지 상단 비디오 = 빠른 개요 / 본문 4-Card = 정밀 학습. 두 가지 학습 방식 동시 지원 (시청각 + 텍스트)" },
           { "label": "비디오 임베드 방식 추정", "value": "썸네일 클릭 시 1) 자체 video.html 모달 2) 유튜브 임베드 3) Vimeo 임베드. play_icon.png 클릭 핸들러로 트리거" },
-          { "label": "4-Cell 카드 - 명칭 정정", "value": "기존 분석은 '줄기세포 / 성장인자 / SDF-1a / 백혈구'로 추정했으나 Chrome MCP 실측 결과 '줄기세포 / 성장인자 / 백혈구 / 혈소판' (SDF-1a는 별도 페이지/섹션). 정정" },
+          { "label": "4-Cell 카드 - 명칭 정정", "value": "기존 분석은 '줄기세포 / 성장인자 / SDF-1a / 백혈구'로 추정했으나 Playwright MCP 실측 결과 '줄기세포 / 성장인자 / 백혈구 / 혈소판' (SDF-1a는 별도 페이지/섹션). 정정" },
           { "label": "이미지 - 추상 일러스트 톤", "value": "stem_cell_img01-04.jpg는 모두 추상적 일러스트 (실제 세포 사진 아님). 일반 사용자가 거부감 없이 학습할 수 있도록 디자인" },
           { "label": "alt 텍스트 정확", "value": "alt='줄기세포 이미지' / alt='성장인자 이미지' 등 - 접근성 측면 양호" }
         ]},
@@ -1158,7 +1179,7 @@
     },
 
     "smart-mcell-tech": {
-      "title": "33. 🟢 Smart M-Cell 5-Tech Detail (실제 제품 사진 + LED 4파장)",
+      "title": "33. Smart M-Cell 5-Tech Detail (실제 제품 사진 + LED 4파장)",
       "blocks": [
         { "type": "text", "value": "/product/smart_mcell.php 페이지의 H5 5종 핵심 기술을 실 이미지와 함께 정밀 분석. Smart M-Cell은 사이트 시그니처 제품으로 가장 풍부한 시각 자료를 보유 (sH 6,533px, 이미지 16장)." },
 
@@ -1196,7 +1217,7 @@
     "smooth-interaction-catalog": {
       "title": "34. 부드러운 인터랙션 카탈로그 (페이지 새로고침·점진 스크롤 재점검)",
       "blocks": [
-        { "type": "text", "value": "Chrome MCP로 미라셀 메인 페이지를 새로고침 후 천천히 스크롤하며 발견한 라이브 인터랙션. 정적 분석에서 잡히지 않는 글자별 분할 애니메이션·다국어 3종·풍부한 fade-in reveal 패턴을 정리. 사이트 전체에 transition 694건이 발견될 정도로 미라셀은 한국 코퍼레이트 사이트 중 가장 인터랙티브한 사례 중 하나." },
+        { "type": "text", "value": "Playwright MCP로 미라셀 메인 페이지를 새로고침 후 천천히 스크롤하며 발견한 라이브 인터랙션. 정적 분석에서 잡히지 않는 글자별 분할 애니메이션·다국어 3종·풍부한 fade-in reveal 패턴을 정리. 사이트 전체에 transition 694건이 발견될 정도로 미라셀은 한국 코퍼레이트 사이트 중 가장 인터랙티브한 사례 중 하나." },
 
         { "type": "heading", "value": "발견 1: Splitting.js 글자별 분할 애니메이션 (cm-word-split-JS)" },
         { "type": "kv", "columns": 1, "items": [
@@ -1255,15 +1276,18 @@
           { "label": "기능 검증 필요", "value": "정확한 동작은 클릭/스크롤 테스트로 확인 필요. 사이트의 모든 페이지에 존재하므로 글로벌 UI 요소" }
         ]},
 
-        { "type": "heading", "value": "발견 8: 광범위 Transition 통계" },
+        { "type": "heading", "value": "발견 8: 광범위 Transition 통계 (Playwright MCP 실측)" },
         { "type": "kv", "columns": 1, "items": [
-          { "label": "all 0s ease 0s", "value": "694건 - 사이트 전체 기본 transition. 안성인삼(571) 대비 23% 많음 - 미라셀이 가장 인터랙티브" },
-          { "label": "opacity 0.8s + transform 0.8s ease-in-out", "value": "69건 - 가장 많이 사용된 명시적 트랜지션. 스크롤 reveal 표준" },
-          { "label": "0.4s ease-in-out", "value": "14건 - 호버 표준" },
-          { "label": "0.2s cubic-bezier(0.4, 0, 1, 1)", "value": "6건 - 매우 빠른 인터랙션 (마우스 추적 등)" },
-          { "label": "0.8s ease-in-out / 1s ease-in-out", "value": "각 6건, 2건 - 더 긴 트랜지션 (페이지 전환, 큰 콘텐츠 등장)" },
-          { "label": "opacity 0.4s 만 단독", "value": "4건 - 빠른 fade in/out (모달, 팝업)" },
-          { "label": "background-color 0.4s ease-in-out", "value": "1건 - 색상 단독 전환 (호버 시 배경 변화)" }
+          { "label": "transition: all", "value": "693건 (Playwright 실측) — 사이트 전체 기본 transition. 안성인삼(571) 대비 21% 많음 - 미라셀이 가장 인터랙티브" },
+          { "label": "opacity 0.8s + transform 0.8s ease-in-out", "value": "69건 — 가장 많이 사용된 명시적 트랜지션 (--transition-custom2). 스크롤 reveal 표준" },
+          { "label": "0.4s ease-in-out", "value": "14건 — 호버 표준 (--transition-custom)" },
+          { "label": "0.2s cubic-bezier(0.4, 0, 1, 1)", "value": "6건 — 매우 빠른 인터랙션 (마우스 추적, Material Decelerate)" },
+          { "label": "0.8s ease-in-out", "value": "6건 — 스크롤 진입 (delay 없음)" },
+          { "label": "opacity 0.4s", "value": "4건 — 빠른 fade in/out (모달, 팝업)" },
+          { "label": "0.8s ease-in-out 0.3s", "value": "3건 — 스크롤 진입 + 0.3s 딜레이 (stagger)" },
+          { "label": "1s ease-in-out", "value": "2건 — 긴 트랜지션 (페이지 전환, 큰 콘텐츠)" },
+          { "label": "background-color 0.4s ease-in-out", "value": "1건 — GNB 호버 배경" },
+          { "label": "opacity 0.8s ease-in-out", "value": "1건 — 단독 opacity 전환" }
         ]},
 
         { "type": "note", "value": "🟢 미라셀 사이트는 한국 코퍼레이트 사이트 중 인터랙션 디자인의 정점. Splitting.js 글자별 분할 + 69건의 opacity+transform 스크롤 reveal + Hero 마우스 스포트라이트 + 마우스 추적 회전 SVG + W형 비대칭 레이아웃 등 정적 분석으로는 잡히지 않는 라이브 디테일이 페이지 전체에 깔려있다. 다국어 3종 (KR/EN/CN)으로 글로벌 의료기기 시장도 대응." }
