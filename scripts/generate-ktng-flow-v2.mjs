@@ -645,20 +645,40 @@ function buildWireframeSVG(meta, timeline, interactions, page) {
       </g>
     </g>`;
 
-  // ─── 섹션 박스 (회색 톤 통일) ───
-  const sections = (meta.sections || []).filter(s => s.h > 100);
-  const byY = new Map();
-  sections.forEach(s => { const k = Math.floor(s.y / 40) * 40; if (!byY.has(k) || byY.get(k).h < s.h) byY.set(k, s); });
-  const ordered = [...byY.values()].sort((a, b) => a.y - b.y);
+  // ─── 섹션 박스 (회색 톤 통일) — y 범위 중첩 기반 dedup ───
+  const rawSections = (meta.sections || []).filter(s => s.h > 100);
+  // 1단계: 큰 h 우선, 같으면 짧은 클래스명(부모) 우선 정렬
+  const sortedForDedup = [...rawSections].sort((a, b) => {
+    if (b.h !== a.h) return b.h - a.h;
+    return (a.cls || '').length - (b.cls || '').length;
+  });
+  // 2단계: 기존 선정 영역과 70%+ y 범위 중첩이면 skip (자식 row 제거)
+  const drawn = [];
+  const filtered = [];
+  sortedForDedup.forEach(s => {
+    const overlap = drawn.find(d => {
+      const inter = Math.max(0, Math.min(d.y + d.h, s.y + s.h) - Math.max(d.y, s.y));
+      return inter / Math.min(s.h, d.h) > 0.70;
+    });
+    if (!overlap) {
+      const c = classifySection(s);
+      if (c) {
+        filtered.push({ s, c });
+        drawn.push({ y: s.y, h: s.h });
+      }
+    }
+  });
+  // 3단계: 화면 순서대로 정렬 (위→아래)
+  filtered.sort((a, b) => a.s.y - b.s.y);
 
   let body = '';
-  ordered.forEach(s => {
-    const c = classifySection(s);
-    if (!c) return;
+  filtered.forEach(({ s, c }) => {
     const y = HEADER_H + Math.round(s.y * RATIO);
-    const h = Math.max(40, Math.round(s.h * RATIO));
+    const h = Math.max(48, Math.round(s.h * RATIO));
     const x = LEFT_PAD + 24;
     const w = WF_W - 48;
+    // 박스 사이 여백 더 — h - 10
+    const boxH = h - 10;
 
     // 모든 섹션은 동일한 회색 톤. 단 KV류는 placeholder 강조 (조금 더 진한 회색)
     const isHeroLike = ['mainkv','subkv','kvslider','subheader','global-webgl','sustain-cards','sustain','poster-grid','people','benefit','career','value-section'].includes(c.kind);
@@ -667,11 +687,11 @@ function buildWireframeSVG(meta, timeline, interactions, page) {
 
     body += `
       <g class="wf">
-        <rect x="${x}" y="${y}" width="${w}" height="${h - 2}" rx="4" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+        <rect x="${x}" y="${y}" width="${w}" height="${boxH}" rx="4" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
       </g>`;
 
-    // 미니 컴포넌트 (회색 톤 GREY 토큰 사용)
-    body += renderMiniComponent(c.kind, x, y, w, h);
+    // 미니 컴포넌트 (회색 톤 GREY 토큰 사용) — boxH 전달로 콘텐츠가 박스 안에 들어가도록
+    body += renderMiniComponent(c.kind, x, y, w, boxH);
 
     // 라벨 (상단 좌측 + 클래스명 우측)
     body += `
