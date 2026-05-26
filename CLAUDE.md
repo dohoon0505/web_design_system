@@ -1,45 +1,70 @@
-# CLAUDE.md — 기여 가이드라인
+# CLAUDE.md — 기여 가이드라인 (v2 Flow Mode 표준)
 
-Web Reference Lab(웹 디자인 레퍼런스 연구소)에 변경을 가할 때 따라야 할 원칙. 운영자(/DH)와 AI 코딩 에이전트의 단일 합의 문서.
+Web Reference Lab(웹 디자인 레퍼런스 연구소)에 변경을 가할 때 따라야 할 단일 합의 문서. 운영자(/DH)와 AI 코딩 에이전트가 공동 준수한다.
+
+본 문서는 **KT&G 2026-05-26 v2 사례**를 기준으로 전면 재작성됐다. 종전 가이드(일반 카탈로그 / Mirror Mode / Tier-A)는 모두 폐기. 이 문서가 유일한 표준.
+
+---
 
 ## 🚨 자동화 실행 프로토콜
 
-본 문서를 읽는 AI 에이전트는 사용자의 반복 지시 없이도 다음 4대 원칙을 **무조건 자동 수행**한다.
+AI 에이전트는 사용자의 반복 지시 없이도 다음 4대 원칙을 **무조건 자동 수행**한다.
 
 1. **언어 100% 한국어** — 사고 과정·진행 보고·오류·최종 답변 전부
-2. **채팅창 코드 금지** — 산출물은 파일 시스템에 직접 저장, 실행 가능한 형태로
-3. **선 실측 후 코딩** — Playwright MCP로 `getComputedStyle`·`getBoundingClientRect` 실측 후 정량 표 보고, 그 데이터로만 코딩 시작
-4. **자가 검증 루프 강제** — "확인했습니다" 텍스트 자기보고 금지. 양 사이트(라이브 ↔ 보고서) 스크롤 단계별 오차가 1px이라도 발생하면 즉시 분석·수정, 오차 0으로 수렴했음을 표·스크린샷으로 증명 후 보고
+2. **채팅창 코드 금지** — 산출물은 파일 시스템에 직접 저장. 실행 가능한 형태로
+3. **선 실측 후 코딩** — Playwright로 라이브 사이트의 `getComputedStyle`·`getBoundingClientRect` + 10단계 스크롤 시계열 실측 후 정량 표 보고, 그 데이터로만 코딩 시작
+4. **자가 검증 루프 강제** — "확인했습니다" 텍스트 자기보고 금지. 보고서 렌더 결과를 Playwright로 다시 캡처해 라이브와 양 사이트 동시 대조. 오차 0으로 수렴했음을 표·스크린샷으로 증명 후 보고
+
+---
 
 ## 프로젝트 개요
 
-실제 운영 중인 웹사이트의 디자인 시스템을 연구원 수준으로 분석하는 레퍼런스 카탈로그. **다른 프로젝트에서 곧바로 꺼내 쓸 수 있는 컴포넌트 라이브러리**가 산출물.
+실제 운영 중인 웹사이트의 디자인 시스템을 디자이너용 **흐름 스케치 + 디테일 와이어프레임**으로 정리한 레퍼런스 카탈로그.
 
-### 세 가지 작업 모드
+### 단일 작업 표준 — Flow Mode v2
 
-| 모드 | 사용 시점 (키워드) | 페이지 분석 | 섹션 수 | 산출물 |
-|------|----------|------------|---------|--------|
-| **일반 카탈로그** | "사이트 전체 분석" 요청 | 메인 + 서브 30+ 페이지 | 30+ | 인라인 `component` 블록 라이브러리 |
-| **Mirror Mode** | "100% 동일 / 정밀 클론 / 메인만 / 풀픽셀" 요청 | 단일 페이지 정밀 | 10-15 | `component` 블록 70%+ + Tier-A 프리뷰 모달 |
-| **Flow Mode (v2)** | "흐름 스케치 / 와이어프레임 / 디자이너 컨셉 시안 / 디자인 시안" 요청 | 메인 + **모든** 서브 페이지 | 페이지 수 + 1 (개요) | 페이지마다 디테일 SVG 와이어프레임 + 인터랙션 마커 ①~⑫ (참고: uxplaybook.org Landing Page Formula 톤) |
+| 항목 | 사양 |
+|------|------|
+| 분석 범위 | 메인 + GNB·footer로 접근 가능한 **모든** 서브페이지 전수 (1개도 누락 금지) |
+| 사이드바 | `system.json.references[].flowMode: true` 플래그 → 페이지명 일자 나열 (그룹화 X) |
+| 캡처 방식 | 페이지마다 10단계 스크롤 (sY 0%·10%·…·100%, 11 위치) × 즉시·+1s·+2s 3장 = **33장 viewport screenshot + computed-state 시계열 11 step** |
+| 산출물 (페이지마다) | (1) 페이지 개요 텍스트 / (2) 라이브 채집 메타 표 / (3) **디테일 SVG 와이어프레임 + 인터랙션 마커 ①~⑫** / (4) 섹션 시퀀스 / (5) 인터랙션 카탈로그 / (6) 시계열 변화 표 / (7) 정량 메모 |
+| 와이어프레임 스타일 | **흑백/회색 톤만**. Pretendard / Inter sans-serif. 손그림 필터·컬러 코드·Caveat 폰트 모두 금지 (참고 톤: uxplaybook.org Landing Page Formula) |
+| 인터랙션 표현 | **마커 + 풍선 주석으로 시각화**. 텍스트만 설명하는 카탈로그는 금지 |
+
+### 산출 위치
+
+```
+analyses/{site-id}/analysis.json              ← 보고서 데이터 (페이지 = 섹션)
+analyses/{site-id}/sections-meta.json         ← system.json 등록용 메타
+scripts/capture-{site-id}-v2.mjs              ← Playwright Node 일괄 캡처
+scripts/generate-{site-id}-flow-v2.mjs        ← 와이어프레임 + 인터랙션 마커 생성
+scripts/register-{site-id}-flow.mjs           ← system.json 자동 등록
+.playwright-mcp/{site-id}/v2/{page}/*.jpeg    ← 캡처 858장+ (gitignore)
+.playwright-mcp/{site-id}/v2/{page}/timeline.json + meta.json
+```
+
+---
 
 ## 절대 규칙
 
-### 0. Playwright로 라이브 사이트 직접 측정 (MCP 또는 Node 직접 호출)
+### 0. 측정 도구는 Playwright 1종 (Chrome MCP 사용 금지)
 
-**측정 도구는 Playwright 1종** (Chrome MCP는 사용 금지). 학습 데이터 추정·외부 캐시·WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만.
+학습 데이터 추정·외부 캐시·WebFetch는 **사이트맵 URL 패턴 추정** 같은 보조 용도로만.
 
-**케이스 A — Playwright MCP** (Mirror Mode 단일 페이지·인터랙티브 디버그·스팟 점검):
+**케이스 A — Playwright MCP** (디버그·스팟 점검·페이지 5개 이하):
+
 ```
-1. mcp__playwright__browser_navigate({ url })
-2. wait 3-5초 (하이드레이션 완료)
-3. mcp__playwright__browser_evaluate({ function: '() => { ... }' })
-4. mcp__playwright__browser_take_screenshot
-5. mcp__playwright__browser_hover/click (인터랙션 측정)
+mcp__playwright__browser_navigate({ url })
+mcp__playwright__browser_wait_for({ time: 3 })
+mcp__playwright__browser_evaluate({ function: '() => { ... }' })
+mcp__playwright__browser_take_screenshot({ filename })
 ```
 
-**케이스 B — Playwright Node 직접 호출 스크립트** (Flow Mode·일반 카탈로그 대량 페이지·페이지 10개 이상):
-MCP는 도구 호출당 1 메시지라 26 페이지 × 33장 = 800+ 메시지로 비현실적. 동일 Playwright 패키지를 Node로 직접 호출해 1회 실행으로 일괄 처리한다. KT&G v2: 13분에 26 페이지 858장 캡처.
+**케이스 B — Playwright Node 직접 호출 (Flow Mode 표준, 페이지 10개 이상)**:
+
+MCP는 도구 호출당 1 메시지라 26 페이지 × 33장 = 800+ 메시지로 비현실적. 동일 Playwright 패키지를 Node로 직접 호출해 1회 실행으로 일괄 처리. KT&G v2: 13분에 26 페이지 858장 + 시계열 858 snapshot.
+
 ```js
 import { chromium } from 'playwright';
 const browser = await chromium.launch({ headless: true });
@@ -48,193 +73,218 @@ const page = await ctx.newPage();
 for (const p of PAGES) {
   await page.goto(p.url, { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(4000); // 하이드레이션 + 인트로
-  for (let step = 0; step <= 10; step++) {        // Flow Mode 표준: 10단계 × 3캡처
-    await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), sH * step / 10);
-    await page.waitForTimeout(200);  await page.screenshot({ /* a */ });
-    await page.waitForTimeout(1000); await page.screenshot({ /* b */ });
-    await page.waitForTimeout(1000); await page.screenshot({ /* c */ });
-    timeline.push(await page.evaluate(COLLECT_FN)); // computed state 시계열
+  const sH = await page.evaluate(() => document.body.scrollHeight);
+  for (let step = 0; step <= 10; step++) {                                 // 10단계
+    await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), Math.floor(sH * step / 10));
+    await page.waitForTimeout(200);  await page.screenshot({ /* a 즉시 */ });
+    await page.waitForTimeout(1000); await page.screenshot({ /* b +1s */ });
+    await page.waitForTimeout(1000); await page.screenshot({ /* c +2s */ });
+    timeline.push(await page.evaluate(COLLECT_FN));                        // computed state
   }
 }
 ```
-KT&G v2 표준 구현체: `scripts/capture-ktng-v2.mjs` (전수 일괄 캡처) + `scripts/generate-ktng-flow-v2.mjs` (와이어프레임 + 인터랙션 마커 자동 검출).
 
-### 1. 섹션 타이틀에 이모지 금지
+표준 구현체: `scripts/capture-ktng-v2.mjs` (전수 일괄) + `scripts/generate-ktng-flow-v2.mjs` (와이어프레임 + 인터랙션 자동 검출).
 
-`sections.{id}.title` 문자열에는 🟢 같은 이모지를 절대 넣지 않는다. 본문(`value`, `label`, `text`)에서만 허용.
+### 1. 메인 + 모든 서브페이지 전수
 
-```json
-// 잘못된 예
-{ "title": "20. 🟢 시그니처 - Orbital", ... }
-// 올바른 예
-{ "title": "20. 시그니처 - Orbital",
-  "blocks": [{"type":"kv","items":[{"label":"🟢 특징","value":"..."}]}] }
-```
+GNB·footer를 통해 접근 가능한 페이지는 **하나도 누락하지 않는다.** 사이드페이지·기타 정보 페이지·신고 폼·게시판 모두 포함.
 
-### 2. 실제 사이트 이미지 적극 사용
+KT&G 사례: 26 페이지 (메인 / 회사소개 4 / 투자정보 7 / 지속가능경영 5 / 미디어 3 / 인재채용 3 / 기타 3).
 
-라이브 사이트의 실제 이미지·영상 URL을 그대로 `<img src>`, `background-image:url(...)`로 임베드. 비공개 연구 자료라 저작권·CDN 비용 고려 X.
+### 2. 사이드바 페이지명 일자 나열 (`flowMode: true`)
 
-### 3. smooth-interaction-catalog 섹션 필수
-
-마지막 섹션은 `smooth-interaction-catalog` ID로 통일. 정적 분석으로 잡히지 않는 라이브 동작 (Splitting.js 글자별 fade-in / Slot Counter / Particle Network / 마우스 추적 커서 등)을 정리.
-
-## 보고서 데이터 모델
-
-각 분석은 `analyses/{id}/analysis.json` 한 파일.
+`system.json.references[]` 엔트리에 `flowMode: true` 플래그를 추가하면 `assets/js/main.js`의 `buildSidebar`가 `sections` 배열을 sub-link로 펼친다.
 
 ```json
 {
-  "id": "miracell",
-  "title": "미라셀 (메인 100% 재현)",
-  "url": "https://miracell.co.kr/kr/",
-  "date": "2026-05-22",
-  "summary": "2-3 문단 — 사이트 정체성, 기술 스택, 시그니처 패턴",
-  "crawledPages": 1,
-  "sections": {
-    "overview":   { "title": "01. 개요", "blocks": [...] },
+  "id": "ktng-com-flow",
+  "title": "KT&G (흐름 스케치 1호 v2)",
+  "url": "https://www.ktng.com/",
+  "date": "2026-05-26",
+  "analysis": "analyses/ktng-com-flow/analysis.json",
+  "pagesAnalyzed": 26,
+  "flowMode": true,                                          ← 필수
+  "sections": [
+    { "id": "site-overview",       "num": "00", "title": "사이트 개요 · 읽기 가이드", "desc": "..." },
+    { "id": "main",                "num": "01", "title": "메인페이지",               "desc": "..." },
+    { "id": "about-introduction",  "num": "02", "title": "회사소개 - KT&G 소개",     "desc": "..." },
     ...
-    "smooth-interaction-catalog": { "title": "N. 부드러운 인터랙션 카탈로그", "blocks": [...] }
+  ],
+  "subpages": [ { "title": "...", "url": "..." }, ... ]
+}
+```
+
+**그룹화 (회사소개 / 투자정보 ...) 금지**. 페이지명 그대로 일자 나열만.
+
+`#ref/{site-id}/{page}` 직접 URL로 페이지 단독 진입 가능 (`route()`가 `parts[2]` 받아 `renderSection`).
+
+### 3. 와이어프레임 스타일 — 흑백/회색 톤 + Pretendard
+
+참고 톤: **uxplaybook.org Landing Page Formula** 같은 깔끔한 디자이너용 와이어프레임.
+
+| 금지 | 사용 |
+|------|------|
+| Caveat / Comic Sans 손글씨 폰트 | `Pretendard, Inter, system-ui, sans-serif` |
+| 손그림 displacement filter (`feTurbulence` + `feDisplacementMap`) | 정확한 직선 박스 |
+| 컬러 코드 (검정 KV / 보라 sticky / 호박 iframe / 녹색 ESG …) | **회색 톤만** (강조는 검정 박스로만) |
+| 빨강 원형 마커 + 핑크 풍선 + 점선 화살표 | 검정 작은 원 (r=9) + 좌측 텍스트 주석 + 가는 검정 직선 화살표 |
+
+### 4. 인터랙션은 마커 + 풍선 주석 (텍스트만 설명 금지)
+
+와이어프레임 위에 검정 작은 원 + 번호 + 가는 검정 직선 화살표가 좌측 텍스트 주석으로 연결.
+
+좌측 주석 = (① · KIND) / 제목 진하게 / 본문 회색 2-3줄.
+
+```
+①  · STICKY              ← anno-kind (회색 작은 글씨, uppercase)
+GNB 헤더 상단 sticky      ← anno-title (검정 진하게)
+header — position:sticky  ← anno-body (회색 2-3줄)
+top:0 z-index:100. 모든
+페이지 공통. 스크롤 시작과
+함께 viewport 상단에 고정.
+```
+
+---
+
+## 보고서 데이터 모델
+
+### analysis.json — 페이지 = 섹션
+
+```json
+{
+  "id": "ktng-com-flow",
+  "title": "KT&G (흐름 스케치 1호 v2)",
+  "url": "https://www.ktng.com/",
+  "date": "2026-05-26",
+  "summary": "2-3 문단 — 사이트 정체성, 캡처 방식, 마커 자동 검출",
+  "crawledPages": 26,
+  "sections": {
+    "site-overview": { "title": "00. 사이트 개요 · 읽기 가이드", "blocks": [...] },
+    "main":          { "title": "01. 메인페이지",                  "blocks": [...] },
+    "about-history": { "title": "03. 회사소개 - 연혁",             "blocks": [...] },
+    ...
   }
 }
 ```
 
-`system.json.references[]`에 동일 `id` + 커스텀 `sections` 배열(`{id, num, title, desc}`)을 함께 등록.
-
-## 블록 타입 카탈로그
-
-`assets/js/main.js`의 `renderBlock()`이 처리하는 블록 타입. 다른 타입은 렌더되지 않음.
-
-| 타입 | 용도 | 필수/선택 키 |
-|------|------|-----|
-| `heading` | h2 헤딩 | `value` |
-| `text` | 단락 텍스트 | `value` |
-| `note` | i 아이콘 노트 (정량 데이터 전용) | `value` |
-| `kv` | 키-값 리스트 (1/2/3 컬럼) | `title?`, `columns?`, `items[{label, value}]` |
-| `stats` | 큰 숫자 카드 그리드 | `items[{number, suffix?, label}]` |
-| `sitemap` | 부모 + 자식 그룹 | `items[{label, children[]}]` |
-| `structure` | 순번 + 라벨 + 태그 + 설명 | `items[{label, tag?, desc}]` |
-| `palette` | 컬러 스와치 표 | `title?`, `colors[{name, hex, usage}]` |
-| `typo` | 폰트 샘플 표 | `items[{label, size, weight, sample, tracking?}]` |
-| `component` | HTML/CSS/JS 라이브 프리뷰 (인라인) | `title?`, `html`, `css`, `js?`, `fullWidth?` |
-| `component` (Tier-A) | 프리뷰 모달 (별도 페이지) | `title?`, `preview`, `thumbBg?`, `thumbLabel?` |
-| `spacingScale` | 여백 바 | `items[{label, px}]` |
-| `radiusScale` | 둥글기 박스 | `items[{label, px, usage?, note?}]` |
-
-## Mirror Mode — 단일 페이지 100% 동일 재현 (미라셀 2026-05-22 정립)
-
-### 핵심 원칙 6가지
-
-1. **단일 페이지 집중** — `crawledPages: 1`, `subpages` 배열은 메인 1개만
-2. **10-15 섹션 구조** — 헤더/히어로/미들/푸터 + 비주얼(타입·컬러) + 인터랙션 카탈로그
-3. **`component` 블록 비중 70%+** — `kv` 표만 늘어놓지 말고 모든 섹션에 시각 컴포넌트 1개+
-4. **실 이미지 CDN URL 임베드 의무** — `https://{site}/images/...` 절대 경로 그대로
-5. **5-Round E2E 양 사이트 대조** — 우회 없이 라이브 ↔ 보고서 5회 왕복
-6. **디자인 토큰 100% 실측** — `:root` CSS Variables, transform 값(`translate(-76.748%,0%)` 같은 어색한 % 그대로), 클래스명까지 라이브 측정값. 단순 텍스트 설명(`"White 60% + Black 30%"`) 절대 금지
-
-### 5-Round E2E 양 사이트 대조 방법론 (94.75% 달성 핵심)
-
-각 라운드에서 **라이브와 보고서를 양쪽 동시에 Playwright로 띄우고** 비교한다. 한쪽만 측정 후 "확인했다"고 마킹하는 것은 검증이 아니다.
-
-| 라운드 | 작업 |
-|--------|------|
-| **Round 1: 동시 스크린샷** | 라이브 N장 + 보고서 N장 = 양쪽 N개 섹션 페어 비교. 각 페어 일치율(%) 산정 |
-| **Round 2: 차이점 즉시 수정** | Round 1에서 발견한 차이 (텍스트 크기/색상/레이아웃) 즉시 CSS 수정 |
-| **Round 3: Computed Style 정량 채집** | 핵심 요소 12개+의 `fs/fw/color/w/h/bg/br/padding`를 라이브에서 채집 → 보고서 토큰 표와 1:1 대조 |
-| **Round 4: Hover/Click 인터랙션** | `mcp__playwright__browser_hover` + getComputedStyle로 hover 상태 측정. 카드 자체 transform vs 페이지 전역 커서(.mouse-pointer)인지 식별 |
-| **Round 5: 재측정 + 일치율 표** | Round 2 수정 후 다시 양 사이트 스크린샷, 일치율 비교 표를 `smooth-interaction-catalog`에 기록 |
-
-각 라운드 끝에 `node scripts/validate.mjs` 통과 + 보고서 렌더 확인. 자기보고 텍스트 절대 금지.
-
-### 정적 분석으로 놓치는 8가지 히든 패턴 (의도적 탐색)
-
-미라셀 사례에서 정적 분석으로 잡히지 않아 5-Round 중 발견된 패턴. 신규 작업 시 **반드시 의도적으로 찾아본다**:
-
-1. **Slot Machine Counter** — `.count-num-item` ul 안 0-9 셀이 세로 cycling. About 섹션 통계 (창립일·고객·특허) 등
-2. **Quick FAB** — `.cm-quick-menu` 우하단 fixed 원형 (보통 60-90px). Contact us / Scroll-to-top 등
-3. **Particle Network 배경** — Hero/Contact의 빨간 점+선 네트워크. radial-gradient 또는 canvas
-4. **회전 SVG textPath** — `<svg><defs><path id='c'/></defs><textPath href='#c'>VIEW MORE…</textPath>` 형태로 원형 텍스트가 14s linear infinite 회전
-5. **마퀴 무한 텍스트** — `.marquee .mar_ch` 에 `transform: translate(-76.748%, 0%)` 같은 어색한 % 값으로 끝없는 좌측 이동
-6. **Splitting.js 글자별 fade-in** — `.cm-word-split-JS words chars splitting` 클래스 마커. 단어→글자 2단 분할 후 stagger 0.05s
-7. **헤더 듀얼 로고 fade** — `<h1>` 안에 흰/검정 로고 PNG 두 장이 겹침. 스크롤 위치에 따라 opacity 토글
-8. **마우스 추적 커스텀 커서** — `.mouse-pointer.active.is-moving.view` (position:fixed z:10000). Service/Product 카드 hover 시 `.view` 클래스 추가로 191/163 빨간 원형 + 회전 VIEW MORE 텍스트 표시. **카드 자체 hover가 아님**
-
-### Mirror Mode 섹션 구조 권장 (페이지 흐름 순)
+### 페이지 섹션의 표준 7 블록 (Flow Mode v2)
 
 ```
-01. 개요 · 메인 페이지 전용 분석
-02. 디자인 토큰 — :root CSS Variables 실측
-03. 헤더 — Top Fixed Object
-04. GNB + 풀스크린 사이트맵 (OPEN)
-05. Hero (라이브 패턴 재현)
-06-N. 미들 섹션들 (about / service / product / news / contact ...)
-N+1. Footer
-N+2. 타이포그래피 시스템
-N+3. 컬러 시스템
-N+4. 인터랙션 시스템 — Transition·Animation 통계
-마지막. 부드러운 인터랙션 카탈로그 (5-Round 검증 결과 표 포함)
+[1] heading      — "페이지명 — 페이지 흐름 + 와이어프레임"
+[2] text         — Playwright 캡처 방식·sH·섹션 수·transition·animation 요약
+[3] component    — 디테일 SVG 와이어프레임 (fullWidth: true, html에 인라인 SVG)
+[4] heading      — "인터랙션 카탈로그 (스케치 마커 ①②③④⑤…)"
+    structure    — 각 마커 = { label: "①  ...", tag: "KIND", desc: "동작 설명" }
+[5] kv           — 라이브 채집 메타 (경로·sH·섹션 수·transition·color 빈도·인터랙션 인벤토리)
+[6] heading      — "스크롤 시계열 변화 (10단계 +1s 시점)"
+    structure    — step 0~10 × (sY/sticky/active/keyframes/counter)
+[7] note         — Playwright 직접 호출 + viewport + 하이드레이션 wait + 검출 로직 메모
 ```
 
-각 섹션 = (a) `kv` 토큰 표 + (b) `component` 라이브 프리뷰 + (c) `note` 정량 차이 3종 세트.
+### 블록 타입 (`assets/js/main.js`의 `renderBlock()`)
 
-### 인프라 핵심 사항
+| 타입 | 용도 |
+|------|------|
+| `heading` | h2 헤딩 |
+| `text` | 단락 텍스트 |
+| `note` | i 아이콘 노트 (정량 데이터 전용) |
+| `kv` | 키-값 리스트 (1/2/3 컬럼) |
+| `structure` | 순번 + 라벨 + 태그 + 설명 (인터랙션 카탈로그·시계열 표) |
+| `sitemap` | 부모 + 자식 그룹 (개요 섹션) |
+| `stats` | 큰 숫자 카드 그리드 |
+| `palette` / `typo` / `spacingScale` / `radiusScale` | 디자인 토큰 표 |
+| `component` | HTML(SVG) 인라인 프리뷰 — Flow Mode의 와이어프레임 임베드 |
 
-**escapeHtml `"`/`'` escape 적용** (2026-05-22 수정). `assets/js/main.js`:
+`component` 블록 html 필드에는 SVG를 그대로 임베드. `assets/js/main.js`의 `escapeHtml`이 `<`·`>`·`&`·`"`·`'` 모두 escape하므로 attribute 안전.
+
+---
+
+## Flow Mode 작업 절차 (5단계)
+
+### Step 1 — 사이트맵 추출 (Playwright MCP)
+
+메인 페이지 1회 navigate + GNB·footer 링크 일괄 수집. 페이지 ID·한국어 라벨 매핑 작성.
 
 ```js
-function escapeHtml(str) {
-  var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  // textNode.innerHTML escapes <, >, & but NOT " or '
-  return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
+mcp__playwright__browser_navigate({ url: 'https://www.{site}.com/' });
+mcp__playwright__browser_wait_for({ time: 3 });
+mcp__playwright__browser_evaluate({ function: `() => {
+  const gnb = [];
+  document.querySelectorAll('header nav a, header a, .gnb a').forEach(a => {
+    const t = (a.textContent||'').trim();
+    const h = a.getAttribute('href') || '';
+    if (t && h && !h.startsWith('#') && !h.startsWith('javascript')) gnb.push({ t, h });
+  });
+  return { title: document.title, gnb };
+}`});
 ```
 
-이 수정 전에는 HTML 안 `class="..."` 같은 double-quote가 `data-html="..."` 속성을 깨뜨려 컴포넌트가 렌더되지 않았음. 현재는 single/double 양쪽 안전.
+페이지 26개 (KT&G) ~ 12-30개 정도가 일반 범위.
 
-### Mirror Mode 작업 체크리스트 (이중 모드 표준)
+### Step 2 — Playwright Node 일괄 캡처 스크립트 작성·실행
 
-```
-[ ] 사용자 요청에 "100% 동일 / 정밀 재현 / 메인만 / 풀픽셀" → Mirror Mode 진입
-[ ] 기존 analysis.json 백업 (analysis.backup.json)
-[ ] crawledPages: 1, subpages 배열은 메인 1개만
-[ ] :root CSS Variables 전수 추출 (document.styleSheets → CSSRule selectorText ':root')
-[ ] 페이지 차원 (sH, sW, viewport) + 각 article/section 좌표(top/h) 정밀 측정
-[ ] 8가지 히든 패턴 의도적 탐색 (Slot Counter / FAB / Particle / Rotating SVG / Marquee / Splitting / Dual Logo / Mouse Pointer)
-[ ] 모든 섹션에 인라인 component 블록 1개+ 포함 (kv 표만 늘어놓기 금지)
-[ ] 실제 이미지 CDN URL 직접 임베드
-[ ] 5-Round E2E 양 사이트 대조 완료 (라이브 N장 + 보고서 N장 페어 비교)
-[ ] **Tier-A 병행 작성 (Mirror Mode 표준)** — {id}-app/styles/globals.css + components/{id}/*.html 8개+
-[ ] **각 인라인 component 직후에 block.preview URL을 가진 Tier-A 블록 추가**
-[ ] Playwright로 Tier-A 모달 동작 검증 ([프리뷰 열기] → iframe 로드 → ESC 닫기)
-[ ] 마지막 섹션에 5-Round 검증 결과 표 + 발견 패턴 정리 + Tier-A 일치율 명시
-[ ] node scripts/validate.mjs 5 OK / 0 error 통과
+`scripts/capture-{site-id}-v2.mjs` 작성. 표준 템플릿은 `scripts/capture-ktng-v2.mjs` 복제 + PAGES 배열 수정.
+
+```bash
+node scripts/capture-{site-id}-v2.mjs           # 전수 (13~15분)
+node scripts/capture-{site-id}-v2.mjs 01-main   # 단일 페이지 디버그
 ```
 
-## Flow Mode — 흐름 스케치 + 디테일 와이어프레임 (KT&G 2026-05-26 정립, v2)
+산출: `.playwright-mcp/{site-id}/v2/{page}/sNN-{ratio}pct-{a,b,c}.jpeg` + `timeline.json` + `meta.json`.
 
-### 핵심 원칙 6가지
+### Step 3 — Generator 스크립트 작성·실행
 
-1. **사용자 키워드 감지** — "흐름 스케치 / 와이어프레임 / 디자이너 컨셉 시안 / 디자인 시안" → Flow Mode 진입
-2. **메인 + 모든 서브페이지** — GNB·footer로 접근 가능한 페이지 전수. 한 페이지도 누락 금지
-3. **사이드바 페이지 일자 나열** — `system.json.references[]` 엔트리에 `flowMode: true` 플래그 + `sections` 배열 (페이지명 그대로 노출). 그룹화 X
-4. **10단계 × 3캡처 정밀 스크롤** — 페이지마다 sY 0%·10%·…·100% (11 위치) × 즉시·+1s·+2s 3장 = **33장 viewport screenshot + computed-state 시계열 11 step**. fullPage 스크린샷 1장으로는 sticky·counter·animation·hover 동적 변화 못 잡음
-5. **디테일 SVG 와이어프레임** — 라이브 y/h 좌표를 1400×{비례} SVG로 환산. **흑백/회색 톤만** (참고: uxplaybook.org Landing Page Formula). 손그림 필터·컬러 코드·Caveat 폰트 모두 금지. Pretendard / Inter sans-serif + 회색 placeholder + 검정 CTA
-6. **인터랙션은 마커 + 풍선 주석** — 텍스트만 설명 X. 와이어프레임 위에 검정 작은 원 (16×16) + 번호 + 가는 검정 직선 화살표 + 좌측 텍스트 주석 (제목 진하게 + 본문 회색 2-3줄). 사용자가 "어디서 어떤 인터랙션이 발생하는지" 한 눈에 파악
+`scripts/generate-{site-id}-flow-v2.mjs` 작성. 표준 구성:
 
-### 작업 절차 (KT&G v2 표준)
+1. `PAGES` 배열 (id + file + num + title + sidebarLabel)
+2. `classifySection(section)` — 라이브 클래스명 → 컴포넌트 종류 식별 (예: `kv` → mainkv, `sticky-sequence` → sticky-seq, `network__overseas-webgl` → webgl-globe)
+3. `renderMiniComponent(kind, x, y, w, h)` — 컴포넌트 종류별 mini wireframe (회색 placeholder + 검정 CTA + 회색 텍스트 라인)
+4. `detectInteractions(timeline, meta, page)` — 인터랙션 자동 검출
+5. `buildWireframeSVG(meta, timeline, interactions, page)` — SVG 합성
+6. `buildPageSection(data, page)` — 7 블록 표준 작성
+7. `buildOverviewSection(allData)` — 00 사이트 개요 + 읽기 가이드
+8. `main()` — analysis.json + sections-meta.json 저장
 
-1. **Playwright MCP로 사이트맵 추출** — 메인 navigate + GNB·footer 링크 일괄 수집 → 페이지 ID·한국어 라벨 매핑 작성
-2. **`scripts/capture-{id}-v2.mjs` 작성·실행** — Node로 chromium headless 띄워 26 페이지 일괄 캡처 (13-15분). 페이지마다 `.playwright-mcp/{id}/v2/{page}/sNN-{ratio}pct-{a,b,c}.jpeg` + `timeline.json` + `meta.json`
-3. **`scripts/generate-{id}-flow-v2.mjs` 작성·실행** — timeline·meta 읽어 페이지마다:
-   - SVG 와이어프레임 생성 (회색 톤 + 컴포넌트별 mini wireframe + 페이지별 분류 `classifySection`)
-   - timeline 시계열에서 인터랙션 자동 검출 (sticky position·active count·counter textContent·animation name·header bg 변화)
-   - 페이지별 특수 패턴 자동 추가 (연혁 sticky 5시대 nav · 글로벌 네트워크 WebGL globe · 주요사업 sticky-sequence · 통계 카운터 · 미디어 라이브러리 필터 등)
-   - 베이스라인 보장 (GNB sticky 헤더 등)으로 모든 페이지 마커 최소 4개 보장
-4. **`scripts/register-{id}-flow.mjs`** — `system.json`에 `flowMode: true` 플래그 + sections 자동 등록
-5. **로컬 서버 + Playwright로 26 페이지 spot check** — `node scripts/validate.mjs` 통과 후 `http://localhost:8080/#ref/{id}-flow/{page}` 전수 확인
+```bash
+node scripts/generate-{site-id}-flow-v2.mjs
+```
 
-### SVG 와이어프레임 스타일 가이드 (회색 톤 토큰)
+### Step 4 — system.json 자동 등록 + validate
+
+`scripts/register-{site-id}-flow.mjs` 작성 (KT&G `register-ktng-flow.mjs` 복제). `flowMode: true` 플래그 필수.
+
+```bash
+node scripts/register-{site-id}-flow.mjs
+node scripts/validate.mjs                       # 5 OK / 0 warn / 0 error 통과 필수
+```
+
+### Step 5 — 로컬 서버 + Playwright spot check
+
+```bash
+powershell.exe -NoProfile -File scripts/serve.ps1   # Windows
+# 또는 pwsh -File scripts/serve.ps1
+```
+
+Playwright MCP로 `http://localhost:8080/#ref/{site-id}-flow` 진입 → 사이드바 sub-link 수 검증 + 페이지별 마커 카운트.
+
+```js
+mcp__playwright__browser_evaluate({ function: `async () => {
+  const res = await fetch('/analyses/{site-id}-flow/analysis.json');
+  const data = await res.json();
+  return Object.keys(data.sections).map(sid => ({
+    sid, n: countInteractionMarkers(data.sections[sid])
+  }));
+}`});
+```
+
+모든 페이지 마커 **최소 4개 보장**. 부족하면 Step 3의 `detectInteractions`에 페이지 특수 패턴 추가.
+
+---
+
+## SVG 와이어프레임 스타일 가이드
+
+### 회색 톤 토큰 (변경 금지)
 
 ```js
 const GREY = {
@@ -252,240 +302,155 @@ const GREY = {
 };
 ```
 
-- 폰트: `'Pretendard', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif`
-- 마커: 검정 원 r=9 + 흰색 번호 + 가는 검정 직선 화살표 (`marker-end` 표준)
-- 미니 컴포넌트: 회색 텍스트 라인 (h 6-8px) + 회색 이미지 영역 + 검정 CTA 버튼 (`bg #171717`, 라운드)
-- 손그림 필터 (`feTurbulence` + `feDisplacementMap`) **절대 사용 금지**
+### SVG 캔버스 사양
 
-### 인터랙션 마커 종류 (12종 + 페이지별 특수 패턴)
+- viewBox: `0 0 1400 {비례}` — 라이브 sH에 비례
+- 좌측 260px: 인터랙션 주석 영역
+- 가운데 1100px: 와이어프레임
+- 우측 40px: 스크롤 인디케이터 + sH 라벨
+- 헤더 56px (GNB 고정)
 
-| KIND | 의미 | 검출 방법 |
+### sH 비례 스케일 (자동)
+
+```js
+const RATIO = sH > 20000 ? 0.06 : sH > 10000 ? 0.10 : sH > 5000 ? 0.14 : 0.18;
+```
+
+매우 긴 페이지(연혁 27,250px / 라이브러리 28,263px)는 자동 압축.
+
+### 미니 컴포넌트 헬퍼
+
+```js
+const line = (x, y, w, h = 6, color = GREY.ph) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="${color}"/>`;
+const cta  = (x, y, w, h = 26, label = '') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${h/2}" fill="${GREY.accent}"/>${label ? `<text ...>${label}</text>` : ''}`;
+const card = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${GREY.bg}" stroke="${GREY.borderDim}" stroke-width="1"/>`;
+const img  = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${GREY.ph}"/>`;
+```
+
+이 4가지 헬퍼로 모든 컴포넌트(카드 그리드·리스트·슬라이더·카운터·지구본·게시판·아코디언 등)를 표현.
+
+### 컴포넌트 종류별 미니 wireframe (KT&G 기준 30+종 분류)
+
+`classifySection`에서 라이브 클래스명을 분류하면 `renderMiniComponent`가 적절한 mini wireframe 생성. 표준 종류:
+
+```
+mainkv / subkv / subheader / kvslider / sticky-seq / strategy
+global-webgl / sustain-cards / sustain / news / invest / with
+img-row / value / introduction-block
+history-area / history-year / history-row / history-container
+webgl-globe / list-block / board / iframe / accordion
+stock-card / performance / rating-cards / event-list / image-cards
+esg-cards / strategy-block / highlight / efforts / banner
+esg-text / esg-library / ethics-header / ethics-block / policies
+poster-grid / social-channels
+people / value-section / benefit / career / value-cards / benefit-cards
+job-list / job-card / recruit-process / cta / interview
+inquiry / compliance-block / safety-board
+container / unknown (default)
+```
+
+새 사이트 작성 시 `classifySection`에 해당 사이트 고유 클래스 패턴 추가 + `renderMiniComponent` switch에 새 종류 case 추가.
+
+---
+
+## 인터랙션 마커 12종 + 페이지별 특수 패턴
+
+### 자동 검출 12종 KIND
+
+| KIND | 의미 | 검출 방법 (timeline 시계열 분석) |
 |------|------|----------|
-| `STICKY` | position:sticky/fixed | timeline의 sticky.pos === 'sticky'/'fixed' + top<100 |
-| `ACTIVATE` | 스크롤 진입 시 .active 클래스 | step별 activeCount 변화 (+1 이상 증가) |
-| `COUNTER` | 카운트업 / 슬롯머신 카운터 | counter.t 텍스트 변화 또는 `number-section-integer` 클래스 |
+| `STICKY` | position:sticky/fixed | sticky.pos === 'sticky'/'fixed' + top<100 |
+| `ACTIVATE` | 스크롤 진입 시 .active 클래스 | step별 activeCount 증가 (+1 이상) |
+| `COUNTER` | 카운트업 / 슬롯머신 카운터 | counter.t 변화 또는 `number-section-integer` 클래스 |
 | `ANIMATION` | @keyframes CSS 애니메이션 | animEls의 animationName 첫 등장 |
 | `HEADER` | 헤더 스크롤 반응 (bg/색 변화) | timeline의 header.bg 변화 |
 | `SLIDER` | Swiper.js 슬라이더 | meta.ix.swiper > 0 또는 swiper-slide-active 활성 |
 | `IFRAME` | 외부 차트/시세 iframe | meta.sections의 hasIframe === 1 |
 | `HOVER` | 카드/버튼 호버 효과 | meta.ix.card > 3 또는 CTA 텍스트 다수 |
-| `CLICK` | 탭·아코디언·페이지네이션 클릭 | meta.ix의 tab/accordion/pagin |
+| `CLICK` | 탭·아코디언·페이지네이션·필터 클릭 | meta.ix의 tab/accordion/pagin/filter |
 | `VIDEO` | KV 배경 비디오 자동재생 | meta.sections의 hasVid === 1 |
 | `WEBGL` | Canvas WebGL 렌더 | meta.sections의 hasCan === 1 |
 | `FORM` | 입력 폼 (focus·submit) | meta.ix의 form/input |
 
-페이지별 특수 패턴 (자동 추가): GNB sticky 헤더 / 연혁 시대 nav / WebGL 지구본 / sticky-sequence 카드 / 통계 카운터 / 미디어 라이브러리 필터 / ESG 카드 hover / IR 라이브 ticker / 인사제도 거대 헤딩 진입 fade 등.
+### 페이지별 특수 패턴 (자동 추가)
 
-### Flow Mode 체크리스트
-
-```
-[ ] 사용자 요청에 "흐름 스케치 / 와이어프레임 / 디자이너 시안" → Flow Mode 진입
-[ ] 사이트맵 추출 (메인 + GNB + footer 전수)
-[ ] scripts/capture-{id}-v2.mjs 작성·실행 (10단계 × 3캡처 = 페이지당 33장)
-[ ] scripts/generate-{id}-flow-v2.mjs 작성·실행 (회색 톤 SVG + 인터랙션 자동 검출)
-[ ] system.json에 flowMode: true ref 등록 (페이지명 그대로 sections)
-[ ] node scripts/validate.mjs 통과
-[ ] 26 페이지 spot check (analysis.json fetch → 마커 수 검증, 최소 4개 보장)
-[ ] 모든 페이지 #ref/{id}/{page} 직접 진입 시 정상 렌더 + 사이드바 active 하이라이트 작동
-[ ] 손그림 필터·Caveat 폰트·컬러 코드 모두 제거 (참고 이미지 톤 일치)
-[ ] .gitignore에 .playwright-mcp/ 추가 (캡처 jpeg 수백 장 git 추적 금지)
-```
-
-## Tier-A 아키텍처 — 별도 프로젝트 + 프리뷰 모달
-
-### 이중 모드 동시 적용 (인라인 + Tier-A 모달) — 미라셀 2026-05-22 정립 표준
-
-Mirror Mode에서 **인라인 component 블록을 그대로 두고 그 직후 Tier-A 프리뷰 블록을 추가**하는 것이 최선의 패턴. 두 가지가 보완 관계:
-
-| 모드 | 사용 시점 | 일치율 | 디자이너 활용 |
-|------|----------|-------|---------------|
-| **인라인 component** | 보고서 스크롤 중 빠른 시각 확인 | 90-95% (컨테이너 비례 축소) | 한눈에 보고 토큰 확인 |
-| **Tier-A 풀스크린 모달** | [프리뷰 열기] 클릭 — 라이브 정확 px | **100% 1:1** | HTML/CSS 그대로 복사·사용 |
-
-작성 방식:
-
-```json
-"sections": {
-  "hero": {
-    "blocks": [
-      { "type": "kv", "title": "Hero 토큰", "items": [...] },
-      { "type": "component", "title": "Hero 인라인 프리뷰 (비례 축소)",
-        "html": "...", "css": "..." },
-      { "type": "note", "value": "원본 1080px 풀 높이..." },
-      { "type": "component", "title": "Tier-A 풀스크린 프리뷰 — site-app/components/hero (라이브 정확 1080px)",
-        "preview": "components/site/hero.html",
-        "thumbBg": "#000",
-        "thumbLabel": "Hero 1080px · 5컬럼 무한 스크롤 · 실 CDN 이미지" }
-    ]
-  }
-}
-```
-
-### 언제 Tier-A를 적용하는가
-
-**Mirror Mode 작업이면 기본적으로 모든 섹션에 Tier-A 동반 적용** (미라셀 2026-05-22 베스트 프랙티스). 다음 중 하나라도 해당되면 Tier-A는 **필수**:
-
-- 라이브의 viewport 풀폭(1920px) / 풀높이(1080px) 섹션이 핵심
-- `position: sticky` / `scroll-driven` / WebGL / Three.js / 라이브 ticker
-- 보고서 컨테이너의 `overflow:hidden` 영향받는 sticky 패턴
-- 디자이너가 HTML/CSS를 그대로 복사해 자기 프로젝트에 쓰고 싶어 함
-
-### 별도 프로젝트 구조
-
-라이브 사이트의 실제 기술 스택(Next.js + React / Vue + Nuxt / Vanilla JS)을 그대로 클론.
+자동 검출이 못 잡는 페이지 고유 인터랙션은 메타 ix 키워드 기반으로 자동 추가. KT&G 기준 9종:
 
 ```
-{site}-app/                          ← 라이브 사이트 클론
-├── README.md                        ← 빌드 가이드
-├── index.html                       ← Vanilla 또는 라이브 SSG 결과
-├── components/                      ← 각 섹션 1:1 대응
-│   ├── header.html
-│   ├── hero.html
-│   ├── about.html
-│   └── ...
-├── styles/
-│   └── globals.css                  ← 디자인 토큰 (CSS Variables)
-└── (선택) package.json + Next/React
+17a. 연혁: history>100 + year>30  → sticky 시대 nav + year-row IntersectionObserver fade
+17b. 글로벌 네트워크: map>30 또는 globe → WebGL 인터랙티브 지구본
+17c. 주요사업: sequence>50          → sticky-sequence 3 카드 시퀀스
+17d. 통계 카운터: counter>5         → 통계 숫자 카드 카운트업
+17e. 미디어 라이브러리: sH>20000 + card>100 → 연도별 필터 + lazy-load
+17f. ESG (지속가능경영): tab>10    → ESG 카드 자세히보기 hover
+17g. IR 개요                         → 실시간 ticker 라이브 시세
+17h. 인사제도                        → PEOPLE/VALUE/BENEFIT/CAREER 거대 헤딩 진입 fade
+17i. swiper-slide-active 다수        → 슬라이더 자동 인디케이터
 ```
 
-빌드 명령 (Next.js 클론인 경우):
-```bash
-cd {site}-app && npm install && npm run export
-```
-
-### 정적 HTML preview (즉시 동작)
-
-npm 빌드 없이도 즉시 동작하도록 `components/{site}/*.html` 단독 HTML 파일을 함께 만든다. 디자인 동일, 소스만 Vanilla.
+### 베이스라인 마커 (모든 페이지 최소 4개 보장)
 
 ```
-components/{site}/
-├── hero.html          ← 풀폭/풀높이 + 라이브 CDN 자산
-├── about.html
-├── service.html
-├── product.html
-├── news.html
-├── contact.html
-└── footer.html
+18a. GNB 헤더 sticky (모든 페이지 공통)
+18b. PDF/파일 다운로드 (자료실·정책 페이지)
+18c-i. 지배구조·윤리경영·고객문의·신고·기업가치 페이지별 베이스라인
 ```
 
-### 보고서 모달 연결
+자동 검출이 부족한 페이지에 베이스라인을 더해 **모든 페이지 마커 4개 이상** 유지.
 
-`analysis.json`의 `component` 블록에 `preview` 필드만 추가하면 인라인 렌더 대신 프리뷰 카드 + 모달 버튼이 표시된다.
+---
 
-```json
-{
-  "type": "component",
-  "title": "독립 컴포넌트: miracell-app/components/Hero",
-  "preview": "components/miracell/hero.html",
-  "thumbBg": "linear-gradient(135deg,#000,#dd0031)",
-  "thumbLabel": "Hero #mainVisual — 5-Roller Montage 1080px"
-}
-```
+## KT&G Flow Mode 사례 (2026-05-26)
 
-버튼 클릭 → 96vw × 94vh 풀스크린 모달 (`assets/js/main.js`의 `openPreviewModal()`):
-- 검정 헤더 + `PREVIEW` 청색 배지 + 컴포넌트 제목 + ↗ 새 탭 + × 닫기
-- ESC / 배경 클릭 / × 모두 닫기
-- iframe src clear on close (비디오 자동 중단)
-- cubic-bezier(0.22,1,0.36,1) pop 애니메이션
+| 항목 | 결과 |
+|------|------|
+| 분석 ID | `ktng-com-flow` |
+| crawledPages / sections | 26 / 27 (00 개요 + 01~26 페이지) |
+| 사이드바 | flowMode: true → 26 페이지 일자 나열 |
+| 캡처 | 26 × 33장 = **858 viewport screenshot**, Playwright Node 직접 호출 13분 |
+| 시계열 snapshot | 858 (26 × 11 step × 3 sub-frame) computed-state |
+| 와이어프레임 | 페이지마다 1400×{비례} 디테일 SVG (회색 톤 + mini wireframe 30+종) |
+| 인터랙션 마커 | 페이지마다 4~9개 (평균 5.3개) — 12종 KIND + 페이지별 특수 9종 + 베이스라인 보장 |
+| analysis.json | 522 KB · 27 sections |
+| validate | 5 OK / 0 warn / 0 error |
 
-### 라이브 정확한 px 사용 (100vh 금지)
+**구현 파일**:
+- `scripts/capture-ktng-v2.mjs` — 일괄 캡처 (표준 구현체)
+- `scripts/generate-ktng-flow-v2.mjs` — 와이어프레임 + 인터랙션 검출 (표준 구현체)
+- `scripts/register-ktng-flow.mjs` — system.json 등록
+- `analyses/ktng-com-flow/analysis.json` — 보고서 데이터
+- `analyses/ktng-com-flow/sections-meta.json` — system.json 등록용
 
-라이브 사이트는 viewport와 무관한 고정 px. 보고서 컨테이너 안에서도 동일 px로 재현.
+**시스템 인프라**:
+- `assets/js/main.js` `buildSidebar` — `flowMode: true`면 ref.sections를 sub-link로 펼침
+- `assets/js/main.js` `route` — `#ref/{id}/{section}` URL → `renderSection` 호출
+- `assets/css/main.css` `.sidebar-sublist` / `.sidebar-sub-link` — 페이지 단위 스타일
 
-| 요소 | 라이브 정확 px | ❌ 금지 |
-|---|---|---|
-| Miracell #mainVisual | `1080px` | `100vh` |
-| Miracell #mainAbout | `1512px` | `100vh` |
-| Miracell #mainContact | `451px` | `auto` |
-| 전체 페이지 sH | `7170px` | - |
+---
 
-채집 방법:
-```js
-JSON.stringify(Array.from(document.querySelectorAll('main > *, article')).map(el => ({
-  cls: el.className.toString(),
-  h: el.offsetHeight
-})))
-```
-
-### Tier-A 작성 규칙
-
-- 라이브 사이트의 정확한 클래스명 사용 (`.kv`, `.mainVisual`, `.main-about-wrap` 등 BEM 그대로)
-- 라이브 실제 CDN 자산(`https://{site}/images/...`) 직접 임베드
-- `styles/globals.css`에 `:root` CSS Variables 공통 정의
-- `prefers-reduced-motion` 미디어 쿼리로 접근성 지원
-- 인터랙션은 vanilla JS (IntersectionObserver / requestAnimationFrame)
-
-### Tier-A 체크리스트 (이중 모드 동시 적용 기준)
+## 신규 사이트 추가 절차
 
 ```
-[ ] {site}-app/ 프로젝트 생성 (라이브 기술 스택)
-[ ] {site}-app/styles/globals.css 에 :root 디자인 토큰 + 폰트 import + 키프레임
-[ ] components/{site}/*.html 정적 HTML 8개+ (각 섹션 1:1, 라이브 정확 px)
-[ ] 모든 height를 라이브 정확한 px로 (100vh 금지) — Hero 1080, About 1512 등
-[ ] 라이브 CDN 자산 직접 임베드 (https://{site}/images/...)
-[ ] analysis.json 의 각 인라인 component 블록 직후에 Tier-A 블록 추가
-    - `type: "component"` + `title: "Tier-A 풀스크린 프리뷰 — ..."` + `preview: "components/{site}/{section}.html"`
-    - `thumbBg` (그라데이션 또는 색상) + `thumbLabel` (한 줄 요약)
-[ ] 보고서 모달 동작 검증 (Playwright로 [프리뷰 열기] 클릭 → iframe 로드 → ESC/× 닫기)
-[ ] {site}-app/README.md 에 디자이너 사용 가이드 + 라이브 ID/Class 매핑 표
-[ ] 인라인(빠른 시각) + Tier-A 모달(100% 정확) 양쪽 모두 정상 동작 확인
+[ ] 분석 대상 URL 결정 → 슬러그 ID 생성 (예: miracell-flow, plantym-flow)
+[ ] Step 1: Playwright MCP로 사이트맵 추출 (메인 navigate + GNB·footer 수집)
+[ ] Step 2: scripts/capture-{id}-v2.mjs 작성 (capture-ktng-v2.mjs 복제 + PAGES 수정) + 실행 (13~15분)
+[ ] Step 3: scripts/generate-{id}-flow-v2.mjs 작성 (generate-ktng-flow-v2.mjs 복제)
+    [ ] PAGES 배열 (id + file + num + title + sidebarLabel)
+    [ ] classifySection — 해당 사이트 고유 클래스 패턴 추가
+    [ ] renderMiniComponent — 새 컴포넌트 종류 case 추가 (필요 시)
+    [ ] detectInteractions — 페이지별 특수 패턴 추가
+    [ ] node scripts/generate-{id}-flow-v2.mjs 실행
+[ ] Step 4: scripts/register-{id}-flow.mjs 작성·실행 (system.json 등록, flowMode: true 필수)
+[ ] node scripts/validate.mjs 통과 (5 OK / 0 warn / 0 error)
+[ ] Step 5: 로컬 서버 + Playwright spot check
+    [ ] 모든 페이지 #ref/{id}/{page} 직접 진입 시 정상 렌더 + 사이드바 active 하이라이트
+    [ ] 페이지마다 인터랙션 마커 최소 4개 보장 확인
+    [ ] 손그림 필터·Caveat 폰트·컬러 코드 모두 제거됐는지 시각 확인
+[ ] .gitignore에 .playwright-mcp/ 포함 (캡처 jpeg 수백 장 git 추적 금지)
+[ ] 의미 있는 단일 커밋 + push
 ```
 
-## 컴포넌트 작성 규칙
-
-### 클래스명 접두사로 사이트 구별
-
-| 사이트 | 접두사 | 예시 |
-|--------|--------|------|
-| kdnavien | `kn-` | `kn-bn1`, `kn-md1` |
-| miracell | `mr-` | `mr-hero`, `mr-about-h4`, `mr-fab` |
-| asinsam | `ai-` | `ai-bt1` |
-| plantym | `pm-` | `pm-bt1` |
-| dcamp | `dc-` | `dc-bt1` |
-
-### 인라인 component 블록 규칙
-
-- `html` 안 인라인 스타일은 데모 컨테이너용으로만, 컴포넌트 자체는 클래스 기반 CSS
-- 실 이미지 URL 그대로 임베드
-- 색상은 토큰 hex (`#dd0031` 같은)
-- 폰트는 라이브 실 폰트 (예: `'Pretendard', 'Outfit'`)
-- `fullWidth: true` 옵션으로 풀폭 데모 가능
-
-## 시그니처 컴포넌트 표기
-
-사이트만의 독특한 패턴은 본문 안에서 🟢 emoji로 표시. **섹션 타이틀에는 절대 금지**.
-
-```json
-{ "title": "20. 시그니처 - Orbital Diagram",
-  "blocks": [{"type":"kv","items":[{"label":"🟢 특징","value":"..."}]}] }
-```
-
-## 안전 / 보안
-
-- `analysis.json` 사용자 텍스트는 모두 `escapeHtml()`을 거쳐 렌더링
-- 외부 링크는 `target="_blank" rel="noopener noreferrer"` 자동 적용
-- 컴포넌트 블록 HTML/CSS는 안전한 표준 마크업만. `<script>` 직접 삽입 금지(`js` 필드 사용)
-
-## 컨벤션
-
-### 파일 경로
-- 단일 진입점: `index.html`
-- 정적 자원: `assets/css/`, `assets/js/`
-- 분석 데이터: `analyses/{id}/analysis.json`
-- Tier-A 정적 HTML: `components/{id}/*.html`
-- Tier-A 프로젝트: `{id}-app/`
-- 스크립트: `scripts/` (validate.mjs, serve.ps1)
-
-### 네이밍
-- 분석 ID: `^[a-z0-9][a-z0-9-]*$` (영소문자 시작)
-- 날짜: ISO 8601 (`YYYY-MM-DD`)
-- 색상: hex (`#RRGGBB` 또는 `#RRGGBBAA`)
-- 섹션 번호: 두 자리 0-패드 (`01`, `02`, ..., `15`)
-- 섹션 ID: kebab-case (`smooth-interaction-catalog`)
-
-### 브라우저 호환
-- 최신 evergreen (Chrome, Firefox, Safari, Edge)
-- ES2018+ 문법 허용
+---
 
 ## 검증
 
@@ -493,95 +458,96 @@ JSON.stringify(Array.from(document.querySelectorAll('main > *, article')).map(el
 node scripts/validate.mjs
 ```
 
-기대 결과: `5 OK / 0 warn / 0 error`. JSON 스키마 검증일 뿐 시각·동작 검증은 별개.
+기대 결과: `5 OK / 0 warn / 0 error`. **JSON 스키마 검증일 뿐 시각·동작 검증은 별개.**
 
-### 시각·동작 검증 (별개 절차)
-- `pwsh scripts/serve.ps1` 또는 Node 인라인 서버로 `http://localhost:8080/#ref/{id}` 띄움
-- Playwright MCP로 라이브 ↔ 보고서 양 사이트 동시 스크린샷 + computed style 채집
-- 5-Round E2E 대조 후 일치율 표를 `smooth-interaction-catalog`에 명시
+### 시각·동작 검증 (필수, validate.mjs로 대체 불가)
+
+1. 로컬 서버 띄움
+   - Windows: `powershell.exe -NoProfile -WindowStyle Hidden -File scripts/serve.ps1`
+   - Unix: `pwsh -File scripts/serve.ps1` 또는 `python -m http.server 8080`
+2. Playwright MCP로 모든 페이지 `#ref/{id}/{page}` 진입 → 와이어프레임 렌더 + 마커 카운트 + 시계열 표 확인
+3. 분석 데이터를 fetch로 가져와 페이지마다 인터랙션 카탈로그 항목 수 검증 (최소 4개)
+4. 라이브 사이트 ↔ 보고서 양 사이트 동시 비교 (선택 — Mirror 검증은 v2 표준이 아님)
+
+---
 
 ## QA 안티패턴 (절대 금지)
 
 - ❌ **"QA 확인 완료" 텍스트 자기보고** — 0% 가치. 정량 데이터 또는 스크린샷 비교만
 - ❌ **`validate.mjs` 통과 = 시각·동작 검증으로 간주** — JSON 스키마 검증일 뿐
-- ❌ **단일 스크린샷으로 sticky/scroll 동작 판정** — 시간축 비교 필수
-- ❌ **라이브 사이트가 느리다고 점검 횟수 축소** — wait 5초 → 8~12초 늘리고 끝까지
-- ❌ **보고서를 한 번도 로컬에서 렌더해 보지 않고 작성 종료**
-- ❌ **클래스명에 `sticky/sequence/animation/counter/parallax` 키워드 보이는데 computed style 채집 생략**
-- ❌ **OLD 보고서 데이터를 spot-check 없이 그대로 복사** — 사이트는 리뉴얼되었을 수 있음
-- ❌ **라이브 단방향 또는 보고서 단방향 측정 후 "5회 대조 완료"라고 마킹** — 진정한 양방향 동시 비교만 인정
+- ❌ **fullPage 스크린샷 1장으로 sticky·counter·animation 판정** — 10단계 × 3캡처 시계열 필수
+- ❌ **MCP로 페이지 10개 이상 캡처 시도** — Playwright Node 직접 호출 사용
+- ❌ **손그림 필터·Caveat 폰트·컬러 코드 사용** — 흑백/회색 + Pretendard만
+- ❌ **인터랙션을 텍스트만으로 설명** — 와이어프레임 위 마커 + 풍선 주석 필수
+- ❌ **사이드바에 페이지 그룹화 (회사소개 / 투자정보 ...)** — 페이지명 일자 나열만
+- ❌ **`.playwright-mcp/` 폴더를 git에 추가** — `.gitignore`에 무조건 포함
+- ❌ **사이트 응답 지연 시 점검 횟수 축소** — `wait` 4s→8-12s 늘리고 끝까지
+- ❌ **자동 hook 자동 커밋으로 거대 jpeg push 시도** — 단일 의미 커밋으로 push
 
-## 미라셀 Mirror Mode 사례 (2026-05-22 기준 — 최종)
+---
 
-| 항목 | 결과 |
-|------|------|
-| 작업 모드 | Mirror Mode (단일 페이지 100% 재현) |
-| crawledPages / subpages | 1 / 1 (메인만, 서브페이지 27개 의도적 제외) |
-| 섹션 수 | 15 |
-| 인라인 component 블록 | 14개 |
-| Tier-A 풀스크린 프리뷰 | 8개 (Header / Hero / About / Service / Product / News / Contact / Footer) |
-| 발견 히든 패턴 | 8가지 모두 발견 (Slot Counter / Pencil FAB / Particle / 회전 SVG / Marquee / Splitting / 듀얼 로고 / **마우스 추적 커서**) |
-| 5-Round E2E 일치율 | Round 1 87.5% → Round 5 94.75% (인라인) / Tier-A 모달 100% |
-| Tier-A 자산 | `miracell-app/styles/globals.css` (24 변수) + `components/miracell/*.html` 8개 + 보고서 모달 연결 |
-| 인프라 버그 수정 | escapeHtml `"`/`'` escape 추가 (다른 보고서에도 영향) |
-| UI 개선 | 사이드바 접기 버튼 추가 + topbar 제거 |
+## 안전 / 보안
 
-**핵심 학습**: 인라인 단독으로는 보고서 컨테이너 안에 demo가 비례 축소되어 절대 픽셀 일치가 구조상 어려움. **이중 모드 (인라인 + Tier-A 모달)** 동시 적용으로 인라인 90-95% + Tier-A 100% 양쪽 충족. 디자인 토큰(폰트·color·radius·키프레임)은 양쪽 모두 100% 일치.
+- `analysis.json`의 사용자 텍스트는 모두 `escapeHtml()`을 거쳐 렌더링됨
+- `escapeHtml` (`assets/js/main.js`)이 `<`·`>`·`&`·`"`·`'` 모두 escape — attribute 안전
+- 외부 링크는 `target="_blank" rel="noopener noreferrer"` 자동 적용
+- `component` 블록 html 필드에는 안전한 SVG/HTML만. `<script>` 직접 삽입 금지
 
-## KT&G Flow Mode 사례 (2026-05-26 기준 — v2 최종)
+---
 
-| 항목 | 결과 |
-|------|------|
-| 작업 모드 | Flow Mode v2 (흐름 스케치 + 디테일 와이어프레임) |
-| 분석 ID | `ktng-com-flow` (기존 `ktng-com` Tier-A 보고서와 별도 ID로 병존) |
-| crawledPages / sections | 26 / 27 (00 개요 + 01~26 페이지) |
-| 사이드바 | `flowMode: true` 플래그로 26 페이지 일자 나열 (그룹화 X) |
-| 캡처 데이터 | 26 × 33장 = **858장 viewport screenshot** (Playwright Node 직접 호출 13분) |
-| 시계열 snapshot | 858 (26 × 11 step × 3 sub-frame) computed-state |
-| 와이어프레임 | 페이지마다 1400×{비례} 디테일 SVG (회색 톤, Pretendard, mini wireframe 13종+) |
-| 인터랙션 마커 | 페이지마다 4~9개 (평균 5.3개) — 12종 KIND + 페이지별 특수 패턴 8종 |
-| 인프라 추가 | `assets/js/main.js`의 buildSidebar에 flowMode 분기 + route의 `#ref/{id}/{section}` 라우팅 부활 |
-| CSS 추가 | `.sidebar-sublist` / `.sidebar-sub-link` 스타일 (페이지 단위 노출) |
-| 스크립트 | `scripts/capture-ktng-v2.mjs` (일괄 캡처) + `scripts/generate-ktng-flow-v2.mjs` (와이어프레임 + 인터랙션 검출) + `scripts/register-ktng-flow.mjs` (system.json 등록) |
-| 검증 | `node scripts/validate.mjs` 5 OK / 0 warn / 0 error, 26 페이지 사이드바 active 하이라이트·렌더 정상 |
+## 컨벤션
 
-**핵심 학습**:
-- fullPage 스크린샷 1장으로는 sticky·counter·animation 동적 변화를 못 잡음. **10단계 × 3캡처 = 시계열 33장**으로만 라이브 인터랙션 정확 검출
-- Playwright MCP는 도구 호출당 1 메시지라 페이지 26개에 비현실적. **동일 Playwright 패키지를 Node 직접 호출**로 일괄 처리 (13분에 858장)
-- 와이어프레임 톤은 사용자 참고 이미지 (uxplaybook.org Landing Page Formula) 기반 **흑백/회색만**. 손그림 필터·컬러 코드·Caveat 폰트는 디자이너 시안에 부적합
-- 인터랙션 검출은 단계별 computed-state 변화 자동 분석 + 페이지별 특수 패턴 (라이브 키워드 인벤토리 기반) 자동 추가로 모든 페이지 최소 4개 마커 보장
+### 파일 경로
 
-## 최종 베스트 프랙티스 요약 (미라셀 사례 후)
+```
+analyses/{id}-flow/analysis.json              ← 보고서 본문
+analyses/{id}-flow/sections-meta.json         ← system.json 등록용
+scripts/capture-{id}-v2.mjs                   ← Playwright Node 일괄 캡처
+scripts/generate-{id}-flow-v2.mjs             ← 와이어프레임 생성기
+scripts/register-{id}-flow.mjs                ← system.json 등록
+.playwright-mcp/{id}/v2/{page}/*.jpeg         ← 캡처 (gitignore)
+.playwright-mcp/{id}/v2/{page}/timeline.json
+.playwright-mcp/{id}/v2/{page}/meta.json
+```
 
-신규 Mirror Mode 작업 시 다음 순서를 그대로 따르면 일치율 95%+ + Tier-A 100% 보장.
+### 네이밍
 
-1. **사용자 요청 키워드 감지** — "100% 동일 / 정밀 재현 / 메인만 / 풀픽셀" → Mirror Mode + Tier-A 기본 적용
-2. **Playwright MCP 라이브 1차 측정** — `:root` 변수 전수 추출 + 페이지 차원(sH/sW) + 섹션별 좌표(top/h) + 8 히든 패턴 의도 탐색
-3. **인라인 component 블록 작성** — `kv` 토큰 표 + `html`/`css` 페어 (10-15 섹션, demo 540px 정도로 비례 축소)
-4. **5-Round E2E 양 사이트 대조** — Round 1 동시 스크린샷, Round 2 차이 수정, Round 3 computed style 채집, Round 4 hover 인터랙션, Round 5 최종 픽셀 확인
-5. **Tier-A 동시 작성** — `{site}-app/styles/globals.css` + `components/{site}/*.html` 8개+ (라이브 정확 px, 100vh 금지)
-6. **`block.preview` URL 추가** — 각 인라인 component 직후에 Tier-A 프리뷰 블록 (모달용)
-7. **모달 동작 검증** — Playwright로 [프리뷰 열기] 클릭 → iframe 로드 → ESC 닫기 확인
-8. **검증 표 기록** — `smooth-interaction-catalog`에 5-Round 결과 + 8 히든 패턴 + Tier-A 일치율 표
-9. **`node scripts/validate.mjs` 통과** + 로컬 서버 렌더 확인 + 커밋·푸시
+- 분석 ID: `^[a-z0-9][a-z0-9-]*$` (예: `ktng-com-flow`, `miracell-flow`)
+- 날짜: ISO 8601 (`YYYY-MM-DD`)
+- 색상: hex (`#RRGGBB`)
+- 섹션 번호: 두 자리 0-패드 (`00`, `01`, …)
+- 섹션 ID: kebab-case (`main`, `about-history`, `sustain-overview`)
 
-이 9단계를 거치면 디자이너가 (a) 보고서로 빠른 시각 학습 (b) Tier-A 모달로 정확한 픽셀 확인 (c) 정적 HTML 복사로 자기 프로젝트 즉시 적용 — 세 가지 모두 가능.
+### 브라우저 호환
 
-## 기여 절차
+- 최신 evergreen (Chrome, Firefox, Safari, Edge)
+- ES2018+ 문법 허용
 
-1. 분석 대상 URL 결정 → 슬러그 ID 생성 (예: `miracell`)
-2. 작업 모드 결정: 일반 카탈로그 vs Mirror Mode (사용자 요청에 "100% / 정밀 / 메인만" 키워드 있으면 Mirror Mode)
-3. Playwright MCP로 라이브 사이트 측정 (1차 패스, `:root` 변수 + 페이지 차원 + 섹션 좌표)
-4. `analyses/{id}/analysis.json` 작성:
-   - 일반: 30+ 섹션, 컴포넌트 라이브러리 중심
-   - Mirror Mode: 10-15 섹션, `component` 비중 70%+ + 마지막은 `smooth-interaction-catalog`
-   - 섹션 타이틀에 이모지 금지
-5. `system.json.references[]` 엔트리 추가 + `counts.references` 갱신
-6. Mirror Mode: **5-Round E2E 양 사이트 대조** → 일치율 표 기록 (라이브 N장 + 보고서 N장 페어 비교)
-7. **Mirror Mode 기본으로 Tier-A 병행 적용**:
-   - `{id}-app/styles/globals.css` 디자인 토큰 정의
-   - `components/{id}/*.html` 정적 HTML 8개+ (라이브 정확 px, 100vh 금지)
-   - 인라인 component 블록 직후에 `block.preview` URL을 가진 Tier-A 블록 추가
-   - Playwright로 모달 동작 검증
-8. `node scripts/validate.mjs` 통과 + 로컬 서버 렌더 확인 + Tier-A 모달 8개 클릭 검증
-9. 커밋 메시지에 영향받은 계층 + 실측 수치 + 일치율 % + Tier-A 적용 여부 포함
+### git 운영
+
+- `.playwright-mcp/` 폴더는 **무조건 .gitignore**
+- 단일 의미 커밋으로 push. 자동 hook 자동 커밋이 ahead 누적되면 백업 + `git reset --hard origin/main` + 의미 파일 복원 + 단일 commit + push로 정리
+- 커밋 메시지: `feat(ktng-flow): KT&G 흐름 스케치 1호 v2 — 디테일 와이어프레임 + 인터랙션 마커` 형태
+
+---
+
+## 기존 분석 변환 (구 방식 → Flow Mode v2)
+
+기존에 작성된 분석들 (`kdnavien-co-kr`, `miracell`, `asinsam`, `plantym-com`, `dcamp-kr`, `hct-co-kr`, `glovis-net`, `ktng-com`)은 종전 가이드의 산출물. **그대로 유지하되 더 이상 권장 방식 아님.**
+
+각 사이트를 Flow Mode v2로 변환할 때:
+
+1. 별도 ID로 신규 작성 (예: `miracell` → `miracell-flow`). 기존 분석은 유지
+2. 본 문서 "신규 사이트 추가 절차" 그대로 따름
+3. `scripts/capture-{id}-v2.mjs` + `scripts/generate-{id}-flow-v2.mjs` + `scripts/register-{id}-flow.mjs` 3종 작성
+4. 사용자 확인 후 기존 분석 폐기 결정 (그 시점에 `ktng-com` 등 Tier-A 프로젝트 폴더도 제거 가능)
+
+---
+
+## 작업 순서 요약 (한 줄 정리)
+
+```
+사이트맵 추출 → capture-v2.mjs 일괄 캡처 → generate-flow-v2.mjs 와이어프레임·마커 →
+register-flow.mjs system.json 등록 → validate 통과 → 로컬 서버 + Playwright spot check →
+.gitignore 확인 → 단일 의미 commit + push
+```
