@@ -115,8 +115,12 @@
   var refNavList = document.getElementById('ref-nav-list');
 
   /* ============ DATA LOADING ============ */
+  // Cache-bust JSON fetches so that GitHub Pages CDN (max-age=600) doesn't serve
+  // a stale system.json or analysis.json after a fresh deploy.
   function fetchJSON(url) {
-    return fetch(url).then(function (r) {
+    var sep = url.indexOf('?') >= 0 ? '&' : '?';
+    var bust = url + sep + 'v=' + Date.now();
+    return fetch(bust, { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error(r.status);
       return r.json();
     });
