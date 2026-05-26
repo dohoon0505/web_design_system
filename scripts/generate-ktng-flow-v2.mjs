@@ -594,14 +594,14 @@ function detectInteractions(timeline, meta, page) {
 // - 마커: 검정 작은 원 + 좌측 라벨(제목 진하게 + 본문 회색 2-3줄) + 가는 검정 직선 화살표
 // - 손그림 필터 제거. 정확한 직선 박스.
 function buildWireframeSVG(meta, timeline, interactions, page) {
-  const VIEWPORT_W = 1400;
-  const LEFT_PAD = 260;             // 좌측 주석 영역
-  const RIGHT_PAD = 40;
+  const VIEWPORT_W = 1700;
+  const LEFT_PAD = 280;             // 좌측 주석 영역 (짝수 마커)
+  const RIGHT_PAD = 280;            // 우측 주석 영역 (홀수 마커) — 참고 이미지 1 패턴
   const WF_W = VIEWPORT_W - LEFT_PAD - RIGHT_PAD;
   const HEADER_H = 56;
   const sH = meta.sH || 4000;
   // 매우 긴 페이지 자동 압축 (sH 20000+ 인 연혁·라이브러리)
-  const RATIO = sH > 20000 ? 0.06 : sH > 10000 ? 0.10 : sH > 5000 ? 0.14 : 0.18;
+  const RATIO = sH > 20000 ? 0.08 : sH > 10000 ? 0.12 : sH > 5000 ? 0.16 : 0.20;
   const WF_H = Math.round(sH * RATIO);
   const TOTAL_H = WF_H + HEADER_H + 100;
 
@@ -613,15 +613,15 @@ function buildWireframeSVG(meta, timeline, interactions, page) {
       </marker>
       <style>
         .wf, .wf text { font-family: 'Pretendard', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; font-feature-settings: 'ss01' on, 'cv11' on; }
-        .wf-label { font-size: 12px; font-weight: 700; fill: ${GREY.text}; letter-spacing: -0.01em; }
-        .wf-meta  { font-size: 10px; font-weight: 500; fill: ${GREY.textSub}; letter-spacing: 0; font-variant-numeric: tabular-nums; }
-        .wf-mini  { font-size: 11px; font-weight: 500; fill: ${GREY.textSub}; }
-        .wf-mini-strong { font-size: 12px; font-weight: 700; fill: ${GREY.text}; }
-        .wf-cta-text { font-size: 12px; font-weight: 600; fill: #ffffff; }
-        .anno-title { font-size: 13px; font-weight: 700; fill: ${GREY.text}; letter-spacing: -0.005em; }
-        .anno-body  { font-size: 11px; font-weight: 500; fill: ${GREY.textSub}; line-height: 1.45; }
-        .anno-kind  { font-size: 9px; font-weight: 700; fill: ${GREY.textHint}; text-transform: uppercase; letter-spacing: 0.08em; }
-        .marker-num { font-size: 10px; font-weight: 700; fill: #ffffff; }
+        .wf-label { font-size: 14px; font-weight: 700; fill: ${GREY.text}; letter-spacing: -0.01em; }
+        .wf-meta  { font-size: 11px; font-weight: 500; fill: ${GREY.textSub}; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+        .wf-mini  { font-size: 12px; font-weight: 500; fill: ${GREY.textSub}; }
+        .wf-mini-strong { font-size: 13px; font-weight: 700; fill: ${GREY.text}; }
+        .wf-cta-text { font-size: 13px; font-weight: 600; fill: #ffffff; }
+        .anno-title { font-size: 15px; font-weight: 700; fill: ${GREY.text}; letter-spacing: -0.005em; }
+        .anno-body  { font-size: 12px; font-weight: 500; fill: ${GREY.textSub}; }
+        .anno-kind  { font-size: 10px; font-weight: 700; fill: ${GREY.textHint}; text-transform: uppercase; letter-spacing: 0.08em; }
+        .marker-num { font-size: 12px; font-weight: 700; fill: #ffffff; }
       </style>
     </defs>`;
 
@@ -681,47 +681,58 @@ function buildWireframeSVG(meta, timeline, interactions, page) {
       </g>`;
   });
 
-  // ─── 인터랙션 마커 + 좌측 텍스트 주석 (참고 이미지 스타일) ───
-  // 마커 y 위치는 atRatio 기반. 동시 충돌 방지를 위해 분산 알고리즘 적용.
-  const markerPositions = computeMarkerPositions(interactions, WF_H, HEADER_H);
+  // ─── 인터랙션 마커 + 좌/우 텍스트 주석 (참고 이미지 1 스타일: 양쪽 분할) ───
+  // 마커를 좌/우로 분할 배치하여 풍선 간격 확보. 각 측에서 독립적으로 y 분산.
+  const leftIxs = interactions.filter((_, i) => i % 2 === 0);
+  const rightIxs = interactions.filter((_, i) => i % 2 === 1);
+  const leftYs = computeMarkerPositions(leftIxs, WF_H, HEADER_H);
+  const rightYs = computeMarkerPositions(rightIxs, WF_H, HEADER_H);
   let markers = '';
   let annotations = '';
+  let lIdx = 0, rIdx = 0;
   interactions.forEach((iv, idx) => {
     const n = idx + 1;
-    const my = markerPositions[idx];
-    const markerCx = LEFT_PAD + WF_W + 12;   // 와이어프레임 우측 바깥
-    const markerCy = my;
-    // 좌측 주석 (참고 이미지 1 스타일: 제목 + 본문 2-3줄)
-    const annoX = 16;
-    const annoY = my - 18;
-    const annoW = LEFT_PAD - 36;
+    const isLeft = idx % 2 === 0;
+    const my = isLeft ? leftYs[lIdx++] : rightYs[rIdx++];
 
-    // 가는 검정 직선 화살표 (점선 아님)
-    const lineY = my;
+    // 마커 (와이어프레임 좌/우 가장자리 안쪽)
+    const markerCx = isLeft ? LEFT_PAD + 18 : LEFT_PAD + WF_W - 18;
+    const markerCy = my;
+
+    // 주석 풍선 위치 (좌/우)
+    const annoX = isLeft ? 20 : LEFT_PAD + WF_W + 28;
+    const annoY = my - 14;
+    const annoW = isLeft ? LEFT_PAD - 40 : RIGHT_PAD - 48;
+
+    // 화살표: 주석 풍선 → 마커
+    const arrowX1 = isLeft ? annoX + annoW + 4 : annoX - 8;
+    const arrowX2 = isLeft ? markerCx - 12 : markerCx + 12;
     markers += `
       <g class="wf-marker">
-        <line x1="${annoX + annoW + 4}" y1="${lineY}" x2="${LEFT_PAD + 24}" y2="${lineY}" stroke="${GREY.text}" stroke-width="0.8" marker-end="url(#arrow-${page.id})"/>
-        <circle cx="${markerCx}" cy="${markerCy}" r="9" fill="${GREY.accent}"/>
-        <text x="${markerCx}" y="${markerCy + 3.5}" class="marker-num" text-anchor="middle">${n}</text>
+        <line x1="${arrowX1}" y1="${my}" x2="${arrowX2}" y2="${my}" stroke="${GREY.text}" stroke-width="0.8" marker-end="url(#arrow-${page.id})"/>
+        <circle cx="${markerCx}" cy="${markerCy}" r="11" fill="${GREY.accent}"/>
+        <text x="${markerCx}" y="${markerCy + 4}" class="marker-num" text-anchor="middle">${n}</text>
       </g>`;
 
-    // 좌측 주석 (배경 박스 없음, 텍스트만)
-    const titleLines = splitText(iv.label, 24, 2);
-    const bodyLines = splitText(iv.desc, 30, 4);
+    // 주석: kind + 제목 (1-2줄) + 본문 (3줄 max)
+    const titleLines = splitText(iv.label, 26, 2);
+    const bodyLines = splitText(iv.desc, 30, 3);
+    const titleBlockH = titleLines.length * 20;
+    const bodyStartY = annoY + 22 + titleBlockH + 6;
     annotations += `
       <g class="wf-anno">
         <text x="${annoX}" y="${annoY}" class="anno-kind">${escapeXml(String(n).padStart(2, '0'))} · ${escapeXml(iv.kind)}</text>
-        ${titleLines.map((line, i) => `<text x="${annoX}" y="${annoY + 16 + i * 16}" class="anno-title">${escapeXml(line)}</text>`).join('')}
-        ${bodyLines.map((line, i) => `<text x="${annoX}" y="${annoY + 16 + titleLines.length * 16 + 6 + i * 14}" class="anno-body">${escapeXml(line)}</text>`).join('')}
+        ${titleLines.map((line, i) => `<text x="${annoX}" y="${annoY + 22 + i * 20}" class="anno-title">${escapeXml(line)}</text>`).join('')}
+        ${bodyLines.map((line, i) => `<text x="${annoX}" y="${bodyStartY + i * 16}" class="anno-body">${escapeXml(line)}</text>`).join('')}
       </g>`;
   });
 
-  // ─── 우측 스크롤 인디케이터 ───
+  // ─── 스크롤 인디케이터 (와이어프레임 안 우측 끝 — 우측 주석 영역과 충돌 회피) ───
   const scrollBar = `
     <g class="wf">
-      <line x1="${LEFT_PAD + WF_W + 36}" y1="${HEADER_H}" x2="${LEFT_PAD + WF_W + 36}" y2="${HEADER_H + WF_H}" stroke="${GREY.border}" stroke-width="1"/>
-      <text x="${LEFT_PAD + WF_W + 40}" y="${HEADER_H + 10}" class="wf-meta">0px</text>
-      <text x="${LEFT_PAD + WF_W + 40}" y="${HEADER_H + WF_H}" class="wf-meta">${sH.toLocaleString()}px</text>
+      <line x1="${LEFT_PAD + WF_W - 8}" y1="${HEADER_H + 4}" x2="${LEFT_PAD + WF_W - 8}" y2="${HEADER_H + WF_H - 4}" stroke="${GREY.borderDim}" stroke-width="1"/>
+      <text x="${LEFT_PAD + WF_W - 12}" y="${HEADER_H + 14}" class="wf-meta" text-anchor="end">0px</text>
+      <text x="${LEFT_PAD + WF_W - 12}" y="${HEADER_H + WF_H - 4}" class="wf-meta" text-anchor="end">${sH.toLocaleString()}px</text>
     </g>`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VIEWPORT_W} ${TOTAL_H}" style="display:block;width:100%;height:auto;background:${GREY.bg};border:1px solid ${GREY.border};border-radius:8px;">
@@ -734,19 +745,20 @@ function buildWireframeSVG(meta, timeline, interactions, page) {
   </svg>`;
 }
 
-// 마커 y 위치 분산: atRatio 기반이지만 인접한 마커끼리 최소 60px 간격 유지
+// 마커 y 위치 분산: 인접한 마커끼리 최소 160px 간격 유지
+// (anno-kind 14 + anno-title 2줄 40 + anno-body 3줄 48 + 여백 30 + 화살표 = ~160px)
 function computeMarkerPositions(interactions, wfH, headerH) {
-  const positions = interactions.map(iv => headerH + Math.round(wfH * (iv.atRatio || 0)) + 30);
-  positions.sort((a, b) => a - b);
-  const MIN_GAP = 78;
-  for (let i = 1; i < positions.length; i++) {
-    if (positions[i] - positions[i - 1] < MIN_GAP) positions[i] = positions[i - 1] + MIN_GAP;
+  if (interactions.length === 0) return [];
+  const positions = interactions.map(iv => headerH + Math.round(wfH * (iv.atRatio || 0)) + 40);
+  const sortedIdx = positions.map((p, i) => ({ i, p })).sort((a, b) => a.p - b.p);
+  const sortedPs = sortedIdx.map(x => x.p);
+  const MIN_GAP = 160;
+  for (let i = 1; i < sortedPs.length; i++) {
+    if (sortedPs[i] - sortedPs[i - 1] < MIN_GAP) sortedPs[i] = sortedPs[i - 1] + MIN_GAP;
   }
   // 원래 순서대로 복원
-  const result = [];
-  const sortedInter = interactions.map((iv, idx) => ({ idx, atY: headerH + Math.round(wfH * (iv.atRatio || 0)) + 30 }));
-  sortedInter.sort((a, b) => a.atY - b.atY);
-  sortedInter.forEach((s, i) => { result[s.idx] = positions[i]; });
+  const result = new Array(interactions.length);
+  sortedIdx.forEach((s, i) => { result[s.i] = sortedPs[i]; });
   return result;
 }
 
@@ -1158,6 +1170,157 @@ function renderMiniComponent(kind, x, y, w, h) {
         // play icon
         out += `<circle cx="${cx + cardW/2}" cy="${innerY + 32 + Math.min(90, innerH - 60)/2}" r="14" fill="${GREY.bg}" opacity="0.9"/>`;
         out += `<path d="M ${cx + cardW/2 - 4} ${innerY + 32 + Math.min(90, innerH - 60)/2 - 6} L ${cx + cardW/2 + 6} ${innerY + 32 + Math.min(90, innerH - 60)/2} L ${cx + cardW/2 - 4} ${innerY + 32 + Math.min(90, innerH - 60)/2 + 6} z" fill="${GREY.text}"/>`;
+      });
+      return out;
+    }
+    case 'introduction-block': {
+      // 좌측 헤딩 + 우측 본문 + 통계 카드 row (설립일·매출·임직원·CI 등)
+      let out = `${line(x + 40, innerY + 8, 320, 18, GREY.text)}`;
+      out += line(x + 40, innerY + 36, w - 200, 6);
+      out += line(x + 40, innerY + 50, w - 280, 6);
+      if (innerH > 110) {
+        const labels = ['설립일', '매출', '임직원수', '포트폴리오'];
+        const cw = (w - 80) / 4 - 10;
+        const ch = Math.min(70, innerH - 80);
+        labels.forEach((lab, i) => {
+          out += card(x + 40 + i * (cw + 10), innerY + 72, cw, ch);
+          out += `<text x="${x + 52 + i * (cw + 10)}" y="${innerY + 92}" class="wf-mini" fill="${GREY.textHint}">${lab}</text>`;
+          out += line(x + 52 + i * (cw + 10), innerY + 102, cw - 24, 10, GREY.text);
+        });
+      }
+      return out;
+    }
+    case 'value':
+    case 'value-block': {
+      // 비전 · 경영이념 · 핵심가치 3 박스 row
+      let out = `${line(x + 40, innerY + 8, 280, 18, GREY.text)}`;
+      out += line(x + 40, innerY + 36, w - 200, 6);
+      const cw = (w - 80) / 3 - 12;
+      const ch = Math.min(140, innerH - 60);
+      const subs = ['비전', '경영이념', '핵심가치'];
+      subs.forEach((s, i) => {
+        out += card(x + 40 + i * (cw + 16), innerY + 54, cw, ch);
+        out += `<text x="${x + 56 + i * (cw + 16)}" y="${innerY + 78}" class="wf-mini-strong">${s}</text>`;
+        out += line(x + 56 + i * (cw + 16), innerY + 90, cw - 32, 8);
+        out += line(x + 56 + i * (cw + 16), innerY + 104, cw - 48, 6);
+        out += line(x + 56 + i * (cw + 16), innerY + 116, cw - 64, 6);
+      });
+      return out;
+    }
+    case 'ethics-block':
+    case 'ethics-header': {
+      // 윤리경영 헤더 + 조직도 또는 카드
+      let out = `${line(x + 40, innerY + 8, 200, 18, GREY.text)}`;
+      out += line(x + 40, innerY + 36, w - 200, 6);
+      out += line(x + 40, innerY + 50, w - 280, 6);
+      if (innerH > 100) {
+        const cw = (w - 80) / 3 - 10;
+        const ch = Math.min(80, innerH - 80);
+        [0, 1, 2].forEach(i => {
+          out += card(x + 40 + i * (cw + 10), innerY + 72, cw, ch);
+          out += line(x + 56 + i * (cw + 10), innerY + 92, cw - 32, 10, GREY.text);
+          out += line(x + 56 + i * (cw + 10), innerY + 108, cw - 48, 6);
+        });
+      }
+      return out;
+    }
+    case 'governance': {
+      // 지배구조 헌장 + 위원회 카드 + 차트
+      let out = `${line(x + 40, innerY + 8, 240, 18, GREY.text)}`;
+      out += line(x + 40, innerY + 36, w - 200, 6);
+      if (innerH > 80) {
+        const labels = ['이사회 75%', '감사위원회', '사외이사', '평가보상'];
+        const cw = (w - 80) / 4 - 10;
+        const ch = Math.min(80, innerH - 80);
+        labels.forEach((lab, i) => {
+          out += card(x + 40 + i * (cw + 10), innerY + 56, cw, ch);
+          out += `<text x="${x + 56 + i * (cw + 10)}" y="${innerY + 76}" class="wf-mini-strong">${lab}</text>`;
+          out += line(x + 56 + i * (cw + 10), innerY + 88, cw - 32, 6);
+        });
+      }
+      return out;
+    }
+    case 'performance': {
+      // 경영실적 (분기별 통계)
+      let out = `${line(x + 40, innerY + 8, 160, 18, GREY.text)}`;
+      const cw = (w - 80) / 3 - 12;
+      const ch = Math.min(90, innerH - 50);
+      const labels = ['실시간 방송', '실적 자료', '사업보고서'];
+      labels.forEach((lab, i) => {
+        out += card(x + 40 + i * (cw + 16), innerY + 38, cw, ch);
+        out += `<text x="${x + 56 + i * (cw + 16)}" y="${innerY + 60}" class="wf-mini-strong">${lab}</text>`;
+        out += line(x + 56 + i * (cw + 16), innerY + 74, cw - 32, 6);
+        out += `<text x="${x + 56 + i * (cw + 16)}" y="${innerY + 98}" class="wf-mini" fill="${GREY.textHint}">2026 1Q ▼</text>`;
+      });
+      return out;
+    }
+    case 'event-list': {
+      // IR 행사 · 공지 리스트
+      let out = `${line(x + 40, innerY + 8, 140, 14, GREY.text)}`;
+      out += `<text x="${x + w - 56}" y="${innerY + 18}" class="wf-mini" fill="${GREY.text}" text-anchor="end">더보기 →</text>`;
+      const rows = Math.min(4, Math.floor((innerH - 30) / 28));
+      for (let i = 0; i < rows; i++) {
+        const ly = innerY + 32 + i * 28;
+        out += `<line x1="${x + 40}" y1="${ly + 22}" x2="${x + w - 40}" y2="${ly + 22}" stroke="${GREY.borderDim}" stroke-width="1"/>`;
+        out += `<text x="${x + 40}" y="${ly + 12}" class="wf-mini" fill="${GREY.textHint}">2026. ${(i + 1) * 2}. ${5 + i * 4}</text>`;
+        out += line(x + 120, ly + 6, w - 240, 8);
+      }
+      return out;
+    }
+    case 'image-cards': {
+      // 하단 이미지 카드 2개
+      const halfW = (w - 80) / 2 - 8;
+      const halfH = innerH - 32;
+      let out = '';
+      const labels = ['KT&G 더 알아보기', 'Contact us'];
+      [0, 1].forEach(i => {
+        const cx = x + 40 + i * (halfW + 16);
+        out += card(cx, innerY + 8, halfW, halfH);
+        out += img(cx + 16, innerY + 24, halfW - 32, halfH * 0.55);
+        out += line(cx + 16, innerY + halfH * 0.55 + 40, halfW - 60, 14, GREY.text);
+        out += `<text x="${cx + 16}" y="${innerY + halfH * 0.55 + 70}" class="wf-mini" fill="${GREY.textHint}">${labels[i]}</text>`;
+        out += cta(cx + 16, innerY + halfH - 38, 116, 26, '자세히 보기');
+      });
+      return out;
+    }
+    case 'esg-text':
+    case 'esg-library':
+    case 'safety-board':
+    case 'compliance-block':
+    case 'inquiry': {
+      // 본문 + 카드 또는 다운로드 표
+      let out = `${line(x + 40, innerY + 8, 240, 18, GREY.text)}`;
+      out += line(x + 40, innerY + 36, w - 200, 6);
+      out += line(x + 40, innerY + 50, w - 240, 6);
+      if (innerH > 100) {
+        const cw = (w - 80) / 2 - 10;
+        const ch = Math.min(80, innerH - 80);
+        [0, 1].forEach(i => {
+          out += card(x + 40 + i * (cw + 16), innerY + 72, cw, ch);
+          out += line(x + 56 + i * (cw + 16), innerY + 88, cw - 60, 10, GREY.text);
+          out += line(x + 56 + i * (cw + 16), innerY + 104, cw - 80, 6);
+          out += `<text x="${x + 40 + i * (cw + 16) + cw - 56}" y="${innerY + 88 + ch / 2}" class="wf-mini" fill="${GREY.textHint}">⬇ PDF</text>`;
+        });
+      }
+      return out;
+    }
+    case 'strategy':
+    case 'strategy-block':
+    case 'img-row':
+    case 'value-cards':
+    case 'benefit-cards':
+    case 'job-list': {
+      // 표준 3-카드 그리드 + 상단 헤딩
+      let out = `${line(x + 40, innerY + 8, 200, 16, GREY.text)}`;
+      out += line(x + 40, innerY + 32, w - 200, 6);
+      const cw = (w - 80) / 3 - 12;
+      const ch = Math.min(110, innerH - 60);
+      [0, 1, 2].forEach(i => {
+        const cx = x + 40 + i * (cw + 16);
+        out += card(cx, innerY + 50, cw, ch);
+        out += img(cx + 12, innerY + 62, cw - 24, ch * 0.5);
+        out += line(cx + 12, innerY + 62 + ch * 0.5 + 12, cw - 40, 10, GREY.text);
+        out += line(cx + 12, innerY + 62 + ch * 0.5 + 28, cw - 60, 6);
       });
       return out;
     }
