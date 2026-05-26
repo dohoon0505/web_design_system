@@ -153,6 +153,20 @@
       html += '<svg class="ico"><use href="#i-link"/></svg>';
       html += escapeHtml(ref.title);
       html += '</a>';
+      // flowMode references expose every page-level section as a sidebar child link.
+      if (ref.flowMode && Array.isArray(ref.sections) && ref.sections.length > 0) {
+        html += '<ul class="sidebar-sublist">';
+        ref.sections.forEach(function (sec) {
+          var subKey = 'ref/' + ref.id + '/' + sec.id;
+          html += '<li>';
+          html += '<a class="sidebar-link sidebar-sub-link" href="#' + escapeHtml(subKey) + '" data-section="' + escapeHtml(subKey) + '">';
+          if (sec.num) html += '<span class="sidebar-sub-num">' + escapeHtml(sec.num) + '</span>';
+          html += '<span class="sidebar-sub-title">' + escapeHtml(sec.title) + '</span>';
+          html += '</a>';
+          html += '</li>';
+        });
+        html += '</ul>';
+      }
       html += '</li>';
     });
     refNavList.innerHTML = html;
@@ -649,9 +663,15 @@
 
     var refId = parts[1];
 
-    // Section URLs redirect to ref overview (sections removed from UX per simplified spec)
+    // Section URL: flowMode references render only that single page-section
     if (parts[2]) {
-      location.replace('#ref/' + refId);
+      var sectionId = parts[2];
+      highlightSidebar('ref/' + refId + '/' + sectionId);
+      loadAnalysis(refId).then(function (analysis) {
+        showReport(renderSection(analysis, sectionId));
+      }).catch(function () {
+        showReport('<div class="report-header"><a class="report-back" href="#">← 홈으로</a><h1 class="report-title">분석 데이터를 불러올 수 없습니다</h1></div>');
+      });
       return;
     }
 

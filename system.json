@@ -79,22 +79,90 @@
       "analysis": "analyses/plantym-com/analysis.json",
       "pagesAnalyzed": 1,
       "sections": [
-        { "id": "overview", "num": "01", "title": "개요 · 메인 페이지 전용 분석", "desc": "1920×1080 측정 · 전체 17,125px · Header→Hero→Orbital→View→News→Partners→Footer 7섹션 좌표" },
-        { "id": "tokens", "num": "02", "title": "디자인 토큰 — :root CSS Variables 실측", "desc": "6 변수 (--accent-color #fc6d25 / --primary-color #000 / --secondary-color #333 / --bg-sub-color #f7f7f7 등) · Pretendard 폰트" },
-        { "id": "header", "num": "03", "title": "헤더 — 100px Fixed Header", "desc": "fixed 100px · 로고+GNB 4 depth-1 (회사소개/사업정보/PR/Careers)+depth-2 풀다운+햄버거" },
-        { "id": "hero", "num": "04", "title": "Hero — 1080px Video Background", "desc": "1080px · 비디오 배경 자동재생/loop · Planting the Value 96px Pretendard 700 · ScrollReveal 1.2s cubic-bezier" },
-        { "id": "orbital", "num": "05", "title": "Orbital Intro — GSAP ScrollTrigger 시그니처 10,800px", "desc": "🟢 .pin-spacer 10,800px + .motion 1080 sticky · SVG 점선 원 진행률 + ring.png + 3-panel 텍스트 시퀀스" },
-        { "id": "view", "num": "06", "title": "View — 3 비즈니스 카드", "desc": "937px · 3 카드 (Moazine 디지털 매거진 / JOOS# 매장음악 / SHOP DS 디지털 사이니지) · alternating Y translate ScrollReveal" },
-        { "id": "news", "num": "07", "title": "News — Notice + PR 양쪽 Swiper", "desc": "1,552px · h3 PlantyM 액센트 + Notice Swiper + PR Swiper + progress bar + prev/next" },
-        { "id": "partners", "num": "08", "title": "Partners — 13+ 로고 Marquee", "desc": "1,035px · 2-Row Marquee + 13+ 로고 (partners-logo1-* + logo2-*) · rolling 20s linear infinite" },
-        { "id": "footer", "num": "09", "title": "Footer — 사이트맵 + Plantynet 회사정보", "desc": "641px · 사이트맵 4 · Plantynet 김진해 · Tel 1660-0838 · Family Site · btn-top FAB" },
-        { "id": "typography", "num": "10", "title": "타이포그래피 시스템", "desc": "Pretendard 단일 패밀리 · Hero H1 96px / View H2 60px / Section H3 48px / body 18px" },
-        { "id": "color-system", "num": "11", "title": "컬러 시스템", "desc": "9 컬러 · #fc6d25 액센트 단일 · #000/#333/#1a1a1a/#888/#999/#f7f7f7/#ebebeb/#fff 회색 7톤" },
-        { "id": "interactions", "num": "12", "title": "인터랙션 시스템 — Transition·Animation 통계", "desc": "525 'all' · circle_move 7s · rolling 20s · ScrollReveal 1.2s cubic-bezier · GSAP ScrollTrigger pin/scrub" },
-        { "id": "smooth-interaction-catalog", "num": "13", "title": "부드러운 인터랙션 카탈로그 (라이브 5-Round 대조 검증)", "desc": "8 발견 + 5-Round 검증 결과 · 시그니처 GSAP Orbital · Hero Video Reveal · 3-Card Alternating · Logo Marquee · News Swiper · btn-top FAB · GNB Depth-2 · 액센트 #fc6d25 단색 패턴" }
+        {
+          "id": "overview",
+          "num": "01",
+          "title": "개요 · 메인 페이지 전용 분석",
+          "desc": "1920×1080 측정 · 전체 17,125px · Header→Hero→Orbital→View→News→Partners→Footer 7섹션 좌표"
+        },
+        {
+          "id": "tokens",
+          "num": "02",
+          "title": "디자인 토큰 — :root CSS Variables 실측",
+          "desc": "6 변수 (--accent-color #fc6d25 / --primary-color #000 / --secondary-color #333 / --bg-sub-color #f7f7f7 등) · Pretendard 폰트"
+        },
+        {
+          "id": "header",
+          "num": "03",
+          "title": "헤더 — 100px Fixed Header",
+          "desc": "fixed 100px · 로고+GNB 4 depth-1 (회사소개/사업정보/PR/Careers)+depth-2 풀다운+햄버거"
+        },
+        {
+          "id": "hero",
+          "num": "04",
+          "title": "Hero — 1080px Video Background",
+          "desc": "1080px · 비디오 배경 자동재생/loop · Planting the Value 96px Pretendard 700 · ScrollReveal 1.2s cubic-bezier"
+        },
+        {
+          "id": "orbital",
+          "num": "05",
+          "title": "Orbital Intro — GSAP ScrollTrigger 시그니처 10,800px",
+          "desc": "🟢 .pin-spacer 10,800px + .motion 1080 sticky · SVG 점선 원 진행률 + ring.png + 3-panel 텍스트 시퀀스"
+        },
+        {
+          "id": "view",
+          "num": "06",
+          "title": "View — 3 비즈니스 카드",
+          "desc": "937px · 3 카드 (Moazine 디지털 매거진 / JOOS# 매장음악 / SHOP DS 디지털 사이니지) · alternating Y translate ScrollReveal"
+        },
+        {
+          "id": "news",
+          "num": "07",
+          "title": "News — Notice + PR 양쪽 Swiper",
+          "desc": "1,552px · h3 PlantyM 액센트 + Notice Swiper + PR Swiper + progress bar + prev/next"
+        },
+        {
+          "id": "partners",
+          "num": "08",
+          "title": "Partners — 13+ 로고 Marquee",
+          "desc": "1,035px · 2-Row Marquee + 13+ 로고 (partners-logo1-* + logo2-*) · rolling 20s linear infinite"
+        },
+        {
+          "id": "footer",
+          "num": "09",
+          "title": "Footer — 사이트맵 + Plantynet 회사정보",
+          "desc": "641px · 사이트맵 4 · Plantynet 김진해 · Tel 1660-0838 · Family Site · btn-top FAB"
+        },
+        {
+          "id": "typography",
+          "num": "10",
+          "title": "타이포그래피 시스템",
+          "desc": "Pretendard 단일 패밀리 · Hero H1 96px / View H2 60px / Section H3 48px / body 18px"
+        },
+        {
+          "id": "color-system",
+          "num": "11",
+          "title": "컬러 시스템",
+          "desc": "9 컬러 · #fc6d25 액센트 단일 · #000/#333/#1a1a1a/#888/#999/#f7f7f7/#ebebeb/#fff 회색 7톤"
+        },
+        {
+          "id": "interactions",
+          "num": "12",
+          "title": "인터랙션 시스템 — Transition·Animation 통계",
+          "desc": "525 'all' · circle_move 7s · rolling 20s · ScrollReveal 1.2s cubic-bezier · GSAP ScrollTrigger pin/scrub"
+        },
+        {
+          "id": "smooth-interaction-catalog",
+          "num": "13",
+          "title": "부드러운 인터랙션 카탈로그 (라이브 5-Round 대조 검증)",
+          "desc": "8 발견 + 5-Round 검증 결과 · 시그니처 GSAP Orbital · Hero Video Reveal · 3-Card Alternating · Logo Marquee · News Swiper · btn-top FAB · GNB Depth-2 · 액센트 #fc6d25 단색 패턴"
+        }
       ],
       "subpages": [
-        { "title": "메인 (Home) — 본 보고서 분석 대상", "url": "https://www.plantym.com/" }
+        {
+          "title": "메인 (Home) — 본 보고서 분석 대상",
+          "url": "https://www.plantym.com/"
+        }
       ]
     },
     {
@@ -1468,10 +1536,289 @@
           "url": "https://hct.co.kr/"
         }
       ]
+    },
+    {
+      "id": "ktng-com-flow",
+      "title": "KT&G (흐름 스케치 1호)",
+      "url": "https://www.ktng.com/",
+      "date": "2026-05-26",
+      "analysis": "analyses/ktng-com-flow/analysis.json",
+      "pagesAnalyzed": 26,
+      "flowMode": true,
+      "sections": [
+        {
+          "id": "site-overview",
+          "num": "00",
+          "title": "사이트 개요 · 읽기 가이드",
+          "desc": "v2 보고서 안내 + 사이트맵 + 와이어프레임 읽는 법"
+        },
+        {
+          "id": "main",
+          "num": "01",
+          "title": "메인페이지",
+          "desc": "메인페이지 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "about-introduction",
+          "num": "02",
+          "title": "회사소개 - KT&G 소개",
+          "desc": "KT&G 소개 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "about-history",
+          "num": "03",
+          "title": "회사소개 - 연혁",
+          "desc": "연혁 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "about-business",
+          "num": "04",
+          "title": "회사소개 - 주요사업",
+          "desc": "주요사업 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "about-network",
+          "num": "05",
+          "title": "회사소개 - 글로벌 네트워크",
+          "desc": "글로벌 네트워크 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-overview",
+          "num": "06",
+          "title": "투자정보 - IR 개요",
+          "desc": "IR 개요 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-value",
+          "num": "07",
+          "title": "투자정보 - 기업가치 제고 계획",
+          "desc": "기업가치 제고 계획 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-governance",
+          "num": "08",
+          "title": "투자정보 - 지배구조",
+          "desc": "지배구조 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-financial",
+          "num": "09",
+          "title": "투자정보 - 재무정보",
+          "desc": "재무정보 - 재무하이라이트 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-stock",
+          "num": "10",
+          "title": "투자정보 - 주식정보",
+          "desc": "주식정보 - 주가정보 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-disclosure",
+          "num": "11",
+          "title": "투자정보 - 공시정보",
+          "desc": "공시정보 - 공지사항 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "ir-archives",
+          "num": "12",
+          "title": "투자정보 - IR 자료실",
+          "desc": "IR 자료실 - IR 행사 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "sustain-overview",
+          "num": "13",
+          "title": "지속가능경영 - ESG 개요",
+          "desc": "ESG 개요 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "sustain-env",
+          "num": "14",
+          "title": "지속가능경영 - 환경",
+          "desc": "환경 - 환경경영 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "sustain-social",
+          "num": "15",
+          "title": "지속가능경영 - 사회 (안전보건)",
+          "desc": "사회 - 안전보건 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "sustain-ethics",
+          "num": "16",
+          "title": "지속가능경영 - 윤리경영",
+          "desc": "윤리경영 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "sustain-archive",
+          "num": "17",
+          "title": "지속가능경영 - 아카이빙",
+          "desc": "아카이빙 - 정책 및 규범 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "media-news",
+          "num": "18",
+          "title": "미디어 - 뉴스룸",
+          "desc": "뉴스룸 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "media-social",
+          "num": "19",
+          "title": "미디어 - 소셜미디어",
+          "desc": "소셜미디어 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "media-library",
+          "num": "20",
+          "title": "미디어 - 라이브러리",
+          "desc": "라이브러리 - 지면광고 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "career-hr",
+          "num": "21",
+          "title": "인재채용 - 인사제도",
+          "desc": "인사제도 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "career-job",
+          "num": "22",
+          "title": "인재채용 - 직무소개",
+          "desc": "직무소개 - 마케팅 영업 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "career-recruit",
+          "num": "23",
+          "title": "인재채용 - 채용가이드",
+          "desc": "채용가이드 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "contact",
+          "num": "24",
+          "title": "고객문의",
+          "desc": "고객문의 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "compliance",
+          "num": "25",
+          "title": "비윤리행위 신고",
+          "desc": "비윤리행위 신고 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        },
+        {
+          "id": "safety",
+          "num": "26",
+          "title": "안전보건소통마당",
+          "desc": "안전보건소통마당 페이지 흐름 + 디테일 와이어프레임 + 인터랙션 마커 ①~⑫"
+        }
+      ],
+      "subpages": [
+        {
+          "title": "메인 (Home)",
+          "url": "https://www.ktng.com/"
+        },
+        {
+          "title": "회사소개 - KT&G 소개",
+          "url": "https://www.ktng.com/about/introduction"
+        },
+        {
+          "title": "회사소개 - 연혁",
+          "url": "https://www.ktng.com/about/history"
+        },
+        {
+          "title": "회사소개 - 주요사업",
+          "url": "https://www.ktng.com/about/business"
+        },
+        {
+          "title": "회사소개 - 글로벌 네트워크",
+          "url": "https://www.ktng.com/about/network/overseas"
+        },
+        {
+          "title": "투자정보 - IR 개요",
+          "url": "https://www.ktng.com/ir/overview"
+        },
+        {
+          "title": "투자정보 - 기업가치 제고 계획",
+          "url": "https://www.ktng.com/ir/value"
+        },
+        {
+          "title": "투자정보 - 지배구조",
+          "url": "https://www.ktng.com/ir/governance/overview"
+        },
+        {
+          "title": "투자정보 - 재무정보",
+          "url": "https://www.ktng.com/ir/financial-info/financial-highlight"
+        },
+        {
+          "title": "투자정보 - 주식정보",
+          "url": "https://www.ktng.com/ir/stock-info/chart"
+        },
+        {
+          "title": "투자정보 - 공시정보",
+          "url": "https://www.ktng.com/ir/disclosure-info/notices"
+        },
+        {
+          "title": "투자정보 - IR 자료실",
+          "url": "https://www.ktng.com/ir/ir-archives/events"
+        },
+        {
+          "title": "지속가능경영 - ESG 개요",
+          "url": "https://www.ktng.com/sustainability/overview"
+        },
+        {
+          "title": "지속가능경영 - 환경",
+          "url": "https://www.ktng.com/sustainability/environment/environmanage"
+        },
+        {
+          "title": "지속가능경영 - 사회 (안전보건)",
+          "url": "https://www.ktng.com/sustainability/social/safety"
+        },
+        {
+          "title": "지속가능경영 - 윤리경영",
+          "url": "https://www.ktng.com/sustainability/ethics"
+        },
+        {
+          "title": "지속가능경영 - 아카이빙",
+          "url": "https://www.ktng.com/sustainability/archive/policies"
+        },
+        {
+          "title": "미디어 - 뉴스룸",
+          "url": "https://www.ktng.com/media/news/all"
+        },
+        {
+          "title": "미디어 - 소셜미디어",
+          "url": "https://www.ktng.com/media/social/all"
+        },
+        {
+          "title": "미디어 - 라이브러리",
+          "url": "https://www.ktng.com/media/library/print"
+        },
+        {
+          "title": "인재채용 - 인사제도",
+          "url": "https://www.ktng.com/career/hrsystem"
+        },
+        {
+          "title": "인재채용 - 직무소개",
+          "url": "https://www.ktng.com/career/job/marketing-sales"
+        },
+        {
+          "title": "인재채용 - 채용가이드",
+          "url": "https://www.ktng.com/career/recruit"
+        },
+        {
+          "title": "고객문의",
+          "url": "https://www.ktng.com/contact-us"
+        },
+        {
+          "title": "비윤리행위 신고",
+          "url": "https://www.ktng.com/compliance"
+        },
+        {
+          "title": "안전보건소통마당",
+          "url": "https://www.ktng.com/safety"
+        }
+      ]
     }
   ],
   "counts": {
-    "references": 8,
+    "references": 9,
     "totalComponents": 245
   }
 }
