@@ -619,7 +619,22 @@
       case 'component': {
         if (block.embed) {
           var label = block.embedLabel || block.title || '라이브 데모';
-          return '**🎬 라이브 데모** — ' + label + '\n\n- iframe: `' + block.embed + '`\n- 새 탭에서 열기: ' + block.embed;
+          var lines = ['**🎬 라이브 데모** — ' + label + ' (스크롤 진행률에 매핑)'];
+          lines.push('');
+          // demoHTMLMap (closure-injected via second arg of blockToMd) holds fetched standalone HTML.
+          // If absent (e.g. fetch failed), fall back to a relative reference.
+          var fullHTML = block._embedHTML;
+          if (fullHTML && fullHTML.length > 0) {
+            var savename = (block.embed || '').split('/').pop() || 'demo.html';
+            lines.push('아래 standalone HTML 코드를 `' + savename + '` 같은 파일로 저장한 뒤 브라우저로 열면 동일한 데모를 로컬에서 재현할 수 있습니다 (외부 의존성: Pretendard CDN 1개).');
+            lines.push('');
+            lines.push('```html');
+            lines.push(fullHTML);
+            lines.push('```');
+          } else {
+            lines.push('iframe 경로: `' + block.embed + '`');
+          }
+          return lines.join('\n');
         }
         if (block.title) return '**' + block.title + '**';
         return '';
@@ -751,28 +766,66 @@
         var kind = btn.dataset.downloadKind;
         var refId = btn.dataset.downloadRef;
         var sectionId = btn.dataset.downloadSection;
-        var analysis = analysisCache[refId];
-        if (!analysis) {
-          loadAnalysis(refId).then(function (a) {
-            runDownload(kind, a, sectionId);
-          });
-        } else {
-          runDownload(kind, analysis, sectionId);
-        }
+        // Disable button briefly to show busy state
+        if (btn.dataset.busy === '1') return;
+        btn.dataset.busy = '1';
+        btn.classList.add('is-busy');
+        var labelEl = btn.querySelector('.report-download-label');
+        var origLabel = labelEl ? labelEl.textContent : null;
+        if (labelEl) labelEl.textContent = '준비 중…';
+
+        var done = function () {
+          btn.dataset.busy = '';
+          btn.classList.remove('is-busy');
+          if (labelEl && origLabel != null) labelEl.textContent = origLabel;
+        };
+
+        var analysisPromise = analysisCache[refId]
+          ? Promise.resolve(analysisCache[refId])
+          : loadAnalysis(refId);
+
+        analysisPromise
+          .then(function (a) { return runDownload(kind, a, sectionId); })
+          .then(done, function (err) { console.error(err); done(); });
       });
     });
   }
 
+  // Fetch all embedded demo HTML files referenced by the given sections (in parallel)
+  // and inject the raw HTML into the matching component block as `_embedHTML`,
+  // so blockToMd can render it as a fenced ```html``` code block.
+  function hydrateEmbeds(sections, onlySectionId) {
+    var jobs = [];
+    Object.keys(sections).forEach(function (sid) {
+      if (onlySectionId && sid !== onlySectionId) return;
+      (sections[sid].blocks || []).forEach(function (b) {
+        if (b.type !== 'component' || !b.embed) return;
+        var sep = b.embed.indexOf('?') >= 0 ? '&' : '?';
+        var url = b.embed + sep + 'mdbust=' + Date.now();
+        jobs.push(
+          fetch(url, { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.text() : ''; })
+            .then(function (t) { b._embedHTML = t; })
+            .catch(function () { b._embedHTML = ''; })
+        );
+      });
+    });
+    return Promise.all(jobs);
+  }
+
   function runDownload(kind, analysis, sectionId) {
-    if (kind === 'pattern' && sectionId) {
-      var md = buildPatternMarkdown(analysis, sectionId);
-      var sec = analysis.sections[sectionId];
-      var safeTitle = (sec && sec.title ? sec.title : sectionId).replace(/[\\/:*?"<>|]+/g, '-').replace(/\s+/g, '-');
-      downloadMarkdown(analysis.id + '-' + sectionId + '-' + safeTitle + '.md', md);
-    } else {
-      var md2 = buildCategoryMarkdown(analysis);
-      downloadMarkdown(analysis.id + '-카탈로그.md', md2);
-    }
+    var onlyId = (kind === 'pattern' && sectionId) ? sectionId : null;
+    return hydrateEmbeds(analysis.sections, onlyId).then(function () {
+      if (kind === 'pattern' && sectionId) {
+        var md = buildPatternMarkdown(analysis, sectionId);
+        var sec = analysis.sections[sectionId];
+        var safeTitle = (sec && sec.title ? sec.title : sectionId).replace(/[\\/:*?"<>|]+/g, '-').replace(/\s+/g, '-');
+        downloadMarkdown(analysis.id + '-' + sectionId + '-' + safeTitle + '.md', md);
+      } else {
+        var md2 = buildCategoryMarkdown(analysis);
+        downloadMarkdown(analysis.id + '-카탈로그.md', md2);
+      }
+    });
   }
 
   /* ============ REPORT RENDERING ============ */

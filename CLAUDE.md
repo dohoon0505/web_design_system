@@ -253,7 +253,15 @@ function applyReveal(p) {
 - `kv` → `- **label** — value` (리스트)
 - `structure` → `1. **label** \`tag\`\n   desc` (번호 리스트)
 - `code` → ` ```lang\nvalue\n``` `
-- `component` + `embed` → `**🎬 라이브 데모** — label\n- iframe: \`embed\``
+- `component` + `embed` → **fetch한 standalone HTML 전체를 ```html``` 블록으로 임베드** + 사용 안내 ("이 코드를 `{pattern-id}.html` 파일로 저장한 뒤 브라우저로 열면 동일한 데모를 로컬에서 재현할 수 있습니다")
+
+**자급자족 .md 원칙**: 사용자가 .md 파일만 받아도 모든 데모를 로컬에서 재현 가능해야 한다. 따라서 iframe 경로만 적지 않고, 다운로드 시점에 demo HTML을 fetch해 ```html``` 코드 블록으로 임베드한다. 외부 의존성은 Pretendard CDN 1개뿐이므로 인터넷만 있으면 그대로 동작.
+
+**구현 세부**:
+- `hydrateEmbeds(sections, onlySectionId)` — 모든 `component.embed` URL을 병렬 fetch → `block._embedHTML`에 주입
+- `runDownload`는 hydrate 후 `buildXxxMarkdown` → `downloadMarkdown`
+- 버튼 클릭 중 `.is-busy` 클래스 + "준비 중…" 라벨 (fetch 1~3초 동안)
+- 카테고리 .md 평균 70KB (10 패턴 demo HTML 모두 임베드), 패턴 .md 평균 7KB
 
 ### 6. iframe 임베드 블록 (`component` + `embed`)
 

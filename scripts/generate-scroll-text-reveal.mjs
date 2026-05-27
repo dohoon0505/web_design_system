@@ -518,7 +518,7 @@ function buildPatternSection(p) {
       type: 'component',
       embed: 'demos/scroll-text-reveal/' + p.id + '.html',
       embedHeight: p.demo.height || 480,
-      embedLabel: p.num + ' · ' + p.title + ' (iframe 안에서 스크롤하여 진행률 확인)',
+      embedLabel: p.num + ' · ' + p.title,
       title: p.title + ' 라이브 데모'
     },
     { type: 'heading', value: '작동 원리' },

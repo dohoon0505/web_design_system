@@ -620,6 +620,11 @@ body.sidebar-collapsed .container { max-width: 2200px; }
   transform: translateY(-1px);
 }
 .report-download:active { transform: translateY(0); }
+.report-download.is-busy {
+  cursor: progress;
+  opacity: 0.72;
+  pointer-events: none;
+}
 .report-download svg {
   width: 16px; height: 16px;
   color: #fafafa;

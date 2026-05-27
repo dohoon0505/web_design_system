@@ -176,7 +176,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/word-fade.html",
           "embedHeight": 520,
-          "embedLabel": "01 · 단어별 페이드 인 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "01 · 단어별 페이드 인",
           "title": "단어별 페이드 인 라이브 데모"
         },
         {
@@ -297,7 +297,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/line-slide.html",
           "embedHeight": 520,
-          "embedLabel": "02 · 줄별 슬라이드 업 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "02 · 줄별 슬라이드 업",
           "title": "줄별 슬라이드 업 라이브 데모"
         },
         {
@@ -418,7 +418,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/char-stagger.html",
           "embedHeight": 480,
-          "embedLabel": "03 · 글자별 stagger (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "03 · 글자별 stagger",
           "title": "글자별 stagger 라이브 데모"
         },
         {
@@ -539,7 +539,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/blur-reveal.html",
           "embedHeight": 480,
-          "embedLabel": "04 · 블러 해제 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "04 · 블러 해제",
           "title": "블러 해제 라이브 데모"
         },
         {
@@ -660,7 +660,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/color-fade.html",
           "embedHeight": 480,
-          "embedLabel": "05 · 회색 → 본 색 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "05 · 회색 → 본 색",
           "title": "회색 → 본 색 라이브 데모"
         },
         {
@@ -781,7 +781,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/scrub-color.html",
           "embedHeight": 560,
-          "embedLabel": "06 · 스크롤 스크럽 컬러 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "06 · 스크롤 스크럽 컬러",
           "title": "스크롤 스크럽 컬러 라이브 데모"
         },
         {
@@ -902,7 +902,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/mask-sweep.html",
           "embedHeight": 480,
-          "embedLabel": "07 · 가로 마스크 스윕 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "07 · 가로 마스크 스윕",
           "title": "가로 마스크 스윕 라이브 데모"
         },
         {
@@ -1023,7 +1023,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/letter-cascade.html",
           "embedHeight": 480,
-          "embedLabel": "08 · 글자 폭포 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "08 · 글자 폭포",
           "title": "글자 폭포 라이브 데모"
         },
         {
@@ -1144,7 +1144,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/variable-morph.html",
           "embedHeight": 480,
-          "embedLabel": "09 · Variable Font 변형 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "09 · Variable Font 변형",
           "title": "Variable Font 변형 라이브 데모"
         },
         {
@@ -1265,7 +1265,7 @@
           "type": "component",
           "embed": "demos/scroll-text-reveal/underline-reveal.html",
           "embedHeight": 480,
-          "embedLabel": "10 · 밑줄 동반 진입 (iframe 안에서 스크롤하여 진행률 확인)",
+          "embedLabel": "10 · 밑줄 동반 진입",
           "title": "밑줄 동반 진입 라이브 데모"
         },
         {
