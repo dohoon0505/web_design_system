@@ -51,7 +51,8 @@ const registeredIds = new Set(refs.map(function (r) { return r.id; }));
 for (const ref of refs) {
   if (!ref.id) { fail('reference에 id 없음'); continue; }
   if (!ref.title) warn(ref.id + ': title 필드 없음');
-  if (!ref.url) warn(ref.id + ': url 필드 없음');
+  // 카테고리(인터랙션 카탈로그)는 단일 url이 아니므로 검증 생략
+  if (ref.type !== 'category' && !ref.url) warn(ref.id + ': url 필드 없음');
 
   const dir = join(ROOT, 'analyses', ref.id);
   if (!existsSync(dir)) {

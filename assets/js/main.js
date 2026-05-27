@@ -144,36 +144,66 @@
   }
 
   /* ============ SIDEBAR BUILDING ============ */
+  function renderRefItem(ref) {
+    var html = '<li>';
+    html += '<a class="sidebar-link" href="#ref/' + escapeHtml(ref.id) + '" data-section="ref/' + escapeHtml(ref.id) + '">';
+    html += '<svg class="ico"><use href="#i-link"/></svg>';
+    html += escapeHtml(ref.title);
+    html += '</a>';
+    // flowMode / categoryMode references expose every section as a sidebar child link.
+    var pinned = (ref.flowMode || ref.categoryMode) && Array.isArray(ref.sections) && ref.sections.length > 0;
+    if (pinned) {
+      html += '<ul class="sidebar-sublist">';
+      ref.sections.forEach(function (sec) {
+        var subKey = 'ref/' + ref.id + '/' + sec.id;
+        html += '<li>';
+        html += '<a class="sidebar-link sidebar-sub-link" href="#' + escapeHtml(subKey) + '" data-section="' + escapeHtml(subKey) + '">';
+        if (sec.num) html += '<span class="sidebar-sub-num">' + escapeHtml(sec.num) + '</span>';
+        html += '<span class="sidebar-sub-title">' + escapeHtml(sec.title) + '</span>';
+        html += '</a>';
+        html += '</li>';
+      });
+      html += '</ul>';
+    }
+    html += '</li>';
+    return html;
+  }
+
   function buildSidebar(refs) {
     if (!refNavList) return;
-    if (refs.length === 0) {
+    var categories = refs.filter(function (r) { return r.type === 'category'; });
+    var sites = refs.filter(function (r) { return r.type !== 'category'; });
+
+    var groupEl = document.getElementById('sidebar-references');
+    if (!groupEl) return;
+
+    // Update group title for the existing block (sites)
+    var titleEl = groupEl.querySelector('.sidebar-group-title');
+    if (titleEl) titleEl.textContent = '레퍼런스 보고서';
+
+    if (sites.length === 0) {
       refNavList.innerHTML = '<li class="sidebar-empty">분석된 레퍼런스가 없습니다</li>';
-      return;
+    } else {
+      refNavList.innerHTML = sites.map(renderRefItem).join('');
     }
-    var html = '';
-    refs.forEach(function (ref) {
-      html += '<li>';
-      html += '<a class="sidebar-link" href="#ref/' + escapeHtml(ref.id) + '" data-section="ref/' + escapeHtml(ref.id) + '">';
-      html += '<svg class="ico"><use href="#i-link"/></svg>';
-      html += escapeHtml(ref.title);
-      html += '</a>';
-      // flowMode references expose every page-level section as a sidebar child link.
-      if (ref.flowMode && Array.isArray(ref.sections) && ref.sections.length > 0) {
-        html += '<ul class="sidebar-sublist">';
-        ref.sections.forEach(function (sec) {
-          var subKey = 'ref/' + ref.id + '/' + sec.id;
-          html += '<li>';
-          html += '<a class="sidebar-link sidebar-sub-link" href="#' + escapeHtml(subKey) + '" data-section="' + escapeHtml(subKey) + '">';
-          if (sec.num) html += '<span class="sidebar-sub-num">' + escapeHtml(sec.num) + '</span>';
-          html += '<span class="sidebar-sub-title">' + escapeHtml(sec.title) + '</span>';
-          html += '</a>';
-          html += '</li>';
-        });
-        html += '</ul>';
+
+    // Inject / refresh categories group ABOVE the sites group
+    var catGroup = document.getElementById('sidebar-categories');
+    if (categories.length > 0) {
+      if (!catGroup) {
+        catGroup = document.createElement('div');
+        catGroup.id = 'sidebar-categories';
+        catGroup.className = 'sidebar-group';
+        catGroup.innerHTML = ''
+          + '<div class="sidebar-group-title">인터랙션 카탈로그</div>'
+          + '<ul class="sidebar-nav" id="cat-nav-list"></ul>';
+        groupEl.parentNode.insertBefore(catGroup, groupEl);
       }
-      html += '</li>';
-    });
-    refNavList.innerHTML = html;
+      var catList = catGroup.querySelector('#cat-nav-list');
+      catList.innerHTML = categories.map(renderRefItem).join('');
+    } else if (catGroup) {
+      catGroup.parentNode.removeChild(catGroup);
+    }
   }
 
   /* ============ VIEWS ============ */
@@ -214,10 +244,21 @@
       case 'palette':  return renderPalette(block);
       case 'typo':     return renderTypo(block);
       case 'component': return renderComponent(block);
+      case 'code':     return renderCode(block);
       case 'spacingScale': return renderSpacingScale(block);
       case 'radiusScale':  return renderRadiusScale(block);
       default: return '';
     }
+  }
+
+  function renderCode(block) {
+    var h = '<div class="blk-code-wrap">';
+    if (block.title) {
+      h += '<div class="blk-code-title"><span class="blk-code-lang">' + escapeHtml(block.lang || 'CODE') + '</span>' + escapeHtml(block.title) + '</div>';
+    }
+    h += '<pre class="blk-code"><code>' + escapeHtml(block.value || '') + '</code></pre>';
+    h += '</div>';
+    return h;
   }
 
   function renderHeading(block) {

@@ -1,0 +1,403 @@
+#!/usr/bin/env node
+/**
+ * Web Reference Lab — Category Generator: 스크롤 텍스트 로드
+ *
+ * 10 패턴의 분석 + 라이브 데모 HTML/CSS/JS + 코드 스니펫을
+ * 합쳐 analyses/scroll-text-reveal/analysis.json 생성.
+ *
+ * Usage: node scripts/generate-scroll-text-reveal.mjs
+ */
+
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { resolve, dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const OUT_DIR = join(ROOT, 'analyses', 'scroll-text-reveal');
+const OUT_FILE = join(OUT_DIR, 'analysis.json');
+
+// 카테고리 메타
+const CATEGORY = {
+  id: 'scroll-text-reveal',
+  title: '스크롤 텍스트 로드',
+  type: 'category',
+  date: '2026-05-27',
+  url: 'https://www.framer.com/marketplace/components/text-reveal/',
+  summary: '텍스트가 viewport에 진입할 때 어떻게 시각적으로 드러나는가에 관한 인터랙션 컬렉션. Framer 마켓플레이스의 "Text Reveal" 컴포넌트(Scroll-driven text reveal animation, Inter 다크 톤, sH 5832px, 라이브 데모 iframe 1160×653)를 참고하여 10가지 대표 패턴을 정리한다. 각 패턴은 카드 안에서 실제로 동작하는 라이브 데모 + 작동 원리 + 코드 스니펫 + 라이브 사용 사례 + 트레이드오프로 구성된다.'
+};
+
+// ============ 10 패턴 정의 ============
+//
+// 각 패턴은 한 섹션(페이지)으로 들어간다. URL: #ref/scroll-text-reveal/{id}
+// 데모 HTML/CSS/JS는 .demo-{id} 클래스로 격리되어 다른 패턴과 충돌하지 않는다.
+// 모든 데모에 .pattern-replay 버튼이 들어가서 사용자가 자유롭게 재생할 수 있다.
+
+const PATTERNS = [
+  // ───────────────────────────── 1. word-fade
+  {
+    id: 'word-fade',
+    num: '01',
+    title: '단어별 페이드 인',
+    summary: '단어 단위로 자른 뒤 stagger delay를 부여해 opacity·translateY를 풀어내는 가장 보편적인 진입 패턴. 본문·서브헤딩처럼 줄당 단어 수가 많은 텍스트에 적합하다.',
+    html: '<div class="demo-word-fade">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <p class="txt">Design is not just what it looks like and feels like. Design is how it works.</p>\n</div>',
+    css: '.demo-word-fade { color: var(--sm-content-primary, #171717); }\n.demo-word-fade .txt { font: 700 28px/1.45 "Pretendard", system-ui, sans-serif; text-align: center; max-width: 720px; margin: 0; }\n.demo-word-fade .w { display: inline-block; opacity: 0; transform: translateY(10px); transition: opacity 600ms cubic-bezier(0.2,0,0,1), transform 600ms cubic-bezier(0.2,0,0,1); }\n.demo-word-fade .w.on { opacity: 1; transform: translateY(0); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-word-fade");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  var orig = txt.dataset.orig || txt.textContent;\n  txt.dataset.orig = orig;\n  function play(){\n    var words = orig.split(" ");\n    txt.innerHTML = words.map(function(w){ return "<span class=\\"w\\">" + w + "</span>"; }).join(" ");\n    var spans = txt.querySelectorAll(".w");\n    spans.forEach(function(s, i){ s.style.transitionDelay = (i * 70) + "ms"; });\n    setTimeout(function(){\n      spans.forEach(function(s){ s.classList.add("on"); });\n    }, 30);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '텍스트를 공백 기준으로 split해서 각 단어를 <span class="w">로 감싸고, transition-delay를 인덱스 × 70ms로 부여해 한 단어씩 차례로 진입한다. opacity 0→1과 translateY 10px→0이 동시에 풀려나면서 위로 살짝 올라오는 듯한 부드러운 인상을 만든다.',
+    kv: [
+      { label: '의존성', value: 'Vanilla JS (라이브러리 0)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'cubic-bezier(0.2,0,0,1) (Material standard)' },
+      { label: '단어 간격', value: '70ms stagger' },
+      { label: '총 시간', value: '600ms × (단어 수 / N) + stagger' },
+      { label: '권장 글자 수', value: '8~40 단어 (한 줄 카피~짧은 본문)' }
+    ],
+    examples: [
+      { label: 'Apple AirPods Pro', tag: '제품 본문', desc: 'Hero 아래 사양 설명 단락에서 단어 단위로 진입. 글자가 많아도 시선을 줄 끝까지 끌고 간다.' },
+      { label: 'Linear.app', tag: '랜딩 카피', desc: '"Built for modern software teams." 본문이 viewport 진입 시 단어별로 fade-up. 80ms 안팎 stagger.' },
+      { label: 'Stripe.com', tag: '섹션 인트로', desc: '각 섹션 헤딩 아래 부연 설명 본문에 stagger fade. 본문 가독성을 해치지 않을 정도로 짧은 지연.' }
+    ],
+    tradeoff: '단어 수가 많을수록 마지막 단어까지 모두 등장하는 데 시간이 길어진다. 60~100ms 사이의 stagger가 가독성 균형점. 접근성: prefers-reduced-motion 시 stagger 무시하고 즉시 표시 권장.'
+  },
+
+  // ───────────────────────────── 2. line-slide
+  {
+    id: 'line-slide',
+    num: '02',
+    title: '줄별 슬라이드 업',
+    summary: '한 줄 단위로 아래에서 위로 슬라이드 + 페이드. 줄마다 overflow:hidden으로 클립을 만들고 내부 span을 translateY 100% → 0으로 풀어낸다. 시네마틱한 진입감.',
+    html: '<div class="demo-line-slide">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <div class="txt">\n    <div class="ln">우리는 단순함을 추구합니다.</div>\n    <div class="ln">단순함은 곧 진정성입니다.</div>\n    <div class="ln">진정성이 좋은 디자인을 만듭니다.</div>\n  </div>\n</div>',
+    css: '.demo-line-slide .txt { display: flex; flex-direction: column; gap: 6px; max-width: 720px; }\n.demo-line-slide .ln { font: 600 24px/1.4 "Pretendard", system-ui; color: var(--sm-content-primary, #171717); text-align: center; overflow: hidden; padding: 2px 0; }\n.demo-line-slide .ln > span { display: inline-block; transform: translateY(110%); transition: transform 700ms cubic-bezier(0.22,1,0.36,1); }\n.demo-line-slide .ln.on > span { transform: translateY(0); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-line-slide");\n  if (!box) return;\n  var lns = box.querySelectorAll(".ln");\n  lns.forEach(function(ln){\n    if (!ln.dataset.wrapped) {\n      var t = ln.textContent;\n      ln.dataset.text = t;\n      ln.innerHTML = "<span>" + t + "</span>";\n      ln.dataset.wrapped = "1";\n    }\n  });\n  function play(){\n    lns.forEach(function(ln){ ln.classList.remove("on"); });\n    setTimeout(function(){\n      lns.forEach(function(ln, i){\n        setTimeout(function(){ ln.classList.add("on"); }, i * 140);\n      });\n    }, 30);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '줄 자체에 overflow:hidden을 걸어 마스크를 만들고, 줄 내부 <span>을 translateY(110%)에서 시작해 0까지 풀어낸다. 줄과 줄 사이에는 140ms 정도의 stagger를 두어 줄이 잇따라 솟아오르는 듯한 시네마틱 효과를 만든다.',
+    kv: [
+      { label: '의존성', value: 'Vanilla JS' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'cubic-bezier(0.22,1,0.36,1) (out-expo)' },
+      { label: '줄 간격', value: '140ms stagger' },
+      { label: '한 줄 시간', value: '700ms' },
+      { label: '권장 줄 수', value: '2~5줄 (헤드라인·카피)' }
+    ],
+    examples: [
+      { label: 'Stripe.com 홈 Hero', tag: '카피 3줄', desc: '"Financial infrastructure / for the internet / Millions of companies..." 시네마틱 줄 단위 진입.' },
+      { label: 'Vercel landing', tag: '인트로 슬로건', desc: '메인 카피가 줄별로 풀려나옴. overflow mask + translateY 패턴.' },
+      { label: 'Awwwards 수상작', tag: '오프닝 헤드라인', desc: 'Site-of-the-Day 후보작 다수가 채택하는 가장 클래식한 패턴.' }
+    ],
+    tradeoff: '줄 안의 텍스트가 한 줄을 넘어가면(자동 줄바꿈) 마스크가 깨진다. 줄당 글자 수를 통제하거나 word-break + 줄별 명시적 wrapping 필요. 모바일에서 줄바꿈 검수 필수.'
+  },
+
+  // ───────────────────────────── 3. char-stagger
+  {
+    id: 'char-stagger',
+    num: '03',
+    title: '글자별 stagger',
+    summary: '한 글자씩 stagger delay로 진입. 짧고 굵은 워드마크나 타이포그래픽 헤드라인에 적합. 단어가 길수록 마지막 글자까지 오래 걸리므로 5~12자 권장.',
+    html: '<div class="demo-char-stagger">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <h3 class="txt">TYPOGRAPHY</h3>\n</div>',
+    css: '.demo-char-stagger .txt { font: 800 56px/1 "Pretendard", system-ui; color: var(--sm-content-primary, #171717); letter-spacing: 0.04em; margin: 0; }\n.demo-char-stagger .c { display: inline-block; opacity: 0; transform: translateY(20px); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.demo-char-stagger .c.on { opacity: 1; transform: translateY(0); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-char-stagger");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  var orig = txt.dataset.orig || txt.textContent;\n  txt.dataset.orig = orig;\n  function play(){\n    txt.innerHTML = orig.split("").map(function(c){\n      return "<span class=\\"c\\">" + (c === " " ? "&nbsp;" : c) + "</span>";\n    }).join("");\n    var spans = txt.querySelectorAll(".c");\n    spans.forEach(function(s, i){ s.style.transitionDelay = (i * 55) + "ms"; });\n    setTimeout(function(){\n      spans.forEach(function(s){ s.classList.add("on"); });\n    }, 30);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '텍스트를 글자 단위로 split해 각 글자를 <span class="c">로 감싸고, 인덱스 × 55ms의 transition-delay를 부여한다. 글자가 위에서 떨어지듯 opacity·translateY가 풀린다. 띄어쓰기는 &nbsp;로 치환.',
+    kv: [
+      { label: '의존성', value: 'Vanilla JS (Splitting.js 대체 가능)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '글자 간격', value: '55ms stagger' },
+      { label: '한 글자 시간', value: '500ms' },
+      { label: '권장 글자 수', value: '5~12자 (단어 1~2개)' },
+      { label: '주의', value: '한글은 자소 분리되면 무너짐 — 완성형만' }
+    ],
+    examples: [
+      { label: 'GSAP 공식 데모', tag: 'SplitText 플러그인', desc: 'GSAP가 공식적으로 보여주는 가장 대표적인 패턴. char split + stagger.' },
+      { label: 'Awwwards SOTD', tag: '오프닝 워드마크', desc: '브랜드 로고나 슬로건이 한 글자씩 등장하는 인트로 모션.' },
+      { label: 'Stripe Pricing', tag: '"$0" 가격표', desc: '큰 가격 숫자가 한 자릿수씩 stagger로 등장.' }
+    ],
+    tradeoff: '글자 단위 split은 한국어에서 단위 인지가 어색해질 수 있다. 영문 워드마크·숫자에 안전. 한국어는 글자 수 5~7자 이내 짧은 슬로건에만 적용.'
+  },
+
+  // ───────────────────────────── 4. blur-reveal
+  {
+    id: 'blur-reveal',
+    num: '04',
+    title: '블러 해제',
+    summary: 'filter: blur(12~16px)에서 0으로, opacity 0에서 1로 동시에 풀어낸다. 텍스트가 "초점이 맞춰지는" 영화적 인상. 단일 헤드라인이나 결정적인 한 줄에 효과적.',
+    html: '<div class="demo-blur-reveal">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <h3 class="txt">Focus reveals what matters.</h3>\n</div>',
+    css: '.demo-blur-reveal .txt { font: 500 32px/1.3 "Pretendard", system-ui; color: var(--sm-content-primary, #171717); margin: 0; text-align: center; opacity: 0; filter: blur(14px); transition: opacity 900ms ease-out, filter 900ms ease-out; max-width: 720px; }\n.demo-blur-reveal .txt.on { opacity: 1; filter: blur(0); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-blur-reveal");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  function play(){\n    txt.classList.remove("on");\n    void txt.offsetHeight;\n    setTimeout(function(){ txt.classList.add("on"); }, 20);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: 'CSS filter blur(14px)을 초기 상태로 설정하고, .on 클래스 추가 시 blur(0)으로 전환. opacity도 동시에 풀려나가면서 "초점이 맞춰지는" 인상을 만든다. JS는 단순히 클래스 토글만 담당하므로 가장 가벼운 패턴.',
+    kv: [
+      { label: '의존성', value: 'CSS only (JS는 클래스 토글)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'ease-out (감속)' },
+      { label: '블러 거리', value: 'blur(14px) → 0' },
+      { label: '총 시간', value: '900ms' },
+      { label: '성능 비용', value: '낮음 (CSS 단일 transition)' }
+    ],
+    examples: [
+      { label: 'Linear.app', tag: 'Hero 카피', desc: '소프트한 인상의 헤드라인 진입에 자주 채택. blur 8~12px.' },
+      { label: 'Vercel landing', tag: '기능 섹션 헤딩', desc: 'opacity + blur 조합으로 카피 위계를 만든다.' },
+      { label: 'Apple Vision Pro', tag: '제품 소개', desc: '강조 카피가 viewport 진입 시 blur 풀려나옴. 매우 부드러움.' }
+    ],
+    tradeoff: 'filter는 GPU 가속이지만 큰 면적 텍스트는 모바일에서 비용. 짧은 헤드라인에만 권장. 접근성: prefers-reduced-motion에서 blur 제거 + opacity만 0→1 권장.'
+  },
+
+  // ───────────────────────────── 5. color-fade
+  {
+    id: 'color-fade',
+    num: '05',
+    title: '회색 → 본 색',
+    summary: '텍스트가 흐릿한 회색(dim)에서 본문 검정색으로 천천히 색이 차오른다. 본문 가독성을 해치지 않으면서 진입을 강조하는 가장 점잖은 패턴. 한국 기업 사이트(asinsam, 미라셀 등)에서 가장 많이 채택.',
+    html: '<div class="demo-color-fade">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <p class="txt">한 줄의 카피가 브랜드 전체를 좌우합니다.</p>\n</div>',
+    css: '.demo-color-fade .txt { font: 700 28px/1.4 "Pretendard", system-ui; margin: 0; text-align: center; color: #d4d4d4; transition: color 1400ms cubic-bezier(0.4,0,0.2,1); max-width: 720px; }\n.demo-color-fade .txt.on { color: var(--sm-content-primary, #171717); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-color-fade");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  function play(){\n    txt.classList.remove("on");\n    void txt.offsetHeight;\n    setTimeout(function(){ txt.classList.add("on"); }, 20);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '단일 color 속성 transition. 시작은 #d4d4d4 (placeholder 회색), 끝은 본문 검정. transition 1400ms로 천천히 풀려나면서 "단어가 또렷이 잡히는" 인상을 만든다. JS는 클래스 토글만.',
+    kv: [
+      { label: '의존성', value: 'CSS only (JS는 클래스 토글)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'cubic-bezier(0.4,0,0.2,1) (Material)' },
+      { label: '시작 색', value: '#d4d4d4 (회색)' },
+      { label: '끝 색', value: '#171717 (본문 검정)' },
+      { label: '총 시간', value: '1400ms (점잖은 속도)' }
+    ],
+    examples: [
+      { label: 'asinsam.com', tag: '브랜드 카피', desc: '"맑음과 정직함" 같은 한 줄 카피가 회색→초록으로 차오름. 단어별 stagger 변형도 함께 사용.' },
+      { label: '미라셀 Hero', tag: '인트로 슬로건', desc: 'text-active-animation 1.5s로 색이 풀려남.' },
+      { label: 'Apple Vision Pro', tag: '제품 강조 카피', desc: 'dim 회색에서 본문 검정으로 차오름. 본문이 시야 중앙에 올 때 정확히 풀린다.' }
+    ],
+    tradeoff: '가장 부드럽고 점잖아서 모든 컨텍스트에 안전하지만, 인상은 가장 약하다. 결정적인 헤드라인보다는 본문·서브카피에 적합. 접근성도 가장 우수.'
+  },
+
+  // ───────────────────────────── 6. scrub-color
+  {
+    id: 'scrub-color',
+    num: '06',
+    title: '스크롤 스크럽 컬러',
+    summary: '스크롤 진행률에 1:1 매핑되어 글자가 차례로 dim → primary로 채워진다. GSAP ScrollTrigger scrub의 대표 패턴. 사용자가 스크롤을 멈추면 reveal도 멈춘다. 데모는 스크롤 대신 가상 progress bar로 시뮬레이션.',
+    html: '<div class="demo-scrub-color">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <p class="txt">Read every word as if it matters because it does.</p>\n  <div class="scrub-track"><div class="scrub-fill"></div></div>\n</div>',
+    css: '.demo-scrub-color { gap: 28px; }\n.demo-scrub-color .txt { font: 700 26px/1.5 "Pretendard", system-ui; color: #d4d4d4; text-align: center; max-width: 680px; margin: 0; }\n.demo-scrub-color .w { display: inline-block; transition: color 220ms; }\n.demo-scrub-color .w.on { color: var(--sm-content-primary, #171717); }\n.demo-scrub-color .scrub-track { width: 280px; height: 4px; background: #e5e5e5; border-radius: 2px; overflow: hidden; }\n.demo-scrub-color .scrub-fill { width: 0; height: 100%; background: #171717; }',
+    js: '(function(){\n  var box = document.querySelector(".demo-scrub-color");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  var fill = box.querySelector(".scrub-fill");\n  var orig = txt.dataset.orig || txt.textContent;\n  txt.dataset.orig = orig;\n  var timer = null;\n  function play(){\n    txt.innerHTML = orig.split(" ").map(function(w){ return "<span class=\\"w\\">" + w + "</span>"; }).join(" ");\n    var spans = txt.querySelectorAll(".w");\n    fill.style.width = "0%";\n    if (timer) clearInterval(timer);\n    var dur = 2400, start = Date.now();\n    timer = setInterval(function(){\n      var p = Math.min(1, (Date.now() - start) / dur);\n      fill.style.width = (p * 100) + "%";\n      var idx = Math.floor(p * spans.length);\n      spans.forEach(function(s, i){ if (i < idx) s.classList.add("on"); });\n      if (p >= 1) { spans.forEach(function(s){ s.classList.add("on"); }); clearInterval(timer); }\n    }, 33);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '실제 사이트에서는 GSAP ScrollTrigger scrub:true + IntersectionObserver의 intersectionRatio를 사용해 스크롤 진행률을 0~1로 매핑한 뒤, 진행률 × 글자 수로 인덱스를 구해 그 자리까지의 글자에 .on을 추가한다. 데모에서는 스크롤 대신 requestAnimationFrame으로 2400ms 동안 0→100% 진행률을 시뮬레이션한다.',
+    kv: [
+      { label: '의존성', value: 'GSAP ScrollTrigger (실사이트) / rAF (데모)' },
+      { label: '트리거', value: '스크롤 진행률 0→1 (scrub:true)' },
+      { label: '이징', value: 'linear (scrub은 사용자 제어)' },
+      { label: '진행률 매핑', value: 'progress × N단어 = on-index' },
+      { label: '권장 글이', value: '한 줄~세 줄 본문' },
+      { label: '성능 비용', value: '중간 (스크롤마다 forEach + class toggle)' }
+    ],
+    examples: [
+      { label: 'Apple Pro Display XDR', tag: '제품 핵심 카피', desc: '스크롤에 따라 본문이 한 단어씩 또렷해진다. 가장 대표적인 시그니처 패턴.' },
+      { label: 'plantym.com Orbital', tag: '시그니처 섹션', desc: 'GSAP ScrollTrigger pin/scrub으로 10,800px 구간에서 텍스트가 차오름.' },
+      { label: 'Awwwards 수상작 다수', tag: 'About 섹션', desc: '"This is who we are." 식의 회사 정체성 카피가 스크롤 잠금 상태에서 차오름.' }
+    ],
+    tradeoff: '스크롤 잠금(pin)이 동반되면 사용자가 "스크롤이 안 된다"고 느낄 수 있어 거리감 조절 필수. prefers-reduced-motion에서는 scrub 비활성 + 모두 즉시 표시 권장. 모바일에서는 스크롤이 빠르면 reveal이 거의 동시에 끝날 수 있다.'
+  },
+
+  // ───────────────────────────── 7. mask-sweep
+  {
+    id: 'mask-sweep',
+    num: '07',
+    title: '가로 마스크 스윕',
+    summary: 'background-clip: text + linear-gradient 위치 이동으로 텍스트 색이 좌→우로 쓸려간다. 두 색이 결정적으로 교차하는 효과. 워드마크나 워딩 강조에 효과적.',
+    html: '<div class="demo-mask-sweep">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <h3 class="txt">REVEAL</h3>\n</div>',
+    css: '.demo-mask-sweep .txt {\n  font: 900 96px/1 "Pretendard", system-ui;\n  letter-spacing: 0.02em;\n  margin: 0;\n  background: linear-gradient(90deg, var(--sm-content-primary, #171717) 50%, #e5e5e5 50%);\n  background-size: 200% 100%;\n  background-position: 100% 0;\n  -webkit-background-clip: text;\n  background-clip: text;\n  -webkit-text-fill-color: transparent;\n  color: transparent;\n  transition: background-position 1100ms cubic-bezier(0.22,1,0.36,1);\n}\n.demo-mask-sweep .txt.on { background-position: 0 0; }',
+    js: '(function(){\n  var box = document.querySelector(".demo-mask-sweep");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  function play(){\n    txt.classList.remove("on");\n    void txt.offsetHeight;\n    setTimeout(function(){ txt.classList.add("on"); }, 20);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: 'linear-gradient를 두 색 50:50 (왼쪽 본 색, 오른쪽 회색)으로 만들고 background-size 200% 100%로 확대해 background-position을 100%(오른쪽 회색만 보임)에서 0%(왼쪽 본 색만 보임)로 transition한다. background-clip:text + text-fill-color:transparent로 텍스트 모양에만 색이 클립된다.',
+    kv: [
+      { label: '의존성', value: 'CSS only (JS는 클래스 토글)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'cubic-bezier(0.22,1,0.36,1) (out-expo)' },
+      { label: '핵심 기술', value: 'background-clip:text + gradient position' },
+      { label: '총 시간', value: '1100ms' },
+      { label: '호환성', value: 'Safari/iOS는 -webkit-text-fill-color 필요' }
+    ],
+    examples: [
+      { label: 'Awwwards SOTD', tag: '시그니처 헤딩', desc: '거대 워드마크가 한 번에 좌→우로 색이 차오르는 시그니처 모션.' },
+      { label: 'Codrops 튜토리얼', tag: '데모 페이지', desc: 'background-clip:text 트릭의 가장 클래식한 예제.' },
+      { label: 'GitHub Universe', tag: '컨퍼런스 페이지', desc: '이벤트 타이틀에 자주 등장하는 시각적 강조.' }
+    ],
+    tradeoff: 'background-clip:text는 모든 모던 브라우저에서 지원하지만 iOS에서 -webkit- prefix 필수. 매우 큰 폰트(>120px)에서 약간의 anti-aliasing 차이가 보일 수 있다. SEO/접근성에는 영향 없음(실제 텍스트는 그대로 존재).'
+  },
+
+  // ───────────────────────────── 8. letter-cascade
+  {
+    id: 'letter-cascade',
+    num: '08',
+    title: '글자 폭포',
+    summary: '글자가 위에서 떨어지듯 translateY(-110%) → 0으로 진입. overflow:hidden 마스크로 글자 모양만 노출되어 "글자가 폭포처럼 떨어진다" 인상.',
+    html: '<div class="demo-letter-cascade">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <h3 class="txt">CASCADE</h3>\n</div>',
+    css: '.demo-letter-cascade .txt { font: 800 64px/1 "Pretendard", system-ui; color: var(--sm-content-primary, #171717); letter-spacing: 0.04em; margin: 0; overflow: hidden; padding: 8px 0; }\n.demo-letter-cascade .c { display: inline-block; transform: translateY(-110%); transition: transform 700ms cubic-bezier(0.7,0,0.3,1); }\n.demo-letter-cascade .c.on { transform: translateY(0); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-letter-cascade");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  var orig = txt.dataset.orig || txt.textContent;\n  txt.dataset.orig = orig;\n  function play(){\n    txt.innerHTML = orig.split("").map(function(c){\n      return "<span class=\\"c\\">" + (c === " " ? "&nbsp;" : c) + "</span>";\n    }).join("");\n    var spans = txt.querySelectorAll(".c");\n    spans.forEach(function(s, i){ s.style.transitionDelay = (i * 65) + "ms"; });\n    setTimeout(function(){\n      spans.forEach(function(s){ s.classList.add("on"); });\n    }, 30);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '글자별 split + transition-delay까지는 03번 char-stagger와 같지만, 부모 요소에 overflow:hidden을 걸고 글자를 translateY(-110%)에서 시작해 위에서 떨어뜨린다. 글자 모양으로 클립되어 "글자가 위에서 흘러내린다" 인상이 강해진다.',
+    kv: [
+      { label: '의존성', value: 'Vanilla JS' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'cubic-bezier(0.7,0,0.3,1) (탄력)' },
+      { label: '글자 간격', value: '65ms stagger' },
+      { label: '핵심', value: '부모 overflow:hidden 필수' },
+      { label: '권장', value: '5~10자 워드마크' }
+    ],
+    examples: [
+      { label: 'Bonjour Mr. Mondrian', tag: 'Awwwards 수상작', desc: '오프닝 워드마크가 위에서 폭포처럼 떨어짐.' },
+      { label: 'Stripe Pricing', tag: '큰 가격 숫자', desc: '"$0" 같은 큰 숫자가 한 자릿수씩 위에서 떨어져 정렬됨.' },
+      { label: 'Apple 신제품 발표', tag: '제품명 reveal', desc: '제품 이름이 한 글자씩 떨어져 자리를 잡는 시그니처 진입.' }
+    ],
+    tradeoff: 'overflow:hidden을 부모에 걸어야 하므로 line-height와 padding 조정이 필요. 글자 디센더(g, y, p)가 잘릴 수 있어 padding 8~12px 권장. 한글 자소 분리 위험은 char-stagger와 동일.'
+  },
+
+  // ───────────────────────────── 9. variable-morph
+  {
+    id: 'variable-morph',
+    num: '09',
+    title: 'Variable Font 변형',
+    summary: 'Pretendard Variable 같은 가변 폰트의 wght 축을 100(Thin)에서 900(Black)으로 morph. 글자가 "두꺼워지는" 인상으로 카피의 무게감을 시각화.',
+    html: '<div class="demo-variable-morph">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <h3 class="txt">Variable</h3>\n</div>',
+    css: '.demo-variable-morph .txt {\n  font-family: "Pretendard Variable", "Pretendard", system-ui;\n  font-size: 96px;\n  line-height: 1;\n  color: var(--sm-content-primary, #171717);\n  margin: 0;\n  font-variation-settings: "wght" 100;\n  font-weight: 100;\n  transition: font-variation-settings 1500ms cubic-bezier(0.4,0,0.2,1), font-weight 1500ms cubic-bezier(0.4,0,0.2,1);\n}\n.demo-variable-morph .txt.on {\n  font-variation-settings: "wght" 900;\n  font-weight: 900;\n}',
+    js: '(function(){\n  var box = document.querySelector(".demo-variable-morph");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  function play(){\n    txt.classList.remove("on");\n    void txt.offsetHeight;\n    setTimeout(function(){ txt.classList.add("on"); }, 20);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: 'Variable font의 wght 축(font-variation-settings)을 transition으로 100→900으로 풀어낸다. font-weight도 함께 적어주는 게 폴백 안전. 단순한 클래스 토글만으로 글자가 가늘어→두꺼워지는 morph가 만들어진다.',
+    kv: [
+      { label: '의존성', value: 'Variable font (Pretendard Variable, Inter Variable)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '이징', value: 'cubic-bezier(0.4,0,0.2,1)' },
+      { label: 'wght 범위', value: '100 → 900 (전체 축)' },
+      { label: '총 시간', value: '1500ms (천천히 morph)' },
+      { label: '호환성', value: 'CSS Fonts Module Level 4 (97% 이상 지원)' }
+    ],
+    examples: [
+      { label: 'Variable.app', tag: '폰트 데모', desc: '가변 폰트 자체를 시연하는 대표 데모 사이트. 슬라이더 + 진입 morph.' },
+      { label: 'Pretendard 공식', tag: '폰트 소개 페이지', desc: 'wght 축을 슬라이더로 보여주고 진입 시 100→900 morph 데모.' },
+      { label: 'Inter Display', tag: '폰트 패밀리 페이지', desc: '폰트 사이트가 자기 폰트의 가변성을 시연하는 가장 자연스러운 컨텍스트.' }
+    ],
+    tradeoff: 'Variable font 로드 비용(파일 1개에 모든 weight). 가변이 아닌 일반 폰트에서는 weight transition이 끊겨 보임. 폰트가 가변인지 확인 필수. prefers-reduced-motion에서는 transition 제거 + 즉시 900 표시 권장.'
+  },
+
+  // ───────────────────────────── 10. underline-reveal
+  {
+    id: 'underline-reveal',
+    num: '10',
+    title: '밑줄 동반 진입',
+    summary: '텍스트가 fade-up으로 진입하면서 250ms 지연된 밑줄이 scaleX(0)→1로 좌→우로 펼쳐진다. CTA 문구·강조 카피에 적합. 두 요소의 결합으로 "강조"의 의도가 명확.',
+    html: '<div class="demo-underline-reveal">\n  <button class="pattern-replay" type="button">▶ 다시 재생</button>\n  <div class="txt"><span class="t">Read carefully.</span><span class="u"></span></div>\n</div>',
+    css: '.demo-underline-reveal .txt { font: 700 40px/1.3 "Pretendard", system-ui; color: var(--sm-content-primary, #171717); margin: 0; display: inline-flex; flex-direction: column; gap: 8px; align-items: flex-start; }\n.demo-underline-reveal .t { display: inline-block; opacity: 0; transform: translateY(14px); transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.demo-underline-reveal .u { display: block; height: 3px; width: 100%; background: var(--sm-content-primary, #171717); transform: scaleX(0); transform-origin: left; transition: transform 800ms cubic-bezier(0.22,1,0.36,1) 250ms; }\n.demo-underline-reveal .txt.on .t { opacity: 1; transform: translateY(0); }\n.demo-underline-reveal .txt.on .u { transform: scaleX(1); }',
+    js: '(function(){\n  var box = document.querySelector(".demo-underline-reveal");\n  if (!box) return;\n  var txt = box.querySelector(".txt");\n  function play(){\n    txt.classList.remove("on");\n    void txt.offsetHeight;\n    setTimeout(function(){ txt.classList.add("on"); }, 20);\n  }\n  play();\n  box.querySelector(".pattern-replay").addEventListener("click", play);\n})();',
+    explain: '텍스트(.t)는 opacity 0 + translateY(14px)에서 시작해 600ms로 풀려나고, 밑줄(.u)은 250ms 지연 후 scaleX(0)→1로 좌→우로 펼쳐진다. transform-origin: left가 핵심. 두 모션의 미세한 시간차가 "강조의 결정적 순간"을 만든다.',
+    kv: [
+      { label: '의존성', value: 'CSS only (JS는 클래스 토글)' },
+      { label: '트리거', value: 'IntersectionObserver 진입 1회' },
+      { label: '텍스트 이징', value: 'cubic-bezier(0.2,0,0,1) 600ms' },
+      { label: '밑줄 이징', value: 'cubic-bezier(0.22,1,0.36,1) 800ms + 250ms 지연' },
+      { label: '핵심', value: 'transform-origin: left' },
+      { label: '권장', value: 'CTA·강조 카피·키 메시지' }
+    ],
+    examples: [
+      { label: 'Linear changelog', tag: '버전 헤딩', desc: '버전명 옆에 밑줄이 동시에 펼쳐지는 시그니처 진입.' },
+      { label: 'Notion 랜딩', tag: '기능 강조 카피', desc: '핵심 가치 키워드 아래 밑줄이 채워짐.' },
+      { label: 'Tailwind UI', tag: '섹션 헤딩', desc: 'Pro/Free 같은 강조 단어에 밑줄 reveal.' }
+    ],
+    tradeoff: '밑줄의 transform-origin이 left일 때 자연스러우나, 우측 정렬 카피에서는 right로 바꿔야 한다. 다중 줄 텍스트에서는 밑줄이 마지막 줄에만 그어지므로 한 줄짜리 카피에만 권장.'
+  }
+];
+
+// ============ 블록 빌더 ============
+
+function buildPatternSection(p) {
+  const blocks = [
+    { type: 'text', value: p.summary },
+    { type: 'heading', value: '라이브 데모' },
+    {
+      type: 'component',
+      fullWidth: true,
+      title: '데모 — 카드가 viewport에 들어오면 자동 재생. ▶ 다시 재생 버튼으로 반복 확인',
+      html: p.html,
+      css: p.css,
+      js: p.js
+    },
+    { type: 'heading', value: '작동 원리' },
+    { type: 'text', value: p.explain },
+    { type: 'kv', columns: 2, items: p.kv },
+    { type: 'heading', value: '코드 스니펫' },
+    { type: 'code', lang: 'HTML', title: 'HTML', value: p.html },
+    { type: 'code', lang: 'CSS', title: 'CSS', value: p.css },
+    { type: 'code', lang: 'JS', title: 'JavaScript', value: p.js },
+    { type: 'heading', value: '라이브 사용 사례' },
+    {
+      type: 'structure',
+      items: p.examples.map(e => ({ label: e.label, tag: e.tag, desc: e.desc }))
+    },
+    { type: 'note', value: '트레이드오프 — ' + p.tradeoff }
+  ];
+
+  return {
+    title: p.num + '. ' + p.title,
+    blocks: blocks
+  };
+}
+
+function buildOverview() {
+  const indexItems = PATTERNS.map(p => ({
+    label: p.num + '. ' + p.title,
+    tag: p.kv.find(k => k.label === '의존성')?.value || '',
+    desc: p.summary
+  }));
+
+  return {
+    title: '00. 카테고리 개요',
+    blocks: [
+      { type: 'heading', value: '스크롤 텍스트 로드 — 패턴 카탈로그 v1' },
+      { type: 'text', value: CATEGORY.summary },
+      { type: 'heading', value: '10 패턴 인덱스' },
+      { type: 'structure', items: indexItems },
+      { type: 'heading', value: '공통 디자인 토큰' },
+      {
+        type: 'kv', columns: 2, items: [
+          { label: '폰트', value: 'Pretendard / Pretendard Variable (한글) · Inter (영문 보조)' },
+          { label: '본문 색', value: '#171717 (primary) · #d4d4d4 (dim 시작 색)' },
+          { label: '트리거', value: 'IntersectionObserver threshold 0.15 (활성화 카드 진입)' },
+          { label: '표준 이징', value: 'cubic-bezier(0.2,0,0,1) / cubic-bezier(0.22,1,0.36,1) (out-expo)' },
+          { label: '평균 진입 시간', value: '500-900ms (한 단위) + stagger 50-140ms' },
+          { label: '접근성', value: 'prefers-reduced-motion: stagger·transition 모두 제거 → 즉시 표시 권장' }
+        ]
+      },
+      { type: 'heading', value: '읽기 가이드' },
+      {
+        type: 'structure', items: [
+          { label: '라이브 데모', tag: 'INTERACTIVE', desc: '카드 안에서 실제로 동작. 카드가 viewport에 들어오면 자동 재생되며, ▶ 다시 재생 버튼으로 반복 확인 가능' },
+          { label: '작동 원리', tag: 'HOW', desc: '한 줄 요약 + 1-2 문단으로 핵심 메커니즘 설명' },
+          { label: '정량 메타', tag: 'KV', desc: '의존성 / 트리거 / 이징 / 시간 / 권장 글자 길이 등을 키-값으로' },
+          { label: '코드 스니펫', tag: 'CODE', desc: 'HTML / CSS / JS 세 블록으로 분리. 그대로 복붙해 사용 가능' },
+          { label: '라이브 사용 사례', tag: 'EXAMPLES', desc: '해당 패턴을 실제로 채택한 사이트 3-4건과 사용 부위' },
+          { label: '트레이드오프', tag: 'NOTE', desc: '성능·접근성·권장 사용처에 대한 한 줄 메모' }
+        ]
+      },
+      {
+        type: 'note',
+        value: '참고 자료: Framer 마켓플레이스 Text Reveal 컴포넌트 (https://www.framer.com/marketplace/components/text-reveal/) — Inter 다크 톤 + 라이브 데모 iframe + H2 단위 섹션 분할 구조를 차용했으나, 본 카탈로그는 단일 컴포넌트가 아닌 10가지 패턴 비교 카탈로그를 지향한다.'
+      }
+    ]
+  };
+}
+
+// ============ 메인 ============
+function main() {
+  const sections = { overview: buildOverview() };
+  for (const p of PATTERNS) {
+    sections[p.id] = buildPatternSection(p);
+  }
+
+  const analysis = {
+    id: CATEGORY.id,
+    title: CATEGORY.title,
+    type: CATEGORY.type,
+    url: CATEGORY.url,
+    date: CATEGORY.date,
+    summary: CATEGORY.summary,
+    patternCount: PATTERNS.length,
+    sections
+  };
+
+  mkdirSync(OUT_DIR, { recursive: true });
+  writeFileSync(OUT_FILE, JSON.stringify(analysis, null, 2), 'utf-8');
+
+  console.log('✓ ' + OUT_FILE.replace(ROOT + '\\', '').replace(ROOT + '/', ''));
+  console.log('  ' + PATTERNS.length + ' patterns + 1 overview = ' + (PATTERNS.length + 1) + ' sections');
+  const totalBlocks = Object.values(sections).reduce((acc, s) => acc + s.blocks.length, 0);
+  console.log('  ' + totalBlocks + ' blocks total');
+}
+
+main();

@@ -1110,6 +1110,77 @@ body.sidebar-collapsed .container { max-width: 2200px; }
 }
 .blk-component-preview--full::after { display: none; }
 
+/* — Code block — */
+.blk-code-wrap {
+  margin-bottom: var(--size-500);
+  border: 1px solid var(--sm-border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0a0a0a;
+}
+.blk-code-title {
+  display: flex; align-items: center; gap: var(--size-300);
+  padding: var(--size-300) var(--size-400);
+  font: 600 12px/1 var(--font-sans);
+  color: #d4d4d4;
+  background: #171717;
+  border-bottom: 1px solid #262626;
+}
+.blk-code-lang {
+  font: 700 9px/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a3a3a3;
+  background: rgba(255,255,255,0.06);
+  padding: 4px 7px;
+  border-radius: 3px;
+}
+.blk-code {
+  margin: 0;
+  padding: var(--size-500) var(--size-500);
+  font: 500 12.5px/1.65 var(--font-mono);
+  color: #e5e5e5;
+  background: #0a0a0a;
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+.blk-code code { font: inherit; color: inherit; background: none; padding: 0; }
+
+/* — Pattern catalog (스크롤 텍스트 로드) demo isolation — */
+/* Auto-applied to any direct child of a live preview that starts with class "demo-" */
+.blk-component-preview > [class^="demo-"],
+.blk-component-preview > [class*=" demo-"] {
+  position: relative;
+  min-height: 220px;
+  padding: 56px 32px 40px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 24px;
+  background: var(--sm-surface-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.blk-component-preview .pattern-replay {
+  position: absolute;
+  top: 12px; left: 12px;
+  font: 600 11px/1 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  background: var(--sm-background-base);
+  border: 1px solid var(--sm-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 7px 11px;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color 160ms, border-color 160ms, background 160ms;
+  z-index: 2;
+}
+.blk-component-preview .pattern-replay:hover {
+  color: var(--sm-content-primary);
+  border-color: var(--sm-content-tertiary);
+  background: var(--sm-background-muted);
+}
+
 /* — Spacing scale block — */
 .blk-spacing-scale {
   display: flex; flex-direction: column;
