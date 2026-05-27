@@ -600,6 +600,57 @@ body.sidebar-collapsed .container { max-width: 2200px; }
 .report-url:hover { opacity: 0.8; }
 .report-url .ico { width: 14px; height: 14px; }
 
+/* — Interactive download button (.md export) — */
+.report-download {
+  display: inline-flex; align-items: center; gap: var(--size-300);
+  font: 600 13px/1.2 var(--font-sans);
+  color: #fafafa;
+  background: #171717;
+  border: 1px solid #262626;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  cursor: pointer;
+  margin-top: var(--size-400);
+  transition: background 160ms, border-color 160ms, transform 160ms;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 12px -4px rgba(0,0,0,0.18);
+}
+.report-download:hover {
+  background: #0a0a0a;
+  border-color: #404040;
+  transform: translateY(-1px);
+}
+.report-download:active { transform: translateY(0); }
+.report-download svg {
+  width: 16px; height: 16px;
+  color: #fafafa;
+  flex-shrink: 0;
+}
+.report-download-label {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.report-download-meta {
+  font: 500 11px/1 var(--font-mono);
+  color: #a3a3a3;
+  padding-left: var(--size-300);
+  border-left: 1px solid #2a2a2a;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 640px) {
+  .report-download-meta { display: none; }
+}
+[data-theme="dark"] .report-download {
+  background: #fafafa;
+  color: #0a0a0a;
+  border-color: #d4d4d4;
+}
+[data-theme="dark"] .report-download:hover {
+  background: #fff;
+  border-color: #a3a3a3;
+}
+[data-theme="dark"] .report-download svg { color: #0a0a0a; }
+[data-theme="dark"] .report-download-meta { color: #525252; border-left-color: #d4d4d4; }
+
 .report-section-header {
   display: flex; align-items: baseline; gap: var(--size-400);
 }

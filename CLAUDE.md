@@ -230,7 +230,32 @@ function applyReveal(p) {
 
 `main.js`의 `renderBlock`에 `code` 타입. `lang` (HTML/CSS/JS), `title`, `value` 필드. 다크 톤(#0a0a0a 배경)으로 코드를 보여줌. `escapeHtml`로 안전.
 
-### 5. iframe 임베드 블록 (`component` + `embed`)
+### 5. 인터랙티브 다운로드 — `.md` 내보내기
+
+카테고리 헤더와 각 패턴 헤더에 **"인터랙티브 다운로드"** 버튼이 자동 렌더된다. 기존 참고 URL 링크는 제거. 버튼 클릭 시 그 인터랙션의 모든 가이드라인·코드 스니펫·iframe 참조가 담긴 `.md` 파일을 사용자가 다운로드.
+
+**파일명**:
+- 카테고리 페이지(`#ref/{id}`): `{id}-카탈로그.md` — 카테고리 메타 + 모든 패턴
+- 패턴 페이지(`#ref/{id}/{section}`): `{id}-{sectionId}-{title}.md` — 그 패턴 단일
+
+**구현 함수** (`assets/js/main.js`):
+- `blockToMd(block)` — 블록 타입별 → markdown 변환 (heading/text/note/kv/structure/code/component/palette/stats)
+- `buildCategoryMarkdown(analysis)` — 카테고리 전체 합성 (메타 테이블 + 모든 sections)
+- `buildPatternMarkdown(analysis, sectionId)` — 단일 패턴 합성
+- `downloadMarkdown(filename, content)` — Blob + URL.createObjectURL + a.download 트리거
+- `downloadButtonHTML(opts)` — 버튼 HTML (data-download-kind/ref/section)
+- `activateDownloadButtons()` — showReport 후 클릭 핸들러 wiring
+
+**블록 → markdown 변환 규칙**:
+- `heading` → `## value`
+- `text` → 단락 그대로
+- `note` → `> ℹ️ value`
+- `kv` → `- **label** — value` (리스트)
+- `structure` → `1. **label** \`tag\`\n   desc` (번호 리스트)
+- `code` → ` ```lang\nvalue\n``` `
+- `component` + `embed` → `**🎬 라이브 데모** — label\n- iframe: \`embed\``
+
+### 6. iframe 임베드 블록 (`component` + `embed`)
 
 `main.js`의 `renderComponent`에 `embed` 옵션. inline iframe 임베드 (modal 형태인 `preview`와 구분).
 
