@@ -72,6 +72,28 @@
   ],
   "references": [
     {
+      "id": "full-screen-scroll",
+      "title": "Full-screen Scroll",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-05-27",
+      "analysis": "analyses/full-screen-scroll/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",        "num": "00", "title": "카테고리 개요",                "desc": "패턴 10종 인덱스 + scroll 모델 + 읽기 가이드" },
+        { "id": "fade-stack",      "num": "01", "title": "페이드 스택 (Framer Scroll Slides)", "desc": "sticky + activeIndex + opacity fade + progress bar" },
+        { "id": "horizontal-pan",  "num": "02", "title": "가로 패닝",                   "desc": "세로 스크롤 → 가로 translateX 이동" },
+        { "id": "zoom-into",       "num": "03", "title": "줌인 전환",                   "desc": "scale 0.8→1→1.4 + opacity in/out" },
+        { "id": "pin-stack",       "num": "04", "title": "핀 스택 (위로 쌓임)",         "desc": "translateY 100%→0 + zIndex 누적" },
+        { "id": "parallax-layer",  "num": "05", "title": "패럴랙스 레이어",             "desc": "배경 -12vh · 미드 -28vh · 전경 -8vh 속도 차이" },
+        { "id": "3d-rotate",       "num": "06", "title": "3D 회전 전환",                "desc": "perspective + rotateY 90° + translateZ" },
+        { "id": "scroll-snap",     "num": "07", "title": "CSS 스크롤 스냅",              "desc": "scroll-snap-type:y mandatory (JS 매핑 없음)" },
+        { "id": "clip-reveal",     "num": "08", "title": "Clip-path 리빌",              "desc": "clip-path inset 100%→0 위→아래 커튼" },
+        { "id": "scale-handoff",   "num": "09", "title": "스케일 핸드오프",             "desc": "scale 0.9→1→1.1 + opacity Δ(부드러운 교체)" },
+        { "id": "caption-slide",   "num": "10", "title": "캡션 슬라이드",              "desc": "배경 고정 + 캡션만 슬라이드별 진입" }
+      ]
+    },
+    {
       "id": "nav-bar-dropdown",
       "title": "Nav bar dropdown",
       "type": "category",
@@ -117,8 +139,8 @@
     }
   ],
   "counts": {
-    "references": 2,
-    "categories": 2,
-    "patterns": 20
+    "references": 3,
+    "categories": 3,
+    "patterns": 30
   }
 }

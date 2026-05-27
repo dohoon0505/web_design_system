@@ -404,6 +404,23 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 ---
 
+## 카테고리 사례 #3: Full-screen Scroll (2026-05-27, v1)
+
+| 항목 | 결과 |
+|------|------|
+| 카테고리 ID | `full-screen-scroll` |
+| 패턴 수 | 10 (fade-stack, horizontal-pan, zoom-into, pin-stack, parallax-layer, 3d-rotate, scroll-snap, clip-reveal, scale-handoff, caption-slide) |
+| 섹션 수 | 11 (00 overview + 01~10 패턴) |
+| 블록 수 | 159 |
+| standalone 데모 | 10개 (`demos/full-screen-scroll/*.html`, 평균 6KB) |
+| Scroll 모델 | `.scroll-track N×100vh` + `.sticky-stage 100vh` + activeIndex = floor(p × N) + slideProgress[i] = clamp(p×N - i, 0, 1) |
+| 참고 자료 | Framer 마켓플레이스 "Scroll Slides" by Artem Kostenko (https://www.framer.com/marketplace/components/scroll-slides/) |
+| validate | 5 OK / 0 warn / 0 error |
+
+첨부된 .tsx 컴포넌트(Scroll Slides — sticky + activeIndex + opacity fade + progress bar)를 첫 번째 패턴(fade-stack)으로 차용하고, 가로 팬·줌인·핀 스택·패럴랙스·3D 회전·CSS 스냅·clip-path·스케일 핸드오프·캡션 슬라이드 등 9가지 변형을 비교 카탈로그로 추가. scroll-snap만 별도 보일러플레이트(CSS 단독, JS 매핑 없음)이고 나머지는 표준 sticky 매핑.
+
+---
+
 ## 카테고리 사례 #2: Nav bar dropdown (2026-05-27, v1)
 
 | 항목 | 결과 |

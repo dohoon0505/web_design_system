@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. CSS 스크롤 스냅</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    body { background: #000; color: #fff; font-family: "Pretendard Variable", "Pretendard", system-ui; -webkit-font-smoothing: antialiased; }
+    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; gap: 10px; z-index: 100; }
+    .demo-label { font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 0; }
+    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; }
+    .fs-snap { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    .fs-snap::-webkit-scrollbar { display: none; }
+    .fs-snap { scrollbar-width: none; }
+    .fs-slide { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; scroll-snap-align: start; scroll-snap-stop: always; }
+    .fs-cap { text-align: center; color: #fff; max-width: 720px; padding: 0 8vw; }
+    .fs-num { font: 600 12px/1 ui-monospace, monospace; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+    .fs-title { font: 700 clamp(40px, 6vw, 84px)/1.1 "Pretendard Variable","Pretendard",system-ui; margin: 0 0 18px; letter-spacing: -0.02em; }
+    .fs-desc { font: 400 clamp(16px, 1.4vw, 20px)/1.55 "Pretendard Variable","Pretendard",system-ui; margin: 0; opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div class="demo-controls"><span class="demo-label">07 · CSS 스크롤 스냅</span></div>
+  <div class="demo-hint">SCROLL ↓ (스냅)</div>
+  <div class="fs-snap">
+        <section class="fs-slide" style="background:linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)"><div class="fs-cap"><div class="fs-num">01 · Inspiration</div><h2 class="fs-title">자연에서 받은 영감</h2><p class="fs-desc">디자인 철학은 자연의 형상과 유기적 소재에서 출발합니다.</p></div></section>
+        <section class="fs-slide" style="background:linear-gradient(135deg, #1a1a1a 0%, #404040 100%)"><div class="fs-cap"><div class="fs-num">02 · Design</div><h2 class="fs-title">사려 깊은 디자인</h2><p class="fs-desc">모든 디테일은 일상을 더 풍요롭게 만들기 위해 존재합니다.</p></div></section>
+        <section class="fs-slide" style="background:linear-gradient(135deg, #3b0764 0%, #7e22ce 100%)"><div class="fs-cap"><div class="fs-num">03 · Craft</div><h2 class="fs-title">장인의 마감</h2><p class="fs-desc">공간과 사물의 균형을 한 치 어긋남 없이 다듬어 갑니다.</p></div></section>
+        <section class="fs-slide" style="background:linear-gradient(135deg, #422006 0%, #c2410c 100%)"><div class="fs-cap"><div class="fs-num">04 · Result</div><h2 class="fs-title">완성된 경험</h2><p class="fs-desc">디자인은 결과가 아니라 과정 자체입니다.</p></div></section>
+        </div>
+</body>
+</html>
