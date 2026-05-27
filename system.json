@@ -72,6 +72,28 @@
   ],
   "references": [
     {
+      "id": "nav-bar-dropdown",
+      "title": "Nav bar dropdown",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-05-27",
+      "analysis": "analyses/nav-bar-dropdown/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",         "num": "00", "title": "카테고리 개요",         "desc": "패턴 10종 인덱스 + nav 모델 + 읽기 가이드" },
+        { "id": "mega-menu",        "num": "01", "title": "메가 메뉴 (Aave 스타일)", "desc": "2-column 큰 패널 — 좌측 아이콘 리스트 + 우측 비주얼" },
+        { "id": "simple-list",      "num": "02", "title": "단순 수직 리스트",        "desc": "5~8개 텍스트 링크 수직 정렬" },
+        { "id": "icon-list",        "num": "03", "title": "아이콘 리스트 (Linear 스타일)", "desc": "아이콘 + 제목 + 한 줄 설명의 리스트" },
+        { "id": "multi-column",     "num": "04", "title": "다중 컬럼 (AWS 스타일)",   "desc": "3~4 컬럼 카테고리 그룹화" },
+        { "id": "card-grid",        "num": "05", "title": "카드 그리드",            "desc": "이미지·아이콘 카드 그리드 (3×2 또는 4×2)" },
+        { "id": "hover-preview",    "num": "06", "title": "hover 프리뷰",          "desc": "좌측 항목 + 우측 동적 프리뷰" },
+        { "id": "animated-slide",   "num": "07", "title": "슬라이드 진입",          "desc": "항목별 stagger delay slide + fade" },
+        { "id": "search-bar",       "num": "08", "title": "검색 통합",             "desc": "상단 검색 input + 카테고리별 결과" },
+        { "id": "cascade-submenu",  "num": "09", "title": "캐스케이드 서브메뉴",     "desc": "1depth + 우측 2depth flyout" },
+        { "id": "cta-banner",       "num": "10", "title": "메가 메뉴 + CTA 배너",   "desc": "multi-column + 하단 가로 CTA 배너" }
+      ]
+    },
+    {
       "id": "scroll-text-reveal",
       "title": "스크롤 텍스트 로드",
       "type": "category",
@@ -95,8 +117,8 @@
     }
   ],
   "counts": {
-    "references": 1,
-    "categories": 1,
-    "patterns": 10
+    "references": 2,
+    "categories": 2,
+    "patterns": 20
   }
 }

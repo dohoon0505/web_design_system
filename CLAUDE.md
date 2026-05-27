@@ -403,6 +403,23 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 ---
 
+## 카테고리 사례 #2: Nav bar dropdown (2026-05-27, v1)
+
+| 항목 | 결과 |
+|------|------|
+| 카테고리 ID | `nav-bar-dropdown` |
+| 패턴 수 | 10 (mega-menu, simple-list, icon-list, multi-column, card-grid, hover-preview, animated-slide, search-bar, cascade-submenu, cta-banner) |
+| 섹션 수 | 11 (00 overview + 01~10 패턴) |
+| 블록 수 | 159 |
+| standalone 데모 | 10개 (`demos/nav-bar-dropdown/*.html`, 평균 7KB) |
+| 인터랙션 모델 | sticky nav + Menu 2 hover → dropdown opacity 0→1 + translateY -6→0 (200ms ease-out) |
+| 참고 자료 | Framer 마켓플레이스 "Aave Navigation Bar" (https://www.framer.com/marketplace/components/aave-navigation-bar/) |
+| validate | 5 OK / 0 warn / 0 error |
+
+scroll-pin 패턴(스크롤 텍스트 로드)과 달리 **hover 인터랙션** 카탈로그. 표준 sticky nav 보일러플레이트(brand + 5 menu + CTA) 위에 패턴별 dropdown 내부 HTML/CSS/JS만 교체. 닫힘 120ms delay로 마우스가 메뉴와 dropdown 사이를 지나갈 때 실수로 닫히는 것을 방지.
+
+---
+
 ## 첫 카테고리 사례: 스크롤 텍스트 로드 (2026-05-27, v3 scroll-pin + 진행률 매핑)
 
 | 항목 | 결과 |
