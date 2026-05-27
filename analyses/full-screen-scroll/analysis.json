@@ -28,7 +28,7 @@
             {
               "label": "01. 페이드 스택 (Framer Scroll Slides)",
               "tag": "Vanilla JS (Framer Motion 대체 가능)",
-              "desc": "슬라이드가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 슬라이드는 opacity 0, 새 슬라이드는 opacity 1로 fade. 하단 progress bar가 각 슬라이드의 진행률을 시각화. Framer 마켓플레이스 Scroll Slides의 동일 동작."
+              "desc": "풀스크린 이미지가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 이미지는 opacity 0, 새 이미지는 opacity 1로 fade(0.6s ease-in-out). 좌측 하단에 큰 타이틀 + 본문, 하단 전체 폭의 progress bar 4개가 슬라이드별 local progress를 시각화. Framer 마켓플레이스 Scroll Slides(Artem Kostenko)의 시각 100% 매칭."
             },
             {
               "label": "02. 가로 패닝",
@@ -166,7 +166,7 @@
       "blocks": [
         {
           "type": "text",
-          "value": "슬라이드가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 슬라이드는 opacity 0, 새 슬라이드는 opacity 1로 fade. 하단 progress bar가 각 슬라이드의 진행률을 시각화. Framer 마켓플레이스 Scroll Slides의 동일 동작."
+          "value": "풀스크린 이미지가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 이미지는 opacity 0, 새 이미지는 opacity 1로 fade(0.6s ease-in-out). 좌측 하단에 큰 타이틀 + 본문, 하단 전체 폭의 progress bar 4개가 슬라이드별 local progress를 시각화. Framer 마켓플레이스 Scroll Slides(Artem Kostenko)의 시각 100% 매칭."
         },
         {
           "type": "heading",
@@ -175,7 +175,7 @@
         {
           "type": "component",
           "embed": "demos/full-screen-scroll/fade-stack.html",
-          "embedHeight": 560,
+          "embedHeight": 600,
           "embedLabel": "01 · 페이드 스택 (Framer Scroll Slides)",
           "title": "페이드 스택 (Framer Scroll Slides) 라이브 데모"
         },
@@ -185,7 +185,7 @@
         },
         {
           "type": "text",
-          "value": "parent .track 높이를 N×100vh로 설정해 스크롤 공간을 만들고, .stage를 position:sticky top:0 height:100vh로 viewport에 고정. 스크롤 진행률(0~1)을 N으로 곱한 인덱스로 activeIndex 결정 → 그 슬라이드만 .is-on. 슬라이드 간 transition 600ms로 자연스럽게 fade. progress bar는 각 슬라이드 구간의 local progress(0~1)을 scaleX로."
+          "value": "parent .track 높이를 N×100vh로 설정해 스크롤 공간을 만들고, .stage를 position:sticky top:0 height:100vh로 viewport에 고정. 스크롤 진행률(0~1)을 N으로 곱한 인덱스로 activeIndex를 결정해 그 인덱스의 이미지·캡션만 .is-on (opacity 1, translateY 0). 어두운 gradient overlay가 텍스트 가독성 보장. 하단 progress bar 4개는 슬라이드별 local progress(0~1)을 scaleX로. Pretendard 단일 폰트(라벨·숫자·헤딩·본문 모두). Framer 마켓플레이스 Scroll Slides의 시각·동작 100% 매칭."
         },
         {
           "type": "kv",
@@ -201,7 +201,7 @@
             },
             {
               "label": "매핑",
-              "value": "activeIndex = floor(p × N)"
+              "value": "activeIndex = floor(p × N) · local = (p - i/N) × N"
             },
             {
               "label": "Track 높이",
@@ -209,11 +209,11 @@
             },
             {
               "label": "Fade",
-              "value": "opacity 0↔1, 600ms ease-in-out (CSS transition)"
+              "value": "이미지·캡션 opacity 0↔1, 600ms ease-in-out"
             },
             {
-              "label": "시그니처",
-              "value": "Framer Scroll Slides / Apple iPhone Hero"
+              "label": "폰트",
+              "value": "Pretendard Variable 단일 (헤딩 500, 본문 300)"
             }
           ]
         },
@@ -225,19 +225,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"track\" style=\"height: 400vh\">\n  <div class=\"stage\" style=\"position:sticky;top:0;height:100vh\">\n    <div class=\"slide is-on\">...</div>\n    <div class=\"slide\">...</div>\n  </div>\n</div>"
+          "value": "<div class=\"track\" style=\"height:400vh\">\n  <div class=\"stage\" style=\"position:sticky;top:0;height:100vh\">\n    <img class=\"img is-on\" src=\"...\" />\n    <img class=\"img\" src=\"...\" />\n    <div class=\"overlay\"></div>\n    <div class=\"caps\">\n      <div class=\"cap is-on\"><h1>Sensitivity as a guiding force</h1><p>Forms and colors respond to inner feeling…</p></div>\n    </div>\n    <div class=\"bars\">\n      <div class=\"bar\"><span>01</span><span>Intuition</span><div class=\"track\"><div class=\"fill\"></div></div></div>\n      ...\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".slide { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease-in-out; }\n.slide.is-on { opacity: 1; }"
+          "value": ".img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 600ms ease-in-out; }\n.img.is-on { opacity: 1; }\n.overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.55)); }\n.cap { position: absolute; left: 60px; bottom: 130px; opacity: 0; transform: translateY(16px); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.cap.is-on { opacity: 1; transform: translateY(0); }\n.bars { position: absolute; left: 60px; right: 60px; bottom: 48px; display: flex; gap: 40px; }\n.bar { flex: 1; }\n.fill { height: 2px; background: #fff; transform: scaleX(0); transform-origin: left; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "var slides = document.querySelectorAll(\".slide\");\nvar N = slides.length;\nvar track = document.querySelector(\".track\");\nwindow.addEventListener(\"scroll\", function(){\n  var rect = track.getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  slides.forEach(function(s, i){ s.classList.toggle(\"is-on\", i === idx); });\n}, { passive: true });"
+          "value": "var imgs = document.querySelectorAll(\".img\");\nvar caps = document.querySelectorAll(\".cap\");\nvar fills = document.querySelectorAll(\".fill\");\nvar N = imgs.length;\nvar track = document.querySelector(\".track\");\nwindow.addEventListener(\"scroll\", function(){\n  var rect = track.getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  imgs.forEach(function(s, i){ s.classList.toggle(\"is-on\", i === idx); });\n  caps.forEach(function(c, i){ c.classList.toggle(\"is-on\", i === idx); });\n  fills.forEach(function(f, i){\n    var start = i / N, end = (i + 1) / N;\n    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n    f.style.transform = \"scaleX(\" + local + \")\";\n  });\n}, { passive: true });"
         },
         {
           "type": "heading",
@@ -245,7 +245,7 @@
         },
         {
           "type": "text",
-          "value": "풀스크린 이미지/비디오 갤러리에 가장 보편적. 슬라이드 3~5개가 균형. 너무 많으면(6+) 스크롤이 너무 길어진다. Track 높이는 N×100vh 표준, 더 빠른 전환을 원하면 N×80vh로 줄임. progress bar 클릭 → scrollTo로 해당 슬라이드로 점프하는 기능도 함께 구현 가능 (Scroll Slides의 scrollToSlide)."
+          "value": "풀스크린 이미지/비디오 갤러리에 가장 보편적. 슬라이드 3~5개가 균형. 너무 많으면(6+) 스크롤이 길어진다. Track 높이는 N×100vh 표준. 텍스트 위치는 좌측 하단(60px padding)이 표준이지만 우측/중앙도 가능. 어두운 overlay(0.18→0.55 gradient)가 텍스트 가독성을 보장. progress bar 라벨(01 Intuition)은 활성 슬라이드에서 흰색, 비활성에서 0.5 흰색."
         },
         {
           "type": "heading",
@@ -257,28 +257,28 @@
             {
               "label": "히어로 헤더",
               "tag": "",
-              "desc": "제품 홍보 페이지의 메인 Hero — 풀스크린 이미지 시리즈를 스크롤로 전환"
+              "desc": "제품/공간 홍보 페이지의 메인 Hero — Framer Scroll Slides 그대로 차용해 시네마틱 갤러리"
             },
             {
               "label": "랜딩 페이지",
               "tag": "",
-              "desc": "브랜드 스토리텔링의 핵심 섹션 — 4-5 챕터를 풀스크린으로 풀어냄"
+              "desc": "브랜드 스토리텔링의 4-5 챕터(Intuition · Touch · Glow · Pulse 같은 컨셉 라벨)"
             },
             {
               "label": "제품 섹션",
               "tag": "",
-              "desc": "제품 라인업 카탈로그 — 한 제품당 한 슬라이드, 비디오와 함께"
+              "desc": "제품 라인업/시리즈 — 한 제품당 한 슬라이드, 비디오 가능"
             },
             {
               "label": "포트폴리오 소개",
               "tag": "",
-              "desc": "대표 작업 4-5건을 풀스크린 갤러리로 — 각 작품에 충분한 시각 임팩트"
+              "desc": "대표 작업 4-5건 풀스크린 갤러리 — 각 작품에 시각 임팩트 + 좌측 하단 캡션"
             }
           ]
         },
         {
           "type": "note",
-          "value": "트레이드오프 — parent height가 4×100vh = 400vh로 페이지 전체 길이가 크게 늘어남. 페이지에 다른 콘텐츠도 많으면 사용자가 지칠 수 있어 한 페이지에 하나의 fade-stack만 권장. 모바일에서는 비디오/이미지 사이즈 최적화 필수."
+          "value": "트레이드오프 — parent height가 4×100vh = 400vh로 페이지 전체 길이가 크게 늘어남. 한 페이지에 하나의 fade-stack만 권장. 모바일에서는 이미지 크기 최적화 + object-fit:cover로 비율 보정 필수. 텍스트가 이미지와 겹치므로 overlay gradient 강도와 텍스트 색 콘트라스트 검수 필요."
         }
       ]
     },

@@ -56,7 +56,7 @@ function slidesMarkup(prefix) {
 function slidesCSS(prefix) {
   return '.' + prefix + '-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }\n'
     + '.' + prefix + '-cap { text-align: center; color: #fff; max-width: 720px; padding: 0 8vw; }\n'
-    + '.' + prefix + '-num { font: 600 12px/1 ui-monospace, monospace; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }\n'
+    + '.' + prefix + '-num { font: 600 12px/1 "Pretendard Variable","Pretendard",sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }\n'
     + '.' + prefix + '-title { font: 700 clamp(40px, 6vw, 84px)/1.1 "Pretendard Variable","Pretendard",system-ui; margin: 0 0 18px; letter-spacing: -0.02em; }\n'
     + '.' + prefix + '-desc { font: 400 clamp(16px, 1.4vw, 20px)/1.55 "Pretendard Variable","Pretendard",system-ui; margin: 0; opacity: 0.85; }';
 }
@@ -64,40 +64,77 @@ function slidesCSS(prefix) {
 // ============ 10 패턴 정의 ============
 
 const PATTERNS = [
-  // ───────────────────────────── 1. fade-stack (Framer Scroll Slides)
+  // ───────────────────────────── 1. fade-stack (Framer Scroll Slides — 100% 매칭)
+  // 실측: https://scrollslides.framer.website/ (Artem Kostenko)
+  // - 풀스크린 이미지 배경 + 좌측 하단 텍스트 + 어두운 gradient overlay
+  // - 하단 progress bar 4개 균등, 각 bar 위에 "01  Intuition" 형식 라벨
+  // - Pretendard 단일 폰트
   {
     id: 'fade-stack',
     num: '01',
     title: '페이드 스택 (Framer Scroll Slides)',
-    summary: '슬라이드가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 슬라이드는 opacity 0, 새 슬라이드는 opacity 1로 fade. 하단 progress bar가 각 슬라이드의 진행률을 시각화. Framer 마켓플레이스 Scroll Slides의 동일 동작.',
+    summary: '풀스크린 이미지가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 이미지는 opacity 0, 새 이미지는 opacity 1로 fade(0.6s ease-in-out). 좌측 하단에 큰 타이틀 + 본문, 하단 전체 폭의 progress bar 4개가 슬라이드별 local progress를 시각화. Framer 마켓플레이스 Scroll Slides(Artem Kostenko)의 시각 100% 매칭.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n      ' + slidesMarkup('fs') + '\n      </div>\n      <div class="fs-bars">\n        ' + SLIDES.map(function (s, i) { return '<div class="fs-bar"><span class="fs-bar-label">' + s.number + ' · ' + s.name + '</span><div class="fs-bar-track"><div class="fs-bar-fill" data-i="' + i + '"></div></div></div>'; }).join('\n        ') + '\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; }\n' + slidesCSS('fs') + '\n.fs-slide { opacity: 0; transition: opacity 600ms ease-in-out; }\n.fs-slide.is-on { opacity: 1; }\n.fs-bars { position: absolute; bottom: 48px; left: 8vw; right: 8vw; display: flex; gap: 40px; align-items: flex-end; z-index: 5; }\n.fs-bar { flex: 1; display: flex; flex-direction: column; gap: 12px; }\n.fs-bar-label { font: 600 11px/1 ui-monospace, monospace; color: rgba(255,255,255,0.78); letter-spacing: 0.06em; }\n.fs-bar-track { width: 100%; height: 2px; background: rgba(255,255,255,0.2); overflow: hidden; }\n.fs-bar-fill { height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; }',
-      script: 'var slides = document.querySelectorAll(".fs-slide");\nvar bars = document.querySelectorAll(".fs-bar-fill");\nvar N = slides.length;\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  slides.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n  bars.forEach(function(b, i){\n    var start = i / N, end = (i + 1) / N;\n    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n    b.style.transform = "scaleX(" + local + ")";\n  });\n}',
-      height: 560,
+      slides: 4,
+      bodyHTML: '<div class="fs-stack">\n        <img class="fs-img is-on" src="https://framerusercontent.com/images/d3xhzATSbq7UnQJGe11DInRHoA.png?width=2912&height=1632" alt="Intuition" data-i="0">\n        <img class="fs-img" src="https://framerusercontent.com/images/Ka2cys5DNM0ZnikfEku6vAQgs.png?width=2912&height=1632" alt="Touch" data-i="1">\n        <img class="fs-img" src="https://framerusercontent.com/images/J7sgYKuCCsB521hhlHpnH26Xo.png?width=2912&height=1632" alt="Glow" data-i="2">\n        <img class="fs-img" src="https://framerusercontent.com/images/9Mpgc4sWSDqEN9RprS8TLHnypqY.png?width=2720&height=1760" alt="Pulse" data-i="3">\n        <div class="fs-overlay"></div>\n        <div class="fs-caps">\n          <div class="fs-cap is-on" data-i="0"><h1 class="fs-title">Sensitivity as a guiding force</h1><p class="fs-desc">Forms and colors respond to inner feeling rather than logic. Design becomes instinctive — not constructed, but sensed. A world shaped by quiet whispers of intuition.</p></div>\n          <div class="fs-cap" data-i="1"><h1 class="fs-title">Tactile presence</h1><p class="fs-desc">Surfaces hold the memory of light and time. Texture speaks where words fall silent — materials become a language of their own.</p></div>\n          <div class="fs-cap" data-i="2"><h1 class="fs-title">Emotional illumination</h1><p class="fs-desc">Soft light shapes the mood of every room. Warmth without heat, brightness without glare — atmosphere built from a single ray.</p></div>\n          <div class="fs-cap" data-i="3"><h1 class="fs-title">The living rhythm</h1><p class="fs-desc">Spaces breathe with the people inside. From shadow to glow, from quiet to full — a house alive with its own quiet rhythm.</p></div>\n        </div>\n        <div class="fs-bars">\n          <div class="fs-bar" data-i="0"><div class="fs-bar-label"><span class="fs-bar-num">01</span><span class="fs-bar-name">Intuition</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n          <div class="fs-bar" data-i="1"><div class="fs-bar-label"><span class="fs-bar-num">02</span><span class="fs-bar-name">Touch</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n          <div class="fs-bar" data-i="2"><div class="fs-bar-label"><span class="fs-bar-num">03</span><span class="fs-bar-name">Glow</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n          <div class="fs-bar" data-i="3"><div class="fs-bar-label"><span class="fs-bar-num">04</span><span class="fs-bar-name">Pulse</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n        </div>\n      </div>',
+      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Pretendard Variable","Pretendard",system-ui,sans-serif; }\n'
+        + '.fs-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 600ms ease-in-out; will-change: opacity; }\n'
+        + '.fs-img.is-on { opacity: 1; }\n'
+        + '.fs-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 2; }\n'
+        + '.fs-caps { position: absolute; left: 0; right: 0; bottom: 130px; padding: 0 60px; z-index: 4; pointer-events: none; }\n'
+        + '.fs-cap { position: absolute; left: 60px; right: 60px; bottom: 0; opacity: 0; transform: translateY(16px); transition: opacity 500ms ease-out, transform 500ms cubic-bezier(0.2,0,0,1); will-change: opacity, transform; }\n'
+        + '.fs-cap.is-on { opacity: 1; transform: translateY(0); }\n'
+        + '.fs-title { font: 500 clamp(40px, 5vw, 64px)/1.05 "Pretendard Variable","Pretendard",sans-serif; color: #fff; margin: 0 0 22px; max-width: 60%; letter-spacing: -0.02em; }\n'
+        + '.fs-desc { font: 300 clamp(14px, 1vw, 16px)/1.5 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.92); margin: 0; max-width: 460px; }\n'
+        + '.fs-bars { position: absolute; left: 60px; right: 60px; bottom: 48px; display: flex; gap: 40px; align-items: flex-end; z-index: 4; }\n'
+        + '.fs-bar { flex: 1; display: flex; flex-direction: column; gap: 14px; }\n'
+        + '.fs-bar-label { display: flex; gap: 10px; align-items: baseline; font: 500 14px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.5); transition: color 300ms ease; letter-spacing: 0.01em; }\n'
+        + '.fs-bar-num { font: 400 14px/1 "Pretendard Variable","Pretendard",sans-serif; opacity: 0.78; }\n'
+        + '.fs-bar.is-active .fs-bar-label, .fs-bar.is-past .fs-bar-label { color: rgba(255,255,255,1); }\n'
+        + '.fs-bar-track { width: 100%; height: 2px; background: rgba(255,255,255,0.22); overflow: hidden; }\n'
+        + '.fs-bar-fill { height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n'
+        + 'var caps = document.querySelectorAll(".fs-cap");\n'
+        + 'var bars = document.querySelectorAll(".fs-bar");\n'
+        + 'var fills = document.querySelectorAll(".fs-bar-fill");\n'
+        + 'var N = imgs.length;\n'
+        + 'function applyReveal(p){\n'
+        + '  var idx = Math.min(Math.floor(p * N), N - 1);\n'
+        + '  imgs.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n'
+        + '  caps.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n'
+        + '  bars.forEach(function(b, i){\n'
+        + '    b.classList.toggle("is-active", i === idx);\n'
+        + '    b.classList.toggle("is-past", i < idx);\n'
+        + '  });\n'
+        + '  fills.forEach(function(f, i){\n'
+        + '    var start = i / N, end = (i + 1) / N;\n'
+        + '    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n'
+        + '    f.style.transform = "scaleX(" + local + ")";\n'
+        + '  });\n'
+        + '}',
+      height: 600,
       trackVh: 400
     },
-    snippetHTML: '<div class="track" style="height: ' + (SLIDES.length * 100) + 'vh">\n  <div class="stage" style="position:sticky;top:0;height:100vh">\n    <div class="slide is-on">...</div>\n    <div class="slide">...</div>\n  </div>\n</div>',
-    snippetCSS: '.slide { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease-in-out; }\n.slide.is-on { opacity: 1; }',
-    snippetJS: 'var slides = document.querySelectorAll(".slide");\nvar N = slides.length;\nvar track = document.querySelector(".track");\nwindow.addEventListener("scroll", function(){\n  var rect = track.getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  slides.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n}, { passive: true });',
-    explain: 'parent .track 높이를 N×100vh로 설정해 스크롤 공간을 만들고, .stage를 position:sticky top:0 height:100vh로 viewport에 고정. 스크롤 진행률(0~1)을 N으로 곱한 인덱스로 activeIndex 결정 → 그 슬라이드만 .is-on. 슬라이드 간 transition 600ms로 자연스럽게 fade. progress bar는 각 슬라이드 구간의 local progress(0~1)을 scaleX로.',
+    snippetHTML: '<div class="track" style="height:400vh">\n  <div class="stage" style="position:sticky;top:0;height:100vh">\n    <img class="img is-on" src="..." />\n    <img class="img" src="..." />\n    <div class="overlay"></div>\n    <div class="caps">\n      <div class="cap is-on"><h1>Sensitivity as a guiding force</h1><p>Forms and colors respond to inner feeling…</p></div>\n    </div>\n    <div class="bars">\n      <div class="bar"><span>01</span><span>Intuition</span><div class="track"><div class="fill"></div></div></div>\n      ...\n    </div>\n  </div>\n</div>',
+    snippetCSS: '.img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 600ms ease-in-out; }\n.img.is-on { opacity: 1; }\n.overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.55)); }\n.cap { position: absolute; left: 60px; bottom: 130px; opacity: 0; transform: translateY(16px); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.cap.is-on { opacity: 1; transform: translateY(0); }\n.bars { position: absolute; left: 60px; right: 60px; bottom: 48px; display: flex; gap: 40px; }\n.bar { flex: 1; }\n.fill { height: 2px; background: #fff; transform: scaleX(0); transform-origin: left; }',
+    snippetJS: 'var imgs = document.querySelectorAll(".img");\nvar caps = document.querySelectorAll(".cap");\nvar fills = document.querySelectorAll(".fill");\nvar N = imgs.length;\nvar track = document.querySelector(".track");\nwindow.addEventListener("scroll", function(){\n  var rect = track.getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  imgs.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n  caps.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n  fills.forEach(function(f, i){\n    var start = i / N, end = (i + 1) / N;\n    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n    f.style.transform = "scaleX(" + local + ")";\n  });\n}, { passive: true });',
+    explain: 'parent .track 높이를 N×100vh로 설정해 스크롤 공간을 만들고, .stage를 position:sticky top:0 height:100vh로 viewport에 고정. 스크롤 진행률(0~1)을 N으로 곱한 인덱스로 activeIndex를 결정해 그 인덱스의 이미지·캡션만 .is-on (opacity 1, translateY 0). 어두운 gradient overlay가 텍스트 가독성 보장. 하단 progress bar 4개는 슬라이드별 local progress(0~1)을 scaleX로. Pretendard 단일 폰트(라벨·숫자·헤딩·본문 모두). Framer 마켓플레이스 Scroll Slides의 시각·동작 100% 매칭.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (Framer Motion 대체 가능)' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
-      { label: '매핑', value: 'activeIndex = floor(p × N)' },
+      { label: '매핑', value: 'activeIndex = floor(p × N) · local = (p - i/N) × N' },
       { label: 'Track 높이', value: 'N × 100vh (예: 4 슬라이드 = 400vh)' },
-      { label: 'Fade', value: 'opacity 0↔1, 600ms ease-in-out (CSS transition)' },
-      { label: '시그니처', value: 'Framer Scroll Slides / Apple iPhone Hero' }
+      { label: 'Fade', value: '이미지·캡션 opacity 0↔1, 600ms ease-in-out' },
+      { label: '폰트', value: 'Pretendard Variable 단일 (헤딩 500, 본문 300)' }
     ],
-    guide: '풀스크린 이미지/비디오 갤러리에 가장 보편적. 슬라이드 3~5개가 균형. 너무 많으면(6+) 스크롤이 너무 길어진다. Track 높이는 N×100vh 표준, 더 빠른 전환을 원하면 N×80vh로 줄임. progress bar 클릭 → scrollTo로 해당 슬라이드로 점프하는 기능도 함께 구현 가능 (Scroll Slides의 scrollToSlide).',
+    guide: '풀스크린 이미지/비디오 갤러리에 가장 보편적. 슬라이드 3~5개가 균형. 너무 많으면(6+) 스크롤이 길어진다. Track 높이는 N×100vh 표준. 텍스트 위치는 좌측 하단(60px padding)이 표준이지만 우측/중앙도 가능. 어두운 overlay(0.18→0.55 gradient)가 텍스트 가독성을 보장. progress bar 라벨(01 Intuition)은 활성 슬라이드에서 흰색, 비활성에서 0.5 흰색.',
     recommendations: [
-      { place: '히어로 헤더', body: '제품 홍보 페이지의 메인 Hero — 풀스크린 이미지 시리즈를 스크롤로 전환' },
-      { place: '랜딩 페이지', body: '브랜드 스토리텔링의 핵심 섹션 — 4-5 챕터를 풀스크린으로 풀어냄' },
-      { place: '제품 섹션', body: '제품 라인업 카탈로그 — 한 제품당 한 슬라이드, 비디오와 함께' },
-      { place: '포트폴리오 소개', body: '대표 작업 4-5건을 풀스크린 갤러리로 — 각 작품에 충분한 시각 임팩트' }
+      { place: '히어로 헤더', body: '제품/공간 홍보 페이지의 메인 Hero — Framer Scroll Slides 그대로 차용해 시네마틱 갤러리' },
+      { place: '랜딩 페이지', body: '브랜드 스토리텔링의 4-5 챕터(Intuition · Touch · Glow · Pulse 같은 컨셉 라벨)' },
+      { place: '제품 섹션', body: '제품 라인업/시리즈 — 한 제품당 한 슬라이드, 비디오 가능' },
+      { place: '포트폴리오 소개', body: '대표 작업 4-5건 풀스크린 갤러리 — 각 작품에 시각 임팩트 + 좌측 하단 캡션' }
     ],
-    tradeoff: 'parent height가 4×100vh = 400vh로 페이지 전체 길이가 크게 늘어남. 페이지에 다른 콘텐츠도 많으면 사용자가 지칠 수 있어 한 페이지에 하나의 fade-stack만 권장. 모바일에서는 비디오/이미지 사이즈 최적화 필수.'
+    tradeoff: 'parent height가 4×100vh = 400vh로 페이지 전체 길이가 크게 늘어남. 한 페이지에 하나의 fade-stack만 권장. 모바일에서는 이미지 크기 최적화 + object-fit:cover로 비율 보정 필수. 텍스트가 이미지와 겹치므로 overlay gradient 강도와 텍스트 색 콘트라스트 검수 필요.'
   },
 
   // ───────────────────────────── 2. horizontal-pan
@@ -446,10 +483,10 @@ function buildDemoHTML(p) {
     + '    html, body { margin: 0; padding: 0; }\n'
     + '    body { background: #000; color: #fff; font-family: "Pretendard Variable", "Pretendard", system-ui; overflow-x: hidden; -webkit-font-smoothing: antialiased; }\n'
     + '    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 10px; z-index: 100; }\n'
-    + '    .demo-reset { font: 600 11px/1 ui-monospace, monospace; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }\n'
+    + '    .demo-reset { font: 600 11px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }\n'
     + '    .demo-reset:hover { color: #fff; background: rgba(255,255,255,0.14); }\n'
-    + '    .demo-label { font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; }\n'
-    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; animation: hint-bounce 1.6s ease-in-out infinite; }\n'
+    + '    .demo-label { font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; }\n'
+    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; animation: hint-bounce 1.6s ease-in-out infinite; }\n'
     + '    @keyframes hint-bounce { 0%, 100% { transform: translateY(0); opacity: 0.45; } 50% { transform: translateY(4px); opacity: 0.85; } }\n'
     + '    .demo-progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.06); z-index: 100; }\n'
     + '    .demo-progress > div { height: 100%; background: #fff; width: 0; transition: width 60ms linear; }\n'
@@ -511,8 +548,8 @@ function buildSnapDemoHTML(p) {
     + '    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }\n'
     + '    body { background: #000; color: #fff; font-family: "Pretendard Variable", "Pretendard", system-ui; -webkit-font-smoothing: antialiased; }\n'
     + '    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; gap: 10px; z-index: 100; }\n'
-    + '    .demo-label { font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 0; }\n'
-    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; }\n'
+    + '    .demo-label { font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 0; }\n'
+    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; }\n'
     + '    ' + p.demo.css.replace(/\n/g, '\n    ') + '\n'
     + '  </style>\n'
     + '</head>\n'

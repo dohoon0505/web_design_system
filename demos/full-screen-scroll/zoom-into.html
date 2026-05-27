@@ -10,10 +10,10 @@
     html, body { margin: 0; padding: 0; }
     body { background: #000; color: #fff; font-family: "Pretendard Variable", "Pretendard", system-ui; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 10px; z-index: 100; }
-    .demo-reset { font: 600 11px/1 ui-monospace, monospace; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }
+    .demo-reset { font: 600 11px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }
     .demo-reset:hover { color: #fff; background: rgba(255,255,255,0.14); }
-    .demo-label { font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; }
-    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 ui-monospace, monospace; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; animation: hint-bounce 1.6s ease-in-out infinite; }
+    .demo-label { font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; }
+    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; animation: hint-bounce 1.6s ease-in-out infinite; }
     @keyframes hint-bounce { 0%, 100% { transform: translateY(0); opacity: 0.45; } 50% { transform: translateY(4px); opacity: 0.85; } }
     .demo-progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.06); z-index: 100; }
     .demo-progress > div { height: 100%; background: #fff; width: 0; transition: width 60ms linear; }
@@ -22,7 +22,7 @@
     .fs-stack { position: absolute; inset: 0; overflow: hidden; perspective: 1000px; }
     .fs-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
     .fs-cap { text-align: center; color: #fff; max-width: 720px; padding: 0 8vw; }
-    .fs-num { font: 600 12px/1 ui-monospace, monospace; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+    .fs-num { font: 600 12px/1 "Pretendard Variable","Pretendard",sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
     .fs-title { font: 700 clamp(40px, 6vw, 84px)/1.1 "Pretendard Variable","Pretendard",system-ui; margin: 0 0 18px; letter-spacing: -0.02em; }
     .fs-desc { font: 400 clamp(16px, 1.4vw, 20px)/1.55 "Pretendard Variable","Pretendard",system-ui; margin: 0; opacity: 0.85; }
     .fs-slide { opacity: 0; transform: scale(0.8); will-change: transform, opacity; }
