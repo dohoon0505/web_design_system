@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * Web Reference Lab — Category Generator: Scroll-Card-Update (v2 — 카드 영역 구조)
+ * Web Reference Lab — Category Generator: Scroll-Card-Update (v3 — 텍스트+이미지 = 하나의 카드)
  *
- * v2 핵심 변경: 풀스크린 X. base44.com과 동일한 구조 —
- *   - 좌측: 4 텍스트 섹션이 페이지 따라 자연 스크롤 (각 min-height: 100vh)
- *   - 우측: position:sticky 영역 + 카드 형태(둥근·그림자·aspect-ratio)
- *   - 카드들이 sticky 영역 안에서 아래에서 위로 올라오며 swap
+ * v3 핵심: "텍스트+이미지"가 하나의 카드 단위.
+ *   - scroll-track (500vh) + sticky-stage (100vh, overflow:hidden)
+ *   - 각 .scu-card = position:absolute;inset:0 (좌 텍스트 + 우 이미지 grid)
+ *   - 카드 전체가 아래에서 위로 올라와 이전 카드를 덮음
  *
  * Usage: node scripts/generate-scroll-card-update.mjs
  */
@@ -25,7 +25,7 @@ const CATEGORY = {
   type: 'category',
   date: '2026-05-27',
   url: 'https://base44.com/',
-  summary: '좌측 텍스트는 페이지 따라 자연 스크롤되고, 우측 sticky 영역의 카드(둥근 모서리·그림자가 있는 카드 형태)가 아래에서 위로 올라오며 swap되는 인터랙션 카탈로그. base44.com의 시그니처 구조를 첫 번째 패턴으로 차용하고, 카드 전환 방식 9 변형을 비교 카탈로그로 정리. 풀스크린이 아닌 우측 칼럼의 카드 영역에서만 인터랙션이 일어난다.'
+  summary: '스크롤 시 "텍스트+이미지"가 하나의 카드 단위로 아래에서 위로 올라와 이전 카드를 덮는 인터랙션 카탈로그. base44.com의 시그니처 구조를 첫 번째 패턴(stack-up)으로 차용하고, 카드 전환 방식 9 변형을 비교 카탈로그로 정리. 각 카드는 좌측 텍스트(넘버링·타이틀·본문·CTA) + 우측 이미지(둥근 카드 형태)의 2-column grid이며, 이 전체가 하나의 전환 단위.'
 };
 
 // ============ 표준 4 카드 데이터 ============
@@ -59,29 +59,26 @@ const N = SCU_CARDS.length;
 
 // ============ 공통 마크업 빌더 ============
 
-function scuTextsMarkup() {
-  // 좌측 텍스트 4개 — 페이지 따라 자연 스크롤되도록 각자 min-height: 100vh의 섹션
+function scuFullCardsMarkup() {
   return SCU_CARDS.map(function (c, i) {
-    return '<div class="scu-text" data-i="' + i + '">'
-      + '<div class="scu-num"><span class="scu-num-cur">' + c.num + '</span><span class="scu-num-sep">/</span><span class="scu-num-tot">0' + N + '</span><span class="scu-num-title">' + c.title + '</span></div>'
-      + '<p class="scu-body">' + c.body + '</p>'
-      + '<button class="scu-btn" type="button">Start building</button>'
-      + '</div>';
-  }).join('\n          ');
-}
-
-function scuCardsMarkup(extraClass) {
-  return SCU_CARDS.map(function (c, i) {
-    return '<div class="scu-card' + (extraClass ? ' ' + extraClass : '') + (i === 0 ? ' is-on' : '') + '" data-i="' + i + '" style="background-image: url(\'' + c.img + '\');"></div>';
-  }).join('\n              ');
+    return '<div class="scu-card' + (i === 0 ? ' is-on' : '') + '" data-i="' + i + '">'
+      + '\n          <div class="scu-text">'
+      + '\n            <div class="scu-num"><span class="scu-num-cur">' + c.num + '</span><span class="scu-num-sep">/</span><span class="scu-num-tot">0' + N + '</span><span class="scu-num-title">' + c.title + '</span></div>'
+      + '\n            <p class="scu-body">' + c.body + '</p>'
+      + '\n            <button class="scu-btn" type="button">Start building</button>'
+      + '\n          </div>'
+      + '\n          <div class="scu-img-wrap"><div class="scu-img" style="background-image: url(\'' + c.img + '\');"></div></div>'
+      + '\n        </div>';
+  }).join('\n        ');
 }
 
 // 공통 base CSS — 모든 패턴 공유
-// 핵심: 좌측 자연 스크롤 (각 .scu-text min-height 100vh) + 우측 sticky 카드 영역
+// 핵심: scroll-track + sticky-stage + 카드(텍스트+이미지) 전체가 하나의 전환 단위
 const SCU_BASE_CSS = ''
-  + '.scu-section { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 48px; background: linear-gradient(180deg, #fafafa 0%, #f5e6f5 60%, #f0c3ed 100%); font-family: "Pretendard Variable","Pretendard",sans-serif; }\n'
-  + '.scu-left { display: flex; flex-direction: column; }\n'
-  + '.scu-text { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 0; }\n'
+  + '.scroll-track { min-height: 500vh; position: relative; }\n'
+  + '.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }\n'
+  + '.scu-card { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 48px; background: linear-gradient(180deg, #fafafa 0%, #f5e6f5 60%, #f0c3ed 100%); font-family: "Pretendard Variable","Pretendard",sans-serif; will-change: transform, opacity, clip-path, filter; }\n'
+  + '.scu-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 0; }\n'
   + '.scu-num { display: inline-flex; align-items: baseline; gap: 8px; font: 500 14px/1.4 inherit; color: #0a0a0a; margin: 0 0 40px; flex-wrap: wrap; }\n'
   + '.scu-num-cur { color: #0a0a0a; }\n'
   + '.scu-num-sep { color: rgba(10,10,10,0.3); }\n'
@@ -90,21 +87,22 @@ const SCU_BASE_CSS = ''
   + '.scu-body { font: 500 clamp(22px, 2vw, 30px)/1.35 inherit; color: #0a0a0a; margin: 0 0 36px; max-width: 540px; letter-spacing: -0.01em; }\n'
   + '.scu-btn { display: inline-block; font: 600 14px/1 inherit; color: #fff; background: #0a0a0a; border: 0; border-radius: 999px; padding: 16px 32px; cursor: pointer; transition: transform 160ms, background 160ms; align-self: flex-start; }\n'
   + '.scu-btn:hover { transform: translateY(-1px); background: #1a1a1a; }\n'
-  + '.scu-right { position: relative; }\n'
-  + '.scu-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 0; }\n'
-  + '.scu-cards { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: calc(100vh - 120px); border-radius: 24px; overflow: hidden; background: #0a0a0a; box-shadow: 0 32px 80px -20px rgba(0,0,0,0.32), 0 0 0 1px rgba(0,0,0,0.04); }\n'
-  + '.scu-card { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; will-change: opacity, transform, clip-path, filter; }\n';
+  + '.scu-img-wrap { display: flex; align-items: center; justify-content: center; padding: 60px 0; }\n'
+  + '.scu-img { width: 100%; aspect-ratio: 4 / 5; max-height: calc(100vh - 120px); border-radius: 24px; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 32px 80px -20px rgba(0,0,0,0.32), 0 0 0 1px rgba(0,0,0,0.04); }\n';
 
-// 공통 reveal helper — 페이지(또는 iframe) 스크롤 진행률로부터 activeIndex 추출
+// 공통 reveal helper — scroll-track 진행률
 const SCU_COMMON_SCRIPT = ''
-  + 'var section = document.querySelector(".scu-section");\n'
+  + 'var track = document.querySelector(".scroll-track");\n'
   + 'var cards = document.querySelectorAll(".scu-card");\n'
   + 'var N = ' + N + ';\n'
   + 'function calc(){\n'
-  + '  var rect = section.getBoundingClientRect();\n'
+  + '  var rect = track.getBoundingClientRect();\n'
   + '  var max = Math.max(1, rect.height - window.innerHeight);\n'
   + '  return Math.max(0, Math.min(1, -rect.top / max));\n'
   + '}';
+
+// ============ 공통 스니펫 HTML ============
+const SNIPPET_HTML_COMMON = '<div class="scroll-track">\n  <div class="sticky-stage">\n    <div class="card" data-i="0">\n      <div class="text">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class="img-wrap"><div class="img">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>';
 
 // ============ 10 패턴 정의 ============
 
@@ -112,90 +110,90 @@ const PATTERNS = [
   // 01 — stack-up (base44 시그니처)
   {
     id: 'stack-up', num: '01', title: '스택 업 (base44 시그니처)',
-    summary: '새 카드가 우측 sticky 영역 안에서 아래에서 위로 슬라이드 + zIndex 누적. base44.com의 시그니처. 좌측 텍스트는 페이지 자연 스크롤.',
+    summary: '카드(텍스트+이미지) 전체가 아래에서 위로 슬라이드하며 이전 카드 위에 쌓임. base44.com의 시그니처 인터랙션.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { transform: translateY(100%); }\n.scu-card[data-i="0"] { transform: translateY(0); }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  cards.forEach(function(c, i){\n    var pos = p * N - i;\n    var local = Math.max(0, Math.min(1, pos + 1));\n    var ease = 1 - Math.pow(1 - local, 3);\n    c.style.transform = "translateY(" + (100 * (1 - ease)) + "%)";\n    c.style.zIndex = i;\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="section">\n  <div class="left"><div class="text">×4 (각 min-height 100vh)</div></div>\n  <div class="right"><div class="sticky"><div class="cards"><div class="card">×4</div></div></div></div>\n</div>',
-    snippetCSS: '.section { display: grid; grid-template-columns: 1fr 1fr; }\n.text { min-height: 100vh; }\n.sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; }\n.cards { width: 100%; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden; position: relative; }\n.card { position: absolute; inset: 0; background-size: cover; transform: translateY(100%); will-change: transform; }\n.card[data-i="0"] { transform: translateY(0); }',
+    snippetHTML: SNIPPET_HTML_COMMON,
+    snippetCSS: '.scroll-track { min-height: 500vh; }\n.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }\n.card { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr;\n  transform: translateY(100%); will-change: transform; }\n.card[data-i="0"] { transform: translateY(0); }',
     snippetJS: 'cards.forEach(function(c, i){\n  var pos = p * N - i;\n  var local = Math.max(0, Math.min(1, pos + 1));\n  var ease = 1 - Math.pow(1 - local, 3);\n  c.style.transform = "translateY(" + (100 * (1 - ease)) + "%)";\n  c.style.zIndex = i;\n});',
-    explain: '좌측 4 텍스트 섹션이 각 min-height: 100vh로 페이지 따라 자연 스크롤. 우측은 position:sticky 영역 안에 카드 form(둥근 모서리 24px + aspect-ratio 4/5 + 그림자). 각 카드는 처음에 translateY(100%)로 카드 영역 아래에 위치, 진행률이 자기 인덱스에 가까워질수록 ease-out-cubic로 100% → 0%로 올라옴. zIndex가 누적되어 새 카드가 이전 카드 위에 쌓임.',
+    explain: '각 카드는 좌측 텍스트(넘버링·타이틀·본문·CTA) + 우측 이미지(둥근 카드 형태)의 2-column grid. 카드 전체가 하나의 단위로 처음에 translateY(100%) 상태에서 스크롤 진행률에 따라 ease-out-cubic으로 0%까지 올라옴. zIndex 누적으로 새 카드가 이전 카드 위에 자연스럽게 쌓인다.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section bounding rect 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'translateY = (1 - ease(local)) × 100%' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
-      { label: '카드 영역', value: 'aspect-ratio 4/5 + border-radius 24px + 그림자' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드 (2-col grid)' },
+      { label: '이미지 영역', value: 'aspect-ratio 4/5, border-radius 24px, 그림자' },
       { label: '시그니처', value: 'base44.com / Linear changelog' }
     ],
-    guide: '좌측 텍스트는 페이지 흐름 따라 자연 스크롤(각 섹션 min-height 100vh). 우측 카드는 sticky 영역의 중앙에 카드 형태(aspect-ratio 4/5)로 머물러 카드들이 차례로 쌓임. 카드 영역은 viewport 풀스크린이 아닌 적당한 크기(max-height: viewport - 120px). 모바일에서는 좌·우 1-column 스택 + 카드는 그대로 sticky.',
+    guide: '카드 전체(텍스트+이미지)가 하나의 단위로 아래에서 올라와 덮는 패턴. scroll-track 500vh 안에서 4개 카드가 순차로 등장. 첫 카드는 translateY(0)으로 즉시 보임. 모바일에서는 grid를 1-column으로 fallback.',
     recommendations: [
       { place: '히어로 헤더', body: '제품 핵심 가치 4가지 — base44 그대로 좌측 카피 + 우측 UI 카드' },
-      { place: '랜딩 페이지', body: '기능 소개 섹션 — 각 기능당 한 카드 + 좌측 설명' },
+      { place: '랜딩 페이지', body: '기능 소개 섹션 — 각 기능당 하나의 카드가 올라오며 교체' },
       { place: '제품 섹션', body: '제품 라인업 — 가격·스펙·이미지를 카드별로' },
       { place: '포트폴리오 소개', body: '대표 작품 케이스 스터디 — 좌측 설명 + 우측 작품 이미지' }
     ],
-    tradeoff: '좌측 자연 스크롤이라 페이지 전체 길이가 4 × 100vh 늘어남. 모바일에서는 사이드 by 사이드 X — 1-column으로 fallback 권장. 카드 영역 사이즈는 viewport에 비례하므로 매우 작은 화면(<480px)에서는 카드가 너무 작아질 수 있음.'
+    tradeoff: 'scroll-track 500vh로 페이지 길이 증가. 모바일에서는 2-col grid를 1-col로 변환 권장. 카드 4~6개가 적정.'
   },
 
   // 02 — fade-stack
   {
     id: 'fade-stack', num: '02', title: '페이드 스택',
-    summary: '카드가 opacity 0↔1로 swap. 가장 보편적인 부드러운 카드 전환.',
+    summary: '카드(텍스트+이미지) 전체가 opacity 0↔1로 부드럽게 swap. 가장 보편적인 전환.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { opacity: 0; transition: opacity 600ms ease-in-out; }\n.scu-card.is-on { opacity: 1; }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card"></div>×4',
+    snippetHTML: SNIPPET_HTML_COMMON,
     snippetCSS: '.card { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease-in-out; }\n.card.is-on { opacity: 1; }',
     snippetJS: 'var idx = Math.min(Math.floor(p * N), N - 1);\ncards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });',
-    explain: '활성 카드만 .is-on, opacity 1. CSS transition 600ms로 부드러운 swap. 모든 카드는 카드 영역(aspect-ratio 4/5) 안에 절대 위치로 쌓여 있고, 활성 카드만 보임.',
+    explain: '활성 카드(텍스트+이미지 전체)만 .is-on 클래스로 opacity 1. CSS transition 600ms로 부드러운 swap. 모든 카드가 sticky-stage 안에 절대 위치로 쌓여 있고, 활성 카드만 보임.',
     kv: [
       { label: '의존성', value: 'CSS only (JS는 클래스 토글)' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'activeIndex = floor(p × N)' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: 'Fade', value: '600ms ease-in-out' },
       { label: '시그니처', value: 'Stripe / Vercel 부드러운 swap' }
     ],
-    guide: '가장 안전한 카드 전환. 카드 간 명도 차이가 크면 fade 시 깜빡임 — 비슷한 톤의 카드 시리즈에 적합. transition 500-800ms 자연스러움.',
+    guide: '가장 안전한 카드 전환. 카드 간 색상·톤이 비슷할 때 가장 자연스러움. transition 500~800ms 권장.',
     recommendations: [
-      { place: '히어로 헤더', body: 'SaaS 메인 hero — 단순하고 안전' },
+      { place: '히어로 헤더', body: 'SaaS 메인 hero — 단순하고 안전한 전환' },
       { place: '랜딩 페이지', body: '기능 소개 — 부드러운 swap으로 가독성 유지' },
-      { place: '제품 섹션', body: '제품 변형 — 자연스러운 교체' },
-      { place: '포트폴리오 소개', body: '작품 시리즈 — 가독성 좋게' }
+      { place: '제품 섹션', body: '제품 변형 비교 — 자연스러운 교체' },
+      { place: '포트폴리오 소개', body: '작품 시리즈 — 방해 없는 전환' }
     ],
-    tradeoff: '임팩트 약함 — 강한 인상이 필요하면 stack-up.'
+    tradeoff: '임팩트 약함 — 강한 인상이 필요하면 stack-up이나 clip-bottom 권장.'
   },
 
   // 03 — scale-pop
   {
     id: 'scale-pop', num: '03', title: '스케일 팝',
-    summary: '새 카드가 scale 0.92→1로 살짝 커지며 등장, 이전 카드는 1→1.04로 미세하게 커지며 사라짐.',
+    summary: '새 카드가 scale 0.92→1로 커지며 등장, 이전 카드는 1→1.04로 미세 확대되며 퇴장.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { opacity: 0; transform: scale(0.92); transition: opacity 500ms ease-out, transform 500ms cubic-bezier(0.2,0,0,1); }\n.scu-card.is-on { opacity: 1; transform: scale(1); }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){\n    c.classList.toggle("is-on", i === idx);\n    if (i < idx) c.style.transform = "scale(1.04)";\n    else if (i > idx) c.style.transform = "scale(0.92)";\n    else c.style.transform = "scale(1)";\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card"></div>×4',
+    snippetHTML: SNIPPET_HTML_COMMON,
     snippetCSS: '.card { opacity: 0; transform: scale(0.92); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: scale(1); }',
     snippetJS: 'cards.forEach(function(c, i){\n  c.classList.toggle("is-on", i === idx);\n  c.style.transform = "scale(" + (i < idx ? 1.04 : i > idx ? 0.92 : 1) + ")";\n});',
-    explain: '활성 카드 scale 1. 다음 카드는 scale 0.92(작아진 상태로 대기), 지난 카드는 scale 1.04(살짝 커지며 사라짐). 두 인접 카드가 동시에 보이는 자연스러운 zoom 교체.',
+    explain: '활성 카드 scale 1. 다음 카드는 scale 0.92(작은 상태로 대기), 지난 카드는 scale 1.04(살짝 커지며 사라짐). 카드 전체(텍스트+이미지)가 함께 줌 인/아웃.',
     kv: [
       { label: '의존성', value: 'CSS + Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'scale 0.92 → 1 → 1.04' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: '이징', value: 'cubic-bezier(0.2,0,0,1)' },
       { label: '시그니처', value: '부드러운 zoom 갤러리' }
     ],
-    guide: '부드럽고 시각 변화가 자연스러움. scale 변화 0.92~1.04 (작은 폭). 본문 카드·기능 카드에 적합.',
+    guide: '부드럽고 시각 변화가 자연스러움. scale 변화 0.92~1.04 (작은 폭). 카드 전체가 함께 줌 되므로 텍스트+이미지 동시에 변화.',
     recommendations: [
-      { place: '히어로 헤더', body: 'SaaS 부드러운 hero' },
-      { place: '랜딩 페이지', body: '회사 가치 시리즈' },
+      { place: '히어로 헤더', body: 'SaaS 부드러운 hero 전환' },
+      { place: '랜딩 페이지', body: '회사 가치 시리즈 교체' },
       { place: '제품 섹션', body: '제품 변형 교체' },
       { place: '포트폴리오 소개', body: '작품 시리즈' }
     ],
@@ -205,25 +203,25 @@ const PATTERNS = [
   // 04 — slide-from-right
   {
     id: 'slide-from-right', num: '04', title: '우측 슬라이드',
-    summary: '새 카드가 우측에서 좌측으로 슬라이드 들어오고 이전 카드는 좌측으로 슬라이드 나감.',
+    summary: '새 카드(텍스트+이미지)가 우측에서 슬라이드 진입, 이전 카드는 좌측으로 퇴장.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { transform: translateX(100%); opacity: 0; transition: transform 600ms cubic-bezier(0.22,1,0.36,1), opacity 400ms ease; }\n.scu-card.is-on { transform: translateX(0); opacity: 1; }\n.scu-card[data-i="0"] { transform: translateX(0); opacity: 1; }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){\n    c.classList.toggle("is-on", i === idx);\n    if (i < idx) c.style.transform = "translateX(-100%)";\n    else if (i > idx) c.style.transform = "translateX(100%)";\n    else c.style.transform = "translateX(0)";\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card"></div>×4',
-    snippetCSS: '.card { transform: translateX(100%); transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }\n.card.is-on { transform: translateX(0); }',
+    snippetHTML: SNIPPET_HTML_COMMON,
+    snippetCSS: '.card { transform: translateX(100%); opacity: 0; transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }\n.card.is-on { transform: translateX(0); opacity: 1; }',
     snippetJS: 'cards.forEach(function(c, i){\n  c.classList.toggle("is-on", i === idx);\n  c.style.transform = "translateX(" + (i < idx ? -100 : i > idx ? 100 : 0) + "%)";\n});',
-    explain: '활성 카드 translateX 0. 지난 카드는 -100%, 다음 카드는 100%(우측 대기). 카드 영역 overflow:hidden 안에서 카드가 가로로 흐름. out-expo 이징.',
+    explain: '활성 카드 translateX 0. 지난 카드는 -100%(좌측 퇴장), 다음 카드는 100%(우측 대기). 카드 전체(텍스트+이미지)가 함께 가로 슬라이드. sticky-stage overflow:hidden으로 영역 밖 카드는 가려짐.',
     kv: [
       { label: '의존성', value: 'CSS + Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'translateX -100/0/100%' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: '이징', value: 'cubic-bezier(0.22,1,0.36,1) out-expo' },
       { label: '시그니처', value: '캐러셀 스타일 swap' }
     ],
-    guide: '가로 카드 swap. 카드 영역의 overflow:hidden 필수.',
+    guide: '가로 슬라이드 전환. sticky-stage의 overflow:hidden 필수. 텍스트+이미지가 함께 이동하여 일체감 있음.',
     recommendations: [
       { place: '히어로 헤더', body: '제품 라인업 가로 슬라이드' },
       { place: '랜딩 페이지', body: '서비스 단계 진행' },
@@ -236,150 +234,150 @@ const PATTERNS = [
   // 05 — clip-bottom
   {
     id: 'clip-bottom', num: '05', title: 'Clip 바텀 리빌',
-    summary: '새 카드가 아래에서 위로 clip-path inset으로 reveal. 카드 영역 안에서 커튼이 올라오는 인상.',
+    summary: '새 카드(텍스트+이미지) 전체가 clip-path inset으로 아래에서 위로 reveal. 커튼이 올라가는 느낌.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { clip-path: inset(100% 0 0 0); }\n.scu-card[data-i="0"] { clip-path: inset(0); }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  cards.forEach(function(c, i){\n    if (i === 0) { c.style.clipPath = "inset(0)"; c.style.zIndex = 0; return; }\n    var pos = p * N - i + 1;\n    var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n    c.style.clipPath = "inset(" + inset + "% 0 0 0)";\n    c.style.zIndex = i;\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card" data-i="0"></div>×4',
+    snippetHTML: SNIPPET_HTML_COMMON,
     snippetCSS: '.card { clip-path: inset(100% 0 0 0); }\n.card[data-i="0"] { clip-path: inset(0); }',
     snippetJS: 'cards.forEach(function(c, i){\n  if (i === 0) return;\n  var pos = p * N - i + 1;\n  var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n  c.style.clipPath = "inset(" + inset + "% 0 0 0)";\n  c.style.zIndex = i;\n});',
-    explain: '첫 카드는 처음부터 보임. 이후 카드들은 clip-path inset 100%에서 시작해 진행률 따라 0으로 줄어들며 위에서 아래로 reveal. 카드 영역(둥근 모서리) 안에서 커튼 내려옴.',
+    explain: '첫 카드는 처음부터 보임. 이후 카드들은 clip-path inset 100%에서 시작해 진행률 따라 0으로 줄어들며 아래에서 위로 reveal. 카드 전체(텍스트+이미지)가 커튼처럼 드러남.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'clip-path inset top = (1 - local) × 100%' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: '핵심', value: 'clip-path inset (GPU 가속)' },
       { label: '시그니처', value: '시네마틱 reveal' }
     ],
-    guide: '카드 영역 안에서 커튼 내려오는 시네마틱. zIndex 누적 필수.',
+    guide: '카드 전체가 커튼처럼 드러나는 시네마틱 전환. zIndex 누적 필수. 텍스트와 이미지가 동시에 reveal 되어 임팩트 강함.',
     recommendations: [
       { place: '히어로 헤더', body: '시네마틱 인트로' },
       { place: '랜딩 페이지', body: '챕터별 전환' },
-      { place: '제품 섹션', body: '비포/애프터' },
-      { place: '포트폴리오 소개', body: '커튼 전환' }
+      { place: '제품 섹션', body: '비포/애프터 전환' },
+      { place: '포트폴리오 소개', body: '커튼 전환 연출' }
     ],
-    tradeoff: 'clip-path 모던 브라우저 OK. 슬라이드 방향 한정.'
+    tradeoff: 'clip-path 모던 브라우저 필수. reveal 방향이 아래→위 한정.'
   },
 
   // 06 — rotate-tilt
   {
     id: 'rotate-tilt', num: '06', title: '회전 틸트',
-    summary: '카드가 translateY 60px + rotate ±3° + opacity로 등장. 종이가 떨어지는 듯한 자연스러운 motion.',
+    summary: '카드(텍스트+이미지) 전체가 translateY 60px + rotate ±3°로 등장. 종이가 떨어지는 느낌.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { opacity: 0; transform: translateY(60px) rotate(-3deg); transition: opacity 600ms ease-out, transform 600ms cubic-bezier(0.2,0,0,1); transform-origin: bottom center; }\n.scu-card.is-on { opacity: 1; transform: translateY(0) rotate(0deg); }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){\n    c.classList.toggle("is-on", i === idx);\n    if (i < idx) c.style.transform = "translateY(-60px) rotate(3deg)";\n    else if (i > idx) c.style.transform = "translateY(60px) rotate(-3deg)";\n    else c.style.transform = "translateY(0) rotate(0)";\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card"></div>×4',
-    snippetCSS: '.card { opacity: 0; transform: translateY(60px) rotate(-3deg); transform-origin: bottom center; transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: translateY(0) rotate(0); }',
+    snippetHTML: SNIPPET_HTML_COMMON,
+    snippetCSS: '.card { opacity: 0; transform: translateY(60px) rotate(-3deg); transform-origin: bottom center;\n  transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: translateY(0) rotate(0); }',
     snippetJS: 'cards.forEach(function(c, i){\n  c.classList.toggle("is-on", i === idx);\n  if (i < idx) c.style.transform = "translateY(-60px) rotate(3deg)";\n  else if (i > idx) c.style.transform = "translateY(60px) rotate(-3deg)";\n  else c.style.transform = "translateY(0) rotate(0)";\n});',
-    explain: '활성 카드 translateY 0 + rotate 0. 다음 카드는 60px 아래 + -3°, 지난 카드는 60px 위 + +3°. 카드가 종이처럼 떨어지고 떠나가는 자연 motion. transform-origin: bottom center.',
+    explain: '활성 카드 translateY 0 + rotate 0. 다음 카드는 60px 아래 + -3°, 지난 카드는 60px 위 + +3°. 카드 전체(텍스트+이미지)가 종이처럼 기울어지며 등장·퇴장. transform-origin: bottom center.',
     kv: [
       { label: '의존성', value: 'CSS + Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'translateY ±60px + rotate ±3deg' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: '이징', value: 'cubic-bezier(0.2,0,0,1)' },
       { label: '시그니처', value: '에디토리얼 / 종이 같은 인상' }
     ],
-    guide: '회전 2-5°이 자연스러움. transform-origin: bottom center로 카드 아래쪽이 축.',
+    guide: '회전 2~5°가 자연스러움. 카드 전체가 기울어지므로 텍스트+이미지 함께 회전하여 종이 넘기기 인상.',
     recommendations: [
-      { place: '히어로 헤더', body: '에디토리얼·매거진' },
-      { place: '랜딩 페이지', body: '크리에이티브 도구' },
-      { place: '제품 섹션', body: '아트·문구' },
+      { place: '히어로 헤더', body: '에디토리얼·매거진 스타일' },
+      { place: '랜딩 페이지', body: '크리에이티브 도구 소개' },
+      { place: '제품 섹션', body: '아트·문구 제품' },
       { place: '포트폴리오 소개', body: '디자이너 포트폴리오' }
     ],
-    tradeoff: '큰 회전은 가독성 저하. 2-5° 권장.'
+    tradeoff: '큰 회전은 가독성 저하. 2~5° 권장.'
   },
 
   // 07 — blur-swap
   {
     id: 'blur-swap', num: '07', title: '블러 스왑',
-    summary: '이전 카드 blur out + 새 카드 blur in. 카메라 초점 변화 같은 영화적 swap.',
+    summary: '카드(텍스트+이미지) 전체가 blur in/out. 카메라 초점 변화 같은 영화적 전환.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { opacity: 0; filter: blur(18px); transition: opacity 700ms ease-in-out, filter 700ms ease-in-out; }\n.scu-card.is-on { opacity: 1; filter: blur(0); }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card"></div>×4',
-    snippetCSS: '.card { opacity: 0; filter: blur(18px); transition: opacity 700ms ease-in-out, filter 700ms ease-in-out; }\n.card.is-on { opacity: 1; filter: blur(0); }',
+    snippetHTML: SNIPPET_HTML_COMMON,
+    snippetCSS: '.card { opacity: 0; filter: blur(18px); transition: opacity 700ms, filter 700ms ease-in-out; }\n.card.is-on { opacity: 1; filter: blur(0); }',
     snippetJS: 'cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });',
-    explain: '비활성 카드 filter:blur(18px) + opacity 0. 활성 카드 blur(0) + opacity 1. transition 700ms로 부드러운 swap.',
+    explain: '비활성 카드 filter:blur(18px) + opacity 0. 활성 카드 blur(0) + opacity 1. 카드 전체(텍스트+이미지)가 함께 blur/unblur 되어 카메라 초점 전환 효과.',
     kv: [
       { label: '의존성', value: 'CSS only (JS는 클래스 토글)' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'is-on 토글' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: '블러 거리', value: 'blur(18px) → 0' },
       { label: '시그니처', value: 'Apple Vision Pro 시네마틱' }
     ],
-    guide: '카메라 초점 변화 같은 영화적 swap. transition 700-1000ms.',
+    guide: '카메라 초점 변화 같은 영화적 전환. 텍스트까지 blur 되므로 전환 중 가독성은 떨어지지만 임팩트 강함. transition 700~1000ms.',
     recommendations: [
-      { place: '히어로 헤더', body: '시네마틱 SaaS' },
+      { place: '히어로 헤더', body: '시네마틱 SaaS hero' },
       { place: '랜딩 페이지', body: '브랜드 스토리텔링' },
       { place: '제품 섹션', body: '부드러운 swap' },
       { place: '포트폴리오 소개', body: '영화적 작품 갤러리' }
     ],
-    tradeoff: 'filter blur GPU 비용. 모바일·큰 면적 주의.'
+    tradeoff: 'filter blur GPU 비용. 전체 카드 blur라 전환 중 텍스트 읽기 불가.'
   },
 
   // 08 — stack-spread
   {
     id: 'stack-spread', num: '08', title: '스택 스프레드 (카드 덱)',
-    summary: '이전 카드들이 약간씩 어긋난 채 뒤에 쌓여 있고, 새 카드가 위에서 슬라이드. 카드 덱 같은 깊이감.',
+    summary: '이전 카드(텍스트+이미지)들이 위로 어긋나며 쌓이고 새 카드가 위에 올라옴. 카드 덱 깊이감.',
     demo: {
       css: SCU_BASE_CSS + '.scu-card { transform: translateY(100%) scale(1); transition: transform 600ms cubic-bezier(0.2,0,0,1); }\n.scu-card[data-i="0"] { transform: translateY(0) scale(1); }',
-      script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  cards.forEach(function(c, i){\n    var pos = p * N - i;\n    var local = Math.max(0, Math.min(1, pos + 1));\n    if (pos < 0) { c.style.transform = "translateY(" + (100 * (1 - local)) + "%)"; c.style.zIndex = i; return; }\n    var behind = pos;\n    c.style.transform = "translateY(" + (-behind * 12) + "px) scale(" + Math.max(0.92, 1 - behind * 0.04) + ")";\n    c.style.zIndex = i;\n  });\n}',
+      script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  cards.forEach(function(c, i){\n    var pos = p * N - i;\n    var local = Math.max(0, Math.min(1, pos + 1));\n    if (pos < 0) { c.style.transform = "translateY(" + (100 * (1 - local)) + "%)"; c.style.zIndex = i; return; }\n    var behind = pos;\n    c.style.transform = "translateY(" + (-behind * 12) + "px) scale(" + Math.max(0.92, 1 - behind * 0.04) + ")";\n    c.style.zIndex = N - i;\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card" data-i="0"></div>×4',
+    snippetHTML: SNIPPET_HTML_COMMON,
     snippetCSS: '.card { transform: translateY(100%); transition: transform 600ms cubic-bezier(0.2,0,0,1); }\n.card[data-i="0"] { transform: translateY(0); }',
-    snippetJS: 'cards.forEach(function(c, i){\n  var pos = p * N - i;\n  if (pos < 0) { /* 등장 전 */ return; }\n  c.style.transform = "translateY(" + (-pos * 12) + "px) scale(" + (1 - pos * 0.04) + ")";\n  c.style.zIndex = i;\n});',
-    explain: '활성 카드 + 이전 카드들 동시 보임. 이전 카드는 -12px씩 위로 + scale 0.96·0.92로 작아지며 뒤에 쌓임. 카드 덱(playing cards stack) 인상.',
+    snippetJS: 'cards.forEach(function(c, i){\n  var pos = p * N - i;\n  if (pos < 0) { /* 등장 전 */ return; }\n  c.style.transform = "translateY(" + (-pos * 12) + "px) scale(" + (1 - pos * 0.04) + ")";\n  c.style.zIndex = N - i;\n});',
+    explain: '활성 카드 + 이전 카드들 동시 보임. 이전 카드는 -12px씩 위로 + scale 0.96·0.92로 작아지며 뒤에 쌓임. 카드 전체(텍스트+이미지)가 덱처럼 보여 깊이감 제공.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'translateY -behind × 12px + scale 1 - behind × 0.04' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
-      { label: '핵심', value: 'zIndex 누적 + 이전 카드 미니어처' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
+      { label: '핵심', value: 'zIndex 역순 + 이전 카드 미니어처' },
       { label: '시그니처', value: 'iOS 사진앱 deck' }
     ],
-    guide: '카드 덱 깊이감. 이전 카드들이 살짝 보여 진행 위치 시각화. 카드 3-5개.',
+    guide: '카드 덱 깊이감. 이전 카드 전체(텍스트+이미지)가 살짝 보여 진행 위치 시각화. 카드 3~5개 적정.',
     recommendations: [
       { place: '히어로 헤더', body: '카드 시리즈 — 모든 카드 한 번에 인상' },
       { place: '랜딩 페이지', body: '기능 단계 — 이전 단계 잔상' },
       { place: '제품 섹션', body: '제품 라인업 시리즈' },
       { place: '포트폴리오 소개', body: '작품 덱 형태' }
     ],
-    tradeoff: '카드 6+이면 시각 혼잡. 3-5개 권장.'
+    tradeoff: '카드 6+이면 시각 혼잡. 3~5개 권장.'
   },
 
   // 09 — dissolve
   {
     id: 'dissolve', num: '09', title: '디졸브 (그레인)',
-    summary: '카드가 그레인·노이즈로 디졸브. 필름 카메라 cross-dissolve transition.',
+    summary: '카드(텍스트+이미지) 전체가 그레인·노이즈로 디졸브. 필름 카메라 cross-dissolve.',
     demo: {
-      css: SCU_BASE_CSS + '.scu-card { opacity: 0; transition: opacity 800ms ease-in-out, filter 800ms ease-in-out; filter: contrast(0.92) saturate(0.8); }\n.scu-card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.scu-noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.6\'/%3E%3C/svg%3E"); }',
+      css: SCU_BASE_CSS + '.scu-card { opacity: 0; transition: opacity 800ms ease-in-out, filter 800ms ease-in-out; filter: contrast(0.92) saturate(0.8); }\n.scu-card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.scu-noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay; z-index: 100; background-image: url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.6\'/%3E%3C/svg%3E"); }',
       script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n}',
       height: 720,
       extraInnerHTML: '<div class="scu-noise"></div>'
     },
-    snippetHTML: '<div class="card"></div>×4\n<div class="noise"></div>',
-    snippetCSS: '.card { opacity: 0; filter: contrast(0.92) saturate(0.8); transition: opacity 800ms, filter 800ms; }\n.card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.noise { /* SVG fractalNoise overlay */ opacity: 0.08; mix-blend-mode: overlay; }',
+    snippetHTML: SNIPPET_HTML_COMMON.replace('<!-- ×4', '<div class="noise"></div>\n    <!-- ×4'),
+    snippetCSS: '.card { opacity: 0; filter: contrast(0.92) saturate(0.8); transition: opacity 800ms, filter 800ms; }\n.card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08;\n  mix-blend-mode: overlay; /* SVG fractalNoise */ }',
     snippetJS: 'cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });',
-    explain: 'opacity + filter contrast/saturate 동시 변화. SVG fractalNoise overlay로 그레인 텍스처. 800ms 천천히 swap.',
+    explain: 'opacity + filter contrast/saturate 동시 변화. SVG fractalNoise overlay로 그레인 텍스처. 카드 전체(텍스트+이미지)가 800ms 천천히 swap.',
     kv: [
       { label: '의존성', value: 'CSS + SVG noise' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'opacity + filter contrast·saturate' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: 'transition', value: '800ms ease-in-out' },
       { label: '시그니처', value: '필름 카메라 dissolve' }
     ],
-    guide: '시네마틱 dissolve. 카드 시각 연결성이 좋을 때 자연스러움. SVG noise 매우 미세하게(0.05-0.1).',
+    guide: '시네마틱 dissolve. 카드 전체가 그레인과 함께 전환되어 필름 느낌. SVG noise opacity 0.05~0.1.',
     recommendations: [
       { place: '히어로 헤더', body: '브랜드 영상 시네마틱' },
       { place: '랜딩 페이지', body: '에디토리얼 매거진' },
@@ -392,32 +390,32 @@ const PATTERNS = [
   // 10 — carousel
   {
     id: 'carousel', num: '10', title: '캐러셀',
-    summary: '카드들이 가로로 정렬되어 있고, 활성 카드만 가운데 + 인접 카드가 좌우에 미니어처로 보임.',
+    summary: '카드(텍스트+이미지)들이 가로로 정렬, 활성 카드만 정면 + 인접 카드 좌우에 미니어처.',
     demo: {
-      css: SCU_BASE_CSS + '.scu-cards { perspective: 1600px; }\n.scu-card { transform: translateX(100%) scale(0.85); opacity: 0.4; transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }\n.scu-card[data-i="0"] { transform: translateX(0) scale(1); opacity: 1; }',
-      script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){\n    var diff = i - idx;\n    if (diff === 0) { c.style.transform = "translateX(0) scale(1)"; c.style.opacity = 1; c.style.zIndex = 10; }\n    else if (Math.abs(diff) === 1) { c.style.transform = "translateX(" + (diff * 65) + "%) scale(0.85)"; c.style.opacity = 0.35; c.style.zIndex = 5; }\n    else { c.style.transform = "translateX(" + (diff * 90) + "%) scale(0.7)"; c.style.opacity = 0; c.style.zIndex = 1; }\n  });\n}',
+      css: SCU_BASE_CSS + '.scu-card { transform: translateX(100%) scale(0.85); opacity: 0.4; transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }\n.scu-card[data-i="0"] { transform: translateX(0) scale(1); opacity: 1; }',
+      script: SCU_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  cards.forEach(function(c, i){\n    var diff = i - idx;\n    if (diff === 0) { c.style.transform = "translateX(0) scale(1)"; c.style.opacity = 1; c.style.zIndex = 10; }\n    else if (Math.abs(diff) === 1) { c.style.transform = "translateX(" + (diff * 80) + "%) scale(0.85)"; c.style.opacity = 0.35; c.style.zIndex = 5; }\n    else { c.style.transform = "translateX(" + (diff * 120) + "%) scale(0.7)"; c.style.opacity = 0; c.style.zIndex = 1; }\n  });\n}',
       height: 720
     },
-    snippetHTML: '<div class="card"></div>×4',
-    snippetCSS: '.card { transform: translateX(100%) scale(0.85); opacity: 0.4; transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }',
-    snippetJS: 'cards.forEach(function(c, i){\n  var diff = i - idx;\n  c.style.transform = "translateX(" + (diff * 65) + "%) scale(" + (diff === 0 ? 1 : 0.85) + ")";\n  c.style.opacity = diff === 0 ? 1 : Math.abs(diff) === 1 ? 0.35 : 0;\n});',
-    explain: '활성 카드 가운데 + scale 1. 좌우 인접 카드 ±65% + scale 0.85 + opacity 0.35(미니어처). 그 너머는 ±90% + scale 0.7 + opacity 0. 캐러셀 전체가 한 번에 보임.',
+    snippetHTML: SNIPPET_HTML_COMMON,
+    snippetCSS: '.card { transform: translateX(100%) scale(0.85); opacity: 0.4;\n  transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }',
+    snippetJS: 'cards.forEach(function(c, i){\n  var diff = i - idx;\n  c.style.transform = "translateX(" + (diff * 80) + "%) scale(" + (diff === 0 ? 1 : 0.85) + ")";\n  c.style.opacity = diff === 0 ? 1 : Math.abs(diff) === 1 ? 0.35 : 0;\n});',
+    explain: '활성 카드(텍스트+이미지) 가운데 + scale 1. 좌우 인접 카드 ±80% + scale 0.85 + opacity 0.35. 카드 전체가 가로 캐러셀로 흐름.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
-      { label: '트리거', value: '페이지 스크롤 (section 기준)' },
+      { label: '트리거', value: '페이지 스크롤 (scroll-track 진행률)' },
       { label: '매핑', value: 'diff = i - idx → translateX·scale·opacity' },
-      { label: '구조', value: '좌 자연 스크롤 + 우 sticky 카드 영역' },
+      { label: '카드 구조', value: '텍스트+이미지 = 하나의 카드' },
       { label: '시각', value: '활성 가운데 + 인접 미니어처 양쪽' },
       { label: '시그니처', value: 'iOS 카드 캐러셀' }
     ],
-    guide: '캐러셀 형태가 카드 시리즈를 한 번에 보여줘 진행 위치 인식 좋음. 인접 카드 opacity 0.3-0.5 자연스러움.',
+    guide: '캐러셀 형태로 카드 시리즈를 한 번에 보여줌. 인접 카드의 텍스트+이미지가 함께 축소되어 전체 흐름 파악 가능.',
     recommendations: [
       { place: '히어로 헤더', body: '제품 라인업 캐러셀' },
       { place: '랜딩 페이지', body: '서비스 시리즈 — 한 번에 모두' },
       { place: '제품 섹션', body: '제품 비교 — 인접 미니어처' },
       { place: '포트폴리오 소개', body: '작품 캐러셀 흐름' }
     ],
-    tradeoff: '카드 너비 좁아짐. 활성 카드가 작아 보일 수 있음.'
+    tradeoff: '카드 전체가 축소되므로 인접 카드의 텍스트는 읽기 어려움. 시각적 흐름 파악용.'
   }
 ];
 
@@ -455,17 +453,10 @@ function buildDemoHTML(p) {
     + '  <div class="demo-hint">SCROLL ↓</div>\n'
     + '  <div class="demo-progress"><div></div></div>\n'
     + '\n'
-    + '  <div class="scu-section">\n'
-    + '    <div class="scu-left">\n'
-    + '      ' + scuTextsMarkup() + '\n'
-    + '    </div>\n'
-    + '    <div class="scu-right">\n'
-    + '      <div class="scu-sticky">\n'
-    + '        <div class="scu-cards">\n'
-    + '          ' + scuCardsMarkup() + '\n'
-    + '          ' + extraInner + '\n'
-    + '        </div>\n'
-    + '      </div>\n'
+    + '  <div class="scroll-track">\n'
+    + '    <div class="sticky-stage">\n'
+    + '      ' + scuFullCardsMarkup() + '\n'
+    + '      ' + extraInner + '\n'
     + '    </div>\n'
     + '  </div>\n'
     + '\n'
@@ -532,7 +523,7 @@ function buildOverview() {
   return {
     title: '00. 카테고리 개요',
     blocks: [
-      { type: 'heading', value: 'Scroll-Card-Update — 패턴 카탈로그 v2 (카드 영역 구조)' },
+      { type: 'heading', value: 'Scroll-Card-Update — 패턴 카탈로그 v3 (텍스트+이미지 = 하나의 카드)' },
       { type: 'text', value: CATEGORY.summary },
       { type: 'heading', value: '10 패턴 인덱스' },
       { type: 'structure', items: indexItems },
@@ -540,21 +531,21 @@ function buildOverview() {
       {
         type: 'kv', columns: 2, items: [
           { label: '폰트', value: 'Pretendard Variable 단일' },
-          { label: '배경 / 텍스트 색', value: '#fafafa → #f0c3ed gradient / #0a0a0a' },
-          { label: '레이아웃', value: '2-column grid (1fr 1fr) — 좌 텍스트, 우 카드' },
-          { label: '좌측 텍스트', value: '각 .scu-text min-height: 100vh (페이지 자연 스크롤)' },
-          { label: '우측 카드', value: 'position:sticky top:0 height:100vh + 카드 영역 (aspect-ratio 4/5)' },
-          { label: '카드 영역', value: 'border-radius 24px + 그림자 + max-height calc(100vh - 120px)' },
-          { label: '진행률 계산', value: 'p = clamp(0, -section.top / (section.height - innerHeight), 1)' },
-          { label: '카드 데이터', value: '4종 고정 (base44.com 콘텐츠 + wixstatic 이미지)' }
+          { label: '배경', value: '#fafafa → #f0c3ed gradient (각 카드 자체 배경)' },
+          { label: '카드 모델', value: '"텍스트+이미지 = 하나의 카드" (2-col grid, position:absolute)' },
+          { label: '스크롤 트랙', value: 'scroll-track 500vh + sticky-stage 100vh' },
+          { label: '이미지 영역', value: 'aspect-ratio 4/5 + border-radius 24px + 그림자' },
+          { label: '진행률 계산', value: 'p = clamp(0, -track.top / (track.height - innerHeight), 1)' },
+          { label: '카드 수', value: '4종 고정 (base44.com 콘텐츠 + wixstatic 이미지)' },
+          { label: '전환 방식', value: '카드 전체(텍스트+이미지)가 하나의 단위로 전환' }
         ]
       },
       { type: 'heading', value: '읽기 가이드' },
       {
         type: 'structure', items: [
-          { label: '라이브 데모', tag: 'IFRAME', desc: 'demos/scroll-card-update/{pattern}.html — 좌 텍스트 자연 스크롤 + 우 sticky 카드 영역 안 카드 전환' },
-          { label: '작동 원리', tag: 'HOW', desc: '진행률 → 우측 카드 영역 안 카드 인터랙션' },
-          { label: '정량 메타', tag: 'KV', desc: '의존성 / 매핑 / 구조 / 이징 / 시그니처' },
+          { label: '라이브 데모', tag: 'IFRAME', desc: 'demos/scroll-card-update/{pattern}.html — 카드(텍스트+이미지) 전체 전환' },
+          { label: '작동 원리', tag: 'HOW', desc: '진행률 → 카드 전체 인터랙션 (transform/opacity/clip)' },
+          { label: '정량 메타', tag: 'KV', desc: '의존성 / 매핑 / 카드 구조 / 이징 / 시그니처' },
           { label: '코드 스니펫', tag: 'CODE', desc: 'HTML / CSS / JS — 패턴별 핵심' },
           { label: '사용 가이드', tag: 'GUIDE', desc: '카드 수·구조·모바일 fallback' },
           { label: '활용 추천', tag: 'PLACES', desc: '히어로 / 랜딩 / 제품 / 포트폴리오' },
@@ -563,7 +554,7 @@ function buildOverview() {
       },
       {
         type: 'note',
-        value: '참고 자료: base44.com (' + CATEGORY.url + '). 풀스크린이 아닌 우측 칼럼의 카드 영역(aspect-ratio 4/5, 둥근 모서리, 그림자) 안에서만 카드 전환이 일어난다. 좌측 텍스트는 페이지 따라 자연 스크롤(각 섹션 min-height 100vh), 우측 카드 영역은 sticky로 viewport 중앙에 머물고 진행률에 따라 카드 swap.'
+        value: '참고 자료: base44.com (' + CATEGORY.url + '). 각 카드는 "좌측 텍스트(넘버링·타이틀·본문·CTA) + 우측 이미지(둥근 카드 형태)"의 2-column grid이며, 이 전체가 하나의 전환 단위로 아래에서 위로 올라와 이전 카드를 덮는다.'
       }
     ]
   };
