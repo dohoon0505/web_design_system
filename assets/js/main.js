@@ -391,6 +391,28 @@
       h += '<div class="blk-component-title">' + escapeHtml(block.title) + '</div>';
     }
 
+    // Embed mode: inline iframe (Framer marketplace style). Dark card + iframe.
+    if (block.embed) {
+      var emH = block.embedHeight || 640;
+      h += '<div class="blk-iframe-card">';
+      h += '  <div class="blk-iframe-bar">';
+      h += '    <div class="blk-iframe-pill"><span class="blk-iframe-pill-dot"></span>LIVE DEMO</div>';
+      if (block.embedLabel) {
+        h += '    <div class="blk-iframe-label">' + escapeHtml(block.embedLabel) + '</div>';
+      }
+      h += '    <a class="blk-iframe-open" href="' + escapeHtml(block.embed) + '" target="_blank" rel="noopener noreferrer" title="새 탭에서 열기">';
+      h += '      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+      h += '      <span>새 탭</span>';
+      h += '    </a>';
+      h += '  </div>';
+      h += '  <div class="blk-iframe-viewport" style="height:' + emH + 'px">';
+      h += '    <iframe class="blk-iframe-frame" src="' + escapeHtml(block.embed) + '" loading="lazy" title="' + escapeHtml(block.title || 'Live demo') + '"></iframe>';
+      h += '  </div>';
+      h += '</div>';
+      h += '</div>';
+      return h;
+    }
+
     // Preview-button mode: when block.preview URL is set, render a thumbnail card + [프리뷰] button
     // that opens a Figma-style modal with the live preview page (matching KT&G tech stack).
     if (block.preview) {

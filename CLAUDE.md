@@ -1,8 +1,8 @@
-# CLAUDE.md — 기여 가이드라인 (v3 인터랙션 카탈로그)
+# CLAUDE.md — 기여 가이드라인 (v4 인터랙션 카탈로그 + iframe 데모)
 
-Web Reference Lab — 디자이너용 **인터랙션 애니메이션 카탈로그**. 한 카테고리(예: "스크롤 텍스트 로드") 안에 그 카테고리의 대표 패턴 N종을 디자인 시스템 형태로 저장한다. 각 패턴은 카드 안에서 실제로 동작하는 라이브 데모 + 분석 + 코드 스니펫 + 라이브 사용 사례 + 트레이드오프로 구성된다.
+Web Reference Lab — 디자이너용 **인터랙션 애니메이션 카탈로그**. 한 카테고리(예: "스크롤 텍스트 로드") 안에 그 카테고리의 대표 패턴 N종을 Framer 마켓플레이스 스타일로 저장한다. 각 패턴은 **standalone HTML 페이지**(검정 배경 + Pretendard + 한국어 본문)로 작성되어 **iframe으로 임베드**되며, 작동 원리 + 코드 스니펫 + **사용 가이드** + **활용 추천**(히어로/랜딩/제품/포트폴리오) + 트레이드오프로 구성된다.
 
-본 문서는 **2026-05-27 첫 카테고리(스크롤 텍스트 로드, 10 패턴)** 기준으로 작성. 이전 가이드(사이트 분석 Flow Mode v2, Mirror Mode, Tier-A)는 모두 폐기. 이 문서가 유일한 표준.
+본 문서는 **2026-05-27 첫 카테고리(스크롤 텍스트 로드, 10 패턴 v2 — iframe 임베드)** 기준으로 작성. 이전 가이드(사이트 분석 Flow Mode v2, Mirror Mode, Tier-A, inline 데모 v1)는 모두 폐기. 이 문서가 유일한 표준.
 
 ---
 
@@ -29,15 +29,18 @@ AI 에이전트는 사용자의 반복 지시 없이도 다음 4대 원칙을 **
 | 카테고리당 패턴 수 | 8~12종이 적정 (10종 권장) |
 | 사이드바 | `system.json.references[].type === 'category'` 자동 분리 → "인터랙션 카탈로그" 그룹 위쪽 배치 |
 | 펼침 | `categoryMode: true` 플래그 → 모든 패턴이 sub-link로 일자 나열 (사이트 분석의 flowMode와 동일 메커니즘 재활용) |
-| 패턴마다 | 라이브 데모(HTML/CSS/JS) + 작동 원리 + 정량 메타(KV) + 코드 스니펫 3개(HTML/CSS/JS) + 라이브 사용 사례 + 트레이드오프 |
-| 디자인 톤 | 흑백 + Pretendard. 데모 박스 흰 배경 + 검정 텍스트. 코드 블록만 다크(#0a0a0a) |
+| 라이브 데모 | **standalone HTML 페이지를 iframe으로 임베드** (Framer 마켓플레이스 스타일). 검정 배경(#000) + Pretendard Variable + 한국어 본문 + ▶ 다시 재생 버튼 |
+| 패턴마다 (15 블록) | 요약 + iframe 데모 + 작동 원리 + 정량 메타(KV) + 코드 스니펫 3개(HTML/CSS/JS) + **사용 가이드** + **활용 추천** 4건 + 트레이드오프 |
+| 활용 추천 | 히어로 헤더 / 랜딩 페이지 / 제품 섹션 / 포트폴리오 소개 — 4가지 컨텍스트에 어떻게 적용할지 구체 사용처 |
+| 디자인 톤 | 카탈로그 본문은 라이트 모드 + Pretendard. 라이브 데모 카드(다크 #0a0a0a) + 코드 블록(다크 #0a0a0a) + iframe 콘텐츠(검정 #000) |
 | 참고 자료 | Framer 마켓플레이스 컴포넌트 페이지 (Inter 다크 톤 + iframe 라이브 데모 + H2 섹션 분할 구조) |
 
 ### 산출 위치
 
 ```
 analyses/{category-id}/analysis.json          ← 보고서 데이터 (overview + N 패턴 섹션)
-scripts/generate-{category-id}.mjs            ← 패턴 정의 → analysis.json 생성기
+demos/{category-id}/{pattern-id}.html         ← standalone 라이브 데모 (검정 + 한국어 + Pretendard)
+scripts/generate-{category-id}.mjs            ← 패턴 정의 → demos + analysis.json 동시 생성기
 system.json                                   ← references[]에 type: 'category' 엔트리 추가
 ```
 
@@ -92,66 +95,101 @@ mcp__Claude_Preview__preview_stop({ serverId })
 - `categoryMode: true` → `flowMode`와 동일 메커니즘으로 모든 sections를 사이드바 sub-link로 일자 펼침.
 - URL: `#ref/{category-id}` → overview / `#ref/{category-id}/{pattern-id}` → 단일 패턴 페이지
 
-### 2. 패턴 섹션의 표준 13 블록
+### 2. 패턴 섹션의 표준 15 블록
 
 ```
 [1]  text       — 한 줄 인터랙션 의도 요약
 [2]  heading    — "라이브 데모"
-[3]  component  — fullWidth: true. .demo-{pattern-id} 박스 안에서 실제 동작 (HTML + CSS + JS)
+[3]  component  — embed: 'demos/{category-id}/{pattern-id}.html' (iframe 임베드)
+                  embedHeight 옵션 (기본 480, 시그니처 sticky 패턴은 560)
+                  embedLabel 옵션 (예: "01 · 단어별 페이드 인")
 [4]  heading    — "작동 원리"
 [5]  text       — 1~2 문단으로 메커니즘 설명
 [6]  kv         — columns: 2. 의존성·트리거·이징·간격·시간·권장 글자 수 등 6항목
 [7]  heading    — "코드 스니펫"
-[8]  code       — lang: 'HTML'. html field 그대로
-[9]  code       — lang: 'CSS'.  css field 그대로
-[10] code       — lang: 'JS'.   js field 그대로
-[11] heading    — "라이브 사용 사례"
-[12] structure  — 3~4건의 (사이트, 사용 부위, 어떻게 활용했나)
-[13] note       — 트레이드오프 (성능 / 접근성 / 권장 사용처)
+[8]  code       — lang: 'HTML'. snippetHTML (boilerplate 제외한 핵심만)
+[9]  code       — lang: 'CSS'.  snippetCSS
+[10] code       — lang: 'JS'.   snippetJS
+[11] heading    — "사용 가이드"
+[12] text       — 어떻게 사용하나 (길이·이징·접근성·주의점 1~2문단)
+[13] heading    — "활용 추천"
+[14] structure  — 4건 고정: 히어로 헤더 / 랜딩 페이지 / 제품 섹션 / 포트폴리오 소개
+[15] note       — 트레이드오프 (성능 / 접근성 / 권장 사용처)
 ```
 
-### 3. 라이브 데모 박스 격리 규칙
+### 3. standalone 라이브 데모 HTML 규칙
 
-**클래스 prefix `demo-{pattern-id}`** 로 자체 격리. CSS 셀렉터는 `.demo-{pattern-id}` 또는 그 자식만. 글로벌 selector(`p { ... }`, `button { ... }`) 절대 금지.
+각 패턴은 `demos/{category-id}/{pattern-id}.html`에 **자급자족 HTML 페이지**로 작성. iframe 임베드 시 부모 페이지와 완전히 격리.
 
-**자동 박스 스타일링** (`assets/css/main.css`):
-```css
-.blk-component-preview > [class^="demo-"],
-.blk-component-preview > [class*=" demo-"] {
-  position: relative;
-  min-height: 220px;
-  padding: 56px 32px 40px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 24px;
-  background: var(--sm-surface-default);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-}
+**표준 페이지 구조** (generator의 `buildDemoHTML(p)` 참고):
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{num}. {title} — Live Demo</title>
+  <link href=".../pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+  <style>
+    body { background: #000; color: #fff;
+           font-family: "Pretendard Variable", "Pretendard", system-ui; }
+    .demo-controls { position: fixed; top: 16px; left: 16px; z-index: 10; }
+    .demo-replay { /* 좌상단 ▶ 다시 재생 pill 버튼 */ }
+    .demo-label  { /* "{num} · {title}" 라벨 */ }
+    {patternCSS}   /* .reveal { ... } 패턴별 */
+  </style>
+</head>
+<body>
+  <div class="demo-controls">
+    <button class="demo-replay" onclick="window.__replay && window.__replay()">▶ 다시 재생</button>
+    <span class="demo-label">{num} · {title}</span>
+  </div>
+  {patternBodyHTML}   <!-- .stage > .reveal -->
+  <script>
+    {patternJS}       /* function play(){...} ; window.__replay = play; play(); */
+  </script>
+</body>
+</html>
 ```
 
-데모 박스에 `.demo-*` 클래스만 부여하면 자동으로 220px min-height + 패딩 + 가운데 정렬.
-
-**▶ 다시 재생 버튼** — 모든 데모 HTML에 첫 자식으로 `<button class="pattern-replay" type="button">▶ 다시 재생</button>` 포함. CSS는 박스 좌상단(`position: absolute; top:12; left:12`) 자동 배치.
-
-**JS 패턴**:
+**JS 패턴 (standalone 페이지 안)**:
 ```js
-(function(){
-  var box = document.querySelector(".demo-{id}");
-  if (!box) return;
-  function play(){
-    /* ... 인터랙션 실행 ... */
-  }
-  play();
-  box.querySelector(".pattern-replay").addEventListener("click", play);
-})();
+var el = document.querySelector(".reveal");
+function play(){
+  /* ... 인터랙션 실행 ... */
+}
+window.__replay = play;   // ▶ 다시 재생 버튼이 이걸 호출
+play();                   // 페이지 로드 시 자동 1회 재생
 ```
 
-**`requestAnimationFrame` 회피** — 미리보기 환경에서 안 떨어지는 케이스가 있어, `.on` 클래스 토글에는 `setTimeout(fn, 20~30)` 사용. 단, 스크럽 같은 frame-by-frame 애니메이션에는 `setInterval(fn, 33)` 사용 (Date.now() 기반).
+**`requestAnimationFrame` 회피** — 미리보기/headless 환경에서 안 떨어지는 케이스가 있어, `.on` 클래스 토글에는 `setTimeout(fn, 50)` 사용. 단, 스크럽 같은 frame-by-frame 애니메이션에는 `window.addEventListener('scroll', ...)` 또는 `setInterval(fn, 33)` 사용.
+
+**시그니처 sticky 패턴 (scrub-color)** — `position: sticky` + 부모에 `.spacer { height: 60vh }`를 위·아래에 두어 스크롤 공간을 만들고, `window.addEventListener('scroll', ...)`로 진행률(0~1) → 단어 인덱스 매핑. iframe height는 480 대신 560으로 늘림.
 
 ### 4. 코드 블록 타입 (`code`)
 
 `main.js`의 `renderBlock`에 `code` 타입. `lang` (HTML/CSS/JS), `title`, `value` 필드. 다크 톤(#0a0a0a 배경)으로 코드를 보여줌. `escapeHtml`로 안전.
+
+### 5. iframe 임베드 블록 (`component` + `embed`)
+
+`main.js`의 `renderComponent`에 `embed` 옵션. inline iframe 임베드 (modal 형태인 `preview`와 구분).
+
+```json
+{
+  "type": "component",
+  "embed": "demos/scroll-text-reveal/word-fade.html",
+  "embedHeight": 480,
+  "embedLabel": "01 · 단어별 페이드 인",
+  "title": "단어별 페이드 인 라이브 데모"
+}
+```
+
+렌더링 결과 (Framer 마켓플레이스 스타일):
+- 검정 카드 (#0a0a0a) + 둥근 모서리 + 어두운 테두리
+- 상단 바: 🟢 LIVE DEMO 펄스 라벨 + embedLabel + [새 탭] 아이콘 버튼
+- viewport: 검정 배경 iframe (height = embedHeight)
+
+CSS 클래스: `.blk-iframe-card`, `.blk-iframe-bar`, `.blk-iframe-pill`, `.blk-iframe-viewport`, `.blk-iframe-frame`.
 
 ---
 
@@ -187,10 +225,18 @@ mcp__Claude_Preview__preview_stop({ serverId })
 `scripts/generate-{category-id}.mjs`를 작성. 표준 구성 (`scripts/generate-scroll-text-reveal.mjs` 참고):
 
 1. `CATEGORY` 메타 (id, title, type, date, url, summary)
-2. `PATTERNS` 배열 — 각 패턴마다 { id, num, title, summary, html, css, js, explain, kv, examples, tradeoff }
-3. `buildPatternSection(p)` — 표준 13 블록 자동 생성
-4. `buildOverview()` — 00 카테고리 개요 (인덱스 + 공통 토큰 + 읽기 가이드)
-5. `main()` — sections 객체 합성 → analysis.json 저장
+2. `PATTERNS` 배열 — 각 패턴마다:
+   - 메타: `id, num, title, summary`
+   - **데모**: `demo: { bodyHTML, css, js, height }` (standalone 페이지 핵심부)
+   - **코드 스니펫**: `snippetHTML, snippetCSS, snippetJS` (boilerplate 제외)
+   - 분석: `explain, kv` (6항목)
+   - **가이드**: `guide` (사용 방법 1~2문단)
+   - **활용 추천**: `recommendations[4]` (히어로/랜딩/제품/포트폴리오 4건 고정)
+   - **트레이드오프**: `tradeoff`
+3. `buildDemoHTML(p)` — standalone HTML 페이지 생성 (검정 + Pretendard + ▶ 다시 재생 + 패턴 콘텐츠)
+4. `buildPatternSection(p)` — 표준 15 블록 자동 생성
+5. `buildOverview()` — 00 카테고리 개요 (인덱스 + 공통 토큰 + 읽기 가이드)
+6. `main()` — demos/{id}/*.html 10개 저장 + analysis.json 저장
 
 ```bash
 node scripts/generate-{category-id}.mjs
@@ -209,10 +255,11 @@ node scripts/validate.mjs                       # 5 OK / 0 warn / 0 error 통과
 검증 항목:
 1. 사이드바 "인터랙션 카탈로그" 그룹 자동 생성 + 메인 링크 + N+1 sub-link
 2. 모든 패턴 페이지 `#ref/{category-id}/{pattern-id}` 직접 진입 시 정상 렌더
-3. 라이브 데모 박스 220px min-height + ▶ 다시 재생 버튼 가시성
-4. JS가 IO 진입 시 자동 실행 (preview.dataset.animated === '1')
-5. CSS rule이 attribute escape 거쳐 정상 적용 (`.demo-*` 격리 동작)
-6. 코드 블록 3개 (HTML/CSS/JS) 정상 표시
+3. demos/{id}/{pattern}.html 직접 fetch 200 + 한국어 본문 + Pretendard + ▶ 다시 재생 포함
+4. iframe 카드 렌더링 (LIVE DEMO pill + 새 탭 버튼 + iframe height 480~560)
+5. 5개 헤딩 표시: 라이브 데모 / 작동 원리 / 코드 스니펫 / 사용 가이드 / 활용 추천
+6. 활용 추천 structure 4건 (히어로 / 랜딩 / 제품 / 포트폴리오)
+7. 코드 블록 3개 (HTML/CSS/JS) 다크 톤 정상 표시
 
 Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검증 불가. 실제 사용자 브라우저(visible)에서 정상 작동한다고 신뢰.
 
@@ -263,21 +310,24 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 ---
 
-## 첫 카테고리 사례: 스크롤 텍스트 로드 (2026-05-27)
+## 첫 카테고리 사례: 스크롤 텍스트 로드 (2026-05-27, v2 iframe 임베드)
 
 | 항목 | 결과 |
 |------|------|
 | 카테고리 ID | `scroll-text-reveal` |
 | 패턴 수 | 10 (word-fade, line-slide, char-stagger, blur-reveal, color-fade, scrub-color, mask-sweep, letter-cascade, variable-morph, underline-reveal) |
 | 섹션 수 | 11 (00 overview + 01~10 패턴) |
-| 블록 수 | 139 |
+| 블록 수 | 159 (각 패턴 15 블록 × 10 + overview 9) |
+| standalone 데모 | 10개 (`demos/scroll-text-reveal/*.html`, 평균 3.5KB) |
+| 데모 콘텐츠 | 한국어 (Framer 영문 본문의 한국어 의역) + Pretendard Variable |
 | 사이드바 | 카테고리 그룹 + 11 sub-link 자동 펼침 |
 | 참고 자료 | Framer 마켓플레이스 "Text Reveal" 컴포넌트 (https://www.framer.com/marketplace/components/text-reveal/) |
 | validate | 5 OK / 0 warn / 0 error |
 
 **구현 파일**:
-- `scripts/generate-scroll-text-reveal.mjs` — 표준 generator (다른 카테고리도 이 구조를 복제)
+- `scripts/generate-scroll-text-reveal.mjs` — 표준 generator (demos + analysis.json 동시 생성)
 - `analyses/scroll-text-reveal/analysis.json` — 카탈로그 데이터 본문
+- `demos/scroll-text-reveal/*.html` — 10개 standalone 라이브 데모 페이지
 - `system.json` references[]에 type: 'category' 엔트리 1개
 
 ---
@@ -289,17 +339,21 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 [ ] Step 1: 대표 사이트 1~2건 Playwright 실측 (디자인 톤 / 폰트 / 섹션 구조)
 [ ] Step 2: 패턴 8~12종 정의 (id, num, title, summary)
 [ ] Step 3: scripts/generate-{category-id}.mjs 작성
-    [ ] CATEGORY 메타
-    [ ] PATTERNS 배열 — 각 패턴: id, num, title, summary, html, css, js, explain, kv, examples, tradeoff
-    [ ] 표준 buildPatternSection / buildOverview / main 함수
+    [ ] CATEGORY 메타 (id, title, type, date, url, summary)
+    [ ] PATTERNS 배열 — 각 패턴: id, num, title, summary, demo{bodyHTML,css,js,height}, snippetHTML/CSS/JS, explain, kv[6], guide, recommendations[4], tradeoff
+    [ ] buildDemoHTML(p) — standalone 페이지 boilerplate
+    [ ] buildPatternSection(p) — 표준 15 블록
+    [ ] buildOverview() — 00 카테고리 개요
+    [ ] main() — demos/*.html 저장 + analysis.json 저장
     [ ] node scripts/generate-{category-id}.mjs 실행
 [ ] Step 4: system.json references[]에 type:'category' 엔트리 추가
     [ ] node scripts/validate.mjs 통과 (5 OK / 0 warn / 0 error)
 [ ] Step 5: preview_start + Playwright 자가 검증
     [ ] 사이드바 카테고리 그룹 + N+1 sub-link 확인
-    [ ] 각 패턴 페이지 진입 + 라이브 데모 박스 + ▶ 다시 재생 버튼 가시성
-    [ ] preview.dataset.animated === '1' (IO 진입 시 JS 실행)
-    [ ] 코드 블록 3개 (HTML/CSS/JS) 정상 표시
+    [ ] 각 패턴 페이지 진입 + iframe 카드 + LIVE DEMO pill + 새 탭 버튼
+    [ ] demos/{id}/*.html 직접 fetch 200 + 한국어 본문
+    [ ] 5개 헤딩 (라이브 데모 / 작동 원리 / 코드 스니펫 / 사용 가이드 / 활용 추천)
+    [ ] 활용 추천 structure 4건 (히어로/랜딩/제품/포트폴리오)
 [ ] 의미 있는 단일 커밋 + push
 ```
 
@@ -309,9 +363,10 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 - ❌ **"QA 확인 완료" 텍스트 자기보고** — 정량 데이터 또는 스크린샷 비교만
 - ❌ **`validate.mjs` 통과 = 자가 검증으로 간주** — JSON 스키마 검증일 뿐
-- ❌ **패턴 데모 CSS에 글로벌 셀렉터(`p { ... }`, `button { ... }`) 사용** — 다른 카드에 누출. `.demo-{id}` prefix 필수
-- ❌ **데모 JS에 `requestAnimationFrame` 의존** — preview 환경에서 안 떨어질 수 있음. `setTimeout` 또는 `setInterval` 사용
-- ❌ **`.pattern-replay` 버튼 누락** — 사용자가 재생 못함. 모든 데모 HTML에 첫 자식으로
+- ❌ **standalone 데모 HTML에서 외부 의존성(jQuery, GSAP 등) 사용** — 가능한 한 Vanilla. GSAP가 본질인 패턴은 코드 스니펫에서만 (CDN 임포트는 demo 페이지에서 직접)
+- ❌ **데모 JS에 `requestAnimationFrame` 의존** — preview 환경에서 안 떨어질 수 있음. `setTimeout` 또는 `setInterval` 사용. scrub은 scroll 이벤트
+- ❌ **▶ 다시 재생 버튼 누락** — 사용자가 재생 못함. 모든 데모 HTML에 `.demo-replay` + `window.__replay` 함수 노출
+- ❌ **standalone 데모 페이지에 한국어 본문 누락** — Framer는 영문이지만 우리 카탈로그는 한국어 본문이 표준
 - ❌ **사이드바에 카테고리·사이트 그룹 수동 추가** — `buildSidebar`가 `type` 필드로 자동 분리
 - ❌ **`.playwright-mcp/` 폴더를 git에 추가** — `.gitignore`에 무조건 포함
 - ❌ **자동 hook 자동 커밋으로 거대 임시 파일 push** — 단일 의미 커밋으로 push

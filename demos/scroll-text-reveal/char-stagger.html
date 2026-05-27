@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03. 글자별 stagger — Live Demo</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: #000; color: #fff;
+      font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      min-height: 100vh; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .demo-controls {
+      position: fixed; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 10px;
+      z-index: 10;
+    }
+    .demo-replay {
+      font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 8px 14px; cursor: pointer;
+      transition: color 160ms, background 160ms, border-color 160ms;
+    }
+    .demo-replay:hover {
+      color: #fff; background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.32);
+    }
+    .demo-label {
+      font: 500 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 8vw; }
+    .reveal { font: 800 12vw/1 "Pretendard Variable","Pretendard",system-ui; color: #fff; letter-spacing: 0.02em; margin: 0; }
+    .reveal .c { display: inline-block; opacity: 0; transform: translateY(28px); transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }
+    .reveal .c.on { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="demo-controls">
+    <button class="demo-replay" type="button" onclick="window.__replay && window.__replay()">▶ 다시 재생</button>
+    <span class="demo-label">03 · 글자별 stagger</span>
+  </div>
+  <div class="stage"><h1 class="reveal" data-orig="TYPOGRAPHY">TYPOGRAPHY</h1></div>
+  <script>
+    var el = document.querySelector(".reveal");
+    var orig = el.dataset.orig || el.textContent;
+    function play(){
+      el.innerHTML = orig.split("").map(function(c){ return "<span class=\"c\">" + (c === " " ? "&nbsp;" : c) + "</span>"; }).join("");
+      var spans = el.querySelectorAll(".c");
+      spans.forEach(function(s, i){ s.style.transitionDelay = (i * 70) + "ms"; });
+      setTimeout(function(){ spans.forEach(function(s){ s.classList.add("on"); }); }, 60);
+    }
+    window.__replay = play;
+    play();
+  </script>
+</body>
+</html>

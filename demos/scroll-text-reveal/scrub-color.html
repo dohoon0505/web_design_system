@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06. 스크롤 스크럽 컬러 — Live Demo</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: #000; color: #fff;
+      font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      min-height: 100vh; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .demo-controls {
+      position: fixed; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 10px;
+      z-index: 10;
+    }
+    .demo-replay {
+      font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 8px 14px; cursor: pointer;
+      transition: color 160ms, background 160ms, border-color 160ms;
+    }
+    .demo-replay:hover {
+      color: #fff; background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.32);
+    }
+    .demo-label {
+      font: 500 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .spacer { height: 60vh; }
+    .stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 8vw; position: sticky; top: 0; }
+    .reveal { font: 700 38px/1.5 "Pretendard Variable","Pretendard",system-ui; color: #525252; max-width: 900px; margin: 0; text-align: left; letter-spacing: -0.01em; }
+    .reveal .w { display: inline-block; transition: color 200ms; }
+    .reveal .w.on { color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="demo-controls">
+    <button class="demo-replay" type="button" onclick="window.__replay && window.__replay()">▶ 다시 재생</button>
+    <span class="demo-label">06 · 스크롤 스크럽 컬러</span>
+  </div>
+  <div class="spacer"></div>
+  <div class="stage"><p class="reveal" data-orig="강력하고 확장된 가능성을 제공합니다. 디자인과 로직을 한 곳에서 결합하여, 동적인 동작과 애니메이션, 상태 기반 인터랙션을 매번 처음부터 만들지 않아도 됩니다. 일관되고 확장 가능한 인터페이스를 더 쉽게 구축하게 해 주고, 표준 요소만으로는 닿을 수 없는 훨씬 더 창의적이고 기능적인 가능성을 열어줍니다.">강력하고 확장된 가능성을 제공합니다. 디자인과 로직을 한 곳에서 결합하여, 동적인 동작과 애니메이션, 상태 기반 인터랙션을 매번 처음부터 만들지 않아도 됩니다. 일관되고 확장 가능한 인터페이스를 더 쉽게 구축하게 해 주고, 표준 요소만으로는 닿을 수 없는 훨씬 더 창의적이고 기능적인 가능성을 열어줍니다.</p></div>
+  <div class="spacer"></div>
+  <script>
+    var el = document.querySelector(".reveal");
+    var orig = el.dataset.orig || el.textContent;
+    el.innerHTML = orig.split(" ").map(function(w){ return "<span class=\"w\">" + w + "</span>"; }).join(" ");
+    var spans = el.querySelectorAll(".w");
+    var stage = document.querySelector(".stage");
+    function onScroll(){
+      var rect = stage.getBoundingClientRect();
+      var stickyH = window.innerHeight;
+      var totalScroll = stage.parentElement.offsetHeight - stickyH;
+      var scrolled = Math.max(0, -rect.top);
+      var p = Math.min(1, Math.max(0, scrolled / Math.max(1, totalScroll - stickyH * 0.4)));
+      var idx = Math.floor(p * (spans.length + 2));
+      spans.forEach(function(s, i){ s.classList.toggle("on", i < idx); });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    function play(){
+      spans.forEach(function(s){ s.classList.remove("on"); });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(function(){ window.scrollTo({ top: window.innerHeight * 1.2, behavior: "smooth" }); }, 600);
+    }
+    window.__replay = play;
+    onScroll();
+  </script>
+</body>
+</html>
