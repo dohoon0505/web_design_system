@@ -145,13 +145,18 @@
 
   /* ============ SIDEBAR BUILDING ============ */
   function renderRefItem(ref) {
-    var html = '<li>';
-    html += '<a class="sidebar-link" href="#ref/' + escapeHtml(ref.id) + '" data-section="ref/' + escapeHtml(ref.id) + '">';
+    var pinned = (ref.flowMode || ref.categoryMode) && Array.isArray(ref.sections) && ref.sections.length > 0;
+    var liClass = pinned ? ' class="sidebar-cat-item"' : '';
+    var liAttr = pinned ? ' data-ref="' + escapeHtml(ref.id) + '"' : '';
+    var html = '<li' + liClass + liAttr + '>';
+    html += '<a class="sidebar-link' + (pinned ? ' sidebar-cat-link' : '') + '" href="#ref/' + escapeHtml(ref.id) + '" data-section="ref/' + escapeHtml(ref.id) + '">';
     html += '<svg class="ico"><use href="#i-link"/></svg>';
-    html += escapeHtml(ref.title);
+    html += '<span class="sidebar-cat-title">' + escapeHtml(ref.title) + '</span>';
+    if (pinned) {
+      html += '<svg class="sidebar-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>';
+    }
     html += '</a>';
     // flowMode / categoryMode references expose every section as a sidebar child link.
-    var pinned = (ref.flowMode || ref.categoryMode) && Array.isArray(ref.sections) && ref.sections.length > 0;
     if (pinned) {
       html += '<ul class="sidebar-sublist">';
       ref.sections.forEach(function (sec) {
@@ -973,7 +978,40 @@
     });
     var link = document.querySelector('.sidebar-link[data-section="' + id + '"]');
     if (link) link.classList.add('is-active');
+
+    // Accordion: 현재 활성 카탈로그(ref ID)만 펼치고 나머지는 닫는다.
+    var activeRef = null;
+    if (typeof id === 'string' && id.indexOf('ref/') === 0) {
+      activeRef = id.split('/')[1];
+    }
+    document.querySelectorAll('.sidebar-cat-item').forEach(function (li) {
+      li.classList.toggle('is-expanded', li.dataset.ref === activeRef);
+    });
   }
+
+  // Toggle behaviour: 사용자가 펼친 카탈로그를 다시 클릭하면 닫히도록 + 접힌 카탈로그를 클릭하면 펼침
+  // (URL은 그대로 바뀌고 route()가 highlightSidebar로 동기화하지만, 같은 ID를 다시 클릭하는 경우엔
+  // hashchange가 발생하지 않으므로 클릭 시점에 직접 토글 처리한다.)
+  document.addEventListener('click', function (e) {
+    var catLink = e.target.closest('.sidebar-cat-link');
+    if (!catLink) return;
+    var li = catLink.closest('.sidebar-cat-item');
+    if (!li) return;
+    var refId = li.dataset.ref;
+    var currentHash = location.hash.replace(/^#\/?/, '');
+    var goingToSameRef = currentHash === 'ref/' + refId;
+    if (goingToSameRef) {
+      // 같은 카탈로그 메인 페이지에서 다시 클릭 → toggle expand only (URL은 그대로)
+      e.preventDefault();
+      var wasExpanded = li.classList.contains('is-expanded');
+      document.querySelectorAll('.sidebar-cat-item').forEach(function (other) {
+        if (other !== li) other.classList.remove('is-expanded');
+      });
+      li.classList.toggle('is-expanded', !wasExpanded);
+    }
+    // 다른 카탈로그로 이동하는 경우엔 href에 의한 라우팅이 일어나고
+    // route() → highlightSidebar()가 expand 상태를 동기화한다.
+  });
 
   /* ============ ROUTING ============ */
   function route() {

@@ -92,8 +92,9 @@ mcp__Claude_Preview__preview_stop({ serverId })
 ```
 
 - `type: 'category'` → `assets/js/main.js`의 `buildSidebar`가 자동으로 별도 "인터랙션 카탈로그" 그룹으로 분리. 일반 사이트 분석 references(type !== 'category')는 기존 "레퍼런스 보고서" 그룹.
-- `categoryMode: true` → `flowMode`와 동일 메커니즘으로 모든 sections를 사이드바 sub-link로 일자 펼침.
+- `categoryMode: true` → 모든 sections를 사이드바 sub-link로 등록하되 **기본 닫힘 (accordion)**. 카탈로그 메인 링크 클릭 시 그 카탈로그만 펼쳐지고 다른 카탈로그는 자동으로 닫힘. 같은 카탈로그를 다시 클릭하면 토글 닫힘. sub-link(패턴 페이지) 진입 시 부모 카탈로그는 펼쳐진 상태 유지. chevron(›) 아이콘이 펼침 상태에 따라 90° 회전.
 - URL: `#ref/{category-id}` → overview / `#ref/{category-id}/{pattern-id}` → 단일 패턴 페이지
+- **Accordion 구현**: `.sidebar-cat-item` 클래스 + `data-ref` 속성. `highlightSidebar(id)`가 현재 URL의 ref ID에 해당하는 li만 `.is-expanded`로. CSS는 `.sidebar-sublist { max-height: 0; opacity: 0 }` → `.is-expanded > .sidebar-sublist { max-height: 1200px; opacity: 1 }` (320ms cubic-bezier). 같은 카탈로그 메인 링크를 다시 클릭하면 클릭 핸들러가 e.preventDefault + 직접 토글.
 
 ### 2. 패턴 섹션의 표준 15 블록
 
