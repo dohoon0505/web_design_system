@@ -404,6 +404,23 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 ---
 
+## 카테고리 사례 #4: Scroll-Card-Update (2026-05-27, v1)
+
+| 항목 | 결과 |
+|------|------|
+| 카테고리 ID | `scroll-card-update` |
+| 패턴 수 | 10 (stack-up, fade-stack, scale-pop, slide-from-right, clip-bottom, rotate-tilt, blur-swap, stack-spread, dissolve, carousel) |
+| 섹션 수 | 11 (00 overview + 01~10 패턴) |
+| 블록 수 | 159 |
+| standalone 데모 | 10개 (`demos/scroll-card-update/*.html`, 평균 9.5KB) |
+| 인터랙션 모델 | 2-column grid (좌 텍스트, 우 카드) + sticky stage + 카드별 인터랙션 변환 |
+| 참고 자료 | base44.com 시그니처 (좌측 페이지네이션·타이틀·본문 + 우측 sticky 미디어 카드 시퀀스) |
+| validate | 5 OK / 0 warn / 0 error |
+
+좌측에 페이지네이션(01/04) + 타이틀 + 본문 + Start building 버튼, 우측에 sticky 미디어 카드 4개. 모든 패턴이 동일한 base44 콘텐츠(01 Speed · 02 Backend · 03 Ready · 04 Agent) + 동일 wixstatic 이미지 + Pretendard 단일 폰트. 차이는 우측 카드 전환 방식만 (stack-up·fade·scale·slide·clip·rotate·blur·spread·dissolve·carousel).
+
+---
+
 ## 카테고리 사례 #3: Full-screen Scroll (2026-05-27, v1)
 
 | 항목 | 결과 |

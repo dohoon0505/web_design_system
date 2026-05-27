@@ -72,6 +72,28 @@
   ],
   "references": [
     {
+      "id": "scroll-card-update",
+      "title": "Scroll-Card-Update",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-05-27",
+      "analysis": "analyses/scroll-card-update/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",          "num": "00", "title": "카테고리 개요",            "desc": "패턴 10종 인덱스 + 2-col 좌 텍스트/우 카드 모델" },
+        { "id": "stack-up",          "num": "01", "title": "스택 업 (base44 시그니처)", "desc": "새 카드가 아래에서 위로 슬라이드 + zIndex 누적" },
+        { "id": "fade-stack",        "num": "02", "title": "페이드 스택",              "desc": "opacity 0↔1 단순 fade (600ms ease-in-out)" },
+        { "id": "scale-pop",         "num": "03", "title": "스케일 팝",                "desc": "scale 0.92→1→1.04 + opacity Δ" },
+        { "id": "slide-from-right",  "num": "04", "title": "우측 슬라이드",            "desc": "translateX 100%→0→-100% (out-expo)" },
+        { "id": "clip-bottom",       "num": "05", "title": "Clip 바텀 리빌",           "desc": "clip-path inset 100%→0 위에서 아래 커튼" },
+        { "id": "rotate-tilt",       "num": "06", "title": "회전 틸트",                "desc": "translateY 60px + rotate ±3deg + opacity" },
+        { "id": "blur-swap",         "num": "07", "title": "블러 스왑",                "desc": "filter blur(18→0) + opacity 700ms" },
+        { "id": "stack-spread",      "num": "08", "title": "스택 스프레드 (카드 덱)",   "desc": "이전 카드 -12px×i + scale 0.96~ 누적" },
+        { "id": "dissolve",          "num": "09", "title": "디졸브 (그레인)",          "desc": "opacity + contrast/saturate + SVG noise overlay" },
+        { "id": "carousel",          "num": "10", "title": "캐러셀",                  "desc": "활성 가운데 + 인접 ±65% scale 0.85 미니어처" }
+      ]
+    },
+    {
       "id": "full-screen-scroll",
       "title": "Full-screen Scroll",
       "type": "category",
@@ -139,8 +161,8 @@
     }
   ],
   "counts": {
-    "references": 3,
-    "categories": 3,
-    "patterns": 30
+    "references": 4,
+    "categories": 4,
+    "patterns": 40
   }
 }
