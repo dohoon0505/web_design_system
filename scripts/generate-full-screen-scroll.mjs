@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 /**
- * Web Reference Lab — Category Generator: Full-screen Scroll (v1)
+ * Web Reference Lab — Category Generator: Full-screen Scroll (v2 — 통일 스타일)
  *
- * Framer 마켓플레이스 "Scroll Slides" (Artem Kostenko, scrollslides.framer.website 라이브 데모)
- * 컴포넌트를 fade-stack 패턴으로 차용하고, 9가지 변형(horizontal-pan, zoom-into,
- * pin-stack, parallax-layer, 3d-rotate, scroll-snap, clip-reveal, scale-handoff,
- * caption-slide)을 정리한 풀스크린 스크롤 갤러리 카탈로그.
- *
- * 표준 보일러플레이트: parent 400vh + sticky stage 100vh + scroll progress 매핑.
- *   activeIndex = floor(p * N), slideProgress[i] = clamp(p*N - i, 0, 1)
+ * Framer 마켓플레이스 "Scroll Slides" (Artem Kostenko, https://scrollslides.framer.website/)
+ * 시각을 모든 10 패턴에 일관 적용:
+ *   - 동일 4 이미지 (framerusercontent.com) + 동일 4 캡션 (Intuition/Touch/Glow/Pulse)
+ *   - 좌측 하단 캡션 (Pretendard 500/300) + 하단 progress bar (4 균등, 01 Name 라벨)
+ *   - 어두운 gradient overlay + Pretendard 단일 폰트
+ * 패턴마다 다른 건 이미지의 인터랙션 변환(applyReveal) 뿐.
  *
  * Usage: node scripts/generate-full-screen-scroll.mjs
  */
@@ -28,205 +27,194 @@ const CATEGORY = {
   type: 'category',
   date: '2026-05-27',
   url: 'https://www.framer.com/marketplace/components/scroll-slides/',
-  summary: 'parent를 N×100vh로 늘리고 sticky stage에 슬라이드를 고정한 뒤, 스크롤 진행률(0~1)을 activeIndex와 slideProgress[i]에 매핑해 풀스크린 슬라이드를 전환하는 인터랙션 카탈로그. Framer 마켓플레이스 "Scroll Slides" 컴포넌트(Artem Kostenko 작)의 sticky + fade + progress bar 패턴을 첫 번째(fade-stack)로 차용하고, 가로 팬·줌·핀 스택·패럴랙스·3D 회전·스크롤 스냅·clip reveal·스케일 핸드오프·캡션 슬라이드 등 9가지 변형을 비교 카탈로그로 정리.'
+  summary: 'parent를 N×100vh로 늘리고 sticky stage에 슬라이드를 고정한 뒤, 스크롤 진행률(0~1)을 activeIndex와 slideProgress[i]에 매핑해 풀스크린 슬라이드를 전환하는 인터랙션 카탈로그. Framer 마켓플레이스 "Scroll Slides" 컴포넌트(Artem Kostenko 작)의 sticky + fade + progress bar 패턴을 첫 번째(fade-stack)로 차용하고, 나머지 9 변형은 동일 시각·동일 이미지·동일 캡션·동일 progress bar 구조 위에 각자의 인터랙션 변환만 다르게 정의.'
 };
 
-// 표준 4 슬라이드 콘텐츠 (한국어)
-const SLIDES = [
-  { number: '01', name: 'Inspiration', title: '자연에서 받은 영감', desc: '디자인 철학은 자연의 형상과 유기적 소재에서 출발합니다.', bg: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)' },
-  { number: '02', name: 'Design',      title: '사려 깊은 디자인',     desc: '모든 디테일은 일상을 더 풍요롭게 만들기 위해 존재합니다.', bg: 'linear-gradient(135deg, #1a1a1a 0%, #404040 100%)' },
-  { number: '03', name: 'Craft',       title: '장인의 마감',         desc: '공간과 사물의 균형을 한 치 어긋남 없이 다듬어 갑니다.',  bg: 'linear-gradient(135deg, #3b0764 0%, #7e22ce 100%)' },
-  { number: '04', name: 'Result',      title: '완성된 경험',         desc: '디자인은 결과가 아니라 과정 자체입니다.',                  bg: 'linear-gradient(135deg, #422006 0%, #c2410c 100%)' }
+// ============ 표준 슬라이드 데이터 (4종, 모든 패턴이 공유) ============
+const FS_SLIDES = [
+  { img: 'https://framerusercontent.com/images/d3xhzATSbq7UnQJGe11DInRHoA.png?width=2912&height=1632', num: '01', name: 'Intuition', title: 'Sensitivity as a guiding force', desc: 'Forms and colors respond to inner feeling rather than logic. Design becomes instinctive — not constructed, but sensed. A world shaped by quiet whispers of intuition.' },
+  { img: 'https://framerusercontent.com/images/Ka2cys5DNM0ZnikfEku6vAQgs.png?width=2912&height=1632',  num: '02', name: 'Touch',     title: 'Tactile presence',              desc: 'Surfaces hold the memory of light and time. Texture speaks where words fall silent — materials become a language of their own.' },
+  { img: 'https://framerusercontent.com/images/J7sgYKuCCsB521hhlHpnH26Xo.png?width=2912&height=1632',  num: '03', name: 'Glow',      title: 'Emotional illumination',        desc: 'Soft light shapes the mood of every room. Warmth without heat, brightness without glare — atmosphere built from a single ray.' },
+  { img: 'https://framerusercontent.com/images/9Mpgc4sWSDqEN9RprS8TLHnypqY.png?width=2720&height=1760', num: '04', name: 'Pulse',    title: 'The living rhythm',             desc: 'Spaces breathe with the people inside. From shadow to glow, from quiet to full — a house alive with its own quiet rhythm.' }
 ];
+const N = FS_SLIDES.length;
 
-// 슬라이드 마크업 빌더 — 패턴별로 클래스 prefix를 받음
-function slidesMarkup(prefix) {
-  return SLIDES.map(function (s, i) {
-    return '<div class="' + prefix + '-slide" data-i="' + i + '" style="background:' + s.bg + '">'
-      + '<div class="' + prefix + '-cap">'
-      + '<div class="' + prefix + '-num">' + s.number + ' · ' + s.name + '</div>'
-      + '<h2 class="' + prefix + '-title">' + s.title + '</h2>'
-      + '<p class="' + prefix + '-desc">' + s.desc + '</p>'
-      + '</div>'
-      + '</div>';
-  }).join('\n      ');
+// ============ 공통 마크업 빌더 ============
+
+function fsImagesMarkup(extraClass) {
+  return FS_SLIDES.map(function (s, i) {
+    return '<img class="fs-img' + (extraClass ? ' ' + extraClass : '') + (i === 0 ? ' is-on' : '') + '" src="' + s.img + '" alt="' + s.name + '" data-i="' + i + '">';
+  }).join('\n        ');
 }
 
-// 공통 슬라이드 CSS — 패턴별로 클래스 prefix를 받음
-function slidesCSS(prefix) {
-  return '.' + prefix + '-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }\n'
-    + '.' + prefix + '-cap { text-align: center; color: #fff; max-width: 720px; padding: 0 8vw; }\n'
-    + '.' + prefix + '-num { font: 600 12px/1 "Pretendard Variable","Pretendard",sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }\n'
-    + '.' + prefix + '-title { font: 700 clamp(40px, 6vw, 84px)/1.1 "Pretendard Variable","Pretendard",system-ui; margin: 0 0 18px; letter-spacing: -0.02em; }\n'
-    + '.' + prefix + '-desc { font: 400 clamp(16px, 1.4vw, 20px)/1.55 "Pretendard Variable","Pretendard",system-ui; margin: 0; opacity: 0.85; }';
+function fsCapsMarkup() {
+  return '<div class="fs-caps">\n          '
+    + FS_SLIDES.map(function (s, i) {
+        return '<div class="fs-cap' + (i === 0 ? ' is-on' : '') + '" data-i="' + i + '"><h1 class="fs-title">' + s.title + '</h1><p class="fs-desc">' + s.desc + '</p></div>';
+      }).join('\n          ')
+    + '\n        </div>';
 }
+
+function fsBarsMarkup() {
+  return '<div class="fs-bars">\n          '
+    + FS_SLIDES.map(function (s, i) {
+        return '<div class="fs-bar' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '"><div class="fs-bar-label"><span class="fs-bar-num">' + s.num + '</span><span class="fs-bar-name">' + s.name + '</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>';
+      }).join('\n          ')
+    + '\n        </div>';
+}
+
+// 공통 base CSS — 모든 패턴이 공유
+const FS_BASE_CSS = ''
+  + '.fs-stack { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Pretendard Variable","Pretendard",sans-serif; }\n'
+  + '.fs-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; will-change: opacity, transform; }\n'
+  + '.fs-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 2; }\n'
+  + '.fs-caps { position: absolute; inset: 0; pointer-events: none; z-index: 4; }\n'
+  + '.fs-cap { position: absolute; left: 60px; right: 60px; bottom: 130px; opacity: 0; transform: translateY(16px); transition: opacity 500ms ease-out, transform 500ms cubic-bezier(0.2,0,0,1); will-change: opacity, transform; }\n'
+  + '.fs-cap.is-on { opacity: 1; transform: translateY(0); }\n'
+  + '.fs-title { font: 500 clamp(40px, 5vw, 64px)/1.05 inherit; color: #fff; margin: 0 0 22px; max-width: 60%; letter-spacing: -0.02em; }\n'
+  + '.fs-desc { font: 300 clamp(14px, 1vw, 16px)/1.5 inherit; color: rgba(255,255,255,0.92); margin: 0; max-width: 460px; }\n'
+  + '.fs-bars { position: absolute; left: 60px; right: 60px; bottom: 48px; display: flex; gap: 40px; align-items: flex-end; z-index: 4; }\n'
+  + '.fs-bar { flex: 1; display: flex; flex-direction: column; gap: 14px; }\n'
+  + '.fs-bar-label { display: flex; gap: 10px; align-items: baseline; font: 500 14px/1 inherit; color: rgba(255,255,255,0.5); transition: color 300ms ease; letter-spacing: 0.01em; }\n'
+  + '.fs-bar-num { font: 400 14px/1 inherit; opacity: 0.78; }\n'
+  + '.fs-bar.is-active .fs-bar-label, .fs-bar.is-past .fs-bar-label { color: rgba(255,255,255,1); }\n'
+  + '.fs-bar-track { width: 100%; height: 2px; background: rgba(255,255,255,0.22); overflow: hidden; }\n'
+  + '.fs-bar-fill { height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; }\n';
+
+// 공통 reveal helper — applyCommon(p, N): 캡션·bar 상태 업데이트
+const FS_COMMON_SCRIPT = ''
+  + 'var caps = document.querySelectorAll(".fs-cap");\n'
+  + 'var bars = document.querySelectorAll(".fs-bar");\n'
+  + 'var fills = document.querySelectorAll(".fs-bar-fill");\n'
+  + 'var N = ' + N + ';\n'
+  + 'function applyCommon(p){\n'
+  + '  var idx = Math.min(Math.floor(p * N), N - 1);\n'
+  + '  caps.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n'
+  + '  bars.forEach(function(b, i){\n'
+  + '    b.classList.toggle("is-active", i === idx);\n'
+  + '    b.classList.toggle("is-past", i < idx);\n'
+  + '  });\n'
+  + '  fills.forEach(function(f, i){\n'
+  + '    var start = i / N, end = (i + 1) / N;\n'
+  + '    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n'
+  + '    f.style.transform = "scaleX(" + local + ")";\n'
+  + '  });\n'
+  + '  return idx;\n'
+  + '}';
 
 // ============ 10 패턴 정의 ============
 
 const PATTERNS = [
-  // ───────────────────────────── 1. fade-stack (Framer Scroll Slides — 100% 매칭)
-  // 실측: https://scrollslides.framer.website/ (Artem Kostenko)
-  // - 풀스크린 이미지 배경 + 좌측 하단 텍스트 + 어두운 gradient overlay
-  // - 하단 progress bar 4개 균등, 각 bar 위에 "01  Intuition" 형식 라벨
-  // - Pretendard 단일 폰트
+  // 01 — fade-stack
   {
-    id: 'fade-stack',
-    num: '01',
-    title: '페이드 스택 (Framer Scroll Slides)',
-    summary: '풀스크린 이미지가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 이미지는 opacity 0, 새 이미지는 opacity 1로 fade(0.6s ease-in-out). 좌측 하단에 큰 타이틀 + 본문, 하단 전체 폭의 progress bar 4개가 슬라이드별 local progress를 시각화. Framer 마켓플레이스 Scroll Slides(Artem Kostenko)의 시각 100% 매칭.',
+    id: 'fade-stack', num: '01', title: '페이드 스택 (Framer Scroll Slides)',
+    summary: '풀스크린 이미지가 sticky stage에 쌓여 있고, 진행률 구간 [i/N, (i+1)/N]에서 activeIndex가 i로 바뀌면서 이전 이미지는 opacity 0, 새 이미지는 opacity 1로 fade(0.6s ease-in-out). Framer 마켓플레이스 Scroll Slides의 시각·동작 100% 매칭.',
     demo: {
-      slides: 4,
-      bodyHTML: '<div class="fs-stack">\n        <img class="fs-img is-on" src="https://framerusercontent.com/images/d3xhzATSbq7UnQJGe11DInRHoA.png?width=2912&height=1632" alt="Intuition" data-i="0">\n        <img class="fs-img" src="https://framerusercontent.com/images/Ka2cys5DNM0ZnikfEku6vAQgs.png?width=2912&height=1632" alt="Touch" data-i="1">\n        <img class="fs-img" src="https://framerusercontent.com/images/J7sgYKuCCsB521hhlHpnH26Xo.png?width=2912&height=1632" alt="Glow" data-i="2">\n        <img class="fs-img" src="https://framerusercontent.com/images/9Mpgc4sWSDqEN9RprS8TLHnypqY.png?width=2720&height=1760" alt="Pulse" data-i="3">\n        <div class="fs-overlay"></div>\n        <div class="fs-caps">\n          <div class="fs-cap is-on" data-i="0"><h1 class="fs-title">Sensitivity as a guiding force</h1><p class="fs-desc">Forms and colors respond to inner feeling rather than logic. Design becomes instinctive — not constructed, but sensed. A world shaped by quiet whispers of intuition.</p></div>\n          <div class="fs-cap" data-i="1"><h1 class="fs-title">Tactile presence</h1><p class="fs-desc">Surfaces hold the memory of light and time. Texture speaks where words fall silent — materials become a language of their own.</p></div>\n          <div class="fs-cap" data-i="2"><h1 class="fs-title">Emotional illumination</h1><p class="fs-desc">Soft light shapes the mood of every room. Warmth without heat, brightness without glare — atmosphere built from a single ray.</p></div>\n          <div class="fs-cap" data-i="3"><h1 class="fs-title">The living rhythm</h1><p class="fs-desc">Spaces breathe with the people inside. From shadow to glow, from quiet to full — a house alive with its own quiet rhythm.</p></div>\n        </div>\n        <div class="fs-bars">\n          <div class="fs-bar" data-i="0"><div class="fs-bar-label"><span class="fs-bar-num">01</span><span class="fs-bar-name">Intuition</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n          <div class="fs-bar" data-i="1"><div class="fs-bar-label"><span class="fs-bar-num">02</span><span class="fs-bar-name">Touch</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n          <div class="fs-bar" data-i="2"><div class="fs-bar-label"><span class="fs-bar-num">03</span><span class="fs-bar-name">Glow</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n          <div class="fs-bar" data-i="3"><div class="fs-bar-label"><span class="fs-bar-num">04</span><span class="fs-bar-name">Pulse</span></div><div class="fs-bar-track"><div class="fs-bar-fill"></div></div></div>\n        </div>\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Pretendard Variable","Pretendard",system-ui,sans-serif; }\n'
-        + '.fs-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 600ms ease-in-out; will-change: opacity; }\n'
-        + '.fs-img.is-on { opacity: 1; }\n'
-        + '.fs-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 2; }\n'
-        + '.fs-caps { position: absolute; left: 0; right: 0; bottom: 130px; padding: 0 60px; z-index: 4; pointer-events: none; }\n'
-        + '.fs-cap { position: absolute; left: 60px; right: 60px; bottom: 0; opacity: 0; transform: translateY(16px); transition: opacity 500ms ease-out, transform 500ms cubic-bezier(0.2,0,0,1); will-change: opacity, transform; }\n'
-        + '.fs-cap.is-on { opacity: 1; transform: translateY(0); }\n'
-        + '.fs-title { font: 500 clamp(40px, 5vw, 64px)/1.05 "Pretendard Variable","Pretendard",sans-serif; color: #fff; margin: 0 0 22px; max-width: 60%; letter-spacing: -0.02em; }\n'
-        + '.fs-desc { font: 300 clamp(14px, 1vw, 16px)/1.5 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.92); margin: 0; max-width: 460px; }\n'
-        + '.fs-bars { position: absolute; left: 60px; right: 60px; bottom: 48px; display: flex; gap: 40px; align-items: flex-end; z-index: 4; }\n'
-        + '.fs-bar { flex: 1; display: flex; flex-direction: column; gap: 14px; }\n'
-        + '.fs-bar-label { display: flex; gap: 10px; align-items: baseline; font: 500 14px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.5); transition: color 300ms ease; letter-spacing: 0.01em; }\n'
-        + '.fs-bar-num { font: 400 14px/1 "Pretendard Variable","Pretendard",sans-serif; opacity: 0.78; }\n'
-        + '.fs-bar.is-active .fs-bar-label, .fs-bar.is-past .fs-bar-label { color: rgba(255,255,255,1); }\n'
-        + '.fs-bar-track { width: 100%; height: 2px; background: rgba(255,255,255,0.22); overflow: hidden; }\n'
-        + '.fs-bar-fill { height: 100%; background: #fff; transform: scaleX(0); transform-origin: left; }',
-      script: 'var imgs = document.querySelectorAll(".fs-img");\n'
-        + 'var caps = document.querySelectorAll(".fs-cap");\n'
-        + 'var bars = document.querySelectorAll(".fs-bar");\n'
-        + 'var fills = document.querySelectorAll(".fs-bar-fill");\n'
-        + 'var N = imgs.length;\n'
-        + 'function applyReveal(p){\n'
-        + '  var idx = Math.min(Math.floor(p * N), N - 1);\n'
-        + '  imgs.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n'
-        + '  caps.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n'
-        + '  bars.forEach(function(b, i){\n'
-        + '    b.classList.toggle("is-active", i === idx);\n'
-        + '    b.classList.toggle("is-past", i < idx);\n'
-        + '  });\n'
-        + '  fills.forEach(function(f, i){\n'
-        + '    var start = i / N, end = (i + 1) / N;\n'
-        + '    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n'
-        + '    f.style.transform = "scaleX(" + local + ")";\n'
-        + '  });\n'
-        + '}',
-      height: 600,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-fade') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-fade { opacity: 0; transition: opacity 600ms ease-in-out; }\n.fs-img-fade.is-on { opacity: 1; }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = applyCommon(p);\n  imgs.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track" style="height:400vh">\n  <div class="stage" style="position:sticky;top:0;height:100vh">\n    <img class="img is-on" src="..." />\n    <img class="img" src="..." />\n    <div class="overlay"></div>\n    <div class="caps">\n      <div class="cap is-on"><h1>Sensitivity as a guiding force</h1><p>Forms and colors respond to inner feeling…</p></div>\n    </div>\n    <div class="bars">\n      <div class="bar"><span>01</span><span>Intuition</span><div class="track"><div class="fill"></div></div></div>\n      ...\n    </div>\n  </div>\n</div>',
-    snippetCSS: '.img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 600ms ease-in-out; }\n.img.is-on { opacity: 1; }\n.overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.55)); }\n.cap { position: absolute; left: 60px; bottom: 130px; opacity: 0; transform: translateY(16px); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.cap.is-on { opacity: 1; transform: translateY(0); }\n.bars { position: absolute; left: 60px; right: 60px; bottom: 48px; display: flex; gap: 40px; }\n.bar { flex: 1; }\n.fill { height: 2px; background: #fff; transform: scaleX(0); transform-origin: left; }',
-    snippetJS: 'var imgs = document.querySelectorAll(".img");\nvar caps = document.querySelectorAll(".cap");\nvar fills = document.querySelectorAll(".fill");\nvar N = imgs.length;\nvar track = document.querySelector(".track");\nwindow.addEventListener("scroll", function(){\n  var rect = track.getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  var idx = Math.min(Math.floor(p * N), N - 1);\n  imgs.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n  caps.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n  fills.forEach(function(f, i){\n    var start = i / N, end = (i + 1) / N;\n    var local = p < start ? 0 : p > end ? 1 : (p - start) / (end - start);\n    f.style.transform = "scaleX(" + local + ")";\n  });\n}, { passive: true });',
-    explain: 'parent .track 높이를 N×100vh로 설정해 스크롤 공간을 만들고, .stage를 position:sticky top:0 height:100vh로 viewport에 고정. 스크롤 진행률(0~1)을 N으로 곱한 인덱스로 activeIndex를 결정해 그 인덱스의 이미지·캡션만 .is-on (opacity 1, translateY 0). 어두운 gradient overlay가 텍스트 가독성 보장. 하단 progress bar 4개는 슬라이드별 local progress(0~1)을 scaleX로. Pretendard 단일 폰트(라벨·숫자·헤딩·본문 모두). Framer 마켓플레이스 Scroll Slides의 시각·동작 100% 매칭.',
+    snippetHTML: '<div class="track" style="height:400vh">\n  <div class="stage" style="position:sticky;top:0;height:100vh">\n    <img class="img is-on" src="..."> × 4\n    <div class="overlay"></div>\n    <div class="caps"><div class="cap is-on">…</div></div>\n    <div class="bars"><div class="bar"><span>01</span><span>Intuition</span><div class="fill"></div></div></div>\n  </div>\n</div>',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; opacity: 0; transition: opacity 600ms ease-in-out; }\n.img.is-on { opacity: 1; }',
+    snippetJS: 'var imgs = document.querySelectorAll(".img");\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  var idx = Math.min(Math.floor(p * imgs.length), imgs.length - 1);\n  imgs.forEach(function(s, i){ s.classList.toggle("is-on", i === idx); });\n}, { passive: true });',
+    explain: 'parent .track 높이를 N×100vh로 설정하고 .stage를 position:sticky top:0 height:100vh로 viewport에 고정. 스크롤 진행률(0~1)을 N으로 곱한 인덱스로 activeIndex를 결정해 그 인덱스의 이미지·캡션만 .is-on (opacity 1). 어두운 gradient overlay가 텍스트 가독성 보장. progress bar 4개는 슬라이드별 local progress(0~1)을 scaleX로.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (Framer Motion 대체 가능)' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
       { label: '매핑', value: 'activeIndex = floor(p × N) · local = (p - i/N) × N' },
       { label: 'Track 높이', value: 'N × 100vh (예: 4 슬라이드 = 400vh)' },
       { label: 'Fade', value: '이미지·캡션 opacity 0↔1, 600ms ease-in-out' },
-      { label: '폰트', value: 'Pretendard Variable 단일 (헤딩 500, 본문 300)' }
+      { label: '폰트', value: 'Pretendard Variable 단일' }
     ],
-    guide: '풀스크린 이미지/비디오 갤러리에 가장 보편적. 슬라이드 3~5개가 균형. 너무 많으면(6+) 스크롤이 길어진다. Track 높이는 N×100vh 표준. 텍스트 위치는 좌측 하단(60px padding)이 표준이지만 우측/중앙도 가능. 어두운 overlay(0.18→0.55 gradient)가 텍스트 가독성을 보장. progress bar 라벨(01 Intuition)은 활성 슬라이드에서 흰색, 비활성에서 0.5 흰색.',
+    guide: '풀스크린 이미지/비디오 갤러리에 가장 보편적. 슬라이드 3~5개가 균형. Track 높이는 N×100vh 표준. 좌측 하단 캡션(60px padding) + 어두운 overlay(0.18→0.55 gradient)가 가독성 보장. progress bar 라벨은 활성 슬라이드에서 흰색, 비활성에서 0.5 흰색.',
     recommendations: [
-      { place: '히어로 헤더', body: '제품/공간 홍보 페이지의 메인 Hero — Framer Scroll Slides 그대로 차용해 시네마틱 갤러리' },
-      { place: '랜딩 페이지', body: '브랜드 스토리텔링의 4-5 챕터(Intuition · Touch · Glow · Pulse 같은 컨셉 라벨)' },
-      { place: '제품 섹션', body: '제품 라인업/시리즈 — 한 제품당 한 슬라이드, 비디오 가능' },
-      { place: '포트폴리오 소개', body: '대표 작업 4-5건 풀스크린 갤러리 — 각 작품에 시각 임팩트 + 좌측 하단 캡션' }
+      { place: '히어로 헤더', body: '제품/공간 홍보 페이지의 메인 Hero — Framer Scroll Slides 그대로' },
+      { place: '랜딩 페이지', body: '브랜드 스토리텔링의 4 챕터 (Intuition·Touch·Glow·Pulse 같은 컨셉 라벨)' },
+      { place: '제품 섹션', body: '제품 라인업 — 한 제품당 한 슬라이드, 비디오 가능' },
+      { place: '포트폴리오 소개', body: '대표 작업 4-5건 풀스크린 갤러리 + 좌측 하단 캡션' }
     ],
-    tradeoff: 'parent height가 4×100vh = 400vh로 페이지 전체 길이가 크게 늘어남. 한 페이지에 하나의 fade-stack만 권장. 모바일에서는 이미지 크기 최적화 + object-fit:cover로 비율 보정 필수. 텍스트가 이미지와 겹치므로 overlay gradient 강도와 텍스트 색 콘트라스트 검수 필요.'
+    tradeoff: 'parent height가 4×100vh = 400vh로 페이지 전체 길이가 크게 늘어남. 한 페이지에 하나만 권장. 모바일 이미지 최적화 필수.'
   },
 
-  // ───────────────────────────── 2. horizontal-pan
+  // 02 — horizontal-pan
   {
-    id: 'horizontal-pan',
-    num: '02',
-    title: '가로 패닝',
-    summary: '세로 스크롤을 가로 이동으로 변환. sticky stage 안의 rail이 N×100vw 폭이고, 진행률에 따라 translateX로 가로 이동. Apple AirPods·Stripe의 시그니처 가로 갤러리.',
+    id: 'horizontal-pan', num: '02', title: '가로 패닝',
+    summary: '세로 스크롤을 가로 이동으로 변환. sticky stage 안의 rail이 N×100vw 폭이고, 진행률에 따라 translateX로 가로 이동. 동일한 4 이미지 + 좌측 하단 캡션 + 하단 progress bar.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n        <div class="fs-rail">\n          ' + SLIDES.map(function (s, i) { return '<div class="fs-slide" style="background:' + s.bg + '"><div class="fs-cap"><div class="fs-num">' + s.number + ' · ' + s.name + '</div><h2 class="fs-title">' + s.title + '</h2><p class="fs-desc">' + s.desc + '</p></div></div>'; }).join('\n          ') + '\n        </div>\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; }\n.fs-rail { display: flex; flex-direction: row; width: ' + (SLIDES.length * 100) + 'vw; height: 100vh; will-change: transform; }\n' + slidesCSS('fs').replace('.fs-slide { position: absolute; inset: 0;', '.fs-slide { position: relative; width: 100vw; height: 100vh; flex-shrink: 0;'),
-      script: 'var rail = document.querySelector(".fs-rail");\nvar N = ' + SLIDES.length + ';\nfunction applyReveal(p){\n  var x = -p * (N - 1) * 100;\n  rail.style.transform = "translateX(" + x + "vw)";\n}',
-      height: 520,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        <div class="fs-rail">\n          ' + FS_SLIDES.map(function (s, i) { return '<img class="fs-img-h" src="' + s.img + '" alt="' + s.name + '" data-i="' + i + '">'; }).join('\n          ') + '\n        </div>\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-rail { position: absolute; inset: 0; display: flex; width: ' + (N * 100) + 'vw; height: 100%; will-change: transform; }\n.fs-img-h { position: relative; width: 100vw; height: 100%; flex-shrink: 0; object-fit: cover; }',
+      script: 'var rail = document.querySelector(".fs-rail");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  applyCommon(p);\n  rail.style.transform = "translateX(" + (-p * (N - 1) * 100) + "vw)";\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage">\n    <div class="rail">\n      <div class="slide">1</div><div class="slide">2</div>\n    </div>\n  </div>\n</div>',
-    snippetCSS: '.stage { overflow: hidden; }\n.rail { display: flex; width: 400vw; height: 100vh; }\n.slide { width: 100vw; height: 100vh; flex-shrink: 0; }',
-    snippetJS: 'var rail = document.querySelector(".rail");\nvar N = 4;\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  rail.style.transform = "translateX(" + (-p * (N - 1) * 100) + "vw)";\n}, { passive: true });',
-    explain: 'rail이 display:flex로 가로 정렬되어 있고 전체 폭이 N×100vw. sticky stage는 overflow:hidden + 100vw 100vh viewport. 진행률 × (N-1) × 100vw 만큼 rail을 translateX. 사용자가 세로로 스크롤하면 슬라이드가 옆으로 흐름. p=0 → 첫 슬라이드, p=1 → 마지막 슬라이드.',
+    snippetHTML: '<div class="stage">\n  <div class="rail"><img>×4</div>\n  <div class="overlay"></div>\n  <div class="caps">…</div>\n  <div class="bars">…</div>\n</div>',
+    snippetCSS: '.rail { display: flex; width: 400vw; height: 100%; }\n.rail > img { width: 100vw; flex-shrink: 0; object-fit: cover; }',
+    snippetJS: 'var rail = document.querySelector(".rail");\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  rail.style.transform = "translateX(" + (-p * 300) + "vw)";\n}, { passive: true });',
+    explain: 'rail이 display:flex로 가로 정렬, 전체 폭 N×100vw. 진행률에 -(N-1) × 100vw를 곱해 translateX. 캡션·progress bar는 viewport에 fixed(absolute)로 같은 자리에 머물고 활성 슬라이드 캡션·bar만 표시. 사용자는 세로 스크롤로 이미지가 가로로 흐르는 시네마틱.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
       { label: '매핑', value: 'translateX = -p × (N-1) × 100vw' },
-      { label: 'Track 높이', value: 'N × 100vh (예: 4 슬라이드 = 400vh)' },
+      { label: 'Track 높이', value: 'N × 100vh' },
       { label: 'Rail 폭', value: 'N × 100vw' },
-      { label: '시그니처', value: 'Apple AirPods Pro / Stripe Universal / GSAP 가로 스크롤' }
+      { label: '시그니처', value: 'Apple AirPods Pro / Stripe Universal' }
     ],
-    guide: '슬라이드가 옆으로 흐르는 영화 같은 진행감. 슬라이드 3~5개가 균형. 6+면 사용자가 진행 위치 감각을 잃음 — 작은 progress 인디케이터 추가 권장. 모바일에서는 가로 스크롤이 자연스럽지 않을 수 있어 세로 fade-stack으로 fallback 또는 horizontal swipe 활용.',
+    guide: '슬라이드가 옆으로 흐르는 영화 같은 진행감. 3~5개가 균형. 모바일에서는 가로 스크롤이 자연스럽지 않을 수 있어 horizontal swipe로 대체 권장.',
     recommendations: [
       { place: '히어로 헤더', body: '제품 라인업 가로 갤러리 — Apple 시그니처' },
       { place: '랜딩 페이지', body: '서비스 단계(Step 1→2→3) 가로 진행' },
-      { place: '제품 섹션', body: '제품 사양 비교 — 슬라이드별 한 제품' },
+      { place: '제품 섹션', body: '제품 비교 — 슬라이드별 한 제품' },
       { place: '포트폴리오 소개', body: '연도별 작업 타임라인 — 가로로 흐르는 시간' }
     ],
-    tradeoff: '가로 스크롤이라는 컨벤션은 익숙하지만, 페이지 안에 다른 세로 스크롤 콘텐츠와 섞이면 사용자 혼란. 모바일은 가로 스와이프로 fallback 권장.'
+    tradeoff: '가로 스크롤이 익숙하지만 페이지 안에 다른 세로 콘텐츠와 섞이면 사용자 혼란. 모바일은 horizontal swipe로 fallback.'
   },
 
-  // ───────────────────────────── 3. zoom-into
+  // 03 — zoom-into
   {
-    id: 'zoom-into',
-    num: '03',
-    title: '줌인 전환',
-    summary: '슬라이드가 자기 인덱스에 도달할 때 scale 0.8→1로 커지면서 opacity가 풀려나고, 인덱스를 지나면 scale 1→1.4 + opacity 1→0으로 줌인하며 사라짐. 카메라가 슬라이드 안으로 빨려 들어가는 인상.',
+    id: 'zoom-into', num: '03', title: '줌인 전환',
+    summary: '이미지가 자기 인덱스에 도달할 때 scale 0.85→1로 커지며 opacity 풀려나고, 인덱스를 지나면 scale 1→1.4 + opacity 1→0으로 줌인하며 사라짐. 카메라가 이미지 안으로 빨려 들어가는 인상.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n      ' + slidesMarkup('fs') + '\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; perspective: 1000px; }\n' + slidesCSS('fs') + '\n.fs-slide { opacity: 0; transform: scale(0.8); will-change: transform, opacity; }',
-      script: 'var slides = document.querySelectorAll(".fs-slide");\nvar N = slides.length;\nfunction applyReveal(p){\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    if (pos < 0) { s.style.opacity = 0; s.style.transform = "scale(" + (0.8 + 0.2 * (1 + pos)) + ")"; }\n    else if (pos > 1) { s.style.opacity = 0; s.style.transform = "scale(" + (1 + 0.4 * (pos - 1)) + ")"; }\n    else {\n      var inP = Math.min(1, pos * 2);\n      var outP = Math.max(0, pos - 0.5) * 2;\n      s.style.opacity = inP * (1 - outP);\n      s.style.transform = "scale(" + (0.8 + 0.6 * pos) + ")";\n    }\n  });\n}',
-      height: 520,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-zoom') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-zoom { opacity: 0; transform: scale(0.85); }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  applyCommon(p);\n  imgs.forEach(function(s, i){\n    var pos = p * N - i;\n    if (pos < -0.5 || pos > 1.2) { s.style.opacity = 0; return; }\n    var op = pos < 0 ? Math.max(0, 1 + pos * 2) : pos > 1 ? Math.max(0, 1 - (pos - 1) * 4) : 1;\n    var scale = pos < 0 ? 0.85 + 0.15 * (1 + pos) : 0.85 + 0.55 * pos;\n    s.style.opacity = op;\n    s.style.transform = "scale(" + scale + ")";\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage">\n    <div class="slide">1</div><div class="slide">2</div>\n  </div>\n</div>',
-    snippetCSS: '.slide { position: absolute; inset: 0; opacity: 0; transform: scale(0.8); will-change: transform, opacity; }',
-    snippetJS: 'var slides = document.querySelectorAll(".slide");\nvar N = slides.length;\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    var scale = pos < 0 ? 0.8 + 0.2 * (1 + pos) : pos > 1 ? 1 + 0.4 * (pos - 1) : 0.8 + 0.6 * pos;\n    var op = pos < 0 || pos > 1 ? 0 : Math.min(1, pos * 2) * (1 - Math.max(0, pos - 0.5) * 2);\n    s.style.opacity = op; s.style.transform = "scale(" + scale + ")";\n  });\n}, { passive: true });',
-    explain: '각 슬라이드의 local pos = p×N - i (자기 인덱스에서 0, 다음 인덱스에서 1). pos < 0 (등장 전)이면 scale 0.8→1 + opacity 0, pos ∈ [0, 1] (활성 구간)이면 scale 0.8→1.4 + opacity 풀려남, pos > 1 (지나감)이면 scale 1.4 이상 + opacity 0. 슬라이드가 가운데에서 줌인되며 사라지는 영화적 느낌.',
+    snippetHTML: '<img class="img"> × 4\n<!-- 모두 sticky 안에 absolute inset:0 -->',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; opacity: 0; transform: scale(0.85); will-change: transform, opacity; }',
+    snippetJS: 'window.addEventListener("scroll", function(){\n  var p = /* 진행률 */;\n  document.querySelectorAll(".img").forEach(function(s, i){\n    var pos = p * N - i;\n    s.style.opacity = pos < 0 || pos > 1 ? 0 : 1;\n    s.style.transform = "scale(" + (0.85 + 0.55 * pos) + ")";\n  });\n}, { passive: true });',
+    explain: '각 이미지의 local pos = p×N - i. pos < 0(등장 전) opacity 0 + scale 0.85→1, pos ∈ [0,1] (활성) opacity 1 + scale 1→1.4, pos > 1 (지나감) opacity 0. 이미지가 가운데에서 줌인되며 사라지는 영화적 느낌.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
-      { label: '매핑', value: 'pos = p×N - i, scale 0.8→1.4, opacity Δ in/out' },
+      { label: '매핑', value: 'pos = p×N - i, scale 0.85 → 1.4' },
       { label: 'Track 높이', value: 'N × 100vh' },
       { label: '이징', value: 'linear (사용자 제어)' },
       { label: '시그니처', value: 'Apple Vision Pro Hero / WebGL 카메라 줌' }
     ],
-    guide: '카메라 줌인 같은 강한 시각 임팩트. 슬라이드 3~4개가 적정 — 너무 많으면(5+) 줌인 효과가 흐려짐. perspective:1000px을 stage에 두면 약간의 3D 깊이감 추가 가능. 슬라이드 콘텐츠가 이미지/비디오일 때 더 효과적, 텍스트 중심이면 가독성 저하 위험.',
+    guide: '카메라 줌인 같은 강한 시각 임팩트. 슬라이드 3~4개 적정. perspective:1000px을 추가하면 약간의 3D 깊이감. 텍스트 가독성 주의 — 큰 폰트나 짧은 카피만 권장.',
     recommendations: [
       { place: '히어로 헤더', body: '제품 발표 페이지 — 메인 제품이 카메라 줌인으로 등장' },
-      { place: '랜딩 페이지', body: '컨셉 비주얼 시리즈 — 영화 트레일러 같은 인상' },
+      { place: '랜딩 페이지', body: '컨셉 비주얼 — 영화 트레일러 같은 인상' },
       { place: '제품 섹션', body: '디테일 줌 — 제품의 디테일이 점점 더 가까이' },
-      { place: '포트폴리오 소개', body: '대표 작품 갤러리 — 한 작품이 줌인으로 강조' }
+      { place: '포트폴리오 소개', body: '대표 작품 갤러리 — 줌인으로 강조' }
     ],
-    tradeoff: 'scale 변화가 큰 슬라이드는 모바일에서 GPU 비용. will-change 힌트 필수. 텍스트 가독성에 주의 — 큰 폰트나 짧은 카피만 권장.'
+    tradeoff: 'scale 변화가 큰 이미지는 모바일에서 GPU 비용. will-change 힌트 필수.'
   },
 
-  // ───────────────────────────── 4. pin-stack
+  // 04 — pin-stack
   {
-    id: 'pin-stack',
-    num: '04',
-    title: '핀 스택 (위로 쌓임)',
-    summary: '슬라이드가 화면 아래에서 위로 슬라이드 인 + 이전 슬라이드는 그 위에 sticky로 머무름. 카드가 위로 쌓이는 인상.',
+    id: 'pin-stack', num: '04', title: '핀 스택 (위로 쌓임)',
+    summary: '이미지가 화면 아래에서 위로 슬라이드 인 + 이전 이미지는 그 위에 sticky로 머무름. 카드가 위로 쌓이는 인상.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n      ' + slidesMarkup('fs') + '\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; }\n' + slidesCSS('fs') + '\n.fs-slide { transform: translateY(100%); will-change: transform; box-shadow: 0 -24px 60px -12px rgba(0,0,0,0.4); }',
-      script: 'var slides = document.querySelectorAll(".fs-slide");\nvar N = slides.length;\nfunction applyReveal(p){\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    var local = Math.max(0, Math.min(1, pos + 1));\n    var y = 100 * (1 - local);\n    s.style.transform = "translateY(" + y + "%)";\n    s.style.zIndex = i;\n  });\n}',
-      height: 540,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-pin') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-pin { transform: translateY(100%); box-shadow: 0 -24px 60px -12px rgba(0,0,0,0.5); }\n.fs-img-pin[data-i="0"] { transform: translateY(0); }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  applyCommon(p);\n  imgs.forEach(function(s, i){\n    var pos = p * N - i;\n    var local = Math.max(0, Math.min(1, pos + 1));\n    s.style.transform = "translateY(" + (100 * (1 - local)) + "%)";\n    s.style.zIndex = i;\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage">\n    <div class="slide">1</div><div class="slide">2</div>\n  </div>\n</div>',
-    snippetCSS: '.slide { position: absolute; inset: 0; transform: translateY(100%); will-change: transform; box-shadow: 0 -24px 60px -12px rgba(0,0,0,0.4); }',
-    snippetJS: 'var slides = document.querySelectorAll(".slide");\nvar N = slides.length;\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    var local = Math.max(0, Math.min(1, pos + 1));\n    s.style.transform = "translateY(" + (100 * (1 - local)) + "%)";\n    s.style.zIndex = i;\n  });\n}, { passive: true });',
-    explain: '각 슬라이드는 처음에 translateY(100%)로 화면 아래에 위치. 자기 인덱스의 1단계 전부터 1단계 후까지의 진행률을 local progress(0~1)로 만들어 translateY 100% → 0%로 보간. zIndex는 i로 늘어나 새 슬라이드가 이전 슬라이드 위에 쌓임. 상단 그림자(box-shadow inset 위쪽)로 쌓임 효과 강조.',
+    snippetHTML: '<img class="img"> × 4',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; transform: translateY(100%); box-shadow: 0 -24px 60px -12px rgba(0,0,0,0.5); will-change: transform; }',
+    snippetJS: 'document.querySelectorAll(".img").forEach(function(s, i){\n  var pos = p * N - i;\n  var local = Math.max(0, Math.min(1, pos + 1));\n  s.style.transform = "translateY(" + (100 * (1 - local)) + "%)";\n  s.style.zIndex = i;\n});',
+    explain: '각 이미지는 처음에 translateY(100%)로 화면 아래에 위치. 자기 인덱스의 1단계 전부터 후까지의 진행률을 local progress(0~1)로 만들어 translateY 100% → 0%로 보간. zIndex는 i로 늘어나 새 이미지가 이전 이미지 위에 쌓임.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
@@ -235,70 +223,62 @@ const PATTERNS = [
       { label: '쌓임', value: 'zIndex = i + box-shadow 위쪽' },
       { label: '시그니처', value: 'Apple AirPods Pro / Tobias van Schneider' }
     ],
-    guide: '카드가 위로 쌓이는 깊이감. 슬라이드 3~5개. box-shadow를 위쪽으로 두면 새 슬라이드가 위에서 떨어지는 듯한 인상. 슬라이드 콘텐츠가 텍스트+이미지 혼합일 때 잘 어울림. 진입 속도 조절은 매핑 함수의 `pos + 1` 부분을 `pos + 0.8` 식으로 좁히면 더 빠른 진입.',
+    guide: '카드가 위로 쌓이는 깊이감. 슬라이드 3~5개. box-shadow를 위쪽으로 두면 새 이미지가 위에서 떨어지는 듯한 인상. 첫 이미지는 처음부터 보여야 하므로 [data-i="0"] 초기 translateY:0.',
     recommendations: [
-      { place: '히어로 헤더', body: '제품 단계별 소개 — 카드가 위로 쌓이며 스토리 진행' },
-      { place: '랜딩 페이지', body: '핵심 기능 3-4개를 카드로 — 위로 쌓이는 효과' },
+      { place: '히어로 헤더', body: '제품 단계별 소개 — 이미지가 위로 쌓이며 스토리' },
+      { place: '랜딩 페이지', body: '핵심 기능 카드 — 위로 쌓이는 효과' },
       { place: '제품 섹션', body: '제품 비교 — 슬라이드별 다른 제품이 위로 쌓임' },
-      { place: '포트폴리오 소개', body: '프로젝트 케이스 스터디 — 한 작업당 한 카드' }
+      { place: '포트폴리오 소개', body: '프로젝트 케이스 — 한 작업당 한 카드' }
     ],
-    tradeoff: '쌓이는 카드의 box-shadow가 진해지면 페이지 톤이 무거워짐 — 라이트 톤 페이지에서는 그림자 약화. 첫 슬라이드는 처음부터 보여야 하므로 첫 슬라이드만 transform 0으로 초기화하는 식의 보정이 필요할 수 있음.'
+    tradeoff: '쌓이는 이미지의 box-shadow가 진해지면 페이지 톤이 무거워짐. 첫 이미지 초기 위치 보정 필요.'
   },
 
-  // ───────────────────────────── 5. parallax-layer
+  // 05 — parallax-layer
   {
-    id: 'parallax-layer',
-    num: '05',
-    title: '패럴랙스 레이어',
-    summary: '하나의 sticky 스테이지 안에 배경(느림) + 전경(빠름) 레이어가 다른 속도로 움직임. 깊이감 + 영화적 카메라 무빙.',
+    id: 'parallax-layer', num: '05', title: '패럴랙스 레이어',
+    summary: '이미지가 슬라이드 전환할 때 미세한 translateY로 패럴랙스 깊이감. 활성 이미지 외에도 인접 이미지가 동시에 다른 위치에서 보이며 카메라 무빙 인상.',
     demo: {
-      slides: 1,
-      bodyHTML: '<div class="fs-stack">\n        <div class="fs-bg"></div>\n        <div class="fs-mid"></div>\n        <div class="fs-cap">\n          <div class="fs-num">PARALLAX · LAYER</div>\n          <h2 class="fs-title">깊이 있는 풍경</h2>\n          <p class="fs-desc">스크롤할 때 배경과 전경이 다른 속도로 움직이며, 정지된 이미지에 깊이감을 부여합니다.</p>\n        </div>\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; background: #0f172a; }\n.fs-bg { position: absolute; inset: -20% 0 -20%; background: radial-gradient(ellipse at center top, #1e3a8a 0%, transparent 60%), linear-gradient(180deg, #0f172a 0%, #020617 100%); will-change: transform; }\n.fs-mid { position: absolute; inset: 30% 0 -30%; background: radial-gradient(ellipse at center, #7e22ce 0%, transparent 65%); opacity: 0.5; will-change: transform; mix-blend-mode: screen; }\n' + slidesCSS('fs').replace('.fs-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }\n', '') + '\n.fs-cap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; max-width: 720px; margin: 0 auto; padding: 0 8vw; will-change: transform; }',
-      script: 'var bg = document.querySelector(".fs-bg");\nvar mid = document.querySelector(".fs-mid");\nvar cap = document.querySelector(".fs-cap");\nfunction applyReveal(p){\n  bg.style.transform = "translateY(" + (p * -12) + "vh) scale(" + (1 + p * 0.08) + ")";\n  mid.style.transform = "translateY(" + (p * -28) + "vh) scale(" + (1 + p * 0.15) + ")";\n  cap.style.transform = "translateY(" + (p * -8) + "vh)";\n  cap.style.opacity = 1 - p * 0.4;\n}',
-      height: 540,
-      trackVh: 200
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-par') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-par { opacity: 0; transition: opacity 800ms ease-in-out; }\n.fs-img-par.is-on { opacity: 1; }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = applyCommon(p);\n  imgs.forEach(function(s, i){\n    s.classList.toggle("is-on", i === idx);\n    var pos = p * N - i;\n    var clamped = Math.max(-0.5, Math.min(0.5, pos));\n    s.style.transform = "scale(1.08) translateY(" + (clamped * -8) + "vh)";\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track" style="height:200vh">\n  <div class="stage">\n    <div class="bg"></div>\n    <div class="mid"></div>\n    <div class="cap">텍스트</div>\n  </div>\n</div>',
-    snippetCSS: '.bg, .mid, .cap { position: absolute; inset: 0; will-change: transform; }\n.mid { mix-blend-mode: screen; opacity: 0.5; }',
-    snippetJS: 'window.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  document.querySelector(".bg").style.transform = "translateY(" + (p * -12) + "vh)";\n  document.querySelector(".mid").style.transform = "translateY(" + (p * -28) + "vh)";\n  document.querySelector(".cap").style.transform = "translateY(" + (p * -8) + "vh)";\n}, { passive: true });',
-    explain: '여러 레이어(.bg, .mid, .cap)에 진행률 × 다른 계수로 translateY를 곱해 다른 속도로 이동. 배경은 천천히(-12vh), 미들은 빠르게(-28vh), 캡션은 미세하게(-8vh). 깊이감의 핵심은 속도 차이. mix-blend-mode:screen으로 레이어가 자연스럽게 섞임.',
+    snippetHTML: '<img class="img"> × 4',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; opacity: 0; transition: opacity 800ms ease-in-out; will-change: opacity, transform; }\n.img.is-on { opacity: 1; }',
+    snippetJS: 'imgs.forEach(function(s, i){\n  s.classList.toggle("is-on", i === idx);\n  var pos = p * N - i;\n  var clamped = Math.max(-0.5, Math.min(0.5, pos));\n  s.style.transform = "scale(1.08) translateY(" + (clamped * -8) + "vh)";\n});',
+    explain: '활성 이미지는 opacity 1이지만, 모든 이미지에 진행률 기반의 미세 translateY(scale 1.08 + ±4vh)를 적용해 카메라가 살짝 이동하는 패럴랙스 깊이감. 단순 fade-stack보다 더 시네마틱.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
-      { label: '매핑', value: 'translateY = p × [-12vh / -28vh / -8vh] (레이어별)' },
-      { label: 'Track 높이', value: '200vh (단일 sticky 섹션)' },
-      { label: '레이어 수', value: '3개 (bg / mid / fg) — 더 추가 가능' },
+      { label: '매핑', value: 'opacity is-on + scale(1.08) translateY(clamped × -8vh)' },
+      { label: 'Track 높이', value: 'N × 100vh' },
+      { label: 'Fade', value: '800ms ease-in-out (느린 전환)' },
       { label: '시그니처', value: 'Apple iPad / Awwwards 시네마틱' }
     ],
-    guide: '깊이감이 핵심. 배경은 가장 천천히, 가까운 레이어는 빠르게. 속도 차이가 작으면(2배 이내) 효과가 약함, 크면(5배 이상) 어색함. 2-4 레이어가 균형. mix-blend-mode 사용 시 색 충돌 주의 — screen / soft-light / overlay가 자연스러움. 모바일에서는 GPU 비용 크니까 레이어 수 줄임.',
+    guide: '깊이감 패럴랙스가 핵심. scale 1.08로 약간의 줌 + ±4vh translateY로 카메라 무빙. 너무 큰 값은 어색함. will-change 힌트 필수.',
     recommendations: [
-      { place: '히어로 헤더', body: '브랜드 풍경 — 산·하늘·구름 같은 자연 풍경의 깊이감' },
-      { place: '랜딩 페이지', body: '제품 소개 인트로 — 시네마틱 카메라 무빙' },
-      { place: '제품 섹션', body: '브랜드 비전 섹션 — 추상적 깊이감으로 분위기 조성' },
-      { place: '포트폴리오 소개', body: 'About 섹션 — 디자이너의 세계관 표현' }
+      { place: '히어로 헤더', body: '브랜드 풍경 시리즈 — 시네마틱 카메라 무빙' },
+      { place: '랜딩 페이지', body: '제품 소개 인트로 — 미세한 깊이감' },
+      { place: '제품 섹션', body: '브랜드 비전 — 분위기 조성' },
+      { place: '포트폴리오 소개', body: 'About 섹션 — 디자이너의 세계관' }
     ],
-    tradeoff: 'GPU 비용 (transform on multiple layers). will-change 힌트 필수. 모바일에서 60fps 유지 어려울 수 있어 prefers-reduced-motion에서 모든 transform 비활성 권장.'
+    tradeoff: 'transform on multiple layers — GPU 비용. will-change 필수. prefers-reduced-motion에서 transform 비활성 권장.'
   },
 
-  // ───────────────────────────── 6. 3d-rotate
+  // 06 — 3d-rotate
   {
-    id: '3d-rotate',
-    num: '06',
-    title: '3D 회전 전환',
-    summary: 'perspective + rotateY로 슬라이드가 카드처럼 회전하며 전환. 진행률 × 90° × N으로 각 슬라이드가 정면 → 측면 → 다음 슬라이드로.',
+    id: '3d-rotate', num: '06', title: '3D 회전 전환',
+    summary: 'perspective + rotateY로 이미지가 카드처럼 회전하며 전환. 진행률 × 90° × N으로 정면 → 측면 → 다음 이미지로.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n      ' + slidesMarkup('fs') + '\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; perspective: 1400px; background: #050505; }\n' + slidesCSS('fs') + '\n.fs-slide { transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; }',
-      script: 'var slides = document.querySelectorAll(".fs-slide");\nvar N = slides.length;\nfunction applyReveal(p){\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    if (pos < -1 || pos > 1) { s.style.opacity = 0; s.style.transform = "rotateY(" + (pos * 90) + "deg) translateZ(-200px)"; return; }\n    var rot = pos * 90;\n    var op = 1 - Math.min(1, Math.abs(pos));\n    var tz = -Math.abs(pos) * 200;\n    s.style.opacity = op;\n    s.style.transform = "rotateY(" + rot + "deg) translateZ(" + tz + "px)";\n  });\n}',
-      height: 520,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-3d') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-stack { perspective: 1400px; }\n.fs-img-3d { transform-style: preserve-3d; backface-visibility: hidden; opacity: 0; transform: rotateY(90deg); }\n.fs-img-3d[data-i="0"] { opacity: 1; transform: rotateY(0); }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  applyCommon(p);\n  imgs.forEach(function(s, i){\n    var pos = p * N - i;\n    if (pos < -1 || pos > 1) { s.style.opacity = 0; return; }\n    var op = 1 - Math.min(1, Math.abs(pos));\n    var rot = pos * 90;\n    var tz = -Math.abs(pos) * 200;\n    s.style.opacity = op;\n    s.style.transform = "rotateY(" + rot + "deg) translateZ(" + tz + "px)";\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage" style="perspective:1400px">\n    <div class="slide">1</div><div class="slide">2</div>\n  </div>\n</div>',
-    snippetCSS: '.stage { perspective: 1400px; }\n.slide { position: absolute; inset: 0; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; }',
-    snippetJS: 'var slides = document.querySelectorAll(".slide");\nvar N = slides.length;\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    s.style.opacity = 1 - Math.min(1, Math.abs(pos));\n    s.style.transform = "rotateY(" + (pos * 90) + "deg) translateZ(" + (-Math.abs(pos) * 200) + "px)";\n  });\n}, { passive: true });',
-    explain: 'stage에 perspective:1400px로 3D 컨텍스트. 각 슬라이드의 local pos에 90°를 곱해 rotateY. pos=0(정면), pos=±0.5(45° 기울어짐), pos=±1(완전 측면, 보이지 않음). 동시에 translateZ로 뒤로 물러나는 깊이감. opacity는 |pos|에 따라 감소.',
+    snippetHTML: '<div class="stage" style="perspective:1400px">\n  <img class="img" data-i="0">×4\n</div>',
+    snippetCSS: '.stage { perspective: 1400px; }\n.img { position: absolute; inset: 0; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; }',
+    snippetJS: 'imgs.forEach(function(s, i){\n  var pos = p * N - i;\n  s.style.opacity = 1 - Math.min(1, Math.abs(pos));\n  s.style.transform = "rotateY(" + (pos * 90) + "deg) translateZ(" + (-Math.abs(pos) * 200) + "px)";\n});',
+    explain: 'stage에 perspective:1400px로 3D 컨텍스트. 각 이미지의 local pos에 90°를 곱해 rotateY. pos=0(정면), pos=±0.5(45° 기울어짐), pos=±1(완전 측면). 동시에 translateZ로 뒤로 물러나는 깊이감.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
@@ -307,71 +287,63 @@ const PATTERNS = [
       { label: 'perspective', value: '1400px (stage 단위)' },
       { label: '시그니처', value: 'Stripe Universal / WebGL 3D 카드' }
     ],
-    guide: '3D 회전은 강한 시각 임팩트. 슬라이드 3-4개가 균형 — 너무 많으면 회전이 빈번해 어지러움. perspective 값은 1000~1600px이 자연스러움(낮을수록 강한 원근). transform-style:preserve-3d + backface-visibility:hidden 필수. 모바일 GPU 비용 큼 — will-change 힌트 권장.',
+    guide: '3D 회전은 강한 시각 임팩트. 슬라이드 3-4개 균형. perspective 1000~1600px이 자연스러움. transform-style:preserve-3d + backface-visibility:hidden 필수.',
     recommendations: [
-      { place: '히어로 헤더', body: 'WebGL 컴포넌트 라이브러리 / 디자인 도구 — 시그니처 인터랙션' },
-      { place: '랜딩 페이지', body: '컨퍼런스 / 이벤트 페이지 — 영화적 임팩트' },
-      { place: '제품 섹션', body: '카드 형태 제품 — 회전하며 디테일 노출' },
-      { place: '포트폴리오 소개', body: '실험적 작품 갤러리 — 평범하지 않은 인상' }
+      { place: '히어로 헤더', body: 'WebGL 라이브러리 / 디자인 도구 — 시그니처 인터랙션' },
+      { place: '랜딩 페이지', body: '컨퍼런스 / 이벤트 — 영화적 임팩트' },
+      { place: '제품 섹션', body: '카드 형태 제품 — 회전하며 디테일' },
+      { place: '포트폴리오 소개', body: '실험적 작품 갤러리' }
     ],
-    tradeoff: 'GPU 비용 매우 큼. 모바일에서 60fps 유지 어려울 수 있음. 사용자 어지러움 호소 가능 — prefers-reduced-motion에서 비활성 + 단순 fade로 fallback 필수. 텍스트 가독성 저하 — 큰 폰트만 권장.'
+    tradeoff: 'GPU 비용 매우 큼. 모바일 60fps 어려움. 사용자 어지러움 가능 — prefers-reduced-motion에서 단순 fade로 fallback 필수.'
   },
 
-  // ───────────────────────────── 7. scroll-snap
+  // 07 — scroll-snap
   {
-    id: 'scroll-snap',
-    num: '07',
-    title: 'CSS 스크롤 스냅',
-    summary: 'JS 매핑 없이 CSS scroll-snap-type만으로 슬라이드가 viewport에 snap. 사용자가 스크롤하면 한 슬라이드 단위로 딱 멈춤. 가장 가벼운 풀스크린 갤러리.',
+    id: 'scroll-snap', num: '07', title: 'CSS 스크롤 스냅',
+    summary: 'JS 매핑 없이 CSS scroll-snap-type만으로 이미지 슬라이드가 viewport에 snap. 사용자가 스크롤하면 한 슬라이드 단위로 딱 멈춤. 가장 가벼운 풀스크린 갤러리. 캡션·progress bar는 IntersectionObserver로 활성 인덱스 동기화.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-snap">\n      ' + SLIDES.map(function (s, i) { return '<section class="fs-slide" style="background:' + s.bg + '"><div class="fs-cap"><div class="fs-num">' + s.number + ' · ' + s.name + '</div><h2 class="fs-title">' + s.title + '</h2><p class="fs-desc">' + s.desc + '</p></div></section>'; }).join('\n      ') + '\n      </div>',
-      css: slidesCSS('fs').replace('.fs-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }\n', '.fs-snap { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }\n.fs-snap::-webkit-scrollbar { display: none; }\n.fs-snap { scrollbar-width: none; }\n.fs-slide { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; scroll-snap-align: start; scroll-snap-stop: always; }\n'),
-      script: '/* CSS only — JS 매핑 없음 */',
-      isCustom: true,
-      height: 560,
-      trackVh: 100
+      bodyHTML: '<div class="fs-snap">\n        ' + FS_SLIDES.map(function (s, i) { return '<section class="fs-snap-slide" data-i="' + i + '"><img src="' + s.img + '" alt="' + s.name + '"></section>'; }).join('\n        ') + '\n      </div>\n      <div class="fs-overlay"></div>\n      ' + fsCapsMarkup() + '\n      ' + fsBarsMarkup(),
+      css: FS_BASE_CSS + '.fs-snap { position: absolute; inset: 0; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; scrollbar-width: none; }\n.fs-snap::-webkit-scrollbar { display: none; }\n.fs-snap-slide { width: 100%; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; position: relative; }\n.fs-snap-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }',
+      script: 'var snap = document.querySelector(".fs-snap");\nvar slides = document.querySelectorAll(".fs-snap-slide");\nvar caps = document.querySelectorAll(".fs-cap");\nvar bars = document.querySelectorAll(".fs-bar");\nvar fills = document.querySelectorAll(".fs-bar-fill");\nvar N = ' + N + ';\nfunction update(){\n  var idx = Math.round(snap.scrollTop / snap.clientHeight);\n  idx = Math.max(0, Math.min(N - 1, idx));\n  caps.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });\n  bars.forEach(function(b, i){\n    b.classList.toggle("is-active", i === idx);\n    b.classList.toggle("is-past", i < idx);\n  });\n  fills.forEach(function(f, i){ f.style.transform = "scaleX(" + (i < idx ? 1 : i === idx ? 1 : 0) + ")"; });\n}\nsnap.addEventListener("scroll", update, { passive: true });\nupdate();\nfunction applyReveal(){}',
+      height: 600, trackVh: 100,
+      isSnap: true
     },
-    snippetHTML: '<div class="snap">\n  <section class="slide">1</section>\n  <section class="slide">2</section>\n</div>',
+    snippetHTML: '<div class="snap">\n  <section class="slide"><img></section> × 4\n</div>',
     snippetCSS: '.snap { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }\n.slide { height: 100vh; scroll-snap-align: start; scroll-snap-stop: always; }',
-    snippetJS: '/* CSS only — JS 매핑 없음 */',
-    explain: 'CSS scroll-snap-type:y mandatory가 핵심. 사용자가 스크롤하면 가장 가까운 .slide의 scroll-snap-align:start 지점에 딱 멈춤. scroll-snap-stop:always로 한 번에 한 슬라이드씩만 넘어감. JS 없이 동작. 단점: 슬라이드 간 매끈한 transition 없음 (즉시 snap).',
+    snippetJS: 'snap.addEventListener("scroll", function(){\n  var idx = Math.round(snap.scrollTop / snap.clientHeight);\n  /* idx에 따라 캡션·bar 토글 */\n});',
+    explain: 'CSS scroll-snap-type:y mandatory가 핵심. 사용자 스크롤 시 가장 가까운 .slide 시작점에 딱 멈춤. scroll-snap-stop:always로 한 번에 한 슬라이드씩만 진행. JS는 활성 인덱스 추적해서 캡션·progress bar 토글하는 데에만 사용. iframe 안 자체 스크롤 컨테이너라 부모 ↻ 다시 보기와는 별개.',
     kv: [
-      { label: '의존성', value: 'CSS only (Vanilla, 라이브러리 0)' },
-      { label: '트리거', value: '스크롤 (브라우저 native snap)' },
-      { label: '매핑', value: 'scroll-snap-type + scroll-snap-align' },
+      { label: '의존성', value: 'CSS scroll-snap + 미니 JS' },
+      { label: '트리거', value: 'native scroll (브라우저 snap)' },
+      { label: '매핑', value: 'scroll-snap-type:y mandatory + scroll-snap-stop:always' },
       { label: 'Track 높이', value: '100vh × N (각 슬라이드)' },
-      { label: 'JS 비용', value: '0' },
-      { label: '시그니처', value: 'iOS 사진앱 / Instagram Stories 데스크톱' }
+      { label: 'JS 비용', value: '최소 (scrollTop 측정만)' },
+      { label: '시그니처', value: 'iOS 사진앱 / Instagram Stories' }
     ],
-    guide: '가장 가벼운 풀스크린 갤러리. JS 매핑 없이 CSS만으로 슬라이드 간 snap. 슬라이드 사이 transition은 없음(즉시 snap) — 더 부드러운 전환이 필요하면 fade-stack이나 zoom-into 사용. scroll-snap-stop:always가 핵심 — 사용자가 빠르게 스크롤해도 한 슬라이드씩만 진행. 모바일 swipe도 자동으로 동작.',
+    guide: '가장 가벼운 풀스크린 갤러리. JS 매핑 거의 없이 CSS만으로 snap. 슬라이드 사이 transition은 없음(즉시 snap) — 더 부드러운 전환이 필요하면 fade-stack 사용. 모바일 swipe도 native 동작.',
     recommendations: [
-      { place: '히어로 헤더', body: '단순한 풀스크린 갤러리 — JS 비용 0' },
-      { place: '랜딩 페이지', body: '제품 시리즈 보여주기 — 빠르고 가볍게' },
-      { place: '제품 섹션', body: '제품 상세 페이지의 이미지 갤러리' },
-      { place: '포트폴리오 소개', body: '간단한 작품 카탈로그 — 한 작품당 한 슬라이드' }
+      { place: '히어로 헤더', body: '단순한 풀스크린 갤러리 — JS 비용 최소' },
+      { place: '랜딩 페이지', body: '제품 시리즈 — 빠르고 가볍게' },
+      { place: '제품 섹션', body: '제품 상세 이미지 갤러리' },
+      { place: '포트폴리오 소개', body: '간단한 작품 카탈로그' }
     ],
-    tradeoff: '슬라이드 간 transition이 없어 다소 거친 느낌. progress bar·인디케이터 같은 진행 표시도 직접 구현해야. iOS Safari는 scroll-snap 지원이 다소 거칠 수 있음 — 충분한 테스트 필요.'
+    tradeoff: '슬라이드 간 transition 없어 거친 느낌. progress bar는 활성/완료 상태만(local progress 없음). iOS Safari scroll-snap 동작 거칠 수 있어 검수 필수.'
   },
 
-  // ───────────────────────────── 8. clip-reveal
+  // 08 — clip-reveal
   {
-    id: 'clip-reveal',
-    num: '08',
-    title: 'Clip-path 리빌',
-    summary: '다음 슬라이드가 위에서 아래로 clip-path inset으로 reveal. 슬라이드가 커튼처럼 내려오는 인상.',
+    id: 'clip-reveal', num: '08', title: 'Clip-path 리빌',
+    summary: '다음 이미지가 위에서 아래로 clip-path inset으로 reveal. 이미지가 커튼처럼 내려오는 인상.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n      ' + slidesMarkup('fs') + '\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; }\n' + slidesCSS('fs') + '\n.fs-slide { clip-path: inset(100% 0 0 0); will-change: clip-path; }\n.fs-slide:first-child { clip-path: inset(0 0 0 0); }',
-      script: 'var slides = document.querySelectorAll(".fs-slide");\nvar N = slides.length;\nfunction applyReveal(p){\n  slides.forEach(function(s, i){\n    if (i === 0) { s.style.clipPath = "inset(0 0 0 0)"; return; }\n    var pos = p * N - i + 1;\n    var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n    s.style.clipPath = "inset(" + inset + "% 0 0 0)";\n    s.style.zIndex = i;\n  });\n}',
-      height: 540,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-clip') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-clip { clip-path: inset(100% 0 0 0); }\n.fs-img-clip[data-i="0"] { clip-path: inset(0); }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  applyCommon(p);\n  imgs.forEach(function(s, i){\n    if (i === 0) { s.style.clipPath = "inset(0 0 0 0)"; s.style.zIndex = 0; return; }\n    var pos = p * N - i + 1;\n    var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n    s.style.clipPath = "inset(" + inset + "% 0 0 0)";\n    s.style.zIndex = i;\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage">\n    <div class="slide first">1</div><div class="slide">2</div>\n  </div>\n</div>',
-    snippetCSS: '.slide { position: absolute; inset: 0; clip-path: inset(100% 0 0 0); will-change: clip-path; }\n.slide:first-child { clip-path: inset(0); }',
-    snippetJS: 'var slides = document.querySelectorAll(".slide");\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  slides.forEach(function(s, i){\n    if (i === 0) return;\n    var pos = p * slides.length - i + 1;\n    var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n    s.style.clipPath = "inset(" + inset + "% 0 0 0)";\n    s.style.zIndex = i;\n  });\n}, { passive: true });',
-    explain: '첫 슬라이드는 처음부터 보임 (clip-path: inset(0)). 두 번째부터는 inset(100% 0 0 0)으로 위에서부터 100% 잘려 안 보임. 진행률이 i 인덱스에 가까워질수록 inset이 100% → 0%로 줄어들어 위에서 아래로 슬라이드가 reveal. 커튼이 내려오는 인상. clip-path는 GPU 가속이라 부드러움.',
+    snippetHTML: '<img class="img" data-i="0"> × 4',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; clip-path: inset(100% 0 0 0); will-change: clip-path; }\n.img[data-i="0"] { clip-path: inset(0); }',
+    snippetJS: 'imgs.forEach(function(s, i){\n  if (i === 0) return;\n  var pos = p * N - i + 1;\n  var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n  s.style.clipPath = "inset(" + inset + "% 0 0 0)";\n  s.style.zIndex = i;\n});',
+    explain: '첫 이미지는 처음부터 보임 (clip-path: inset(0)). 두 번째부터는 inset(100% 0 0 0)으로 위에서부터 잘려 안 보임. 진행률이 i 인덱스에 가까워질수록 inset이 100% → 0%로 줄어들어 위에서 아래로 reveal. 커튼이 내려오는 인상.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
@@ -380,34 +352,30 @@ const PATTERNS = [
       { label: '핵심', value: 'clip-path inset (GPU 가속)' },
       { label: '시그니처', value: 'Apple iPad / 시네마틱 reveal' }
     ],
-    guide: '커튼이 내려오는 듯한 시네마틱 reveal. 슬라이드 3-4개가 적정. clip-path 방향은 inset(top right bottom left) — 가로 reveal은 inset(0 100% 0 0)로 바꾸면 됨. zIndex 관리가 핵심 — 새 슬라이드가 위로 와야 함. 텍스트 가독성 좋음 (스케일·회전 없음).',
+    guide: '커튼이 내려오는 시네마틱 reveal. 슬라이드 3-4개 적정. clip-path 방향은 inset(top right bottom left) — 가로 reveal은 inset(0 100% 0 0). zIndex 관리 필수.',
     recommendations: [
-      { place: '히어로 헤더', body: '시네마틱 인트로 — 영화 오프닝 같은 reveal' },
-      { place: '랜딩 페이지', body: '챕터별 전환 — 한 챕터에서 다음 챕터로' },
-      { place: '제품 섹션', body: '비포/애프터 비교 — 마스크가 내려오며 전후 비교' },
-      { place: '포트폴리오 소개', body: '작품 시리즈 — 한 작품에서 다음 작품으로 커튼' }
+      { place: '히어로 헤더', body: '시네마틱 인트로 — 영화 오프닝 reveal' },
+      { place: '랜딩 페이지', body: '챕터별 전환 — 한 챕터에서 다음으로' },
+      { place: '제품 섹션', body: '비포/애프터 비교 — 마스크가 내려옴' },
+      { place: '포트폴리오 소개', body: '작품 시리즈 — 한 작품에서 다음으로 커튼' }
     ],
-    tradeoff: 'clip-path는 모든 모던 브라우저 지원. 모바일 성능 양호. 슬라이드가 진입하는 방향이 한정적(top/bottom/left/right) — 더 복잡한 마스크는 SVG mask로 구현. 슬라이드 사이 transition은 없고 즉시 swap이라 빠른 인상.'
+    tradeoff: 'clip-path는 모든 모던 브라우저 지원, 모바일 성능 양호. 슬라이드 진입 방향은 한정적(top/bottom/left/right). 더 복잡한 마스크는 SVG mask로.'
   },
 
-  // ───────────────────────────── 9. scale-handoff
+  // 09 — scale-handoff
   {
-    id: 'scale-handoff',
-    num: '09',
-    title: '스케일 핸드오프',
-    summary: '한 슬라이드가 scale 1→1.1로 커지면서 사라지고, 다음 슬라이드가 0.9→1로 커지면서 등장. 두 슬라이드가 부드럽게 교체.',
+    id: 'scale-handoff', num: '09', title: '스케일 핸드오프',
+    summary: '한 이미지가 scale 1→1.1로 커지면서 사라지고, 다음 이미지가 0.9→1로 커지면서 등장. 두 이미지가 부드럽게 교체.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n      ' + slidesMarkup('fs') + '\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; }\n' + slidesCSS('fs') + '\n.fs-slide { opacity: 0; transform: scale(0.9); will-change: transform, opacity; }',
-      script: 'var slides = document.querySelectorAll(".fs-slide");\nvar N = slides.length;\nfunction applyReveal(p){\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    if (pos < -1 || pos > 1) { s.style.opacity = 0; s.style.transform = "scale(" + (1 + pos * 0.1) + ")"; return; }\n    var op = 1 - Math.abs(pos);\n    var scale = 0.9 + (1 - Math.abs(pos)) * 0.1 + Math.max(0, pos) * 0.1;\n    s.style.opacity = op;\n    s.style.transform = "scale(" + scale + ")";\n  });\n}',
-      height: 520,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-handoff') + '\n        <div class="fs-overlay"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-handoff { opacity: 0; transform: scale(0.9); }\n.fs-img-handoff[data-i="0"] { opacity: 1; transform: scale(1); }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  applyCommon(p);\n  imgs.forEach(function(s, i){\n    var pos = p * N - i;\n    var abs = Math.abs(pos);\n    if (abs > 1) { s.style.opacity = 0; s.style.transform = "scale(" + (1 + pos * 0.1) + ")"; return; }\n    s.style.opacity = 1 - abs;\n    var scale = 0.9 + (1 - abs) * 0.1 + Math.max(0, pos) * 0.1;\n    s.style.transform = "scale(" + scale + ")";\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage">\n    <div class="slide">1</div><div class="slide">2</div>\n  </div>\n</div>',
-    snippetCSS: '.slide { position: absolute; inset: 0; opacity: 0; transform: scale(0.9); will-change: transform, opacity; }',
-    snippetJS: 'var slides = document.querySelectorAll(".slide");\nvar N = slides.length;\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  slides.forEach(function(s, i){\n    var pos = p * N - i;\n    s.style.opacity = 1 - Math.abs(pos);\n    s.style.transform = "scale(" + (0.9 + (1 - Math.abs(pos)) * 0.1 + Math.max(0, pos) * 0.1) + ")";\n  });\n}, { passive: true });',
-    explain: '각 슬라이드의 local pos = p×N - i. 자기 인덱스(pos=0)에서 scale 1 + opacity 1로 가장 또렷. pos가 ±1로 멀어질수록 opacity 0 + scale 0.9 또는 1.1. 두 인접 슬라이드가 동시에 보이면서 부드럽게 교체. zoom-into보다 변화가 작아 가독성 좋음.',
+    snippetHTML: '<img class="img" data-i="0"> × 4',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; opacity: 0; transform: scale(0.9); will-change: transform, opacity; }',
+    snippetJS: 'imgs.forEach(function(s, i){\n  var pos = p * N - i;\n  s.style.opacity = 1 - Math.abs(pos);\n  s.style.transform = "scale(" + (0.9 + (1 - Math.abs(pos)) * 0.1 + Math.max(0, pos) * 0.1) + ")";\n});',
+    explain: '각 이미지의 local pos = p×N - i. 자기 인덱스(pos=0)에서 scale 1 + opacity 1로 가장 또렷. ±1로 멀어질수록 opacity 0 + scale 0.9 또는 1.1. 두 인접 이미지가 동시에 보이면서 부드럽게 교체.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
@@ -416,61 +384,55 @@ const PATTERNS = [
       { label: '이징', value: 'linear (사용자 제어)' },
       { label: '시그니처', value: 'Apple Vision Pro / 부드러운 갤러리' }
     ],
-    guide: '부드럽고 가독성 좋은 전환. zoom-into보다 scale 변화 작음(0.9~1.1). 슬라이드 3-5개. 두 슬라이드가 동시에 보이는 구간에서 자연스러운 교체. 텍스트 가독성 양호 — 본문 콘텐츠에도 적합. will-change 힌트 권장.',
+    guide: '부드럽고 가독성 좋은 전환. zoom-into보다 scale 변화 작음(0.9~1.1). 슬라이드 3-5개. 두 이미지가 동시에 보이는 구간에서 자연스러운 교체.',
     recommendations: [
-      { place: '히어로 헤더', body: 'SaaS 제품 소개 — 부드럽고 신뢰감 있는 전환' },
-      { place: '랜딩 페이지', body: '회사 가치 시리즈 — 한 가치에서 다음 가치로' },
-      { place: '제품 섹션', body: '제품 변형 비교 — 부드러운 교체' },
+      { place: '히어로 헤더', body: 'SaaS 제품 소개 — 부드럽고 신뢰감' },
+      { place: '랜딩 페이지', body: '회사 가치 시리즈 — 부드러운 전환' },
+      { place: '제품 섹션', body: '제품 변형 비교' },
       { place: '포트폴리오 소개', body: '작품 시리즈 — 가독성 좋게' }
     ],
-    tradeoff: '변화가 작아 임팩트는 약함 — 강한 인상이 필요하면 zoom-into나 3d-rotate 권장. 두 슬라이드 동시 렌더로 약간의 GPU 비용.'
+    tradeoff: '변화가 작아 임팩트는 약함 — 강한 인상이 필요하면 zoom-into. 두 이미지 동시 렌더로 약간의 GPU 비용.'
   },
 
-  // ───────────────────────────── 10. caption-slide
+  // 10 — caption-slide
   {
-    id: 'caption-slide',
-    num: '10',
-    title: '캡션 슬라이드',
-    summary: '배경 1개는 sticky로 고정하고, 캡션(타이틀 + 설명)만 슬라이드별로 진입. 배경 무비는 그대로 + 텍스트가 흐름 — 디테일 페이지의 시그니처.',
+    id: 'caption-slide', num: '10', title: '캡션 슬라이드',
+    summary: '배경 이미지는 천천히 fade(1.4s) + 캡션·progress bar는 즉시 전환. 영상이 핵심인 컨텍스트의 시그니처. 비디오/이미지의 분위기를 유지하면서 정보만 흐름.',
     demo: {
-      slides: SLIDES.length,
-      bodyHTML: '<div class="fs-stack">\n        <div class="fs-bg-img"></div>\n        <div class="fs-caps">\n      ' + SLIDES.map(function (s, i) { return '<div class="fs-cap-item" data-i="' + i + '"><div class="fs-num">' + s.number + ' · ' + s.name + '</div><h2 class="fs-title">' + s.title + '</h2><p class="fs-desc">' + s.desc + '</p></div>'; }).join('\n      ') + '\n        </div>\n      </div>',
-      css: '.fs-stack { position: absolute; inset: 0; overflow: hidden; background: #0a0a0a; }\n.fs-bg-img { position: absolute; inset: 0; background: radial-gradient(circle at 30% 40%, #1e3a8a 0%, transparent 50%), radial-gradient(circle at 70% 70%, #7e22ce 0%, transparent 50%), #0a0a0a; will-change: filter; }\n.fs-caps { position: absolute; inset: 0; }\n' + slidesCSS('fs').replace('.fs-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }\n', '') + '\n.fs-cap-item { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 0 8vw; will-change: transform, opacity; opacity: 0; transform: translateY(50px); }',
-      script: 'var bg = document.querySelector(".fs-bg-img");\nvar caps = document.querySelectorAll(".fs-cap-item");\nvar N = caps.length;\nfunction applyReveal(p){\n  bg.style.filter = "hue-rotate(" + (p * 240) + "deg) saturate(" + (1 + p * 0.5) + ")";\n  caps.forEach(function(c, i){\n    var pos = p * N - i;\n    if (pos < -1 || pos > 1) { c.style.opacity = 0; c.style.transform = "translateY(" + (pos < 0 ? 50 : -50) + "px)"; return; }\n    var op = 1 - Math.abs(pos);\n    var y = -pos * 50;\n    c.style.opacity = op;\n    c.style.transform = "translateY(" + y + "px)";\n  });\n}',
-      height: 540,
-      trackVh: 400
+      bodyHTML: '<div class="fs-stack">\n        ' + fsImagesMarkup('fs-img-cap') + '\n        <div class="fs-overlay fs-overlay-cap"></div>\n        ' + fsCapsMarkup() + '\n        ' + fsBarsMarkup() + '\n      </div>',
+      css: FS_BASE_CSS + '.fs-img-cap { opacity: 0; transition: opacity 1400ms ease-in-out, filter 1400ms ease-in-out; filter: saturate(1.1) brightness(0.95); }\n.fs-img-cap.is-on { opacity: 1; }\n.fs-overlay-cap { background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 100%); }',
+      script: 'var imgs = document.querySelectorAll(".fs-img");\n' + FS_COMMON_SCRIPT + '\nfunction applyReveal(p){\n  var idx = applyCommon(p);\n  imgs.forEach(function(s, i){\n    s.classList.toggle("is-on", i === idx);\n    s.style.filter = "saturate(" + (1.05 + p * 0.15) + ") brightness(" + (0.95 - p * 0.05) + ")";\n  });\n}',
+      height: 600, trackVh: 400
     },
-    snippetHTML: '<div class="track">\n  <div class="stage">\n    <div class="bg"></div>\n    <div class="cap" data-i="0">1</div>\n    <div class="cap" data-i="1">2</div>\n  </div>\n</div>',
-    snippetCSS: '.bg { position: absolute; inset: 0; }\n.cap { position: absolute; inset: 0; opacity: 0; transform: translateY(50px); will-change: transform, opacity; }',
-    snippetJS: 'var caps = document.querySelectorAll(".cap");\nvar N = caps.length;\nwindow.addEventListener("scroll", function(){\n  var rect = document.querySelector(".track").getBoundingClientRect();\n  var p = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));\n  caps.forEach(function(c, i){\n    var pos = p * N - i;\n    c.style.opacity = 1 - Math.abs(pos);\n    c.style.transform = "translateY(" + (-pos * 50) + "px)";\n  });\n}, { passive: true });',
-    explain: '배경(.bg)은 단일 레이어로 sticky 안에서 고정 + 필터로 미세하게 색조 변경 (hue-rotate). 캡션(.cap-item)들은 각자 position:absolute inset:0으로 같은 자리에 쌓이고, 자기 인덱스에 도달할 때 opacity 1 + translateY 0. 배경은 그대로, 텍스트만 슬라이드별로 진입.',
+    snippetHTML: '<img class="img"> × 4 (배경)\n<div class="caps"> × 4 (캡션, 빠른 전환)\n<div class="bars"> × 4 (progress bar)',
+    snippetCSS: '.img { position: absolute; inset: 0; object-fit: cover; opacity: 0; transition: opacity 1400ms ease-in-out, filter 1400ms ease-in-out; filter: saturate(1.1) brightness(0.95); }\n.img.is-on { opacity: 1; }',
+    snippetJS: 'imgs.forEach(function(s, i){\n  s.classList.toggle("is-on", i === idx);\n  /* 배경은 천천히, 캡션·bar는 즉시 */\n});',
+    explain: '배경 이미지는 1.4s ease-in-out fade로 매우 천천히 전환 + 미세 filter 변화(saturate, brightness)로 분위기 유지. 캡션·progress bar는 표준(500ms ease-out)으로 즉시 전환. 배경의 정적인 인상과 캡션의 흐름이 대비.',
     kv: [
       { label: '의존성', value: 'Vanilla JS' },
       { label: '트리거', value: '스크롤 진행률 0→1 (sticky pin)' },
-      { label: '매핑', value: '캡션 opacity·translateY + 배경 hue-rotate' },
+      { label: '매핑', value: '배경 fade 1.4s + filter 미세 변화 + 캡션 500ms' },
       { label: 'Track 높이', value: 'N × 100vh' },
-      { label: '구성', value: '배경 1 + 캡션 N개' },
+      { label: 'Fade 속도', value: '배경 1400ms vs 캡션 500ms' },
       { label: '시그니처', value: 'Apple 제품 디테일 / 비디오 캡션' }
     ],
-    guide: '배경 이미지/비디오가 핵심일 때 — 캡션만 슬라이드로. 한 영상에 N개 챕터 캡션 같은 컨텍스트. 배경 hue-rotate / brightness 변화로 미세하게 분위기 전환. 캡션은 텍스트 중심으로 짧게(40자 이내) 유지.',
+    guide: '배경 이미지/비디오가 핵심일 때 — 배경은 천천히 + 캡션·bar만 빠른 슬라이드. 한 영상에 N개 챕터 캡션 같은 컨텍스트. 짧은 캡션(40자 이내) 권장.',
     recommendations: [
       { place: '히어로 헤더', body: '브랜드 영상 + 챕터 캡션 — 영상은 그대로, 텍스트만 흐름' },
       { place: '랜딩 페이지', body: '제품 비디오 + 기능 캡션 시리즈' },
       { place: '제품 섹션', body: '제품 이미지 + 스펙 챕터별 캡션' },
       { place: '포트폴리오 소개', body: '대표 작품 비디오 + 진행 단계 캡션' }
     ],
-    tradeoff: '배경이 정적이라 시각 임팩트 약함 — 비디오 배경이거나 미세한 filter 변화로 보완. 캡션 N개 모두 같은 자리에 쌓이므로 z-stacking 주의.'
+    tradeoff: '배경 fade가 천천히이라 시각 임팩트 약함 — 비디오/움직임이 있는 배경이 더 잘 어울림. 캡션 N개 모두 같은 자리에 쌓이므로 z-stacking 주의.'
   }
 ];
 
 // ============ Standalone demo HTML 빌더 ============
 
 function buildDemoHTML(p) {
-  var trackVh = p.demo.trackVh || (p.demo.slides * 100);
-  // scroll-snap은 자체 보일러플레이트가 다름 — JS 매핑 없이 CSS 단독
-  if (p.demo.isCustom) {
-    return buildSnapDemoHTML(p);
-  }
+  var trackVh = p.demo.trackVh || (N * 100);
+  if (p.demo.isSnap) return buildSnapDemoHTML(p);
+
   return '<!DOCTYPE html>\n'
     + '<html lang="ko">\n'
     + '<head>\n'
@@ -481,7 +443,7 @@ function buildDemoHTML(p) {
     + '  <style>\n'
     + '    * { box-sizing: border-box; }\n'
     + '    html, body { margin: 0; padding: 0; }\n'
-    + '    body { background: #000; color: #fff; font-family: "Pretendard Variable", "Pretendard", system-ui; overflow-x: hidden; -webkit-font-smoothing: antialiased; }\n'
+    + '    body { background: #000; color: #fff; font-family: "Pretendard Variable","Pretendard",sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }\n'
     + '    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 10px; z-index: 100; }\n'
     + '    .demo-reset { font: 600 11px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }\n'
     + '    .demo-reset:hover { color: #fff; background: rgba(255,255,255,0.14); }\n'
@@ -534,7 +496,7 @@ function buildDemoHTML(p) {
     + '</html>\n';
 }
 
-// scroll-snap 전용 보일러플레이트 (sticky 매핑 없이 native scroll-snap)
+// scroll-snap 전용 보일러플레이트 — 자체 컨테이너 scroll
 function buildSnapDemoHTML(p) {
   return '<!DOCTYPE html>\n'
     + '<html lang="ko">\n'
@@ -546,17 +508,25 @@ function buildSnapDemoHTML(p) {
     + '  <style>\n'
     + '    * { box-sizing: border-box; }\n'
     + '    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }\n'
-    + '    body { background: #000; color: #fff; font-family: "Pretendard Variable", "Pretendard", system-ui; -webkit-font-smoothing: antialiased; }\n'
-    + '    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; gap: 10px; z-index: 100; }\n'
+    + '    body { background: #000; color: #fff; font-family: "Pretendard Variable","Pretendard",sans-serif; -webkit-font-smoothing: antialiased; }\n'
+    + '    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; gap: 10px; z-index: 200; }\n'
     + '    .demo-label { font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 0; }\n'
-    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; }\n'
+    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; z-index: 200; }\n'
+    + '    .sticky-stage { position: relative; width: 100%; height: 100vh; overflow: hidden; }\n'
     + '    ' + p.demo.css.replace(/\n/g, '\n    ') + '\n'
     + '  </style>\n'
     + '</head>\n'
     + '<body>\n'
     + '  <div class="demo-controls"><span class="demo-label">' + p.num + ' · ' + p.title + '</span></div>\n'
     + '  <div class="demo-hint">SCROLL ↓ (스냅)</div>\n'
-    + '  ' + p.demo.bodyHTML.replace(/\n/g, '\n  ') + '\n'
+    + '  <div class="sticky-stage">\n'
+    + '    ' + p.demo.bodyHTML.replace(/\n/g, '\n    ') + '\n'
+    + '  </div>\n'
+    + '  <script>\n'
+    + '    (function(){\n'
+    + '      ' + p.demo.script.replace(/\n/g, '\n      ') + '\n'
+    + '    })();\n'
+    + '  </script>\n'
     + '</body>\n'
     + '</html>\n';
 }
@@ -605,36 +575,38 @@ function buildOverview() {
   return {
     title: '00. 카테고리 개요',
     blocks: [
-      { type: 'heading', value: 'Full-screen Scroll — 패턴 카탈로그 v1' },
+      { type: 'heading', value: 'Full-screen Scroll — 패턴 카탈로그 v2 (통일 스타일)' },
       { type: 'text', value: CATEGORY.summary },
       { type: 'heading', value: '10 패턴 인덱스' },
       { type: 'structure', items: indexItems },
       { type: 'heading', value: '공통 디자인 토큰 + scroll 모델' },
       {
         type: 'kv', columns: 2, items: [
-          { label: '폰트', value: 'Pretendard Variable (한글) · Inter (영문 보조)' },
+          { label: '폰트', value: 'Pretendard Variable 단일 (헤딩 500, 본문 300, 라벨 500)' },
           { label: '배경 / 본문 색', value: '#000 / #ffffff (다크 풀스크린)' },
-          { label: 'Scroll 모델', value: '.scroll-track N×100vh + .sticky-stage 100vh (position:sticky top:0)' },
+          { label: 'Scroll 모델', value: '.scroll-track N×100vh + .sticky-stage 100vh' },
           { label: '진행률 계산', value: 'p = clamp(0, -rect.top / (rect.height - innerHeight), 1)' },
-          { label: '슬라이드 인덱스', value: 'activeIndex = floor(p × N), slideProgress = p×N - i' },
-          { label: '접근성', value: 'prefers-reduced-motion: sticky 비활성 + 모든 슬라이드 즉시 표시' }
+          { label: '슬라이드 인덱스', value: 'activeIndex = floor(p × N), local = (p - i/N) × N' },
+          { label: '캡션 위치', value: '좌측 하단 60px padding · 활성 슬라이드만 fade-in (500ms)' },
+          { label: 'Progress bar', value: '하단 60px padding · 4 균등 flex · 활성 인덱스 흰색' },
+          { label: '슬라이드 데이터', value: '4종 고정 (01 Intuition / 02 Touch / 03 Glow / 04 Pulse)' }
         ]
       },
       { type: 'heading', value: '읽기 가이드' },
       {
         type: 'structure', items: [
-          { label: '라이브 데모', tag: 'IFRAME', desc: 'demos/full-screen-scroll/{pattern}.html 의 standalone 페이지를 iframe으로 임베드. iframe 안에서 스크롤하면 진행률에 따라 슬라이드 전환' },
-          { label: '작동 원리', tag: 'HOW', desc: '진행률(0~1)을 어떻게 슬라이드 인덱스·상태에 매핑하는지' },
-          { label: '정량 메타', tag: 'KV', desc: '의존성 / 트리거 / 매핑 함수 / Track 높이 / 시그니처 사이트' },
-          { label: '코드 스니펫', tag: 'CODE', desc: 'HTML / CSS / JS 세 블록 — sticky track + scroll handler 핵심' },
-          { label: '사용 가이드', tag: 'GUIDE', desc: '슬라이드 수·track 높이·매핑 구간·접근성' },
-          { label: '활용 추천', tag: 'PLACES', desc: '히어로 헤더 / 랜딩 페이지 / 제품 섹션 / 포트폴리오 소개' },
+          { label: '라이브 데모', tag: 'IFRAME', desc: 'demos/full-screen-scroll/{pattern}.html — 동일 4 이미지·캡션·progress bar 위에 패턴별 인터랙션만 다름' },
+          { label: '작동 원리', tag: 'HOW', desc: '진행률 → 이미지 변환(transform/opacity/clip-path) 매핑' },
+          { label: '정량 메타', tag: 'KV', desc: '의존성 / 매핑 함수 / Track 높이 / 시그니처' },
+          { label: '코드 스니펫', tag: 'CODE', desc: 'HTML / CSS / JS — 패턴별 핵심 (보일러플레이트 제외)' },
+          { label: '사용 가이드', tag: 'GUIDE', desc: '슬라이드 수·track 높이·접근성' },
+          { label: '활용 추천', tag: 'PLACES', desc: '히어로 / 랜딩 / 제품 / 포트폴리오' },
           { label: '트레이드오프', tag: 'NOTE', desc: '성능·접근성·권장 사용처' }
         ]
       },
       {
         type: 'note',
-        value: '참고 자료: Framer 마켓플레이스 Scroll Slides 컴포넌트 (' + CATEGORY.url + ') — Artem Kostenko 작. 첫 번째 패턴(fade-stack)이 동일 동작(sticky + activeIndex + opacity fade + progress bar). 본 카탈로그는 단일 컴포넌트가 아닌 10가지 풀스크린 스크롤 변형 비교 카탈로그를 지향. 모든 데모는 자동 재생이 아니라 사용자가 iframe 안에서 스크롤할 때만 슬라이드가 전환되며, ↻ 다시 보기 버튼이 scroll position을 0으로 리셋.'
+        value: '참고 자료: Framer 마켓플레이스 Scroll Slides (Artem Kostenko, ' + CATEGORY.url + '). 모든 패턴이 동일한 4 이미지(framerusercontent.com) + 동일 캡션(Sensitivity / Tactile / Illumination / Living rhythm) + 동일 progress bar(01 Intuition / 02 Touch / 03 Glow / 04 Pulse) 구조 위에 각자의 인터랙션 변환만 다르게 정의. Pretendard Variable 단일 폰트.'
       }
     ]
   };
