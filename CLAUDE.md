@@ -1,8 +1,8 @@
-# CLAUDE.md — 기여 가이드라인 (v4 인터랙션 카탈로그 + iframe 데모)
+# CLAUDE.md — 기여 가이드라인 (v5 scroll-driven 인터랙션 카탈로그)
 
-Web Reference Lab — 디자이너용 **인터랙션 애니메이션 카탈로그**. 한 카테고리(예: "스크롤 텍스트 로드") 안에 그 카테고리의 대표 패턴 N종을 Framer 마켓플레이스 스타일로 저장한다. 각 패턴은 **standalone HTML 페이지**(검정 배경 + Pretendard + 한국어 본문)로 작성되어 **iframe으로 임베드**되며, 작동 원리 + 코드 스니펫 + **사용 가이드** + **활용 추천**(히어로/랜딩/제품/포트폴리오) + 트레이드오프로 구성된다.
+Web Reference Lab — 디자이너용 **인터랙션 애니메이션 카탈로그**. 한 카테고리(예: "스크롤 텍스트 로드") 안에 그 카테고리의 대표 패턴 N종을 Framer 마켓플레이스 스타일로 저장한다. 각 패턴은 **standalone HTML 페이지**(검정 배경 + Pretendard + 한국어 본문)로 작성되어 **iframe으로 임베드**되며, **스크롤 진행률(0~1)에 1:1 매핑되어 텍스트가 순차적으로 reveal**되는 것이 핵심. 자동 재생은 사용하지 않는다.
 
-본 문서는 **2026-05-27 첫 카테고리(스크롤 텍스트 로드, 10 패턴 v2 — iframe 임베드)** 기준으로 작성. 이전 가이드(사이트 분석 Flow Mode v2, Mirror Mode, Tier-A, inline 데모 v1)는 모두 폐기. 이 문서가 유일한 표준.
+본 문서는 **2026-05-27 첫 카테고리(스크롤 텍스트 로드, 10 패턴 v3 — scroll-pin + 진행률 매핑)** 기준으로 작성. 이전 가이드(사이트 분석 Flow Mode v2, Mirror Mode, Tier-A, inline 데모 v1, 자동 재생 iframe v2)는 모두 폐기. 이 문서가 유일한 표준.
 
 ---
 
@@ -29,7 +29,7 @@ AI 에이전트는 사용자의 반복 지시 없이도 다음 4대 원칙을 **
 | 카테고리당 패턴 수 | 8~12종이 적정 (10종 권장) |
 | 사이드바 | `system.json.references[].type === 'category'` 자동 분리 → "인터랙션 카탈로그" 그룹 위쪽 배치 |
 | 펼침 | `categoryMode: true` 플래그 → 모든 패턴이 sub-link로 일자 나열 (사이트 분석의 flowMode와 동일 메커니즘 재활용) |
-| 라이브 데모 | **standalone HTML 페이지를 iframe으로 임베드** (Framer 마켓플레이스 스타일). 검정 배경(#000) + Pretendard Variable + 한국어 본문 + ▶ 다시 재생 버튼 |
+| 라이브 데모 | **standalone HTML 페이지를 iframe으로 임베드** (Framer 마켓플레이스 시그니처). 검정 배경(#000) + Pretendard Variable + 한국어 본문 + **scroll-pin 진행률 매핑** + ↻ 다시 보기 버튼 + 하단 progress bar |
 | 패턴마다 (15 블록) | 요약 + iframe 데모 + 작동 원리 + 정량 메타(KV) + 코드 스니펫 3개(HTML/CSS/JS) + **사용 가이드** + **활용 추천** 4건 + 트레이드오프 |
 | 활용 추천 | 히어로 헤더 / 랜딩 페이지 / 제품 섹션 / 포트폴리오 소개 — 4가지 컨텍스트에 어떻게 적용할지 구체 사용처 |
 | 디자인 톤 | 카탈로그 본문은 라이트 모드 + Pretendard. 라이브 데모 카드(다크 #0a0a0a) + 코드 블록(다크 #0a0a0a) + iframe 콘텐츠(검정 #000) |
@@ -117,54 +117,114 @@ mcp__Claude_Preview__preview_stop({ serverId })
 [15] note       — 트레이드오프 (성능 / 접근성 / 권장 사용처)
 ```
 
-### 3. standalone 라이브 데모 HTML 규칙
+### 3. standalone 라이브 데모 HTML 규칙 (scroll-driven)
 
-각 패턴은 `demos/{category-id}/{pattern-id}.html`에 **자급자족 HTML 페이지**로 작성. iframe 임베드 시 부모 페이지와 완전히 격리.
+각 패턴은 `demos/{category-id}/{pattern-id}.html`에 **자급자족 HTML 페이지**로 작성. **자동 재생 사용 금지** — 모든 reveal은 스크롤 진행률에 매핑된다.
 
-**표준 페이지 구조** (generator의 `buildDemoHTML(p)` 참고):
+**표준 페이지 구조** (generator의 `buildDemoHTML(p)`가 자동 생성):
+
 ```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{num}. {title} — Live Demo</title>
   <link href=".../pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
   <style>
-    body { background: #000; color: #fff;
-           font-family: "Pretendard Variable", "Pretendard", system-ui; }
-    .demo-controls { position: fixed; top: 16px; left: 16px; z-index: 10; }
-    .demo-replay { /* 좌상단 ▶ 다시 재생 pill 버튼 */ }
-    .demo-label  { /* "{num} · {title}" 라벨 */ }
+    body { background: #000; color: #fff; font-family: "Pretendard Variable", ...; }
+    .demo-controls { position: fixed; top: 16px; left: 16px; z-index: 20; }
+    .demo-reset { /* ↻ 다시 보기 pill 버튼 */ }
+    .demo-label { /* "{num} · {title}" 라벨 */ }
+    .demo-hint  { position: fixed; right: 16px; bottom: 24px; /* SCROLL ↓ */ }
+    .demo-progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; ... }
+    .demo-progress > div { /* 진행률 fill */ }
+
+    .scroll-track  { min-height: 240vh; position: relative; }
+    .sticky-stage  { position: sticky; top: 0; height: 100vh;
+                     display: flex; align-items: center; justify-content: center;
+                     padding: 80px 8vw 60px; overflow: hidden; }
+
     {patternCSS}   /* .reveal { ... } 패턴별 */
   </style>
 </head>
 <body>
   <div class="demo-controls">
-    <button class="demo-replay" onclick="window.__replay && window.__replay()">▶ 다시 재생</button>
+    <button class="demo-reset" onclick="window.__reset && window.__reset()">↻ 다시 보기</button>
     <span class="demo-label">{num} · {title}</span>
   </div>
-  {patternBodyHTML}   <!-- .stage > .reveal -->
+  <div class="demo-hint">SCROLL ↓</div>
+  <div class="demo-progress"><div></div></div>
+
+  <div class="scroll-track">
+    <div class="sticky-stage">
+      {patternBodyHTML}   <!-- .reveal 마크업 -->
+    </div>
+  </div>
+
   <script>
-    {patternJS}       /* function play(){...} ; window.__replay = play; play(); */
+    (function(){
+      var track = document.querySelector(".scroll-track");
+      var progressFill = document.querySelector(".demo-progress > div");
+      function calc(){
+        var rect = track.getBoundingClientRect();
+        var max = Math.max(1, rect.height - window.innerHeight);
+        return Math.max(0, Math.min(1, -rect.top / max));
+      }
+
+      {patternScript}  // applyReveal(p) 함수 + init 변수
+
+      function tick(){
+        var p = calc();
+        progressFill.style.width = (p * 100) + "%";
+        applyReveal(p);
+      }
+      window.addEventListener("scroll", tick, { passive: true });
+      window.addEventListener("resize", tick, { passive: true });
+      window.__reset = function(){ window.scrollTo({ top: 0, behavior: "smooth" }); };
+      tick();
+    })();
   </script>
 </body>
 </html>
 ```
 
-**JS 패턴 (standalone 페이지 안)**:
+**핵심 매핑 원칙**:
+- `.scroll-track { min-height: 240vh; }` — 스크롤 공간 (200~250vh 권장)
+- `.sticky-stage { position: sticky; top: 0; height: 100vh; }` — viewport에 텍스트 고정
+- `progress = clamp(0, -rect.top / (rect.height - innerHeight), 1)` — 0~1 정규화
+- `applyReveal(progress)` — 패턴별 상태 보간 (단어 인덱스 / opacity / blur / weight / 등)
+- `window.scroll {passive: true}` 이벤트로 매 프레임 호출
+- 사용자가 스크롤을 멈추면 reveal도 그 진행률에서 멈춤
+
+**패턴별 매핑 함수 예시**:
 ```js
-var el = document.querySelector(".reveal");
-function play(){
-  /* ... 인터랙션 실행 ... */
+// scrub-color: 단어 인덱스 매핑
+function applyReveal(p) {
+  var idx = Math.floor(p * (N + 1));
+  spans.forEach(function(s, i){ s.classList.toggle("on", i < idx); });
 }
-window.__replay = play;   // ▶ 다시 재생 버튼이 이걸 호출
-play();                   // 페이지 로드 시 자동 1회 재생
+
+// word-fade: 단어별 [startP, +0.16] 구간에서 opacity·translateY 보간
+function applyReveal(p) {
+  spans.forEach(function(s, i){
+    var startP = i / (N + 2);
+    var localP = clamp01((p - startP) / 0.16);
+    s.style.opacity = localP;
+    s.style.transform = "translateY(" + (12 * (1 - localP)) + "px)";
+  });
+}
+
+// blur-reveal: 단일 progress → blur·opacity 직접 매핑
+function applyReveal(p) {
+  var fade = clamp01((p - 0.05) / 0.7);
+  el.style.opacity = fade;
+  el.style.filter = "blur(" + (18 * (1 - fade)) + "px)";
+}
 ```
 
-**`requestAnimationFrame` 회피** — 미리보기/headless 환경에서 안 떨어지는 케이스가 있어, `.on` 클래스 토글에는 `setTimeout(fn, 50)` 사용. 단, 스크럽 같은 frame-by-frame 애니메이션에는 `window.addEventListener('scroll', ...)` 또는 `setInterval(fn, 33)` 사용.
-
-**시그니처 sticky 패턴 (scrub-color)** — `position: sticky` + 부모에 `.spacer { height: 60vh }`를 위·아래에 두어 스크롤 공간을 만들고, `window.addEventListener('scroll', ...)`로 진행률(0~1) → 단어 인덱스 매핑. iframe height는 480 대신 560으로 늘림.
+**금지 사항**:
+- ❌ `setTimeout` / `setInterval` 기반 자동 재생 (사용자가 스크롤 안 하면 안 움직여야)
+- ❌ `IntersectionObserver` 1회 트리거 (스크롤 멈춰도 reveal이 진행되면 안 됨)
+- ❌ CSS transition으로 진행률 우회 (transition은 짧게만 — 200ms 이하, 매핑은 inline style)
+- ❌ ▶ 다시 재생 (자동 재생 메타포). ↻ 다시 보기(scrollTo 0)로 통일.
 
 ### 4. 코드 블록 타입 (`code`)
 
@@ -310,7 +370,7 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 ---
 
-## 첫 카테고리 사례: 스크롤 텍스트 로드 (2026-05-27, v2 iframe 임베드)
+## 첫 카테고리 사례: 스크롤 텍스트 로드 (2026-05-27, v3 scroll-pin + 진행률 매핑)
 
 | 항목 | 결과 |
 |------|------|
@@ -318,16 +378,17 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 | 패턴 수 | 10 (word-fade, line-slide, char-stagger, blur-reveal, color-fade, scrub-color, mask-sweep, letter-cascade, variable-morph, underline-reveal) |
 | 섹션 수 | 11 (00 overview + 01~10 패턴) |
 | 블록 수 | 159 (각 패턴 15 블록 × 10 + overview 9) |
-| standalone 데모 | 10개 (`demos/scroll-text-reveal/*.html`, 평균 3.5KB) |
-| 데모 콘텐츠 | 한국어 (Framer 영문 본문의 한국어 의역) + Pretendard Variable |
+| standalone 데모 | 10개 (`demos/scroll-text-reveal/*.html`, 평균 4.5KB) |
+| 데모 콘텐츠 | 한국어 (Framer 영문 본문의 한국어 의역) + Pretendard Variable + scroll-pin 진행률 매핑 |
+| Scroll 모델 | `.scroll-track 240vh` + `.sticky-stage 100vh` + `window.scroll` 이벤트 + `progress 0~1 → applyReveal` |
 | 사이드바 | 카테고리 그룹 + 11 sub-link 자동 펼침 |
 | 참고 자료 | Framer 마켓플레이스 "Text Reveal" 컴포넌트 (https://www.framer.com/marketplace/components/text-reveal/) |
 | validate | 5 OK / 0 warn / 0 error |
 
 **구현 파일**:
-- `scripts/generate-scroll-text-reveal.mjs` — 표준 generator (demos + analysis.json 동시 생성)
+- `scripts/generate-scroll-text-reveal.mjs` — 표준 generator (demos + analysis.json 동시 생성, applyReveal 매핑 함수 정의)
 - `analyses/scroll-text-reveal/analysis.json` — 카탈로그 데이터 본문
-- `demos/scroll-text-reveal/*.html` — 10개 standalone 라이브 데모 페이지
+- `demos/scroll-text-reveal/*.html` — 10개 standalone scroll-driven 데모 페이지
 - `system.json` references[]에 type: 'category' 엔트리 1개
 
 ---
@@ -364,9 +425,11 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 - ❌ **"QA 확인 완료" 텍스트 자기보고** — 정량 데이터 또는 스크린샷 비교만
 - ❌ **`validate.mjs` 통과 = 자가 검증으로 간주** — JSON 스키마 검증일 뿐
 - ❌ **standalone 데모 HTML에서 외부 의존성(jQuery, GSAP 등) 사용** — 가능한 한 Vanilla. GSAP가 본질인 패턴은 코드 스니펫에서만 (CDN 임포트는 demo 페이지에서 직접)
-- ❌ **데모 JS에 `requestAnimationFrame` 의존** — preview 환경에서 안 떨어질 수 있음. `setTimeout` 또는 `setInterval` 사용. scrub은 scroll 이벤트
-- ❌ **▶ 다시 재생 버튼 누락** — 사용자가 재생 못함. 모든 데모 HTML에 `.demo-replay` + `window.__replay` 함수 노출
+- ❌ **자동 재생 (setTimeout/setInterval/IntersectionObserver 1회 트리거)** — 모든 reveal은 사용자 스크롤 진행률에 매핑되어야 함. 자동 재생은 Framer 시그니처와 어긋남
+- ❌ **CSS transition으로 진행률 우회** — transition은 짧게(<200ms)만 사용. 핵심 매핑은 inline style로 progress에 1:1
+- ❌ **▶ 다시 재생 버튼 사용** — 자동 재생 메타포. ↻ 다시 보기(scrollTo 0)로 통일
 - ❌ **standalone 데모 페이지에 한국어 본문 누락** — Framer는 영문이지만 우리 카탈로그는 한국어 본문이 표준
+- ❌ **scroll-track 높이를 너무 짧게(<150vh) 또는 너무 길게(>300vh) 잡음** — 240vh 권장
 - ❌ **사이드바에 카테고리·사이트 그룹 수동 추가** — `buildSidebar`가 `type` 필드로 자동 분리
 - ❌ **`.playwright-mcp/` 폴더를 git에 추가** — `.gitignore`에 무조건 포함
 - ❌ **자동 hook 자동 커밋으로 거대 임시 파일 push** — 단일 의미 커밋으로 push
