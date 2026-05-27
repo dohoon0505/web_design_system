@@ -95,7 +95,7 @@
             },
             {
               "label": "카드 모델",
-              "value": "\"텍스트+이미지 = 하나의 카드\" (2-col grid, position:absolute)"
+              "value": "\"텍스트+이미지 = 하나의 카드\" (inner 카드: border-radius 32px, backdrop-blur, 중앙 배치)"
             },
             {
               "label": "스크롤 트랙",
@@ -233,13 +233,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 500vh; }\n.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }\n.card { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr;\n  transform: translateY(100%); will-change: transform; }\n.card[data-i=\"0\"] { transform: translateY(0); }"
+          "value": ".scroll-track { min-height: 500vh; }\n.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: linear-gradient(...); }\n.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateY(100%); will-change: transform; }\n.card[data-i=\"0\"] { transform: translateY(0); }\n.inner { width: 100%; max-width: 1100px; display: grid; grid-template-columns: 1fr 1fr;\n  background: rgba(255,255,255,0.55); border-radius: 32px; backdrop-filter: blur(20px); }"
         },
         {
           "type": "code",
@@ -354,13 +354,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease-in-out; }\n.card.is-on { opacity: 1; }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; transition: opacity 600ms ease-in-out; }\n.card.is-on { opacity: 1; }\n.inner { max-width: 1100px; display: grid; grid-template-columns: 1fr 1fr;\n  background: rgba(255,255,255,0.55); border-radius: 32px; backdrop-filter: blur(20px); }"
         },
         {
           "type": "code",
@@ -475,13 +475,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { opacity: 0; transform: scale(0.92); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: scale(1); }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; transform: scale(0.92); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: scale(1); }"
         },
         {
           "type": "code",
@@ -596,13 +596,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { transform: translateX(100%); opacity: 0; transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }\n.card.is-on { transform: translateX(0); opacity: 1; }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateX(100%); opacity: 0; transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }\n.card.is-on { transform: translateX(0); opacity: 1; }"
         },
         {
           "type": "code",
@@ -717,13 +717,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { clip-path: inset(100% 0 0 0); }\n.card[data-i=\"0\"] { clip-path: inset(0); }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  clip-path: inset(100% 0 0 0); }\n.card[data-i=\"0\"] { clip-path: inset(0); }"
         },
         {
           "type": "code",
@@ -838,13 +838,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { opacity: 0; transform: translateY(60px) rotate(-3deg); transform-origin: bottom center;\n  transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: translateY(0) rotate(0); }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; transform: translateY(60px) rotate(-3deg); transform-origin: bottom center;\n  transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: translateY(0) rotate(0); }"
         },
         {
           "type": "code",
@@ -959,13 +959,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { opacity: 0; filter: blur(18px); transition: opacity 700ms, filter 700ms ease-in-out; }\n.card.is-on { opacity: 1; filter: blur(0); }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; filter: blur(18px); transition: opacity 700ms, filter 700ms ease-in-out; }\n.card.is-on { opacity: 1; filter: blur(0); }"
         },
         {
           "type": "code",
@@ -1080,13 +1080,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { transform: translateY(100%); transition: transform 600ms cubic-bezier(0.2,0,0,1); }\n.card[data-i=\"0\"] { transform: translateY(0); }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateY(100%); transition: transform 600ms cubic-bezier(0.2,0,0,1); }\n.card[data-i=\"0\"] { transform: translateY(0); }"
         },
         {
           "type": "code",
@@ -1201,13 +1201,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <div class=\"noise\"></div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <div class=\"noise\"></div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { opacity: 0; filter: contrast(0.92) saturate(0.8); transition: opacity 800ms, filter 800ms; }\n.card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08;\n  mix-blend-mode: overlay; /* SVG fractalNoise */ }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; filter: contrast(0.92) saturate(0.8); transition: opacity 800ms, filter 800ms; }\n.card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay; }"
         },
         {
           "type": "code",
@@ -1322,13 +1322,13 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <div class=\"card\" data-i=\"0\">\n      <div class=\"inner\">\n        <div class=\"text\">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class=\"img-wrap\"><div class=\"img\">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".card { transform: translateX(100%) scale(0.85); opacity: 0.4;\n  transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }"
+          "value": ".card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateX(100%) scale(0.85); opacity: 0.4;\n  transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }"
         },
         {
           "type": "code",

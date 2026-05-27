@@ -62,12 +62,14 @@ const N = SCU_CARDS.length;
 function scuFullCardsMarkup() {
   return SCU_CARDS.map(function (c, i) {
     return '<div class="scu-card' + (i === 0 ? ' is-on' : '') + '" data-i="' + i + '">'
-      + '\n          <div class="scu-text">'
-      + '\n            <div class="scu-num"><span class="scu-num-cur">' + c.num + '</span><span class="scu-num-sep">/</span><span class="scu-num-tot">0' + N + '</span><span class="scu-num-title">' + c.title + '</span></div>'
-      + '\n            <p class="scu-body">' + c.body + '</p>'
-      + '\n            <button class="scu-btn" type="button">Start building</button>'
+      + '\n          <div class="scu-inner">'
+      + '\n            <div class="scu-text">'
+      + '\n              <div class="scu-num"><span class="scu-num-cur">' + c.num + '</span><span class="scu-num-sep">/</span><span class="scu-num-tot">0' + N + '</span><span class="scu-num-title">' + c.title + '</span></div>'
+      + '\n              <p class="scu-body">' + c.body + '</p>'
+      + '\n              <button class="scu-btn" type="button">Start building</button>'
+      + '\n            </div>'
+      + '\n            <div class="scu-img-wrap"><div class="scu-img" style="background-image: url(\'' + c.img + '\');"></div></div>'
       + '\n          </div>'
-      + '\n          <div class="scu-img-wrap"><div class="scu-img" style="background-image: url(\'' + c.img + '\');"></div></div>'
       + '\n        </div>';
   }).join('\n        ');
 }
@@ -76,19 +78,20 @@ function scuFullCardsMarkup() {
 // 핵심: scroll-track + sticky-stage + 카드(텍스트+이미지) 전체가 하나의 전환 단위
 const SCU_BASE_CSS = ''
   + '.scroll-track { min-height: 500vh; position: relative; }\n'
-  + '.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }\n'
-  + '.scu-card { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 48px; background: linear-gradient(180deg, #fafafa 0%, #f5e6f5 60%, #f0c3ed 100%); font-family: "Pretendard Variable","Pretendard",sans-serif; will-change: transform, opacity, clip-path, filter; }\n'
-  + '.scu-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 0; }\n'
-  + '.scu-num { display: inline-flex; align-items: baseline; gap: 8px; font: 500 14px/1.4 inherit; color: #0a0a0a; margin: 0 0 40px; flex-wrap: wrap; }\n'
+  + '.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: linear-gradient(180deg, #fafafa 0%, #f5e6f5 60%, #f0c3ed 100%); }\n'
+  + '.scu-card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px; will-change: transform, opacity, clip-path, filter; }\n'
+  + '.scu-inner { width: 100%; max-width: 1100px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 48px 44px; background: rgba(255,255,255,0.55); border-radius: 32px; box-shadow: 0 24px 64px -16px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); font-family: "Pretendard Variable","Pretendard",sans-serif; }\n'
+  + '.scu-text { display: flex; flex-direction: column; justify-content: center; }\n'
+  + '.scu-num { display: inline-flex; align-items: baseline; gap: 8px; font: 500 14px/1.4 inherit; color: #0a0a0a; margin: 0 0 32px; flex-wrap: wrap; }\n'
   + '.scu-num-cur { color: #0a0a0a; }\n'
   + '.scu-num-sep { color: rgba(10,10,10,0.3); }\n'
   + '.scu-num-tot { color: rgba(10,10,10,0.4); margin-right: 16px; }\n'
   + '.scu-num-title { color: #0a0a0a; padding-left: 8px; }\n'
-  + '.scu-body { font: 500 clamp(22px, 2vw, 30px)/1.35 inherit; color: #0a0a0a; margin: 0 0 36px; max-width: 540px; letter-spacing: -0.01em; }\n'
-  + '.scu-btn { display: inline-block; font: 600 14px/1 inherit; color: #fff; background: #0a0a0a; border: 0; border-radius: 999px; padding: 16px 32px; cursor: pointer; transition: transform 160ms, background 160ms; align-self: flex-start; }\n'
+  + '.scu-body { font: 500 clamp(18px, 1.6vw, 26px)/1.4 inherit; color: #0a0a0a; margin: 0 0 32px; letter-spacing: -0.01em; }\n'
+  + '.scu-btn { display: inline-block; font: 600 13px/1 inherit; color: #fff; background: #0a0a0a; border: 0; border-radius: 999px; padding: 14px 28px; cursor: pointer; transition: transform 160ms, background 160ms; align-self: flex-start; }\n'
   + '.scu-btn:hover { transform: translateY(-1px); background: #1a1a1a; }\n'
-  + '.scu-img-wrap { display: flex; align-items: center; justify-content: center; padding: 60px 0; }\n'
-  + '.scu-img { width: 100%; aspect-ratio: 4 / 5; max-height: calc(100vh - 120px); border-radius: 24px; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 32px 80px -20px rgba(0,0,0,0.32), 0 0 0 1px rgba(0,0,0,0.04); }\n';
+  + '.scu-img-wrap { display: flex; align-items: center; justify-content: center; }\n'
+  + '.scu-img { width: 100%; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 16px 48px -12px rgba(0,0,0,0.2); }\n';
 
 // 공통 reveal helper — scroll-track 진행률
 const SCU_COMMON_SCRIPT = ''
@@ -102,7 +105,7 @@ const SCU_COMMON_SCRIPT = ''
   + '}';
 
 // ============ 공통 스니펫 HTML ============
-const SNIPPET_HTML_COMMON = '<div class="scroll-track">\n  <div class="sticky-stage">\n    <div class="card" data-i="0">\n      <div class="text">넘버링 + 타이틀 + 본문 + CTA</div>\n      <div class="img-wrap"><div class="img">이미지</div></div>\n    </div>\n    <!-- ×4 카드 (텍스트+이미지 = 하나의 카드) -->\n  </div>\n</div>';
+const SNIPPET_HTML_COMMON = '<div class="scroll-track">\n  <div class="sticky-stage">\n    <div class="card" data-i="0">\n      <div class="inner">\n        <div class="text">넘버링 + 타이틀 + 본문 + CTA</div>\n        <div class="img-wrap"><div class="img">이미지</div></div>\n      </div>\n    </div>\n    <!-- ×4 카드 래퍼(배경) + inner(실제 카드) -->\n  </div>\n</div>';
 
 // ============ 10 패턴 정의 ============
 
@@ -117,7 +120,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.scroll-track { min-height: 500vh; }\n.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }\n.card { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr;\n  transform: translateY(100%); will-change: transform; }\n.card[data-i="0"] { transform: translateY(0); }',
+    snippetCSS: '.scroll-track { min-height: 500vh; }\n.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: linear-gradient(...); }\n.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateY(100%); will-change: transform; }\n.card[data-i="0"] { transform: translateY(0); }\n.inner { width: 100%; max-width: 1100px; display: grid; grid-template-columns: 1fr 1fr;\n  background: rgba(255,255,255,0.55); border-radius: 32px; backdrop-filter: blur(20px); }',
     snippetJS: 'cards.forEach(function(c, i){\n  var pos = p * N - i;\n  var local = Math.max(0, Math.min(1, pos + 1));\n  var ease = 1 - Math.pow(1 - local, 3);\n  c.style.transform = "translateY(" + (100 * (1 - ease)) + "%)";\n  c.style.zIndex = i;\n});',
     explain: '각 카드는 좌측 텍스트(넘버링·타이틀·본문·CTA) + 우측 이미지(둥근 카드 형태)의 2-column grid. 카드 전체가 하나의 단위로 처음에 translateY(100%) 상태에서 스크롤 진행률에 따라 ease-out-cubic으로 0%까지 올라옴. zIndex 누적으로 새 카드가 이전 카드 위에 자연스럽게 쌓인다.',
     kv: [
@@ -148,7 +151,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease-in-out; }\n.card.is-on { opacity: 1; }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; transition: opacity 600ms ease-in-out; }\n.card.is-on { opacity: 1; }\n.inner { max-width: 1100px; display: grid; grid-template-columns: 1fr 1fr;\n  background: rgba(255,255,255,0.55); border-radius: 32px; backdrop-filter: blur(20px); }',
     snippetJS: 'var idx = Math.min(Math.floor(p * N), N - 1);\ncards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });',
     explain: '활성 카드(텍스트+이미지 전체)만 .is-on 클래스로 opacity 1. CSS transition 600ms로 부드러운 swap. 모든 카드가 sticky-stage 안에 절대 위치로 쌓여 있고, 활성 카드만 보임.',
     kv: [
@@ -179,7 +182,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { opacity: 0; transform: scale(0.92); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: scale(1); }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; transform: scale(0.92); transition: opacity 500ms, transform 500ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: scale(1); }',
     snippetJS: 'cards.forEach(function(c, i){\n  c.classList.toggle("is-on", i === idx);\n  c.style.transform = "scale(" + (i < idx ? 1.04 : i > idx ? 0.92 : 1) + ")";\n});',
     explain: '활성 카드 scale 1. 다음 카드는 scale 0.92(작은 상태로 대기), 지난 카드는 scale 1.04(살짝 커지며 사라짐). 카드 전체(텍스트+이미지)가 함께 줌 인/아웃.',
     kv: [
@@ -210,7 +213,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { transform: translateX(100%); opacity: 0; transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }\n.card.is-on { transform: translateX(0); opacity: 1; }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateX(100%); opacity: 0; transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }\n.card.is-on { transform: translateX(0); opacity: 1; }',
     snippetJS: 'cards.forEach(function(c, i){\n  c.classList.toggle("is-on", i === idx);\n  c.style.transform = "translateX(" + (i < idx ? -100 : i > idx ? 100 : 0) + "%)";\n});',
     explain: '활성 카드 translateX 0. 지난 카드는 -100%(좌측 퇴장), 다음 카드는 100%(우측 대기). 카드 전체(텍스트+이미지)가 함께 가로 슬라이드. sticky-stage overflow:hidden으로 영역 밖 카드는 가려짐.',
     kv: [
@@ -241,7 +244,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { clip-path: inset(100% 0 0 0); }\n.card[data-i="0"] { clip-path: inset(0); }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  clip-path: inset(100% 0 0 0); }\n.card[data-i="0"] { clip-path: inset(0); }',
     snippetJS: 'cards.forEach(function(c, i){\n  if (i === 0) return;\n  var pos = p * N - i + 1;\n  var inset = pos <= 0 ? 100 : pos >= 1 ? 0 : (1 - pos) * 100;\n  c.style.clipPath = "inset(" + inset + "% 0 0 0)";\n  c.style.zIndex = i;\n});',
     explain: '첫 카드는 처음부터 보임. 이후 카드들은 clip-path inset 100%에서 시작해 진행률 따라 0으로 줄어들며 아래에서 위로 reveal. 카드 전체(텍스트+이미지)가 커튼처럼 드러남.',
     kv: [
@@ -272,7 +275,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { opacity: 0; transform: translateY(60px) rotate(-3deg); transform-origin: bottom center;\n  transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: translateY(0) rotate(0); }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; transform: translateY(60px) rotate(-3deg); transform-origin: bottom center;\n  transition: opacity 600ms, transform 600ms cubic-bezier(0.2,0,0,1); }\n.card.is-on { opacity: 1; transform: translateY(0) rotate(0); }',
     snippetJS: 'cards.forEach(function(c, i){\n  c.classList.toggle("is-on", i === idx);\n  if (i < idx) c.style.transform = "translateY(-60px) rotate(3deg)";\n  else if (i > idx) c.style.transform = "translateY(60px) rotate(-3deg)";\n  else c.style.transform = "translateY(0) rotate(0)";\n});',
     explain: '활성 카드 translateY 0 + rotate 0. 다음 카드는 60px 아래 + -3°, 지난 카드는 60px 위 + +3°. 카드 전체(텍스트+이미지)가 종이처럼 기울어지며 등장·퇴장. transform-origin: bottom center.',
     kv: [
@@ -303,7 +306,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { opacity: 0; filter: blur(18px); transition: opacity 700ms, filter 700ms ease-in-out; }\n.card.is-on { opacity: 1; filter: blur(0); }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; filter: blur(18px); transition: opacity 700ms, filter 700ms ease-in-out; }\n.card.is-on { opacity: 1; filter: blur(0); }',
     snippetJS: 'cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });',
     explain: '비활성 카드 filter:blur(18px) + opacity 0. 활성 카드 blur(0) + opacity 1. 카드 전체(텍스트+이미지)가 함께 blur/unblur 되어 카메라 초점 전환 효과.',
     kv: [
@@ -334,7 +337,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { transform: translateY(100%); transition: transform 600ms cubic-bezier(0.2,0,0,1); }\n.card[data-i="0"] { transform: translateY(0); }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateY(100%); transition: transform 600ms cubic-bezier(0.2,0,0,1); }\n.card[data-i="0"] { transform: translateY(0); }',
     snippetJS: 'cards.forEach(function(c, i){\n  var pos = p * N - i;\n  if (pos < 0) { /* 등장 전 */ return; }\n  c.style.transform = "translateY(" + (-pos * 12) + "px) scale(" + (1 - pos * 0.04) + ")";\n  c.style.zIndex = N - i;\n});',
     explain: '활성 카드 + 이전 카드들 동시 보임. 이전 카드는 -12px씩 위로 + scale 0.96·0.92로 작아지며 뒤에 쌓임. 카드 전체(텍스트+이미지)가 덱처럼 보여 깊이감 제공.',
     kv: [
@@ -366,7 +369,7 @@ const PATTERNS = [
       extraInnerHTML: '<div class="scu-noise"></div>'
     },
     snippetHTML: SNIPPET_HTML_COMMON.replace('<!-- ×4', '<div class="noise"></div>\n    <!-- ×4'),
-    snippetCSS: '.card { opacity: 0; filter: contrast(0.92) saturate(0.8); transition: opacity 800ms, filter 800ms; }\n.card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08;\n  mix-blend-mode: overlay; /* SVG fractalNoise */ }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  opacity: 0; filter: contrast(0.92) saturate(0.8); transition: opacity 800ms, filter 800ms; }\n.card.is-on { opacity: 1; filter: contrast(1) saturate(1); }\n.noise { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay; }',
     snippetJS: 'cards.forEach(function(c, i){ c.classList.toggle("is-on", i === idx); });',
     explain: 'opacity + filter contrast/saturate 동시 변화. SVG fractalNoise overlay로 그레인 텍스처. 카드 전체(텍스트+이미지)가 800ms 천천히 swap.',
     kv: [
@@ -397,7 +400,7 @@ const PATTERNS = [
       height: 720
     },
     snippetHTML: SNIPPET_HTML_COMMON,
-    snippetCSS: '.card { transform: translateX(100%) scale(0.85); opacity: 0.4;\n  transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }',
+    snippetCSS: '.card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px;\n  transform: translateX(100%) scale(0.85); opacity: 0.4;\n  transition: transform 600ms cubic-bezier(0.2,0,0,1), opacity 600ms; }',
     snippetJS: 'cards.forEach(function(c, i){\n  var diff = i - idx;\n  c.style.transform = "translateX(" + (diff * 80) + "%) scale(" + (diff === 0 ? 1 : 0.85) + ")";\n  c.style.opacity = diff === 0 ? 1 : Math.abs(diff) === 1 ? 0.35 : 0;\n});',
     explain: '활성 카드(텍스트+이미지) 가운데 + scale 1. 좌우 인접 카드 ±80% + scale 0.85 + opacity 0.35. 카드 전체가 가로 캐러셀로 흐름.',
     kv: [
@@ -532,7 +535,7 @@ function buildOverview() {
         type: 'kv', columns: 2, items: [
           { label: '폰트', value: 'Pretendard Variable 단일' },
           { label: '배경', value: '#fafafa → #f0c3ed gradient (각 카드 자체 배경)' },
-          { label: '카드 모델', value: '"텍스트+이미지 = 하나의 카드" (2-col grid, position:absolute)' },
+          { label: '카드 모델', value: '"텍스트+이미지 = 하나의 카드" (inner 카드: border-radius 32px, backdrop-blur, 중앙 배치)' },
           { label: '스크롤 트랙', value: 'scroll-track 500vh + sticky-stage 100vh' },
           { label: '이미지 영역', value: 'aspect-ratio 4/5 + border-radius 24px + 그림자' },
           { label: '진행률 계산', value: 'p = clamp(0, -track.top / (track.height - innerHeight), 1)' },
