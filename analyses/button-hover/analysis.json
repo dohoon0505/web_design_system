@@ -27,8 +27,8 @@
           "items": [
             {
               "label": "01. 슬라이드 인 필 (Framer 시그니처)",
-              "tag": "CSS only (pseudo-element 대신 실제 요소)",
-              "desc": "Framer Slide-In Button 컴포넌트 재현. hover 시 배경 채움이 아래에서 위로 확장(spring 0.5s)하며 텍스트·아이콘 색상이 전환."
+              "tag": "CSS only (실제 요소 — pseudo-element 대신)",
+              "desc": "Framer Slide-In Button 컴포넌트 재현. hover 시 작은 원이 하단 중앙에서 scale로 팽창하여 버튼 전체를 채우고, hover 해제 시 서서히 줄어들어 사라짐."
             },
             {
               "label": "02. 텍스트 슬라이드",
@@ -174,7 +174,7 @@
       "blocks": [
         {
           "type": "text",
-          "value": "Framer Slide-In Button 컴포넌트 재현. hover 시 배경 채움이 아래에서 위로 확장(spring 0.5s)하며 텍스트·아이콘 색상이 전환."
+          "value": "Framer Slide-In Button 컴포넌트 재현. hover 시 작은 원이 하단 중앙에서 scale로 팽창하여 버튼 전체를 채우고, hover 해제 시 서서히 줄어들어 사라짐."
         },
         {
           "type": "heading",
@@ -193,7 +193,7 @@
         },
         {
           "type": "text",
-          "value": "Framer Slide-In Button의 핵심 메커니즘. .btn-fill 요소가 absolute 하단에서 height 0→120%로 확장. left:50% + translateX(-50%)로 중앙 정렬, width:120%로 양옆 오버플로. cubic-bezier(0.34,1.56,0.64,1)이 spring bounce를 CSS로 근사. overflow:hidden이 필수."
+          "value": "Framer Slide-In Button의 핵심 메커니즘. .btn-fill 요소(24×24 원형)가 하단 중앙(bottom:0, left:50%)에서 scale(0→12)로 팽창하여 버튼 전체를 덮음. translate(-50%,50%)로 원의 중심을 버튼 하단 가장자리에 정확히 배치. hover 해제 시 동일 transition이 역방향으로 적용되어 원이 서서히 줄어들며 사라짐. cubic-bezier(0.34,1.56,0.64,1)이 spring bounce를 CSS로 근사. overflow:hidden이 필수."
         },
         {
           "type": "kv",
@@ -201,11 +201,11 @@
           "items": [
             {
               "label": "의존성",
-              "value": "CSS only (pseudo-element 대신 실제 요소)"
+              "value": "CSS only (실제 요소 — pseudo-element 대신)"
             },
             {
               "label": "트리거",
-              "value": ":hover → height 전환"
+              "value": ":hover → scale(0→12) 원형 팽창"
             },
             {
               "label": "이징",
@@ -213,11 +213,11 @@
             },
             {
               "label": "duration",
-              "value": "0.5s (fill) + 0.3s (color)"
+              "value": "0.5s (scale) + 0.3s (color)"
             },
             {
               "label": "핵심",
-              "value": "overflow:hidden + fill height 100%→120%"
+              "value": "24px 원형 → scale(12) 팽창 + overflow:hidden"
             },
             {
               "label": "참고",
@@ -239,13 +239,13 @@
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".btn { position: relative; overflow: hidden; border-radius: 39px; }\n.btn-fill { position: absolute; bottom: 0; left: 50%;\n  width: 120%; height: 0; border-radius: 100px;\n  background: #0055ff; transform: translateX(-50%);\n  transition: height 0.5s cubic-bezier(0.34,1.56,0.64,1); }\n.btn:hover .btn-fill { height: 120%; }\n.btn:hover .btn-label { color: #fff; }"
+          "value": ".btn { position: relative; overflow: hidden; border-radius: 39px; }\n.btn-fill { position: absolute; bottom: 0; left: 50%;\n  width: 24px; height: 24px; border-radius: 50%;\n  background: #0055ff;\n  transform: translate(-50%, 50%) scale(0);\n  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }\n.btn:hover .btn-fill { transform: translate(-50%, 50%) scale(12); }\n.btn:hover .btn-label { color: #fff; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// CSS only — JS 불필요\n// spring 이징: cubic-bezier(0.34, 1.56, 0.64, 1)"
+          "value": "// CSS only — JS 불필요\n// spring 이징: cubic-bezier(0.34, 1.56, 0.64, 1)\n// hover 해제 시 동일 transition으로 자연스럽게 축소"
         },
         {
           "type": "heading",
@@ -253,7 +253,7 @@
         },
         {
           "type": "text",
-          "value": "fill height를 120%로 설정해 양쪽 끝까지 완전히 채움. border-radius가 큰 pill 버튼(39px+)에서 특히 효과적. fill의 border-radius를 100px로 두면 round fill 느낌."
+          "value": "scale 값은 버튼 크기에 따라 조정 — 버튼 대각선 길이 ÷ 원 반지름(12px) 이상이면 완전히 덮임. pill 버튼(border-radius 39px+)에서 가장 자연스러움. hover out 시 transition이 자동 역재생되므로 별도 처리 불필요."
         },
         {
           "type": "heading",
@@ -265,7 +265,7 @@
             {
               "label": "히어로 헤더",
               "tag": "",
-              "desc": "SaaS 메인 CTA — 강한 시각적 피드백으로 클릭 유도"
+              "desc": "SaaS 메인 CTA — 원형 팽창의 강한 시각적 피드백으로 클릭 유도"
             },
             {
               "label": "랜딩 페이지",
@@ -280,13 +280,13 @@
             {
               "label": "포트폴리오 소개",
               "tag": "",
-              "desc": "Contact CTA — 포인트 컬러로 채우기"
+              "desc": "Contact CTA — 포인트 컬러 원형으로 채우기"
             }
           ]
         },
         {
           "type": "note",
-          "value": "트레이드오프 — overflow:hidden 필수. border-radius 없는 사각 버튼에서는 fill의 둥근 모서리가 어색할 수 있음."
+          "value": "트레이드오프 — overflow:hidden 필수. scale 값이 버튼 크기에 비례해야 하므로 버튼 크기가 크게 달라지면 scale 재조정 필요."
         }
       ]
     },

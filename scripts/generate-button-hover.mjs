@@ -62,7 +62,7 @@ const PATTERNS = [
   // ── 01. slide-in-fill (Framer Slide-In Button) ──
   {
     id: 'slide-in-fill', num: '01', title: '슬라이드 인 필 (Framer 시그니처)',
-    summary: 'Framer Slide-In Button 컴포넌트 재현. hover 시 배경 채움이 아래에서 위로 확장(spring 0.5s)하며 텍스트·아이콘 색상이 전환.',
+    summary: 'Framer Slide-In Button 컴포넌트 재현. hover 시 작은 원이 하단 중앙에서 scale로 팽창하여 버튼 전체를 채우고, hover 해제 시 서서히 줄어들어 사라짐.',
     demo: {
       showcaseHTML: '<main class="showcase">\n'
         + '  <a class="btn btn-primary" href="#" onclick="return false">\n'
@@ -77,37 +77,37 @@ const PATTERNS = [
         + '</main>',
       css: '.btn-primary { color: #000; background: #fff; padding: 18px 36px; border-radius: 39px; }\n'
         + '.btn-outline { color: rgba(255,255,255,0.9); background: transparent; border: 1px solid rgba(255,255,255,0.25); padding: 14px 28px; border-radius: 39px; }\n'
-        + '.btn-fill { position: absolute; bottom: 0; left: 50%; width: 120%; height: 0; border-radius: 100px; transform: translateX(-50%); transition: height 0.5s cubic-bezier(0.34,1.56,0.64,1); z-index: 0; }\n'
+        + '.btn-fill { position: absolute; bottom: 0; left: 50%; width: 24px; height: 24px; border-radius: 50%; transform: translate(-50%, 50%) scale(0); transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); z-index: 0; }\n'
         + '.btn-primary .btn-fill { background: #0055ff; }\n'
         + '.btn-outline .btn-fill { background: #fff; }\n'
         + '.btn-label, .btn-icon { transition: color 0.3s ease; }\n'
-        + '.btn-primary:hover .btn-fill { height: 120%; }\n'
+        + '.btn-primary:hover .btn-fill { transform: translate(-50%, 50%) scale(12); }\n'
         + '.btn-primary:hover .btn-label, .btn-primary:hover .btn-icon { color: #fff; }\n'
-        + '.btn-outline:hover .btn-fill { height: 120%; }\n'
+        + '.btn-outline:hover .btn-fill { transform: translate(-50%, 50%) scale(12); }\n'
         + '.btn-outline:hover .btn-label { color: #000; }',
       js: '',
       height: 400
     },
     snippetHTML: '<a class="btn btn-primary" href="#">\n  <span class="btn-fill"></span>\n  <span class="btn-label">시작하기</span>\n  <span class="btn-icon">→</span>\n</a>',
-    snippetCSS: '.btn { position: relative; overflow: hidden; border-radius: 39px; }\n.btn-fill { position: absolute; bottom: 0; left: 50%;\n  width: 120%; height: 0; border-radius: 100px;\n  background: #0055ff; transform: translateX(-50%);\n  transition: height 0.5s cubic-bezier(0.34,1.56,0.64,1); }\n.btn:hover .btn-fill { height: 120%; }\n.btn:hover .btn-label { color: #fff; }',
-    snippetJS: '// CSS only — JS 불필요\n// spring 이징: cubic-bezier(0.34, 1.56, 0.64, 1)',
-    explain: 'Framer Slide-In Button의 핵심 메커니즘. .btn-fill 요소가 absolute 하단에서 height 0→120%로 확장. left:50% + translateX(-50%)로 중앙 정렬, width:120%로 양옆 오버플로. cubic-bezier(0.34,1.56,0.64,1)이 spring bounce를 CSS로 근사. overflow:hidden이 필수.',
+    snippetCSS: '.btn { position: relative; overflow: hidden; border-radius: 39px; }\n.btn-fill { position: absolute; bottom: 0; left: 50%;\n  width: 24px; height: 24px; border-radius: 50%;\n  background: #0055ff;\n  transform: translate(-50%, 50%) scale(0);\n  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }\n.btn:hover .btn-fill { transform: translate(-50%, 50%) scale(12); }\n.btn:hover .btn-label { color: #fff; }',
+    snippetJS: '// CSS only — JS 불필요\n// spring 이징: cubic-bezier(0.34, 1.56, 0.64, 1)\n// hover 해제 시 동일 transition으로 자연스럽게 축소',
+    explain: 'Framer Slide-In Button의 핵심 메커니즘. .btn-fill 요소(24×24 원형)가 하단 중앙(bottom:0, left:50%)에서 scale(0→12)로 팽창하여 버튼 전체를 덮음. translate(-50%,50%)로 원의 중심을 버튼 하단 가장자리에 정확히 배치. hover 해제 시 동일 transition이 역방향으로 적용되어 원이 서서히 줄어들며 사라짐. cubic-bezier(0.34,1.56,0.64,1)이 spring bounce를 CSS로 근사. overflow:hidden이 필수.',
     kv: [
-      { label: '의존성', value: 'CSS only (pseudo-element 대신 실제 요소)' },
-      { label: '트리거', value: ':hover → height 전환' },
+      { label: '의존성', value: 'CSS only (실제 요소 — pseudo-element 대신)' },
+      { label: '트리거', value: ':hover → scale(0→12) 원형 팽창' },
       { label: '이징', value: 'cubic-bezier(0.34,1.56,0.64,1) — spring 근사' },
-      { label: 'duration', value: '0.5s (fill) + 0.3s (color)' },
-      { label: '핵심', value: 'overflow:hidden + fill height 100%→120%' },
+      { label: 'duration', value: '0.5s (scale) + 0.3s (color)' },
+      { label: '핵심', value: '24px 원형 → scale(12) 팽창 + overflow:hidden' },
       { label: '참고', value: 'Framer Slide-In Button (spring 0.5s bounce 0.1)' }
     ],
-    guide: 'fill height를 120%로 설정해 양쪽 끝까지 완전히 채움. border-radius가 큰 pill 버튼(39px+)에서 특히 효과적. fill의 border-radius를 100px로 두면 round fill 느낌.',
+    guide: 'scale 값은 버튼 크기에 따라 조정 — 버튼 대각선 길이 ÷ 원 반지름(12px) 이상이면 완전히 덮임. pill 버튼(border-radius 39px+)에서 가장 자연스러움. hover out 시 transition이 자동 역재생되므로 별도 처리 불필요.',
     recommendations: [
-      { place: '히어로 헤더', body: 'SaaS 메인 CTA — 강한 시각적 피드백으로 클릭 유도' },
+      { place: '히어로 헤더', body: 'SaaS 메인 CTA — 원형 팽창의 강한 시각적 피드백으로 클릭 유도' },
       { place: '랜딩 페이지', body: '가격 페이지 CTA — pill 형태 + 색상 전환' },
       { place: '제품 섹션', body: '제품 카드 하단 CTA — 카드 hover와 연계' },
-      { place: '포트폴리오 소개', body: 'Contact CTA — 포인트 컬러로 채우기' }
+      { place: '포트폴리오 소개', body: 'Contact CTA — 포인트 컬러 원형으로 채우기' }
     ],
-    tradeoff: 'overflow:hidden 필수. border-radius 없는 사각 버튼에서는 fill의 둥근 모서리가 어색할 수 있음.'
+    tradeoff: 'overflow:hidden 필수. scale 값이 버튼 크기에 비례해야 하므로 버튼 크기가 크게 달라지면 scale 재조정 필요.'
   },
 
   // ── 02. text-slide ──
