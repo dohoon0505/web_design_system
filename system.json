@@ -158,11 +158,33 @@
         { "id": "variable-morph",  "num": "09", "title": "Variable Font 변형",   "desc": "font-variation-settings wght 100 → 900 morph" },
         { "id": "underline-reveal","num": "10", "title": "밑줄 동반 진입",       "desc": "텍스트 + 밑줄 width 0 → 100% 동시 진입" }
       ]
+    },
+    {
+      "id": "button-hover",
+      "title": "버튼 hover",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-05-28",
+      "analysis": "analyses/button-hover/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",       "num": "00", "title": "카테고리 개요",               "desc": "패턴 10종 인덱스 + 버튼 hover 모델 + 읽기 가이드" },
+        { "id": "slide-in-fill",  "num": "01", "title": "슬라이드 인 필 (Framer 시그니처)", "desc": "::before height 0→120% + spring ease + 텍스트 반전" },
+        { "id": "text-slide",     "num": "02", "title": "텍스트 슬라이드",              "desc": "2단 텍스트 translateY(-100%) 교체" },
+        { "id": "shine-sweep",    "num": "03", "title": "샤인 스윕",                  "desc": "대각선 하이라이트 좌→우 sweep" },
+        { "id": "scale-spring",   "num": "04", "title": "스케일 스프링",               "desc": "scale(1.06) + spring easing + shadow 증가" },
+        { "id": "bg-swipe",       "num": "05", "title": "배경 스와이프",               "desc": "::before width 0→100% 좌→우 배경 전환" },
+        { "id": "outline-fill",   "num": "06", "title": "아웃라인 → 필",              "desc": "outline 버튼 ::before scale(0→1) 배경 채우기" },
+        { "id": "icon-reveal",    "num": "07", "title": "아이콘 리빌",                "desc": "hover 시 아이콘 max-width 0→24px 슬라이드 진입" },
+        { "id": "ripple",         "num": "08", "title": "리플 이펙트",                "desc": "커서 위치 기준 원형 파장 scale(0→4)" },
+        { "id": "glow",           "num": "09", "title": "네온 글로우",                "desc": "3-layer box-shadow + text-shadow 네온 발광" },
+        { "id": "magnetic",       "num": "10", "title": "마그네틱 커서",              "desc": "커서 위치에 따라 버튼이 자석처럼 따라감" }
+      ]
     }
   ],
   "counts": {
-    "references": 4,
-    "categories": 4,
-    "patterns": 40
+    "references": 5,
+    "categories": 5,
+    "patterns": 50
   }
 }
