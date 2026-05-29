@@ -202,11 +202,33 @@
         { "id": "glow",           "num": "09", "title": "네온 글로우",                "desc": "3-layer box-shadow + text-shadow 네온 발광" },
         { "id": "magnetic",       "num": "10", "title": "마그네틱 커서",              "desc": "커서 위치에 따라 버튼이 자석처럼 따라감" }
       ]
+    },
+    {
+      "id": "number-counter",
+      "title": "숫자 카운터",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-05-29",
+      "analysis": "analyses/number-counter/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",          "num": "00", "title": "카테고리 개요",                  "desc": "패턴 10종 인덱스 + 카운터 모델 + 읽기 가이드" },
+        { "id": "loader-counter",    "num": "01", "title": "로더 카운터 (Framer 시그니처)",   "desc": "0%→100% 오가닉 이징 (빠름→느림 + 마이크로 포즈)" },
+        { "id": "linear-count",      "num": "02", "title": "리니어 카운트업",                "desc": "선형 0→10,000 + toLocaleString 콤마 포맷" },
+        { "id": "odometer",          "num": "03", "title": "자릿수 롤링 (오도미터)",          "desc": "각 자릿수 독립 translateY 슬롯 머신" },
+        { "id": "comma-format",      "num": "04", "title": "천 단위 콤마 포맷",              "desc": "₩0→₩1,000,000 easeOutExpo + locale-aware" },
+        { "id": "abbreviation",      "num": "05", "title": "K/M/B 축약",                   "desc": "0→2.5M 동적 단위 전환 + 스마트 소수점" },
+        { "id": "color-fade",        "num": "06", "title": "컬러 그라데이션 카운터",          "desc": "파랑→주황 RGB 보간 + 숫자 색상 전환" },
+        { "id": "circle-progress",   "num": "07", "title": "원형 프로그레스",                "desc": "SVG stroke-dashoffset 원형 링 + 중앙 퍼센티지" },
+        { "id": "bar-progress",      "num": "08", "title": "바 프로그레스",                  "desc": "수평 바 fill + stagger 4행 + 퍼센티지 라벨" },
+        { "id": "spring-overshoot",  "num": "09", "title": "스프링 오버슈트",                "desc": "damped spring 감쇠 진동 — 목표 초과 후 수렴" },
+        { "id": "multi-stat",        "num": "10", "title": "다중 통계 카운터",               "desc": "4개 stat 카드 grid + stagger 순차 카운팅" }
+      ]
     }
   ],
   "counts": {
-    "references": 5,
-    "categories": 5,
-    "patterns": 50
+    "references": 6,
+    "categories": 6,
+    "patterns": 60
   }
 }
