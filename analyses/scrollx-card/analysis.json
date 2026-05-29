@@ -95,11 +95,19 @@
             },
             {
               "label": "스크롤 트랙",
-              "value": "min-height 520vh — 세로 스크롤 거리를 가로 이동으로 매핑"
+              "value": "min-height 720vh — 세로 스크롤 거리를 가로 이동으로 매핑 (충분한 끝 여유)"
+            },
+            {
+              "label": "스크롤 보간",
+              "value": "requestAnimationFrame + lerp(0.08) — current가 target 부드럽게 추격 (smooth scroll)"
             },
             {
               "label": "가로 이동",
-              "value": "track translateX(−maxX × p), maxX = scrollWidth − stageWidth"
+              "value": "track translateX(−maxX × current), maxX = scrollWidth − stageWidth"
+            },
+            {
+              "label": "끝 여백",
+              "value": "track padding-right 42vw — 마지막 카드가 우측에 붙지 않고 좌측까지 빠짐"
             },
             {
               "label": "진행률 p",
@@ -191,7 +199,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/track-glide.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "01 · 트랙 글라이드 (ScrollX 시그니처)",
           "title": "트랙 글라이드 (ScrollX 시그니처) 라이브 데모"
         },
@@ -241,19 +249,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  track.style.transform = \"translateX(\" + (-maxX() * p) + \"px)\";\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  track.style.transform = \"translateX(\" + (-maxX() * p) + \"px)\";\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -312,7 +320,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/center-focus.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "02 · 센터 포커스",
           "title": "센터 포커스 라이브 데모"
         },
@@ -362,19 +370,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var d = Math.abs(cx - vw / 2) / vw;\n    c.style.transform = \"scale(\" + Math.max(0.82, 1 - d * 0.5) + \")\";\n    c.style.opacity = Math.max(0.4, 1 - d * 1.1);\n  });\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var d = Math.abs(cx - vw / 2) / vw;\n    c.style.transform = \"scale(\" + Math.max(0.82, 1 - d * 0.5) + \")\";\n    c.style.opacity = Math.max(0.4, 1 - d * 1.1);\n  });\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -433,7 +441,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/coverflow-3d.html",
-          "embedHeight": 560,
+          "embedHeight": 640,
           "embedLabel": "03 · 커버플로우 3D",
           "title": "커버플로우 3D 라이브 데모"
         },
@@ -483,19 +491,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 커버플로우 3D 전용 */\n.track { perspective: 1400px; align-items: center; }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }\n/* 커버플로우 3D 전용 */\n.track { perspective: 1400px; align-items: center; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var d = (cx - vw / 2) / vw;\n    var rot = Math.max(-60, Math.min(60, -d * 110));\n    c.style.transform = \"rotateY(\" + rot + \"deg) scale(\" + Math.max(0.78, 1 - Math.abs(d) * 0.3) + \")\";\n    c.style.zIndex = String(100 - Math.round(Math.abs(d) * 100));\n  });\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var d = (cx - vw / 2) / vw;\n    var rot = Math.max(-60, Math.min(60, -d * 110));\n    c.style.transform = \"rotateY(\" + rot + \"deg) scale(\" + Math.max(0.78, 1 - Math.abs(d) * 0.3) + \")\";\n    c.style.zIndex = String(100 - Math.round(Math.abs(d) * 100));\n  });\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -554,7 +562,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/parallax-depth.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "04 · 패럴랙스 뎁스",
           "title": "패럴랙스 뎁스 라이브 데모"
         },
@@ -604,19 +612,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX();\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c, i){\n    var speed = [0.86, 1, 1.16][i % 3];\n    c.style.transform = \"translateX(\" + (-mx * p * (speed - 1)) + \"px)\";\n  });\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX();\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c, i){\n    var speed = [0.86, 1, 1.16][i % 3];\n    c.style.transform = \"translateX(\" + (-mx * p * (speed - 1)) + \"px)\";\n  });\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -675,7 +683,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/snap-step.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "05 · 스냅 스텝",
           "title": "스냅 스텝 라이브 데모"
         },
@@ -725,19 +733,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 스냅 스텝 전용 */\n.track { transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }\n/* 스냅 스텝 전용 */\n.track { transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX();\n  var step = Math.round(p * (N - 1)) / (N - 1);\n  track.style.transform = \"translateX(\" + (-mx * step) + \"px)\";\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX();\n  var step = Math.round(p * (N - 1)) / (N - 1);\n  track.style.transform = \"translateX(\" + (-mx * step) + \"px)\";\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -796,7 +804,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/scale-reveal.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "06 · 스케일 리빌",
           "title": "스케일 리빌 라이브 데모"
         },
@@ -846,19 +854,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft - mx * p;\n    var enter = Math.max(0, Math.min(1, (vw - cx) / (vw * 0.55)));\n    c.style.transform = \"scale(\" + (0.7 + 0.3 * enter) + \")\";\n    c.style.opacity = String(Math.max(0.2, enter));\n  });\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft - mx * p;\n    var enter = Math.max(0, Math.min(1, (vw - cx) / (vw * 0.55)));\n    c.style.transform = \"scale(\" + (0.7 + 0.3 * enter) + \")\";\n    c.style.opacity = String(Math.max(0.2, enter));\n  });\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -917,7 +925,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/rotate-tilt.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "07 · 관성 틸트",
           "title": "관성 틸트 라이브 데모"
         },
@@ -967,19 +975,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX();\n  var v = p - lastP;\n  var skew = Math.max(-10, Math.min(10, -v * 700));\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px) skewX(\" + skew + \"deg)\";\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX();\n  var v = p - lastP;\n  var skew = Math.max(-10, Math.min(10, -v * 700));\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px) skewX(\" + skew + \"deg)\";\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -1038,7 +1046,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/edge-fade.html",
-          "embedHeight": 540,
+          "embedHeight": 620,
           "embedLabel": "08 · 엣지 페이드 (마스크)",
           "title": "엣지 페이드 (마스크) 라이브 데모"
         },
@@ -1088,19 +1096,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 엣지 페이드 (마스크) 전용 */\n.viewport { -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%); }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }\n/* 엣지 페이드 (마스크) 전용 */\n.viewport { -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%); }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  track.style.transform = \"translateX(\" + (-maxX() * p) + \"px)\";\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  track.style.transform = \"translateX(\" + (-maxX() * p) + \"px)\";\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -1159,7 +1167,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/stagger-wave.html",
-          "embedHeight": 580,
+          "embedHeight": 660,
           "embedLabel": "09 · 스태거 웨이브",
           "title": "스태거 웨이브 라이브 데모"
         },
@@ -1209,19 +1217,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 스태거 웨이브 전용 */\n.track { align-items: center; }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }\n/* 스태거 웨이브 전용 */\n.track { align-items: center; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var phase = (cx / vw) * Math.PI * 1.4;\n    c.style.transform = \"translateY(\" + (Math.sin(phase) * 44) + \"px)\";\n  });\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var phase = (cx / vw) * Math.PI * 1.4;\n    c.style.transform = \"translateY(\" + (Math.sin(phase) * 44) + \"px)\";\n  });\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",
@@ -1280,7 +1288,7 @@
         {
           "type": "component",
           "embed": "demos/scrollx-card/stack-peek.html",
-          "embedHeight": 560,
+          "embedHeight": 640,
           "embedLabel": "10 · 스택 픽",
           "title": "스택 픽 라이브 데모"
         },
@@ -1330,19 +1338,19 @@
           "type": "code",
           "lang": "HTML",
           "title": "HTML",
-          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>"
+          "value": "<div class=\"scroll-track\">\n  <div class=\"sticky-stage\">\n    <h2 class=\"heading\">Selected Work</h2>\n    <div class=\"viewport\">\n      <div class=\"track\">\n        <article class=\"card\">\n          <div class=\"img\"><img src=\"...\" alt=\"\"></div>\n          <div class=\"meta\">\n            <h3>Pulse</h3>\n            <div class=\"sub\"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class=\"end-spacer\"></div>\n      </div>\n    </div>\n  </div>\n</div>"
         },
         {
           "type": "code",
           "lang": "CSS",
           "title": "CSS",
-          "value": ".scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 스택 픽 전용 */\n.track { gap: 0; } .card { margin-right: -40px; }"
+          "value": ".scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }\n/* 스택 픽 전용 */\n.track { gap: 0; } .card { margin-right: -40px; }"
         },
         {
           "type": "code",
           "lang": "JS",
           "title": "JavaScript",
-          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var d = Math.abs(cx - vw / 2) / vw;\n    c.style.transform = \"scale(\" + Math.max(0.84, 1 - d * 0.45) + \") translateY(\" + (d * 18) + \"px)\";\n    c.style.zIndex = String(200 - Math.round(d * 200));\n  });\n}\n\nfunction tick(){ applyMove(progress()); }\naddEventListener(\"scroll\", tick, { passive: true });\ntick();"
+          "value": "// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(\".scroll-track\");\nvar stage = document.querySelector(\".sticky-stage\");\nvar track = document.querySelector(\".track\");\nvar cards = document.querySelectorAll(\".card\");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n\nfunction applyMove(p){\n  var mx = maxX(), vw = stage.clientWidth;\n  track.style.transform = \"translateX(\" + (-mx * p) + \"px)\";\n  cards.forEach(function(c){\n    var cx = c.offsetLeft + c.offsetWidth / 2 - mx * p;\n    var d = Math.abs(cx - vw / 2) / vw;\n    c.style.transform = \"scale(\" + Math.max(0.84, 1 - d * 0.45) + \") translateY(\" + (d * 18) + \"px)\";\n    c.style.zIndex = String(200 - Math.round(d * 200));\n  });\n}\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();"
         },
         {
           "type": "heading",

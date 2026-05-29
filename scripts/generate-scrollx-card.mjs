@@ -65,7 +65,9 @@ function cardMarkup(c) {
 }
 
 function cardsMarkup() {
-  return CARDS.map(cardMarkup).join('\n        ');
+  // 끝에 spacer(실제 flex item) 추가 — flexbox에서 padding-right는 scrollWidth에 안 잡히므로
+  // spacer로 maxX를 늘려 마지막 카드가 우측에 붙지 않고 좌측까지 빠지게 한다.
+  return CARDS.map(cardMarkup).join('\n        ') + '\n        <div class="sx-end-spacer" aria-hidden="true"></div>';
 }
 
 /* ================================================================
@@ -79,12 +81,13 @@ function cardsMarkup() {
    ================================================================ */
 
 const BASE_CSS = ''
-  + '.scroll-track { min-height: 520vh; position: relative; }\n'
+  + '.scroll-track { min-height: 720vh; position: relative; }\n'
   + '.sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; background: #f4f4f5; }\n'
   + '.sx-heading { text-align: center; font: 700 clamp(32px,5vw,72px)/1 inherit; color: #18181b; margin: 0 0 clamp(28px,5vh,60px); letter-spacing: -0.02em; }\n'
   + '.sx-viewport { width: 100%; overflow: hidden; }\n'
   + '.sx-track { display: flex; gap: 24px; padding: 0 clamp(24px,6vw,120px); will-change: transform; }\n'
   + '.sx-card { flex: 0 0 clamp(240px,22vw,300px); background: #fff; border: 1px solid #ececec; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 14px; will-change: transform, opacity; }\n'
+  + '.sx-end-spacer { flex: 0 0 clamp(120px,40vw,760px); }\n'
   + '.sx-img-wrap { width: 100%; aspect-ratio: 5 / 6; border-radius: 10px; overflow: hidden; background: #e5e5e5; }\n'
   + '.sx-img { width: 100%; height: 100%; object-fit: cover; display: block; }\n'
   + '.sx-meta { padding: 14px 4px 4px; }\n'
@@ -97,9 +100,9 @@ const BASE_CSS = ''
    코드 스니펫 공통
    ================================================================ */
 
-const SNIPPET_HTML = '<div class="scroll-track">\n  <div class="sticky-stage">\n    <h2 class="heading">Selected Work</h2>\n    <div class="viewport">\n      <div class="track">\n        <article class="card">\n          <div class="img"><img src="..." alt=""></div>\n          <div class="meta">\n            <h3>Pulse</h3>\n            <div class="sub"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n      </div>\n    </div>\n  </div>\n</div>';
+const SNIPPET_HTML = '<div class="scroll-track">\n  <div class="sticky-stage">\n    <h2 class="heading">Selected Work</h2>\n    <div class="viewport">\n      <div class="track">\n        <article class="card">\n          <div class="img"><img src="..." alt=""></div>\n          <div class="meta">\n            <h3>Pulse</h3>\n            <div class="sub"><span>UI/UX Design</span><span>2026</span></div>\n          </div>\n        </article>\n        <!-- x8 카드 -->\n        <div class="end-spacer"></div>\n      </div>\n    </div>\n  </div>\n</div>';
 
-const SNIPPET_CSS_BASE = '.scroll-track { min-height: 520vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }';
+const SNIPPET_CSS_BASE = '.scroll-track { min-height: 720vh; position: relative; }\n.sticky-stage { position: sticky; top: 0;\n  height: 100vh; overflow: hidden;\n  display: flex; flex-direction: column;\n  justify-content: center; }\n.viewport { width: 100%; overflow: hidden; }\n.track { display: flex; gap: 24px;\n  padding: 0 clamp(24px,6vw,120px);\n  will-change: transform; }\n.card { flex: 0 0 clamp(240px,22vw,300px); }\n/* 끝 여백 — flexbox padding-right는 scrollWidth에 안 잡혀 spacer로 처리 */\n.end-spacer { flex: 0 0 40vw; }';
 
 const SNIPPET_JS_CALC = '// 세로 스크롤 진행률 → 가로 이동량\nvar st = document.querySelector(".scroll-track");\nvar stage = document.querySelector(".sticky-stage");\nvar track = document.querySelector(".track");\nvar cards = document.querySelectorAll(".card");\nfunction progress(){\n  var r = st.getBoundingClientRect();\n  var max = Math.max(1, r.height - innerHeight);\n  return Math.min(1, Math.max(0, -r.top / max));\n}\nfunction maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }';
 
@@ -450,7 +453,7 @@ function buildDemoHTML(p) {
     + '      var track = document.querySelector(".sx-track");\n'
     + '      var cards = document.querySelectorAll(".sx-card");\n'
     + '      var N = ' + N + ';\n'
-    + '      var lastP = 0;\n'
+    + '      var target = 0, current = 0, lastP = 0;\n'
     + '      function calc(){\n'
     + '        var rect = scrollTrack.getBoundingClientRect();\n'
     + '        var max = Math.max(1, rect.height - window.innerHeight);\n'
@@ -458,16 +461,18 @@ function buildDemoHTML(p) {
     + '      }\n'
     + '      function maxX(){ return Math.max(0, track.scrollWidth - stage.clientWidth); }\n'
     + '      ' + p.demo.applyFn.replace(/\n/g, '\n      ') + '\n'
-    + '      function tick(){\n'
-    + '        var p = calc();\n'
-    + '        progressFill.style.width = (p * 100) + "%";\n'
-    + '        applyMove(p);\n'
-    + '        lastP = p;\n'
+    + '      // smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\n'
+    + '      function loop(){\n'
+    + '        target = calc();\n'
+    + '        current += (target - current) * 0.08;\n'
+    + '        if (Math.abs(target - current) < 0.0002) current = target;\n'
+    + '        progressFill.style.width = (current * 100) + "%";\n'
+    + '        applyMove(current);\n'
+    + '        lastP = current;\n'
+    + '        requestAnimationFrame(loop);\n'
     + '      }\n'
-    + '      window.addEventListener("scroll", tick, { passive: true });\n'
-    + '      window.addEventListener("resize", tick, { passive: true });\n'
     + '      window.__reset = function(){ window.scrollTo({ top: 0, behavior: "smooth" }); };\n'
-    + '      tick();\n'
+    + '      requestAnimationFrame(loop);\n'
     + '    })();\n'
     + '  </script>\n'
     + '</body>\n'
@@ -487,7 +492,7 @@ function buildPatternSection(p) {
       {
         type: 'component',
         embed: 'demos/scrollx-card/' + p.id + '.html',
-        embedHeight: p.demo.height || 540,
+        embedHeight: (p.demo.height || 540) + 80,
         embedLabel: p.num + ' · ' + p.title,
         title: p.title + ' 라이브 데모'
       },
@@ -497,7 +502,7 @@ function buildPatternSection(p) {
       { type: 'heading', value: '코드 스니펫' },
       { type: 'code', lang: 'HTML', title: 'HTML', value: SNIPPET_HTML },
       { type: 'code', lang: 'CSS', title: 'CSS', value: SNIPPET_CSS_BASE + (p.demo.extraCSS ? '\n/* ' + p.title + ' 전용 */\n' + p.demo.extraCSS.replace(/\.sx-/g, '.') : '') },
-      { type: 'code', lang: 'JS', title: 'JavaScript', value: SNIPPET_JS_CALC + '\n\n' + p.demo.applyFn + '\n\nfunction tick(){ applyMove(progress()); }\naddEventListener("scroll", tick, { passive: true });\ntick();' },
+      { type: 'code', lang: 'JS', title: 'JavaScript', value: SNIPPET_JS_CALC + '\n\n' + p.demo.applyFn + '\n\n// smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격\nvar target = 0, current = 0;\nfunction loop(){\n  target = progress();\n  current += (target - current) * 0.08;\n  applyMove(current);\n  requestAnimationFrame(loop);\n}\nloop();' },
       { type: 'heading', value: '사용 가이드' },
       { type: 'text', value: p.guide },
       { type: 'heading', value: '활용 추천' },
@@ -531,8 +536,10 @@ function buildOverview() {
         type: 'kv', columns: 2, items: [
           { label: '폰트', value: 'Pretendard Variable 단일' },
           { label: '무대(sticky-stage)', value: 'position:sticky, top:0, height:100vh, overflow:hidden' },
-          { label: '스크롤 트랙', value: 'min-height 520vh — 세로 스크롤 거리를 가로 이동으로 매핑' },
-          { label: '가로 이동', value: 'track translateX(−maxX × p), maxX = scrollWidth − stageWidth' },
+          { label: '스크롤 트랙', value: 'min-height 720vh — 세로 스크롤 거리를 가로 이동으로 매핑 (충분한 끝 여유)' },
+          { label: '스크롤 보간', value: 'requestAnimationFrame + lerp(0.08) — current가 target 부드럽게 추격 (smooth scroll)' },
+          { label: '가로 이동', value: 'track translateX(−maxX × current), maxX = scrollWidth − stageWidth' },
+          { label: '끝 여백', value: 'track padding-right 42vw — 마지막 카드가 우측에 붙지 않고 좌측까지 빠짐' },
           { label: '진행률 p', value: '(-trackTop) / (trackHeight − innerHeight), 0~1 클램프' },
           { label: '카드', value: 'width clamp 240~300px, bg #fff, radius 16, border 1px #ececec' },
           { label: '이미지', value: 'aspect-ratio 5/6 (≈0.83 ≈ 실측 0.82), radius 10, object-fit cover' },

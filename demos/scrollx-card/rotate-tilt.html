@@ -17,12 +17,13 @@
     @keyframes hint-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(4px); opacity: 1; } }
     .demo-progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: rgba(0,0,0,0.06); z-index: 100; }
     .demo-progress > div { height: 100%; background: #18181b; width: 0; transition: width 60ms linear; }
-    .scroll-track { min-height: 520vh; position: relative; }
+    .scroll-track { min-height: 720vh; position: relative; }
     .sticky-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; background: #f4f4f5; }
     .sx-heading { text-align: center; font: 700 clamp(32px,5vw,72px)/1 inherit; color: #18181b; margin: 0 0 clamp(28px,5vh,60px); letter-spacing: -0.02em; }
     .sx-viewport { width: 100%; overflow: hidden; }
     .sx-track { display: flex; gap: 24px; padding: 0 clamp(24px,6vw,120px); will-change: transform; }
     .sx-card { flex: 0 0 clamp(240px,22vw,300px); background: #fff; border: 1px solid #ececec; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 14px; will-change: transform, opacity; }
+    .sx-end-spacer { flex: 0 0 clamp(120px,40vw,760px); }
     .sx-img-wrap { width: 100%; aspect-ratio: 5 / 6; border-radius: 10px; overflow: hidden; background: #e5e5e5; }
     .sx-img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .sx-meta { padding: 14px 4px 4px; }
@@ -102,6 +103,7 @@
             <div class="sx-sub"><span class="sx-cat">Editorial & Print</span><span class="sx-year">2024</span></div>
           </div>
         </article>
+        <div class="sx-end-spacer" aria-hidden="true"></div>
         </div>
       </div>
     </div>
@@ -115,7 +117,7 @@
       var track = document.querySelector(".sx-track");
       var cards = document.querySelectorAll(".sx-card");
       var N = 8;
-      var lastP = 0;
+      var target = 0, current = 0, lastP = 0;
       function calc(){
         var rect = scrollTrack.getBoundingClientRect();
         var max = Math.max(1, rect.height - window.innerHeight);
@@ -128,16 +130,18 @@
         var skew = Math.max(-10, Math.min(10, -v * 700));
         track.style.transform = "translateX(" + (-mx * p) + "px) skewX(" + skew + "deg)";
       }
-      function tick(){
-        var p = calc();
-        progressFill.style.width = (p * 100) + "%";
-        applyMove(p);
-        lastP = p;
+      // smooth scroll — 실제 스크롤(target)을 current가 lerp로 부드럽게 추격
+      function loop(){
+        target = calc();
+        current += (target - current) * 0.08;
+        if (Math.abs(target - current) < 0.0002) current = target;
+        progressFill.style.width = (current * 100) + "%";
+        applyMove(current);
+        lastP = current;
+        requestAnimationFrame(loop);
       }
-      window.addEventListener("scroll", tick, { passive: true });
-      window.addEventListener("resize", tick, { passive: true });
       window.__reset = function(){ window.scrollTo({ top: 0, behavior: "smooth" }); };
-      tick();
+      requestAnimationFrame(loop);
     })();
   </script>
 </body>
