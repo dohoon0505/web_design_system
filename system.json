@@ -72,6 +72,28 @@
   ],
   "references": [
     {
+      "id": "scrollx-card",
+      "title": "ScrollX Card",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-05-29",
+      "analysis": "analyses/scrollx-card/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",      "num": "00", "title": "카테고리 개요",                  "desc": "패턴 10종 인덱스 + 가로 글라이드 모델 + 읽기 가이드" },
+        { "id": "track-glide",   "num": "01", "title": "트랙 글라이드 (ScrollX 시그니처)", "desc": "세로 스크롤 → 트랙 translateX 선형 가로 이동" },
+        { "id": "center-focus",  "num": "02", "title": "센터 포커스",                    "desc": "중앙 카드 scale 1·선명, 가장자리 축소·반투명" },
+        { "id": "coverflow-3d",  "num": "03", "title": "커버플로우 3D",                  "desc": "rotateY ±60deg 입체 커버플로우 + zIndex" },
+        { "id": "parallax-depth","num": "04", "title": "패럴랙스 뎁스",                  "desc": "카드별 이동 속도 차등(0.86/1/1.16) 깊이감" },
+        { "id": "snap-step",     "num": "05", "title": "스냅 스텝",                      "desc": "진행률 카드 단위 양자화 + transition 스냅" },
+        { "id": "scale-reveal",  "num": "06", "title": "스케일 리빌",                    "desc": "우측 진입 시 scale 0.7→1 + opacity 등장" },
+        { "id": "rotate-tilt",   "num": "07", "title": "관성 틸트",                      "desc": "스크롤 속도 비례 skewX ±10deg 관성 틸트" },
+        { "id": "edge-fade",     "num": "08", "title": "엣지 페이드 (마스크)",            "desc": "viewport 좌우 mask 페이드 시네마틱 띠" },
+        { "id": "stagger-wave",  "num": "09", "title": "스태거 웨이브",                  "desc": "카드 Y offset 사인파 물결 출렁임" },
+        { "id": "stack-peek",    "num": "10", "title": "스택 픽",                        "desc": "음수 margin 겹침 + 중앙 카드 펼침 zIndex" }
+      ]
+    },
+    {
       "id": "scroll-card-update",
       "title": "Scroll-Card-Update",
       "type": "category",
