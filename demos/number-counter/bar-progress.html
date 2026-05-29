@@ -44,7 +44,8 @@
     (function(){
       var progressFill = document.querySelector(".demo-progress > div");
       var DURATION = 2000;
-      var startTime = null;
+      var startTime = Date.now();
+      var running = true;
       var rows = document.querySelectorAll(".bar-row");
       function applyReveal(p) {
         rows.forEach(function(row, i) {
@@ -57,19 +58,19 @@
           pct.textContent = v + "%";
         });
       }
-      function tick(timestamp) {
-        if (!startTime) startTime = timestamp;
-        var elapsed = timestamp - startTime;
+      function tick() {
+        var elapsed = Date.now() - startTime;
         var p = Math.min(1, elapsed / DURATION);
         progressFill.style.width = (p * 100) + "%";
         applyReveal(p);
-        if (p < 1) requestAnimationFrame(tick);
+        if (p < 1) setTimeout(tick, 16);
+        else running = false;
       }
-      requestAnimationFrame(tick);
+      setTimeout(tick, 16);
       window.__reset = function(){
-        startTime = null;
+        startTime = Date.now();
         applyReveal(0);
-        requestAnimationFrame(tick);
+        if (!running) { running = true; setTimeout(tick, 16); }
       };
     })();
   </script>

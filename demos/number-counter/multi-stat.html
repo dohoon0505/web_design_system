@@ -61,7 +61,8 @@
     (function(){
       var progressFill = document.querySelector(".demo-progress > div");
       var DURATION = 2500;
-      var startTime = null;
+      var startTime = Date.now();
+      var running = true;
       var cards = document.querySelectorAll(".stat-card");
       function easeOutCubic(t) { return 1 - Math.pow(1-t,3); }
       function applyReveal(p) {
@@ -74,19 +75,19 @@
           card.style.transform = "translateY(" + ((1-Math.min(1,stagger*2)) * 16) + "px)";
         });
       }
-      function tick(timestamp) {
-        if (!startTime) startTime = timestamp;
-        var elapsed = timestamp - startTime;
+      function tick() {
+        var elapsed = Date.now() - startTime;
         var p = Math.min(1, elapsed / DURATION);
         progressFill.style.width = (p * 100) + "%";
         applyReveal(p);
-        if (p < 1) requestAnimationFrame(tick);
+        if (p < 1) setTimeout(tick, 16);
+        else running = false;
       }
-      requestAnimationFrame(tick);
+      setTimeout(tick, 16);
       window.__reset = function(){
-        startTime = null;
+        startTime = Date.now();
         applyReveal(0);
-        requestAnimationFrame(tick);
+        if (!running) { running = true; setTimeout(tick, 16); }
       };
     })();
   </script>
