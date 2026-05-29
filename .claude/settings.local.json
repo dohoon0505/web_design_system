@@ -17,7 +17,10 @@
       "mcp__playwright__browser_network_requests",
       "mcp__playwright__browser_tabs",
       "mcp__playwright__browser_close",
-      "mcp__playwright__browser_install"
+      "mcp__playwright__browser_install",
+      "Bash(git log *)",
+      "Bash(gh auth *)",
+      "Bash(gh api *)"
     ],
     "enableAllProjectMcpServers": true
   }
