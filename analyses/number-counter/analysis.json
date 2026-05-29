@@ -110,8 +110,8 @@
               "value": "rgba(255,255,255,0.3) — 보조 텍스트"
             },
             {
-              "label": "scroll 모델",
-              "value": ".scroll-track 240vh + sticky-stage + progress 0→1"
+              "label": "애니메이션 모델",
+              "value": "requestAnimationFrame + duration 기반 자동 재생"
             },
             {
               "label": "Framer 참고",
@@ -129,12 +129,12 @@
             {
               "label": "라이브 데모",
               "tag": "IFRAME",
-              "desc": "demos/number-counter/{pattern}.html — 스크롤 매핑 카운터"
+              "desc": "demos/number-counter/{pattern}.html — 자동 재생 카운터"
             },
             {
               "label": "작동 원리",
               "tag": "HOW",
-              "desc": "scroll progress → 이징 함수 → 숫자 갱신"
+              "desc": "rAF progress 0→1 → 이징 함수 → 숫자 갱신"
             },
             {
               "label": "정량 메타",
@@ -165,7 +165,7 @@
         },
         {
           "type": "note",
-          "value": "Framer LoaderCounter 컴포넌트(organic pacing, locale-aware formatting, K/M/B abbreviation, color fade)를 첫 번째 패턴으로 재현하고, 9가지 추가 변형을 비교 카탈로그로 정리. 모든 데모는 검정 배경(#000) + Pretendard Variable + 한국어 라벨 + 스크롤 진행률 매핑."
+          "value": "Framer LoaderCounter 컴포넌트(organic pacing, locale-aware formatting, K/M/B abbreviation, color fade)를 첫 번째 패턴으로 재현하고, 9가지 추가 변형을 비교 카탈로그로 정리. 모든 데모는 검정 배경(#000) + Pretendard Variable + 한국어 라벨 + 페이지 로드 시 자동 재생(rAF)."
         }
       ]
     },
@@ -183,7 +183,7 @@
         {
           "type": "component",
           "embed": "demos/number-counter/loader-counter.html",
-          "embedHeight": 480,
+          "embedHeight": 400,
           "embedLabel": "01 · 로더 카운터 (Framer 시그니처)",
           "title": "로더 카운터 (Framer 시그니처) 라이브 데모"
         },
@@ -205,7 +205,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → organicEase(p) × 100"
+              "value": "페이지 로드 → requestAnimationFrame 자동 재생"
             },
             {
               "label": "이징",
@@ -326,7 +326,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 × TARGET (선형)"
+              "value": "페이지 로드 → rAF 선형 매핑 × TARGET"
             },
             {
               "label": "이징",
@@ -447,7 +447,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → 각 자릿수 독립 롤링"
+              "value": "페이지 로드 → 각 자릿수 독립 롤링"
             },
             {
               "label": "이징",
@@ -568,7 +568,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → easeOutExpo → 포맷"
+              "value": "페이지 로드 → easeOutExpo → 포맷"
             },
             {
               "label": "이징",
@@ -689,7 +689,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 × TARGET → abbreviate(값)"
+              "value": "페이지 로드 → rAF × TARGET → abbreviate"
             },
             {
               "label": "이징",
@@ -810,7 +810,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → lerpColor(시작, 끝, p)"
+              "value": "페이지 로드 → lerpColor(시작, 끝, p)"
             },
             {
               "label": "시작색",
@@ -931,7 +931,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → strokeDashoffset = 원둘레 × (1-p)"
+              "value": "페이지 로드 → strokeDashoffset = 원둘레 × (1-p)"
             },
             {
               "label": "원 반지름",
@@ -1052,7 +1052,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → 각 바 stagger 딜레이"
+              "value": "페이지 로드 → 각 바 stagger 딜레이"
             },
             {
               "label": "이징",
@@ -1151,7 +1151,7 @@
         {
           "type": "component",
           "embed": "demos/number-counter/spring-overshoot.html",
-          "embedHeight": 480,
+          "embedHeight": 400,
           "embedLabel": "09 · 스프링 오버슈트",
           "title": "스프링 오버슈트 라이브 데모"
         },
@@ -1173,7 +1173,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → springEase(p) × TARGET"
+              "value": "페이지 로드 → springEase(p) × TARGET"
             },
             {
               "label": "이징",
@@ -1272,7 +1272,7 @@
         {
           "type": "component",
           "embed": "demos/number-counter/multi-stat.html",
-          "embedHeight": 480,
+          "embedHeight": 400,
           "embedLabel": "10 · 다중 통계 카운터",
           "title": "다중 통계 카운터 라이브 데모"
         },
@@ -1294,7 +1294,7 @@
             },
             {
               "label": "트리거",
-              "value": "scroll 진행률 → 카드별 stagger 0.1 간격"
+              "value": "페이지 로드 → 카드별 stagger 0.1 간격"
             },
             {
               "label": "이징",

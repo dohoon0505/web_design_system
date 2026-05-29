@@ -8,17 +8,14 @@
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
-    body { background: #000; color: #fff; font-family: "Pretendard Variable","Pretendard",sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { background: #000; color: #fff; font-family: "Pretendard Variable","Pretendard",sans-serif; -webkit-font-smoothing: antialiased; }
     .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 10px; z-index: 100; }
     .demo-reset { font: 600 11px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }
     .demo-reset:hover { color: #fff; background: rgba(255,255,255,0.15); }
     .demo-label { font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.35); letter-spacing: 0.14em; text-transform: uppercase; }
-    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.35); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; background: rgba(255,255,255,0.06); padding: 8px 14px; border-radius: 999px; animation: hint-bounce 1.6s ease-in-out infinite; }
-    @keyframes hint-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(4px); opacity: 1; } }
     .demo-progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.06); z-index: 100; }
-    .demo-progress > div { height: 100%; background: #fff; width: 0; transition: width 60ms linear; }
-    .scroll-track { min-height: 240vh; position: relative; }
-    .sticky-stage { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+    .demo-progress > div { height: 100%; background: #fff; width: 0; }
+    .showcase { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
     .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px,3vw,48px); width: clamp(320px,70vw,900px); }
     .stat-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
     .stat-value { font: 800 clamp(36px,5vw,64px)/1 "Pretendard Variable",sans-serif; color: #fff; font-variant-numeric: tabular-nums; }
@@ -37,41 +34,34 @@
     <button class="demo-reset" type="button" onclick="window.__reset && window.__reset()">↻ 다시 보기</button>
     <span class="demo-label">10 · 다중 통계 카운터</span>
   </div>
-  <div class="demo-hint">SCROLL ↓</div>
   <div class="demo-progress"><div></div></div>
 
-  <div class="scroll-track">
-    <div class="sticky-stage">
-      <div class="stat-grid">
-        <div class="stat-card" data-target="1200" data-suffix="+" data-label="프로젝트">
-          <span class="stat-value">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">프로젝트</span>
-        </div>
-        <div class="stat-card" data-target="98" data-suffix="%" data-label="만족도">
-          <span class="stat-value">0</span><span class="stat-suffix">%</span>
-          <span class="stat-label">만족도</span>
-        </div>
-        <div class="stat-card" data-target="50" data-suffix="+" data-label="팀원">
-          <span class="stat-value">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">팀원</span>
-        </div>
-        <div class="stat-card" data-target="99" data-suffix="%" data-label="업타임">
-          <span class="stat-value">0</span><span class="stat-suffix">.9%</span>
-          <span class="stat-label">업타임</span>
-        </div>
+  <main class="showcase">
+    <div class="stat-grid">
+      <div class="stat-card" data-target="1200" data-suffix="+" data-label="프로젝트">
+        <span class="stat-value">0</span><span class="stat-suffix">+</span>
+        <span class="stat-label">프로젝트</span>
+      </div>
+      <div class="stat-card" data-target="98" data-suffix="%" data-label="만족도">
+        <span class="stat-value">0</span><span class="stat-suffix">%</span>
+        <span class="stat-label">만족도</span>
+      </div>
+      <div class="stat-card" data-target="50" data-suffix="+" data-label="팀원">
+        <span class="stat-value">0</span><span class="stat-suffix">+</span>
+        <span class="stat-label">팀원</span>
+      </div>
+      <div class="stat-card" data-target="99" data-suffix="%" data-label="업타임">
+        <span class="stat-value">0</span><span class="stat-suffix">.9%</span>
+        <span class="stat-label">업타임</span>
       </div>
     </div>
-  </div>
+  </main>
 
   <script>
     (function(){
       var progressFill = document.querySelector(".demo-progress > div");
-      var track = document.querySelector(".scroll-track");
-      function calc(){
-        var rect = track.getBoundingClientRect();
-        var max = Math.max(1, rect.height - window.innerHeight);
-        return Math.max(0, Math.min(1, -rect.top / max));
-      }
+      var DURATION = 2500;
+      var startTime = null;
       var cards = document.querySelectorAll(".stat-card");
       function easeOutCubic(t) { return 1 - Math.pow(1-t,3); }
       function applyReveal(p) {
@@ -84,15 +74,20 @@
           card.style.transform = "translateY(" + ((1-Math.min(1,stagger*2)) * 16) + "px)";
         });
       }
-      function tick(){
-        var p = calc();
+      function tick(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var p = Math.min(1, elapsed / DURATION);
         progressFill.style.width = (p * 100) + "%";
         applyReveal(p);
+        if (p < 1) requestAnimationFrame(tick);
       }
-      window.addEventListener("scroll", tick, { passive: true });
-      window.addEventListener("resize", tick, { passive: true });
-      window.__reset = function(){ window.scrollTo({ top: 0, behavior: "smooth" }); };
-      tick();
+      requestAnimationFrame(tick);
+      window.__reset = function(){
+        startTime = null;
+        applyReveal(0);
+        requestAnimationFrame(tick);
+      };
     })();
   </script>
 </body>

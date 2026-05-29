@@ -56,7 +56,8 @@ const PATTERNS = [
         + '  var v = Math.min(100, Math.round(organicEase(p) * 100));\n'
         + '  valEl.textContent = v;\n'
         + '}',
-      height: 480
+      height: 400,
+      duration: 3000
     },
     snippetHTML: '<div class="counter-display">\n  <span class="counter-value">0</span>\n  <span class="counter-suffix">%</span>\n</div>',
     snippetCSS: '.counter-value {\n  font: 800 160px/1 "Pretendard Variable", sans-serif;\n  color: #fff;\n  font-variant-numeric: tabular-nums;\n}\n.counter-suffix {\n  font: 600 56px/1 "Pretendard Variable", sans-serif;\n  color: rgba(255,255,255,0.5);\n}',
@@ -64,7 +65,7 @@ const PATTERNS = [
     explain: 'Framer LoaderCounter의 핵심인 "로더 느낌"을 재현. 3구간 분기 이징 — 0~30% 구간에서 빠르게 70%까지 채운 뒤, 30~70% 구간에서 천천히 90%까지, 마지막 70~100% 구간에서 극히 느리게 100%에 도달. 실제 파일 로딩·다운로드 진행 바의 체감 속도를 모사.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (이징 함수)' },
-      { label: '트리거', value: 'scroll 진행률 → organicEase(p) × 100' },
+      { label: '트리거', value: '페이지 로드 → requestAnimationFrame 자동 재생' },
       { label: '이징', value: '3구간 piecewise-linear (빠름→보통→느림)' },
       { label: '목표값', value: '0% → 100%' },
       { label: '핵심', value: 'font-variant-numeric: tabular-nums (고정폭 숫자)' },
@@ -106,7 +107,7 @@ const PATTERNS = [
     explain: '가장 단순한 선형 매핑. progress × TARGET을 floor하고 toLocaleString으로 천 단위 구분자 자동 삽입. tabular-nums로 숫자 폭 고정. prefix(+)와 label은 별도 요소로 분리.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (toLocaleString)' },
-      { label: '트리거', value: 'scroll 진행률 × TARGET (선형)' },
+      { label: '트리거', value: '페이지 로드 → rAF 선형 매핑 × TARGET' },
       { label: '이징', value: 'linear (1:1 매핑)' },
       { label: '목표값', value: '0 → 10,000' },
       { label: '핵심', value: 'toLocaleString("ko-KR") 자동 천 단위 콤마' },
@@ -160,7 +161,7 @@ const PATTERNS = [
     explain: '각 자릿수가 독립적인 .odo-digit 컨테이너(height:1em, overflow:hidden). 내부 .odo-strip에 0~9 숫자가 세로로 나열. translateY(-N×100%)로 해당 숫자 위치로 스크롤. 높은 자릿수가 바뀔 때 낮은 자릿수는 빠르게 회전하는 기계적 느낌.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (자릿수 분해 + translateY)' },
-      { label: '트리거', value: 'scroll 진행률 → 각 자릿수 독립 롤링' },
+      { label: '트리거', value: '페이지 로드 → 각 자릿수 독립 롤링' },
       { label: '이징', value: 'ease-out 0.1s (자릿수 전환)' },
       { label: '목표값', value: '0000 → 8,524' },
       { label: '핵심', value: 'overflow:hidden + translateY(-N×100%) 슬롯' },
@@ -204,7 +205,7 @@ const PATTERNS = [
     explain: 'easeOutExpo 이징으로 초반에 빠르게 올라가다 후반에 천천히 수렴. toLocaleString("ko-KR")이 자동으로 천 단위 콤마를 삽입. min-width와 text-align:right로 자릿수 변화 시 레이아웃 안정.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (toLocaleString + easeOutExpo)' },
-      { label: '트리거', value: 'scroll 진행률 → easeOutExpo → 포맷' },
+      { label: '트리거', value: '페이지 로드 → easeOutExpo → 포맷' },
       { label: '이징', value: 'ease-out-expo (1 - 2^(-10t))' },
       { label: '목표값', value: '0 → 1,000,000' },
       { label: '핵심', value: 'toLocaleString locale-aware + min-width 안정화' },
@@ -251,7 +252,7 @@ const PATTERNS = [
     explain: 'abbreviate 함수가 천 단위(K), 백만 단위(M), 십억 단위(B)를 자동 감지하여 축약. 소수점은 나머지 값에 따라 동적으로 0~1자리 표시 — 9.5K→10K처럼 불필요한 .0을 제거.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (abbreviate 함수)' },
-      { label: '트리거', value: 'scroll 진행률 × TARGET → abbreviate(값)' },
+      { label: '트리거', value: '페이지 로드 → rAF × TARGET → abbreviate' },
       { label: '이징', value: 'linear' },
       { label: '목표값', value: '0 → 2.5M (단계: K→M)' },
       { label: '핵심', value: 'K/M/B 동적 전환 + 스마트 소수점' },
@@ -304,7 +305,7 @@ const PATTERNS = [
     explain: 'lerpColor 함수가 두 RGB 색상 사이를 progress에 따라 선형 보간. 0%에서 파랑(#3b82f6), 100%에서 주황(#f97316)으로 자연스러운 온도 변화 표현. inline style로 매 프레임 색상 갱신.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (RGB 선형 보간)' },
-      { label: '트리거', value: 'scroll 진행률 → lerpColor(시작, 끝, p)' },
+      { label: '트리거', value: '페이지 로드 → lerpColor(시작, 끝, p)' },
       { label: '시작색', value: '#3b82f6 (blue-500)' },
       { label: '끝색', value: '#f97316 (orange-500)' },
       { label: '핵심', value: 'RGB 선형 보간 + inline style 매 프레임' },
@@ -357,7 +358,7 @@ const PATTERNS = [
     explain: 'SVG circle의 stroke-dasharray=원둘레, stroke-dashoffset=원둘레(0%)→0(100%)으로 채움. rotate(-90deg)로 12시 방향에서 시작. stroke-linecap:round로 끝점 둥글게. 중앙 텍스트는 absolute + flex center.',
     kv: [
       { label: '의존성', value: 'SVG + Vanilla JS (dashoffset 계산)' },
-      { label: '트리거', value: 'scroll 진행률 → strokeDashoffset = 원둘레 × (1-p)' },
+      { label: '트리거', value: '페이지 로드 → strokeDashoffset = 원둘레 × (1-p)' },
       { label: '원 반지름', value: '88px (원둘레 ≈ 553px)' },
       { label: '선 두께', value: '8px (stroke-width)' },
       { label: '핵심', value: 'stroke-dasharray + stroke-dashoffset SVG 트릭' },
@@ -410,7 +411,7 @@ const PATTERNS = [
     explain: '각 바는 data-target 값(최대 퍼센티지)을 가지고, stagger 공식으로 순차 진입. stagger = (p - i×0.08) / (1 - i×0.08)로 각 바가 약간의 딜레이를 가지고 채워짐. width와 텍스트를 동시 갱신.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (stagger 계산)' },
-      { label: '트리거', value: 'scroll 진행률 → 각 바 stagger 딜레이' },
+      { label: '트리거', value: '페이지 로드 → 각 바 stagger 딜레이' },
       { label: '이징', value: 'linear + stagger 0.08s 간격' },
       { label: '목표값', value: '각 바 독립 (92%, 78%, 65%, 88%)' },
       { label: '핵심', value: 'grid 레이아웃 + data-target + stagger 공식' },
@@ -450,7 +451,8 @@ const PATTERNS = [
         + '  var scale = 1 + Math.abs(springEase(p) - p) * 0.08;\n'
         + '  valEl.style.transform = "scale(" + scale + ")";\n'
         + '}',
-      height: 480
+      height: 400,
+      duration: 2500
     },
     snippetHTML: '<span class="counter-value">0</span>',
     snippetCSS: '.counter-value {\n  font: 800 160px/1 "Pretendard Variable", sans-serif;\n  font-variant-numeric: tabular-nums;\n}',
@@ -458,7 +460,7 @@ const PATTERNS = [
     explain: 'damped spring 공식: 1 - e^(-6t) × cos(4.5πt). 감쇠 진동이 목표값을 살짝 초과(~108%)했다가 되돌아오기를 1~2회 반복 후 수렴. overshoot 크기에 비례하여 scale도 미세하게 변화(1.0~1.08)하여 "탄성" 느낌.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (damped spring 함수)' },
-      { label: '트리거', value: 'scroll 진행률 → springEase(p) × TARGET' },
+      { label: '트리거', value: '페이지 로드 → springEase(p) × TARGET' },
       { label: '이징', value: 'damped spring (감쇠율 6, 주파수 4.5π)' },
       { label: '오버슈트', value: '~8% (847 → ~915 → 847)' },
       { label: '핵심', value: 'e^(-dt) × cos(wt) 감쇠 진동 + scale 연동' },
@@ -520,7 +522,8 @@ const PATTERNS = [
         + '    card.style.transform = "translateY(" + ((1-Math.min(1,stagger*2)) * 16) + "px)";\n'
         + '  });\n'
         + '}',
-      height: 480
+      height: 400,
+      duration: 2500
     },
     snippetHTML: '<div class="stat-grid">\n  <div class="stat-card" data-target="1200">\n    <span class="stat-value">0</span>\n    <span class="stat-suffix">+</span>\n    <span class="stat-label">프로젝트</span>\n  </div>\n  <!-- 반복 -->\n</div>',
     snippetCSS: '.stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 48px; }\n.stat-value { font: 800 64px/1 "Pretendard Variable", sans-serif;\n  font-variant-numeric: tabular-nums; }\n.stat-label { font: 400 15px/1.4 "Pretendard Variable", sans-serif;\n  color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }',
@@ -528,7 +531,7 @@ const PATTERNS = [
     explain: '4개 카드가 grid 4열 배치. 각 카드는 data-target으로 목표값을 가지고, stagger 공식으로 i×0.1 딜레이. easeOutCubic으로 감속 카운팅 + opacity·translateY 진입 애니메이션이 동시 적용. 카운팅과 모션이 동시에 일어나 역동적.',
     kv: [
       { label: '의존성', value: 'Vanilla JS (stagger + easeOutCubic)' },
-      { label: '트리거', value: 'scroll 진행률 → 카드별 stagger 0.1 간격' },
+      { label: '트리거', value: '페이지 로드 → 카드별 stagger 0.1 간격' },
       { label: '이징', value: 'easeOutCubic (1-(1-t)³)' },
       { label: '목표값', value: '각 카드 독립 (1,200 / 98% / 50+ / 99.9%)' },
       { label: '핵심', value: 'grid 4열 + data-target + stagger + 진입 모션' },
@@ -546,10 +549,11 @@ const PATTERNS = [
 ];
 
 /* ================================================================
-   Standalone demo HTML 빌더 (scroll-driven)
+   Standalone demo HTML 빌더 (auto-play on load)
    ================================================================ */
 
 function buildDemoHTML(p) {
+  var dur = p.demo.duration || 2000;
   return '<!DOCTYPE html>\n'
     + '<html lang="ko">\n'
     + '<head>\n'
@@ -560,17 +564,14 @@ function buildDemoHTML(p) {
     + '  <style>\n'
     + '    * { box-sizing: border-box; }\n'
     + '    html, body { margin: 0; padding: 0; }\n'
-    + '    body { background: #000; color: #fff; font-family: "Pretendard Variable","Pretendard",sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }\n'
+    + '    body { background: #000; color: #fff; font-family: "Pretendard Variable","Pretendard",sans-serif; -webkit-font-smoothing: antialiased; }\n'
     + '    .demo-controls { position: fixed; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 10px; z-index: 100; }\n'
     + '    .demo-reset { font: 600 11px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: color 160ms, background 160ms; }\n'
     + '    .demo-reset:hover { color: #fff; background: rgba(255,255,255,0.15); }\n'
     + '    .demo-label { font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.35); letter-spacing: 0.14em; text-transform: uppercase; }\n'
-    + '    .demo-hint { position: fixed; right: 16px; bottom: 24px; font: 500 10px/1 "Pretendard Variable","Pretendard",sans-serif; color: rgba(255,255,255,0.35); letter-spacing: 0.18em; text-transform: uppercase; z-index: 100; background: rgba(255,255,255,0.06); padding: 8px 14px; border-radius: 999px; animation: hint-bounce 1.6s ease-in-out infinite; }\n'
-    + '    @keyframes hint-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(4px); opacity: 1; } }\n'
     + '    .demo-progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.06); z-index: 100; }\n'
-    + '    .demo-progress > div { height: 100%; background: #fff; width: 0; transition: width 60ms linear; }\n'
-    + '    .scroll-track { min-height: 240vh; position: relative; }\n'
-    + '    .sticky-stage { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }\n'
+    + '    .demo-progress > div { height: 100%; background: #fff; width: 0; }\n'
+    + '    .showcase { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }\n'
     + '    ' + p.demo.css.replace(/\n/g, '\n    ') + '\n'
     + '  </style>\n'
     + '</head>\n'
@@ -579,34 +580,32 @@ function buildDemoHTML(p) {
     + '    <button class="demo-reset" type="button" onclick="window.__reset && window.__reset()">↻ 다시 보기</button>\n'
     + '    <span class="demo-label">' + p.num + ' · ' + p.title + '</span>\n'
     + '  </div>\n'
-    + '  <div class="demo-hint">SCROLL ↓</div>\n'
     + '  <div class="demo-progress"><div></div></div>\n'
     + '\n'
-    + '  <div class="scroll-track">\n'
-    + '    <div class="sticky-stage">\n'
-    + '      ' + p.demo.bodyHTML.replace(/\n/g, '\n      ') + '\n'
-    + '    </div>\n'
-    + '  </div>\n'
+    + '  <main class="showcase">\n'
+    + '    ' + p.demo.bodyHTML.replace(/\n/g, '\n    ') + '\n'
+    + '  </main>\n'
     + '\n'
     + '  <script>\n'
     + '    (function(){\n'
     + '      var progressFill = document.querySelector(".demo-progress > div");\n'
-    + '      var track = document.querySelector(".scroll-track");\n'
-    + '      function calc(){\n'
-    + '        var rect = track.getBoundingClientRect();\n'
-    + '        var max = Math.max(1, rect.height - window.innerHeight);\n'
-    + '        return Math.max(0, Math.min(1, -rect.top / max));\n'
-    + '      }\n'
+    + '      var DURATION = ' + dur + ';\n'
+    + '      var startTime = null;\n'
     + '      ' + p.demo.js.replace(/\n/g, '\n      ') + '\n'
-    + '      function tick(){\n'
-    + '        var p = calc();\n'
+    + '      function tick(timestamp) {\n'
+    + '        if (!startTime) startTime = timestamp;\n'
+    + '        var elapsed = timestamp - startTime;\n'
+    + '        var p = Math.min(1, elapsed / DURATION);\n'
     + '        progressFill.style.width = (p * 100) + "%";\n'
     + '        applyReveal(p);\n'
+    + '        if (p < 1) requestAnimationFrame(tick);\n'
     + '      }\n'
-    + '      window.addEventListener("scroll", tick, { passive: true });\n'
-    + '      window.addEventListener("resize", tick, { passive: true });\n'
-    + '      window.__reset = function(){ window.scrollTo({ top: 0, behavior: "smooth" }); };\n'
-    + '      tick();\n'
+    + '      requestAnimationFrame(tick);\n'
+    + '      window.__reset = function(){\n'
+    + '        startTime = null;\n'
+    + '        applyReveal(0);\n'
+    + '        requestAnimationFrame(tick);\n'
+    + '      };\n'
     + '    })();\n'
     + '  </script>\n'
     + '</body>\n'
@@ -674,15 +673,15 @@ function buildOverview() {
           { label: '배경', value: '#000 (검정)' },
           { label: '숫자 색상', value: '#fff (기본) / 패턴별 변형' },
           { label: '라벨 색상', value: 'rgba(255,255,255,0.3) — 보조 텍스트' },
-          { label: 'scroll 모델', value: '.scroll-track 240vh + sticky-stage + progress 0→1' },
+          { label: '애니메이션 모델', value: 'requestAnimationFrame + duration 기반 자동 재생' },
           { label: 'Framer 참고', value: 'LoaderCounter (organic pacing, locale-aware)' }
         ]
       },
       { type: 'heading', value: '읽기 가이드' },
       {
         type: 'structure', items: [
-          { label: '라이브 데모', tag: 'IFRAME', desc: 'demos/number-counter/{pattern}.html — 스크롤 매핑 카운터' },
-          { label: '작동 원리', tag: 'HOW', desc: 'scroll progress → 이징 함수 → 숫자 갱신' },
+          { label: '라이브 데모', tag: 'IFRAME', desc: 'demos/number-counter/{pattern}.html — 자동 재생 카운터' },
+          { label: '작동 원리', tag: 'HOW', desc: 'rAF progress 0→1 → 이징 함수 → 숫자 갱신' },
           { label: '정량 메타', tag: 'KV', desc: '의존성 / 트리거 / 이징 / 목표값 / 핵심 메커니즘' },
           { label: '코드 스니펫', tag: 'CODE', desc: 'HTML / CSS / JS — 패턴별 핵심 코드' },
           { label: '사용 가이드', tag: 'GUIDE', desc: '파라미터·주의점·반응형 대응' },
@@ -692,7 +691,7 @@ function buildOverview() {
       },
       {
         type: 'note',
-        value: 'Framer LoaderCounter 컴포넌트(organic pacing, locale-aware formatting, K/M/B abbreviation, color fade)를 첫 번째 패턴으로 재현하고, 9가지 추가 변형을 비교 카탈로그로 정리. 모든 데모는 검정 배경(#000) + Pretendard Variable + 한국어 라벨 + 스크롤 진행률 매핑.'
+        value: 'Framer LoaderCounter 컴포넌트(organic pacing, locale-aware formatting, K/M/B abbreviation, color fade)를 첫 번째 패턴으로 재현하고, 9가지 추가 변형을 비교 카탈로그로 정리. 모든 데모는 검정 배경(#000) + Pretendard Variable + 한국어 라벨 + 페이지 로드 시 자동 재생(rAF).'
       }
     ]
   };
