@@ -72,6 +72,28 @@
   ],
   "references": [
     {
+      "id": "wavy-image-swap",
+      "title": "Wavy Image Swap",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-04",
+      "analysis": "analyses/wavy-image-swap/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        { "id": "overview",      "num": "00", "title": "카테고리 개요",                   "desc": "패턴 10종 인덱스 + sticky 물결 마스크 모델 + 읽기 가이드" },
+        { "id": "wave-up",       "num": "01", "title": "물결 상승 (Masked Slider 시그니처)", "desc": "다음 이미지가 아래에서 물결 라인 그리며 위로 차오름" },
+        { "id": "wave-side",     "num": "02", "title": "측면 물결 스윕",                   "desc": "세로 물결 엣지가 좌→우로 스윕하며 이미지 교체" },
+        { "id": "wave-diagonal", "num": "03", "title": "사선 물결",                       "desc": "좌하단→우상단 대각선 물결 경계 와이프" },
+        { "id": "wave-blob",     "num": "04", "title": "물결 블롭 확장",                  "desc": "중앙에서 5-로브 둥근 물결 블롭 확장" },
+        { "id": "wave-ripple",   "num": "05", "title": "물결 파장",                       "desc": "중앙에서 14-로브 잔물결 동심 파장 확산" },
+        { "id": "wave-band",     "num": "06", "title": "수직 밴드 분할",                  "desc": "중앙 위·아래 물결 2줄이 세로로 벌어짐" },
+        { "id": "wave-curtain",  "num": "07", "title": "가로 커튼 분할",                  "desc": "중앙 좌·우 물결 2줄이 커튼처럼 벌어짐" },
+        { "id": "wave-zigzag",   "num": "08", "title": "지그재그 물결",                   "desc": "삼각파 톱니 엣지가 아래→위로 reveal" },
+        { "id": "wave-morph",    "num": "09", "title": "물결 모핑",                       "desc": "진폭 sin(π·c) 변조 — 중간에 크게 부풂" },
+        { "id": "wave-stack",    "num": "10", "title": "레이어드 물결",                   "desc": "2중 주파수 합성 — 리얼 파도 같은 물결" }
+      ]
+    },
+    {
       "id": "scrollx-card",
       "title": "ScrollX Card",
       "type": "category",
@@ -227,8 +249,8 @@
     }
   ],
   "counts": {
-    "references": 6,
-    "categories": 6,
-    "patterns": 60
+    "references": 8,
+    "categories": 8,
+    "patterns": 80
   }
 }
