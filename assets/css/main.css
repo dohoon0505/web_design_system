@@ -1,5 +1,5 @@
 /* ================================================================
-   Web Reference Lab — 웹 디자인 레퍼런스 연구소
+   Interaction Lab — 인터랙티브 모션 및 인터랙션 연구소
    v0.0.0
    ================================================================ */
 
@@ -506,10 +506,13 @@ body.sidebar-collapsed .container { max-width: 2200px; }
   gap: var(--size-400);
 }
 .analysis-card {
+  display: block;
   padding: var(--size-500);
   background: var(--sm-surface-default);
   border: 1px solid var(--sm-border-subtle);
   border-radius: var(--radius-lg);
+  color: inherit;
+  text-decoration: none;
   transition: all var(--motion-base) var(--ease-standard);
 }
 .analysis-card:hover {

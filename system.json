@@ -1,8 +1,8 @@
 {
   "name": "web-reference-lab",
-  "fullName": "Web Reference Lab · 웹 디자인 레퍼런스 연구소",
+  "fullName": "Interaction Lab · 인터랙티브 모션 및 인터랙션 연구소",
   "version": "0.0.0",
-  "description": "실제 운영 중인 웹사이트의 디자인 시스템을 디자이너+퍼블리셔 관점으로 분석하는 레퍼런스 카탈로그. 사이트별로 서브페이지 구조/디렉토리가 다르므로 각 reference 안에 자체 sections 배열을 정의한다.",
+  "description": "실무에서 쓰이는 인터랙티브 모션과 마이크로 인터랙션을 패턴 단위로 정리한 카탈로그. 각 카테고리는 standalone HTML 라이브 데모(iframe 임베드) + HTML/CSS/JS 코드 스니펫 + 한국어 가이드를 담은 자체 sections 배열을 정의한다.",
   "entry": {
     "ai": "AGENTS.md",
     "human": "CLAUDE.md",
