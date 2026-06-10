@@ -72,6 +72,468 @@
   ],
   "references": [
     {
+      "id": "text-scramble",
+      "title": "스크램블 텍스트",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/text-scramble/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 시간 기반 키네틱 타이포 모델 + 읽기 가이드"
+        },
+        {
+          "id": "scramble-decode",
+          "num": "01",
+          "title": "스크램블 디코드 (시그니처)",
+          "desc": "랜덤 글리프 회전 → 좌→우 한 글자씩 해독 확정"
+        },
+        {
+          "id": "typewriter",
+          "num": "02",
+          "title": "타자기",
+          "desc": "커서 깜빡임 + 한 자씩 출력 → 완료 후 커서 소멸"
+        },
+        {
+          "id": "slot-roll",
+          "num": "03",
+          "title": "슬롯 롤링",
+          "desc": "세로 글리프 스택 슬롯머신 + 좌→우 stagger 정착"
+        },
+        {
+          "id": "flip-board",
+          "num": "04",
+          "title": "플립보드",
+          "desc": "스플릿 플랩 rotateX 타일 + 좌→우 연쇄 확정"
+        },
+        {
+          "id": "rollup-hover",
+          "num": "05",
+          "title": "글자 롤업 호버",
+          "desc": "hover 시 글자 stagger 롤업 + 액센트 색 교대"
+        },
+        {
+          "id": "glitch-flicker",
+          "num": "06",
+          "title": "글리치 플리커",
+          "desc": "빨강·시안 잔상 + clip-path 슬라이스 3버스트 글리치"
+        },
+        {
+          "id": "wave-baseline",
+          "num": "07",
+          "title": "웨이브 베이스라인",
+          "desc": "sin 위상차 출렁임 → 진폭 감쇠 정렬"
+        },
+        {
+          "id": "word-rotator",
+          "num": "08",
+          "title": "단어 로테이터",
+          "desc": "키워드 마스크 슬롯 4단어 순환 교체"
+        },
+        {
+          "id": "erase-rewrite",
+          "num": "09",
+          "title": "지우고 다시 쓰기",
+          "desc": "타이핑 → 백스페이스 → 재타이핑 루프"
+        },
+        {
+          "id": "number-decode",
+          "num": "10",
+          "title": "숫자 디코드",
+          "desc": "숫자 글리프 노이즈 → 좌→우 해독 12,840,000"
+        }
+      ]
+    },
+    {
+      "id": "scroll-path-draw",
+      "title": "스크롤 패스 드로잉",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/scroll-path-draw/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + stroke-dashoffset 매핑 모델 + 읽기 가이드"
+        },
+        {
+          "id": "line-trace",
+          "num": "01",
+          "title": "라인 트레이스",
+          "desc": "단일 곡선 dashoffset 1:1 매핑 + 도착점 점등"
+        },
+        {
+          "id": "signature-draw",
+          "num": "02",
+          "title": "시그니처 드로잉",
+          "desc": "멀티 획 길이 비례 순차 드로잉 — 펜 속도 재현"
+        },
+        {
+          "id": "underline-sketch",
+          "num": "03",
+          "title": "밑줄 스케치",
+          "desc": "헤드라인 페이드 인 + 손그림 2획 밑줄 스케치"
+        },
+        {
+          "id": "gauge-ring",
+          "num": "04",
+          "title": "원형 게이지 링",
+          "desc": "2πr dasharray 원형 링 + 중앙 % 동기 카운트"
+        },
+        {
+          "id": "timeline-stem",
+          "num": "05",
+          "title": "타임라인 줄기",
+          "desc": "세로 줄기 성장 + 마일스톤 도트 순차 점등"
+        },
+        {
+          "id": "map-route",
+          "num": "06",
+          "title": "지도 경로",
+          "desc": "경로선 드로잉 + getPointAtLength 마커 추적"
+        },
+        {
+          "id": "icon-outline",
+          "num": "07",
+          "title": "아이콘 아웃라인",
+          "desc": "5패스 길이 비례 순차 드로잉 + 마지막 fill 차오름"
+        },
+        {
+          "id": "graph-line",
+          "num": "08",
+          "title": "그래프 라인",
+          "desc": "꺾은선 좌→우 드로잉 + 데이터 도트 점등 + 영역 fill"
+        },
+        {
+          "id": "text-outline",
+          "num": "09",
+          "title": "텍스트 아웃라인",
+          "desc": "글자 stroke 드로잉 + 글자별 stagger + fill 마감"
+        },
+        {
+          "id": "arrow-guide",
+          "num": "10",
+          "title": "화살표 가이드",
+          "desc": "STEP 연결 곡선 화살표 + 화살촉 + 목적지 점등"
+        }
+      ]
+    },
+    {
+      "id": "cursor-spotlight",
+      "title": "커서 스포트라이트",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/cursor-spotlight/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + --x/--y CSS 변수 모델 + 읽기 가이드"
+        },
+        {
+          "id": "flashlight-text",
+          "num": "01",
+          "title": "플래시라이트 텍스트 (시그니처)",
+          "desc": "radial mask 원 안에서만 문단이 밝아지는 손전등"
+        },
+        {
+          "id": "image-torch",
+          "num": "02",
+          "title": "이미지 손전등",
+          "desc": "grayscale 아래층 + 컬러 위층 radial mask 토치"
+        },
+        {
+          "id": "xray-reveal",
+          "num": "03",
+          "title": "엑스레이 리빌",
+          "desc": "커서 원 안에서 와이어프레임이 비치는 역방향 mask"
+        },
+        {
+          "id": "border-glow",
+          "num": "04",
+          "title": "보더 글로우 카드 (Linear)",
+          "desc": "Linear 스타일 ::before radial 발광 보더"
+        },
+        {
+          "id": "grid-highlight",
+          "num": "05",
+          "title": "그리드 하이라이트 (GitHub)",
+          "desc": "GitHub 스타일 44px 격자 + 시안 radial 하이라이트"
+        },
+        {
+          "id": "zoom-lens",
+          "num": "06",
+          "title": "줌 렌즈",
+          "desc": "background-size 2배 + 커서 추적 180px 원형 돋보기"
+        },
+        {
+          "id": "stroke-fill-text",
+          "num": "07",
+          "title": "아웃라인 필 텍스트",
+          "desc": "text-stroke 외곽선 + radial mask 그라디언트 필"
+        },
+        {
+          "id": "glow-backdrop",
+          "num": "08",
+          "title": "무빙 글로우 배경 (Vercel)",
+          "desc": "blur 70px 광원 blob 2개 lerp 지연 추적"
+        },
+        {
+          "id": "multi-card-glow",
+          "num": "09",
+          "title": "멀티 카드 글로우",
+          "desc": "카드 6장 동시 좌표 환산 + 거리 비례 발광"
+        },
+        {
+          "id": "curtain-slit",
+          "num": "10",
+          "title": "커튼 슬릿",
+          "desc": "커서 X = 분할선 — 라이트/다크 clip-path 실시간 분할"
+        }
+      ]
+    },
+    {
+      "id": "custom-cursor",
+      "title": "커스텀 커서",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/custom-cursor/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + rAF lerp 보간 모델 + 읽기 가이드"
+        },
+        {
+          "id": "dot-ring",
+          "num": "01",
+          "title": "도트 + 링 듀오 (시그니처)",
+          "desc": "즉시 추적 도트 + lerp 0.15 지연 링 듀오"
+        },
+        {
+          "id": "blend-invert",
+          "num": "02",
+          "title": "블렌드 인버트",
+          "desc": "mix-blend-mode difference 색 반전 원"
+        },
+        {
+          "id": "label-cursor",
+          "num": "03",
+          "title": "라벨 커서",
+          "desc": "카드 위에서 VIEW 라벨 캡슐로 확장되는 CTA 커서"
+        },
+        {
+          "id": "magnetic-snap",
+          "num": "04",
+          "title": "마그네틱 스냅",
+          "desc": "반경 110px 거리 비례 흡착 + 버튼 동반 끌림"
+        },
+        {
+          "id": "jelly-blob",
+          "num": "05",
+          "title": "젤리 블롭",
+          "desc": "속도·방향 기반 squash & stretch 젤리 변형"
+        },
+        {
+          "id": "ghost-trail",
+          "num": "06",
+          "title": "고스트 딜레이",
+          "desc": "lerp 계수 차등 잔상 5개 시차 트레일"
+        },
+        {
+          "id": "icon-swap",
+          "num": "07",
+          "title": "아이콘 스왑",
+          "desc": "data-cursor 속성별 화살표·플러스·드래그 아이콘 교체"
+        },
+        {
+          "id": "preview-thumb",
+          "num": "08",
+          "title": "프리뷰 썸네일",
+          "desc": "리스트 행 hover 시 미니 아트워크 카드 팝업"
+        },
+        {
+          "id": "image-trail",
+          "num": "09",
+          "title": "이미지 트레일",
+          "desc": "80px 이동마다 카드 스폰 — 풀 10개 순환 재사용"
+        },
+        {
+          "id": "hold-progress",
+          "num": "10",
+          "title": "홀드 프로그레스",
+          "desc": "900ms 홀드 SVG 링 게이지 + 미완료 시 되감기"
+        }
+      ]
+    },
+    {
+      "id": "image-hover",
+      "title": "이미지 hover",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/image-hover/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 이미지 카드 hover 모델 + 읽기 가이드"
+        },
+        {
+          "id": "slow-zoom",
+          "num": "01",
+          "title": "슬로우 줌 (시그니처)",
+          "desc": "overflow hidden 프레임 + scale 1→1.08 슬로우 줌"
+        },
+        {
+          "id": "pan-shift",
+          "num": "02",
+          "title": "팬 시프트",
+          "desc": "130% 폭 아트워크 translateX 좌→우 카메라 팬"
+        },
+        {
+          "id": "grayscale-release",
+          "num": "03",
+          "title": "그레이스케일 해제",
+          "desc": "grayscale(1) → 컬러 복귀 + 살짝 줌"
+        },
+        {
+          "id": "duotone-wash",
+          "num": "04",
+          "title": "듀오톤 워시",
+          "desc": "mix-blend-mode 단색 오버레이가 hover 시 걷힘"
+        },
+        {
+          "id": "blur-focus",
+          "num": "05",
+          "title": "블러 포커스",
+          "desc": "blur(8px) → 선명 초점 + scale 가장자리 보정"
+        },
+        {
+          "id": "caption-clip",
+          "num": "06",
+          "title": "캡션 클립",
+          "desc": "캡션 바 clip-path inset 슬라이드 인 + 이미지 디밍"
+        },
+        {
+          "id": "slice-stagger",
+          "num": "07",
+          "title": "슬라이스 스태거",
+          "desc": "4분할 세로 띠 transition-delay 엇갈림 시프트"
+        },
+        {
+          "id": "mouse-tilt",
+          "num": "08",
+          "title": "마우스 틸트",
+          "desc": "커서 좌표 rotateX/Y 3D 틸트 + spring 복귀"
+        },
+        {
+          "id": "frame-inset",
+          "num": "09",
+          "title": "프레임 인셋",
+          "desc": "clip-path inset 0→24px 액자 매트 수축"
+        },
+        {
+          "id": "color-wash",
+          "num": "10",
+          "title": "컬러 워시 페이드",
+          "desc": "브랜드 그라디언트 오버레이 + 제목 리프트 + ↗ 화살표"
+        }
+      ]
+    },
+    {
+      "id": "before-after-slider",
+      "title": "비포-애프터 슬라이더",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/before-after-slider/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 드래그 분할 모델 + 읽기 가이드"
+        },
+        {
+          "id": "horizontal-wipe",
+          "num": "01",
+          "title": "가로 와이프 (시그니처)",
+          "desc": "BEFORE clip-path inset 우측 인셋 = 핸들 X 1:1"
+        },
+        {
+          "id": "vertical-wipe",
+          "num": "02",
+          "title": "세로 와이프",
+          "desc": "아래 인셋을 핸들 Y에 묶은 상하 드래그 변형"
+        },
+        {
+          "id": "hover-follow",
+          "num": "03",
+          "title": "호버 팔로우",
+          "desc": "커서 X = 분할선 — lerp 추적 + 중앙 50% 복귀"
+        },
+        {
+          "id": "spotlight-lens",
+          "num": "04",
+          "title": "스포트라이트 렌즈",
+          "desc": "clip-path circle() 커서 추적 원형 렌즈 국소 비교"
+        },
+        {
+          "id": "diagonal-split",
+          "num": "05",
+          "title": "대각선 분할",
+          "desc": "polygon 4점 ±12% 사선 경계 드래그"
+        },
+        {
+          "id": "blind-stripes",
+          "num": "06",
+          "title": "블라인드 스트라이프",
+          "desc": "수직 띠 8개 stagger 개방 — 블라인드 메타포"
+        },
+        {
+          "id": "scroll-scrub-wipe",
+          "num": "07",
+          "title": "스크롤 스크럽 와이프",
+          "desc": "스크롤 진행률 0~1 → 분할선 위치 스크럽"
+        },
+        {
+          "id": "click-crossfade",
+          "num": "08",
+          "title": "클릭 크로스페이드",
+          "desc": "BEFORE/AFTER 토글 버튼 opacity 크로스페이드"
+        },
+        {
+          "id": "label-gauge",
+          "num": "09",
+          "title": "라벨 게이지",
+          "desc": "% 배지 + 노출 면적 비례 BEFORE/AFTER 라벨"
+        },
+        {
+          "id": "auto-sweep",
+          "num": "10",
+          "title": "오토 스윕",
+          "desc": "로드 직후 1회 왕복 스윕(50→92→8→50%) — 발견성 데모"
+        }
+      ]
+    },
+    {
       "id": "fullscreen-wavy-swap",
       "title": "Fullscreen Wavy Swap",
       "type": "category",
@@ -80,17 +542,72 @@
       "analysis": "analyses/fullscreen-wavy-swap/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",      "num": "00", "title": "카테고리 개요",                   "desc": "패턴 10종 인덱스 + 풀블리드 물결 마스크 모델 + 읽기 가이드" },
-        { "id": "wave-up",       "num": "01", "title": "물결 상승 (Masked Slider 시그니처)", "desc": "다음 이미지가 아래에서 베지어 물결 곡선 그리며 위로 차오름" },
-        { "id": "wave-down",     "num": "02", "title": "물결 하강",                       "desc": "위에서 물결 곡선 그리며 아래로 흘러내림" },
-        { "id": "wave-side",     "num": "03", "title": "측면 물결 스윕",                   "desc": "세로 물결 엣지가 좌→우로 매끄럽게 스윕" },
-        { "id": "wave-diagonal", "num": "04", "title": "사선 물결",                       "desc": "좌하단→우상단 대각선 베지어 물결 와이프" },
-        { "id": "wave-blob",     "num": "05", "title": "물결 블롭 확장",                  "desc": "중앙에서 5-로브 둥근 베지어 블롭 확장" },
-        { "id": "wave-ripple",   "num": "06", "title": "물결 파장",                       "desc": "중앙에서 11-로브 잔물결 동심 파장 확산" },
-        { "id": "wave-band",     "num": "07", "title": "수직 밴드 분할",                  "desc": "중앙 위·아래 베지어 곡선 2줄이 세로로 벌어짐" },
-        { "id": "wave-curtain",  "num": "08", "title": "가로 커튼 분할",                  "desc": "중앙 좌·우 베지어 곡선 2줄이 커튼처럼 벌어짐" },
-        { "id": "wave-morph",    "num": "09", "title": "물결 모핑",                       "desc": "진폭 sin(π·c) 변조 — 중간에 크게 부풂" },
-        { "id": "wave-stack",    "num": "10", "title": "레이어드 물결",                   "desc": "2중 주파수 합성 — 리얼 파도 같은 물결" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 풀블리드 물결 마스크 모델 + 읽기 가이드"
+        },
+        {
+          "id": "wave-up",
+          "num": "01",
+          "title": "물결 상승 (Masked Slider 시그니처)",
+          "desc": "다음 이미지가 아래에서 베지어 물결 곡선 그리며 위로 차오름"
+        },
+        {
+          "id": "wave-down",
+          "num": "02",
+          "title": "물결 하강",
+          "desc": "위에서 물결 곡선 그리며 아래로 흘러내림"
+        },
+        {
+          "id": "wave-side",
+          "num": "03",
+          "title": "측면 물결 스윕",
+          "desc": "세로 물결 엣지가 좌→우로 매끄럽게 스윕"
+        },
+        {
+          "id": "wave-diagonal",
+          "num": "04",
+          "title": "사선 물결",
+          "desc": "좌하단→우상단 대각선 베지어 물결 와이프"
+        },
+        {
+          "id": "wave-blob",
+          "num": "05",
+          "title": "물결 블롭 확장",
+          "desc": "중앙에서 5-로브 둥근 베지어 블롭 확장"
+        },
+        {
+          "id": "wave-ripple",
+          "num": "06",
+          "title": "물결 파장",
+          "desc": "중앙에서 11-로브 잔물결 동심 파장 확산"
+        },
+        {
+          "id": "wave-band",
+          "num": "07",
+          "title": "수직 밴드 분할",
+          "desc": "중앙 위·아래 베지어 곡선 2줄이 세로로 벌어짐"
+        },
+        {
+          "id": "wave-curtain",
+          "num": "08",
+          "title": "가로 커튼 분할",
+          "desc": "중앙 좌·우 베지어 곡선 2줄이 커튼처럼 벌어짐"
+        },
+        {
+          "id": "wave-morph",
+          "num": "09",
+          "title": "물결 모핑",
+          "desc": "진폭 sin(π·c) 변조 — 중간에 크게 부풂"
+        },
+        {
+          "id": "wave-stack",
+          "num": "10",
+          "title": "레이어드 물결",
+          "desc": "2중 주파수 합성 — 리얼 파도 같은 물결"
+        }
       ]
     },
     {
@@ -102,17 +619,72 @@
       "analysis": "analyses/card-wavy-swap/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",      "num": "00", "title": "카테고리 개요",                   "desc": "패턴 10종 인덱스 + 카드 프레임 내부 물결 모델 + 읽기 가이드" },
-        { "id": "wave-up",       "num": "01", "title": "물결 상승 (Masked Slider 시그니처)", "desc": "카드 안 이미지가 아래에서 베지어 물결로 위로 차오름" },
-        { "id": "wave-down",     "num": "02", "title": "물결 하강",                       "desc": "카드 안에서 위→아래로 물결 흘러내림" },
-        { "id": "wave-side",     "num": "03", "title": "측면 물결 스윕",                   "desc": "카드 안 세로 물결 엣지가 좌→우 스윕" },
-        { "id": "wave-diagonal", "num": "04", "title": "사선 물결",                       "desc": "카드 안 좌하단→우상단 대각선 물결" },
-        { "id": "wave-blob",     "num": "05", "title": "물결 블롭 확장",                  "desc": "카드 중앙에서 5-로브 베지어 블롭 확장" },
-        { "id": "wave-ripple",   "num": "06", "title": "물결 파장",                       "desc": "카드 중앙에서 11-로브 잔물결 확산" },
-        { "id": "wave-band",     "num": "07", "title": "수직 밴드 분할",                  "desc": "카드 중앙 위·아래 곡선 2줄 세로 분할" },
-        { "id": "wave-curtain",  "num": "08", "title": "가로 커튼 분할",                  "desc": "카드 중앙 좌·우 곡선 2줄 커튼 분할" },
-        { "id": "wave-morph",    "num": "09", "title": "물결 모핑",                       "desc": "카드 안 진폭 sin(π·c) 변조 모핑" },
-        { "id": "wave-stack",    "num": "10", "title": "레이어드 물결",                   "desc": "카드 안 2중 주파수 합성 리얼 파도" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 카드 프레임 내부 물결 모델 + 읽기 가이드"
+        },
+        {
+          "id": "wave-up",
+          "num": "01",
+          "title": "물결 상승 (Masked Slider 시그니처)",
+          "desc": "카드 안 이미지가 아래에서 베지어 물결로 위로 차오름"
+        },
+        {
+          "id": "wave-down",
+          "num": "02",
+          "title": "물결 하강",
+          "desc": "카드 안에서 위→아래로 물결 흘러내림"
+        },
+        {
+          "id": "wave-side",
+          "num": "03",
+          "title": "측면 물결 스윕",
+          "desc": "카드 안 세로 물결 엣지가 좌→우 스윕"
+        },
+        {
+          "id": "wave-diagonal",
+          "num": "04",
+          "title": "사선 물결",
+          "desc": "카드 안 좌하단→우상단 대각선 물결"
+        },
+        {
+          "id": "wave-blob",
+          "num": "05",
+          "title": "물결 블롭 확장",
+          "desc": "카드 중앙에서 5-로브 베지어 블롭 확장"
+        },
+        {
+          "id": "wave-ripple",
+          "num": "06",
+          "title": "물결 파장",
+          "desc": "카드 중앙에서 11-로브 잔물결 확산"
+        },
+        {
+          "id": "wave-band",
+          "num": "07",
+          "title": "수직 밴드 분할",
+          "desc": "카드 중앙 위·아래 곡선 2줄 세로 분할"
+        },
+        {
+          "id": "wave-curtain",
+          "num": "08",
+          "title": "가로 커튼 분할",
+          "desc": "카드 중앙 좌·우 곡선 2줄 커튼 분할"
+        },
+        {
+          "id": "wave-morph",
+          "num": "09",
+          "title": "물결 모핑",
+          "desc": "카드 안 진폭 sin(π·c) 변조 모핑"
+        },
+        {
+          "id": "wave-stack",
+          "num": "10",
+          "title": "레이어드 물결",
+          "desc": "카드 안 2중 주파수 합성 리얼 파도"
+        }
       ]
     },
     {
@@ -124,17 +696,72 @@
       "analysis": "analyses/scrollx-card/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",      "num": "00", "title": "카테고리 개요",                  "desc": "패턴 10종 인덱스 + 가로 글라이드 모델 + 읽기 가이드" },
-        { "id": "track-glide",   "num": "01", "title": "트랙 글라이드 (ScrollX 시그니처)", "desc": "세로 스크롤 → 트랙 translateX 선형 가로 이동" },
-        { "id": "center-focus",  "num": "02", "title": "센터 포커스",                    "desc": "중앙 카드 scale 1·선명, 가장자리 축소·반투명" },
-        { "id": "coverflow-3d",  "num": "03", "title": "커버플로우 3D",                  "desc": "rotateY ±60deg 입체 커버플로우 + zIndex" },
-        { "id": "parallax-depth","num": "04", "title": "패럴랙스 뎁스",                  "desc": "카드별 이동 속도 차등(0.86/1/1.16) 깊이감" },
-        { "id": "snap-step",     "num": "05", "title": "스냅 스텝",                      "desc": "진행률 카드 단위 양자화 + transition 스냅" },
-        { "id": "scale-reveal",  "num": "06", "title": "스케일 리빌",                    "desc": "우측 진입 시 scale 0.7→1 + opacity 등장" },
-        { "id": "rotate-tilt",   "num": "07", "title": "관성 틸트",                      "desc": "스크롤 속도 비례 skewX ±10deg 관성 틸트" },
-        { "id": "edge-fade",     "num": "08", "title": "엣지 페이드 (마스크)",            "desc": "viewport 좌우 mask 페이드 시네마틱 띠" },
-        { "id": "stagger-wave",  "num": "09", "title": "스태거 웨이브",                  "desc": "카드 Y offset 사인파 물결 출렁임" },
-        { "id": "stack-peek",    "num": "10", "title": "스택 픽",                        "desc": "음수 margin 겹침 + 중앙 카드 펼침 zIndex" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 가로 글라이드 모델 + 읽기 가이드"
+        },
+        {
+          "id": "track-glide",
+          "num": "01",
+          "title": "트랙 글라이드 (ScrollX 시그니처)",
+          "desc": "세로 스크롤 → 트랙 translateX 선형 가로 이동"
+        },
+        {
+          "id": "center-focus",
+          "num": "02",
+          "title": "센터 포커스",
+          "desc": "중앙 카드 scale 1·선명, 가장자리 축소·반투명"
+        },
+        {
+          "id": "coverflow-3d",
+          "num": "03",
+          "title": "커버플로우 3D",
+          "desc": "rotateY ±60deg 입체 커버플로우 + zIndex"
+        },
+        {
+          "id": "parallax-depth",
+          "num": "04",
+          "title": "패럴랙스 뎁스",
+          "desc": "카드별 이동 속도 차등(0.86/1/1.16) 깊이감"
+        },
+        {
+          "id": "snap-step",
+          "num": "05",
+          "title": "스냅 스텝",
+          "desc": "진행률 카드 단위 양자화 + transition 스냅"
+        },
+        {
+          "id": "scale-reveal",
+          "num": "06",
+          "title": "스케일 리빌",
+          "desc": "우측 진입 시 scale 0.7→1 + opacity 등장"
+        },
+        {
+          "id": "rotate-tilt",
+          "num": "07",
+          "title": "관성 틸트",
+          "desc": "스크롤 속도 비례 skewX ±10deg 관성 틸트"
+        },
+        {
+          "id": "edge-fade",
+          "num": "08",
+          "title": "엣지 페이드 (마스크)",
+          "desc": "viewport 좌우 mask 페이드 시네마틱 띠"
+        },
+        {
+          "id": "stagger-wave",
+          "num": "09",
+          "title": "스태거 웨이브",
+          "desc": "카드 Y offset 사인파 물결 출렁임"
+        },
+        {
+          "id": "stack-peek",
+          "num": "10",
+          "title": "스택 픽",
+          "desc": "음수 margin 겹침 + 중앙 카드 펼침 zIndex"
+        }
       ]
     },
     {
@@ -146,17 +773,72 @@
       "analysis": "analyses/scroll-card-update/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",          "num": "00", "title": "카테고리 개요",            "desc": "패턴 10종 인덱스 + 2-col 좌 텍스트/우 카드 모델" },
-        { "id": "stack-up",          "num": "01", "title": "스택 업 (base44 시그니처)", "desc": "새 카드가 아래에서 위로 슬라이드 + zIndex 누적" },
-        { "id": "fade-stack",        "num": "02", "title": "페이드 스택",              "desc": "opacity 0↔1 단순 fade (600ms ease-in-out)" },
-        { "id": "scale-pop",         "num": "03", "title": "스케일 팝",                "desc": "scale 0.92→1→1.04 + opacity Δ" },
-        { "id": "slide-from-right",  "num": "04", "title": "우측 슬라이드",            "desc": "translateX 100%→0→-100% (out-expo)" },
-        { "id": "clip-bottom",       "num": "05", "title": "Clip 바텀 리빌",           "desc": "clip-path inset 100%→0 위에서 아래 커튼" },
-        { "id": "rotate-tilt",       "num": "06", "title": "회전 틸트",                "desc": "translateY 60px + rotate ±3deg + opacity" },
-        { "id": "blur-swap",         "num": "07", "title": "블러 스왑",                "desc": "filter blur(18→0) + opacity 700ms" },
-        { "id": "stack-spread",      "num": "08", "title": "스택 스프레드 (카드 덱)",   "desc": "이전 카드 -12px×i + scale 0.96~ 누적" },
-        { "id": "dissolve",          "num": "09", "title": "디졸브 (그레인)",          "desc": "opacity + contrast/saturate + SVG noise overlay" },
-        { "id": "carousel",          "num": "10", "title": "캐러셀",                  "desc": "활성 가운데 + 인접 ±65% scale 0.85 미니어처" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 2-col 좌 텍스트/우 카드 모델"
+        },
+        {
+          "id": "stack-up",
+          "num": "01",
+          "title": "스택 업 (base44 시그니처)",
+          "desc": "새 카드가 아래에서 위로 슬라이드 + zIndex 누적"
+        },
+        {
+          "id": "fade-stack",
+          "num": "02",
+          "title": "페이드 스택",
+          "desc": "opacity 0↔1 단순 fade (600ms ease-in-out)"
+        },
+        {
+          "id": "scale-pop",
+          "num": "03",
+          "title": "스케일 팝",
+          "desc": "scale 0.92→1→1.04 + opacity Δ"
+        },
+        {
+          "id": "slide-from-right",
+          "num": "04",
+          "title": "우측 슬라이드",
+          "desc": "translateX 100%→0→-100% (out-expo)"
+        },
+        {
+          "id": "clip-bottom",
+          "num": "05",
+          "title": "Clip 바텀 리빌",
+          "desc": "clip-path inset 100%→0 위에서 아래 커튼"
+        },
+        {
+          "id": "rotate-tilt",
+          "num": "06",
+          "title": "회전 틸트",
+          "desc": "translateY 60px + rotate ±3deg + opacity"
+        },
+        {
+          "id": "blur-swap",
+          "num": "07",
+          "title": "블러 스왑",
+          "desc": "filter blur(18→0) + opacity 700ms"
+        },
+        {
+          "id": "stack-spread",
+          "num": "08",
+          "title": "스택 스프레드 (카드 덱)",
+          "desc": "이전 카드 -12px×i + scale 0.96~ 누적"
+        },
+        {
+          "id": "dissolve",
+          "num": "09",
+          "title": "디졸브 (그레인)",
+          "desc": "opacity + contrast/saturate + SVG noise overlay"
+        },
+        {
+          "id": "carousel",
+          "num": "10",
+          "title": "캐러셀",
+          "desc": "활성 가운데 + 인접 ±65% scale 0.85 미니어처"
+        }
       ]
     },
     {
@@ -168,17 +850,72 @@
       "analysis": "analyses/full-screen-scroll/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",        "num": "00", "title": "카테고리 개요",                "desc": "패턴 10종 인덱스 + scroll 모델 + 읽기 가이드" },
-        { "id": "fade-stack",      "num": "01", "title": "페이드 스택 (Framer Scroll Slides)", "desc": "sticky + activeIndex + opacity fade + progress bar" },
-        { "id": "horizontal-pan",  "num": "02", "title": "가로 패닝",                   "desc": "세로 스크롤 → 가로 translateX 이동" },
-        { "id": "zoom-into",       "num": "03", "title": "줌인 전환",                   "desc": "scale 0.8→1→1.4 + opacity in/out" },
-        { "id": "pin-stack",       "num": "04", "title": "핀 스택 (위로 쌓임)",         "desc": "translateY 100%→0 + zIndex 누적" },
-        { "id": "parallax-layer",  "num": "05", "title": "패럴랙스 레이어",             "desc": "배경 -12vh · 미드 -28vh · 전경 -8vh 속도 차이" },
-        { "id": "3d-rotate",       "num": "06", "title": "3D 회전 전환",                "desc": "perspective + rotateY 90° + translateZ" },
-        { "id": "scroll-snap",     "num": "07", "title": "CSS 스크롤 스냅",              "desc": "scroll-snap-type:y mandatory (JS 매핑 없음)" },
-        { "id": "clip-reveal",     "num": "08", "title": "Clip-path 리빌",              "desc": "clip-path inset 100%→0 위→아래 커튼" },
-        { "id": "scale-handoff",   "num": "09", "title": "스케일 핸드오프",             "desc": "scale 0.9→1→1.1 + opacity Δ(부드러운 교체)" },
-        { "id": "caption-slide",   "num": "10", "title": "캡션 슬라이드",              "desc": "배경 고정 + 캡션만 슬라이드별 진입" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + scroll 모델 + 읽기 가이드"
+        },
+        {
+          "id": "fade-stack",
+          "num": "01",
+          "title": "페이드 스택 (Framer Scroll Slides)",
+          "desc": "sticky + activeIndex + opacity fade + progress bar"
+        },
+        {
+          "id": "horizontal-pan",
+          "num": "02",
+          "title": "가로 패닝",
+          "desc": "세로 스크롤 → 가로 translateX 이동"
+        },
+        {
+          "id": "zoom-into",
+          "num": "03",
+          "title": "줌인 전환",
+          "desc": "scale 0.8→1→1.4 + opacity in/out"
+        },
+        {
+          "id": "pin-stack",
+          "num": "04",
+          "title": "핀 스택 (위로 쌓임)",
+          "desc": "translateY 100%→0 + zIndex 누적"
+        },
+        {
+          "id": "parallax-layer",
+          "num": "05",
+          "title": "패럴랙스 레이어",
+          "desc": "배경 -12vh · 미드 -28vh · 전경 -8vh 속도 차이"
+        },
+        {
+          "id": "3d-rotate",
+          "num": "06",
+          "title": "3D 회전 전환",
+          "desc": "perspective + rotateY 90° + translateZ"
+        },
+        {
+          "id": "scroll-snap",
+          "num": "07",
+          "title": "CSS 스크롤 스냅",
+          "desc": "scroll-snap-type:y mandatory (JS 매핑 없음)"
+        },
+        {
+          "id": "clip-reveal",
+          "num": "08",
+          "title": "Clip-path 리빌",
+          "desc": "clip-path inset 100%→0 위→아래 커튼"
+        },
+        {
+          "id": "scale-handoff",
+          "num": "09",
+          "title": "스케일 핸드오프",
+          "desc": "scale 0.9→1→1.1 + opacity Δ(부드러운 교체)"
+        },
+        {
+          "id": "caption-slide",
+          "num": "10",
+          "title": "캡션 슬라이드",
+          "desc": "배경 고정 + 캡션만 슬라이드별 진입"
+        }
       ]
     },
     {
@@ -190,17 +927,72 @@
       "analysis": "analyses/nav-bar-dropdown/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",         "num": "00", "title": "카테고리 개요",         "desc": "패턴 10종 인덱스 + nav 모델 + 읽기 가이드" },
-        { "id": "mega-menu",        "num": "01", "title": "메가 메뉴 (Aave 스타일)", "desc": "2-column 큰 패널 — 좌측 아이콘 리스트 + 우측 비주얼" },
-        { "id": "simple-list",      "num": "02", "title": "단순 수직 리스트",        "desc": "5~8개 텍스트 링크 수직 정렬" },
-        { "id": "icon-list",        "num": "03", "title": "아이콘 리스트 (Linear 스타일)", "desc": "아이콘 + 제목 + 한 줄 설명의 리스트" },
-        { "id": "multi-column",     "num": "04", "title": "다중 컬럼 (AWS 스타일)",   "desc": "3~4 컬럼 카테고리 그룹화" },
-        { "id": "card-grid",        "num": "05", "title": "카드 그리드",            "desc": "이미지·아이콘 카드 그리드 (3×2 또는 4×2)" },
-        { "id": "hover-preview",    "num": "06", "title": "hover 프리뷰",          "desc": "좌측 항목 + 우측 동적 프리뷰" },
-        { "id": "animated-slide",   "num": "07", "title": "슬라이드 진입",          "desc": "항목별 stagger delay slide + fade" },
-        { "id": "search-bar",       "num": "08", "title": "검색 통합",             "desc": "상단 검색 input + 카테고리별 결과" },
-        { "id": "cascade-submenu",  "num": "09", "title": "캐스케이드 서브메뉴",     "desc": "1depth + 우측 2depth flyout" },
-        { "id": "cta-banner",       "num": "10", "title": "메가 메뉴 + CTA 배너",   "desc": "multi-column + 하단 가로 CTA 배너" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + nav 모델 + 읽기 가이드"
+        },
+        {
+          "id": "mega-menu",
+          "num": "01",
+          "title": "메가 메뉴 (Aave 스타일)",
+          "desc": "2-column 큰 패널 — 좌측 아이콘 리스트 + 우측 비주얼"
+        },
+        {
+          "id": "simple-list",
+          "num": "02",
+          "title": "단순 수직 리스트",
+          "desc": "5~8개 텍스트 링크 수직 정렬"
+        },
+        {
+          "id": "icon-list",
+          "num": "03",
+          "title": "아이콘 리스트 (Linear 스타일)",
+          "desc": "아이콘 + 제목 + 한 줄 설명의 리스트"
+        },
+        {
+          "id": "multi-column",
+          "num": "04",
+          "title": "다중 컬럼 (AWS 스타일)",
+          "desc": "3~4 컬럼 카테고리 그룹화"
+        },
+        {
+          "id": "card-grid",
+          "num": "05",
+          "title": "카드 그리드",
+          "desc": "이미지·아이콘 카드 그리드 (3×2 또는 4×2)"
+        },
+        {
+          "id": "hover-preview",
+          "num": "06",
+          "title": "hover 프리뷰",
+          "desc": "좌측 항목 + 우측 동적 프리뷰"
+        },
+        {
+          "id": "animated-slide",
+          "num": "07",
+          "title": "슬라이드 진입",
+          "desc": "항목별 stagger delay slide + fade"
+        },
+        {
+          "id": "search-bar",
+          "num": "08",
+          "title": "검색 통합",
+          "desc": "상단 검색 input + 카테고리별 결과"
+        },
+        {
+          "id": "cascade-submenu",
+          "num": "09",
+          "title": "캐스케이드 서브메뉴",
+          "desc": "1depth + 우측 2depth flyout"
+        },
+        {
+          "id": "cta-banner",
+          "num": "10",
+          "title": "메가 메뉴 + CTA 배너",
+          "desc": "multi-column + 하단 가로 CTA 배너"
+        }
       ]
     },
     {
@@ -212,17 +1004,72 @@
       "analysis": "analyses/scroll-text-reveal/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",        "num": "00", "title": "카테고리 개요",        "desc": "패턴 10종 인덱스 + 사용 가이드 + 공통 토큰" },
-        { "id": "word-fade",       "num": "01", "title": "단어별 페이드 인",    "desc": "각 단어가 stagger delay로 opacity·translateY 진입" },
-        { "id": "line-slide",      "num": "02", "title": "줄별 슬라이드 업",    "desc": "한 줄 단위로 아래에서 위로 슬라이드 + 페이드" },
-        { "id": "char-stagger",    "num": "03", "title": "글자별 stagger",      "desc": "글자 한 자씩 stagger 진입 (translateY)" },
-        { "id": "blur-reveal",     "num": "04", "title": "블러 해제",            "desc": "filter blur(12px) → 0 + opacity 0 → 1" },
-        { "id": "color-fade",      "num": "05", "title": "회색 → 본 색",         "desc": "텍스트 컬러 dim → primary transition" },
-        { "id": "scrub-color",     "num": "06", "title": "스크롤 스크럽 컬러",   "desc": "스크롤 진행률에 1:1 매핑된 글자별 색 채우기" },
-        { "id": "mask-sweep",      "num": "07", "title": "가로 마스크 스윕",     "desc": "background-clip text + gradient position 이동" },
-        { "id": "letter-cascade",  "num": "08", "title": "글자 폭포",            "desc": "글자가 위에서 떨어지듯 translateY -30 → 0" },
-        { "id": "variable-morph",  "num": "09", "title": "Variable Font 변형",   "desc": "font-variation-settings wght 100 → 900 morph" },
-        { "id": "underline-reveal","num": "10", "title": "밑줄 동반 진입",       "desc": "텍스트 + 밑줄 width 0 → 100% 동시 진입" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 사용 가이드 + 공통 토큰"
+        },
+        {
+          "id": "word-fade",
+          "num": "01",
+          "title": "단어별 페이드 인",
+          "desc": "각 단어가 stagger delay로 opacity·translateY 진입"
+        },
+        {
+          "id": "line-slide",
+          "num": "02",
+          "title": "줄별 슬라이드 업",
+          "desc": "한 줄 단위로 아래에서 위로 슬라이드 + 페이드"
+        },
+        {
+          "id": "char-stagger",
+          "num": "03",
+          "title": "글자별 stagger",
+          "desc": "글자 한 자씩 stagger 진입 (translateY)"
+        },
+        {
+          "id": "blur-reveal",
+          "num": "04",
+          "title": "블러 해제",
+          "desc": "filter blur(12px) → 0 + opacity 0 → 1"
+        },
+        {
+          "id": "color-fade",
+          "num": "05",
+          "title": "회색 → 본 색",
+          "desc": "텍스트 컬러 dim → primary transition"
+        },
+        {
+          "id": "scrub-color",
+          "num": "06",
+          "title": "스크롤 스크럽 컬러",
+          "desc": "스크롤 진행률에 1:1 매핑된 글자별 색 채우기"
+        },
+        {
+          "id": "mask-sweep",
+          "num": "07",
+          "title": "가로 마스크 스윕",
+          "desc": "background-clip text + gradient position 이동"
+        },
+        {
+          "id": "letter-cascade",
+          "num": "08",
+          "title": "글자 폭포",
+          "desc": "글자가 위에서 떨어지듯 translateY -30 → 0"
+        },
+        {
+          "id": "variable-morph",
+          "num": "09",
+          "title": "Variable Font 변형",
+          "desc": "font-variation-settings wght 100 → 900 morph"
+        },
+        {
+          "id": "underline-reveal",
+          "num": "10",
+          "title": "밑줄 동반 진입",
+          "desc": "텍스트 + 밑줄 width 0 → 100% 동시 진입"
+        }
       ]
     },
     {
@@ -234,17 +1081,72 @@
       "analysis": "analyses/button-hover/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",       "num": "00", "title": "카테고리 개요",               "desc": "패턴 10종 인덱스 + 버튼 hover 모델 + 읽기 가이드" },
-        { "id": "slide-in-fill",  "num": "01", "title": "슬라이드 인 필 (Framer 시그니처)", "desc": "::before height 0→120% + spring ease + 텍스트 반전" },
-        { "id": "text-slide",     "num": "02", "title": "텍스트 슬라이드",              "desc": "2단 텍스트 translateY(-100%) 교체" },
-        { "id": "shine-sweep",    "num": "03", "title": "샤인 스윕",                  "desc": "대각선 하이라이트 좌→우 sweep" },
-        { "id": "scale-spring",   "num": "04", "title": "스케일 스프링",               "desc": "scale(1.06) + spring easing + shadow 증가" },
-        { "id": "bg-swipe",       "num": "05", "title": "배경 스와이프",               "desc": "::before width 0→100% 좌→우 배경 전환" },
-        { "id": "outline-fill",   "num": "06", "title": "아웃라인 → 필",              "desc": "outline 버튼 ::before scale(0→1) 배경 채우기" },
-        { "id": "icon-reveal",    "num": "07", "title": "아이콘 리빌",                "desc": "hover 시 아이콘 max-width 0→24px 슬라이드 진입" },
-        { "id": "ripple",         "num": "08", "title": "리플 이펙트",                "desc": "커서 위치 기준 원형 파장 scale(0→4)" },
-        { "id": "glow",           "num": "09", "title": "네온 글로우",                "desc": "3-layer box-shadow + text-shadow 네온 발광" },
-        { "id": "magnetic",       "num": "10", "title": "마그네틱 커서",              "desc": "커서 위치에 따라 버튼이 자석처럼 따라감" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 버튼 hover 모델 + 읽기 가이드"
+        },
+        {
+          "id": "slide-in-fill",
+          "num": "01",
+          "title": "슬라이드 인 필 (Framer 시그니처)",
+          "desc": "::before height 0→120% + spring ease + 텍스트 반전"
+        },
+        {
+          "id": "text-slide",
+          "num": "02",
+          "title": "텍스트 슬라이드",
+          "desc": "2단 텍스트 translateY(-100%) 교체"
+        },
+        {
+          "id": "shine-sweep",
+          "num": "03",
+          "title": "샤인 스윕",
+          "desc": "대각선 하이라이트 좌→우 sweep"
+        },
+        {
+          "id": "scale-spring",
+          "num": "04",
+          "title": "스케일 스프링",
+          "desc": "scale(1.06) + spring easing + shadow 증가"
+        },
+        {
+          "id": "bg-swipe",
+          "num": "05",
+          "title": "배경 스와이프",
+          "desc": "::before width 0→100% 좌→우 배경 전환"
+        },
+        {
+          "id": "outline-fill",
+          "num": "06",
+          "title": "아웃라인 → 필",
+          "desc": "outline 버튼 ::before scale(0→1) 배경 채우기"
+        },
+        {
+          "id": "icon-reveal",
+          "num": "07",
+          "title": "아이콘 리빌",
+          "desc": "hover 시 아이콘 max-width 0→24px 슬라이드 진입"
+        },
+        {
+          "id": "ripple",
+          "num": "08",
+          "title": "리플 이펙트",
+          "desc": "커서 위치 기준 원형 파장 scale(0→4)"
+        },
+        {
+          "id": "glow",
+          "num": "09",
+          "title": "네온 글로우",
+          "desc": "3-layer box-shadow + text-shadow 네온 발광"
+        },
+        {
+          "id": "magnetic",
+          "num": "10",
+          "title": "마그네틱 커서",
+          "desc": "커서 위치에 따라 버튼이 자석처럼 따라감"
+        }
       ]
     },
     {
@@ -256,23 +1158,78 @@
       "analysis": "analyses/number-counter/analysis.json",
       "patternCount": 10,
       "sections": [
-        { "id": "overview",          "num": "00", "title": "카테고리 개요",                  "desc": "패턴 10종 인덱스 + 카운터 모델 + 읽기 가이드" },
-        { "id": "loader-counter",    "num": "01", "title": "로더 카운터 (Framer 시그니처)",   "desc": "0%→100% 오가닉 이징 (빠름→느림 + 마이크로 포즈)" },
-        { "id": "linear-count",      "num": "02", "title": "리니어 카운트업",                "desc": "선형 0→10,000 + toLocaleString 콤마 포맷" },
-        { "id": "odometer",          "num": "03", "title": "자릿수 롤링 (오도미터)",          "desc": "각 자릿수 독립 translateY 슬롯 머신" },
-        { "id": "comma-format",      "num": "04", "title": "천 단위 콤마 포맷",              "desc": "₩0→₩1,000,000 easeOutExpo + locale-aware" },
-        { "id": "abbreviation",      "num": "05", "title": "K/M/B 축약",                   "desc": "0→2.5M 동적 단위 전환 + 스마트 소수점" },
-        { "id": "color-fade",        "num": "06", "title": "컬러 그라데이션 카운터",          "desc": "파랑→주황 RGB 보간 + 숫자 색상 전환" },
-        { "id": "circle-progress",   "num": "07", "title": "원형 프로그레스",                "desc": "SVG stroke-dashoffset 원형 링 + 중앙 퍼센티지" },
-        { "id": "bar-progress",      "num": "08", "title": "바 프로그레스",                  "desc": "수평 바 fill + stagger 4행 + 퍼센티지 라벨" },
-        { "id": "spring-overshoot",  "num": "09", "title": "스프링 오버슈트",                "desc": "damped spring 감쇠 진동 — 목표 초과 후 수렴" },
-        { "id": "multi-stat",        "num": "10", "title": "다중 통계 카운터",               "desc": "4개 stat 카드 grid + stagger 순차 카운팅" }
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 카운터 모델 + 읽기 가이드"
+        },
+        {
+          "id": "loader-counter",
+          "num": "01",
+          "title": "로더 카운터 (Framer 시그니처)",
+          "desc": "0%→100% 오가닉 이징 (빠름→느림 + 마이크로 포즈)"
+        },
+        {
+          "id": "linear-count",
+          "num": "02",
+          "title": "리니어 카운트업",
+          "desc": "선형 0→10,000 + toLocaleString 콤마 포맷"
+        },
+        {
+          "id": "odometer",
+          "num": "03",
+          "title": "자릿수 롤링 (오도미터)",
+          "desc": "각 자릿수 독립 translateY 슬롯 머신"
+        },
+        {
+          "id": "comma-format",
+          "num": "04",
+          "title": "천 단위 콤마 포맷",
+          "desc": "₩0→₩1,000,000 easeOutExpo + locale-aware"
+        },
+        {
+          "id": "abbreviation",
+          "num": "05",
+          "title": "K/M/B 축약",
+          "desc": "0→2.5M 동적 단위 전환 + 스마트 소수점"
+        },
+        {
+          "id": "color-fade",
+          "num": "06",
+          "title": "컬러 그라데이션 카운터",
+          "desc": "파랑→주황 RGB 보간 + 숫자 색상 전환"
+        },
+        {
+          "id": "circle-progress",
+          "num": "07",
+          "title": "원형 프로그레스",
+          "desc": "SVG stroke-dashoffset 원형 링 + 중앙 퍼센티지"
+        },
+        {
+          "id": "bar-progress",
+          "num": "08",
+          "title": "바 프로그레스",
+          "desc": "수평 바 fill + stagger 4행 + 퍼센티지 라벨"
+        },
+        {
+          "id": "spring-overshoot",
+          "num": "09",
+          "title": "스프링 오버슈트",
+          "desc": "damped spring 감쇠 진동 — 목표 초과 후 수렴"
+        },
+        {
+          "id": "multi-stat",
+          "num": "10",
+          "title": "다중 통계 카운터",
+          "desc": "4개 stat 카드 grid + stagger 순차 카운팅"
+        }
       ]
     }
   ],
   "counts": {
-    "references": 9,
-    "categories": 9,
-    "patterns": 90
+    "references": 15,
+    "categories": 15,
+    "patterns": 150
   }
 }
