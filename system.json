@@ -72,6 +72,468 @@
   ],
   "references": [
     {
+      "id": "infinite-marquee",
+      "title": "무한 마퀴",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/infinite-marquee/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 심리스 루프 모델 + 읽기 가이드"
+        },
+        {
+          "id": "text-loop",
+          "num": "01",
+          "title": "텍스트 루프 (시그니처)",
+          "desc": "콘텐츠 2벌 복제 + translateX -50% 무한 루프"
+        },
+        {
+          "id": "logo-wall",
+          "num": "02",
+          "title": "로고 월",
+          "desc": "grayscale 로고 흐름 + hover 정지·컬러 복원"
+        },
+        {
+          "id": "dual-direction",
+          "num": "03",
+          "title": "듀얼 디렉션",
+          "desc": "키워드 캡슐 2행 반대 방향 교차 흐름"
+        },
+        {
+          "id": "hover-pause",
+          "num": "04",
+          "title": "호버 슬로우",
+          "desc": "hover 시 px/s 속도 지수 보간 감속"
+        },
+        {
+          "id": "scroll-velocity",
+          "num": "05",
+          "title": "스크롤 속도 반응",
+          "desc": "스크롤 속도 가산 + velocity skew ±10°"
+        },
+        {
+          "id": "vertical-ticker",
+          "num": "06",
+          "title": "세로 티커",
+          "desc": "translateY 스텝 루프 세로 알림 롤링"
+        },
+        {
+          "id": "image-strip",
+          "num": "07",
+          "title": "이미지 스트립",
+          "desc": "그라디언트 카드 밴드 + hover 카드만 확대"
+        },
+        {
+          "id": "outline-fill-band",
+          "num": "08",
+          "title": "아웃라인·필 교차 밴드",
+          "desc": "아웃라인·필 교대 2행 + rotate -2deg 교차"
+        },
+        {
+          "id": "drag-inertia",
+          "num": "09",
+          "title": "드래그 관성",
+          "desc": "드래그 스크럽 + 관성 감쇠 후 자동 복귀"
+        },
+        {
+          "id": "ticker-bar",
+          "num": "10",
+          "title": "뉴스 티커 바",
+          "desc": "BREAKING 라벨 고정 + 우→좌 항목 흐름"
+        }
+      ]
+    },
+    {
+      "id": "scroll-color-morph",
+      "title": "스크롤 컬러 모핑",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/scroll-color-morph/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 공통 색 보간 모델 + 읽기 가이드"
+        },
+        {
+          "id": "section-bg-fade",
+          "num": "01",
+          "title": "섹션 배경 페이드 (시그니처)",
+          "desc": "3구간 RGB 선형 보간 배경 모핑"
+        },
+        {
+          "id": "dark-light-flip",
+          "num": "02",
+          "title": "다크 라이트 플립",
+          "desc": "p 0.4~0.6 임계 구간 다크↔라이트 반전"
+        },
+        {
+          "id": "gradient-shift",
+          "num": "03",
+          "title": "그라디언트 시프트",
+          "desc": "2-stop 색·각도 135°→315° 동시 보간"
+        },
+        {
+          "id": "circle-wipe",
+          "num": "04",
+          "title": "서클 와이프",
+          "desc": "clip-path circle 반지름 진행률 와이프"
+        },
+        {
+          "id": "text-contrast-swap",
+          "num": "05",
+          "title": "텍스트 컨트라스트 스왑",
+          "desc": "배경 luminance 기반 텍스트 흰↔검 자동 보간"
+        },
+        {
+          "id": "accent-rotate",
+          "num": "06",
+          "title": "액센트 로테이트",
+          "desc": "HSL hue 220°→320°→40° 액센트 회전"
+        },
+        {
+          "id": "duotone-scene",
+          "num": "07",
+          "title": "듀오톤 씬",
+          "desc": "2색 팔레트 구간 교체 듀오톤 씬 전환"
+        },
+        {
+          "id": "split-diagonal",
+          "num": "08",
+          "title": "대각 스플릿",
+          "desc": "clip-path polygon 대각 경계 색 스윕"
+        },
+        {
+          "id": "nav-adapt",
+          "num": "09",
+          "title": "내비 적응형",
+          "desc": "섹션 경계 교차 계산 내비 색 반전"
+        },
+        {
+          "id": "hue-scrub",
+          "num": "10",
+          "title": "휴 스크럽",
+          "desc": "filter hue-rotate(p×360°) 아트워크 스크럽"
+        }
+      ]
+    },
+    {
+      "id": "overlay-menu",
+      "title": "풀스크린 오버레이 메뉴",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/overlay-menu/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 토글 인터랙션 모델 + 읽기 가이드"
+        },
+        {
+          "id": "circle-expand",
+          "num": "01",
+          "title": "서클 익스팬드 (시그니처)",
+          "desc": "버튼 기점 clip-path circle 팽창·역수축"
+        },
+        {
+          "id": "slide-panel",
+          "num": "02",
+          "title": "슬라이드 패널",
+          "desc": "우측 패널 translateX 진입 + 딤 클릭 닫힘"
+        },
+        {
+          "id": "curtain-rows",
+          "num": "03",
+          "title": "커튼 로우",
+          "desc": "가로 밴드 4개 scaleY 70ms stagger 커튼"
+        },
+        {
+          "id": "link-stagger",
+          "num": "04",
+          "title": "링크 스태거",
+          "desc": "대형 링크 translateY 60px + 60ms stagger"
+        },
+        {
+          "id": "split-columns",
+          "num": "05",
+          "title": "스플릿 컬럼",
+          "desc": "좌우 2컬럼이 양쪽에서 미끄러져 합류"
+        },
+        {
+          "id": "blur-glass",
+          "num": "06",
+          "title": "블러 글래스",
+          "desc": "backdrop-filter blur 20px 반투명 유리"
+        },
+        {
+          "id": "burger-morph",
+          "num": "07",
+          "title": "버거 모핑",
+          "desc": "☰→✕ 획별 타이밍 분해 모핑"
+        },
+        {
+          "id": "char-cascade",
+          "num": "08",
+          "title": "글자 캐스케이드",
+          "desc": "줄 마스크 아래 글자별 회전 상승 2중 stagger"
+        },
+        {
+          "id": "drawer-bottom",
+          "num": "09",
+          "title": "바텀 시트",
+          "desc": "하단 시트 상승 + 배경 scale 0.96 후퇴"
+        },
+        {
+          "id": "push-shift",
+          "num": "10",
+          "title": "페이지 푸시",
+          "desc": "좌측 패널이 페이지를 미는 perspective 푸시"
+        }
+      ]
+    },
+    {
+      "id": "animated-tabs",
+      "title": "애니메이티드 탭",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/animated-tabs/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 인디케이터 측정 모델 + 읽기 가이드"
+        },
+        {
+          "id": "sliding-pill",
+          "num": "01",
+          "title": "슬라이딩 필 (시그니처)",
+          "desc": "rect 측정 transform·width 보간 필 이동"
+        },
+        {
+          "id": "underline-slide",
+          "num": "02",
+          "title": "언더라인 슬라이드",
+          "desc": "2px 바 translateX+width 슬라이드"
+        },
+        {
+          "id": "content-crossfade",
+          "num": "03",
+          "title": "콘텐츠 크로스페이드",
+          "desc": "패널 out 120ms → in 200ms 비대칭 페이드"
+        },
+        {
+          "id": "spotlight-hover",
+          "num": "04",
+          "title": "호버 스포트라이트",
+          "desc": "hover 유령 120ms + 확정 필 280ms 2단 피드백"
+        },
+        {
+          "id": "vertical-rail",
+          "num": "05",
+          "title": "버티컬 레일",
+          "desc": "offsetTop·Height → translateY+height 세로 레일"
+        },
+        {
+          "id": "count-badge",
+          "num": "06",
+          "title": "카운트 뱃지 탭",
+          "desc": "뱃지 반전 + scale 1.3→1 pop 피드백"
+        },
+        {
+          "id": "icon-pop",
+          "num": "07",
+          "title": "아이콘 팝 탭",
+          "desc": "아이콘 scale 0.6→1.12→1 오버슈트 스프링"
+        },
+        {
+          "id": "width-morph",
+          "num": "08",
+          "title": "가변 폭 필",
+          "desc": "좌표+폭 동시 보간 폭 모핑 강조"
+        },
+        {
+          "id": "panel-slide",
+          "num": "09",
+          "title": "패널 방향 슬라이드",
+          "desc": "트랙 translateX -i×100% 방향 슬라이드"
+        },
+        {
+          "id": "progress-tabs",
+          "num": "10",
+          "title": "오토 프로그레스 탭",
+          "desc": "rAF 5초 진행 바 + 자동 순환 + hover 정지"
+        }
+      ]
+    },
+    {
+      "id": "accordion-faq",
+      "title": "아코디언 FAQ",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/accordion-faq/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 높이 애니메이션 모델 + 읽기 가이드"
+        },
+        {
+          "id": "grid-rows",
+          "num": "01",
+          "title": "그리드 로우 슬라이드 (시그니처)",
+          "desc": "grid-template-rows 0fr→1fr + 아이콘 45° 회전"
+        },
+        {
+          "id": "plus-morph",
+          "num": "02",
+          "title": "플러스 모핑",
+          "desc": "+ 두 획 회전·페이드로 − 모핑 + 보더 하이라이트"
+        },
+        {
+          "id": "single-open",
+          "num": "03",
+          "title": "싱글 오픈",
+          "desc": "한 번에 하나만 — 라디오 동작 + 좌측 액센트 바"
+        },
+        {
+          "id": "chevron-flip",
+          "num": "04",
+          "title": "셰브론 플립",
+          "desc": "셰브론 180° 플립 + 답변 fade+slide 지연 진입"
+        },
+        {
+          "id": "card-elevate",
+          "num": "05",
+          "title": "카드 엘리베이트",
+          "desc": "열린 카드 scale 1.02 + 액센트 보더·2겹 그림자"
+        },
+        {
+          "id": "numbered-editorial",
+          "num": "06",
+          "title": "번호 에디토리얼",
+          "desc": "대형 번호 01~04 + thin rule — 열림 시 액센트"
+        },
+        {
+          "id": "image-reveal",
+          "num": "07",
+          "title": "이미지 동반",
+          "desc": "좌 아코디언 + 우 아트워크 360ms 크로스페이드"
+        },
+        {
+          "id": "stagger-lines",
+          "num": "08",
+          "title": "답변 스태거",
+          "desc": "답변 줄 60ms stagger fade+slide 진입"
+        },
+        {
+          "id": "fill-sweep",
+          "num": "09",
+          "title": "배경 필 스윕",
+          "desc": "헤더 배경 scaleX 좌→우 스윕 + 텍스트 색 반전"
+        },
+        {
+          "id": "nested-sub",
+          "num": "10",
+          "title": "네스티드 2단",
+          "desc": "1단 카테고리 → 2단 질문 중첩 + 들여쓰기·연결선"
+        }
+      ]
+    },
+    {
+      "id": "form-input-micro",
+      "title": "폼 인풋 마이크로 인터랙션",
+      "type": "category",
+      "categoryMode": true,
+      "date": "2026-06-10",
+      "analysis": "analyses/form-input-micro/analysis.json",
+      "patternCount": 10,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "패턴 10종 인덱스 + 폼 피드백 모델 + 읽기 가이드"
+        },
+        {
+          "id": "float-label",
+          "num": "01",
+          "title": "플로팅 라벨 (시그니처)",
+          "desc": "라벨 상승 축소 — :placeholder-shown 기법"
+        },
+        {
+          "id": "underline-expand",
+          "num": "02",
+          "title": "언더라인 익스팬드",
+          "desc": "하단 보더 중앙→양끝 scaleX 확장"
+        },
+        {
+          "id": "shake-error",
+          "num": "03",
+          "title": "에러 셰이크",
+          "desc": "셰이크 + 에러 메시지 슬라이드 다운"
+        },
+        {
+          "id": "check-draw",
+          "num": "04",
+          "title": "체크 드로잉",
+          "desc": "유효 입력 시 SVG 체크 stroke 드로잉"
+        },
+        {
+          "id": "password-meter",
+          "num": "05",
+          "title": "비밀번호 강도 미터",
+          "desc": "4칸 강도 바 — 적→황→초 단계 전환"
+        },
+        {
+          "id": "password-reveal",
+          "num": "06",
+          "title": "비밀번호 표시 토글",
+          "desc": "눈 아이콘 토글 — 사선 획 드로잉"
+        },
+        {
+          "id": "otp-cells",
+          "num": "07",
+          "title": "OTP 셀",
+          "desc": "6칸 자동 이동 + 채움 pop 스케일"
+        },
+        {
+          "id": "char-counter",
+          "num": "08",
+          "title": "글자수 카운터",
+          "desc": "카운터 색 전환 + 원형 게이지"
+        },
+        {
+          "id": "select-morph",
+          "num": "09",
+          "title": "커스텀 셀렉트",
+          "desc": "옵션 stagger 펼침 + 체크 선택"
+        },
+        {
+          "id": "submit-morph",
+          "num": "10",
+          "title": "제출 버튼 모핑",
+          "desc": "원형 수축 → 스피너 → 체크 3상태 머신"
+        }
+      ]
+    },
+    {
       "id": "text-scramble",
       "title": "스크램블 텍스트",
       "type": "category",
@@ -1228,8 +1690,8 @@
     }
   ],
   "counts": {
-    "references": 15,
-    "categories": 15,
-    "patterns": 150
+    "references": 21,
+    "categories": 21,
+    "patterns": 210
   }
 }
