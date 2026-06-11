@@ -1687,11 +1687,92 @@
           "desc": "4개 stat 카드 grid + stagger 순차 카운팅"
         }
       ]
+    },
+    {
+      "id": "interactive-web",
+      "title": "섹션 인터랙티브 요소",
+      "type": "web",
+      "categoryMode": true,
+      "date": "2026-06-12",
+      "url": "https://daehanfeed.co.kr/",
+      "analysis": "analyses/interactive-web/analysis.json",
+      "patternCount": 10,
+      "exampleCount": 30,
+      "sections": [
+        {
+          "id": "overview",
+          "num": "00",
+          "title": "카테고리 개요",
+          "desc": "10 요소 인덱스 + 공통 토큰 + 실측 사이트 6곳 + 읽기 가이드"
+        },
+        {
+          "id": "fullscreen-hero",
+          "num": "01",
+          "title": "풀스크린 히어로 오프닝",
+          "desc": "스크럽 헤드라인 라이즈 / 켄번스 줌 / 클릭 페이징 — 풀스크린 오프닝 3변형"
+        },
+        {
+          "id": "curtain-panel-reveal",
+          "num": "02",
+          "title": "멀티 패널 커튼 리빌 스토리",
+          "desc": "수직 패널 / 블라인드 슬랫 / 대각 클립 — 커튼 리빌 브랜드 스토리"
+        },
+        {
+          "id": "pinned-watermark-typo",
+          "num": "03",
+          "title": "핀 워터마크 타이포 무대",
+          "desc": "워드마크 부상 / 아웃라인→필 / 가로 드리프트 — 배경 타이포 무대"
+        },
+        {
+          "id": "opposed-split-panel",
+          "num": "04",
+          "title": "대향 분할 패널 스토리",
+          "desc": "듀얼 컬럼 / 중앙 개폐 / 스텝 스냅 — 좌우 대향 분할 패널"
+        },
+        {
+          "id": "pinned-column-feed",
+          "num": "05",
+          "title": "핀 칼럼 + 통과 피드",
+          "desc": "글래스 통계 / 역방향 레일 / 스테이지 드리프트 — 핀 칼럼 피드"
+        },
+        {
+          "id": "hover-focus-band",
+          "num": "06",
+          "title": "호버 포커스 풀밴드",
+          "desc": "배경 디밍 / 가로 아코디언 / 리스트-미디어 동기 — 호버 포커스(입력형)"
+        },
+        {
+          "id": "synced-dual-gallery",
+          "num": "07",
+          "title": "듀얼 동기 갤러리",
+          "desc": "썸네일-메인 / 페어 내비 / 핫스팟 — 클릭 동기 갤러리(입력형)"
+        },
+        {
+          "id": "history-timeline",
+          "num": "08",
+          "title": "연혁 타임라인 섹션",
+          "desc": "지그재그 라인 / 핀 연도 / 가로 연대표 — 연혁 타임라인"
+        },
+        {
+          "id": "cinematic-finale",
+          "num": "09",
+          "title": "시네마틱 멀티 페이즈 피날레",
+          "desc": "수렴-발산 / 장면 체인 / 프레임 정착 — 시네마틱 피날레"
+        },
+        {
+          "id": "section-handoff",
+          "num": "10",
+          "title": "핀 오버랩 섹션 전환·푸터 리빌",
+          "desc": "커버업 / 딥 푸시 / 푸터 커튼 — 핀 오버랩 섹션 전환"
+        }
+      ]
     }
   ],
   "counts": {
-    "references": 21,
+    "references": 22,
     "categories": 21,
-    "patterns": 210
+    "webs": 1,
+    "patterns": 220,
+    "examples": 30
   }
 }

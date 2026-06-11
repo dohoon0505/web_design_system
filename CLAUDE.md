@@ -404,6 +404,36 @@ Transition 시각 효과는 preview 환경의 `visibility: hidden` 한계로 검
 
 ---
 
+## 신규 그룹: 인터랙티브 웹 (`references[].type = 'web'`, 2026-06-12, v6)
+
+기존 "인터랙션 카탈로그"(type:'category')는 **컴포넌트 단위**(버튼·카드·탭·텍스트 효과) 인터랙션이다. 신규 **"인터랙티브 웹"**(type:'web')은 컴포넌트가 아니라 **실제 웹페이지의 한 섹션 전체를 구성하는 인터랙티브 요소**(풀스크린 히어로·커튼 리빌 브랜드 스토리·핀 칼럼 피드·연혁 타임라인·시네마틱 피날레)를 다룬다. 사이드바에 별도 그룹으로 분리되며, 한 요소당 컴포넌트처럼 10개가 아니라 **연출 변형 예시 3개**(A/B/C)만 만든다.
+
+| 항목 | 사양 |
+|------|------|
+| 카테고리 ID | `interactive-web` |
+| references[].type | **`web`** (category와 별도 그룹) |
+| 요소 수 | 10 (실제 홈페이지 위→아래 순서: 히어로→소개→사업→통계→호버→갤러리→연혁→피날레→전환) |
+| 요소당 예시 | **정확히 3개** (A/B/C — 시각적으로 명확히 구별되는 연출 변형. 같은 파라미터 차이 금지) |
+| 데모 수 | 30 (`demos/interactive-web/{element-id}--{example-id}.html`) |
+| 데모 구동 | 스크롤형 23(scroll-track 240~280vh + sticky 100vh + applyReveal(p)) / **입력형 7**(hover·click → 클래스 토글 + CSS transition ≤200ms) |
+| 요소당 블록 | **22 블록** (15블록 표준의 3예시 확장: 데모 A/B/C 각 heading+text+component) |
+| 활용 추천 4건 | **기업 메인 / 브랜드 캠페인 / 병원·기관 / 제품 쇼케이스** (히어로/랜딩/제품/포트폴리오 대신 실사이트 유형) |
+| 데모 콘텐츠 | 가상 브랜드 6종(한울피드·온결의원·유진정밀·선재자산운용·다온케어·휴먼라이트) — 실측 사이트 기업명·로고·사진·카피 사용 금지. 사진·비디오 대신 CSS 그라디언트 |
+| 입력형 허용 | scroll-track 없이 `.stage` 단일 무대 + 이벤트 리스너 + `window.__reset`. progress bar는 상태 표시기로 전용하거나 숨김. autoplay는 여전히 금지(클릭/호버 입력 1:1) |
+| 실측 근거 | 6곳 모두 — daehanfeed/doodoorim/nifco/syfund/ildongcare/amnesty 메인 페이지 raw HTML+JS 직접 분석 |
+| 구현 계획서 | `plans/2026-06-11-interactive-web-category.md` (단일 사양서) |
+| 생성기 | `scripts/generate-interactive-web.mjs` — buildScrollDemoHTML/buildInputDemoHTML 2종 보일러플레이트 분기 + buildElementSection(22블록) |
+
+**type:'web' 추가 시 인프라 변경 (4파일):**
+- `assets/js/main.js` — `buildSidebar` **3분기**(`webs`/`categories`/`sites`) + `injectCatalogGroup` 헬퍼로 "인터랙티브 웹" 그룹을 "인터랙션 카탈로그" **위**에 주입. 정체성 문구 4곳(overview tag·h1·md 제목·md 파일명)이 `analysis.type === 'web'`으로 분기.
+- `scripts/validate.mjs` — type:'web'은 category와 달리 **url 필수**(없으면 warn). 엔트리에 url 기입으로 무수정 통과.
+- `system.json` — references[] 엔트리 + counts(`references` +1, `webs` 신설, `patterns` +10, `exampleCount`).
+- `index.html` — 홈에 "인터랙티브 웹" home-section + 카드(수동 하드코딩).
+
+`renderRefItem`·`route()`·아코디언·`renderComponent` embed·.md 다운로드는 type 비의존이라 무수정 재사용(categoryMode:true + sections만 부여).
+
+---
+
 ## 카테고리 사례 #4: Scroll-Card-Update (2026-05-27, v1)
 
 | 항목 | 결과 |

@@ -174,10 +174,32 @@
     return html;
   }
 
+  // 카탈로그 그룹(인터랙션 카탈로그 / 인터랙티브 웹)을 beforeEl 위에 주입·갱신한다.
+  // type 비의존 — items만 다르면 같은 메커니즘으로 재사용. 반환값은 생성된 그룹 엘리먼트.
+  function injectCatalogGroup(groupId, title, listId, items, beforeEl) {
+    var grp = document.getElementById(groupId);
+    if (items.length > 0) {
+      if (!grp) {
+        grp = document.createElement('div');
+        grp.id = groupId;
+        grp.className = 'sidebar-group';
+        grp.innerHTML = ''
+          + '<div class="sidebar-group-title">' + title + '</div>'
+          + '<ul class="sidebar-nav" id="' + listId + '"></ul>';
+        beforeEl.parentNode.insertBefore(grp, beforeEl);
+      }
+      grp.querySelector('#' + listId).innerHTML = items.map(renderRefItem).join('');
+      return grp;
+    }
+    if (grp) grp.parentNode.removeChild(grp);
+    return null;
+  }
+
   function buildSidebar(refs) {
     if (!refNavList) return;
+    var webs = refs.filter(function (r) { return r.type === 'web'; });
     var categories = refs.filter(function (r) { return r.type === 'category'; });
-    var sites = refs.filter(function (r) { return r.type !== 'category'; });
+    var sites = refs.filter(function (r) { return r.type !== 'category' && r.type !== 'web'; });
 
     var groupEl = document.getElementById('sidebar-references');
     if (!groupEl) return;
@@ -187,30 +209,17 @@
     if (titleEl) titleEl.textContent = '레퍼런스 보고서';
 
     if (sites.length === 0) {
-      // 사이트 분석(레퍼런스 보고서)이 없으면 빈 그룹 자체를 숨긴다 — 현재는 인터랙션 카탈로그만 운영
+      // 사이트 분석(레퍼런스 보고서)이 없으면 빈 그룹 자체를 숨긴다 — 현재는 카탈로그만 운영
       groupEl.style.display = 'none';
     } else {
       groupEl.style.display = '';
       refNavList.innerHTML = sites.map(renderRefItem).join('');
     }
 
-    // Inject / refresh categories group ABOVE the sites group
-    var catGroup = document.getElementById('sidebar-categories');
-    if (categories.length > 0) {
-      if (!catGroup) {
-        catGroup = document.createElement('div');
-        catGroup.id = 'sidebar-categories';
-        catGroup.className = 'sidebar-group';
-        catGroup.innerHTML = ''
-          + '<div class="sidebar-group-title">인터랙션 카탈로그</div>'
-          + '<ul class="sidebar-nav" id="cat-nav-list"></ul>';
-        groupEl.parentNode.insertBefore(catGroup, groupEl);
-      }
-      var catList = catGroup.querySelector('#cat-nav-list');
-      catList.innerHTML = categories.map(renderRefItem).join('');
-    } else if (catGroup) {
-      catGroup.parentNode.removeChild(catGroup);
-    }
+    // 그룹 순서(위→아래): 인터랙티브 웹 → 인터랙션 카탈로그 → 레퍼런스 보고서.
+    // 인터랙션 카탈로그를 먼저 sites 그룹 위에 주입한 뒤, 인터랙티브 웹을 그 위에 주입한다.
+    var catGroup = injectCatalogGroup('sidebar-categories', '인터랙션 카탈로그', 'cat-nav-list', categories, groupEl);
+    injectCatalogGroup('sidebar-webs', '인터랙티브 웹', 'web-nav-list', webs, catGroup || groupEl);
   }
 
   /* ============ VIEWS ============ */
@@ -675,7 +684,7 @@
 
   function buildCategoryMarkdown(analysis) {
     var lines = [];
-    lines.push('# ' + analysis.title + ' — 인터랙션 카탈로그');
+    lines.push('# ' + analysis.title + (analysis.type === 'web' ? ' — 인터랙티브 웹' : ' — 인터랙션 카탈로그'));
     lines.push('');
     lines.push('| 항목 | 값 |');
     lines.push('|------|------|');
@@ -830,7 +839,8 @@
         downloadMarkdown(analysis.id + '-' + sectionId + '-' + safeTitle + '.md', md);
       } else {
         var md2 = buildCategoryMarkdown(analysis);
-        downloadMarkdown(analysis.id + '-카탈로그.md', md2);
+        var fileSuffix = analysis.type === 'web' ? '-인터랙티브-웹.md' : '-카탈로그.md';
+        downloadMarkdown(analysis.id + fileSuffix, md2);
       }
     });
   }
@@ -841,10 +851,12 @@
     h += '<div class="report-header">';
     h += '<a class="report-back" href="#">← 홈으로</a>';
     h += '<div class="report-meta">';
-    h += '<span class="tag">인터랙션 카탈로그</span>';
+    var groupTag = analysis.type === 'web' ? '인터랙티브 웹' : '인터랙션 카탈로그';
+    h += '<span class="tag">' + groupTag + '</span>';
     h += '<span class="report-date">' + escapeHtml(analysis.date) + '</span>';
     h += '</div>';
-    h += '<h1 class="report-title">' + escapeHtml(analysis.title) + ' 카탈로그</h1>';
+    var titleSuffix = analysis.type === 'web' ? '' : ' 카탈로그';
+    h += '<h1 class="report-title">' + escapeHtml(analysis.title) + titleSuffix + '</h1>';
     var metaLabel = analysis.patternCount
       ? (analysis.patternCount + ' 패턴 · 가이드라인 + 코드 스니펫 포함 .md')
       : '가이드라인 + 코드 스니펫 포함 .md';
